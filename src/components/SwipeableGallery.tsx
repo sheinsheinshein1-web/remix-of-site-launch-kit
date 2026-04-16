@@ -6,10 +6,9 @@ interface SwipeableGalleryProps {
   alt: string;
   height?: string;
   children?: React.ReactNode;
-  transitionName?: string;
 }
 
-const SwipeableGallery = ({ images, alt, height = "h-[200px]", children, transitionName }: SwipeableGalleryProps) => {
+const SwipeableGallery = ({ images, alt, height = "h-[200px]", children }: SwipeableGalleryProps) => {
   const [current, setCurrent] = useState(0);
   const startX = useRef(0);
   const hasMoved = useRef(false);
@@ -29,7 +28,6 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", children, transit
     startX.current = e.touches[0].clientX;
     hasMoved.current = false;
   };
-
   const onTouchEnd = (e: React.TouchEvent) => {
     handleEnd(e.changedTouches[0].clientX);
   };
@@ -67,10 +65,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", children, transit
               src={src}
               alt={`${alt} ${i + 1}`}
               className="h-full object-cover flex-shrink-0"
-              style={{
-                width: `${100 / count}%`,
-                ...(i === 0 && transitionName ? { viewTransitionName: transitionName } : {}),
-              }}
+              style={{ width: `${100 / count}%` }}
               loading={i === 0 ? "eager" : "lazy"}
               draggable={false}
             />
@@ -83,11 +78,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", children, transit
             src={src}
             alt={`${alt} ${i + 1}`}
             className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              zIndex: i === current ? 1 : 0,
-              opacity: i === current ? 1 : 0,
-              ...(i === 0 && transitionName ? { viewTransitionName: transitionName } : {}),
-            }}
+            style={{ zIndex: i === current ? 1 : 0, opacity: i === current ? 1 : 0 }}
             loading="eager"
             draggable={false}
           />
