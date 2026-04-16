@@ -19,10 +19,7 @@ export function navigateWithTransition(
 }
 
 export function navigateBackWithTransition(navigate: NavigateFunction) {
-  const heroImg = document.querySelector<HTMLImageElement>(
-    '[style*="view-transition-name: project-hero"]'
-  );
-  if (heroImg && (document as any).startViewTransition) {
+  if ((document as any).startViewTransition) {
     (document as any).startViewTransition(() => {
       flushSync(() => navigate(-1));
     });
