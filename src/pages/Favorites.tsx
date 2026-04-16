@@ -253,7 +253,7 @@ const Favorites = () => {
             <div className={viewMode === "grid" ? "grid grid-cols-2 gap-x-[2px] gap-y-[6px]" : "flex flex-col gap-[10px]"}>
               {favoriteItems.map((item) => viewMode === "list" ? (
                 <div key={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer overflow-hidden">
-                  <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[260px]">
+                  <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[286px]">
                     <div className="absolute top-2 right-2 z-10">
                       <button
                         onClick={(e) => { e.stopPropagation(); toggleFavorite(item); }}
