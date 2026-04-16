@@ -952,7 +952,7 @@ const Catalog = () => {
             ))}
           </div>
         ) : (
-          <div className="py-3 bg-background rounded-2xl px-2">
+          <div className="mt-2 py-3 bg-background rounded-2xl px-2">
             <div className="grid grid-cols-2 gap-x-[2px] gap-y-[6px]">
             {sortedItems.map((item) => (
               <div key={item.id} className="cursor-pointer overflow-hidden" onClick={() => navigate(`/project/${item.id}`)}>
