@@ -1,4 +1,5 @@
 import { Heart, Camera, Truck } from "lucide-react";
+import { formatSpecs } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import SwipeableGallery from "@/components/SwipeableGallery";
