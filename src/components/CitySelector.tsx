@@ -54,8 +54,8 @@ const CitySelector = ({ open, onOpenChange, city, onSelect }: CitySelectorProps)
   };
 
   const content = (
-    <div className="flex flex-col">
-      <div className="px-5 pt-5 pb-3 flex items-center justify-between">
+    <div className="flex flex-col max-h-[85vh]">
+      <div className="px-5 pt-5 pb-3 flex items-center justify-between shrink-0">
         <h2 className="text-lg font-semibold text-foreground">Выберите город</h2>
         {!isMobile && (
           <button onClick={() => onOpenChange(false)} className="w-8 h-8 rounded-xl flex items-center justify-center hover:bg-secondary">
@@ -63,18 +63,24 @@ const CitySelector = ({ open, onOpenChange, city, onSelect }: CitySelectorProps)
           </button>
         )}
       </div>
-      <div className="px-5 pb-3">
+      <div className="px-5 pb-3 shrink-0">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            onFocus={(e) => {
+              // Prevent iOS viewport jump by scrolling back
+              setTimeout(() => {
+                e.target.scrollIntoView({ block: "center", behavior: "smooth" });
+              }, 300);
+            }}
             placeholder="Поиск города"
             className="w-full h-11 rounded-xl bg-secondary border border-border pl-9 pr-4 text-[16px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
           />
         </div>
       </div>
-      <div className="overflow-y-auto max-h-[60vh] px-2 pb-5">
+      <div className="overflow-y-auto flex-1 min-h-0 px-2 pb-5">
         {filtered.length === 0 ? (
           <p className="text-sm text-muted-foreground text-center py-8">Город не найден</p>
         ) : (
@@ -101,7 +107,7 @@ const CitySelector = ({ open, onOpenChange, city, onSelect }: CitySelectorProps)
   if (isMobile) {
     return (
       <Drawer open={open} onOpenChange={onOpenChange}>
-        <DrawerContent className="mx-0 rounded-t-[20px] p-0 max-h-[85vh]">
+        <DrawerContent className="mx-0 rounded-t-[20px] p-0 max-h-[85vh]" onOpenAutoFocus={(e) => e.preventDefault()}>
           {content}
         </DrawerContent>
       </Drawer>
