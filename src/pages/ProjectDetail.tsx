@@ -235,7 +235,7 @@ const ProjectDetail = () => {
         <div className={`fixed top-0 left-0 right-0 z-50 transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 rounded-b-2xl shadow-sm">
             <div className="flex items-center justify-between">
-              <button onClick={() => navigate(-1)} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
+              <button onClick={navigateBack} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
                 <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
               </button>
               <div className="flex-1 min-w-0 ml-3">
@@ -263,7 +263,7 @@ const ProjectDetail = () => {
       {isMobile && (
         <div className={`fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-3 pt-3 transition-opacity duration-300 ${scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
           <button
-            onClick={() => navigate(-1)}
+            onClick={navigateBack}
             className="w-9 h-9 rounded-xl bg-background shadow-sm flex items-center justify-center"
           >
             <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
