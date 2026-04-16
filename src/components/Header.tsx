@@ -11,7 +11,7 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
+  const [showCompactHeader, setShowCompactHeader] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileScrolled, setMobileScrolled] = useState(false);
   const [cityOpen, setCityOpen] = useState(false);
@@ -21,9 +21,12 @@ const Header = () => {
     let lastY = window.scrollY;
     const onScroll = () => {
       const y = window.scrollY;
-      setHidden(y > 60 && y > lastY);
-      setScrolled(y > 60);
+      const scrollingDown = y > lastY;
+      const pastThreshold = y > 60;
+      setScrolled(pastThreshold);
       setMobileScrolled(y > 10);
+      // Show compact header only when scrolling UP past threshold
+      setShowCompactHeader(pastThreshold && !scrollingDown);
       lastY = y;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -51,7 +54,7 @@ const Header = () => {
         </div>
 
         {/* Compact white header - visible when scrolled */}
-        <div className={`transition-all duration-300 absolute inset-x-0 top-0 z-20 ${mobileScrolled && !hidden ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`transition-all duration-300 absolute inset-x-0 top-0 z-20 ${showCompactHeader ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 rounded-b-2xl shadow-sm">
             <SearchDropdown inputClassName="bg-secondary" />
           </div>
