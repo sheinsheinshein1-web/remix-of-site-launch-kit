@@ -435,7 +435,7 @@ const ProjectDetail = () => {
                 onClick={() => setActiveTab("description")}
                 className="text-primary hover:underline transition-colors"
               >
-                подробнее
+                Подробнее
               </button>
             </p>
 
