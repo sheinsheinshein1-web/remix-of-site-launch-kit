@@ -52,7 +52,7 @@ const Header = () => {
             </div>
             {searchFocused && (
               <div className="mt-2.5">
-                <SearchDropdown inputClassName="bg-secondary" onFocusChange={setSearchFocused} autoFocus />
+                <SearchDropdown inputClassName="bg-secondary" onFocusChange={setSearchFocused} />
               </div>
             )}
           </div>
