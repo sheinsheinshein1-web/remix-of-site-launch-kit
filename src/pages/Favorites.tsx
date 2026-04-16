@@ -169,6 +169,10 @@ const Favorites = () => {
   const { favoriteItems, toggleFavorite } = useFavorites();
 
   useEffect(() => {
+    applyBackTransitionName();
+  }, []);
+
+  useEffect(() => {
     let lastY = window.scrollY;
     const onScroll = () => {
       const y = window.scrollY;
