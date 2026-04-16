@@ -444,14 +444,12 @@ const ProjectDetail = () => {
               <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
             </div>
 
-            {!isMobile && (
-              <button
-                onClick={() => navigate(`/messages/company?company=${encodeURIComponent("Sherwood Home")}&project=${encodeURIComponent("Шервуд 72.1")}&projectId=${id}&price=${encodeURIComponent("от 4 950 000 ₽")}&area=${encodeURIComponent("60 м²")}&image=${encodeURIComponent(galleryImages[0].image)}`)}
-                className="w-full h-12 bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold mt-4"
-              >
-                Рассчитать стоимость
-              </button>
-            )}
+            <button
+              onClick={() => navigate(`/messages/company?company=${encodeURIComponent("Sherwood Home")}&project=${encodeURIComponent("Шервуд 72.1")}&projectId=${id}&price=${encodeURIComponent("от 4 950 000 ₽")}&area=${encodeURIComponent("60 м²")}&image=${encodeURIComponent(galleryImages[0].image)}`)}
+              className="w-full h-12 bg-secondary text-foreground rounded-xl text-[15px] font-medium mt-3"
+            >
+              Заказать расчёт
+            </button>
           </div>
 
           {/* ===== ОПИСАНИЕ / КОМПЛЕКТАЦИЯ / ХАРАКТЕРИСТИКИ — TABS ===== */}
