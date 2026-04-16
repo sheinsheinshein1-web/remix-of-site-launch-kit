@@ -89,28 +89,7 @@ const FeaturedProjects = () => {
               {/* Body */}
               <div className="px-[10px] pt-1 pb-1">
                 <div className="text-[12px] font-bold text-foreground">{project.price}</div>
-                {/* Params */}
-                <div className="flex items-center gap-[5px] mt-[4px] h-4 overflow-hidden">
-                  <div className="flex items-center gap-[2px] flex-shrink-0">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#999" strokeWidth="2"/><path d="M3 9h18M9 21V9" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                    <span className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none">{project.area}</span>
-                  </div>
-                  <span className="text-[10px] text-[#D0D0D0] flex-shrink-0 leading-none">·</span>
-                  <div className="flex items-center gap-[2px] flex-shrink-0">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><path d="M2 19v-4h20v4M2 15v-2a2 2 0 012-2h16a2 2 0 012 2v2M7 11V8a1 1 0 011-1h3v4" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                    <span className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none">{project.beds}</span>
-                  </div>
-                  <span className="text-[10px] text-[#D0D0D0] flex-shrink-0 leading-none">·</span>
-                  <div className="flex items-center gap-[2px] flex-shrink-0">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><path d="M4 12h16v2a6 6 0 01-6 6H10a6 6 0 01-6-6v-2zM4 12V6a2 2 0 012-2h1a2 2 0 012 2v1" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                    <span className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none">{project.baths}</span>
-                  </div>
-                  <span className="text-[10px] text-[#D0D0D0] flex-shrink-0 leading-none">·</span>
-                  <div className="flex items-center gap-[2px] flex-shrink-0">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><circle cx="12" cy="12" r="9" stroke="#999" strokeWidth="2"/><path d="M12 6v6l4 2" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                    <span className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none">{project.term}</span>
-                  </div>
-                </div>
+                <p className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none mt-[4px]">{formatSpecs(project.area, project.beds, project.baths, project.term)}</p>
               </div>
             </div>
           ))}
