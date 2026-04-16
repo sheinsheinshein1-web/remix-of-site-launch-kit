@@ -414,15 +414,54 @@ const ProjectDetail = () => {
         <div>
         {/* ===== MAIN INFO — BENTO ===== */}
         <div className={`flex flex-col gap-2 ${isMobile ? "" : "sticky top-[80px]"}`}>
-          {/* Row 1: Title + Price */}
+          {/* Row 1: Title + Price + Maker + Stats */}
           <div className="bg-background rounded-b-2xl px-4 pt-3 pb-3">
             <h1 className="text-[18px] font-bold text-foreground tracking-tight leading-tight mb-0.5">Шервуд 72.1</h1>
             <div className="text-[12px] text-muted-foreground mb-1.5">
               60 м² · 2 спальни · 1 санузел · 1 этаж
             </div>
-            <div className="text-[15px] font-bold text-foreground">
+            <div className="text-[15px] font-bold text-foreground mb-3">
               от 4 950 000 ₽
             </div>
+
+            {/* Maker row */}
+            <div className="flex items-center gap-2 py-2 border-t border-border cursor-pointer" onClick={() => navigate('/partner/1')}>
+              <div className="w-8 h-8 bg-foreground rounded-lg flex items-center justify-center text-background text-[10px] font-bold flex-shrink-0">SW</div>
+              <div className="flex-1 min-w-0">
+                <div className="text-[13px] font-semibold text-primary leading-tight">Sherwood Home</div>
+                <div className="text-[10px] text-muted-foreground">ИНН: 631905302478</div>
+              </div>
+              <div className="flex items-center gap-3 text-[12px]">
+                <span className="inline-flex items-center gap-1">
+                  <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+                  <span className="font-semibold text-foreground">5.0</span>
+                  <span className="text-muted-foreground">(13)</span>
+                </span>
+                <span className="inline-flex items-center gap-1 text-muted-foreground">
+                  <MessageCircleQuestion className="w-3.5 h-3.5" />
+                  <span className="font-semibold text-foreground">104</span>
+                </span>
+              </div>
+            </div>
+
+            {/* Built houses thumbnails */}
+            <div className="flex items-center gap-2 pt-2 border-t border-border">
+              <span className="text-[11px] text-muted-foreground">Построенные:</span>
+              <div className="flex items-center">
+                <div className="w-9 h-9 rounded-lg overflow-hidden border-2 border-background relative z-[3]">
+                  <img src={house2} alt="" className="w-full h-full object-cover" />
+                </div>
+                <div className="w-9 h-9 rounded-lg overflow-hidden border-2 border-background relative z-[2] -ml-3">
+                  <img src={house3} alt="" className="w-full h-full object-cover" />
+                </div>
+                <div className="w-9 h-9 rounded-lg overflow-hidden flex items-center justify-center relative z-[1] -ml-3 border-2 border-background">
+                  <img src={house4} alt="" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-foreground/40" />
+                  <span className="text-background text-[10px] font-semibold absolute z-10">+9</span>
+                </div>
+              </div>
+            </div>
+
             {!isMobile && (
               <button
                 onClick={() => navigate(`/messages/company?company=${encodeURIComponent("Sherwood Home")}&project=${encodeURIComponent("Шервуд 72.1")}&projectId=${id}&price=${encodeURIComponent("от 4 950 000 ₽")}&area=${encodeURIComponent("60 м²")}&image=${encodeURIComponent(galleryImages[0].image)}`)}
@@ -431,44 +470,6 @@ const ProjectDetail = () => {
                 Рассчитать стоимость
               </button>
             )}
-          </div>
-
-          {/* ===== ПРОИЗВОДИТЕЛЬ — BENTO ===== */}
-          <div className="bg-background rounded-2xl p-4">
-            <div className="flex items-center gap-2.5 mb-3 cursor-pointer" onClick={() => navigate('/partner/1')}>
-              <div className="w-10 h-10 bg-foreground rounded-xl flex items-center justify-center text-background text-[11px] font-bold flex-shrink-0">SW</div>
-              <div>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-[13px] font-semibold text-primary">Sherwood Home</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-muted-foreground" />
-                </div>
-                <div className="text-[11px] text-muted-foreground">ИНН: 631905302478</div>
-              </div>
-            </div>
-            {/* Reviews + Questions + Photos row */}
-            <div className="flex items-center gap-2">
-              <div className="inline-flex items-center gap-1.5 bg-secondary rounded-xl px-3 py-2.5 cursor-pointer">
-                <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
-                <span className="text-lg font-bold text-foreground">5</span>
-                <span className="text-[11px] text-muted-foreground leading-tight">13<br/>отзывов</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 bg-secondary rounded-xl px-3 py-2.5 cursor-pointer">
-                <MessageCircleQuestion className="w-4 h-4 text-muted-foreground" />
-                <span className="text-lg font-bold text-foreground">104</span>
-                <span className="text-[11px] text-muted-foreground">вопроса</span>
-              </div>
-              <div className="w-[52px] h-[52px] rounded-xl overflow-hidden flex-shrink-0 border-2 border-background relative z-[3]">
-                <img src={house2} alt="" className="w-full h-full object-cover" />
-              </div>
-              <div className="w-[52px] h-[52px] rounded-xl overflow-hidden flex-shrink-0 border-2 border-background relative z-[2] -ml-9">
-                <img src={house3} alt="" className="w-full h-full object-cover" />
-              </div>
-              <div className="w-[52px] h-[52px] rounded-xl overflow-hidden flex-shrink-0 flex items-center justify-center relative z-[1] -ml-9 border-2 border-background">
-                <img src={house4} alt="" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-black/40 rounded-[10px]" />
-                <span className="text-white text-xs font-semibold absolute z-10">+9</span>
-              </div>
-            </div>
           </div>
 
           {/* ===== ОПИСАНИЕ / КОМПЛЕКТАЦИЯ / ХАРАКТЕРИСТИКИ — TABS ===== */}
