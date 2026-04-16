@@ -209,6 +209,17 @@ const ProjectDetail = () => {
     setDragOffset(0);
   }, [dragOffset, activeImage]);
 
+  const navigateBack = useCallback(() => {
+    const heroImg = document.querySelector<HTMLImageElement>('[style*="view-transition-name: project-hero"]');
+    if (heroImg && (document as any).startViewTransition) {
+      (document as any).startViewTransition(() => {
+        flushSync(() => navigate(-1));
+      });
+    } else {
+      navigate(-1);
+    }
+  }, [navigate]);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 300);
     window.addEventListener("scroll", onScroll, { passive: true });
