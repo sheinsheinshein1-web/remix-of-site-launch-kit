@@ -416,18 +416,16 @@ const ProjectDetail = () => {
         <div className={`flex flex-col gap-2 ${isMobile ? "" : "sticky top-[80px]"}`}>
           {/* Row 1: Title + Price */}
           <div className="bg-background rounded-b-2xl px-4 pt-3 pb-3">
-            <h1 className="text-[20px] font-bold text-foreground tracking-tight mb-1.5 leading-tight">Шервуд 72.1</h1>
-            <div className="flex items-center gap-2.5 text-[12px] text-muted-foreground mb-2 flex-wrap">
+            <div className="flex items-baseline justify-between gap-3 mb-2">
+              <h1 className="text-[19px] font-bold text-foreground tracking-tight leading-tight truncate">Шервуд 72.1</h1>
+              <span className="text-[17px] font-bold text-foreground whitespace-nowrap">от 4 950 000 ₽</span>
+            </div>
+            <div className="flex items-center gap-3 text-[12px] text-muted-foreground flex-wrap">
               <span className="inline-flex items-center gap-1"><Ruler className="w-3 h-3" />60 м²</span>
               <span className="inline-flex items-center gap-1"><BedDouble className="w-3 h-3" />2 спальни</span>
               <span className="inline-flex items-center gap-1"><Bath className="w-3 h-3" />1 санузел</span>
               <span className="inline-flex items-center gap-1"><Layers className="w-3 h-3" />1 этаж</span>
             </div>
-            <div className="flex items-baseline gap-2 flex-wrap">
-              <span className="text-[18px] font-bold text-foreground">от 4 950 000 ₽</span>
-              <span className="text-[11px] text-muted-foreground">от 11.11.2025</span>
-            </div>
-            <p className="text-[11px] text-muted-foreground mt-0.5">Цена фиксирована в договоре · без скрытых доплат</p>
             {!isMobile && (
               <button
                 onClick={() => navigate(`/messages/company?company=${encodeURIComponent("Sherwood Home")}&project=${encodeURIComponent("Шервуд 72.1")}&projectId=${id}&price=${encodeURIComponent("от 4 950 000 ₽")}&area=${encodeURIComponent("60 м²")}&image=${encodeURIComponent(galleryImages[0].image)}`)}
