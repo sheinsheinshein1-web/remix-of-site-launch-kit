@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { formatSpecs } from "@/lib/utils";
 import { useSearchParams } from "react-router-dom";
 import { Search, SlidersHorizontal, ChevronLeft, X, ArrowUpDown, Ruler, BedDouble, Bath, Heart, Star, Camera, Columns2, Redo2, Truck } from "lucide-react";
 import SearchDropdown from "@/components/SearchDropdown";
@@ -858,28 +859,7 @@ const Catalog = () => {
                   <div className="px-[10px] pt-2 pb-[10px]">
                     <div className="text-[14px] font-bold text-foreground mb-[1px]">{item.price}</div>
                     <div className="text-[12px] text-muted-foreground mb-[6px]">{item.name}</div>
-                    {/* Params */}
-                    <div className="flex items-center gap-[5px] mb-[6px] h-4 overflow-hidden">
-                      <div className="flex items-center gap-[2px] flex-shrink-0">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#999" strokeWidth="2"/><path d="M3 9h18M9 21V9" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                        <span className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none">{item.area}</span>
-                      </div>
-                      <span className="text-[10px] text-[#D0D0D0] flex-shrink-0 leading-none">·</span>
-                      <div className="flex items-center gap-[2px] flex-shrink-0">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><path d="M2 19v-4h20v4M2 15v-2a2 2 0 012-2h16a2 2 0 012 2v2M7 11V8a1 1 0 011-1h3v4" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                        <span className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none">{item.beds}</span>
-                      </div>
-                      <span className="text-[10px] text-[#D0D0D0] flex-shrink-0 leading-none">·</span>
-                      <div className="flex items-center gap-[2px] flex-shrink-0">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><path d="M4 12h16v2a6 6 0 01-6 6H10a6 6 0 01-6-6v-2zM4 12V6a2 2 0 012-2h1a2 2 0 012 2v1" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                        <span className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none">{item.baths}</span>
-                      </div>
-                      <span className="text-[10px] text-[#D0D0D0] flex-shrink-0 leading-none">·</span>
-                      <div className="flex items-center gap-[2px] flex-shrink-0">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><circle cx="12" cy="12" r="9" stroke="#999" strokeWidth="2"/><path d="M12 6v6l4 2" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                        <span className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none">{item.term}</span>
-                      </div>
-                    </div>
+                    <p className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none mb-[6px]">{formatSpecs(item.area, item.beds, item.baths, item.term)}</p>
                     {/* Divider */}
                     <div className="h-px bg-border mb-[6px]" />
                     {/* Bottom: maker + city */}
@@ -920,24 +900,7 @@ const Catalog = () => {
                   <div className="flex-1 py-4 pr-5 flex flex-col justify-center gap-1">
                     <p className="text-xs font-light text-muted-foreground">{item.maker}</p>
                     <h3 className="text-[17px] font-medium text-foreground">{item.name}</h3>
-                    <div className="flex items-center gap-4 text-[13px] font-light text-muted-foreground">
-                      <div className="flex items-center gap-1">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" className="shrink-0"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#999" strokeWidth="2"/><path d="M3 9h18M9 21V9" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                        <span>{item.area}</span>
-                      </div>
-                      <span>·</span>
-                      <div className="flex items-center gap-1">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" className="shrink-0"><path d="M2 19v-4h20v4M2 15v-2a2 2 0 012-2h16a2 2 0 012 2v2M7 11V8a1 1 0 011-1h3v4" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                        <span>{item.rooms}</span>
-                      </div>
-                      <span>·</span>
-                      <div className="flex items-center gap-1">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" className="shrink-0"><circle cx="12" cy="12" r="9" stroke="#999" strokeWidth="2"/><path d="M12 6v6l4 2" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                        <span>{item.term}</span>
-                      </div>
-                      <span>·</span>
-                      <span>{item.purpose}</span>
-                    </div>
+                    <p className="text-[13px] font-light text-muted-foreground">{formatSpecs(item.area, item.beds, item.baths, item.term)}, {item.purpose}</p>
                     <p className="text-lg font-medium text-foreground mt-1">{item.price}</p>
                     <div className="flex items-center gap-3 mt-1">
                       <div className="flex items-center gap-1">
@@ -993,28 +956,7 @@ const Catalog = () => {
                   {/* Name */}
                   <div className="text-[14px] font-medium text-muted-foreground mb-2">{item.name}</div>
 
-                  {/* Params inline */}
-                  <div className="flex items-center gap-[6px] mb-[10px] h-[14px] overflow-hidden">
-                    <div className="flex items-center gap-[3px] flex-shrink-0">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#999" strokeWidth="2"/><path d="M3 9h18M9 21V9" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                      <span className="text-[12px] text-muted-foreground whitespace-nowrap">{item.area}</span>
-                    </div>
-                    <span className="text-[11px] text-[#D0D0D0] flex-shrink-0">·</span>
-                    <div className="flex items-center gap-[3px] flex-shrink-0">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><path d="M2 19v-4h20v4M2 15v-2a2 2 0 012-2h16a2 2 0 012 2v2M7 11V8a1 1 0 011-1h3v4" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                      <span className="text-[12px] text-muted-foreground whitespace-nowrap">{item.beds}</span>
-                    </div>
-                    <span className="text-[11px] text-[#D0D0D0] flex-shrink-0">·</span>
-                    <div className="flex items-center gap-[3px] flex-shrink-0">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><path d="M4 12h16v2a6 6 0 01-6 6H10a6 6 0 01-6-6v-2zM4 12V6a2 2 0 012-2h1a2 2 0 012 2v1" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                      <span className="text-[12px] text-muted-foreground whitespace-nowrap">{item.baths}</span>
-                    </div>
-                    <span className="text-[11px] text-[#D0D0D0] flex-shrink-0">·</span>
-                    <div className="flex items-center gap-[3px] flex-shrink-0">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><circle cx="12" cy="12" r="9" stroke="#999" strokeWidth="2"/><path d="M12 6v6l4 2" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                      <span className="text-[12px] text-muted-foreground whitespace-nowrap">{item.term}</span>
-                    </div>
-                  </div>
+                  <p className="text-[12px] text-muted-foreground whitespace-nowrap mb-[10px]">{formatSpecs(item.area, item.beds, item.baths, item.term)}</p>
 
                   {/* Divider */}
                   <div className="h-px bg-border mb-[10px]" />
@@ -1055,28 +997,7 @@ const Catalog = () => {
                 <div className="px-[10px] pt-2 pb-[10px]">
                   <div className="text-[14px] font-bold text-foreground mb-[1px]">{item.price}</div>
                   <div className="text-[12px] text-muted-foreground mb-[6px]">{item.name}</div>
-                  {/* Params */}
-                  <div className="flex items-center gap-[5px] mb-[6px] h-4 overflow-hidden">
-                    <div className="flex items-center gap-[2px] flex-shrink-0">
-                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#999" strokeWidth="2"/><path d="M3 9h18M9 21V9" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                      <span className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none">{item.area}</span>
-                    </div>
-                    <span className="text-[10px] text-[#D0D0D0] flex-shrink-0 leading-none">·</span>
-                    <div className="flex items-center gap-[2px] flex-shrink-0">
-                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><path d="M2 19v-4h20v4M2 15v-2a2 2 0 012-2h16a2 2 0 012 2v2M7 11V8a1 1 0 011-1h3v4" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                      <span className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none">{item.beds}</span>
-                    </div>
-                    <span className="text-[10px] text-[#D0D0D0] flex-shrink-0 leading-none">·</span>
-                    <div className="flex items-center gap-[2px] flex-shrink-0">
-                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><path d="M4 12h16v2a6 6 0 01-6 6H10a6 6 0 01-6-6v-2zM4 12V6a2 2 0 012-2h1a2 2 0 012 2v1" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                      <span className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none">{item.baths}</span>
-                    </div>
-                    <span className="text-[10px] text-[#D0D0D0] flex-shrink-0 leading-none">·</span>
-                    <div className="flex items-center gap-[2px] flex-shrink-0">
-                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><circle cx="12" cy="12" r="9" stroke="#999" strokeWidth="2"/><path d="M12 6v6l4 2" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
-                      <span className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none">{item.term}</span>
-                    </div>
-                  </div>
+                  <p className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none mb-[6px]">{formatSpecs(item.area, item.beds, item.baths, item.term)}</p>
                   {/* Divider */}
                   <div className="h-px bg-border mb-[6px]" />
                   {/* Bottom: maker + delivery */}
