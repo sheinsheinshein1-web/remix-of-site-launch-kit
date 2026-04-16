@@ -415,7 +415,7 @@ const ProjectDetail = () => {
         <div>
         {/* ===== MAIN INFO — BENTO ===== */}
         <div className={`flex flex-col gap-2 ${isMobile ? "" : "sticky top-[80px]"}`}>
-          {/* Row 1: Title + Price + Specs + Description + CTA */}
+          {/* Row 1: Title + Price + Specs + Maker + Description (inline expandable) + Accordions + CTA */}
           <div className="bg-background rounded-b-2xl px-4 pt-3 pb-3">
             <div className="flex items-baseline justify-between gap-3 mb-1">
               <h1 className="text-[18px] font-bold text-foreground tracking-tight leading-tight truncate">Шервуд 72.1</h1>
@@ -427,25 +427,6 @@ const ProjectDetail = () => {
             <div className="text-[12px] text-muted-foreground">
               60 м² · 2 спальни · санузел · одноэтажный
             </div>
-
-            {/* Краткое описание с "…ещё" */}
-            <p className="mt-3 text-[14px] text-foreground leading-snug">
-              <span className="line-clamp-2">Компактный одноэтажный дом с панорамным остеклением. Каркасная технология, сборка за 45 дней.</span>
-              {" "}
-              <button
-                onClick={() => setActiveTab("description")}
-                className="text-primary hover:underline transition-colors"
-              >
-                Подробнее
-              </button>
-            </p>
-
-            <button
-              onClick={() => navigate(`/messages/company?company=${encodeURIComponent("Sherwood Home")}&project=${encodeURIComponent("Шервуд 72.1")}&projectId=${id}&price=${encodeURIComponent("от 4 950 000 ₽")}&area=${encodeURIComponent("60 м²")}&image=${encodeURIComponent(galleryImages[0].image)}`)}
-              className="w-full h-12 bg-secondary text-foreground rounded-xl text-[15px] font-medium mt-3"
-            >
-              Заказать расчёт
-            </button>
 
             {/* Maker pill */}
             <div
@@ -463,69 +444,61 @@ const ProjectDetail = () => {
               </div>
               <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
             </div>
-          </div>
 
-          {/* ===== ОПИСАНИЕ / КОМПЛЕКТАЦИЯ / ХАРАКТЕРИСТИКИ — TABS ===== */}
-          <div className="bg-background rounded-2xl">
-            {/* Tab bar */}
-            <div className="flex overflow-x-auto scrollbar-hide px-4 pt-4 pb-1 gap-2">
-              {[
-                { id: "description", label: "Описание" },
-                { id: "equipment", label: "Комплектация" },
-                { id: "specs", label: "Характеристики" },
-              ].map((tab) => (
+            {/* Описание — inline раскрытие */}
+            {!descExpanded ? (
+              <p className="mt-3 text-[14px] text-foreground leading-snug">
+                <span className="line-clamp-2">Компактный одноэтажный дом с панорамным остеклением. Каркасная технология, сборка за 45 дней.</span>
+                {" "}
                 <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`text-[13px] whitespace-nowrap px-3.5 py-2.5 rounded-xl transition-colors flex-shrink-0 text-center border ${
-                    activeTab === tab.id
-                      ? "bg-primary text-primary-foreground font-medium border-primary"
-                      : "bg-background text-muted-foreground font-light border-border"
-                  }`}
+                  onClick={() => setDescExpanded(true)}
+                  className="text-primary hover:underline transition-colors"
                 >
-                  {tab.label}
+                  Подробнее
                 </button>
-              ))}
-            </div>
-
-            {/* Tab content */}
-            <div className="p-4">
-              {activeTab === "description" && (
-                <div>
-                  <div className="text-[17px] font-bold text-foreground mb-2">Шервуд 72.1 — ваш дом за 6 недель</div>
-                  <p className="text-[14px] font-light text-muted-foreground leading-relaxed mb-4">
-                    Компактный одноэтажный дом с продуманной планировкой для комфортной жизни за городом. Две изолированные спальни, просторная кухня-гостиная с панорамным остеклением и уютная веранда — всё, что нужно для семьи.
-                  </p>
-                  <p className="text-[14px] font-light text-muted-foreground leading-relaxed mb-4">
-                    Дом изготавливается на заводе и доставляется в готовом виде — вы заселяетесь через 4–6 недель после заказа. Утепление 200 мм позволяет жить круглый год даже в регионах до −40°C.
-                  </p>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {["Круглогодичное проживание", "Заводское качество", "Фиксированная цена", "Без скрытых доплат", "Энергокласс А"].map((tag) => (
-                      <span key={tag} className="text-[11px] font-medium bg-secondary text-muted-foreground rounded-full px-2.5 py-1">{tag}</span>
-                    ))}
-                  </div>
-                  <p className="text-[13px] text-muted-foreground">
-                    Проект дома может меняться в зависимости от ваших предпочтений · <span className="text-primary cursor-pointer">Подробнее</span>
-                  </p>
+              </p>
+            ) : (
+              <div className="mt-3">
+                <p className="text-[14px] text-foreground leading-relaxed mb-3">
+                  <span className="font-semibold">Шервуд 72.1 — ваш дом за 6 недель.</span> Компактный одноэтажный дом с продуманной планировкой для комфортной жизни за городом. Две изолированные спальни, просторная кухня-гостиная с панорамным остеклением и уютная веранда — всё, что нужно для семьи.
+                </p>
+                <p className="text-[14px] text-foreground leading-relaxed mb-3">
+                  Дом изготавливается на заводе и доставляется в готовом виде — вы заселяетесь через 4–6 недель после заказа. Утепление 200 мм позволяет жить круглый год даже в регионах до −40°C.
+                </p>
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  {["Круглогодичное проживание", "Заводское качество", "Фиксированная цена", "Без скрытых доплат", "Энергокласс А"].map((tag) => (
+                    <span key={tag} className="text-[11px] font-medium bg-secondary text-muted-foreground rounded-xl px-2.5 py-1">{tag}</span>
+                  ))}
                 </div>
-              )}
+                <p className="text-[13px] text-muted-foreground">
+                  Проект дома может меняться в зависимости от ваших предпочтений ·{" "}
+                  <button onClick={() => setDescExpanded(false)} className="text-primary hover:underline">
+                    свернуть
+                  </button>
+                </p>
+              </div>
+            )}
 
-              {activeTab === "equipment" && (
-                <div>
+            {/* Аккордеон: Комплектация */}
+            <div className="mt-3 border-t border-border pt-3">
+              <button
+                onClick={() => setOpenSection(openSection === "equipment" ? null : "equipment")}
+                className="w-full flex items-center justify-between"
+              >
+                <span className="text-[15px] font-semibold text-foreground">Комплектация</span>
+                <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform ${openSection === "equipment" ? "rotate-180" : ""}`} />
+              </button>
+              {openSection === "equipment" && (
+                <div className="mt-3">
                   <div className="bg-primary/5 rounded-xl p-3.5 mb-4">
-                    <div>
-                      <div className="text-xs font-medium text-primary mb-1">Базовая комплектация</div>
-                      <div className="text-xl font-bold text-foreground">4 950 000 ₽</div>
-                      <div className="text-[11px] text-muted-foreground mt-1">Фундамент · Стены · Кровля · Окна</div>
-                    </div>
+                    <div className="text-xs font-medium text-primary mb-1">Базовая комплектация</div>
+                    <div className="text-xl font-bold text-foreground">4 950 000 ₽</div>
+                    <div className="text-[11px] text-muted-foreground mt-1">Фундамент · Стены · Кровля · Окна</div>
                   </div>
-
                   <div className="flex flex-col">
                     {baseParams.map((p, i) => <ParamRow key={i} item={p} />)}
                   </div>
-
                   <ParamGroup title="Конструктив" params={constructParams} />
-
                   {expanded && (
                     <>
                       <ParamGroup title="Утепление" params={insulationParams} />
@@ -534,7 +507,6 @@ const ProjectDetail = () => {
                       <ParamGroup title="Инженерия" params={engineeringParams} />
                     </>
                   )}
-
                   <button
                     onClick={() => setExpanded(!expanded)}
                     className="w-full mt-3 py-3 bg-muted rounded-xl text-sm font-medium text-muted-foreground flex items-center justify-center gap-1.5"
@@ -543,16 +515,36 @@ const ProjectDetail = () => {
                   </button>
                 </div>
               )}
+            </div>
 
-              {activeTab === "specs" && (
-                <div>
-                  <div className="text-[17px] font-bold text-foreground mb-1">О проекте</div>
-                  <p className="text-[13px] text-muted-foreground mb-3">
-                    Проект дома может меняться в зависимости от ваших предпочтений · <span className="text-primary cursor-pointer">Подробнее</span>
-                  </p>
+            {/* Аккордеон: Характеристики */}
+            <div className="mt-3 border-t border-border pt-3">
+              <button
+                onClick={() => setOpenSection(openSection === "specs" ? null : "specs")}
+                className="w-full flex items-center justify-between"
+              >
+                <span className="text-[15px] font-semibold text-foreground">Характеристики</span>
+                <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform ${openSection === "specs" ? "rotate-180" : ""}`} />
+              </button>
+              {openSection === "specs" && (
+                <div className="mt-3">
                   <div className="text-[15px] font-semibold text-foreground mb-2">Технические</div>
                   <div className="flex flex-col">
                     {techParams.map((p, i) => <ParamRow key={i} item={p} />)}
+                  </div>
+                  <ParamGroup title="Планировочные" params={planParams} />
+                </div>
+              )}
+            </div>
+
+            {/* CTA в самом низу */}
+            <button
+              onClick={() => navigate(`/messages/company?company=${encodeURIComponent("Sherwood Home")}&project=${encodeURIComponent("Шервуд 72.1")}&projectId=${id}&price=${encodeURIComponent("от 4 950 000 ₽")}&area=${encodeURIComponent("60 м²")}&image=${encodeURIComponent(galleryImages[0].image)}`)}
+              className="w-full h-12 bg-secondary text-foreground rounded-xl text-[15px] font-medium mt-4 border-t-0"
+            >
+              Заказать расчёт
+            </button>
+          </div>
                   </div>
                   <ParamGroup title="Планировочные" params={planParams} />
                 </div>
