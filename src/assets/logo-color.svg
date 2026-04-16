@@ -1,0 +1,6 @@
+<svg width="520" height="100" viewBox="0 0 520 100" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="20,52 44,38 62,48 80,35 104,52 62,66" fill="#185FA5"/>
+  <polygon points="20,52 62,66 62,75 20,61" fill="#0C447C"/>
+  <polygon points="62,66 104,52 104,61 62,75" fill="#378ADD"/>
+  <text x="128" y="52" font-family="'Rubik',Arial,sans-serif" font-weight="300" font-size="38" fill="#1a1a1a" dominant-baseline="central" letter-spacing="-0.5">многоместа.рф</text>
+</svg>
