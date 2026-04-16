@@ -48,7 +48,7 @@ const Header = () => {
                   {city}
                   <ChevronDown className="w-3.5 h-3.5 text-primary" strokeWidth={2} />
                 </button>
-                <SearchDropdown inputClassName="bg-secondary" className="w-9" />
+                <SearchDropdown inputClassName="bg-secondary" iconOnly />
               </div>
             </div>
           </div>
