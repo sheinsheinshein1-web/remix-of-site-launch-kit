@@ -122,3 +122,16 @@
   0% { width: 0%; }
   100% { width: 100%; }
 }
+
+/* View Transitions API — Pinterest-like shared image morph */
+::view-transition-old(project-hero),
+::view-transition-new(project-hero) {
+  animation-duration: 0.35s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

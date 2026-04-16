@@ -335,7 +335,7 @@ const ProjectDetail = () => {
             >
               {galleryImages.map((img, i) => (
                 <div key={img.id} className="w-full flex-shrink-0 h-[539px] relative">
-                  <img src={img.image} alt={`Фото ${i + 1}`} className="w-full h-full object-cover" draggable={false} />
+                  <img src={img.image} alt={`Фото ${i + 1}`} className="w-full h-full object-cover" draggable={false} style={i === 0 ? { viewTransitionName: 'project-hero' } as React.CSSProperties : undefined} />
                   {img.type === "video" && (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Play className="w-12 h-12 text-white/80" />

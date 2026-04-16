@@ -3,6 +3,7 @@ import { formatSpecs } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import SwipeableGallery from "@/components/SwipeableGallery";
+import { flushSync } from "react-dom";
 import house1 from "@/assets/house-1.jpg";
 import house2 from "@/assets/house-2.jpg";
 import house3 from "@/assets/house-3.jpg";
@@ -71,7 +72,18 @@ const FeaturedProjects = () => {
           {projects.map((project) => (
             <div
               key={project.id}
-              onClick={() => navigate(`/project/${project.id}`)}
+              onClick={(e) => {
+                const imgEl = (e.currentTarget as HTMLElement).querySelector('img');
+                if (imgEl && (document as any).startViewTransition) {
+                  imgEl.style.viewTransitionName = 'project-hero';
+                  (document as any).startViewTransition(() => {
+                    imgEl.style.viewTransitionName = '';
+                    flushSync(() => navigate(`/project/${project.id}`));
+                  });
+                } else {
+                  navigate(`/project/${project.id}`);
+                }
+              }}
               className="cursor-pointer overflow-hidden"
             >
               {/* Photo gallery */}
