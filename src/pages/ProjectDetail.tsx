@@ -414,52 +414,34 @@ const ProjectDetail = () => {
         <div>
         {/* ===== MAIN INFO — BENTO ===== */}
         <div className={`flex flex-col gap-2 ${isMobile ? "" : "sticky top-[80px]"}`}>
-          {/* Row 1: Title + Price + Maker + Stats */}
+          {/* Row 1: Title + Price + Maker (compact) */}
           <div className="bg-background rounded-b-2xl px-4 pt-3 pb-3">
-            <h1 className="text-[18px] font-bold text-foreground tracking-tight leading-tight mb-0.5">Шервуд 72.1</h1>
-            <div className="text-[12px] text-muted-foreground mb-1.5">
-              60 м² · 2 спальни · 1 санузел · 1 этаж
+            <div className="flex items-baseline justify-between gap-3 mb-1">
+              <h1 className="text-[18px] font-bold text-foreground tracking-tight leading-tight truncate">Шервуд 72.1</h1>
+              <div className="text-[15px] whitespace-nowrap">
+                <span className="text-muted-foreground font-normal">от </span>
+                <span className="font-bold text-foreground">4 950 000 ₽</span>
+              </div>
             </div>
-            <div className="text-[15px] font-bold text-foreground mb-3">
-              от 4 950 000 ₽
+            <div className="text-[12px] text-muted-foreground pb-3 border-b border-border">
+              60 м² · 2 спальни · санузел · одноэтажный
             </div>
 
-            {/* Maker row */}
-            <div className="flex items-center gap-2 py-2 border-t border-border cursor-pointer" onClick={() => navigate('/partner/1')}>
-              <div className="w-8 h-8 bg-foreground rounded-lg flex items-center justify-center text-background text-[10px] font-bold flex-shrink-0">SW</div>
+            {/* Maker pill */}
+            <div
+              className="mt-3 flex items-center gap-2.5 bg-primary/10 rounded-xl px-2.5 py-2 cursor-pointer"
+              onClick={() => navigate('/partner/1')}
+            >
+              <div className="w-9 h-9 bg-background rounded-lg flex items-center justify-center text-foreground text-[10px] font-bold flex-shrink-0">SW</div>
               <div className="flex-1 min-w-0">
                 <div className="text-[13px] font-semibold text-primary leading-tight">Sherwood Home</div>
-                <div className="text-[10px] text-muted-foreground">ИНН: 631905302478</div>
-              </div>
-              <div className="flex items-center gap-3 text-[12px]">
-                <span className="inline-flex items-center gap-1">
-                  <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
-                  <span className="font-semibold text-foreground">5.0</span>
-                  <span className="text-muted-foreground">(13)</span>
-                </span>
-                <span className="inline-flex items-center gap-1 text-muted-foreground">
-                  <MessageCircleQuestion className="w-3.5 h-3.5" />
-                  <span className="font-semibold text-foreground">104</span>
-                </span>
-              </div>
-            </div>
-
-            {/* Built houses thumbnails */}
-            <div className="flex items-center gap-2 pt-2 border-t border-border">
-              <span className="text-[11px] text-muted-foreground">Построенные:</span>
-              <div className="flex items-center">
-                <div className="w-9 h-9 rounded-lg overflow-hidden border-2 border-background relative z-[3]">
-                  <img src={house2} alt="" className="w-full h-full object-cover" />
-                </div>
-                <div className="w-9 h-9 rounded-lg overflow-hidden border-2 border-background relative z-[2] -ml-3">
-                  <img src={house3} alt="" className="w-full h-full object-cover" />
-                </div>
-                <div className="w-9 h-9 rounded-lg overflow-hidden flex items-center justify-center relative z-[1] -ml-3 border-2 border-background">
-                  <img src={house4} alt="" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-foreground/40" />
-                  <span className="text-background text-[10px] font-semibold absolute z-10">+9</span>
+                <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-0.5">
+                  <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
+                  <span className="font-semibold text-foreground">5,0</span>
+                  <span>· 13 отзывов · 104 вопроса</span>
                 </div>
               </div>
+              <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
             </div>
 
             {!isMobile && (
