@@ -33,11 +33,11 @@ const Header = () => {
 
   return (
     <>
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${hidden ? 'md:translate-y-0 -translate-y-full' : 'translate-y-0'}`}>
       {/* Mobile header */}
       <div className="md:hidden relative">
         {/* Static header - visible when not scrolled */}
-        <div className={`transition-all duration-300 ${mobileScrolled && !searchFocused ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+        <div className={`transition-all duration-300 ${mobileScrolled && !searchFocused ? 'opacity-0 pointer-events-none scale-95' : 'opacity-100 scale-100'}`}>
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),6px)] pb-1.5">
             <div className="flex items-center justify-between">
               <Link to="/" className="text-[22px] font-bold text-foreground tracking-tight">
