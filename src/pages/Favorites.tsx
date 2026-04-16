@@ -275,7 +275,7 @@ const Favorites = () => {
                       <span className="text-[11px] font-light text-muted-foreground mt-1">рассрочка от <span className="text-primary font-normal">18 500 ₽/мес</span></span>
                     </div>
                     <div className="text-[14px] font-medium text-muted-foreground mb-2">{item.name}</div>
-                    <p className="text-[12px] text-muted-foreground whitespace-nowrap mb-[10px]">{formatSpecs(item.area, item.beds, item.baths, item.term)}</p>
+                    <p className="text-[12px] text-muted-foreground whitespace-nowrap mb-[10px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
                     <div className="h-px bg-border mb-[10px]" />
                     <div className="flex items-center justify-between will-change-transform">
                       <div className="flex items-center gap-[3px]">
@@ -308,7 +308,7 @@ const Favorites = () => {
                   <div className="px-[10px] pt-2 pb-[10px]">
                     <div className="text-[14px] font-bold text-foreground mb-[1px]">{item.price}</div>
                     <div className="text-[12px] text-muted-foreground mb-[6px]">{item.name}</div>
-                    <p className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none mb-[6px]">{formatSpecs(item.area, item.beds, item.baths, item.term)}</p>
+                    <p className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none mb-[6px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
                     <div className="h-px bg-border mb-[6px]" />
                     <div className="flex items-center gap-2 overflow-hidden will-change-transform" style={{ maskImage: 'linear-gradient(to right, black calc(100% - 10px), transparent)', WebkitMaskImage: 'linear-gradient(to right, black calc(100% - 10px), transparent)' }}>
                       <div className="flex items-center gap-[3px] flex-shrink-0">
@@ -412,7 +412,7 @@ const Favorites = () => {
                   <div className="px-[10px] pt-2 pb-[10px]">
                     <div className="text-[14px] font-bold text-foreground mb-[1px]">{item.price}</div>
                     <div className="text-[12px] text-muted-foreground mb-[6px]">{item.name}</div>
-                    <p className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none mb-[6px]">{formatSpecs(item.area, item.beds, item.baths, item.term)}</p>
+                    <p className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none mb-[6px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
                     <div className="h-px bg-border mb-[6px]" />
                     <div className="flex items-center gap-2 overflow-hidden will-change-transform" style={{ maskImage: 'linear-gradient(to right, black calc(100% - 10px), transparent)', WebkitMaskImage: 'linear-gradient(to right, black calc(100% - 10px), transparent)' }}>
                       <div className="flex items-center gap-[3px] flex-shrink-0">
@@ -448,7 +448,7 @@ const Favorites = () => {
                   <div className="flex-1 py-4 pr-5 flex flex-col justify-center gap-1">
                     <p className="text-xs font-light text-muted-foreground">{item.maker.split(" · ")[0]}</p>
                     <h3 className="text-[17px] font-medium text-foreground">{item.name}</h3>
-                    <p className="text-[13px] font-light text-muted-foreground">{formatSpecs(item.area, item.beds, item.baths, item.term)}</p>
+                    <p className="text-[13px] font-light text-muted-foreground">{formatSpecs(item.area, item.beds, item.baths)}</p>
                     <p className="text-lg font-medium text-foreground mt-1">{item.price}</p>
                     <div className="flex items-center gap-3 mt-1">
                       <div className="flex items-center gap-1">

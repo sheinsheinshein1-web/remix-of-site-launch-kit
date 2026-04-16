@@ -14,12 +14,6 @@ function plural(n: number, one: string, few: string, many: string) {
   return many;
 }
 
-export function formatSpecs(area: string, beds: number, baths: number, term?: string) {
-  const parts = [
-    area,
-    `${beds} ${plural(beds, "спальня", "спальни", "спален")}`,
-    `${baths} ${plural(baths, "сан.узел", "сан.узла", "сан.узлов")}`,
-  ];
-  if (term) parts.push(term);
-  return parts.join(", ");
+export function formatSpecs(area: string, beds: number, baths: number) {
+  return `${area}, ${beds} ${plural(beds, "спальня", "спальни", "спален")}, ${baths} ${plural(baths, "сан.узел", "сан.узла", "сан.узлов")}`;
 }

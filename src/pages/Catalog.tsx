@@ -859,7 +859,7 @@ const Catalog = () => {
                   <div className="px-[10px] pt-2 pb-[10px]">
                     <div className="text-[14px] font-bold text-foreground mb-[1px]">{item.price}</div>
                     <div className="text-[12px] text-muted-foreground mb-[6px]">{item.name}</div>
-                    <p className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none mb-[6px]">{formatSpecs(item.area, item.beds, item.baths, item.term)}</p>
+                    <p className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none mb-[6px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
                     {/* Divider */}
                     <div className="h-px bg-border mb-[6px]" />
                     {/* Bottom: maker + city */}
@@ -900,7 +900,7 @@ const Catalog = () => {
                   <div className="flex-1 py-4 pr-5 flex flex-col justify-center gap-1">
                     <p className="text-xs font-light text-muted-foreground">{item.maker}</p>
                     <h3 className="text-[17px] font-medium text-foreground">{item.name}</h3>
-                    <p className="text-[13px] font-light text-muted-foreground">{formatSpecs(item.area, item.beds, item.baths, item.term)}, {item.purpose}</p>
+                    <p className="text-[13px] font-light text-muted-foreground">{formatSpecs(item.area, item.beds, item.baths)}, {item.purpose}</p>
                     <p className="text-lg font-medium text-foreground mt-1">{item.price}</p>
                     <div className="flex items-center gap-3 mt-1">
                       <div className="flex items-center gap-1">
@@ -956,7 +956,7 @@ const Catalog = () => {
                   {/* Name */}
                   <div className="text-[14px] font-medium text-muted-foreground mb-2">{item.name}</div>
 
-                  <p className="text-[12px] text-muted-foreground whitespace-nowrap mb-[10px]">{formatSpecs(item.area, item.beds, item.baths, item.term)}</p>
+                  <p className="text-[12px] text-muted-foreground whitespace-nowrap mb-[10px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
 
                   {/* Divider */}
                   <div className="h-px bg-border mb-[10px]" />
@@ -997,7 +997,7 @@ const Catalog = () => {
                 <div className="px-[10px] pt-2 pb-[10px]">
                   <div className="text-[14px] font-bold text-foreground mb-[1px]">{item.price}</div>
                   <div className="text-[12px] text-muted-foreground mb-[6px]">{item.name}</div>
-                  <p className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none mb-[6px]">{formatSpecs(item.area, item.beds, item.baths, item.term)}</p>
+                  <p className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none mb-[6px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
                   {/* Divider */}
                   <div className="h-px bg-border mb-[6px]" />
                   {/* Bottom: maker + delivery */}
