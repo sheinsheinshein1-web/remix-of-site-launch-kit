@@ -334,7 +334,7 @@ const ProjectDetail = () => {
               onTouchEnd={onTouchEnd}
             >
               {galleryImages.map((img, i) => (
-                <div key={img.id} className="w-full flex-shrink-0 h-[340px] relative">
+                <div key={img.id} className="w-full flex-shrink-0 h-[408px] relative">
                   <img src={img.image} alt={`Фото ${i + 1}`} className="w-full h-full object-cover" draggable={false} />
                   {img.type === "video" && (
                     <div className="absolute inset-0 flex items-center justify-center">
