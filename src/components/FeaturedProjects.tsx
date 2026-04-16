@@ -71,7 +71,7 @@ const FeaturedProjects = () => {
             <div
               key={project.id}
               onClick={() => navigate(`/project/${project.id}`)}
-              className="cursor-pointer bg-card rounded-[14px] overflow-hidden shadow-sm"
+              className="cursor-pointer overflow-hidden"
             >
               {/* Photo gallery */}
               <SwipeableGallery images={getProjectImages(project.image, project.id)} alt={project.name} height="h-[220px] md:h-[240px]">
