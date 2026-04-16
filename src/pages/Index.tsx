@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import SearchDropdown from "@/components/SearchDropdown";
 import HeroSection from "@/components/HeroSection";
 import StatsRow from "@/components/StatsRow";
 import CategoriesSection from "@/components/CategoriesSection";
