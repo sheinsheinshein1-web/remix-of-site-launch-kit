@@ -23,7 +23,7 @@ const Index = () => {
       {/* Big white bento: header + hero + categories + projects */}
       <div className="max-w-[1400px] mx-auto bg-background md:rounded-b-2xl pb-4">
         <Header />
-        <div className="px-3 md:px-8 md:pt-[92px]">
+        <div className="hidden md:block px-3 md:px-8 md:pt-[92px]">
           <HeroSection />
         </div>
         <div className="px-3 md:px-8 pt-3 md:pt-4">
