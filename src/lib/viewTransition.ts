@@ -1,6 +1,8 @@
 import { flushSync } from "react-dom";
 import type { NavigateFunction } from "react-router-dom";
 
+const BACK_TRANSITION_KEY = "vt-back-project";
+
 export function navigateWithTransition(
   e: React.MouseEvent<HTMLElement>,
   navigate: NavigateFunction,
@@ -19,10 +21,11 @@ export function navigateWithTransition(
 }
 
 export function navigateBackWithTransition(navigate: NavigateFunction, projectId?: number) {
+  if (projectId) {
+    sessionStorage.setItem(BACK_TRANSITION_KEY, String(projectId));
+  }
+
   if ((document as any).startViewTransition) {
-    if (projectId) {
-      sessionStorage.setItem("vt-back-project", String(projectId));
-    }
     (document as any).startViewTransition(() => {
       flushSync(() => navigate(-1));
     });
@@ -31,28 +34,14 @@ export function navigateBackWithTransition(navigate: NavigateFunction, projectId
   }
 }
 
-/**
- * Call on mount in list pages (FeaturedProjects, Catalog, Favorites)
- * to set viewTransitionName on the card image that was navigated from,
- * so the back-morph transition has a matching target.
- */
-export function applyBackTransitionName() {
-  const id = sessionStorage.getItem("vt-back-project");
-  if (!id) return;
-  sessionStorage.removeItem("vt-back-project");
-  // Find all project card links and match by href or data attribute
-  // We use a small timeout to let React render first
-  requestAnimationFrame(() => {
-    const cards = document.querySelectorAll<HTMLElement>(`[data-project-id="${id}"]`);
-    cards.forEach((card) => {
-      const img = card.querySelector("img");
-      if (img) {
-        img.style.viewTransitionName = "project-hero";
-        // Clean up after transition completes
-        setTimeout(() => {
-          img.style.viewTransitionName = "";
-        }, 500);
-      }
-    });
-  });
+export function getBackTransitionProjectId() {
+  const value = sessionStorage.getItem(BACK_TRANSITION_KEY);
+  if (!value) return null;
+
+  const projectId = Number(value);
+  return Number.isNaN(projectId) ? null : projectId;
+}
+
+export function clearBackTransitionProjectId() {
+  sessionStorage.removeItem(BACK_TRANSITION_KEY);
 }

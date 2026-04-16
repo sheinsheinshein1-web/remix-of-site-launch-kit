@@ -4,7 +4,11 @@ import { formatSpecs } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import SwipeableGallery from "@/components/SwipeableGallery";
-import { navigateWithTransition, applyBackTransitionName } from "@/lib/viewTransition";
+import {
+  clearBackTransitionProjectId,
+  getBackTransitionProjectId,
+  navigateWithTransition,
+} from "@/lib/viewTransition";
 import house1 from "@/assets/house-1.jpg";
 import house2 from "@/assets/house-2.jpg";
 import house3 from "@/assets/house-3.jpg";
@@ -65,10 +69,13 @@ const projects = [
 const FeaturedProjects = () => {
   const navigate = useNavigate();
   const { isFavorite, toggleFavorite } = useFavorites();
+  const backTransitionProjectId = getBackTransitionProjectId();
 
   useEffect(() => {
-    applyBackTransitionName();
-  }, []);
+    if (backTransitionProjectId !== null) {
+      clearBackTransitionProjectId();
+    }
+  }, [backTransitionProjectId]);
 
   return (
     <section>
@@ -82,7 +89,12 @@ const FeaturedProjects = () => {
               className="cursor-pointer overflow-hidden"
             >
               {/* Photo gallery */}
-              <SwipeableGallery images={getProjectImages(project.image, project.id)} alt={project.name} height="h-[260px] md:h-[240px]">
+              <SwipeableGallery
+                images={getProjectImages(project.image, project.id)}
+                alt={project.name}
+                height="h-[260px] md:h-[240px]"
+                transitionName={backTransitionProjectId === project.id ? "project-hero" : undefined}
+              >
                 {/* Likes */}
                 <div className="absolute top-2 right-2 z-10">
                   <button

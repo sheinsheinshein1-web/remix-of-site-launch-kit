@@ -6,9 +6,10 @@ interface SwipeableGalleryProps {
   alt: string;
   height?: string;
   children?: React.ReactNode;
+  transitionName?: string;
 }
 
-const SwipeableGallery = ({ images, alt, height = "h-[200px]", children }: SwipeableGalleryProps) => {
+const SwipeableGallery = ({ images, alt, height = "h-[200px]", children, transitionName }: SwipeableGalleryProps) => {
   const [current, setCurrent] = useState(0);
   const startX = useRef(0);
   const hasMoved = useRef(false);
@@ -16,7 +17,6 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", children }: Swipe
   const isMobile = useIsMobile();
   const count = images.length;
 
-  // ── Mobile: touch swipe ──
   const handleEnd = useCallback((endX: number) => {
     const diff = startX.current - endX;
     if (Math.abs(diff) > 30) {
@@ -29,11 +29,11 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", children }: Swipe
     startX.current = e.touches[0].clientX;
     hasMoved.current = false;
   };
+
   const onTouchEnd = (e: React.TouchEvent) => {
     handleEnd(e.changedTouches[0].clientX);
   };
 
-  // ── Desktop: Avito-style hover position ──
   const onMouseMove = (e: React.MouseEvent) => {
     if (isMobile || count <= 1) return;
     const rect = containerRef.current?.getBoundingClientRect();
@@ -56,7 +56,6 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", children }: Swipe
       onMouseMove={!isMobile ? onMouseMove : undefined}
       onMouseLeave={!isMobile ? onMouseLeave : undefined}
     >
-      {/* Show only current image (no sliding on desktop for instant switch) */}
       {isMobile ? (
         <div
           className="flex h-full transition-transform duration-300 ease-out"
@@ -68,28 +67,33 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", children }: Swipe
               src={src}
               alt={`${alt} ${i + 1}`}
               className="h-full object-cover flex-shrink-0"
-              style={{ width: `${100 / count}%` }}
+              style={{
+                width: `${100 / count}%`,
+                ...(i === 0 && transitionName ? { viewTransitionName: transitionName } : {}),
+              }}
               loading={i === 0 ? "eager" : "lazy"}
               draggable={false}
             />
           ))}
         </div>
       ) : (
-        /* Desktop: all images stacked, show current via z-index — instant switch */
         images.map((src, i) => (
           <img
             key={i}
             src={src}
             alt={`${alt} ${i + 1}`}
             className="absolute inset-0 w-full h-full object-cover"
-            style={{ zIndex: i === current ? 1 : 0, opacity: i === current ? 1 : 0 }}
+            style={{
+              zIndex: i === current ? 1 : 0,
+              opacity: i === current ? 1 : 0,
+              ...(i === 0 && transitionName ? { viewTransitionName: transitionName } : {}),
+            }}
             loading="eager"
             draggable={false}
           />
         ))
       )}
       <div className="absolute inset-0 z-10 pointer-events-none [&>*]:pointer-events-auto">{children}</div>
-      {/* Dots */}
       {count > 1 && (
         <div className="absolute bottom-[6px] right-[6px] z-10 bg-foreground/40 backdrop-blur-md rounded-full px-[5px] py-[3px] flex items-center gap-[2px]">
           {images.map((_, i) => (

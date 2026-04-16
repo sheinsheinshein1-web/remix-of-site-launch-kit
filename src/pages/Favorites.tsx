@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { formatSpecs } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
-import { navigateWithTransition, applyBackTransitionName } from "@/lib/viewTransition";
+import { clearBackTransitionProjectId, getBackTransitionProjectId, navigateWithTransition } from "@/lib/viewTransition";
 import { Heart, Check, MoreHorizontal, Grid2X2, List, Calculator, Search, ArrowUpDown, SlidersHorizontal, Camera, Truck } from "lucide-react";
 import SwipeableGallery from "@/components/SwipeableGallery";
 import MobileTabBar from "@/components/MobileTabBar";
@@ -167,10 +167,13 @@ const Favorites = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const { favoriteItems, toggleFavorite } = useFavorites();
+  const backTransitionProjectId = getBackTransitionProjectId();
 
   useEffect(() => {
-    applyBackTransitionName();
-  }, []);
+    if (backTransitionProjectId !== null) {
+      clearBackTransitionProjectId();
+    }
+  }, [backTransitionProjectId]);
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -257,7 +260,7 @@ const Favorites = () => {
             <div className={viewMode === "grid" ? "grid grid-cols-2 gap-x-[2px] gap-y-[6px]" : "flex flex-col gap-[10px]"}>
               {favoriteItems.map((item) => viewMode === "list" ? (
                 <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer overflow-hidden">
-                  <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[286px]">
+                  <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[286px]" transitionName={backTransitionProjectId === item.id ? "project-hero" : undefined}>
                     <div className="absolute top-2 right-2 z-10">
                       <button
                         onClick={(e) => { e.stopPropagation(); toggleFavorite(item); }}
@@ -275,7 +278,7 @@ const Favorites = () => {
                 </div>
               ) : (
                 <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer overflow-hidden">
-                  <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[260px]">
+                  <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[260px]" transitionName={backTransitionProjectId === item.id ? "project-hero" : undefined}>
                     <div className="absolute top-2 right-2 z-10">
                       <button
                         onClick={(e) => { e.stopPropagation(); toggleFavorite(item); }}
@@ -367,7 +370,7 @@ const Favorites = () => {
             <div className="grid grid-cols-3 gap-4">
               {favoriteItems.map((item) => (
                 <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer bg-background rounded-2xl overflow-hidden shadow-sm">
-                  <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[260px]">
+                  <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[260px]" transitionName={backTransitionProjectId === item.id ? "project-hero" : undefined}>
                     <div className="absolute top-2.5 right-2.5 z-10">
                       <button
                         onClick={(e) => { e.stopPropagation(); toggleFavorite(item); }}
@@ -403,7 +406,7 @@ const Favorites = () => {
               {favoriteItems.map((item) => (
                 <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="flex gap-4 cursor-pointer bg-background rounded-2xl overflow-hidden group hover:shadow-sm transition-shadow">
                   <div className="w-[200px] flex-shrink-0 relative overflow-hidden">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" style={backTransitionProjectId === item.id ? { viewTransitionName: "project-hero" } : undefined} />
                     <div className="absolute top-2 right-2">
                       <button
                         onClick={(e) => { e.stopPropagation(); toggleFavorite(item); }}
