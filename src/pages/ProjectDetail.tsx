@@ -430,11 +430,12 @@ const ProjectDetail = () => {
             {/* Краткое описание с "…ещё" */}
             <p className="mt-3 text-[14px] text-foreground leading-snug">
               <span className="line-clamp-2">Компактный одноэтажный дом с панорамным остеклением. Каркасная технология, сборка за 45 дней.</span>
+              {" "}
               <button
                 onClick={() => setActiveTab("description")}
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-primary hover:underline transition-colors"
               >
-                …ещё
+                подробнее
               </button>
             </p>
 
