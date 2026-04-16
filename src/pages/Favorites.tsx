@@ -93,7 +93,7 @@ const ListIcon = ({ active }: { active: boolean }) => (
 const ProjectCard = ({ item }: { item: typeof favoriteProjects[0] }) => (
   <div className="cursor-pointer">
     <div className="rounded-[14px] overflow-hidden relative">
-      <img src={item.image} alt={item.name} className="w-full aspect-[16/10] object-cover" loading="lazy" style={backTransitionProjectId === item.id ? { viewTransitionName: "project-hero" } : undefined} />
+      <img src={item.image} alt={item.name} className="w-full aspect-[16/10] object-cover" loading="lazy" />
       <span className="absolute top-2.5 left-2.5 text-[11px] font-normal bg-black/45 text-white rounded-md px-2.5 py-1">{item.badge}</span>
       <button className="absolute top-2 right-2 flex items-center gap-1 bg-foreground/40 backdrop-blur-md rounded-full px-2.5 py-[5px]">
         <Heart className="w-3.5 h-3.5 fill-primary text-primary" strokeWidth={1.5} />
