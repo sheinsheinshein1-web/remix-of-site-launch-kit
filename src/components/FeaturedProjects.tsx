@@ -1,9 +1,10 @@
+import { useEffect } from "react";
 import { Heart, Camera, Truck } from "lucide-react";
 import { formatSpecs } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import SwipeableGallery from "@/components/SwipeableGallery";
-import { navigateWithTransition } from "@/lib/viewTransition";
+import { navigateWithTransition, applyBackTransitionName } from "@/lib/viewTransition";
 import house1 from "@/assets/house-1.jpg";
 import house2 from "@/assets/house-2.jpg";
 import house3 from "@/assets/house-3.jpg";
@@ -65,6 +66,10 @@ const FeaturedProjects = () => {
   const navigate = useNavigate();
   const { isFavorite, toggleFavorite } = useFavorites();
 
+  useEffect(() => {
+    applyBackTransitionName();
+  }, []);
+
   return (
     <section>
       <div className="md:py-5">
@@ -72,6 +77,7 @@ const FeaturedProjects = () => {
           {projects.map((project) => (
             <div
               key={project.id}
+              data-project-id={project.id}
               onClick={(e) => navigateWithTransition(e, navigate, `/project/${project.id}`)}
               className="cursor-pointer overflow-hidden"
             >
