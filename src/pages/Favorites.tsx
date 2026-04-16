@@ -256,7 +256,7 @@ const Favorites = () => {
             <div className={`bg-background rounded-2xl px-2 py-3 ${viewMode === "grid" ? "" : ""}`}>
             <div className={viewMode === "grid" ? "grid grid-cols-2 gap-x-[2px] gap-y-[6px]" : "flex flex-col gap-[10px]"}>
               {favoriteItems.map((item) => viewMode === "list" ? (
-                <div key={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer overflow-hidden">
+                <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer overflow-hidden">
                   <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[286px]">
                     <div className="absolute top-2 right-2 z-10">
                       <button
@@ -274,7 +274,7 @@ const Favorites = () => {
                   </div>
                 </div>
               ) : (
-                <div key={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer overflow-hidden">
+                <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer overflow-hidden">
                   <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[260px]">
                     <div className="absolute top-2 right-2 z-10">
                       <button
@@ -366,7 +366,7 @@ const Favorites = () => {
           ) : viewMode === "grid" ? (
             <div className="grid grid-cols-3 gap-4">
               {favoriteItems.map((item) => (
-                <div key={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer bg-background rounded-2xl overflow-hidden shadow-sm">
+                <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer bg-background rounded-2xl overflow-hidden shadow-sm">
                   <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[260px]">
                     <div className="absolute top-2.5 right-2.5 z-10">
                       <button
@@ -401,7 +401,7 @@ const Favorites = () => {
           ) : (
             <div className="flex flex-col gap-3.5">
               {favoriteItems.map((item) => (
-                <div key={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="flex gap-4 cursor-pointer bg-background rounded-2xl overflow-hidden group hover:shadow-sm transition-shadow">
+                <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="flex gap-4 cursor-pointer bg-background rounded-2xl overflow-hidden group hover:shadow-sm transition-shadow">
                   <div className="w-[200px] flex-shrink-0 relative overflow-hidden">
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                     <div className="absolute top-2 right-2">
