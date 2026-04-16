@@ -250,51 +250,8 @@ const Favorites = () => {
             {/* Cards */}
             <div className={viewMode === "grid" ? "grid grid-cols-2 gap-x-[2px] gap-y-[6px] px-0" : "flex flex-col gap-[10px] px-0"}>
               {favoriteItems.map((item) => viewMode === "list" ? (
-                <div key={item.id} onClick={() => navigate(`/project/${item.id}`)} className="cursor-pointer bg-card rounded-2xl overflow-hidden">
-                  <div className="relative h-[260px] overflow-hidden">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" loading="lazy" />
-                    <div className="absolute top-[10px] right-[10px]">
-                      <button
-                        onClick={(e) => { e.stopPropagation(); toggleFavorite(item); }}
-                        className="flex items-center gap-1 bg-foreground/40 backdrop-blur-md rounded-full px-2.5 py-[5px]"
-                      >
-                        <Heart className="w-3.5 h-3.5 fill-red-500 text-red-500" strokeWidth={1.5} />
-                        <span className="text-[11px] font-medium text-white">{item.likes}</span>
-                      </button>
-                    </div>
-                    <div className="absolute bottom-[10px] right-[10px] bg-foreground/40 backdrop-blur-md rounded-full px-[5px] py-[3px] flex items-center gap-[2px]">
-                      <div className="w-[3px] h-[3px] rounded-full bg-white" />
-                      <div className="w-[3px] h-[3px] rounded-full bg-white/50" />
-                      <div className="w-[3px] h-[3px] rounded-full bg-white/50" />
-                      <div className="w-[3px] h-[3px] rounded-full bg-white/50" />
-                    </div>
-                  </div>
-                  <div className="px-[14px] pt-3 pb-[14px]">
-                    <div className="flex items-start justify-between mb-[2px]">
-                      <div className="text-[18px] font-bold text-foreground tracking-tight">{item.price}</div>
-                      <span className="text-[11px] font-light text-muted-foreground mt-1">рассрочка от <span className="text-primary font-normal">18 500 ₽/мес</span></span>
-                    </div>
-                    <div className="text-[14px] font-medium text-muted-foreground mb-2">{item.name}</div>
-                    <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
-                    <div className="h-px bg-border mb-[10px]" />
-                    <div className="flex items-center justify-between will-change-transform">
-                      <div className="flex items-center gap-[3px]">
-                        <span className="text-[11px] text-muted-foreground">{item.maker.split(" · ")[0]}</span>
-                        <span className="text-[11px] text-yellow-500">★</span>
-                        <span className="text-[11px] font-semibold text-foreground">4.8</span>
-                        <span className="text-[10px] text-muted-foreground"> · 26</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" stroke="#15803d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M15 18h2l4-6h-7" stroke="#15803d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="17" cy="18" r="2" stroke="#15803d" strokeWidth="2.5"/><circle cx="7" cy="18" r="2" stroke="#15803d" strokeWidth="2.5"/></svg>
-                        <span className="text-[11px] font-medium text-green-700">{item.city}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                /* Grid card (compact) */
-                <div key={item.id} onClick={() => navigate(`/project/${item.id}`)} className="cursor-pointer bg-card rounded-[14px] overflow-hidden shadow-sm">
-                  <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[200px]">
+                <div key={item.id} onClick={() => navigate(`/project/${item.id}`)} className="cursor-pointer overflow-hidden">
+                  <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[240px]">
                     <div className="absolute top-2 right-2 z-10">
                       <button
                         onClick={(e) => { e.stopPropagation(); toggleFavorite(item); }}
@@ -305,22 +262,27 @@ const Favorites = () => {
                       </button>
                     </div>
                   </SwipeableGallery>
-                  <div className="px-[10px] pt-2 pb-[10px]">
-                    <div className="text-[14px] font-bold text-foreground mb-[1px]">{item.price}</div>
-                    <div className="text-[12px] text-muted-foreground mb-[6px]">{item.name}</div>
+                  <div className="px-[10px] pt-1 pb-1">
+                    <div className="text-[12px] font-bold text-foreground">от {item.price}</div>
                     <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
-                    <div className="h-px bg-border mb-[6px]" />
-                    <div className="flex items-center gap-2 overflow-hidden will-change-transform" style={{ maskImage: 'linear-gradient(to right, black calc(100% - 10px), transparent)', WebkitMaskImage: 'linear-gradient(to right, black calc(100% - 10px), transparent)' }}>
-                      <div className="flex items-center gap-[3px] flex-shrink-0">
-                        <span className="text-[10px] text-yellow-500">★</span>
-                        <span className="text-[10px] font-semibold text-foreground mr-[2px]">4.8</span>
-                        <span className="text-[10px] text-muted-foreground whitespace-nowrap">{item.maker.split(" · ")[0]}</span>
-                      </div>
-                      <div className="flex items-center gap-[3px] flex-shrink-0">
-                        <Truck className="w-[10px] h-[10px] text-green-700" strokeWidth={2.5} />
-                        <span className="text-[10px] text-green-700 whitespace-nowrap">{item.city}</span>
-                      </div>
+                  </div>
+                </div>
+              ) : (
+                <div key={item.id} onClick={() => navigate(`/project/${item.id}`)} className="cursor-pointer overflow-hidden">
+                  <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[240px]">
+                    <div className="absolute top-2 right-2 z-10">
+                      <button
+                        onClick={(e) => { e.stopPropagation(); toggleFavorite(item); }}
+                        className="flex items-center gap-1 bg-foreground/40 backdrop-blur-md rounded-full px-2 py-[4px]"
+                      >
+                        <Heart className="w-3.5 h-3.5 fill-red-500 text-red-500" strokeWidth={1.5} />
+                        <span className="text-[11px] font-medium text-white">{item.likes}</span>
+                      </button>
                     </div>
+                  </SwipeableGallery>
+                  <div className="px-[10px] pt-1 pb-1">
+                    <div className="text-[12px] font-bold text-foreground">от {item.price}</div>
+                    <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
                   </div>
                 </div>
               ))}
