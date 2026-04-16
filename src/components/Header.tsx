@@ -44,7 +44,7 @@ const Header = () => {
                 <Link to="/" className="text-[22px] font-bold text-foreground tracking-tight">
                   Много места
                 </Link>
-                <button onClick={() => setCityOpen(true)} className="flex items-center gap-1 text-[13px] font-medium text-primary bg-primary/10 rounded-xl px-2.5 py-1">
+                <button onClick={() => setCityOpen(true)} className="flex items-center gap-1 text-[13px] font-medium text-primary bg-secondary rounded-xl px-2.5 py-1">
                   {city}
                   <ChevronDown className="w-3.5 h-3.5 text-primary" strokeWidth={2} />
                 </button>
