@@ -107,7 +107,7 @@ const CitySelector = ({ open, onOpenChange, city, onSelect }: CitySelectorProps)
   if (isMobile) {
     return (
       <Drawer open={open} onOpenChange={onOpenChange}>
-        <DrawerContent className="mx-0 rounded-t-[20px] p-0 max-h-[85vh]">
+        <DrawerContent className="mx-0 rounded-t-[20px] p-0 max-h-[85vh]" onOpenAutoFocus={(e) => e.preventDefault()}>
           {content}
         </DrawerContent>
       </Drawer>
