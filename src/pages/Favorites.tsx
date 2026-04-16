@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { formatSpecs } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
+import { navigateWithTransition } from "@/lib/viewTransition";
 import { Heart, Check, MoreHorizontal, Grid2X2, List, Calculator, Search, ArrowUpDown, SlidersHorizontal, Camera, Truck } from "lucide-react";
 import SwipeableGallery from "@/components/SwipeableGallery";
 import MobileTabBar from "@/components/MobileTabBar";
