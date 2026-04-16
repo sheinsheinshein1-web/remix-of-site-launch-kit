@@ -501,20 +501,10 @@ const ProjectDetail = () => {
                         {baseParams.map((p, i) => <ParamRow key={i} item={p} />)}
                       </div>
                       <ParamGroup title="Конструктив" params={constructParams} />
-                      {expanded && (
-                        <>
-                          <ParamGroup title="Утепление" params={insulationParams} />
-                          <ParamGroup title="Кровля" params={roofParams} />
-                          <ParamGroup title="Отделка" params={finishParams} />
-                          <ParamGroup title="Инженерия" params={engineeringParams} />
-                        </>
-                      )}
-                      <button
-                        onClick={() => setExpanded(!expanded)}
-                        className="w-full mt-3 py-3 bg-muted rounded-xl text-sm font-medium text-muted-foreground flex items-center justify-center gap-1.5"
-                      >
-                        {expanded ? "Свернуть" : "Развернуть"} <ChevronDown className={`w-4 h-4 transition-transform ${expanded ? "rotate-180" : ""}`} />
-                      </button>
+                      <ParamGroup title="Утепление" params={insulationParams} />
+                      <ParamGroup title="Кровля" params={roofParams} />
+                      <ParamGroup title="Отделка" params={finishParams} />
+                      <ParamGroup title="Инженерия" params={engineeringParams} />
                     </div>
                   )}
                 </div>
