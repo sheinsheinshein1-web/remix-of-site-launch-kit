@@ -314,9 +314,10 @@ interface SearchDropdownProps {
   onFilterClick?: () => void;
   hasActiveFilters?: boolean;
   onQueryChange?: (q: string) => void;
+  iconOnly?: boolean;
 }
 
-const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, initialQuery = "", showFilterButton, onFilterClick, hasActiveFilters, onQueryChange }: SearchDropdownProps) => {
+const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, initialQuery = "", showFilterButton, onFilterClick, hasActiveFilters, onQueryChange, iconOnly }: SearchDropdownProps) => {
   const navigate = useNavigate();
   const [query, setQuery] = useState(initialQuery);
 
@@ -695,6 +696,79 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
   }
 
   // ==================== DEFAULT (INLINE) ====================
+  if (iconOnly) {
+    return (
+      <>
+        <button
+          className="md:hidden w-9 h-9 rounded-xl bg-secondary flex items-center justify-center"
+          onClick={() => setMobileOpen(true)}
+        >
+          <Search className="w-[18px] h-[18px] text-muted-foreground" />
+        </button>
+        {mobileOpen && (
+          <div className="fixed inset-0 z-[200] bg-background flex flex-col">
+            <div className="shrink-0 px-3 pt-[max(env(safe-area-inset-top),10px)] pb-2 bg-background border-b border-border/30">
+              <div className="flex items-center gap-2">
+                <div className="relative flex-1">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground z-10" />
+                  <input
+                    ref={mobileInputRef}
+                    type="search"
+                    enterKeyHint="search"
+                    value={query}
+                    onChange={(e) => updateQuery(e.target.value)}
+                    placeholder="Поиск на многоместа.рф"
+                    autoFocus
+                    className="w-full h-11 pl-9 pr-9 rounded-xl text-[16px] font-light text-foreground placeholder:text-muted-foreground focus:outline-none bg-secondary"
+                  />
+                  {query && (
+                    <button
+                      onClick={() => updateQuery("")}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-muted-foreground/20 flex items-center justify-center z-10"
+                    >
+                      <X className="w-3 h-3 text-muted-foreground" />
+                    </button>
+                  )}
+                </div>
+                <button onClick={handleMobileClose} className="text-[14px] text-primary font-medium shrink-0 px-1">Отменить</button>
+              </div>
+            </div>
+            <div className="flex-1 overflow-y-auto">
+              {!query.trim() && (
+                <div className="px-4 pt-4">
+                  {searchHistory.length > 0 && (
+                    <>
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide">Недавние запросы</div>
+                        <button onClick={clearHistory} className="text-[12px] text-primary">Очистить</button>
+                      </div>
+                      {searchHistory.map((s) => (
+                        <button key={s} onClick={() => updateQuery(s)} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
+                          <Clock className="w-4 h-4 text-muted-foreground/50 shrink-0" />
+                          <span className="text-[14px] text-foreground flex-1 text-left">{s}</span>
+                          <ChevronRight className="w-4 h-4 text-muted-foreground/40 shrink-0" />
+                        </button>
+                      ))}
+                    </>
+                  )}
+                  <div className={`text-[11px] font-medium text-muted-foreground uppercase tracking-wide mb-3 ${searchHistory.length > 0 ? 'mt-4' : ''}`}>Популярные запросы</div>
+                  {popularSearches.map((s) => (
+                    <button key={s} onClick={() => updateQuery(s)} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
+                      <Search className="w-4 h-4 text-muted-foreground/50 shrink-0" />
+                      <span className="text-[14px] text-foreground flex-1 text-left">{s}</span>
+                      <ChevronRight className="w-4 h-4 text-muted-foreground/40 shrink-0" />
+                    </button>
+                  ))}
+                </div>
+              )}
+              {query.trim() && renderResults()}
+            </div>
+          </div>
+        )}
+      </>
+    );
+  }
+
   return (
     <div ref={containerRef} className={`relative ${className}`}>
       <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground z-10" />

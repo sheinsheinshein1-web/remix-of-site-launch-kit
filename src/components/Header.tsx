@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import logoColor from "@/assets/logo-color.svg";
 import logoIcon from "@/assets/logo-icon.svg";
-import { Search, SlidersHorizontal, ChevronDown, LayoutGrid, Heart, MessageSquare } from "lucide-react";
+import { SlidersHorizontal, ChevronDown, LayoutGrid, Heart, MessageSquare } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 import SearchDropdown from "./SearchDropdown";
 import CitySelector, { useCity } from "./CitySelector";
@@ -14,7 +14,6 @@ const Header = () => {
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileScrolled, setMobileScrolled] = useState(false);
-  const [searchFocused, setSearchFocused] = useState(false);
   const [cityOpen, setCityOpen] = useState(false);
   const { city, selectCity } = useCity();
 
@@ -37,7 +36,7 @@ const Header = () => {
       {/* Mobile header */}
       <div className="md:hidden relative">
         {/* Static header - visible when not scrolled */}
-        <div className={`transition-all duration-300 relative z-10 ${mobileScrolled && !searchFocused ? 'opacity-0 pointer-events-none scale-95 -translate-y-full' : 'opacity-100 scale-100 translate-y-0'}`}>
+        <div className={`transition-all duration-300 relative z-10 ${mobileScrolled ? 'opacity-0 pointer-events-none scale-95 -translate-y-full' : 'opacity-100 scale-100 translate-y-0'}`}>
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),6px)] pb-1.5">
             <div className="flex items-center justify-between">
               <Link to="/" className="text-[22px] font-bold text-foreground tracking-tight">
@@ -48,24 +47,14 @@ const Header = () => {
                   {city}
                   <ChevronDown className="w-3.5 h-3.5 text-primary" strokeWidth={2} />
                 </button>
-                <button
-                  onClick={() => setSearchFocused(true)}
-                  className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center"
-                >
-                  <Search className="w-[18px] h-[18px] text-muted-foreground" />
-                </button>
+                <SearchDropdown inputClassName="bg-secondary" iconOnly />
               </div>
             </div>
-            {searchFocused && (
-              <div className="mt-2.5">
-                <SearchDropdown inputClassName="bg-secondary" onFocusChange={setSearchFocused} />
-              </div>
-            )}
           </div>
         </div>
 
         {/* Compact white header - visible when scrolled */}
-        <div className={`transition-all duration-300 absolute inset-x-0 top-0 ${mobileScrolled && !searchFocused && !hidden ? 'opacity-100 translate-y-0' : hidden ? 'opacity-0 pointer-events-none -translate-y-full' : 'opacity-0 pointer-events-none -translate-y-full'}`}>
+        <div className={`transition-all duration-300 absolute inset-x-0 top-0 ${mobileScrolled && !hidden ? 'opacity-100 translate-y-0' : 'opacity-0 pointer-events-none -translate-y-full'}`}>
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 rounded-b-2xl shadow-sm">
             <SearchDropdown inputClassName="bg-secondary" />
           </div>
