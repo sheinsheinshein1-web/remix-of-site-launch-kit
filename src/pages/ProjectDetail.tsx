@@ -415,14 +415,13 @@ const ProjectDetail = () => {
         {/* ===== MAIN INFO — BENTO ===== */}
         <div className={`flex flex-col gap-2 ${isMobile ? "" : "sticky top-[80px]"}`}>
           {/* Row 1: Title + Price */}
-          <div className="bg-background rounded-b-2xl px-5 pt-5 pb-4">
-            <h1 className="text-[26px] font-bold text-foreground tracking-tight leading-[1.1] mb-2">Шервуд 72.1</h1>
-            <div className="text-[13px] text-muted-foreground mb-4">
+          <div className="bg-background rounded-b-2xl px-4 pt-3 pb-3">
+            <h1 className="text-[18px] font-bold text-foreground tracking-tight leading-tight mb-0.5">Шервуд 72.1</h1>
+            <div className="text-[12px] text-muted-foreground mb-1.5">
               60 м² · 2 спальни · 1 санузел · 1 этаж
             </div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-[22px] font-bold text-foreground">4 950 000 ₽</span>
-              <span className="text-[12px] text-muted-foreground">от</span>
+            <div className="text-[15px] font-bold text-foreground">
+              от 4 950 000 ₽
             </div>
             {!isMobile && (
               <button
