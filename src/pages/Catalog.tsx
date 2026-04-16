@@ -858,7 +858,7 @@ const Catalog = () => {
                   </SwipeableGallery>
                   <div className="px-[10px] pt-1 pb-1">
                     <div className="text-[12px] font-bold text-foreground">от {item.price}</div>
-                    <p className="text-[11.5px] font-normal text-muted-foreground whitespace-nowrap leading-none mt-[2px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
+                    <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
                   </div>
                 </div>
               ))}
@@ -885,7 +885,7 @@ const Catalog = () => {
                   <div className="flex-1 py-4 pr-5 flex flex-col justify-center gap-1">
                     <p className="text-xs font-light text-muted-foreground">{item.maker}</p>
                     <h3 className="text-[17px] font-medium text-foreground">{item.name}</h3>
-                    <p className="text-[13px] font-light text-muted-foreground">{formatSpecs(item.area, item.beds, item.baths)}, {item.purpose}</p>
+                    <p className="text-[12px] font-normal text-foreground/80">{formatSpecs(item.area, item.beds, item.baths)}, {item.purpose}</p>
                     <p className="text-lg font-medium text-foreground mt-1">{item.price}</p>
                     <div className="flex items-center gap-3 mt-1">
                       <div className="flex items-center gap-1">
@@ -941,7 +941,7 @@ const Catalog = () => {
                   {/* Name */}
                   <div className="text-[14px] font-medium text-muted-foreground mb-2">{item.name}</div>
 
-                  <p className="text-[12px] text-muted-foreground whitespace-nowrap mb-[10px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
+                  <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
 
                   {/* Divider */}
                   <div className="h-px bg-border mb-[10px]" />
@@ -981,7 +981,7 @@ const Catalog = () => {
                 {/* Body */}
                 <div className="px-[10px] pt-1 pb-1">
                   <div className="text-[12px] font-bold text-foreground">от {item.price}</div>
-                  <p className="text-[11.5px] font-normal text-muted-foreground whitespace-nowrap leading-none mt-[2px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
+                  <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
                 </div>
               </div>
             ))}
