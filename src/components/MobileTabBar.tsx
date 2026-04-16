@@ -13,7 +13,7 @@ const MobileTabBar = ({ ctaLabel, onCtaClick }: { ctaLabel?: string; onCtaClick?
   const navigate = useNavigate();
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden pb-[env(safe-area-inset-bottom)]">
+    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden pb-[calc(env(safe-area-inset-bottom)+8px)]">
       <nav className="bg-background shadow-[0_4px_30px_-4px_hsl(var(--foreground)/0.12)] border-t border-border/50 w-full">
         {ctaLabel && (
           <div className="px-4 pt-2 pb-1">
