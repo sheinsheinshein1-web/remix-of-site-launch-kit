@@ -314,9 +314,10 @@ interface SearchDropdownProps {
   onFilterClick?: () => void;
   hasActiveFilters?: boolean;
   onQueryChange?: (q: string) => void;
+  iconOnly?: boolean;
 }
 
-const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, initialQuery = "", showFilterButton, onFilterClick, hasActiveFilters, onQueryChange }: SearchDropdownProps) => {
+const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, initialQuery = "", showFilterButton, onFilterClick, hasActiveFilters, onQueryChange, iconOnly }: SearchDropdownProps) => {
   const navigate = useNavigate();
   const [query, setQuery] = useState(initialQuery);
 
