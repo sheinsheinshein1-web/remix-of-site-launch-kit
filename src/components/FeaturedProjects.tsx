@@ -75,7 +75,7 @@ const FeaturedProjects = () => {
               className="cursor-pointer overflow-hidden"
             >
               {/* Photo gallery */}
-              <SwipeableGallery images={getProjectImages(project.image, project.id)} alt={project.name} height="h-[240px] md:h-[240px]">
+              <SwipeableGallery images={getProjectImages(project.image, project.id)} alt={project.name} height="h-[260px] md:h-[240px]">
                 {/* Likes */}
                 <div className="absolute top-2 right-2 z-10">
                   <button
