@@ -856,24 +856,9 @@ const Catalog = () => {
                       </div>
                     )}
                   </SwipeableGallery>
-                  <div className="px-[10px] pt-2 pb-[10px]">
-                    <div className="text-[14px] font-bold text-foreground mb-[1px]">{item.price}</div>
-                    <div className="text-[12px] text-muted-foreground mb-[6px]">{item.name}</div>
-                    <p className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none mb-[6px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
-                    {/* Divider */}
-                    <div className="h-px bg-border mb-[6px]" />
-                    {/* Bottom: maker + city */}
-                    <div className="flex items-center gap-2 overflow-hidden" style={{ maskImage: 'linear-gradient(to right, black calc(100% - 10px), transparent)', WebkitMaskImage: 'linear-gradient(to right, black calc(100% - 10px), transparent)' }}>
-                      <div className="flex items-center gap-[3px] flex-shrink-0">
-                        <span className="text-[10px] text-yellow-500">★</span>
-                        <span className="text-[10px] font-semibold text-foreground mr-[2px]">{item.rating}</span>
-                        <span className="text-[10px] text-muted-foreground whitespace-nowrap">{item.maker.split(" · ")[0]}</span>
-                      </div>
-                      <div className="flex items-center gap-[3px] flex-shrink-0">
-                        <Truck className="w-[10px] h-[10px] text-green-700" strokeWidth={2.5} />
-                        <span className="text-[10px] text-green-700 whitespace-nowrap">{item.city}</span>
-                      </div>
-                    </div>
+                  <div className="px-[10px] pt-1 pb-1">
+                    <div className="text-[12px] font-bold text-foreground">от {item.price}</div>
+                    <p className="text-[11.5px] font-normal text-muted-foreground whitespace-nowrap leading-none mt-[2px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
                   </div>
                 </div>
               ))}
