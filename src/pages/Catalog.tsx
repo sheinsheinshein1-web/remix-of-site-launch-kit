@@ -9,7 +9,7 @@ import Header from "@/components/Header";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { useNavigate } from "react-router-dom";
 import SwipeableGallery from "@/components/SwipeableGallery";
-import { clearBackTransitionProjectId, getBackTransitionProjectId, navigateWithTransition } from "@/lib/viewTransition";
+import { navigateWithTransition } from "@/lib/viewTransition";
 
 import house1 from "@/assets/house-1.jpg";
 import house2 from "@/assets/house-2.jpg";
