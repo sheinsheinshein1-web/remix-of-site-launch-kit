@@ -96,9 +96,8 @@ const FeaturedProjects = () => {
               {/* Body */}
               <div className="px-[10px] pt-2 pb-[10px]">
                 <div className="text-[14px] font-bold text-foreground mb-[1px]">{project.price}</div>
-                <div className="text-[12px] text-muted-foreground mb-[6px]">{project.name}</div>
                 {/* Params */}
-                <div className="flex items-center gap-[5px] mb-[6px] h-4 overflow-hidden">
+                <div className="flex items-center gap-[5px] mt-[4px] h-4 overflow-hidden">
                   <div className="flex items-center gap-[2px] flex-shrink-0">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#999" strokeWidth="2"/><path d="M3 9h18M9 21V9" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
                     <span className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none">{project.area}</span>
@@ -117,20 +116,6 @@ const FeaturedProjects = () => {
                   <div className="flex items-center gap-[2px] flex-shrink-0">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><circle cx="12" cy="12" r="9" stroke="#999" strokeWidth="2"/><path d="M12 6v6l4 2" stroke="#999" strokeWidth="2" strokeLinecap="round"/></svg>
                     <span className="text-[11px] font-medium text-muted-foreground whitespace-nowrap leading-none">{project.term}</span>
-                  </div>
-                </div>
-                {/* Divider */}
-                <div className="h-px bg-border mb-[6px]" />
-                {/* Bottom: maker + city */}
-                <div className="flex items-center gap-2 overflow-hidden" style={{ maskImage: 'linear-gradient(to right, black calc(100% - 10px), transparent)', WebkitMaskImage: 'linear-gradient(to right, black calc(100% - 10px), transparent)' }}>
-                  <div className="flex items-center gap-[3px] flex-shrink-0">
-                    <span className="text-[10px] text-yellow-500">★</span>
-                    <span className="text-[10px] font-semibold text-foreground mr-[2px]">{project.rating}</span>
-                    <span className="text-[10px] text-muted-foreground whitespace-nowrap">{project.maker}</span>
-                  </div>
-                  <div className="flex items-center gap-[3px] flex-shrink-0">
-                    <Truck className="w-[10px] h-[10px] text-green-700" strokeWidth={2.5} />
-                    <span className="text-[10px] text-green-700 whitespace-nowrap">{project.city}</span>
                   </div>
                 </div>
               </div>
