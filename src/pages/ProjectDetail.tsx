@@ -597,7 +597,7 @@ const ProjectDetail = () => {
         <div className="h-[100px]" />
       </main>
 
-      <MobileTabBar ctaLabel="Рассчитать стоимость" onCtaClick={() => navigate(`/messages/company?company=${encodeURIComponent("Sherwood Home")}&project=${encodeURIComponent("Шервуд 72.1")}&projectId=${id}&price=${encodeURIComponent("от 4 950 000 ₽")}&area=${encodeURIComponent("60 м²")}&image=${encodeURIComponent(galleryImages[0].image)}`)} />
+      <MobileTabBar />
     </div>
   );
 };
