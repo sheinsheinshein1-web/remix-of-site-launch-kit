@@ -36,17 +36,25 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       {/* Mobile header */}
       <div className="md:hidden relative">
-        {/* Full blue header - visible when not scrolled */}
+        {/* Static header - visible when not scrolled */}
         <div className={`transition-all duration-300 ${mobileScrolled && !searchFocused ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-          <div className="bg-primary px-3 pt-[max(env(safe-area-inset-top),10px)] pb-3 rounded-b-2xl">
-            <div className="flex items-center gap-1.5 mb-2.5">
-              <button onClick={() => setCityOpen(true)} className="inline-flex items-center gap-1 text-primary-foreground">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span className="text-[15px] font-medium">{city}</span>
-                <ChevronDown className="w-4 h-4 opacity-70" />
+          <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),10px)] pb-3">
+            <div className="flex items-center justify-between">
+              <Link to="/" className="text-[22px] font-bold text-foreground tracking-tight">
+                Много места
+              </Link>
+              <button
+                onClick={() => setSearchFocused(true)}
+                className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center"
+              >
+                <Search className="w-[18px] h-[18px] text-muted-foreground" />
               </button>
             </div>
-            <SearchDropdown inputClassName="bg-card" onFocusChange={setSearchFocused} />
+            {searchFocused && (
+              <div className="mt-2.5">
+                <SearchDropdown inputClassName="bg-secondary" onFocusChange={setSearchFocused} autoFocus />
+              </div>
+            )}
           </div>
         </div>
 
