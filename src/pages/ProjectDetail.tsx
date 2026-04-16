@@ -462,17 +462,12 @@ const ProjectDetail = () => {
                 <p className="text-[14px] text-foreground leading-relaxed mb-3">
                   <span className="font-semibold">Шервуд 72.1 — ваш дом за 6 недель.</span> Компактный одноэтажный дом с продуманной планировкой для комфортной жизни за городом. Две изолированные спальни, просторная кухня-гостиная с панорамным остеклением и уютная веранда — всё, что нужно для семьи.
                 </p>
-                <p className="text-[14px] text-foreground leading-relaxed mb-3">
-                  Дом изготавливается на заводе и доставляется в готовом виде — вы заселяетесь через 4–6 недель после заказа. Утепление 200 мм позволяет жить круглый год даже в регионах до −40°C.
-                </p>
-                <div className="flex flex-wrap gap-1.5 mb-1">
-                  {["Круглогодичное проживание", "Заводское качество", "Фиксированная цена", "Без скрытых доплат", "Энергокласс А"].map((tag) => (
-                    <span key={tag} className="text-[11px] font-medium bg-secondary text-muted-foreground rounded-xl px-2.5 py-1">{tag}</span>
-                  ))}
-                  <button onClick={() => setDescExpanded(false)} className="text-[11px] font-medium text-primary hover:underline px-2.5 py-1">
+                <p className="text-[14px] text-foreground leading-relaxed">
+                  Дом изготавливается на заводе и доставляется в готовом виде — вы заселяетесь через 4–6 недель после заказа. Утепление 200 мм позволяет жить круглый год даже в регионах до −40°C.{" "}
+                  <button onClick={() => setDescExpanded(false)} className="text-primary hover:underline">
                     свернуть
                   </button>
-                </div>
+                </p>
               </div>
             )}
 
