@@ -14,7 +14,7 @@ const MobileTabBar = ({ ctaLabel, onCtaClick }: { ctaLabel?: string; onCtaClick?
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden"
-         style={{ backgroundColor: '#fff', paddingBottom: (window.navigator as any).standalone ? 'calc(env(safe-area-inset-bottom, 0px) + 8px)' : '0px' }}>
+         style={{ backgroundColor: '#fff', paddingBottom: (window.navigator as any).standalone ? 'calc(env(safe-area-inset-bottom, 0px) + 16px)' : '0px' }}>
       <nav className="shadow-[0_4px_30px_-4px_hsl(var(--foreground)/0.12)] border-t border-border/50 w-full">
         {ctaLabel && (
           <div className="px-4 pt-2 pb-1">
