@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import SearchDropdown from "@/components/SearchDropdown";
 import HeroSection from "@/components/HeroSection";
 import StatsRow from "@/components/StatsRow";
 import CategoriesSection from "@/components/CategoriesSection";
@@ -30,9 +29,7 @@ const Index = () => {
         <div className="hidden md:block px-3 md:px-8 pt-3 md:pt-4">
           <CategoriesSection />
         </div>
-        <div className="md:hidden px-3 pt-[56px] pb-2">
-          <SearchDropdown inputClassName="bg-secondary" />
-        </div>
+        <div className="md:hidden pt-[56px]" />
         <div className="px-2 md:px-8 pt-2 md:pt-3 pb-2">
           <FeaturedProjects />
         </div>
