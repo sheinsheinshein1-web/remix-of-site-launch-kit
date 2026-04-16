@@ -209,7 +209,7 @@ const ProjectDetail = () => {
     setDragOffset(0);
   }, [dragOffset, activeImage]);
 
-  const navigateBack = useCallback(() => navigateBackWithTransition(navigate), [navigate]);
+  const navigateBack = useCallback(() => navigateBackWithTransition(navigate, Number(id)), [navigate, id]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 300);
