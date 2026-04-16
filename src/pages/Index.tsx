@@ -29,7 +29,7 @@ const Index = () => {
         <div className="hidden md:block px-3 md:px-8 pt-3 md:pt-4">
           <CategoriesSection />
         </div>
-        <div className="md:hidden pt-[56px]" />
+        <div className="md:hidden pt-[50px]" />
         <div className="px-2 md:px-8 pt-2 md:pt-3 pb-2">
           <FeaturedProjects />
         </div>
