@@ -66,6 +66,10 @@ const FeaturedProjects = () => {
   const navigate = useNavigate();
   const { isFavorite, toggleFavorite } = useFavorites();
 
+  useEffect(() => {
+    applyBackTransitionName();
+  }, []);
+
   return (
     <section>
       <div className="md:py-5">
@@ -73,6 +77,7 @@ const FeaturedProjects = () => {
           {projects.map((project) => (
             <div
               key={project.id}
+              data-project-id={project.id}
               onClick={(e) => navigateWithTransition(e, navigate, `/project/${project.id}`)}
               className="cursor-pointer overflow-hidden"
             >
