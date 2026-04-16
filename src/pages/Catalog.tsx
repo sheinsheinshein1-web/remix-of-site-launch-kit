@@ -9,7 +9,7 @@ import Header from "@/components/Header";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { useNavigate } from "react-router-dom";
 import SwipeableGallery from "@/components/SwipeableGallery";
-import { navigateWithTransition, applyBackTransitionName } from "@/lib/viewTransition";
+import { clearBackTransitionProjectId, getBackTransitionProjectId, navigateWithTransition } from "@/lib/viewTransition";
 
 import house1 from "@/assets/house-1.jpg";
 import house2 from "@/assets/house-2.jpg";
@@ -152,10 +152,7 @@ const Catalog = () => {
   const [searchParams] = useSearchParams();
   const [catalogSearch, setCatalogSearch] = useState(searchParams.get("q") || "");
   const [activeChip, setActiveChip] = useState("Все");
-
-  useEffect(() => {
-    applyBackTransitionName();
-  }, []);
+  const backTransitionProjectId = getBackTransitionProjectId();
 
   const resetAllFilters = () => {
     setFilterPriceMinVal(500000);

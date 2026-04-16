@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { formatSpecs } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
-import { navigateWithTransition, applyBackTransitionName } from "@/lib/viewTransition";
+import { clearBackTransitionProjectId, getBackTransitionProjectId, navigateWithTransition } from "@/lib/viewTransition";
 import { Heart, Check, MoreHorizontal, Grid2X2, List, Calculator, Search, ArrowUpDown, SlidersHorizontal, Camera, Truck } from "lucide-react";
 import SwipeableGallery from "@/components/SwipeableGallery";
 import MobileTabBar from "@/components/MobileTabBar";
@@ -167,10 +167,13 @@ const Favorites = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const { favoriteItems, toggleFavorite } = useFavorites();
+  const backTransitionProjectId = getBackTransitionProjectId();
 
   useEffect(() => {
-    applyBackTransitionName();
-  }, []);
+    if (backTransitionProjectId !== null) {
+      clearBackTransitionProjectId();
+    }
+  }, [backTransitionProjectId]);
 
   useEffect(() => {
     let lastY = window.scrollY;
