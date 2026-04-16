@@ -970,6 +970,7 @@ const Catalog = () => {
             ))}
             </div>
           </div>
+        )}
       </div>
       </div>
 
