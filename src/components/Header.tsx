@@ -40,9 +40,15 @@ const Header = () => {
         <div className={`transition-all duration-300 ${mobileScrolled && !searchFocused ? 'opacity-0 pointer-events-none scale-95 -translate-y-full' : 'opacity-100 scale-100 translate-y-0'}`}>
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),6px)] pb-1.5">
             <div className="flex items-center justify-between">
-              <Link to="/" className="text-[22px] font-bold text-foreground tracking-tight">
-                Много места
-              </Link>
+              <div className="flex items-center gap-2">
+                <Link to="/" className="text-[22px] font-bold text-foreground tracking-tight">
+                  Много места
+                </Link>
+                <button onClick={() => setCityOpen(true)} className="flex items-center gap-0.5 text-[13px] text-primary underline underline-offset-2">
+                  в {city}
+                  <ChevronDown className="w-3.5 h-3.5 text-primary" strokeWidth={2} />
+                </button>
+              </div>
               <button
                 onClick={() => setSearchFocused(true)}
                 className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center"
