@@ -288,6 +288,7 @@ const Favorites = () => {
                 </div>
               ))}
             </div>
+            </div>
           </div>
         )}
 
