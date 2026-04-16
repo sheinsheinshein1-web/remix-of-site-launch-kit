@@ -38,7 +38,7 @@ const Header = () => {
       <div className="md:hidden relative">
         {/* Static header - visible when not scrolled */}
         <div className={`transition-all duration-300 ${mobileScrolled && !searchFocused ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-          <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),10px)] pb-3">
+          <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),6px)] pb-1.5">
             <div className="flex items-center justify-between">
               <Link to="/" className="text-[22px] font-bold text-foreground tracking-tight">
                 Много места
