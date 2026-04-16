@@ -248,7 +248,8 @@ const Favorites = () => {
           <div className="mt-2 flex flex-col pb-[calc(140px+env(safe-area-inset-bottom))]">
 
             {/* Cards */}
-            <div className={viewMode === "grid" ? "grid grid-cols-2 gap-x-[2px] gap-y-[6px] px-0" : "flex flex-col gap-[10px] px-0"}>
+            <div className={`bg-background rounded-2xl px-2 py-3 ${viewMode === "grid" ? "" : ""}`}>
+            <div className={viewMode === "grid" ? "grid grid-cols-2 gap-x-[2px] gap-y-[6px]" : "flex flex-col gap-[10px]"}>
               {favoriteItems.map((item) => viewMode === "list" ? (
                 <div key={item.id} onClick={() => navigate(`/project/${item.id}`)} className="cursor-pointer overflow-hidden">
                   <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[240px]">
@@ -286,6 +287,7 @@ const Favorites = () => {
                   </div>
                 </div>
               ))}
+            </div>
             </div>
           </div>
         )}
