@@ -545,12 +545,6 @@ const ProjectDetail = () => {
               Заказать расчёт
             </button>
           </div>
-                  </div>
-                  <ParamGroup title="Планировочные" params={planParams} />
-                </div>
-              )}
-            </div>
-          </div>
 
         </div>
         {/* End right column */}
