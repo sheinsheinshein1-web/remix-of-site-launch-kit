@@ -167,13 +167,6 @@ const Favorites = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const { favoriteItems, toggleFavorite } = useFavorites();
-  const backTransitionProjectId = getBackTransitionProjectId();
-
-  useEffect(() => {
-    if (backTransitionProjectId !== null) {
-      clearBackTransitionProjectId();
-    }
-  }, [backTransitionProjectId]);
 
   useEffect(() => {
     let lastY = window.scrollY;

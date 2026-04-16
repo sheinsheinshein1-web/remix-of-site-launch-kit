@@ -152,13 +152,6 @@ const Catalog = () => {
   const [searchParams] = useSearchParams();
   const [catalogSearch, setCatalogSearch] = useState(searchParams.get("q") || "");
   const [activeChip, setActiveChip] = useState("Все");
-  const backTransitionProjectId = getBackTransitionProjectId();
-
-  useEffect(() => {
-    if (backTransitionProjectId !== null) {
-      clearBackTransitionProjectId();
-    }
-  }, [backTransitionProjectId]);
 
   const resetAllFilters = () => {
     setFilterPriceMinVal(500000);
