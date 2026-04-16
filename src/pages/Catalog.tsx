@@ -153,6 +153,10 @@ const Catalog = () => {
   const [catalogSearch, setCatalogSearch] = useState(searchParams.get("q") || "");
   const [activeChip, setActiveChip] = useState("Все");
 
+  useEffect(() => {
+    applyBackTransitionName();
+  }, []);
+
   const resetAllFilters = () => {
     setFilterPriceMinVal(500000);
     setFilterPriceMaxVal(5000000);
