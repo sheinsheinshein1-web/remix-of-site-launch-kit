@@ -33,11 +33,11 @@ const Header = () => {
 
   return (
     <>
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${hidden ? '-translate-y-full' : 'translate-y-0'}`}>
+    <header className="fixed top-0 left-0 right-0 z-50">
       {/* Mobile header */}
       <div className="md:hidden relative">
         {/* Static header - visible when not scrolled */}
-        <div className={`transition-all duration-300 ${mobileScrolled && !searchFocused ? 'opacity-0 pointer-events-none scale-95' : 'opacity-100 scale-100'}`}>
+        <div className={`transition-all duration-300 ${mobileScrolled && !searchFocused ? 'opacity-0 pointer-events-none scale-95 -translate-y-full' : 'opacity-100 scale-100 translate-y-0'}`}>
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),6px)] pb-1.5">
             <div className="flex items-center justify-between">
               <Link to="/" className="text-[22px] font-bold text-foreground tracking-tight">
@@ -59,7 +59,7 @@ const Header = () => {
         </div>
 
         {/* Compact white header - visible when scrolled */}
-        <div className={`transition-all duration-300 absolute inset-x-0 top-0 ${mobileScrolled && !searchFocused ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`transition-all duration-300 absolute inset-x-0 top-0 ${mobileScrolled && !searchFocused && !hidden ? 'opacity-100 translate-y-0' : hidden ? 'opacity-0 pointer-events-none -translate-y-full' : 'opacity-0 pointer-events-none -translate-y-full'}`}>
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 rounded-b-2xl shadow-sm">
             <SearchDropdown inputClassName="bg-secondary" />
           </div>
