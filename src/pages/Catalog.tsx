@@ -966,8 +966,8 @@ const Catalog = () => {
         ) : (
           <div className="py-3 grid grid-cols-2 gap-x-[2px] gap-y-[6px]">
             {sortedItems.map((item) => (
-              <div key={item.id} className="cursor-pointer bg-card rounded-[14px] overflow-hidden shadow-sm" onClick={() => navigate(`/project/${item.id}`)}>
-                <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[200px]">
+              <div key={item.id} className="cursor-pointer overflow-hidden" onClick={() => navigate(`/project/${item.id}`)}>
+                <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[240px]">
                   <div className="absolute top-2 right-2 z-10">
                     <FavButton active={isFavorite(item.id)} onClick={(e) => { e.stopPropagation(); toggleFav(item); }} size="sm" count={item.likes + (isFavorite(item.id) && !item.fav ? 1 : !isFavorite(item.id) && item.fav ? -1 : 0)} />
                   </div>
