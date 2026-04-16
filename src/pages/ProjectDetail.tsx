@@ -414,7 +414,7 @@ const ProjectDetail = () => {
         <div>
         {/* ===== MAIN INFO — BENTO ===== */}
         <div className={`flex flex-col gap-2 ${isMobile ? "" : "sticky top-[80px]"}`}>
-          {/* Row 1: Title + Price + Maker (compact) */}
+          {/* Row 1: Title + Price + Specs + Description + CTA */}
           <div className="bg-background rounded-b-2xl px-4 pt-3 pb-3">
             <div className="flex items-baseline justify-between gap-3 mb-1">
               <h1 className="text-[18px] font-bold text-foreground tracking-tight leading-tight truncate">Шервуд 72.1</h1>
@@ -423,9 +423,27 @@ const ProjectDetail = () => {
                 <span className="font-bold text-foreground">4 950 000 ₽</span>
               </div>
             </div>
-            <div className="text-[12px] text-muted-foreground pb-3 border-b border-border">
+            <div className="text-[12px] text-muted-foreground">
               60 м² · 2 спальни · санузел · одноэтажный
             </div>
+
+            {/* Краткое описание с "…ещё" */}
+            <p className="mt-3 text-[14px] text-foreground leading-snug">
+              <span className="line-clamp-2">Компактный одноэтажный дом с панорамным остеклением. Каркасная технология, сборка за 45 дней.</span>
+              <button
+                onClick={() => setActiveTab("description")}
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                …ещё
+              </button>
+            </p>
+
+            <button
+              onClick={() => navigate(`/messages/company?company=${encodeURIComponent("Sherwood Home")}&project=${encodeURIComponent("Шервуд 72.1")}&projectId=${id}&price=${encodeURIComponent("от 4 950 000 ₽")}&area=${encodeURIComponent("60 м²")}&image=${encodeURIComponent(galleryImages[0].image)}`)}
+              className="w-full h-12 bg-secondary text-foreground rounded-xl text-[15px] font-medium mt-3"
+            >
+              Заказать расчёт
+            </button>
 
             {/* Maker pill */}
             <div
@@ -443,13 +461,6 @@ const ProjectDetail = () => {
               </div>
               <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
             </div>
-
-            <button
-              onClick={() => navigate(`/messages/company?company=${encodeURIComponent("Sherwood Home")}&project=${encodeURIComponent("Шервуд 72.1")}&projectId=${id}&price=${encodeURIComponent("от 4 950 000 ₽")}&area=${encodeURIComponent("60 м²")}&image=${encodeURIComponent(galleryImages[0].image)}`)}
-              className="w-full h-12 bg-secondary text-foreground rounded-xl text-[15px] font-medium mt-3"
-            >
-              Заказать расчёт
-            </button>
           </div>
 
           {/* ===== ОПИСАНИЕ / КОМПЛЕКТАЦИЯ / ХАРАКТЕРИСТИКИ — TABS ===== */}
