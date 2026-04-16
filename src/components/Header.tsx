@@ -48,24 +48,14 @@ const Header = () => {
                   {city}
                   <ChevronDown className="w-3.5 h-3.5 text-primary" strokeWidth={2} />
                 </button>
-                <button
-                  onClick={() => setSearchFocused(true)}
-                  className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center"
-                >
-                  <Search className="w-[18px] h-[18px] text-muted-foreground" />
-                </button>
+                <SearchDropdown inputClassName="bg-secondary" className="w-9" />
               </div>
             </div>
-            {searchFocused && (
-              <div className="mt-2.5">
-                <SearchDropdown inputClassName="bg-secondary" onFocusChange={setSearchFocused} />
-              </div>
-            )}
           </div>
         </div>
 
         {/* Compact white header - visible when scrolled */}
-        <div className={`transition-all duration-300 absolute inset-x-0 top-0 ${mobileScrolled && !searchFocused && !hidden ? 'opacity-100 translate-y-0' : hidden ? 'opacity-0 pointer-events-none -translate-y-full' : 'opacity-0 pointer-events-none -translate-y-full'}`}>
+        <div className={`transition-all duration-300 absolute inset-x-0 top-0 ${mobileScrolled && !hidden ? 'opacity-100 translate-y-0' : 'opacity-0 pointer-events-none -translate-y-full'}`}>
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 rounded-b-2xl shadow-sm">
             <SearchDropdown inputClassName="bg-secondary" />
           </div>
