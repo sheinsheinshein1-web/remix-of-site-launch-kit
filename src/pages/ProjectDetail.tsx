@@ -465,7 +465,7 @@ const ProjectDetail = () => {
                 <p className="text-[14px] text-foreground leading-relaxed">
                   Дом изготавливается на заводе и доставляется в готовом виде — вы заселяетесь через 4–6 недель после заказа. Утепление 200 мм позволяет жить круглый год даже в регионах до −40°C.{" "}
                   <button onClick={() => setDescExpanded(false)} className="text-primary hover:underline">
-                    свернуть
+                    Свернуть
                   </button>
                 </p>
               </div>
