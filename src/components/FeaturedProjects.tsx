@@ -89,7 +89,7 @@ const FeaturedProjects = () => {
               </SwipeableGallery>
               {/* Body */}
               <div className="px-[10px] pt-1 pb-1">
-                <div className="text-[12px] font-bold text-foreground">{project.price}</div>
+                <div className="text-[12px] font-bold text-foreground">от {project.price}</div>
                 <p className="text-[11px] font-normal text-muted-foreground whitespace-nowrap leading-none mt-[2px]">{formatSpecs(project.area, project.beds, project.baths)}</p>
               </div>
             </div>
