@@ -42,13 +42,10 @@ const Header = () => {
               <Link to="/" className="text-[22px] font-bold text-foreground tracking-tight">
                 Много места
               </Link>
-              <div className="flex items-center gap-2">
-                <button onClick={() => setCityOpen(true)} className="flex items-center gap-1 text-[13px] font-medium text-primary bg-secondary rounded-xl h-9 px-3">
-                  {city}
-                  <ChevronDown className="w-3.5 h-3.5 text-primary" strokeWidth={2} />
-                </button>
-                <SearchDropdown inputClassName="bg-secondary" iconOnly />
-              </div>
+              <button onClick={() => setCityOpen(true)} className="flex items-center gap-1 text-[13px] font-medium text-primary bg-secondary rounded-xl h-9 px-3">
+                {city}
+                <ChevronDown className="w-3.5 h-3.5 text-primary" strokeWidth={2} />
+              </button>
             </div>
           </div>
         </div>
