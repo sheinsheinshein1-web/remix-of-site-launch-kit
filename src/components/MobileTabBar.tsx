@@ -30,7 +30,7 @@ const MobileTabBar = ({ ctaLabel, onCtaClick }: { ctaLabel?: string; onCtaClick?
               <button
                 key={tab.path}
                 onClick={() => navigate(tab.path)}
-                className="flex-1 flex items-center justify-center py-4 px-6"
+                className="flex-1 flex items-center justify-center py-2.5 px-6"
               >
                 <tab.icon
                   className={`w-[26px] h-[26px] ${active ? "text-primary fill-primary" : "text-muted-foreground fill-muted-foreground"}`}
