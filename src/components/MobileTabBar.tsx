@@ -14,7 +14,7 @@ const MobileTabBar = ({ ctaLabel, onCtaClick }: { ctaLabel?: string; onCtaClick?
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden flex justify-center mb-5 pb-[env(safe-area-inset-bottom)]">
-      <nav className="bg-background/70 backdrop-blur-2xl rounded-2xl shadow-[0_4px_30px_-4px_hsl(var(--foreground)/0.12)] border border-border/50 mx-3 px-2"
+      <nav className="bg-background rounded-2xl shadow-[0_4px_30px_-4px_hsl(var(--foreground)/0.12)] border border-border/50 mx-3 px-2"
            style={{ width: 'fit-content', minWidth: '280px', maxWidth: 'calc(100% - 32px)' }}>
         {ctaLabel && (
           <div className="px-3 pt-2 pb-1">
@@ -30,7 +30,7 @@ const MobileTabBar = ({ ctaLabel, onCtaClick }: { ctaLabel?: string; onCtaClick?
               <button
                 key={tab.path}
                 onClick={() => navigate(tab.path)}
-                className="flex-1 flex items-center justify-center py-2.5 px-6"
+                className="flex-1 flex items-center justify-center py-3.5 px-6"
               >
                 <tab.icon
                   className={`w-[26px] h-[26px] ${active ? "text-primary fill-primary" : "text-muted-foreground fill-muted-foreground"}`}
