@@ -33,7 +33,7 @@ const Header = () => {
 
   return (
     <>
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${hidden ? 'md:translate-y-0 -translate-y-full' : 'translate-y-0'}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${hidden ? '-translate-y-full' : 'translate-y-0'}`}>
       {/* Mobile header */}
       <div className="md:hidden relative">
         {/* Static header - visible when not scrolled */}
