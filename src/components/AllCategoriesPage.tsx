@@ -137,34 +137,33 @@ const AllCategoriesPage = () => {
         </div>
       )}
 
-      {/* Mobile Hero Banner */}
-      {isMobile && (
-        <div className="px-3 mt-2">
-          <div
-            className="rounded-2xl overflow-hidden relative cursor-pointer bg-primary"
-            onClick={() => navigate("/catalog")}
-          >
-            <img
-              src={catHouses}
-              alt=""
-              className="absolute -bottom-12 -right-16 w-[240px] h-[240px] object-contain pointer-events-none z-10 opacity-90"
-            />
-            <div className="relative z-20 px-4 py-3 flex flex-col">
-              <h2 className="text-[22px] font-bold leading-[1.15] tracking-tight mb-1 max-w-[65%] text-white">
-                Сотни модульных домов на&nbsp;одном сайте
-              </h2>
-              <p className="text-[12px] font-light leading-[1.4] mt-1 mb-2.5 max-w-[55%] text-white/70">
-                Находите проекты от&nbsp;проверенных производителей.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Content */}
       <div className={`${isMobile ? "mt-2" : "mt-[152px]"} flex-1 flex flex-col`}>
         <div className={isMobile ? "" : "w-[calc(100%-64px)] max-w-[1336px] mx-auto"}>
           <div className={`bg-background ${isMobile ? "rounded-t-2xl px-3 py-4 pb-24" : "rounded-2xl px-8 py-8 mb-8"} flex-grow`}>
+            {/* Mobile Hero Banner inside bento */}
+            {isMobile && (
+              <div className="mb-4">
+                <div
+                  className="rounded-2xl overflow-hidden relative cursor-pointer bg-primary"
+                  onClick={() => navigate("/catalog")}
+                >
+                  <img
+                    src={catHouses}
+                    alt=""
+                    className="absolute -bottom-12 -right-16 w-[240px] h-[240px] object-contain pointer-events-none z-10 opacity-90"
+                  />
+                  <div className="relative z-20 px-4 py-3 flex flex-col">
+                    <h2 className="text-[22px] font-bold leading-[1.15] tracking-tight mb-1 max-w-[65%] text-white">
+                      Сотни модульных домов на&nbsp;одном сайте
+                    </h2>
+                    <p className="text-[12px] font-light leading-[1.4] mt-1 mb-2.5 max-w-[55%] text-white/70">
+                      Находите проекты от&nbsp;проверенных производителей.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
             {sections.map((section, sIdx) => (
             <div key={section.title} className={sIdx > 0 ? "mt-6" : ""}>
               <div className="flex items-center gap-2 mb-3">
