@@ -94,8 +94,8 @@ const FeaturedProjects = () => {
                 )}
               </SwipeableGallery>
               {/* Body */}
-              <div className="px-[10px] pt-2 pb-[10px]">
-                <div className="text-[12px] font-bold text-foreground mb-[1px]">{project.price}</div>
+              <div className="px-[10px] pt-1.5 pb-[6px]">
+                <div className="text-[12px] font-bold text-foreground">{project.price}</div>
                 {/* Params */}
                 <div className="flex items-center gap-[5px] mt-[4px] h-4 overflow-hidden">
                   <div className="flex items-center gap-[2px] flex-shrink-0">
