@@ -146,7 +146,7 @@ const MobileMenu = ({ open, onOpenChange }: MobileMenuProps) => {
 
   return (
     <Drawer open={open} onOpenChange={onOpenChange}>
-      <DrawerContent className="max-h-[85vh] mb-[calc(52px+env(safe-area-inset-bottom))] mx-0 rounded-t-[10px] p-0">
+      <DrawerContent className="max-h-[92vh] mb-[calc(52px+env(safe-area-inset-bottom))] mx-0 rounded-t-[10px] p-0 bg-background">
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-border">
           <span className="text-[15px] font-medium text-foreground">Меню</span>
