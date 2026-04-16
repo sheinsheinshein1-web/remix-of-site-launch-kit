@@ -85,13 +85,6 @@ const FeaturedProjects = () => {
                     <span className="text-[11px] font-medium text-white">{project.likes + (isFavorite(project.id) && !project.liked ? 1 : !isFavorite(project.id) && project.liked ? -1 : 0)}</span>
                   </button>
                 </div>
-                {/* Real photos badge */}
-                {project.hasRealPhotos && (
-                  <div className="absolute bottom-2 left-2 z-10 bg-white/90 rounded-[7px] px-2 py-[3px] flex items-center gap-[3px]">
-                    <Camera className="w-[9px] h-[9px] text-green-700" strokeWidth={2.5} />
-                    <span className="text-[10px] font-medium text-green-700">Фото реальных домов</span>
-                  </div>
-                )}
               </SwipeableGallery>
               {/* Body */}
               <div className="px-[10px] pt-1.5 pb-[6px]">
