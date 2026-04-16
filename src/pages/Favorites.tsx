@@ -268,9 +268,8 @@ const Favorites = () => {
                   </div>
                 </div>
               ) : (
-                /* Grid card (compact) */
-                <div key={item.id} onClick={() => navigate(`/project/${item.id}`)} className="cursor-pointer bg-card rounded-[14px] overflow-hidden shadow-sm">
-                  <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[200px]">
+                <div key={item.id} onClick={() => navigate(`/project/${item.id}`)} className="cursor-pointer overflow-hidden">
+                  <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[240px]">
                     <div className="absolute top-2 right-2 z-10">
                       <button
                         onClick={(e) => { e.stopPropagation(); toggleFavorite(item); }}
@@ -281,22 +280,9 @@ const Favorites = () => {
                       </button>
                     </div>
                   </SwipeableGallery>
-                  <div className="px-[10px] pt-2 pb-[10px]">
-                    <div className="text-[14px] font-bold text-foreground mb-[1px]">{item.price}</div>
-                    <div className="text-[12px] text-muted-foreground mb-[6px]">{item.name}</div>
+                  <div className="px-[10px] pt-1 pb-1">
+                    <div className="text-[12px] font-bold text-foreground">от {item.price}</div>
                     <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
-                    <div className="h-px bg-border mb-[6px]" />
-                    <div className="flex items-center gap-2 overflow-hidden will-change-transform" style={{ maskImage: 'linear-gradient(to right, black calc(100% - 10px), transparent)', WebkitMaskImage: 'linear-gradient(to right, black calc(100% - 10px), transparent)' }}>
-                      <div className="flex items-center gap-[3px] flex-shrink-0">
-                        <span className="text-[10px] text-yellow-500">★</span>
-                        <span className="text-[10px] font-semibold text-foreground mr-[2px]">4.8</span>
-                        <span className="text-[10px] text-muted-foreground whitespace-nowrap">{item.maker.split(" · ")[0]}</span>
-                      </div>
-                      <div className="flex items-center gap-[3px] flex-shrink-0">
-                        <Truck className="w-[10px] h-[10px] text-green-700" strokeWidth={2.5} />
-                        <span className="text-[10px] text-green-700 whitespace-nowrap">{item.city}</span>
-                      </div>
-                    </div>
                   </div>
                 </div>
               ))}
