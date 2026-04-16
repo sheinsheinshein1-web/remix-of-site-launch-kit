@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { navigateBackWithTransition } from "@/lib/viewTransition";
 import { ArrowLeft, Heart, Play, ChevronRight, ChevronDown, MoreHorizontal, Phone, MessageSquare, Share2, Bookmark, EyeOff, Flag, X, Ruler, BedDouble, Bath, Layers, Star, MessageCircleQuestion, Image, Send } from "lucide-react";
 import Header from "@/components/Header";
 import MobileTabBar from "@/components/MobileTabBar";
@@ -209,7 +208,7 @@ const ProjectDetail = () => {
     setDragOffset(0);
   }, [dragOffset, activeImage]);
 
-  const navigateBack = useCallback(() => navigateBackWithTransition(navigate, Number(id)), [navigate, id]);
+  const navigateBack = useCallback(() => navigate(-1), [navigate]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 300);

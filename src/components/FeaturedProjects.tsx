@@ -1,14 +1,9 @@
-import { useEffect } from "react";
 import { Heart, Camera, Truck } from "lucide-react";
 import { formatSpecs } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import SwipeableGallery from "@/components/SwipeableGallery";
-import {
-  clearBackTransitionProjectId,
-  getBackTransitionProjectId,
-  navigateWithTransition,
-} from "@/lib/viewTransition";
+import { navigateWithTransition } from "@/lib/viewTransition";
 import house1 from "@/assets/house-1.jpg";
 import house2 from "@/assets/house-2.jpg";
 import house3 from "@/assets/house-3.jpg";
@@ -23,7 +18,6 @@ const houseImages = [house1, house2, house3, house4, house5, house6, house7, hou
 
 function getProjectImages(mainImage: string, id: number): string[] {
   const others = houseImages.filter(img => img !== mainImage);
-  // Deterministic pseudo-shuffle based on id
   const sorted = [...others].sort((a, b) => {
     const ha = a.charCodeAt(a.length - 5) ^ id;
     const hb = b.charCodeAt(b.length - 5) ^ id;
@@ -69,13 +63,6 @@ const projects = [
 const FeaturedProjects = () => {
   const navigate = useNavigate();
   const { isFavorite, toggleFavorite } = useFavorites();
-  const backTransitionProjectId = getBackTransitionProjectId();
-
-  useEffect(() => {
-    if (backTransitionProjectId !== null) {
-      clearBackTransitionProjectId();
-    }
-  }, [backTransitionProjectId]);
 
   return (
     <section>
@@ -84,18 +71,10 @@ const FeaturedProjects = () => {
           {projects.map((project) => (
             <div
               key={project.id}
-              data-project-id={project.id}
               onClick={(e) => navigateWithTransition(e, navigate, `/project/${project.id}`)}
               className="cursor-pointer overflow-hidden"
             >
-              {/* Photo gallery */}
-              <SwipeableGallery
-                images={getProjectImages(project.image, project.id)}
-                alt={project.name}
-                height="h-[260px] md:h-[240px]"
-                transitionName={backTransitionProjectId === project.id ? "project-hero" : undefined}
-              >
-                {/* Likes */}
+              <SwipeableGallery images={getProjectImages(project.image, project.id)} alt={project.name} height="h-[260px] md:h-[240px]">
                 <div className="absolute top-2 right-2 z-10">
                   <button
                     onClick={(e) => { e.stopPropagation(); toggleFavorite({ id: project.id, badge: "", maker: project.maker, name: project.name, price: project.price, area: project.area, beds: project.beds, baths: project.baths, term: project.term, image: project.image, likes: project.likes, city: project.city }); }}
@@ -106,7 +85,6 @@ const FeaturedProjects = () => {
                   </button>
                 </div>
               </SwipeableGallery>
-              {/* Body */}
               <div className="px-[10px] pt-1 pb-1">
                 <div className="text-[12px] font-bold text-foreground">от {project.price}</div>
                 <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">{formatSpecs(project.area, project.beds, project.baths)}</p>
