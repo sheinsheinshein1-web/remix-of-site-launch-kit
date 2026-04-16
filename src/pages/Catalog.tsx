@@ -849,12 +849,6 @@ const Catalog = () => {
                     <div className="absolute top-2.5 right-2.5 z-10">
                       <FavButton active={isFavorite(item.id)} onClick={(e) => { e.stopPropagation(); toggleFav(item); }} count={item.likes + (isFavorite(item.id) && !item.fav ? 1 : !isFavorite(item.id) && item.fav ? -1 : 0)} />
                     </div>
-                    {item.hasRealPhotos && (
-                      <div className="absolute bottom-2 left-2 z-10 bg-white/90 rounded-[7px] px-2 py-[3px] flex items-center gap-[3px]">
-                        <Camera className="w-[9px] h-[9px] text-green-700" strokeWidth={2.5} />
-                        <span className="text-[10px] font-medium text-green-700">Фото реальных домов</span>
-                      </div>
-                    )}
                   </SwipeableGallery>
                   <div className="px-[10px] pt-1 pb-1">
                     <div className="text-[12px] font-bold text-foreground">от {item.price}</div>
@@ -896,12 +890,6 @@ const Catalog = () => {
                         <Truck className="w-[11px] h-[11px] text-green-700" strokeWidth={2.5} />
                         <span className="text-[11px] text-green-700">{item.city}</span>
                       </div>
-                      {item.hasRealPhotos && (
-                        <div className="flex items-center gap-1">
-                          <Camera className="w-[11px] h-[11px] text-green-700" strokeWidth={2.5} />
-                          <span className="text-[11px] text-green-700">Фото реальных домов</span>
-                        </div>
-                      )}
                     </div>
                   </div>
                 </div>
@@ -971,12 +959,6 @@ const Catalog = () => {
                   <div className="absolute top-2 right-2 z-10">
                     <FavButton active={isFavorite(item.id)} onClick={(e) => { e.stopPropagation(); toggleFav(item); }} size="sm" count={item.likes + (isFavorite(item.id) && !item.fav ? 1 : !isFavorite(item.id) && item.fav ? -1 : 0)} />
                   </div>
-                  {item.id % 2 === 1 && (
-                    <div className="absolute bottom-2 left-2 z-10 bg-white/90 rounded-[7px] px-2 py-[3px] flex items-center gap-[3px]">
-                      <Camera className="w-[9px] h-[9px] text-green-700" strokeWidth={2.5} />
-                      <span className="text-[10px] font-medium text-green-700">Фото реальных домов</span>
-                    </div>
-                  )}
                 </SwipeableGallery>
                 {/* Body */}
                 <div className="px-[10px] pt-1 pb-1">
