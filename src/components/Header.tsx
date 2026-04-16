@@ -14,7 +14,6 @@ const Header = () => {
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileScrolled, setMobileScrolled] = useState(false);
-  const [searchFocused, setSearchFocused] = useState(false);
   const [cityOpen, setCityOpen] = useState(false);
   const { city, selectCity } = useCity();
 
