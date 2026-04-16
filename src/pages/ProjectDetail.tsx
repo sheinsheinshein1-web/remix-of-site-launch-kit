@@ -175,7 +175,8 @@ const ProjectDetail = () => {
   const handleToggleFav = () => toggleFavorite(projectFavItem);
   const [showActions, setShowActions] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const [activeTab, setActiveTab] = useState("description");
+  const [descExpanded, setDescExpanded] = useState(false);
+  const [openSection, setOpenSection] = useState<"equipment" | "specs" | null>(null);
   const [scrolled, setScrolled] = useState(false);
 
   // Gallery slider touch
