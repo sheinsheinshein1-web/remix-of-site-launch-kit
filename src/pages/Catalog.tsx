@@ -154,6 +154,12 @@ const Catalog = () => {
   const [activeChip, setActiveChip] = useState("Все");
   const backTransitionProjectId = getBackTransitionProjectId();
 
+  useEffect(() => {
+    if (backTransitionProjectId !== null) {
+      clearBackTransitionProjectId();
+    }
+  }, [backTransitionProjectId]);
+
   const resetAllFilters = () => {
     setFilterPriceMinVal(500000);
     setFilterPriceMaxVal(5000000);
@@ -870,6 +876,7 @@ const Catalog = () => {
                       alt={item.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
+                      style={backTransitionProjectId === item.id ? { viewTransitionName: "project-hero" } : undefined}
                     />
                     <span className="absolute top-2.5 left-2.5 text-[11px] font-normal bg-black/45 text-white rounded-lg px-2 py-0.5">
                       {item.badge}
