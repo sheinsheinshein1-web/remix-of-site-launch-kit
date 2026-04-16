@@ -51,7 +51,7 @@ const Header = () => {
         </div>
 
         {/* Compact white header - visible when scrolled */}
-        <div className={`transition-all duration-300 absolute inset-x-0 top-0 z-20 ${mobileScrolled && !hidden ? 'opacity-100 translate-y-0' : 'opacity-0 pointer-events-none -translate-y-full'}`}>
+        <div className={`transition-all duration-300 absolute inset-x-0 top-0 z-20 ${mobileScrolled && !hidden ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 rounded-b-2xl shadow-sm">
             <SearchDropdown inputClassName="bg-secondary" />
           </div>
