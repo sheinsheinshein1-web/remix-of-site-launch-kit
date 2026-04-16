@@ -902,54 +902,22 @@ const Catalog = () => {
       {/* Mobile content */}
       <div className="md:hidden">
         {viewMode === "list" ? (
-          <div className="py-3 flex flex-col gap-[10px]">
+          <div className="mt-2 py-3 bg-background rounded-2xl px-2">
+            <div className="grid grid-cols-1 gap-y-[6px]">
             {sortedItems.map((item) => (
-              <div key={item.id} className="cursor-pointer bg-card rounded-2xl overflow-hidden" onClick={() => navigate(`/project/${item.id}`)}>
+              <div key={item.id} className="cursor-pointer overflow-hidden" onClick={() => navigate(`/project/${item.id}`)}>
                 <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[260px]">
-                  <div className="absolute top-[10px] right-[10px] z-10">
-                    <FavButton active={isFavorite(item.id)} onClick={(e) => { e.stopPropagation(); toggleFav(item); }} count={item.likes + (isFavorite(item.id) && !item.fav ? 1 : !isFavorite(item.id) && item.fav ? -1 : 0)} />
+                  <div className="absolute top-2 right-2 z-10">
+                    <FavButton active={isFavorite(item.id)} onClick={(e) => { e.stopPropagation(); toggleFav(item); }} size="sm" count={item.likes + (isFavorite(item.id) && !item.fav ? 1 : !isFavorite(item.id) && item.fav ? -1 : 0)} />
                   </div>
                 </SwipeableGallery>
-                {/* Real photos strip */}
-                {item.id % 2 === 1 && (
-                  <div className="bg-green-50 px-[14px] py-[6px] flex items-center gap-1.5">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" stroke="#3B6D11" strokeWidth="2.5"/><circle cx="12" cy="13" r="4" stroke="#3B6D11" strokeWidth="2.5"/></svg>
-                    <span className="text-[12px] font-medium text-green-700">Есть фото реальных построенных домов</span>
-                  </div>
-                )}
-
-                {/* Body */}
-                <div className="px-[14px] pt-3 pb-[14px]">
-                  {/* Top row: price + credit */}
-                  <div className="flex items-start justify-between mb-[2px]">
-                    <div className="text-[18px] font-bold text-foreground tracking-tight">{item.price}</div>
-                    <span className="text-[11px] font-light text-muted-foreground mt-1">рассрочка от <span className="text-primary font-normal">18 500 ₽/мес</span></span>
-                  </div>
-
-                  {/* Name */}
-                  <div className="text-[14px] font-medium text-muted-foreground mb-2">{item.name}</div>
-
+                <div className="px-[10px] pt-1 pb-1">
+                  <div className="text-[12px] font-bold text-foreground">от {item.price}</div>
                   <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
-
-                  {/* Divider */}
-                  <div className="h-px bg-border mb-[10px]" />
-
-                  {/* Bottom: maker + delivery */}
-                  <div className="flex items-center justify-between will-change-transform">
-                    <div className="flex items-center gap-[3px]">
-                      <span className="text-[11px] text-muted-foreground">{item.maker.split(" · ")[0]}</span>
-                      <span className="text-[11px] text-yellow-500">★</span>
-                      <span className="text-[11px] font-semibold text-foreground">4.8</span>
-                      <span className="text-[10px] text-muted-foreground"> · 26</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" className="block flex-shrink-0"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" stroke="#15803d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M15 18h2l4-6h-7" stroke="#15803d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="17" cy="18" r="2" stroke="#15803d" strokeWidth="2.5"/><circle cx="7" cy="18" r="2" stroke="#15803d" strokeWidth="2.5"/></svg>
-                      <span className="text-[11px] font-medium text-green-700">{item.city}</span>
-                    </div>
-                  </div>
                 </div>
               </div>
             ))}
+            </div>
           </div>
         ) : (
           <div className="mt-2 py-3 bg-background rounded-2xl px-2">
