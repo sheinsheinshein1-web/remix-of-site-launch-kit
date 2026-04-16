@@ -50,7 +50,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", children }: Swipe
   return (
     <div
       ref={containerRef}
-      className={`relative ${height} overflow-hidden select-none`}
+      className={`relative ${height} overflow-hidden select-none rounded-[14px]`}
       onTouchStart={isMobile ? onTouchStart : undefined}
       onTouchEnd={isMobile ? onTouchEnd : undefined}
       onMouseMove={!isMobile ? onMouseMove : undefined}
