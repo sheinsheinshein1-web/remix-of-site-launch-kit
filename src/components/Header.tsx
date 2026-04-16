@@ -55,12 +55,6 @@ const Header = () => {
                   <Search className="w-[18px] h-[18px] text-muted-foreground" />
                 </button>
               </div>
-              <button
-                onClick={() => setSearchFocused(true)}
-                className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center"
-              >
-                <Search className="w-[18px] h-[18px] text-muted-foreground" />
-              </button>
             </div>
             {searchFocused && (
               <div className="mt-2.5">
