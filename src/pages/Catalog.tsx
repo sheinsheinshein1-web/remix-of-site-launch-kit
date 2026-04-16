@@ -952,7 +952,8 @@ const Catalog = () => {
             ))}
           </div>
         ) : (
-          <div className="py-3 grid grid-cols-2 gap-x-[2px] gap-y-[6px]">
+          <div className="py-3 bg-background rounded-2xl px-2">
+            <div className="grid grid-cols-2 gap-x-[2px] gap-y-[6px]">
             {sortedItems.map((item) => (
               <div key={item.id} className="cursor-pointer overflow-hidden" onClick={() => navigate(`/project/${item.id}`)}>
                 <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[240px]">
@@ -967,6 +968,7 @@ const Catalog = () => {
                 </div>
               </div>
             ))}
+            </div>
           </div>
         )}
       </div>
