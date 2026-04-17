@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { ArrowLeft, MapPin, Clock, Star, ChevronRight, Play, Send, MessageSquare, Phone, Factory, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, MapPin, Clock, Star, ChevronRight, Play, Send, MessageSquare, Phone, Factory, ShieldCheck, CheckCircle2, Globe } from "lucide-react";
 import MobileTabBar from "@/components/MobileTabBar";
 import Header from "@/components/Header";
 import { useIsMobile } from "@/hooks/use-mobile";
