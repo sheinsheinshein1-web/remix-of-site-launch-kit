@@ -524,12 +524,14 @@ const ProjectDetail = () => {
             )}
 
             {/* CTA в самом низу */}
-            <button
-              onClick={() => navigate(`/messages/company?company=${encodeURIComponent("Sherwood Home")}&project=${encodeURIComponent("Шервуд 72.1")}&projectId=${id}&price=${encodeURIComponent("от 4 950 000 ₽")}&area=${encodeURIComponent("60 м²")}&image=${encodeURIComponent(galleryImages[0].image)}`)}
-              className="w-full h-12 bg-secondary text-foreground rounded-xl text-[15px] font-medium mt-4 border-t-0"
+            <a
+              href="https://sherwood-home.ru"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full h-12 bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold mt-4 flex items-center justify-center hover:opacity-90 transition-opacity"
             >
-              Заказать расчёт
-            </button>
+              Перейти на сайт
+            </a>
           </div>
 
         </div>
