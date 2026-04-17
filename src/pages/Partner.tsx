@@ -82,8 +82,7 @@ const Partner = () => {
                   </div>
                 </div>
                 <div className="w-[220px] shrink-0 flex flex-col gap-3 justify-center">
-                  <button className="w-full h-[50px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"><Phone className="w-5 h-5" /> Позвонить</button>
-                  <button onClick={() => navigate(`/messages/company?company=Sherwood+Home&project=&projectId=`)} className="w-full h-[50px] bg-secondary border border-border rounded-xl text-[15px] font-medium text-foreground flex items-center justify-center gap-2 hover:bg-secondary/80 transition-colors"><MessageSquare className="w-5 h-5" /> Написать</button>
+                  <a href="https://sherwood-home.ru" target="_blank" rel="noopener noreferrer" className="w-full h-[50px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"><Globe className="w-5 h-5" /> Перейти на сайт</a>
                 </div>
               </div>
               <div className="grid grid-cols-4 gap-3 mt-5">
@@ -471,13 +470,10 @@ const Partner = () => {
 
       {/* Bottom Bar — mobile only */}
       <div className="fixed bottom-0 left-0 right-0 z-50">
-        <div className="bg-background border-t border-border p-3 pb-[calc(0.75rem+max(env(safe-area-inset-bottom),20px))] flex gap-2">
-          <button className="flex-1 h-[50px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center gap-2">
-            <Phone className="w-5 h-5" /> Позвонить
-          </button>
-          <button className="w-[50px] h-[50px] bg-secondary border border-border rounded-xl flex items-center justify-center">
-            <MessageSquare className="w-5 h-5 text-foreground" />
-          </button>
+        <div className="bg-background border-t border-border p-3 pb-[calc(0.75rem+max(env(safe-area-inset-bottom),20px))]">
+          <a href="https://sherwood-home.ru" target="_blank" rel="noopener noreferrer" className="w-full h-[50px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center gap-2">
+            <Globe className="w-5 h-5" /> Перейти на сайт
+          </a>
         </div>
       </div>
     </div>
