@@ -151,9 +151,9 @@ const PartnerLanding = () => {
             </div>
 
             <div className="absolute top-8 right-10 bg-background/95 backdrop-blur rounded-xl p-3 shadow-lg z-[2]">
-              <div className="text-[11px] text-muted-foreground mb-0.5">от</div>
-              <div className="text-[26px] font-black text-foreground leading-none tracking-tight">50</div>
-              <div className="text-[11px] font-semibold text-primary leading-tight mt-0.5">заявок<br />в пакете</div>
+              <div className="text-[11px] text-muted-foreground mb-0.5">до</div>
+              <div className="text-[26px] font-black text-foreground leading-none tracking-tight">1200</div>
+              <div className="text-[11px] font-semibold text-primary leading-tight mt-0.5">клиентов<br />в месяц</div>
             </div>
           </div>
         </div>
@@ -204,9 +204,9 @@ const PartnerLanding = () => {
             <div className="absolute top-[-80px] right-[-80px] w-[260px] h-[260px] bg-primary/20 rounded-full pointer-events-none" />
             <div className="max-w-[900px] relative z-[1]">
               <p className="text-[12px] font-bold tracking-wider uppercase text-background/40 mb-4">Как это работает</p>
-              <h2 className="text-[28px] font-extrabold text-background leading-tight mb-2">Целевая аудитория с первого контакта</h2>
+              <h2 className="text-[28px] font-extrabold text-background leading-tight mb-2">Готовая аудитория, прямой контакт</h2>
               <p className="text-[14px] text-background/50 leading-relaxed mb-8">
-                Покупатели уже выбрали технологию — вам не надо объяснять, надо показать.
+                Покупатели уже выбрали технологию — приходят к вам изучить проекты и перейти на сайт.
               </p>
               <div className="grid grid-cols-3 gap-6">
                 {steps.map((s) => (
@@ -255,9 +255,9 @@ const PartnerLanding = () => {
               <div className="flex items-end gap-3 mb-2">
                 <div className="text-[52px] font-black text-background leading-none tracking-tight">99 000 ₽</div>
               </div>
-              <div className="text-[17px] font-bold text-background/60 mb-1">50 заявок + 15 в подарок до 14 мая</div>
+              <div className="text-[17px] font-bold text-background/60 mb-1">До 1 200 клиентов в месяц на ваш профиль</div>
               <p className="text-[13px] text-background/40 leading-relaxed mb-8 max-w-[500px]">
-                1 980 ₽ за заявку от покупателя, который уже выбрал решение и изучил ваш профиль.
+                Прямые переходы на сайт и контакты от покупателей, которые уже выбрали технологию и изучили ваше портфолио.
               </p>
               <div className="grid grid-cols-2 gap-x-8 gap-y-3 mb-8">
                 {priceIncludes.map((item, i) => (
