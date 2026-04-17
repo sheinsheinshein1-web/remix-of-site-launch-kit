@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Users, TrendingUp, Home, LayoutGrid, MessageSquare, Star, BarChart3, MapPin, Check, Building2, Tent, TreePine, Warehouse, Bath, Flame, Fence } from "lucide-react";
+import { Users, TrendingUp, Home, LayoutGrid, MessageSquare, Star, BarChart3, MapPin, Check, Building2, Tent, TreePine, Warehouse, Bath, Flame, Fence, Globe } from "lucide-react";
 import Header from "@/components/Header";
 import PartnerApplicationForm from "@/components/PartnerApplicationForm";
 import Footer from "@/components/Footer";
@@ -9,15 +9,15 @@ import { useEffect, useState } from "react";
 import partnerHeroImg from "@/assets/partner-hero-illustration.png";
 
 const stats = [
+  { val: "1 200+", label: "клиентов в месяц" },
+  { val: "×3", label: "переходов на сайт" },
   { val: "50+", label: "производителей" },
-  { val: "1 980 ₽", label: "за одну заявку" },
-  { val: "50+", label: "заявок в пакете" },
 ];
 
 const painPoints = [
-  { icon: TrendingUp, title: "Клиенты ищут, но не находят вас", desc: "Покупатели сравнивают десятки предложений. Без присутствия на маркетплейсе вы теряете заявки." },
-  { icon: BarChart3, title: "Стоимость заявки растёт", desc: "Рекламные каналы дорожают. Конверсия падает. За те же деньги получаете меньше обращений." },
-  { icon: Users, title: "Нужно объяснять технологию", desc: "Часть покупателей воспринимает «модуль» как временное решение." },
+  { icon: TrendingUp, title: "Клиенты ищут, но не находят вас", desc: "Покупатели сравнивают десятки предложений. Без присутствия на маркетплейсе они уходят к конкурентам." },
+  { icon: BarChart3, title: "Трафик на сайт дорожает", desc: "Рекламные каналы выгорают. Стоимость привлечения клиента растёт каждый квартал." },
+  { icon: Users, title: "Нужно объяснять технологию", desc: "Часть покупателей воспринимает «модуль» как временное решение. Мы делаем эту работу за вас." },
 ];
 
 const steps = [
@@ -47,7 +47,7 @@ const benefits = [
 
 const priceIncludes = [
   "Неограниченное количество проектов",
-  "50 заявок + 15 в подарок до 14 мая",
+  "Прямые переходы клиентов на ваш сайт",
   "Полный профиль производителя",
   "Галерея построенных объектов",
   "Заявки в Telegram / WhatsApp",
@@ -130,10 +130,10 @@ const PartnerLanding = () => {
             <div className="max-w-[1100px] mx-auto flex items-center gap-8 px-10 py-12 relative z-[1]">
               <div className="flex-1 min-w-0">
                 <h1 className="text-[36px] font-extrabold text-primary-foreground leading-[1.12] mb-4">
-                  Покажите ваши проекты тем,<br />кто уже ищет
+                  Приведём клиентов и трафик<br />на ваш сайт
                 </h1>
                 <p className="text-[15px] text-primary-foreground/60 leading-relaxed mb-6 max-w-[440px]">
-                  Дома, бани, глэмпинг, бытовки и другие модульные решения — размещайте на маркетплейсе и получайте целевые заявки
+                  Покупатели изучают ваше портфолио, переходят на сайт и пишут напрямую — без посредников и скрытых комиссий
                 </p>
                 <div className="flex gap-3 mb-6">
                   {stats.map((s) => (
@@ -151,9 +151,9 @@ const PartnerLanding = () => {
             </div>
 
             <div className="absolute top-8 right-10 bg-background/95 backdrop-blur rounded-xl p-3 shadow-lg z-[2]">
-              <div className="text-[11px] text-muted-foreground mb-0.5">от</div>
-              <div className="text-[26px] font-black text-foreground leading-none tracking-tight">50</div>
-              <div className="text-[11px] font-semibold text-primary leading-tight mt-0.5">заявок<br />в пакете</div>
+              <div className="text-[11px] text-muted-foreground mb-0.5">до</div>
+              <div className="text-[26px] font-black text-foreground leading-none tracking-tight">1200</div>
+              <div className="text-[11px] font-semibold text-primary leading-tight mt-0.5">клиентов<br />в месяц</div>
             </div>
           </div>
         </div>
@@ -204,9 +204,9 @@ const PartnerLanding = () => {
             <div className="absolute top-[-80px] right-[-80px] w-[260px] h-[260px] bg-primary/20 rounded-full pointer-events-none" />
             <div className="max-w-[900px] relative z-[1]">
               <p className="text-[12px] font-bold tracking-wider uppercase text-background/40 mb-4">Как это работает</p>
-              <h2 className="text-[28px] font-extrabold text-background leading-tight mb-2">Целевая аудитория с первого контакта</h2>
+              <h2 className="text-[28px] font-extrabold text-background leading-tight mb-2">Готовая аудитория, прямой контакт</h2>
               <p className="text-[14px] text-background/50 leading-relaxed mb-8">
-                Покупатели уже выбрали технологию — вам не надо объяснять, надо показать.
+                Покупатели уже выбрали технологию — приходят к вам изучить проекты и перейти на сайт.
               </p>
               <div className="grid grid-cols-3 gap-6">
                 {steps.map((s) => (
@@ -255,9 +255,9 @@ const PartnerLanding = () => {
               <div className="flex items-end gap-3 mb-2">
                 <div className="text-[52px] font-black text-background leading-none tracking-tight">99 000 ₽</div>
               </div>
-              <div className="text-[17px] font-bold text-background/60 mb-1">50 заявок + 15 в подарок до 14 мая</div>
+              <div className="text-[17px] font-bold text-background/60 mb-1">До 1 200 клиентов в месяц на ваш профиль</div>
               <p className="text-[13px] text-background/40 leading-relaxed mb-8 max-w-[500px]">
-                1 980 ₽ за заявку от покупателя, который уже выбрал решение и изучил ваш профиль.
+                Прямые переходы на сайт и контакты от покупателей, которые уже выбрали технологию и изучили ваше портфолио.
               </p>
               <div className="grid grid-cols-2 gap-x-8 gap-y-3 mb-8">
                 {priceIncludes.map((item, i) => (
@@ -271,7 +271,7 @@ const PartnerLanding = () => {
               </div>
               <CTAButton onClick={handleStartChat} className="w-[320px]" />
               <p className="text-[11px] text-background/30 leading-relaxed mt-4">
-                * Заявка — это обращение покупателя через кнопки «Позвонить», «Написать» или «Узнать цену» на вашем проекте.
+                * Учитываются переходы на ваш сайт и обращения через кнопки «Позвонить», «Написать», «Перейти на сайт» в карточке.
               </p>
             </div>
           </div>
