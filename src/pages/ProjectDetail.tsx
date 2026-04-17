@@ -471,57 +471,7 @@ const ProjectDetail = () => {
               </div>
             )}
 
-            {descExpanded && (
-              <>
-                {/* Аккордеон: Комплектация */}
-                <div className="mt-3 border-t border-border pt-3">
-                  <button
-                    onClick={() => setOpenSection(openSection === "equipment" ? null : "equipment")}
-                    className="w-full flex items-center justify-between"
-                  >
-                    <span className="text-[15px] font-semibold text-foreground">Комплектация</span>
-                    <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform ${openSection === "equipment" ? "rotate-180" : ""}`} />
-                  </button>
-                  {openSection === "equipment" && (
-                    <div className="mt-3">
-                      <div className="bg-primary/5 rounded-xl p-3.5 mb-4">
-                        <div className="text-xs font-medium text-primary mb-1">Базовая комплектация</div>
-                        <div className="text-xl font-bold text-foreground">4 950 000 ₽</div>
-                        <div className="text-[11px] text-muted-foreground mt-1">Фундамент · Стены · Кровля · Окна</div>
-                      </div>
-                      <div className="flex flex-col">
-                        {baseParams.map((p, i) => <ParamRow key={i} item={p} />)}
-                      </div>
-                      <ParamGroup title="Конструктив" params={constructParams} />
-                      <ParamGroup title="Утепление" params={insulationParams} />
-                      <ParamGroup title="Кровля" params={roofParams} />
-                      <ParamGroup title="Отделка" params={finishParams} />
-                      <ParamGroup title="Инженерия" params={engineeringParams} />
-                    </div>
-                  )}
-                </div>
-
-                {/* Аккордеон: Характеристики */}
-                <div className="mt-3 border-t border-border pt-3">
-                  <button
-                    onClick={() => setOpenSection(openSection === "specs" ? null : "specs")}
-                    className="w-full flex items-center justify-between"
-                  >
-                    <span className="text-[15px] font-semibold text-foreground">Характеристики</span>
-                    <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform ${openSection === "specs" ? "rotate-180" : ""}`} />
-                  </button>
-                  {openSection === "specs" && (
-                    <div className="mt-3">
-                      <div className="text-[15px] font-semibold text-foreground mb-2">Технические</div>
-                      <div className="flex flex-col">
-                        {techParams.map((p, i) => <ParamRow key={i} item={p} />)}
-                      </div>
-                      <ParamGroup title="Планировочные" params={planParams} />
-                    </div>
-                  )}
-                </div>
-              </>
-            )}
+            {/* Комплектация и Характеристики временно скрыты */}
 
             {/* CTA в самом низу */}
             <a
