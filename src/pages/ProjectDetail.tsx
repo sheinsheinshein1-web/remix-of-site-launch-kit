@@ -430,12 +430,12 @@ const ProjectDetail = () => {
 
             {/* Maker pill */}
             <div
-              className="mt-3 flex items-center gap-2.5 bg-primary/10 rounded-xl px-2.5 py-2 cursor-pointer"
+              className="mt-3 flex items-center gap-2.5 bg-secondary rounded-xl px-2.5 py-2 cursor-pointer"
               onClick={() => navigate('/partner/1')}
             >
               <div className="w-9 h-9 bg-background rounded-lg flex items-center justify-center text-foreground text-[10px] font-bold flex-shrink-0">SW</div>
               <div className="flex-1 min-w-0">
-                <div className="text-[13px] font-semibold text-primary leading-tight">Sherwood Home</div>
+                <div className="text-[13px] font-semibold text-foreground leading-tight">Sherwood Home</div>
                 <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-0.5">
                   <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
                   <span className="font-semibold text-foreground">5,0</span>
