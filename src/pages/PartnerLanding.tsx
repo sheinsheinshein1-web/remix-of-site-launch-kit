@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Users, TrendingUp, Home, LayoutGrid, MessageSquare, Star, BarChart3, MapPin, Check, Building2, Tent, TreePine, Warehouse, Bath, Flame, Fence } from "lucide-react";
+import { Users, TrendingUp, Home, LayoutGrid, MessageSquare, Star, BarChart3, MapPin, Check, Building2, Tent, TreePine, Warehouse, Bath, Flame, Fence, Globe } from "lucide-react";
 import Header from "@/components/Header";
 import PartnerApplicationForm from "@/components/PartnerApplicationForm";
 import Footer from "@/components/Footer";
@@ -130,10 +130,10 @@ const PartnerLanding = () => {
             <div className="max-w-[1100px] mx-auto flex items-center gap-8 px-10 py-12 relative z-[1]">
               <div className="flex-1 min-w-0">
                 <h1 className="text-[36px] font-extrabold text-primary-foreground leading-[1.12] mb-4">
-                  Покажите ваши проекты тем,<br />кто уже ищет
+                  Приведём клиентов и трафик<br />на ваш сайт
                 </h1>
                 <p className="text-[15px] text-primary-foreground/60 leading-relaxed mb-6 max-w-[440px]">
-                  Дома, бани, глэмпинг, бытовки и другие модульные решения — размещайте на маркетплейсе и получайте целевые заявки
+                  Покупатели изучают ваше портфолио, переходят на сайт и пишут напрямую — без посредников и скрытых комиссий
                 </p>
                 <div className="flex gap-3 mb-6">
                   {stats.map((s) => (
