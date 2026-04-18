@@ -25,6 +25,14 @@ const Header = () => {
     let lastY = window.scrollY;
     let upDistance = 0; // накопленное расстояние скролла вверх
     const UP_THRESHOLD = 80; // пикселей вверх до показа компактного хедера
+    // Первые ~400ms игнорируем «скролл», чтобы восстановление позиции из
+    // sessionStorage (FeaturedProjects делает scrollTo) не считалось «скроллом вверх»
+    let settled = false;
+    const settleTimer = window.setTimeout(() => {
+      settled = true;
+      lastY = window.scrollY;
+    }, 400);
+
     const sync = () => {
       const y = window.scrollY;
       const pastThreshold = y > 60;
@@ -38,24 +46,27 @@ const Header = () => {
     const onScroll = () => {
       const y = window.scrollY;
       const delta = y - lastY;
-      const scrollingDown = delta > 0;
       const pastThreshold = y > 60;
       setScrolled(pastThreshold);
       setMobileScrolled(y > 10);
 
+      // Пока не «устаканились» — только обновляем lastY, не трогаем компактный хедер
+      if (!settled) {
+        lastY = y;
+        return;
+      }
+
+      const scrollingDown = delta > 0;
       if (scrollingDown) {
-        // при скролле вниз сбрасываем накопление и прячем
         upDistance = 0;
         setShowCompactHeader(false);
       } else if (delta < 0) {
-        // копим расстояние вверх
         upDistance += -delta;
         if (pastThreshold && upDistance >= UP_THRESHOLD) {
           setShowCompactHeader(true);
         }
       }
 
-      // если ушли выше порога — точно прячем и сбрасываем
       if (!pastThreshold) {
         upDistance = 0;
         setShowCompactHeader(false);
@@ -66,6 +77,7 @@ const Header = () => {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       cancelAnimationFrame(raf);
+      window.clearTimeout(settleTimer);
       window.removeEventListener("scroll", onScroll);
     };
   }, []);
