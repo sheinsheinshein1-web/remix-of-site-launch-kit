@@ -499,7 +499,7 @@ const ProjectDetail = () => {
         <div className="flex flex-col gap-2 mt-2">
           {/* Другие проекты */}
           <div className="bg-background rounded-2xl p-4">
-            <div className="text-[17px] font-bold text-foreground mb-3">Другие проекты от «Sherwood Home»</div>
+            <div className="text-[17px] font-bold text-foreground mb-3">Другие проекты</div>
             <div className="grid grid-cols-2 gap-x-[2px] gap-y-[6px]">
               {contractorProjects.slice(0, 6).map((p, i) => (
                 <div key={i} className="cursor-pointer overflow-hidden">
