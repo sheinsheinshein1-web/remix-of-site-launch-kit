@@ -67,15 +67,40 @@ const PAGE_SIZE = 8;
 const SCROLL_KEY = "home_feed_scroll";
 const PAGE_PARAM = "page";
 
-// Циклически генерируем «бесконечную» ленту, переиспользуя базовые проекты.
-// id у дубликатов остаётся оригинальным (для перехода на /project/:id),
-// а React-key делается уникальным через индекс.
-function getPagedProjects(page: number) {
+// Mulberry32 — детерминированный PRNG
+function mulberry32(seed: number) {
+  return function () {
+    seed |= 0;
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = seed;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+// Стабильно перемешанный порядок baseProjects под конкретный seed.
+// seed=0 — оригинальный порядок (после первой загрузки).
+function getOrderedProjects(seed: number) {
+  if (seed === 0) return baseProjects;
+  const rng = mulberry32(seed);
+  const arr = [...baseProjects];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// Циклически генерируем «бесконечную» ленту, переиспользуя проекты в порядке seed.
+function getPagedProjects(page: number, seed: number) {
+  const ordered = getOrderedProjects(seed);
   const total = page * PAGE_SIZE;
   const items: { project: typeof baseProjects[number]; key: string }[] = [];
   for (let i = 0; i < total; i++) {
-    const project = baseProjects[i % baseProjects.length];
-    items.push({ project, key: `${project.id}-${i}` });
+    const project = ordered[i % ordered.length];
+    // Включаем seed в key, чтобы React переиспользовал DOM правильно при reshuffle
+    items.push({ project, key: `${seed}-${project.id}-${i}` });
   }
   return items;
 }
