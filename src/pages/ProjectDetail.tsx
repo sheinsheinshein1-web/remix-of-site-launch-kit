@@ -498,8 +498,8 @@ const ProjectDetail = () => {
         {/* ===== ПОСТРОЕННЫЕ + ОТЗЫВЫ + ПРОЕКТЫ — BENTO ===== */}
         <div className="flex flex-col gap-2 mt-2">
           {/* Другие проекты */}
-          <div className="bg-background rounded-2xl py-4">
-            <div className="text-[17px] font-bold text-foreground mb-3 px-4">Другие проекты</div>
+          <div className="bg-background rounded-2xl p-3">
+            <div className="text-[17px] font-bold text-foreground mb-3 px-1">Другие проекты</div>
             <div className="grid grid-cols-2 gap-x-[2px] gap-y-[6px]">
               {contractorProjects.slice(0, 6).map((p, i) => (
                 <div key={i} className="cursor-pointer overflow-hidden">
@@ -513,7 +513,7 @@ const ProjectDetail = () => {
                 </div>
               ))}
             </div>
-            <button className="w-[calc(100%-2rem)] mx-4 mt-3 h-10 bg-muted border border-border rounded-xl text-sm font-medium text-muted-foreground flex items-center justify-center gap-1.5">
+            <button className="w-full mt-3 h-10 bg-muted border border-border rounded-xl text-sm font-medium text-muted-foreground flex items-center justify-center gap-1.5">
               Смотреть все →
             </button>
           </div>
