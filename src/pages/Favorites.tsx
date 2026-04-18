@@ -410,6 +410,9 @@ const Favorites = () => {
                 <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="flex gap-4 cursor-pointer bg-background rounded-2xl overflow-hidden group hover:shadow-sm transition-shadow">
                   <div className="w-[200px] flex-shrink-0 relative overflow-hidden">
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                    <span className="absolute top-2.5 left-2.5 text-[11px] font-normal bg-black/45 text-white rounded-lg px-2 py-0.5">
+                      {item.badge}
+                    </span>
                     <div className="absolute top-2 right-2">
                       <button
                         onClick={(e) => { e.stopPropagation(); toggleFavorite(item); }}
@@ -421,7 +424,7 @@ const Favorites = () => {
                     </div>
                   </div>
                   <div className="flex-1 py-4 pr-5 flex flex-col justify-center gap-1">
-                    <p className="text-xs font-light text-muted-foreground">{item.maker.split(" · ")[0]}</p>
+                    <p className="text-xs font-light text-muted-foreground">{item.maker.split(" · ")[0]} · {item.city}</p>
                     <h3 className="text-[17px] font-medium text-foreground">{item.name}</h3>
                     <p className="text-[12px] font-normal text-foreground/80">{formatSpecs(item.area, item.beds, item.baths)}</p>
                     <p className="text-lg font-medium text-foreground mt-1">{item.price}</p>
