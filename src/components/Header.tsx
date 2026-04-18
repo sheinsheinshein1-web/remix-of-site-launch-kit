@@ -11,13 +11,22 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-  // При первом монтировании всегда стартуем с «непроскролленным» состоянием:
-  // показываем обычный (синий/статичный) хедер. Это критично при возврате
-  // с детальной страницы — иначе компактный поиск моргает сверху.
-  // Реальное состояние подхватится из onScroll, когда пользователь начнёт скроллить.
+  // Синхронно определяем, возвращаемся ли мы на проскролленную главную.
+  // Если да — стартуем со скрытым синим хедером (но БЕЗ компактного поиска),
+  // чтобы он не мелькнул на долю секунды до восстановления скролла.
+  const isReturningScrolled = (() => {
+    if (typeof window === "undefined") return false;
+    if (window.scrollY > 10) return true;
+    const saved = sessionStorage.getItem("home_feed_scroll");
+    if (!saved) return false;
+    const y = parseInt(saved, 10);
+    return Number.isFinite(y) && y > 10;
+  })();
   const [showCompactHeader, setShowCompactHeader] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileScrolled, setMobileScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(isReturningScrolled);
+  const [mobileScrolled, setMobileScrolled] = useState(isReturningScrolled);
+  // Подавляем transition на первые кадры при возврате, чтобы не было мелькания
+  const [enableTransitions, setEnableTransitions] = useState(!isReturningScrolled);
   const [cityOpen, setCityOpen] = useState(false);
   const { city, selectCity } = useCity();
 
@@ -31,7 +40,8 @@ const Header = () => {
     const settleTimer = window.setTimeout(() => {
       settled = true;
       lastY = window.scrollY;
-    }, 400);
+      setEnableTransitions(true);
+    }, 500);
 
     const sync = () => {
       const y = window.scrollY;
@@ -88,10 +98,10 @@ const Header = () => {
       {/* Mobile header */}
       <div className="md:hidden relative">
         {/* Safe-area background — виден всегда при скролле, чтобы под status bar не просвечивал контент */}
-        <div className={`absolute inset-x-0 top-0 z-0 bg-background pt-[env(safe-area-inset-top)] transition-opacity duration-300 ${mobileScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} aria-hidden />
+        <div className={`absolute inset-x-0 top-0 z-0 bg-background pt-[env(safe-area-inset-top)] ${enableTransitions ? 'transition-opacity duration-300' : ''} ${mobileScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} aria-hidden />
 
         {/* Static header - visible when not scrolled */}
-        <div className={`transition-all duration-300 relative z-10 ${mobileScrolled ? 'opacity-0 pointer-events-none scale-95 -translate-y-full' : 'opacity-100 scale-100 translate-y-0'}`}>
+        <div className={`relative z-10 ${enableTransitions ? 'transition-all duration-300' : ''} ${mobileScrolled ? 'opacity-0 pointer-events-none scale-95 -translate-y-full' : 'opacity-100 scale-100 translate-y-0'}`}>
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),6px)] pb-1.5">
             <div className="flex items-center justify-between">
               <Link to="/" className="text-[22px] font-bold text-foreground tracking-tight">
@@ -106,7 +116,7 @@ const Header = () => {
         </div>
 
         {/* Compact white header - visible when scrolled */}
-        <div className={`transition-all duration-300 absolute inset-x-0 top-0 z-20 ${showCompactHeader ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`absolute inset-x-0 top-0 z-20 ${enableTransitions ? 'transition-all duration-300' : ''} ${showCompactHeader ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 rounded-b-2xl shadow-sm">
             <SearchDropdown inputClassName="bg-secondary" />
           </div>
