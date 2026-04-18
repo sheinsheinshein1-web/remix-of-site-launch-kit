@@ -243,7 +243,7 @@ const FeaturedProjects = () => {
                 <SwipeableGallery
                   images={getProjectImages(project.image, project.id)}
                   alt={project.name}
-                  height="aspect-[4/5] h-auto md:h-[240px] md:aspect-auto"
+                  height="aspect-[3/4] h-auto md:h-[240px] md:aspect-auto"
                 >
                   <div className="absolute top-2 right-2 z-10">
                     <button
