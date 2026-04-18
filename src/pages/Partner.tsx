@@ -237,14 +237,11 @@ const Partner = () => {
         </div>
       </div>
 
-      {/* Top safe-area spacer */}
-      <div className="pt-[max(env(safe-area-inset-top),12px)]" />
-
-      {/* Main bento card */}
-      <div className="px-3 pt-3">
-        <div className="bg-background rounded-2xl overflow-hidden">
+      {/* Main bento card — full width, edge-to-edge top */}
+      <div className="bg-background rounded-b-2xl overflow-hidden">
+        <div>
           {/* Header row: back / share */}
-          <div className="flex items-center justify-between px-4 pt-4">
+          <div className="flex items-center justify-between px-4 pt-[max(env(safe-area-inset-top),12px)]">
             <button onClick={() => navigate(-1)} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
               <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
             </button>
