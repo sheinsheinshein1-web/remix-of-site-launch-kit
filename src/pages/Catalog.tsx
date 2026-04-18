@@ -858,20 +858,13 @@ const Catalog = () => {
                       <FavButton active={isFavorite(item.id)} onClick={(e) => { e.stopPropagation(); toggleFav(item); }} count={item.likes + (isFavorite(item.id) && !item.fav ? 1 : !isFavorite(item.id) && item.fav ? -1 : 0)} />
                     </div>
                   </SwipeableGallery>
-                  <div className="px-3 pt-3 pb-3.5">
-                    <p className="text-xs font-light text-muted-foreground">{item.maker} · {item.city}</p>
-                    <h3 className="text-[15px] font-medium text-foreground mt-0.5">{item.name}</h3>
-                    <p className="text-[12px] font-normal text-foreground/80 mt-0.5">{formatSpecs(item.area, item.beds, item.baths)}, {item.purpose}</p>
-                    <p className="text-[15px] font-bold text-foreground mt-1">{item.price}</p>
-                    <div className="flex items-center gap-3 mt-1.5">
-                      <div className="flex items-center gap-1">
-                        <span className="text-[11px] text-yellow-500">★</span>
-                        <span className="text-[11px] font-semibold text-foreground">{item.rating}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Truck className="w-[11px] h-[11px] text-green-700" strokeWidth={2.5} />
-                        <span className="text-[11px] text-green-700">{item.city}</span>
-                      </div>
+                  <div className="px-[10px] pt-1 pb-1">
+                    <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{item.name}</h2>
+                    <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">от {item.price}</div>
+                    <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[3px]">
+                      <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{item.area}</span>
+                      <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{item.beds}</span>
+                      <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{item.baths}</span>
                     </div>
                   </div>
                 </div>
