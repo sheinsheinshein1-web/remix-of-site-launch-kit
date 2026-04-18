@@ -42,10 +42,10 @@ const Partner = () => {
     return (
       <div className="min-h-screen bg-secondary font-sans">
         <Header />
-        <div className="pt-[140px] pb-12">
-          <div className="max-w-[1400px] mx-auto px-3">
+        <div className="pt-[108px] pb-6">
+          <div className="max-w-[1400px] mx-auto bg-background rounded-b-2xl overflow-hidden">
             {/* Main bento card */}
-            <div className="bg-background rounded-2xl overflow-hidden">
+            <div className="bg-background">
               {/* Header row: back / share */}
               <div className="flex items-center justify-between px-6 pt-6">
                 <button onClick={() => navigate(-1)} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center hover:bg-secondary/80 transition-colors">
