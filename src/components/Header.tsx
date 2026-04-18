@@ -11,13 +11,22 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-  // При первом монтировании всегда стартуем с «непроскролленным» состоянием:
-  // показываем обычный (синий/статичный) хедер. Это критично при возврате
-  // с детальной страницы — иначе компактный поиск моргает сверху.
-  // Реальное состояние подхватится из onScroll, когда пользователь начнёт скроллить.
+  // Синхронно определяем, возвращаемся ли мы на проскролленную главную.
+  // Если да — стартуем со скрытым синим хедером (но БЕЗ компактного поиска),
+  // чтобы он не мелькнул на долю секунды до восстановления скролла.
+  const isReturningScrolled = (() => {
+    if (typeof window === "undefined") return false;
+    if (window.scrollY > 10) return true;
+    const saved = sessionStorage.getItem("home_feed_scroll");
+    if (!saved) return false;
+    const y = parseInt(saved, 10);
+    return Number.isFinite(y) && y > 10;
+  })();
   const [showCompactHeader, setShowCompactHeader] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileScrolled, setMobileScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(isReturningScrolled);
+  const [mobileScrolled, setMobileScrolled] = useState(isReturningScrolled);
+  // Подавляем transition на первые кадры при возврате, чтобы не было мелькания
+  const [enableTransitions, setEnableTransitions] = useState(!isReturningScrolled);
   const [cityOpen, setCityOpen] = useState(false);
   const { city, selectCity } = useCity();
 
