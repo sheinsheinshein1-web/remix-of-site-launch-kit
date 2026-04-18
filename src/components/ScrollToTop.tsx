@@ -1,12 +1,19 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLayoutEffect } from "react";
+import { useLocation, useNavigationType } from "react-router-dom";
 
+/**
+ * Сбрасывает скролл наверх при PUSH-навигации.
+ * При POP (нажатие "Назад" в браузере) скролл не трогаем —
+ * страницы со своей логикой восстановления (главная) сами вернут позицию.
+ */
 const ScrollToTop = () => {
   const { pathname } = useLocation();
+  const navigationType = useNavigationType();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (navigationType === "POP") return;
     window.scrollTo({ top: 0, left: 0 });
-  }, [pathname]);
+  }, [pathname, navigationType]);
 
   return null;
 };
