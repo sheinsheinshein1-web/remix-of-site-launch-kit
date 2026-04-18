@@ -14,7 +14,7 @@ const Header = () => {
   // Инициализируем состояния синхронно из текущего scrollY,
   // чтобы при возврате на страницу (с восстановлением скролла) хедер сразу был в нужном состоянии и не мерцал
   const initialY = typeof window !== "undefined" ? window.scrollY : 0;
-  const [showCompactHeader, setShowCompactHeader] = useState(initialY > 60);
+  const [showCompactHeader, setShowCompactHeader] = useState(false);
   const [scrolled, setScrolled] = useState(initialY > 60);
   const [mobileScrolled, setMobileScrolled] = useState(initialY > 10);
   const [cityOpen, setCityOpen] = useState(false);
@@ -22,14 +22,14 @@ const Header = () => {
 
   useEffect(() => {
     let lastY = window.scrollY;
-    // Подстрахуемся: после монтирования ещё раз синхронизируем состояние
-    // (на случай если scroll восстанавливается чуть позже монтирования)
+    // Подстрахуемся: после монтирования синхронизируем «скрытое» состояние
+    // (фон/blur), но НЕ показываем компактный хедер с поиском —
+    // он должен появляться только при явном скролле вверх
     const sync = () => {
       const y = window.scrollY;
       const pastThreshold = y > 60;
       setScrolled(pastThreshold);
       setMobileScrolled(y > 10);
-      setShowCompactHeader(pastThreshold);
       lastY = y;
     };
     sync();
