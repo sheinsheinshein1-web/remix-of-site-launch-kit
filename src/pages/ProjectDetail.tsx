@@ -437,9 +437,8 @@ const ProjectDetail = () => {
               <div className="flex-1 min-w-0">
                 <div className="text-[13px] font-semibold text-foreground leading-tight">Sherwood Home</div>
                 <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-0.5">
-                  <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
-                  <span className="font-semibold text-foreground">5,0</span>
-                  <span>· 13 отзывов · 104 вопроса</span>
+                  <Star className="w-3 h-3 text-muted-foreground" strokeWidth={1.5} />
+                  <span>0,0 · Недостаточно данных</span>
                 </div>
               </div>
               <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
