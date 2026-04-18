@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { formatSpecs } from "@/lib/utils";
 import { useSearchParams } from "react-router-dom";
-import { Search, SlidersHorizontal, ChevronLeft, X, ArrowUpDown, Ruler, BedDouble, Bath, Heart, Star, Camera, Columns2, Redo2, Truck, Maximize } from "lucide-react";
+import { Search, SlidersHorizontal, ChevronLeft, ChevronDown, X, ArrowUpDown, Ruler, BedDouble, Bath, Heart, Star, Camera, Columns2, Redo2, Truck, Maximize } from "lucide-react";
 import SearchDropdown from "@/components/SearchDropdown";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import MobileTabBar from "@/components/MobileTabBar";
@@ -817,13 +817,20 @@ const Catalog = () => {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
               <span className="text-[14px] font-medium text-foreground">{sortedItems.length} проектов</span>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="text-[14px] font-medium text-foreground bg-transparent border-none rounded-xl pl-0 pr-0 py-1.5 outline-none cursor-pointer appearance-none bg-no-repeat bg-right [background-image:url('data:image/svg+xml;utf8,<svg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2212%22%20height=%2212%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%23000%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22><polyline%20points=%226%209%2012%2015%2018%209%22></polyline></svg>')] bg-[length:12px_12px] pr-5"
-              >
-                {sortOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
-              </select>
+              <div className="relative inline-flex items-center gap-1 cursor-pointer">
+                <span className="text-[14px] font-medium text-foreground">
+                  {sortOptions.find(o => o.value === sortBy)?.label ?? "Сортировка"}
+                </span>
+                <ChevronDown className="w-4 h-4 text-foreground" strokeWidth={2} />
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  aria-label="Сортировка"
+                >
+                  {sortOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+                </select>
+              </div>
             </div>
             <div className="flex bg-background rounded-xl p-0.5 gap-0.5">
               <button
