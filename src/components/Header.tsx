@@ -40,7 +40,8 @@ const Header = () => {
     const settleTimer = window.setTimeout(() => {
       settled = true;
       lastY = window.scrollY;
-    }, 400);
+      setEnableTransitions(true);
+    }, 500);
 
     const sync = () => {
       const y = window.scrollY;
