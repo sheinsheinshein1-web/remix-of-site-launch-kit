@@ -352,9 +352,9 @@ const ProjectDetail = () => {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col gap-3">
+          <div className="bg-background rounded-2xl p-3 flex flex-col gap-3">
             {/* Main image with blurred background */}
-            <div className="relative rounded-2xl overflow-hidden bg-muted h-[500px]">
+            <div className="relative rounded-xl overflow-hidden bg-muted h-[500px]">
               {/* Blurred background */}
               <img
                 src={galleryImages[activeImage].image}
@@ -400,7 +400,7 @@ const ProjectDetail = () => {
                 <button
                   key={img.id}
                   onClick={() => setActiveImage(i)}
-                  className={`flex-shrink-0 w-[80px] h-[56px] rounded-xl overflow-hidden border-2 transition-colors ${activeImage === i ? "border-primary" : "border-transparent opacity-70 hover:opacity-100"}`}
+                  className={`flex-shrink-0 w-[80px] h-[56px] rounded-lg overflow-hidden border-2 transition-colors ${activeImage === i ? "border-primary" : "border-transparent opacity-70 hover:opacity-100"}`}
                 >
                   <img src={img.image} alt={`Миниатюра ${i + 1}`} className="w-full h-full object-cover" />
                 </button>
