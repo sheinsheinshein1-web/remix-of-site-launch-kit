@@ -200,7 +200,7 @@ const AllCategoriesPage = () => {
                         height={isMobile ? 100 : 180}
                         className={`absolute object-contain ${isMobile ? "w-[100px] h-[100px]" : "w-[180px] h-[180px]"} ${
                           item.name === "Дома" 
-                            ? (isMobile ? "bottom-[-14px] right-[-16px]" : "bottom-[-20px] right-[-50px]")
+                            ? (isMobile ? "bottom-[-14px] right-[-32px]" : "bottom-[-20px] right-[-50px]")
                             : item.imgClass || (isMobile ? "bottom-[-14px] right-[-16px]" : "bottom-[-24px] right-[-26px]")
                         }`}
                       />
