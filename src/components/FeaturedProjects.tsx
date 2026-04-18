@@ -5,7 +5,7 @@ import { useFavorites } from "@/contexts/FavoritesContext";
 import SwipeableGallery from "@/components/SwipeableGallery";
 import ProjectCardSkeleton from "@/components/ProjectCardSkeleton";
 import { navigateWithTransition } from "@/lib/viewTransition";
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
 import { usePullToRefresh } from "@/hooks/usePullToRefresh";
 import house1 from "@/assets/house-1.jpg";
 import house2 from "@/assets/house-2.jpg";
@@ -168,14 +168,14 @@ const FeaturedProjects = () => {
     window.history.replaceState({}, "", url.toString());
   }, [page]);
 
-  // Восстановление позиции при возврате с детальной
-  useEffect(() => {
+  // Восстановление позиции при возврате с детальной — синхронно перед paint,
+  // чтобы Header сразу инициализировался с правильным scrollY и не моргал
+  useLayoutEffect(() => {
     const saved = sessionStorage.getItem(SCROLL_KEY);
     if (saved) {
       const y = parseInt(saved, 10);
       if (Number.isFinite(y)) {
-        // Ждём отрисовки нужного количества карточек
-        requestAnimationFrame(() => window.scrollTo(0, y));
+        window.scrollTo(0, y);
       }
       sessionStorage.removeItem(SCROLL_KEY);
     }
