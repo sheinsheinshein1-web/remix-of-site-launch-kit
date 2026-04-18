@@ -11,14 +11,30 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showCompactHeader, setShowCompactHeader] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileScrolled, setMobileScrolled] = useState(false);
+  // Инициализируем состояния синхронно из текущего scrollY,
+  // чтобы при возврате на страницу (с восстановлением скролла) хедер сразу был в нужном состоянии и не мерцал
+  const initialY = typeof window !== "undefined" ? window.scrollY : 0;
+  const [showCompactHeader, setShowCompactHeader] = useState(initialY > 60);
+  const [scrolled, setScrolled] = useState(initialY > 60);
+  const [mobileScrolled, setMobileScrolled] = useState(initialY > 10);
   const [cityOpen, setCityOpen] = useState(false);
   const { city, selectCity } = useCity();
 
   useEffect(() => {
     let lastY = window.scrollY;
+    // Подстрахуемся: после монтирования ещё раз синхронизируем состояние
+    // (на случай если scroll восстанавливается чуть позже монтирования)
+    const sync = () => {
+      const y = window.scrollY;
+      const pastThreshold = y > 60;
+      setScrolled(pastThreshold);
+      setMobileScrolled(y > 10);
+      setShowCompactHeader(pastThreshold);
+      lastY = y;
+    };
+    sync();
+    const raf = requestAnimationFrame(sync);
+
     const onScroll = () => {
       const y = window.scrollY;
       const scrollingDown = y > lastY;
@@ -30,7 +46,10 @@ const Header = () => {
       lastY = y;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (
