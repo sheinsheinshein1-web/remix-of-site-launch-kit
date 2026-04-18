@@ -182,6 +182,8 @@ const ProjectDetail = () => {
   const [descExpanded, setDescExpanded] = useState(false);
   const [openSection, setOpenSection] = useState<"equipment" | "specs" | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const { city, selectCity } = useCity();
+  const [cityOpen, setCityOpen] = useState(false);
 
   // Gallery slider touch
   const sliderRef = useRef<HTMLDivElement>(null);
