@@ -324,16 +324,18 @@ const Partner = () => {
 
       <div className="h-28" />
 
-      {/* Bottom Bar — verification CTA */}
+      {/* Bottom Bar — go to site CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-50">
         <div className="bg-background border-t border-border p-3 pb-[calc(0.75rem+max(env(safe-area-inset-bottom),20px))]">
-          <button
-            onClick={() => navigate("/partner-landing")}
+          <a
+            href="https://sherwood-home.ru"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full h-[50px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center gap-2"
           >
-            <ShieldCheck className="w-[18px] h-[18px]" strokeWidth={2} />
-            Пройти верификацию
-          </button>
+            <Globe className="w-[18px] h-[18px]" strokeWidth={2} />
+            Перейти на сайт
+          </a>
         </div>
       </div>
     </div>
