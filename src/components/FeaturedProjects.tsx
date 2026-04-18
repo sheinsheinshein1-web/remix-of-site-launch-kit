@@ -232,7 +232,7 @@ const FeaturedProjects = () => {
           transform: pull > 0 && !refreshing ? `translateY(0)` : undefined,
         }}
       >
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-[2px] gap-y-[6px] md:gap-4 md:mt-0">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-[2px] gap-y-[6px] md:gap-4 md:mt-0">
           {items.map(({ project, key }) => (
             <article key={key} className="overflow-hidden">
               <a
