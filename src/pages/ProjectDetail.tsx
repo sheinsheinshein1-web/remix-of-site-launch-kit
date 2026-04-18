@@ -324,7 +324,7 @@ const ProjectDetail = () => {
         <div>
         {/* ===== GALLERY ===== */}
         {isMobile ? (
-          <div className="relative overflow-hidden touch-pan-y rounded-b-2xl">
+          <div className="relative overflow-hidden touch-pan-y">
             <div
               ref={sliderRef}
               className="flex transition-transform duration-300 ease-out"
