@@ -300,15 +300,6 @@ const Partner = () => {
             </p>
           </div>
 
-          {/* Catalog link */}
-          <div className="border-t border-border">
-            <button
-              onClick={() => navigate("/catalog?category=houses")}
-              className="w-full py-4 text-[14px] font-medium text-primary inline-flex items-center justify-center gap-1.5"
-            >
-              Смотреть модульные дома в каталоге <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
         </div>
       </div>
 
