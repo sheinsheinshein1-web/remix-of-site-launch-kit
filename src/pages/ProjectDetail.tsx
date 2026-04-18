@@ -520,13 +520,6 @@ const ProjectDetail = () => {
             </button>
           </div>
 
-          {/* Похожие */}
-          <div className="bg-background rounded-2xl px-3 py-3">
-            <div className="text-[17px] font-bold text-foreground mb-3">Похожие проекты от других подрядчиков</div>
-            <div className="flex gap-2.5 overflow-x-auto scrollbar-hide pb-1">
-              {similarProjects.map((p, i) => <ProjectCard key={i} project={p} />)}
-            </div>
-          </div>
         </div>
 
         <div className="h-[100px]" />
