@@ -168,14 +168,14 @@ const FeaturedProjects = () => {
     window.history.replaceState({}, "", url.toString());
   }, [page]);
 
-  // Восстановление позиции при возврате с детальной
-  useEffect(() => {
+  // Восстановление позиции при возврате с детальной — синхронно перед paint,
+  // чтобы Header сразу инициализировался с правильным scrollY и не моргал
+  useLayoutEffect(() => {
     const saved = sessionStorage.getItem(SCROLL_KEY);
     if (saved) {
       const y = parseInt(saved, 10);
       if (Number.isFinite(y)) {
-        // Ждём отрисовки нужного количества карточек
-        requestAnimationFrame(() => window.scrollTo(0, y));
+        window.scrollTo(0, y);
       }
       sessionStorage.removeItem(SCROLL_KEY);
     }
