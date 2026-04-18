@@ -213,10 +213,10 @@ const Partner = () => {
     );
   }
 
-  /* ─── Mobile (unchanged) ─── */
+  /* ─── Mobile ─── */
   return (
     <div className="min-h-screen bg-secondary">
-      {/* Sticky bento header on scroll */}
+      {/* Sticky compact header on scroll */}
       <div className={`fixed top-0 left-0 right-0 z-50 transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 rounded-b-2xl shadow-sm">
           <div className="flex items-center justify-between">
@@ -225,99 +225,89 @@ const Partner = () => {
             </button>
             <div className="flex-1 min-w-0 ml-3">
               <div className="text-[14px] font-semibold text-foreground truncate">Sherwood Home</div>
-              <div className="flex items-center gap-1 text-[12px] text-muted-foreground">
-                <ShieldCheck className="w-3 h-3" strokeWidth={2} />
-                <span>Не верифицирован</span>
-              </div>
+              <div className="text-[12px] text-muted-foreground truncate">Модульные дома · Москва и МО</div>
             </div>
             <button
               className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center"
               onClick={() => { if (navigator.share) { navigator.share({ title: 'Партнёр', url: window.location.href }); } else { navigator.clipboard.writeText(window.location.href); } }}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 100 103" fill="hsl(var(--foreground) / 0.8)" stroke="hsl(var(--foreground) / 0.8)" strokeWidth="4" strokeLinejoin="round" strokeLinecap="round">
-                <path d="M53 20 L84 50 L53 80 L53 65 C30 65 15 75 10 93 C10 68 15 38 53 33 Z" />
-              </svg>
+              <img src={shareIcon} alt="" className="w-[18px] h-[18px]" />
             </button>
           </div>
         </div>
       </div>
 
-      {/* Floating Header */}
-      <div className={`fixed top-0 left-0 right-0 z-40 px-3 pt-3 pb-2 flex justify-between items-center transition-opacity duration-300 ${scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-        <button onClick={() => navigate(-1)} className="w-9 h-9 rounded-xl bg-background flex items-center justify-center shadow-sm">
-          <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
-        </button>
-        <button
-          className="w-9 h-9 rounded-xl bg-background flex items-center justify-center shadow-sm"
-          onClick={() => { if (navigator.share) { navigator.share({ title: 'Партнёр', url: window.location.href }); } else { navigator.clipboard.writeText(window.location.href); } }}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 100 103" fill="hsl(var(--foreground) / 0.8)" stroke="hsl(var(--foreground) / 0.8)" strokeWidth="4" strokeLinejoin="round" strokeLinecap="round">
-            <path d="M53 20 L84 50 L53 80 L53 65 C30 65 15 75 10 93 C10 68 15 38 53 33 Z" />
-          </svg>
-        </button>
-      </div>
+      {/* Top safe-area spacer */}
+      <div className="pt-[max(env(safe-area-inset-top),12px)]" />
 
-      {/* Header Banner */}
-      <div className="w-full h-[200px] bg-gradient-to-br from-[#2a3528] to-[#111]" />
+      {/* Main bento card */}
+      <div className="px-3 pt-3">
+        <div className="bg-background rounded-2xl overflow-hidden">
+          {/* Header row: back / share */}
+          <div className="flex items-center justify-between px-4 pt-4">
+            <button onClick={() => navigate(-1)} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
+              <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
+            </button>
+            <button
+              className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center"
+              onClick={() => { if (navigator.share) { navigator.share({ title: 'Партнёр', url: window.location.href }); } else { navigator.clipboard.writeText(window.location.href); } }}
+            >
+              <img src={shareIcon} alt="" className="w-[18px] h-[18px]" />
+            </button>
+          </div>
 
-      {/* Main Info Card — empty state */}
-      <div className="bg-background rounded-t-2xl -mt-4 relative z-10">
-        <div className="p-4">
-          <div className="flex gap-3 mb-4">
-            <div className="w-[72px] h-[72px] rounded-2xl bg-secondary text-foreground/40 flex items-center justify-center text-lg font-bold shrink-0">SW</div>
-            <div className="flex-1 min-w-0">
-              <h1 className="text-[17px] font-bold text-foreground leading-tight mb-1">Sherwood Home</h1>
-              <p className="text-xs text-muted-foreground mb-2">Карточка компании ещё не заполнена</p>
-              <div className="inline-flex items-center gap-1.5 text-[11px] font-medium bg-secondary text-muted-foreground rounded-full px-2.5 py-1">
-                <ShieldCheck className="w-3 h-3" />
-                <span>Не верифицирован</span>
+          {/* "Your company?" banner */}
+          <div className="px-4 mt-4">
+            <div className="bg-secondary rounded-xl px-3.5 py-3 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <ShieldCheck className="w-[18px] h-[18px] text-muted-foreground shrink-0" strokeWidth={1.8} />
+                <span className="text-[13px] text-foreground/80 truncate">Это ваша компания?</span>
               </div>
+              <button className="text-[13px] font-medium text-primary inline-flex items-center gap-1 shrink-0">
+                Подтвердить <ChevronRight className="w-3.5 h-3.5" />
+              </button>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Empty state hero */}
-      <div className="bg-background rounded-2xl mt-2 px-4 py-8">
-        <div className="flex flex-col items-center text-center">
-          <div className="w-20 h-20 rounded-3xl bg-secondary flex items-center justify-center mb-4">
-            <ShieldCheck className="w-10 h-10 text-foreground/30" strokeWidth={1.5} />
+          {/* Profile */}
+          <div className="px-4 pt-4 pb-5 flex items-center gap-3">
+            <div className="w-[68px] h-[68px] rounded-2xl bg-secondary text-foreground/30 flex items-center justify-center text-base font-bold shrink-0">SW</div>
+            <div className="flex-1 min-w-0">
+              <h1 className="text-[19px] font-bold text-foreground leading-tight mb-0.5 truncate">Sherwood Home</h1>
+              <p className="text-[13px] text-muted-foreground truncate">Модульные дома · Москва и МО</p>
+            </div>
           </div>
-          <h2 className="text-[18px] font-bold text-foreground mb-1.5">Недостаточно данных</h2>
-          <p className="text-[13px] text-muted-foreground leading-snug max-w-[280px] mb-6">
-            Компания пока не прошла верификацию. После проверки здесь появятся проекты, отзывы, контакты и реквизиты.
-          </p>
 
-          <div className="w-full bg-secondary rounded-2xl p-4 mb-2">
-            <p className="text-[13px] font-semibold text-foreground mb-3 text-left">После верификации появится:</p>
-            <ul className="flex flex-col gap-2.5 text-left">
-              {[
-                "Проекты домов и галерея работ",
-                "Реквизиты, ИНН и адрес офиса",
-                "Отзывы клиентов и рейтинг",
-                "Контакты и приём заявок",
-              ].map((item, i) => (
-                <li key={i} className="flex items-start gap-2 text-[13px] text-foreground/80">
-                  <CheckCircle2 className="w-4 h-4 text-primary mt-px shrink-0" strokeWidth={2} />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+          {/* Stats row */}
+          <div className="border-t border-border grid grid-cols-3">
+            {[
+              { val: "12", label: "Проекты" },
+              { val: "—", label: "Отзывы" },
+              { val: "—", label: "Рейтинг" },
+            ].map((s, i) => (
+              <div key={i} className={`py-4 text-center ${i > 0 ? 'border-l border-border' : ''}`}>
+                <div className="text-[20px] font-bold text-foreground leading-none mb-1.5">{s.val}</div>
+                <div className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground">{s.label}</div>
+              </div>
+            ))}
           </div>
-        </div>
-      </div>
 
-      {/* Owner CTA */}
-      <div className="bg-background rounded-2xl mt-2 p-4">
-        <div className="flex items-start gap-3">
-          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-            <Factory className="w-5 h-5 text-primary" strokeWidth={2} />
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-[14px] font-semibold text-foreground mb-0.5">Это ваша компания?</p>
-            <p className="text-[12px] text-muted-foreground leading-snug">
-              Подтвердите владение, заполните профиль и добавьте проекты — карточка станет публичной.
+          {/* About */}
+          <div className="border-t border-border px-4 py-4">
+            <p className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground mb-2">О компании</p>
+            <p className="text-[14px] text-foreground/85 leading-relaxed">
+              Производитель модульных домов из Московской области. Специализируется на одно- и двухэтажных домах для круглогодичного проживания.
             </p>
+          </div>
+
+          {/* Catalog link */}
+          <div className="border-t border-border">
+            <button
+              onClick={() => navigate("/catalog?category=houses")}
+              className="w-full py-4 text-[14px] font-medium text-primary inline-flex items-center justify-center gap-1.5"
+            >
+              Смотреть модульные дома в каталоге <ChevronRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
       </div>
