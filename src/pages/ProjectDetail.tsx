@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import MobileTabBar from "@/components/MobileTabBar";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useFavorites } from "@/contexts/FavoritesContext";
+import CitySelector, { useCity } from "@/components/CitySelector";
 import house1 from "@/assets/house-1.jpg";
 import house2 from "@/assets/house-2.jpg";
 import house3 from "@/assets/house-3.jpg";
@@ -181,6 +182,8 @@ const ProjectDetail = () => {
   const [descExpanded, setDescExpanded] = useState(false);
   const [openSection, setOpenSection] = useState<"equipment" | "specs" | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const { city, selectCity } = useCity();
+  const [cityOpen, setCityOpen] = useState(false);
 
   // Gallery slider touch
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -427,8 +430,8 @@ const ProjectDetail = () => {
             {/* Локация доставки */}
             <div className="mt-1.5 flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0" strokeWidth={2} />
-              <span className="flex-1 text-[12px] text-muted-foreground truncate">Москва и область</span>
-              <button className="text-[12px] text-primary hover:underline">
+              <span className="flex-1 text-[12px] text-muted-foreground truncate">{city}</span>
+              <button onClick={() => setCityOpen(true)} className="text-[12px] text-primary hover:underline">
                 изменить
               </button>
             </div>
@@ -520,6 +523,7 @@ const ProjectDetail = () => {
       </main>
 
       <MobileTabBar />
+      <CitySelector open={cityOpen} onOpenChange={setCityOpen} city={city} onSelect={selectCity} />
     </div>
   );
 };
