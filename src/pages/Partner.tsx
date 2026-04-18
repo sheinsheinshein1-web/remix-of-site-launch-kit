@@ -316,7 +316,7 @@ const Partner = () => {
           <div className="flex-1 min-w-0">
             <p className="text-[14px] font-semibold text-foreground mb-0.5">Это ваша компания?</p>
             <p className="text-[12px] text-muted-foreground leading-snug">
-              Подтвердите владение и заполните карточку — заявки от клиентов начнут поступать сразу.
+              Подтвердите владение, заполните профиль и добавьте проекты — карточка станет публичной.
             </p>
           </div>
         </div>
