@@ -3,6 +3,7 @@ import { formatSpecs } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import SwipeableGallery from "@/components/SwipeableGallery";
+import ProjectCardSkeleton from "@/components/ProjectCardSkeleton";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import { useEffect, useRef, useState, useCallback } from "react";
 import house1 from "@/assets/house-1.jpg";
@@ -90,8 +91,10 @@ const FeaturedProjects = () => {
   })();
 
   const [page, setPage] = useState(initialPage);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
   const items = getPagedProjects(page);
+  const MAX_PAGE = 50;
 
   // Подгрузка при появлении сентинела
   useEffect(() => {
@@ -100,7 +103,11 @@ const FeaturedProjects = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          setPage((p) => Math.min(p + 1, 50));
+          setPage((p) => {
+            if (p >= MAX_PAGE) return p;
+            setIsLoadingMore(true);
+            return p + 1;
+          });
         }
       },
       { rootMargin: "600px 0px" }
@@ -108,6 +115,11 @@ const FeaturedProjects = () => {
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
+  // Снимаем флаг загрузки после отрисовки новых карточек
+  useEffect(() => {
+    if (isLoadingMore) setIsLoadingMore(false);
+  }, [page]);
 
   // Синхронизация ?page= с URL
   useEffect(() => {
@@ -220,6 +232,10 @@ const FeaturedProjects = () => {
               </a>
             </article>
           ))}
+          {isLoadingMore &&
+            Array.from({ length: 8 }).map((_, i) => (
+              <ProjectCardSkeleton key={`skeleton-${i}`} height="h-[260px] md:h-[240px]" />
+            ))}
         </div>
         {/* Сентинел для IntersectionObserver — невидимый */}
         <div ref={sentinelRef} aria-hidden="true" className="h-1 w-full" />
