@@ -3,6 +3,7 @@ import { formatSpecs } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import SwipeableGallery from "@/components/SwipeableGallery";
+import ProjectCardSkeleton from "@/components/ProjectCardSkeleton";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import { useEffect, useRef, useState, useCallback } from "react";
 import house1 from "@/assets/house-1.jpg";
