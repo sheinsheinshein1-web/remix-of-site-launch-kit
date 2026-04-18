@@ -817,8 +817,8 @@ const Catalog = () => {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
               <span className="text-[14px] font-medium text-foreground">{sortedItems.length} проектов</span>
-              <div className="relative inline-flex items-center gap-1 cursor-pointer">
-                <span className="text-[14px] font-medium text-foreground">
+              <div className="relative inline-flex items-center gap-1 cursor-pointer bg-secondary rounded-xl px-3 py-1.5">
+                <span className="text-[13px] font-medium text-foreground">
                   {sortOptions.find(o => o.value === sortBy)?.label ?? "Сортировка"}
                 </span>
                 <ChevronDown className="w-4 h-4 text-foreground" strokeWidth={2} />
