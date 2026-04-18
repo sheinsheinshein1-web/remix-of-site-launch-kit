@@ -523,6 +523,7 @@ const ProjectDetail = () => {
       </main>
 
       <MobileTabBar />
+      <CitySelector open={cityOpen} onOpenChange={setCityOpen} city={city} onSelect={selectCity} />
     </div>
   );
 };
