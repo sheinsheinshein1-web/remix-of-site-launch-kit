@@ -26,9 +26,6 @@ const Index = () => {
         <div className="hidden md:block px-3 md:px-8 md:pt-[92px]">
           <HeroSection />
         </div>
-        <div className="md:hidden px-3 pt-3">
-          <CategoriesSection />
-        </div>
         <div className="md:hidden pt-[50px]" />
         <div className="px-2 md:px-8 pt-2 md:pt-3 pb-2">
           <FeaturedProjects />
