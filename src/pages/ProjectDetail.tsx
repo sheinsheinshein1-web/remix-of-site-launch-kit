@@ -419,7 +419,7 @@ const ProjectDetail = () => {
               </div>
             </div>
             <div className="text-[12px] text-muted-foreground">
-              60 м² · 2 спальни · санузел · одноэтажный
+              60 м² · 2 спальни · санузел · 1 этаж
             </div>
 
             {/* Локация доставки */}
