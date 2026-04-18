@@ -91,8 +91,10 @@ const FeaturedProjects = () => {
   })();
 
   const [page, setPage] = useState(initialPage);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
   const items = getPagedProjects(page);
+  const MAX_PAGE = 50;
 
   // Подгрузка при появлении сентинела
   useEffect(() => {
@@ -101,7 +103,11 @@ const FeaturedProjects = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          setPage((p) => Math.min(p + 1, 50));
+          setPage((p) => {
+            if (p >= MAX_PAGE) return p;
+            setIsLoadingMore(true);
+            return p + 1;
+          });
         }
       },
       { rootMargin: "600px 0px" }
@@ -109,6 +115,11 @@ const FeaturedProjects = () => {
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
+  // Снимаем флаг загрузки после отрисовки новых карточек
+  useEffect(() => {
+    if (isLoadingMore) setIsLoadingMore(false);
+  }, [page]);
 
   // Синхронизация ?page= с URL
   useEffect(() => {
