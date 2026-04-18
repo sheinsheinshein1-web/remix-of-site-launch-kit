@@ -41,6 +41,8 @@ const OtherProjectsFeed = ({ currentId }: Props) => {
   const pool = baseOtherProjects.filter((p) => String(p.id) !== currentId);
 
   const [page, setPage] = useState(1);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const MAX_PAGE = 30;
   const total = page * PAGE_SIZE;
   const items = Array.from({ length: total }, (_, i) => {
     const project = pool[i % pool.length];
@@ -54,7 +56,11 @@ const OtherProjectsFeed = ({ currentId }: Props) => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          setPage((p) => Math.min(p + 1, 30));
+          setPage((p) => {
+            if (p >= MAX_PAGE) return p;
+            setIsLoadingMore(true);
+            return p + 1;
+          });
         }
       },
       { rootMargin: "600px 0px" }
@@ -62,6 +68,11 @@ const OtherProjectsFeed = ({ currentId }: Props) => {
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
+  // Снимаем флаг после отрисовки
+  useEffect(() => {
+    if (isLoadingMore) setIsLoadingMore(false);
+  }, [page]);
 
   // Восстановление позиции при возврате
   const scrollKey = `${SCROLL_KEY_PREFIX}${currentId ?? "x"}`;
