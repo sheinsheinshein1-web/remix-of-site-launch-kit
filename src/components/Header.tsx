@@ -98,7 +98,7 @@ const Header = () => {
       {/* Mobile header */}
       <div className="md:hidden relative">
         {/* Safe-area background — виден всегда при скролле, чтобы под status bar не просвечивал контент */}
-        <div className={`absolute inset-x-0 top-0 z-0 bg-background pt-[env(safe-area-inset-top)] ${enableTransitions ? 'transition-opacity duration-300' : ''} ${mobileScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} aria-hidden />
+        <div className={`absolute inset-x-0 top-0 z-0 bg-background h-[max(env(safe-area-inset-top),12px)] ${enableTransitions ? 'transition-opacity duration-300' : ''} ${mobileScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} aria-hidden />
 
         {/* Static header - visible when not scrolled */}
         <div className={`relative z-10 ${enableTransitions ? 'transition-all duration-300' : ''} ${mobileScrolled ? 'opacity-0 pointer-events-none scale-95 -translate-y-full' : 'opacity-100 scale-100 translate-y-0'}`}>
