@@ -816,11 +816,11 @@ const Catalog = () => {
           {/* Sort row */}
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <span className="text-[13px] font-light text-muted-foreground">{sortedItems.length} проектов</span>
+              <span className="text-[14px] font-medium text-foreground">{sortedItems.length} проектов</span>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="text-[13px] font-light text-muted-foreground bg-background border-none rounded-xl px-3 py-1.5 outline-none"
+                className="text-[14px] font-medium text-foreground bg-background border-none rounded-xl px-3 py-1.5 outline-none"
               >
                 {sortOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
               </select>
