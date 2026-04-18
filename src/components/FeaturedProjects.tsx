@@ -118,9 +118,22 @@ const FeaturedProjects = () => {
 
   const [page, setPage] = useState(initialPage);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [seed, setSeed] = useState(0);
   const sentinelRef = useRef<HTMLDivElement>(null);
-  const items = getPagedProjects(page);
+  const items = getPagedProjects(page, seed);
   const MAX_PAGE = 50;
+
+  // Pull-to-refresh: перемешиваем порядок и сбрасываем на первую страницу
+  const handleRefresh = useCallback(async () => {
+    const newSeed = Date.now() & 0xffffffff;
+    setSeed(newSeed);
+    setPage(1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    // Небольшая задержка чтобы индикатор успел показаться (UX)
+    await new Promise((r) => setTimeout(r, 400));
+  }, []);
+
+  const { pull, refreshing } = usePullToRefresh({ onRefresh: handleRefresh });
 
   // Подгрузка при появлении сентинела
   useEffect(() => {
