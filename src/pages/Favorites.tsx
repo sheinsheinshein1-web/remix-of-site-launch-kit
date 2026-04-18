@@ -380,7 +380,7 @@ const Favorites = () => {
           ) : viewMode === "grid" ? (
             <div className="grid grid-cols-3 gap-4">
               {favoriteItems.map((item) => (
-                <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer bg-background rounded-2xl overflow-hidden shadow-sm">
+                <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer group bg-background rounded-2xl overflow-hidden">
                   <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[260px]">
                     <div className="absolute top-2.5 right-2.5 z-10">
                       <button
@@ -392,21 +392,13 @@ const Favorites = () => {
                       </button>
                     </div>
                   </SwipeableGallery>
-                  <div className="px-[10px] pt-2 pb-[10px]">
-                    <div className="text-[14px] font-bold text-foreground mb-[1px]">{item.price}</div>
-                    <div className="text-[12px] text-muted-foreground mb-[6px]">{item.name}</div>
-                    <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
-                    <div className="h-px bg-border mb-[6px]" />
-                    <div className="flex items-center gap-2 overflow-hidden will-change-transform" style={{ maskImage: 'linear-gradient(to right, black calc(100% - 10px), transparent)', WebkitMaskImage: 'linear-gradient(to right, black calc(100% - 10px), transparent)' }}>
-                      <div className="flex items-center gap-[3px] flex-shrink-0">
-                        <span className="text-[10px] text-yellow-500">★</span>
-                        <span className="text-[10px] font-semibold text-foreground mr-[2px]">4.8</span>
-                        <span className="text-[10px] text-muted-foreground whitespace-nowrap">{item.maker.split(" · ")[0]}</span>
-                      </div>
-                      <div className="flex items-center gap-[3px] flex-shrink-0">
-                        <Truck className="w-[10px] h-[10px] text-green-700" strokeWidth={2.5} />
-                        <span className="text-[10px] text-green-700 whitespace-nowrap">{item.city}</span>
-                      </div>
+                  <div className="px-[10px] pt-1 pb-1">
+                    <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{item.name}</h2>
+                    <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">от {item.price}</div>
+                    <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[3px]">
+                      <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{item.area}</span>
+                      <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{item.beds}</span>
+                      <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{item.baths}</span>
                     </div>
                   </div>
                 </div>
