@@ -209,7 +209,29 @@ const FeaturedProjects = () => {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJson) }}
       />
-      <div className="md:py-5">
+      {/* Pull-to-refresh индикатор */}
+      <div
+        aria-hidden={!refreshing && pull === 0}
+        className="flex justify-center items-center overflow-hidden md:hidden"
+        style={{
+          height: `${pull}px`,
+          transition: refreshing || pull === 0 ? "height 0.25s ease-out" : "none",
+        }}
+      >
+        <Loader2
+          className={`w-5 h-5 text-primary ${refreshing ? "animate-spin" : ""}`}
+          style={{
+            opacity: Math.min(1, pull / 50),
+            transform: `rotate(${refreshing ? 0 : pull * 4}deg)`,
+          }}
+        />
+      </div>
+      <div
+        className="md:py-5"
+        style={{
+          transform: pull > 0 && !refreshing ? `translateY(0)` : undefined,
+        }}
+      >
         <div className="grid grid-cols-2 md:grid-cols-3 gap-x-[2px] gap-y-[6px] md:gap-4 md:mt-0">
           {items.map(({ project, key }) => (
             <article key={key} className="overflow-hidden">
