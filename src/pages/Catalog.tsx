@@ -871,39 +871,28 @@ const Catalog = () => {
               ))}
             </div>
           ) : (
-            /* Desktop List view */
-            <div className="flex flex-col gap-3.5">
+            /* Desktop List view — same minimal format as grid */
+            <div className="grid grid-cols-2 gap-4">
               {sortedItems.map((item) => (
-                <div key={item.id} data-project-id={item.id} className="flex gap-4 cursor-pointer bg-background rounded-2xl overflow-hidden group hover:shadow-sm transition-shadow" onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)}>
-                  <div className="w-[200px] flex-shrink-0 relative overflow-hidden">
+                <div key={item.id} data-project-id={item.id} className="flex gap-4 cursor-pointer bg-background rounded-2xl overflow-hidden group" onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)}>
+                  <div className="w-[220px] h-[180px] flex-shrink-0 relative overflow-hidden rounded-2xl">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover"
                       loading="lazy"
-                     
                     />
-                    <span className="absolute top-2.5 left-2.5 text-[11px] font-normal bg-black/45 text-white rounded-lg px-2 py-0.5">
-                      {item.badge}
-                    </span>
                     <div className="absolute top-2 right-2">
                       <FavButton active={isFavorite(item.id)} onClick={(e) => { e.stopPropagation(); toggleFav(item); }} size="sm" count={item.likes + (isFavorite(item.id) && !item.fav ? 1 : !isFavorite(item.id) && item.fav ? -1 : 0)} />
                     </div>
                   </div>
-                  <div className="flex-1 py-4 pr-5 flex flex-col justify-center gap-1">
-                    <p className="text-xs font-light text-muted-foreground">{item.maker}</p>
-                    <h3 className="text-[17px] font-medium text-foreground">{item.name}</h3>
-                    <p className="text-[12px] font-normal text-foreground/80">{formatSpecs(item.area, item.beds, item.baths)}, {item.purpose}</p>
-                    <p className="text-lg font-medium text-foreground mt-1">{item.price}</p>
-                    <div className="flex items-center gap-3 mt-1">
-                      <div className="flex items-center gap-1">
-                        <span className="text-[11px] text-yellow-500">★</span>
-                        <span className="text-[11px] font-semibold text-foreground">{item.rating}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Truck className="w-[11px] h-[11px] text-green-700" strokeWidth={2.5} />
-                        <span className="text-[11px] text-green-700">{item.city}</span>
-                      </div>
+                  <div className="flex-1 py-2 pr-3 flex flex-col justify-center">
+                    <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{item.name}</h2>
+                    <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">от {item.price}</div>
+                    <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[3px]">
+                      <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{item.area}</span>
+                      <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{item.beds}</span>
+                      <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{item.baths}</span>
                     </div>
                   </div>
                 </div>
