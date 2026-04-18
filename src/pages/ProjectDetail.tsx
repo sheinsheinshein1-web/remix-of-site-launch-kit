@@ -499,22 +499,10 @@ const ProjectDetail = () => {
 
         {/* ===== ПОСТРОЕННЫЕ + ОТЗЫВЫ + ПРОЕКТЫ — BENTO ===== */}
         <div className="flex flex-col gap-2 mt-2">
-          {/* Другие проекты */}
+          {/* Другие проекты — бесконечная лента */}
           <div className="bg-background rounded-2xl px-2 py-3">
             <div className="text-[17px] font-bold text-foreground mb-3 px-1">Другие проекты</div>
-            <div className="grid grid-cols-2 gap-x-[2px] gap-y-[6px]">
-              {contractorProjects.slice(0, 6).map((p, i) => (
-                <div key={i} className="cursor-pointer overflow-hidden">
-                  <div className="h-[260px] rounded-[14px] overflow-hidden">
-                    <img src={p.image} alt={p.name} className="w-full h-full object-cover" loading="lazy" />
-                  </div>
-                  <div className="px-[10px] pt-1 pb-1">
-                    <div className="text-[12px] font-bold text-foreground">{p.price}</div>
-                    <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">{p.meta}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <OtherProjectsFeed currentId={id} />
           </div>
 
         </div>
