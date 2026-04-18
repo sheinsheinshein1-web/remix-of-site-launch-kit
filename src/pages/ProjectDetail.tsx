@@ -6,6 +6,7 @@ import MobileTabBar from "@/components/MobileTabBar";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import CitySelector, { useCity } from "@/components/CitySelector";
+import OtherProjectsFeed from "@/components/OtherProjectsFeed";
 import house1 from "@/assets/house-1.jpg";
 import house2 from "@/assets/house-2.jpg";
 import house3 from "@/assets/house-3.jpg";
