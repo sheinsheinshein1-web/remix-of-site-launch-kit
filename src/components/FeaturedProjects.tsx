@@ -285,22 +285,24 @@ const FeaturedProjects = () => {
                 </SwipeableGallery>
                 <div className="px-[10px] pt-1 pb-1">
                   <div className="flex items-baseline justify-between gap-2">
-                    <h2 className="text-[12px] font-bold text-foreground truncate">{project.name}</h2>
-                    <span className="text-[12px] font-normal text-foreground/80 whitespace-nowrap shrink-0">от {project.price}</span>
+                    <span className="text-[12px] font-bold text-foreground whitespace-nowrap">от {project.price}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">
-                    <span className="inline-flex items-center gap-[3px]">
-                      <Maximize className="w-3 h-3" strokeWidth={1.75} />
-                      {project.area}
-                    </span>
-                    <span className="inline-flex items-center gap-[3px]">
-                      <BedDouble className="w-3 h-3" strokeWidth={1.75} />
-                      {project.beds}
-                    </span>
-                    <span className="inline-flex items-center gap-[3px]">
-                      <Bath className="w-3 h-3" strokeWidth={1.75} />
-                      {project.baths}
-                    </span>
+                  <div className="flex items-center justify-between gap-2 mt-[2px]">
+                    <h2 className="text-[12px] font-normal text-foreground/80 truncate">{project.name}</h2>
+                    <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none shrink-0">
+                      <span className="inline-flex items-center gap-[3px]">
+                        <Maximize className="w-3 h-3" strokeWidth={1.75} />
+                        {project.area}
+                      </span>
+                      <span className="inline-flex items-center gap-[3px]">
+                        <BedDouble className="w-3 h-3" strokeWidth={1.75} />
+                        {project.beds}
+                      </span>
+                      <span className="inline-flex items-center gap-[3px]">
+                        <Bath className="w-3 h-3" strokeWidth={1.75} />
+                        {project.baths}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </a>
