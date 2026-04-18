@@ -22,7 +22,7 @@ const Header = () => {
     const y = parseInt(saved, 10);
     return Number.isFinite(y) && y > 10;
   })();
-  const [showCompactHeader, setShowCompactHeader] = useState(false);
+  const [showCompactHeader, setShowCompactHeader] = useState(isReturningScrolled);
   const [scrolled, setScrolled] = useState(isReturningScrolled);
   const [mobileScrolled, setMobileScrolled] = useState(isReturningScrolled);
   // Подавляем transition на первые кадры при возврате, чтобы не было мелькания
