@@ -284,12 +284,12 @@ const FeaturedProjects = () => {
                     </button>
                   </div>
                 </SwipeableGallery>
-                <div className="px-[10px] pt-1 pb-1">
+                <div className="px-[10px] pt-1.5 pb-1">
                   <div className="flex items-baseline justify-between gap-2">
-                    <h2 className="text-[12px] font-bold text-foreground truncate">{project.name}</h2>
-                    <span className="text-[12px] font-normal text-foreground/80 whitespace-nowrap shrink-0">от {project.price}</span>
+                    <h2 className="text-[13px] font-semibold text-foreground truncate leading-tight">{project.name}</h2>
+                    <span className="text-[13px] font-bold text-foreground whitespace-nowrap shrink-0 leading-tight">от {project.price}</span>
                   </div>
-                  <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">
+                  <p className="text-[11px] font-normal text-foreground/60 whitespace-nowrap leading-none mt-[3px]">
                     {formatSpecs(project.area, project.beds, project.baths)}
                   </p>
                 </div>
