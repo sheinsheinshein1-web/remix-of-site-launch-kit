@@ -324,7 +324,8 @@ const ProjectDetail = () => {
         <div>
         {/* ===== GALLERY ===== */}
         {isMobile ? (
-          <div className="relative overflow-hidden touch-pan-y">
+          <div className="relative bg-background">
+            <div className="relative overflow-hidden touch-pan-y rounded-b-2xl">
             <div
               ref={sliderRef}
               className="flex transition-transform duration-300 ease-out"
@@ -347,6 +348,7 @@ const ProjectDetail = () => {
             <span className="absolute bottom-3 right-4 text-xs text-white bg-black/45 px-2.5 py-1 rounded-full">
               {activeImage + 1} из {galleryImages.length}
             </span>
+            </div>
           </div>
         ) : (
           <div className="flex flex-col gap-3">
