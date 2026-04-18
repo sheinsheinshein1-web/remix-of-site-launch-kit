@@ -97,8 +97,8 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Mobile header */}
       <div className="md:hidden relative">
-        {/* Safe-area background — только реальная высота safe-area (на iOS PWA под часами; в браузере 0) */}
-        <div className={`absolute inset-x-0 top-0 z-0 bg-background h-[env(safe-area-inset-top)] ${enableTransitions ? 'transition-opacity duration-300' : ''} ${mobileScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} aria-hidden />
+        {/* Safe-area background — постоянно видна. Не зависит ни от какого state, не моргает при возврате. */}
+        <div className="absolute inset-x-0 top-0 z-0 bg-background h-[env(safe-area-inset-top)]" aria-hidden />
 
         {/* Static header - visible when not scrolled */}
         <div className={`relative z-10 ${enableTransitions ? 'transition-all duration-300' : ''} ${mobileScrolled ? 'opacity-0 pointer-events-none scale-95 -translate-y-full' : 'opacity-100 scale-100 translate-y-0'}`}>
