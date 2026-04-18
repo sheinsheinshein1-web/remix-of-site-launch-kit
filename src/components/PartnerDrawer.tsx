@@ -301,7 +301,7 @@ const PartnerDrawer = ({ children, drawerOpen, onDrawerOpenChange }: PartnerDraw
         </div>
 
         {!showForm && (
-          <div className="fixed bottom-0 left-0 right-0 bg-background border-t border-border px-3 pt-2.5 pb-[calc(16px+env(safe-area-inset-bottom))]">
+          <div className="absolute bottom-0 left-0 right-0 bg-background border-t border-border px-3 pt-2.5 pb-[calc(16px+env(safe-area-inset-bottom))] z-10">
             <button
               onClick={handleStartChat}
               className="w-full h-[52px] bg-primary text-primary-foreground rounded-xl text-[15px] font-bold"
