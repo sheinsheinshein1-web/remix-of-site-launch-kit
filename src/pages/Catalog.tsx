@@ -614,12 +614,12 @@ const Catalog = () => {
       </div>
 
       {/* Desktop catalog content */}
-      <div className="md:max-w-[1400px] md:mx-auto md:pt-[108px] md:pb-6">
+      <div className="md:max-w-[1400px] md:mx-auto md:pt-[108px] md:pb-6 md:bg-background md:rounded-b-2xl">
         <div className="hidden md:block px-8 pt-8 mb-4"></div>
         <div className="md:flex md:px-8 md:gap-4">
           {/* Sidebar bento card */}
           <aside className="hidden md:block w-[280px] flex-shrink-0">
-          <div className="bg-background rounded-2xl px-5 py-5 sticky top-[80px] max-h-[calc(100vh-100px)] overflow-y-auto">
+          <div className="px-1 py-1 sticky top-[80px] max-h-[calc(100vh-100px)] overflow-y-auto">
             {/* Reset */}
             {hasActiveFilters && (
               <button onClick={() => { resetAllFilters(); setActiveChip("Все"); }} className="text-sm font-normal text-primary mb-4">Сбросить фильтры</button>
