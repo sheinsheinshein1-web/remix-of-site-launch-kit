@@ -45,9 +45,9 @@ const DesktopMessagesLayout = () => {
   return (
     <div className="min-h-screen bg-secondary font-sans">
       <Header />
-      <main className="pt-[108px] pb-6">
+      <main className="pt-[140px] pb-6">
         <div className="max-w-[1400px] mx-auto">
-          <div className="bg-background rounded-2xl overflow-hidden h-[calc(100vh-140px)] flex">
+          <div className="bg-background rounded-2xl overflow-hidden h-[calc(100vh-172px)] flex">
             {/* Left sidebar - chat list */}
             <div className="w-[340px] shrink-0 border-r border-border flex flex-col">
               <div className="px-5 py-4 border-b border-border">
