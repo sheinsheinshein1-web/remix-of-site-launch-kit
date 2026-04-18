@@ -110,6 +110,9 @@ const contractorProjects = [
   { name: "Мидленд 66", price: "от 4,4 млн ₽", meta: "56 м² · 2 спальни · 1 этаж", image: house6 },
   { name: "Шервуд 72", price: "от 4,4 млн ₽", meta: "70 м² · 2 спальни · 1 этаж", image: house7 },
   { name: "Бонд 88", price: "от 5,8 млн ₽", meta: "88 м² · 3 спальни · 1 этаж", image: house8 },
+  { name: "Печора", price: "от 4,6 млн ₽", meta: "73 м² · 2 спальни · 1 этаж", image: house4 },
+  { name: "БД-109", price: "от 5,7 млн ₽", meta: "109 м² · 3 спальни · 1 этаж", image: house5 },
+  { name: "Тайга 72", price: "от 2,4 млн ₽", meta: "72 м² · 2 спальни · 1 этаж", image: house9 },
 ];
 
 const similarProjects = [
@@ -494,30 +497,21 @@ const ProjectDetail = () => {
 
         {/* ===== ПОСТРОЕННЫЕ + ОТЗЫВЫ + ПРОЕКТЫ — BENTO ===== */}
         <div className="flex flex-col gap-2 mt-2">
-          {/* Построенные дома */}
+          {/* Другие проекты */}
           <div className="bg-background rounded-2xl p-4">
-            <div className="text-[17px] font-bold text-foreground mb-3">Построенные дома от «Sherwood Home»</div>
-            <div className="flex gap-2.5 overflow-x-auto scrollbar-hide pb-1">
-              {builtHouses.map((h, i) => (
-                <div key={i} className="flex-shrink-0 w-[220px] rounded-xl overflow-hidden">
-                  <div className="h-[130px] relative">
-                    <img src={h.image} alt={h.name} className="w-full h-full object-cover" loading="lazy" />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-2.5 pt-6">
-                      <div className="text-[13px] font-semibold text-white">{h.name}</div>
-                      <div className="text-[11px] text-white/70">{h.photos}</div>
-                    </div>
+            <div className="text-[17px] font-bold text-foreground mb-3">Другие проекты от «Sherwood Home»</div>
+            <div className="grid grid-cols-2 gap-x-[2px] gap-y-[6px]">
+              {contractorProjects.slice(0, 6).map((p, i) => (
+                <div key={i} className="cursor-pointer overflow-hidden">
+                  <div className="h-[260px] rounded-[14px] overflow-hidden">
+                    <img src={p.image} alt={p.name} className="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                  <div className="px-[10px] pt-1 pb-1">
+                    <div className="text-[12px] font-bold text-foreground">{p.price}</div>
+                    <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">{p.meta}</p>
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-
-
-          {/* Проекты подрядчика */}
-          <div className="bg-background rounded-2xl p-4">
-            <div className="text-[17px] font-bold text-foreground mb-3">Проекты подрядчика «Sherwood Home»</div>
-            <div className="flex gap-2.5 overflow-x-auto scrollbar-hide pb-1">
-              {contractorProjects.map((p, i) => <ProjectCard key={i} project={p} />)}
             </div>
             <button className="w-full mt-3 h-10 bg-muted border border-border rounded-xl text-sm font-medium text-muted-foreground flex items-center justify-center gap-1.5">
               Смотреть все →
