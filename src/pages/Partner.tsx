@@ -42,171 +42,79 @@ const Partner = () => {
     return (
       <div className="min-h-screen bg-secondary font-sans">
         <Header />
-        <div className="pt-[152px] pb-12">
-          <div className="max-w-[1400px] mx-auto px-8">
+        <div className="pt-[108px] pb-12">
+          <div className="max-w-[760px] mx-auto px-3">
+            {/* Main bento card */}
+            <div className="bg-background rounded-2xl overflow-hidden">
+              {/* Header row: back / share */}
+              <div className="flex items-center justify-between px-6 pt-6">
+                <button onClick={() => navigate(-1)} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center hover:bg-secondary/80 transition-colors">
+                  <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
+                </button>
+                <button
+                  className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center hover:bg-secondary/80 transition-colors"
+                  onClick={() => { if (navigator.share) { navigator.share({ title: 'Партнёр', url: window.location.href }); } else { navigator.clipboard.writeText(window.location.href); } }}
+                >
+                  <img src={shareIcon} alt="" className="w-[18px] h-[18px]" />
+                </button>
+              </div>
 
-            {/* Banner */}
-            <div className="w-full h-[220px] bg-gradient-to-br from-[#2a3528] to-[#111] rounded-2xl relative mb-4">
-              <button onClick={() => navigate(-1)} className="absolute top-4 left-4 w-9 h-9 rounded-xl bg-background/80 backdrop-blur flex items-center justify-center">
-                <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
-              </button>
-              <button className="absolute top-4 right-4 w-9 h-9 rounded-xl bg-background/80 backdrop-blur flex items-center justify-center" onClick={() => navigator.clipboard.writeText(window.location.href)}>
-                <img src={shareIcon} alt="" className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Company info + contact — single bento card */}
-            <div className="bg-background rounded-2xl p-6 mb-4">
-              <div className="flex gap-6">
-                <div className="flex-1 min-w-0">
-                  <div className="flex gap-4 mb-4">
-                    <div className="w-[72px] h-[72px] rounded-2xl bg-foreground text-background flex items-center justify-center text-lg font-bold shrink-0">SW</div>
-                    <div className="flex-1 min-w-0">
-                      <h1 className="text-xl font-bold text-foreground leading-tight mb-0.5">ООО «Sherwood Home»</h1>
-                      <p className="text-xs text-muted-foreground mb-2">ИНН: 631905302478</p>
-                      <div className="flex items-center gap-1.5">
-                        <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
-                        <span className="text-base font-bold text-foreground">4.8</span>
-                        <span className="text-[13px] text-primary cursor-pointer hover:underline">22 отзыва</span>
-                      </div>
-                    </div>
+              {/* "Your company?" banner */}
+              <div className="px-6 mt-4">
+                <div className="bg-secondary rounded-xl px-4 py-3 flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <ShieldCheck className="w-[18px] h-[18px] text-muted-foreground shrink-0" strokeWidth={1.8} />
+                    <span className="text-[14px] text-foreground/80 truncate">Это ваша компания?</span>
                   </div>
-                  <div className="flex flex-wrap gap-x-6 gap-y-1.5 mb-4">
-                    <div className="flex items-center gap-2 text-[13px] text-muted-foreground"><MapPin className="w-3.5 h-3.5 shrink-0" /><span>Самара, ул. Мичурина, д. 15</span></div>
-                    <div className="flex items-center gap-2 text-[13px] text-muted-foreground"><Clock className="w-3.5 h-3.5 shrink-0" /><span>График работы <span className="text-primary">с 10:00 до 19:30</span></span></div>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="inline-flex items-center gap-1.5 text-xs font-medium bg-secondary text-muted-foreground rounded-xl px-3 py-1.5"><Factory className="w-3.5 h-3.5" /> Собственное производство</span>
-                    <span className="inline-flex items-center gap-1.5 text-xs font-medium bg-secondary text-muted-foreground rounded-xl px-3 py-1.5"><ShieldCheck className="w-3.5 h-3.5" /> Эскроу-счёт</span>
-                    <span className="inline-flex items-center gap-1.5 text-xs font-medium bg-secondary text-muted-foreground rounded-xl px-3 py-1.5"><CheckCircle2 className="w-3.5 h-3.5" /> Проверен платформой</span>
-                  </div>
-                </div>
-                <div className="w-[220px] shrink-0 flex flex-col gap-3 justify-center">
-                  <a href="https://sherwood-home.ru" target="_blank" rel="noopener noreferrer" className="w-full h-[50px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center hover:opacity-90 transition-opacity">Перейти на сайт</a>
+                  <button className="text-[14px] font-medium text-primary inline-flex items-center gap-1 shrink-0 hover:underline">
+                    Подтвердить <ChevronRight className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
-              <div className="grid grid-cols-4 gap-3 mt-5">
-                {[{ val: "10 лет", label: "на рынке" }, { val: "500+ домов", label: "построено" }, { val: "16 сделок", label: "за последний год" }, { val: "3 региона", label: "строительства" }].map((s, i) => (
-                  <div key={i} className="bg-secondary rounded-xl p-4">
-                    <div className="text-lg font-bold text-foreground">{s.val}</div>
-                    <div className="text-xs text-muted-foreground">{s.label}</div>
+
+              {/* Profile */}
+              <div className="px-6 pt-5 pb-6 flex items-center gap-4">
+                <div className="w-[80px] h-[80px] rounded-2xl bg-secondary text-foreground/30 flex items-center justify-center text-lg font-bold shrink-0">SW</div>
+                <div className="flex-1 min-w-0">
+                  <h1 className="text-[22px] font-bold text-foreground leading-tight mb-1 truncate">Sherwood Home</h1>
+                  <p className="text-[14px] text-muted-foreground truncate">Модульные дома · Москва и МО</p>
+                </div>
+              </div>
+
+              {/* Stats row */}
+              <div className="border-t border-border grid grid-cols-3">
+                {[
+                  { val: "12", label: "Проекты" },
+                  { val: "—", label: "Отзывы" },
+                  { val: "—", label: "Рейтинг" },
+                ].map((s, i) => (
+                  <div key={i} className={`py-5 text-center ${i > 0 ? 'border-l border-border' : ''}`}>
+                    <div className="text-[22px] font-bold text-foreground leading-none mb-1.5">{s.val}</div>
+                    <div className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground">{s.label}</div>
                   </div>
                 ))}
               </div>
-            </div>
 
-            {/* Full-width content blocks */}
-            <div className="flex flex-col gap-4">
-              {/* Projects */}
-              <div className="bg-background rounded-2xl p-6">
-                <h2 className="text-lg font-bold text-foreground mb-4">Проекты домов <span className="text-muted-foreground font-normal text-[15px] ml-1">24</span></h2>
-                <div className="grid grid-cols-4 gap-4 mb-4">
-                  {projects.map((p) => (
-                    <Link key={p.id} to={`/project/${p.id}`} className="group">
-                      <div className={`h-[120px] bg-gradient-to-br ${p.gradient} rounded-xl relative overflow-hidden mb-2 group-hover:opacity-90 transition-opacity`}>
-                        {p.badge && <div className="absolute top-2 left-2 bg-primary/90 text-primary-foreground text-[10px] font-semibold px-2 py-0.5 rounded-xl">{p.badge}</div>}
-                      </div>
-                      <div className="text-[13px] font-semibold text-foreground truncate">{p.name}</div>
-                      <div className="text-xs text-primary font-medium">{p.price}</div>
-                      <div className="text-[11px] text-muted-foreground">{p.meta}</div>
-                    </Link>
-                  ))}
-                </div>
-                <button className="w-full h-11 bg-secondary border border-border rounded-xl text-sm font-medium text-muted-foreground flex items-center justify-center gap-1.5 hover:bg-secondary/80 transition-colors">Смотреть все <ChevronRight className="w-4 h-4" /></button>
+              {/* About */}
+              <div className="border-t border-border px-6 py-5">
+                <p className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground mb-2">О компании</p>
+                <p className="text-[15px] text-foreground/85 leading-relaxed">
+                  Производитель модульных домов из Московской области. Специализируется на одно- и двухэтажных домах для круглогодичного проживания.
+                </p>
               </div>
 
-              {/* Two-column: About + Regions */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-background rounded-2xl p-6">
-                  <h2 className="text-lg font-bold text-foreground mb-3">О подрядчике</h2>
-                  <p className={`text-sm text-muted-foreground leading-relaxed ${!aboutExpanded ? 'line-clamp-6' : ''}`}>
-                    Наша компания занимается модульным домостроительством с 2015 года. Собственное производство в Самарской области, собственные строительные бригады. Даём 5 лет гарантии на конструктив. Работаем с качественными материалами: каркас из сухой строганой доски камерной сушки, утеплитель KNAUF. Аккредитованы в банках: Сбер, ВТБ, Альфа-банк. Осуществляем поддержку на всех этапах кредитования.
-                  </p>
-                  <button onClick={() => setAboutExpanded(!aboutExpanded)} className="text-[13px] text-primary mt-2 hover:underline">{aboutExpanded ? 'Свернуть' : 'Показать полностью'}</button>
-                </div>
-                <div className="bg-background rounded-2xl p-6">
-                  <h2 className="text-lg font-bold text-foreground mb-3">Регионы строительства</h2>
-                  <div className="flex flex-wrap gap-2 mb-5">
-                    {["Московская область", "Самарская область", "Нижегородская обл.", "Казань и РТ"].map((r, i) => (
-                      <span key={i} className="text-xs font-medium bg-secondary text-muted-foreground rounded-xl px-3 py-1.5">{r}</span>
-                    ))}
-                  </div>
-                  <h2 className="text-lg font-bold text-foreground mb-3">Технологии строительства</h2>
-                  <div className="flex flex-wrap gap-2">
-                    {["Модульный дом", "Каркасный дом", "Панельно-каркасный"].map((t, i) => (
-                      <span key={i} className="text-xs font-medium bg-secondary text-muted-foreground rounded-xl px-3 py-1.5">{t}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Built homes */}
-              <div className="bg-background rounded-2xl p-6">
-                <h2 className="text-lg font-bold text-foreground mb-4">Построенные дома</h2>
-                <div className="grid grid-cols-3 gap-4">
-                  {builtHomes.map((h, i) => (
-                    <div key={h.id} className="rounded-xl overflow-hidden relative cursor-pointer group">
-                      <div className={`h-[180px] bg-gradient-to-br ${h.gradient} flex items-center justify-center relative group-hover:opacity-90 transition-opacity`}>
-                        {h.hasVideo && <div className="absolute w-12 h-12 bg-background/90 rounded-full flex items-center justify-center"><Play className="w-5 h-5 text-foreground ml-0.5" /></div>}
-                        <div className="absolute bottom-2.5 left-2.5 bg-foreground/50 text-primary-foreground text-xs px-2 py-0.5 rounded-xl">{i + 1} из 105</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Showroom */}
-              <div className="bg-background rounded-2xl p-6">
-                <h2 className="text-lg font-bold text-foreground mb-4">Выставочные дома</h2>
-                <div className="border border-border rounded-xl overflow-hidden flex">
-                  <div className="w-[300px] h-[200px] bg-gradient-to-br from-[#2a3528] to-[#111] shrink-0" />
-                  <div className="p-5 flex flex-col justify-center">
-                    <div className="text-[15px] font-semibold text-foreground mb-1.5">Барнхаус «ДБХ-12» 6x8 с лофтом</div>
-                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-4"><MapPin className="w-3 h-3 shrink-0" />Москва, Каширское шоссе, вл63 к1 ст68</div>
-                    <button className="h-10 bg-secondary border border-border rounded-xl text-[13px] font-medium text-foreground px-6 hover:bg-secondary/80 transition-colors w-fit">Записаться на просмотр</button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Reviews */}
-              <div className="bg-background rounded-2xl p-6">
-                <h2 className="text-lg font-bold text-foreground mb-4">Отзывы о подрядчике <span className="text-muted-foreground font-normal text-[15px] ml-1">22</span></h2>
-                <div className="flex items-center gap-6 mb-6">
-                  <div className="text-[44px] font-bold text-foreground leading-none">4.8</div>
-                  <div className="flex-1 max-w-[300px]">
-                    {[{ star: 5, pct: 85, cnt: 11 }, { star: 4, pct: 15, cnt: 2 }, { star: 3, pct: 0, cnt: 0 }, { star: 2, pct: 0, cnt: 0 }, { star: 1, pct: 0, cnt: 0 }].map((r) => (
-                      <div key={r.star} className="flex items-center gap-1.5 mb-0.5">
-                        <span className="text-[11px] text-muted-foreground w-2 text-right">{r.star}</span>
-                        <div className="flex-1 h-1.5 bg-border rounded-full overflow-hidden"><div className="h-full bg-amber-400 rounded-full" style={{ width: `${r.pct}%` }} /></div>
-                        <span className="text-[11px] text-muted-foreground w-4 text-right">{r.cnt}</span>
-                      </div>
-                    ))}
-                    <div className="text-[11px] text-muted-foreground mt-1">На основе 13 отзывов покупателей</div>
-                  </div>
-                </div>
-                <div className="grid grid-cols-3 gap-4 mb-5">
-                  {reviews.map((r) => (
-                    <div key={r.id} className="bg-secondary rounded-xl p-4">
-                      <div className="flex items-center gap-2.5 mb-2.5">
-                        <div className="w-9 h-9 rounded-xl bg-foreground text-background text-xs font-semibold flex items-center justify-center shrink-0">{r.initial}</div>
-                        <div>
-                          <div className="text-[13px] font-semibold text-foreground">{r.name} <span className="text-amber-400">★ {r.rating}.0</span></div>
-                          <div className="text-[11px] text-muted-foreground">Построено · {r.date}</div>
-                        </div>
-                      </div>
-                      <p className="text-[13px] text-muted-foreground leading-snug line-clamp-3 mb-1.5">{r.text}</p>
-                      <button className="text-xs text-primary hover:underline">Показать полностью</button>
-                      <div className="text-[11px] text-muted-foreground mt-2">{r.meta}</div>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex gap-3">
-                  <button className="flex-1 h-11 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:opacity-90 transition-opacity">Оставить отзыв</button>
-                  <button className="flex-1 h-11 bg-secondary border border-border rounded-xl text-sm font-medium text-foreground hover:bg-secondary/80 transition-colors">Смотреть все отзывы (22)</button>
-                </div>
+              {/* Go to site CTA */}
+              <div className="border-t border-border p-5">
+                <a
+                  href="https://sherwood-home.ru"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full h-[52px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center hover:opacity-90 transition-opacity"
+                >
+                  Перейти на сайт
+                </a>
               </div>
             </div>
-
           </div>
         </div>
       </div>
