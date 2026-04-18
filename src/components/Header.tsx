@@ -22,14 +22,14 @@ const Header = () => {
 
   useEffect(() => {
     let lastY = window.scrollY;
-    // Подстрахуемся: после монтирования ещё раз синхронизируем состояние
-    // (на случай если scroll восстанавливается чуть позже монтирования)
+    // Подстрахуемся: после монтирования синхронизируем «скрытое» состояние
+    // (фон/blur), но НЕ показываем компактный хедер с поиском —
+    // он должен появляться только при явном скролле вверх
     const sync = () => {
       const y = window.scrollY;
       const pastThreshold = y > 60;
       setScrolled(pastThreshold);
       setMobileScrolled(y > 10);
-      setShowCompactHeader(pastThreshold);
       lastY = y;
     };
     sync();
