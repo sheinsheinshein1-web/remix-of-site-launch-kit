@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Heart, Play, ChevronRight, ChevronDown, MoreHorizontal, Phone, MessageSquare, Share2, Bookmark, EyeOff, Flag, X, Ruler, BedDouble, Bath, Layers, Star, MessageCircleQuestion, Image, Send, MapPin } from "lucide-react";
+import { ArrowLeft, Heart, Play, ChevronRight, ChevronDown, MoreHorizontal, Phone, MessageSquare, Share2, Bookmark, EyeOff, Flag, X, Ruler, BedDouble, Bath, Layers, Star, MessageCircleQuestion, Image, Send, MapPin, Maximize } from "lucide-react";
 import Header from "@/components/Header";
 import MobileTabBar from "@/components/MobileTabBar";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -424,8 +424,11 @@ const ProjectDetail = () => {
                 <span className="font-bold text-foreground">4 950 000 ₽</span>
               </div>
             </div>
-            <div className="text-[12px] text-muted-foreground">
-              60 м² · 2 спальни · санузел · 1 этаж
+            <div className="flex items-center gap-2.5 text-[12px] text-muted-foreground">
+              <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />60 м²</span>
+              <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />2</span>
+              <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />1</span>
+              <span className="inline-flex items-center gap-[3px]"><Layers className="w-3 h-3" strokeWidth={1.75} />1</span>
             </div>
 
             {/* Локация доставки */}
