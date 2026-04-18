@@ -233,8 +233,8 @@ const ProjectDetail = () => {
                 <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
               </button>
               <div className="flex-1 min-w-0 ml-3">
-                <div className="text-[14px] font-semibold text-foreground truncate">Шервуд 60</div>
-                <div className="text-[13px] font-medium text-primary">от 4 440 000 ₽</div>
+                <div className="text-[14px] font-semibold text-foreground truncate">{projectFavItem.name}</div>
+                <div className="text-[13px] font-medium text-primary">{projectFavItem.price}</div>
               </div>
               <div className="flex items-center gap-2">
                 <button className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center" onClick={() => { if (navigator.share) { navigator.share({ title: 'Проект', url: window.location.href }); } else { navigator.clipboard.writeText(window.location.href); } }}>
