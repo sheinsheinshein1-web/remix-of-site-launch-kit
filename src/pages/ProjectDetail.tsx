@@ -515,9 +515,6 @@ const ProjectDetail = () => {
                 </div>
               ))}
             </div>
-            <button className="w-full mt-3 h-10 bg-muted border border-border rounded-xl text-sm font-medium text-muted-foreground flex items-center justify-center gap-1.5">
-              Смотреть все →
-            </button>
           </div>
 
         </div>
