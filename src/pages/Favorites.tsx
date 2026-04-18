@@ -335,25 +335,33 @@ const Favorites = () => {
   return (
     <div className="min-h-screen bg-secondary font-sans">
       <Header />
-      <div className="pt-[152px] pb-8">
-        <div className="max-w-[1400px] mx-auto px-8">
+      <div className="pt-[108px] pb-6">
+        <div className="max-w-[1400px] mx-auto bg-background rounded-b-2xl">
+          <div className="px-8 pt-8 pb-6">
           {/* Sort row */}
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <span className="text-[13px] font-light text-muted-foreground">{favoriteItems.length > 0 ? `${favoriteItems.length} проектов` : "Нет проектов"}</span>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="text-[13px] font-light text-muted-foreground bg-background border-none rounded-xl px-3 py-1.5 outline-none"
-              >
-                {sortOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
-              </select>
+              <span className="text-[14px] font-medium text-foreground">{favoriteItems.length > 0 ? `${favoriteItems.length} проектов` : "Нет проектов"}</span>
+              <div className="relative inline-flex items-center gap-1 cursor-pointer bg-secondary rounded-xl px-3 py-1.5">
+                <span className="text-[13px] font-medium text-foreground">
+                  {sortOptions.find(o => o.value === sortBy)?.label ?? "Сортировка"}
+                </span>
+                <ChevronDown className="w-4 h-4 text-foreground" strokeWidth={2} />
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  aria-label="Сортировка"
+                >
+                  {sortOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+                </select>
+              </div>
             </div>
-            <div className="flex bg-background rounded-xl p-0.5 gap-0.5">
-              <button onClick={() => setViewMode("grid")} className={`w-8 h-7 rounded-lg flex items-center justify-center ${viewMode === "grid" ? "bg-secondary" : ""}`}>
+            <div className="flex bg-secondary rounded-xl p-0.5 gap-0.5">
+              <button onClick={() => setViewMode("grid")} className={`w-8 h-7 rounded-lg flex items-center justify-center ${viewMode === "grid" ? "bg-background" : ""}`}>
                 <GridIcon active={viewMode === "grid"} />
               </button>
-              <button onClick={() => setViewMode("list")} className={`w-8 h-7 rounded-lg flex items-center justify-center ${viewMode === "list" ? "bg-secondary" : ""}`}>
+              <button onClick={() => setViewMode("list")} className={`w-8 h-7 rounded-lg flex items-center justify-center ${viewMode === "list" ? "bg-background" : ""}`}>
                 <ListIcon active={viewMode === "list"} />
               </button>
             </div>
