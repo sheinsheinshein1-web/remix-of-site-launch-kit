@@ -1,4 +1,4 @@
-import { Heart } from "lucide-react";
+import { Heart, Loader2 } from "lucide-react";
 import { formatSpecs } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "@/contexts/FavoritesContext";
@@ -6,6 +6,7 @@ import SwipeableGallery from "@/components/SwipeableGallery";
 import ProjectCardSkeleton from "@/components/ProjectCardSkeleton";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import { useEffect, useRef, useState, useCallback } from "react";
+import { usePullToRefresh } from "@/hooks/usePullToRefresh";
 import house1 from "@/assets/house-1.jpg";
 import house2 from "@/assets/house-2.jpg";
 import house3 from "@/assets/house-3.jpg";
