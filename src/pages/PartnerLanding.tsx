@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Users, TrendingUp, Home, LayoutGrid, MessageSquare, Star, BarChart3, MapPin, Check, Building2, Tent, TreePine, Warehouse, Bath, Flame, Fence, Globe } from "lucide-react";
+import { ShieldCheck, TrendingUp, LayoutGrid, Sparkles, MapPin, Search, Check, Star } from "lucide-react";
 import Header from "@/components/Header";
 import PartnerApplicationForm from "@/components/PartnerApplicationForm";
 import Footer from "@/components/Footer";
@@ -8,66 +8,61 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useEffect, useState } from "react";
 import partnerHeroImg from "@/assets/partner-hero-illustration.png";
 
-const stats = [
-  { val: "1 200+", label: "клиентов в месяц" },
-  { val: "×3", label: "переходов на сайт" },
-  { val: "50+", label: "производителей" },
+const features = [
+  { icon: ShieldCheck, title: "Бейдж «Проверено»", desc: "На карточке компании и на каждом проекте. Покупатели отличают вас от непроверенных." },
+  { icon: TrendingUp, title: "Приоритет в выдаче", desc: "Ваши проекты показываются выше в ленте каталога и в поиске по региону." },
+  { icon: LayoutGrid, title: "Страница компании", desc: "Описание, контакты, портфолио, галерея работ, отзывы клиентов и рейтинг." },
+  { icon: Sparkles, title: "Оформление карточек", desc: "Единый стиль и аккуратная типографика. Бренд выглядит достойно среди коллег." },
+  { icon: MapPin, title: "География работ", desc: "Указываете регионы — ваши проекты видят жители этих регионов первыми." },
+  { icon: Search, title: "Индексация в поиске", desc: "Страница компании попадает в поисковую выдачу. Приходят покупатели, ищущие именно вас." },
 ];
 
-const painPoints = [
-  { icon: TrendingUp, title: "Клиенты ищут, но не находят вас", desc: "Покупатели сравнивают десятки предложений. Без присутствия на маркетплейсе они уходят к конкурентам." },
-  { icon: BarChart3, title: "Трафик на сайт дорожает", desc: "Рекламные каналы выгорают. Стоимость привлечения клиента растёт каждый квартал." },
-  { icon: Users, title: "Нужно объяснять технологию", desc: "Часть покупателей воспринимает «модуль» как временное решение. Мы делаем эту работу за вас." },
+type Plan = {
+  name: string;
+  price: string;
+  priceHint: string;
+  period: string;
+  features: string[];
+  popular?: boolean;
+};
+
+const plans: Plan[] = [
+  {
+    name: "База",
+    price: "19 000 ₽",
+    priceHint: "от",
+    period: "на 3 месяца",
+    features: ["Бейдж «Проверено»", "До 5 проектов в каталоге", "2 региона работы", "Страница с отзывами"],
+  },
+  {
+    name: "Рост",
+    price: "39 000 ₽",
+    priceHint: "от",
+    period: "на 3 месяца",
+    popular: true,
+    features: ["Всё из «Базы»", "Приоритет в выдаче", "До 20 проектов", "5 регионов работы"],
+  },
+  {
+    name: "Макс",
+    price: "79 000 ₽",
+    priceHint: "от",
+    period: "на 3 месяца",
+    features: [
+      "Всё из «Роста»",
+      "Топ выдачи в регионе",
+      "Без лимита по проектам",
+      "Персональный сайт компании",
+      "Фото и тексты от редакции",
+      "Персональный менеджер",
+    ],
+  },
 ];
 
 const steps = [
-  { num: 1, title: "Загружаете проекты", desc: "Фото, цена, характеристики, планировка." },
-  { num: 2, title: "Покупатель выбирает", desc: "Фильтрует по площади, стилю, региону. Видит ваше портфолио." },
-  { num: 3, title: "Заявка приходит напрямую", desc: "В Telegram или WhatsApp. Клиент уже изучил вас." },
+  { num: "01", title: "Оставляете заявку", desc: "Контакты, ИНН и ссылка на сайт — чтобы мы поняли, с кем работаем." },
+  { num: "02", title: "Мы проверяем вручную", desc: "Сверяем реквизиты, связываемся с вами, обсуждаем формат размещения." },
+  { num: "03", title: "Запускаем витрину", desc: "Оплата, оформление страницы, бейдж «Проверено». Можно работать." },
 ];
-
-const partnerCategories = [
-  { icon: Home, title: "Модульные дома", desc: "Для постоянного проживания, дачные, двухэтажные" },
-  { icon: Bath, title: "Бани и сауны", desc: "Каркасные бани, бани-бочки, с террасой" },
-  { icon: Tent, title: "Глэмпинг", desc: "А-фреймы, купола, модульные домики для турбизнеса" },
-  { icon: Warehouse, title: "Бытовки и хозблоки", desc: "Строительные, дачные, утепленные" },
-  { icon: TreePine, title: "Беседки и навесы", desc: "Открытые, закрытые, с барбекю-зоной" },
-  { icon: Building2, title: "Коммерческие объекты", desc: "Офисы, магазины, кафе, гостиницы" },
-  { icon: Flame, title: "Барбекю и зоны отдыха", desc: "Печные комплексы, летние кухни" },
-  { icon: Fence, title: "Инфраструктура участка", desc: "Гаражи, заборы, септики, скважины" },
-];
-
-const benefits = [
-  { icon: Home, title: "Профиль производителя", desc: "Портфолио, отзывы, сертификаты — всё на одной странице" },
-  { icon: LayoutGrid, title: "Карточки проектов", desc: "Фото, планировка, цена, стиль — покупатель сравнивает" },
-  { icon: MessageSquare, title: "Чат с покупателем", desc: "Быстрые вопросы прямо в карточке проекта" },
-  { icon: Star, title: "Верифицированные отзывы", desc: "Только от реальных покупателей" },
-  { icon: MapPin, title: "Региональный поиск", desc: "Покупатели фильтруют по вашему региону" },
-];
-
-const priceIncludes = [
-  "Неограниченное количество проектов",
-  "Прямые переходы клиентов на ваш сайт",
-  "Полный профиль производителя",
-  "Галерея построенных объектов",
-  "Заявки в Telegram / WhatsApp",
-  "Верифицированные отзывы покупателей",
-  "Приоритет в поиске и выдаче",
-  "Персональный менеджер на старте",
-];
-
-const CTAButton = ({ onClick, className = "", variant = "primary" }: { onClick: () => void; className?: string; variant?: "primary" | "hero" }) => (
-  <button
-    onClick={onClick}
-    className={`h-[52px] rounded-xl text-[15px] font-bold hover:opacity-90 transition-opacity flex items-center justify-center ${
-      variant === "hero"
-        ? "bg-primary-foreground text-primary"
-        : "bg-primary text-primary-foreground"
-    } ${className}`}
-  >
-    Подключиться
-  </button>
-);
 
 const PartnerLanding = () => {
   const navigate = useNavigate();
@@ -75,23 +70,16 @@ const PartnerLanding = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [showForm, setShowForm] = useState(false);
 
-  // On mobile, open the drawer immediately and go back when closed
   useEffect(() => {
-    if (isMobile) {
-      setDrawerOpen(true);
-    }
+    if (isMobile) setDrawerOpen(true);
   }, [isMobile]);
 
   const handleDrawerChange = (open: boolean) => {
     setDrawerOpen(open);
-    if (!open && isMobile) {
-      navigate(-1);
-    }
+    if (!open && isMobile) navigate(-1);
   };
 
-  const handleStartChat = () => {
-    setShowForm(true);
-  };
+  const handleStartChat = () => setShowForm(true);
 
   if (isMobile) {
     return (
@@ -120,160 +108,190 @@ const PartnerLanding = () => {
   return (
     <div className="min-h-screen bg-secondary font-sans">
       <Header />
-      <div className="pt-[152px]">
-        {/* Hero */}
-        <div className="max-w-[1400px] mx-auto px-8">
+      <div className="pt-[152px] pb-12">
+        <div className="max-w-[1200px] mx-auto px-8 flex flex-col gap-3">
+          {/* HERO */}
           <div className="bg-primary rounded-2xl relative overflow-hidden">
             <div className="absolute top-[-150px] left-[-120px] w-[400px] h-[400px] bg-primary-foreground/5 rounded-full pointer-events-none" />
             <div className="absolute bottom-[-100px] right-[-100px] w-[300px] h-[300px] bg-primary-foreground/5 rounded-full pointer-events-none" />
 
-            <div className="max-w-[1100px] mx-auto flex items-center gap-8 px-10 py-12 relative z-[1]">
+            <div className="flex items-center gap-10 px-12 py-14 relative z-[1]">
               <div className="flex-1 min-w-0">
-                <h1 className="text-[36px] font-extrabold text-primary-foreground leading-[1.12] mb-4">
-                  Приведём клиентов и трафик<br />на ваш сайт
+                <p className="text-[12px] font-bold tracking-wider uppercase text-primary-foreground/50 mb-4">Для застройщиков</p>
+                <h1 className="text-[40px] font-extrabold text-primary-foreground leading-[1.1] mb-4 tracking-tight">
+                  Покажите свои дома<br />в лучшем свете
                 </h1>
-                <p className="text-[15px] text-primary-foreground/60 leading-relaxed mb-6 max-w-[440px]">
-                  Покупатели изучают ваше портфолио, переходят на сайт и пишут напрямую — без посредников и скрытых комиссий
+                <p className="text-[15px] text-primary-foreground/70 leading-relaxed mb-7 max-w-[480px]">
+                  Красивая витрина, проверенный статус и приоритет в выдаче — чтобы покупатели видели вас первыми и запоминали.
                 </p>
-                <div className="flex gap-3 mb-6">
-                  {stats.map((s) => (
-                    <div key={s.label} className="bg-primary-foreground/10 rounded-xl px-5 py-3 text-center">
-                      <div className="text-[20px] font-extrabold text-primary-foreground leading-none mb-1">{s.val}</div>
-                      <div className="text-[11px] text-primary-foreground/50 leading-tight">{s.label}</div>
-                    </div>
-                  ))}
-                </div>
-                <CTAButton onClick={handleStartChat} className="w-[260px]" variant="hero" />
+                <button
+                  onClick={handleStartChat}
+                  className="h-[52px] px-8 rounded-xl text-[15px] font-bold bg-primary-foreground text-primary hover:opacity-90 transition-opacity"
+                >
+                  Стать партнёром
+                </button>
               </div>
-              <div className="w-[380px] shrink-0 flex items-center justify-center">
+              <div className="w-[360px] shrink-0 flex items-center justify-center">
                 <img src={partnerHeroImg} alt="" className="w-full h-auto" />
               </div>
             </div>
+          </div>
 
-            <div className="absolute top-8 right-10 bg-background/95 backdrop-blur rounded-xl p-3 shadow-lg z-[2]">
-              <div className="text-[11px] text-muted-foreground mb-0.5">до</div>
-              <div className="text-[26px] font-black text-foreground leading-none tracking-tight">1200</div>
-              <div className="text-[11px] font-semibold text-primary leading-tight mt-0.5">клиентов<br />в месяц</div>
+          {/* PREVIEW CARD */}
+          <div className="bg-background rounded-2xl p-8">
+            <p className="text-[12px] font-bold tracking-wider uppercase text-primary mb-4">Как выглядит партнёрская карточка</p>
+            <div className="bg-secondary rounded-2xl p-5 max-w-[520px]">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-11 h-11 rounded-xl bg-foreground text-background flex items-center justify-center text-[12px] font-bold shrink-0">
+                  SW
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <span className="text-[14px] font-semibold text-foreground">Sherwood Home</span>
+                    <span className="inline-flex items-center gap-1 bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-md">
+                      <ShieldCheck className="w-3 h-3" /> Проверено
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[12px] text-muted-foreground">
+                    <Star className="w-3 h-3 fill-current text-foreground" />
+                    <span>5,0 · 13 отзывов · 12 проектов</span>
+                  </div>
+                </div>
+              </div>
+              <div className="aspect-[16/9] rounded-xl bg-gradient-to-b from-[hsl(205,30%,65%)] to-[hsl(80,20%,40%)]" />
             </div>
           </div>
-        </div>
 
-        {/* Partner categories — WHO WE'RE LOOKING FOR */}
-        <div className="max-w-[1400px] mx-auto px-8 mt-6">
+          {/* FEATURES */}
           <div className="bg-background rounded-2xl p-8">
-            <p className="text-[12px] font-bold tracking-wider uppercase text-primary mb-2">Кого мы ищем</p>
-            <h2 className="text-[22px] font-extrabold text-foreground leading-tight mb-1">Не только дома</h2>
-            <p className="text-[14px] text-muted-foreground mb-6">Маркетплейс объединяет производителей по всем направлениям загородного строительства</p>
-            <div className="grid grid-cols-4 gap-3">
-              {partnerCategories.map((c, i) => (
-                <div key={i} className="bg-secondary rounded-xl p-4 border border-border">
-                  <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center mb-2.5">
-                    <c.icon className="w-[18px] h-[18px] text-primary" />
+            <p className="text-[12px] font-bold tracking-wider uppercase text-primary mb-2">Что получают партнёры</p>
+            <h2 className="text-[26px] font-extrabold text-foreground leading-tight mb-6 tracking-tight">
+              Представительство, которое работает на ваш бренд
+            </h2>
+            <div className="grid grid-cols-3 gap-3">
+              {features.map((f, i) => (
+                <div key={i} className="bg-secondary rounded-xl p-5">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
+                    <f.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <div className="text-[14px] font-semibold text-foreground mb-0.5">{c.title}</div>
-                  <div className="text-[12px] text-muted-foreground leading-snug">{c.desc}</div>
+                  <div className="text-[14px] font-semibold text-foreground mb-1">{f.title}</div>
+                  <div className="text-[12px] text-muted-foreground leading-relaxed">{f.desc}</div>
                 </div>
               ))}
             </div>
           </div>
-        </div>
 
-        {/* Pain points */}
-        <div className="max-w-[1400px] mx-auto px-8 mt-6">
+          {/* PLANS */}
           <div className="bg-background rounded-2xl p-8">
-            <p className="text-[12px] font-bold tracking-wider uppercase text-primary mb-6">Что происходит на рынке</p>
-            <div className="grid grid-cols-3 gap-6">
-              {painPoints.map((p, i) => (
-                <div key={i} className="flex gap-4 items-start">
-                  <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <p.icon className="w-5 h-5 text-primary" />
+            <p className="text-[12px] font-bold tracking-wider uppercase text-primary mb-2">Форматы участия</p>
+            <h2 className="text-[26px] font-extrabold text-foreground leading-tight mb-6 tracking-tight">
+              Три тарифа, разные уровни присутствия
+            </h2>
+            <div className="grid grid-cols-3 gap-3">
+              {plans.map((p) => {
+                const isHero = p.popular;
+                return (
+                  <div
+                    key={p.name}
+                    className={`rounded-2xl p-6 flex flex-col ${
+                      isHero ? "bg-foreground text-background" : "bg-secondary text-foreground"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-4">
+                      <span
+                        className={`text-[11px] font-bold tracking-wider uppercase ${
+                          isHero ? "text-background/50" : "text-muted-foreground"
+                        }`}
+                      >
+                        {p.name}
+                      </span>
+                      {isHero && (
+                        <span className="text-[10px] font-bold tracking-wider uppercase bg-primary text-primary-foreground px-2 py-1 rounded-md">
+                          Популярный
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-baseline gap-1.5 mb-1">
+                      <span className={`text-[13px] font-medium ${isHero ? "text-background/50" : "text-muted-foreground"}`}>
+                        {p.priceHint}
+                      </span>
+                      <span className="text-[28px] font-extrabold tracking-tight leading-none">{p.price}</span>
+                    </div>
+                    <div className={`text-[12px] mb-5 ${isHero ? "text-background/50" : "text-muted-foreground"}`}>
+                      {p.period}
+                    </div>
+                    <ul className="flex flex-col gap-2.5 mb-6">
+                      {p.features.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2.5">
+                          <div
+                            className={`w-4 h-4 rounded-md flex items-center justify-center shrink-0 mt-0.5 ${
+                              isHero ? "bg-primary/30" : "bg-primary/15"
+                            }`}
+                          >
+                            <Check
+                              className={`w-2.5 h-2.5 ${isHero ? "text-primary-foreground" : "text-primary"}`}
+                              strokeWidth={3}
+                            />
+                          </div>
+                          <span className={`text-[13px] leading-snug ${isHero ? "text-background/90" : "text-foreground"}`}>
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                    <button
+                      onClick={handleStartChat}
+                      className={`mt-auto h-[44px] rounded-xl text-[14px] font-bold transition-opacity hover:opacity-90 ${
+                        isHero
+                          ? "bg-primary-foreground text-foreground"
+                          : "bg-primary text-primary-foreground"
+                      }`}
+                    >
+                      Выбрать
+                    </button>
                   </div>
-                  <div>
-                    <div className="text-[15px] font-semibold text-foreground mb-1">{p.title}</div>
-                    <div className="text-[13px] text-muted-foreground leading-relaxed">{p.desc}</div>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
+            <p className="text-[12px] text-muted-foreground text-center mt-5">
+              Продление — в любой момент. Переход на другой тариф — без потери оставшегося периода.
+            </p>
           </div>
-        </div>
 
-        {/* How it works */}
-        <div className="max-w-[1400px] mx-auto px-8 mt-6">
+          {/* HOW IT WORKS */}
           <div className="bg-foreground rounded-2xl p-8 relative overflow-hidden">
             <div className="absolute top-[-80px] right-[-80px] w-[260px] h-[260px] bg-primary/20 rounded-full pointer-events-none" />
-            <div className="max-w-[900px] relative z-[1]">
-              <p className="text-[12px] font-bold tracking-wider uppercase text-background/40 mb-4">Как это работает</p>
-              <h2 className="text-[28px] font-extrabold text-background leading-tight mb-2">Готовая аудитория, прямой контакт</h2>
-              <p className="text-[14px] text-background/50 leading-relaxed mb-8">
-                Покупатели уже выбрали технологию — приходят к вам изучить проекты и перейти на сайт.
-              </p>
-              <div className="grid grid-cols-3 gap-6">
+            <div className="relative z-[1]">
+              <p className="text-[12px] font-bold tracking-wider uppercase text-background/40 mb-2">Как это работает</p>
+              <h2 className="text-[26px] font-extrabold text-background leading-tight mb-8 tracking-tight">
+                Подключение занимает 2–3 рабочих дня
+              </h2>
+              <div className="grid grid-cols-3 gap-4">
                 {steps.map((s) => (
-                  <div key={s.num} className="flex gap-3 items-start">
-                    <div className="w-10 h-10 rounded-xl bg-background/10 flex items-center justify-center shrink-0">
-                      <span className="text-[15px] font-extrabold text-background">{s.num}</span>
-                    </div>
-                    <div>
-                      <div className="text-[15px] font-semibold text-background mb-1">{s.title}</div>
-                      <div className="text-[13px] text-background/50 leading-relaxed">{s.desc}</div>
-                    </div>
+                  <div key={s.num} className="bg-background/5 rounded-xl p-5">
+                    <div className="text-[24px] font-extrabold text-primary tracking-tight mb-2">{s.num}</div>
+                    <div className="text-[15px] font-semibold text-background mb-1">{s.title}</div>
+                    <div className="text-[12px] text-background/50 leading-relaxed">{s.desc}</div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="mt-8 relative z-[1]">
-              <CTAButton onClick={handleStartChat} className="w-[260px]" />
-            </div>
           </div>
-        </div>
 
-        {/* Benefits */}
-        <div className="max-w-[1400px] mx-auto px-8 mt-6">
-          <div className="bg-background rounded-2xl p-8">
-            <p className="text-[12px] font-bold tracking-wider uppercase text-primary mb-6">Что входит</p>
-            <div className="grid grid-cols-3 gap-4">
-              {benefits.map((b, i) => (
-                <div key={i} className="bg-secondary rounded-xl p-5 border border-border">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
-                    <b.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="text-[14px] font-semibold text-foreground mb-1">{b.title}</div>
-                  <div className="text-[12px] text-muted-foreground leading-snug">{b.desc}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Pricing + CTA */}
-        <div className="max-w-[1400px] mx-auto px-8 mt-6 mb-12">
-          <div className="bg-foreground rounded-2xl relative overflow-hidden">
-            <div className="absolute top-[-100px] right-[-100px] w-[340px] h-[340px] bg-primary/30 rounded-full pointer-events-none" />
-            <div className="max-w-[900px] p-8 relative z-[1]">
-              <p className="text-[12px] font-bold tracking-wider uppercase text-background/40 mb-5">Единый тариф</p>
-              <div className="flex items-end gap-3 mb-2">
-                <div className="text-[52px] font-black text-background leading-none tracking-tight">99 000 ₽</div>
-              </div>
-              <div className="text-[17px] font-bold text-background/60 mb-1">До 1 200 клиентов в месяц на ваш профиль</div>
-              <p className="text-[13px] text-background/40 leading-relaxed mb-8 max-w-[500px]">
-                Прямые переходы на сайт и контакты от покупателей, которые уже выбрали технологию и изучили ваше портфолио.
-              </p>
-              <div className="grid grid-cols-2 gap-x-8 gap-y-3 mb-8">
-                {priceIncludes.map((item, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-xl bg-primary/40 flex items-center justify-center shrink-0">
-                      <Check className="w-2.5 h-2.5 text-primary-foreground" strokeWidth={3} />
-                    </div>
-                    <span className="text-[13px] text-background/80">{item}</span>
-                  </div>
-                ))}
-              </div>
-              <CTAButton onClick={handleStartChat} className="w-[320px]" />
-              <p className="text-[11px] text-background/30 leading-relaxed mt-4">
-                * Учитываются переходы на ваш сайт и обращения через кнопки «Позвонить», «Написать», «Перейти на сайт» в карточке.
-              </p>
-            </div>
+          {/* FINAL CTA */}
+          <div className="bg-background rounded-2xl p-10 text-center">
+            <h2 className="text-[28px] font-extrabold text-foreground leading-tight mb-2 tracking-tight">
+              Готовы стать партнёром?
+            </h2>
+            <p className="text-[14px] text-muted-foreground mb-6 max-w-[440px] mx-auto">
+              Оплата после подтверждения. Менеджер свяжется в течение дня.
+            </p>
+            <button
+              onClick={handleStartChat}
+              className="h-[52px] px-10 rounded-xl text-[15px] font-bold bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
+            >
+              Оставить заявку
+            </button>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { X, Users, TrendingUp, Clock, Home, LayoutGrid, MessageSquare, Star, BarChart3, MapPin, Check, Bath, Tent, Warehouse, Building2, TreePine, Flame, Fence, ExternalLink, Globe } from "lucide-react";
+import { X, ShieldCheck, TrendingUp, LayoutGrid, Sparkles, MapPin, Search, Check, Star } from "lucide-react";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
@@ -7,42 +7,60 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import PartnerApplicationForm from "@/components/PartnerApplicationForm";
 import partnerHeroImg from "@/assets/partner-hero-illustration.png";
 
-const stats = [
-  { val: "1 200+", label: "клиентов в месяц" },
-  { val: "×3", label: "переходов на сайт" },
-  { val: "50+", label: "производителей" },
+const features = [
+  { icon: ShieldCheck, title: "Бейдж «Проверено»", desc: "На карточке компании и каждом проекте" },
+  { icon: TrendingUp, title: "Приоритет в выдаче", desc: "Выше в каталоге и поиске по региону" },
+  { icon: LayoutGrid, title: "Страница компании", desc: "Портфолио, галерея, отзывы и рейтинг" },
+  { icon: Sparkles, title: "Оформление карточек", desc: "Единый стиль и аккуратная типографика" },
+  { icon: MapPin, title: "География работ", desc: "Жители ваших регионов видят первыми" },
+  { icon: Search, title: "Индексация в поиске", desc: "Покупатели находят вас через Google и Яндекс" },
 ];
 
-const painPoints = [
-  { icon: TrendingUp, title: "Клиенты ищут, но не находят вас", desc: "Покупатели сравнивают десятки предложений. Без присутствия на маркетплейсе они уходят к конкурентам." },
-  { icon: BarChart3, title: "Трафик на сайт дорожает", desc: "Рекламные каналы выгорают. Стоимость привлечения клиента растёт каждый квартал." },
-  { icon: Users, title: "Нужно объяснять технологию", desc: "Часть покупателей воспринимает «модуль» как временное решение. Мы делаем эту работу за вас." },
+type Plan = {
+  name: string;
+  price: string;
+  priceHint: string;
+  period: string;
+  features: string[];
+  popular?: boolean;
+};
+
+const plans: Plan[] = [
+  {
+    name: "База",
+    price: "19 000 ₽",
+    priceHint: "от",
+    period: "на 3 месяца",
+    features: ["Бейдж «Проверено»", "До 5 проектов в каталоге", "2 региона работы", "Страница с отзывами"],
+  },
+  {
+    name: "Рост",
+    price: "39 000 ₽",
+    priceHint: "от",
+    period: "на 3 месяца",
+    popular: true,
+    features: ["Всё из «Базы»", "Приоритет в выдаче", "До 20 проектов", "5 регионов работы"],
+  },
+  {
+    name: "Макс",
+    price: "79 000 ₽",
+    priceHint: "от",
+    period: "на 3 месяца",
+    features: [
+      "Всё из «Роста»",
+      "Топ выдачи в регионе",
+      "Без лимита по проектам",
+      "Персональный сайт компании",
+      "Фото и тексты от редакции",
+      "Персональный менеджер",
+    ],
+  },
 ];
 
 const steps = [
-  { num: 1, title: "Загружаете проекты", desc: "Фото, цена, характеристики, планировка." },
-  { num: 2, title: "Покупатель изучает вас", desc: "Видит портфолио, отзывы, переходит на ваш сайт." },
-  { num: 3, title: "Клиент пишет напрямую", desc: "В чат, Telegram или WhatsApp — без посредников." },
-];
-
-const benefits = [
-  { icon: Home, title: "Профиль производителя", desc: "Портфолио, отзывы, сертификаты" },
-  { icon: Globe, title: "Ссылка на ваш сайт", desc: "Прямые переходы из карточек и профиля" },
-  { icon: MessageSquare, title: "Чат с клиентом", desc: "Быстрые вопросы прямо в проекте" },
-  { icon: Star, title: "Верифицированные отзывы", desc: "Только от реальных покупателей" },
-  { icon: MapPin, title: "Региональный поиск", desc: "Клиенты фильтруют по региону" },
-  { icon: LayoutGrid, title: "Карточки проектов", desc: "Фото, планировка, цена, стиль" },
-];
-
-const priceIncludes = [
-  "Неограниченное количество проектов",
-  "Прямые переходы клиентов на ваш сайт",
-  "Полный профиль производителя",
-  "Галерея построенных объектов",
-  "Контакты клиентов в Telegram / WhatsApp",
-  "Верифицированные отзывы покупателей",
-  "Приоритет в поиске и выдаче",
-  "Персональный менеджер на старте",
+  { num: "01", title: "Оставляете заявку", desc: "Контакты, ИНН и ссылка на сайт." },
+  { num: "02", title: "Мы проверяем вручную", desc: "Сверяем реквизиты, обсуждаем формат." },
+  { num: "03", title: "Запускаем витрину", desc: "Оплата, оформление, бейдж «Проверено»." },
 ];
 
 interface PartnerDrawerProps {
@@ -51,157 +69,186 @@ interface PartnerDrawerProps {
   onDrawerOpenChange?: (open: boolean) => void;
 }
 
-/* Shared content used by both Drawer (mobile) and Dialog (desktop) */
 const PartnerContent = ({ onClose, onStartChat }: { onClose: () => void; onStartChat: () => void }) => (
-  <>
-    {/* Hero */}
-    <div className="bg-primary relative overflow-hidden">
+  <div className="flex flex-col gap-3 px-3 pt-3 pb-4 bg-secondary">
+    {/* HERO */}
+    <div className="bg-primary rounded-2xl relative overflow-hidden">
       <div className="absolute top-3 right-3 z-20">
-        <button onClick={onClose} className="w-7 h-7 rounded-full bg-background/20 backdrop-blur flex items-center justify-center">
-          <X className="w-3.5 h-3.5 text-primary-foreground" />
+        <button
+          onClick={onClose}
+          className="w-9 h-9 rounded-xl bg-background/15 backdrop-blur flex items-center justify-center"
+        >
+          <X className="w-4 h-4 text-primary-foreground" />
         </button>
       </div>
       <div className="absolute top-[-100px] left-[-80px] w-[300px] h-[300px] bg-primary-foreground/5 rounded-full pointer-events-none" />
       <div className="absolute bottom-[-60px] right-[-60px] w-[200px] h-[200px] bg-primary-foreground/5 rounded-full pointer-events-none" />
       <div className="flex justify-center pt-3 pb-1 md:hidden">
-        <div className="w-10 h-1 rounded-full bg-primary-foreground/20" />
+        <div className="w-10 h-1 rounded-md bg-primary-foreground/20" />
       </div>
-      <div className="flex justify-center pt-6 md:pt-8 pb-2 px-2">
-        <img src={partnerHeroImg} alt="" className="w-[340px] md:w-[380px] h-auto relative z-[1]" />
+      <div className="flex justify-center pt-4 pb-1 px-2">
+        <img src={partnerHeroImg} alt="" className="w-[260px] h-auto relative z-[1]" />
       </div>
-      <div className="absolute top-14 right-4 bg-background/95 backdrop-blur rounded-xl p-2.5 shadow-lg z-[2]">
-        <div className="text-[11px] text-muted-foreground mb-0.5">до</div>
-        <div className="text-[22px] font-black text-foreground leading-none tracking-tight">1200</div>
-        <div className="text-[11px] font-semibold text-primary leading-tight mt-0.5">клиентов<br/>в месяц</div>
-      </div>
-      <div className="px-5 md:px-8 pb-6 relative z-[1]">
-        <h3 className="text-[24px] md:text-[28px] font-extrabold text-primary-foreground leading-[1.15] text-center mb-2.5">
-          Приведём клиентов и трафик на ваш сайт
-        </h3>
-        <p className="text-[13px] md:text-sm text-primary-foreground/60 leading-relaxed text-center mb-5 max-w-[500px] mx-auto">
-          Покупатели изучают ваше портфолио, переходят на сайт и пишут напрямую — без посредников и скрытых комиссий
+      <div className="px-5 pb-7 relative z-[1] text-center">
+        <p className="text-[11px] font-bold tracking-wider uppercase text-primary-foreground/50 mb-2">Для застройщиков</p>
+        <h1 className="text-[26px] font-extrabold text-primary-foreground leading-[1.15] mb-3 tracking-tight">
+          Покажите свои дома<br />в лучшем свете
+        </h1>
+        <p className="text-[13px] text-primary-foreground/70 leading-relaxed max-w-[320px] mx-auto">
+          Красивая витрина, проверенный статус и приоритет в выдаче — чтобы покупатели видели вас первыми.
         </p>
-        <div className="grid grid-cols-3 gap-2 max-w-[500px] mx-auto">
-          {stats.map((s) => (
-            <div key={s.label} className="bg-primary-foreground/10 rounded-xl p-2.5 text-center">
-              <div className="text-[17px] font-extrabold text-primary-foreground leading-none mb-1">{s.val}</div>
-              <div className="text-[10px] text-primary-foreground/50 leading-tight">{s.label}</div>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
 
-    <div className="bg-background px-4 md:px-6 flex flex-col gap-3 pt-4 pb-4">
-      {/* Who we're looking for */}
-      <div className="bg-card rounded-2xl p-4 border border-border">
-        <p className="text-[11px] font-bold tracking-wider uppercase text-primary mb-1">Кого мы ищем</p>
-        <p className="text-[13px] text-muted-foreground mb-3">Не только дома — все направления загородного строительства</p>
-        <div className="grid grid-cols-2 gap-2">
-          {[
-            { icon: Home, label: "Модульные дома" },
-            { icon: Bath, label: "Бани и сауны" },
-            { icon: Tent, label: "Глэмпинг" },
-            { icon: Warehouse, label: "Бытовки и хозблоки" },
-            { icon: TreePine, label: "Беседки и навесы" },
-            { icon: Building2, label: "Коммерческие объекты" },
-            { icon: Flame, label: "Барбекю-зоны" },
-            { icon: Fence, label: "Гаражи и заборы" },
-          ].map((c, i) => (
-            <div key={i} className="flex items-center gap-2.5 bg-secondary rounded-xl px-3 py-2.5">
-              <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                <c.icon className="w-3.5 h-3.5 text-primary" />
-              </div>
-              <span className="text-[13px] font-medium text-foreground">{c.label}</span>
+    {/* PREVIEW CARD */}
+    <div className="bg-background rounded-2xl p-4">
+      <p className="text-[11px] font-bold tracking-wider uppercase text-primary mb-3">Партнёрская карточка</p>
+      <div className="bg-secondary rounded-xl p-3">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-10 h-10 rounded-xl bg-foreground text-background flex items-center justify-center text-[11px] font-bold shrink-0">
+            SW
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-1.5 mb-0.5 flex-wrap">
+              <span className="text-[13px] font-semibold text-foreground">Sherwood Home</span>
+              <span className="inline-flex items-center gap-1 bg-primary/10 text-primary text-[10px] font-bold px-1.5 py-0.5 rounded-md">
+                <ShieldCheck className="w-2.5 h-2.5" /> Проверено
+              </span>
             </div>
-          ))}
+            <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+              <Star className="w-2.5 h-2.5 fill-current text-foreground" />
+              <span>5,0 · 13 отзывов · 12 проектов</span>
+            </div>
+          </div>
         </div>
+        <div className="aspect-[16/9] rounded-lg bg-gradient-to-b from-[hsl(205,30%,65%)] to-[hsl(80,20%,40%)]" />
       </div>
+    </div>
 
-      {/* Pain points */}
-      <div className="bg-card rounded-2xl p-4 border border-border">
-        <p className="text-[11px] font-bold tracking-wider uppercase text-primary mb-3">Что происходит на рынке</p>
-        {painPoints.map((p, i) => (
-          <div key={i} className={`flex gap-3 items-start py-3 ${i < painPoints.length - 1 ? "border-b border-border" : ""}`}>
+    {/* FEATURES */}
+    <div className="bg-background rounded-2xl p-4">
+      <p className="text-[11px] font-bold tracking-wider uppercase text-primary mb-1.5">Что получают партнёры</p>
+      <h2 className="text-[20px] font-extrabold text-foreground leading-tight mb-4 tracking-tight">
+        Представительство, которое работает на бренд
+      </h2>
+      <div className="grid grid-cols-1 gap-2">
+        {features.map((f, i) => (
+          <div key={i} className="flex gap-3 items-start bg-secondary rounded-xl p-3">
             <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-              <p.icon className="w-[18px] h-[18px] text-primary" />
+              <f.icon className="w-[18px] h-[18px] text-primary" />
             </div>
-            <div>
-              <div className="text-[14px] font-semibold text-foreground mb-0.5">{p.title}</div>
-              <div className="text-[12px] text-muted-foreground leading-relaxed">{p.desc}</div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* How it works */}
-      <div className="bg-foreground rounded-2xl p-5 relative overflow-hidden">
-        <div className="absolute top-[-60px] right-[-60px] w-[200px] h-[200px] bg-primary/20 rounded-full pointer-events-none" />
-        <p className="text-[11px] font-bold tracking-wider uppercase text-background/40 mb-3">Как это работает</p>
-        <h3 className="text-[20px] font-extrabold text-background leading-tight mb-1">Готовая аудитория, прямой контакт</h3>
-        <p className="text-[13px] text-background/50 leading-relaxed mb-4">Покупатели уже выбрали технологию — приходят к вам изучить проекты и перейти на сайт.</p>
-        {steps.map((s, i) => (
-          <div key={i} className={`flex gap-3 items-start py-3 ${i < steps.length - 1 ? "border-b border-background/10" : ""}`}>
-            <div className="w-8 h-8 rounded-full bg-background/10 flex items-center justify-center shrink-0">
-              <span className="text-[13px] font-extrabold text-background">{s.num}</span>
-            </div>
-            <div>
-              <div className="text-[14px] font-semibold text-background mb-0.5">{s.title}</div>
-              <div className="text-[12px] text-background/50 leading-relaxed">{s.desc}</div>
+            <div className="min-w-0">
+              <div className="text-[14px] font-semibold text-foreground mb-0.5">{f.title}</div>
+              <div className="text-[12px] text-muted-foreground leading-relaxed">{f.desc}</div>
             </div>
           </div>
         ))}
-      </div>
-
-      {/* Benefits */}
-      <div>
-        <p className="text-[11px] font-bold tracking-wider uppercase text-primary mb-2 px-1">Что входит</p>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-          {benefits.map((b, i) => (
-            <div key={i} className="bg-card rounded-xl p-3 border border-border">
-              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mb-2">
-                <b.icon className="w-4 h-4 text-primary" />
-              </div>
-              <div className="text-[13px] font-semibold text-foreground mb-0.5">{b.title}</div>
-              <div className="text-[11px] text-muted-foreground leading-snug">{b.desc}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Pricing */}
-      <div className="bg-foreground rounded-2xl p-5 relative overflow-hidden">
-        <div className="absolute top-[-80px] right-[-80px] w-[260px] h-[260px] bg-primary/30 rounded-full pointer-events-none" />
-        <p className="text-[11px] font-bold tracking-wider uppercase text-background/40 mb-4">Единый тариф</p>
-        <div className="text-[44px] font-black text-background leading-none tracking-tight mb-1">99 000 ₽</div>
-        <div className="text-[15px] font-bold text-background/60 mb-1">До 1 200 клиентов в месяц на ваш профиль</div>
-        <p className="text-[12px] text-background/40 leading-relaxed mb-5">Прямые переходы на сайт и контакты от покупателей, которые уже выбрали технологию и изучили ваше портфолио.</p>
-        <div className="flex flex-col gap-2.5 mb-5">
-          {priceIncludes.map((item, i) => (
-            <div key={i} className="flex items-center gap-2.5">
-              <div className="w-5 h-5 rounded-full bg-primary/40 flex items-center justify-center shrink-0">
-                <Check className="w-2.5 h-2.5 text-primary-foreground" strokeWidth={3} />
-              </div>
-              <span className="text-[13px] text-background/80">{item}</span>
-            </div>
-          ))}
-        </div>
-        <p className="text-[11px] text-background/30 leading-relaxed">
-          * Учитываются переходы на ваш сайт и обращения через кнопки «Позвонить», «Написать», «Перейти на сайт» в карточке.
-        </p>
-      </div>
-
-      {/* Desktop inline CTA */}
-      <div className="hidden md:block pt-2 pb-2">
-        <button
-          onClick={onStartChat}
-          className="w-full h-[52px] bg-primary text-primary-foreground rounded-2xl text-[15px] font-bold hover:opacity-90 transition-opacity"
-        >
-          Подключиться
-        </button>
       </div>
     </div>
-  </>
+
+    {/* PLANS */}
+    <div className="bg-background rounded-2xl p-4">
+      <p className="text-[11px] font-bold tracking-wider uppercase text-primary mb-1.5">Форматы участия</p>
+      <h2 className="text-[20px] font-extrabold text-foreground leading-tight mb-4 tracking-tight">
+        Три тарифа, разные уровни присутствия
+      </h2>
+      <div className="flex flex-col gap-2.5">
+        {plans.map((p) => {
+          const isHero = p.popular;
+          return (
+            <div
+              key={p.name}
+              className={`rounded-2xl p-5 ${isHero ? "bg-foreground text-background" : "bg-secondary text-foreground"}`}
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span
+                  className={`text-[11px] font-bold tracking-wider uppercase ${
+                    isHero ? "text-background/50" : "text-muted-foreground"
+                  }`}
+                >
+                  {p.name}
+                </span>
+                {isHero && (
+                  <span className="text-[10px] font-bold tracking-wider uppercase bg-primary text-primary-foreground px-2 py-1 rounded-md">
+                    Популярный
+                  </span>
+                )}
+              </div>
+              <div className="flex items-baseline gap-1.5 mb-1">
+                <span className={`text-[12px] font-medium ${isHero ? "text-background/50" : "text-muted-foreground"}`}>
+                  {p.priceHint}
+                </span>
+                <span className="text-[26px] font-extrabold tracking-tight leading-none">{p.price}</span>
+              </div>
+              <div className={`text-[12px] mb-4 ${isHero ? "text-background/50" : "text-muted-foreground"}`}>
+                {p.period}
+              </div>
+              <ul className="flex flex-col gap-2">
+                {p.features.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2.5">
+                    <div
+                      className={`w-4 h-4 rounded-md flex items-center justify-center shrink-0 mt-0.5 ${
+                        isHero ? "bg-primary/30" : "bg-primary/15"
+                      }`}
+                    >
+                      <Check
+                        className={`w-2.5 h-2.5 ${isHero ? "text-primary-foreground" : "text-primary"}`}
+                        strokeWidth={3}
+                      />
+                    </div>
+                    <span className={`text-[13px] leading-snug ${isHero ? "text-background/90" : "text-foreground"}`}>
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+      <p className="text-[11px] text-muted-foreground text-center mt-4 leading-relaxed">
+        Продление — в любой момент. Переход на другой тариф — без потери оставшегося периода.
+      </p>
+    </div>
+
+    {/* HOW IT WORKS */}
+    <div className="bg-foreground rounded-2xl p-5 relative overflow-hidden">
+      <div className="absolute top-[-60px] right-[-60px] w-[200px] h-[200px] bg-primary/20 rounded-full pointer-events-none" />
+      <div className="relative z-[1]">
+        <p className="text-[11px] font-bold tracking-wider uppercase text-background/40 mb-1.5">Как это работает</p>
+        <h2 className="text-[20px] font-extrabold text-background leading-tight mb-5 tracking-tight">
+          Подключение занимает 2–3 рабочих дня
+        </h2>
+        <div className="flex flex-col gap-2.5">
+          {steps.map((s) => (
+            <div key={s.num} className="bg-background/5 rounded-xl p-4 flex gap-3">
+              <div className="text-[20px] font-extrabold text-primary tracking-tight leading-none shrink-0 w-8">{s.num}</div>
+              <div className="min-w-0">
+                <div className="text-[14px] font-semibold text-background mb-0.5">{s.title}</div>
+                <div className="text-[12px] text-background/50 leading-relaxed">{s.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {/* FINAL CTA — desktop dialog only (mobile uses fixed CTA) */}
+    <div className="hidden md:block bg-background rounded-2xl p-6 text-center">
+      <h2 className="text-[22px] font-extrabold text-foreground leading-tight mb-2 tracking-tight">
+        Готовы стать партнёром?
+      </h2>
+      <p className="text-[13px] text-muted-foreground mb-5">
+        Оплата после подтверждения. Менеджер свяжется в течение дня.
+      </p>
+      <button
+        onClick={onStartChat}
+        className="w-full h-[52px] bg-primary text-primary-foreground rounded-xl text-[15px] font-bold hover:opacity-90 transition-opacity"
+      >
+        Оставить заявку
+      </button>
+    </div>
+  </div>
 );
 
 const PartnerDrawer = ({ children, drawerOpen, onDrawerOpenChange }: PartnerDrawerProps) => {
@@ -214,28 +261,17 @@ const PartnerDrawer = ({ children, drawerOpen, onDrawerOpenChange }: PartnerDraw
   const open = isControlled ? drawerOpen : internalOpen;
   const setOpen = isControlled ? (onDrawerOpenChange || (() => {})) : setInternalOpen;
 
-  const handleStartChat = () => {
-    setShowForm(true);
-  };
-
+  const handleStartChat = () => setShowForm(true);
   const handleClose = () => {
     setShowForm(false);
     setOpen(false);
   };
+  const handleFormBack = () => setShowForm(false);
 
-  const handleFormBack = () => {
-    setShowForm(false);
-  };
-
-  /* Desktop: centered Dialog */
   if (!isMobile) {
     return (
       <Dialog open={open} onOpenChange={(v) => { if (!v) setShowForm(false); setOpen(v); }}>
-        {children && (
-          <DialogTrigger asChild>
-            {children}
-          </DialogTrigger>
-        )}
+        {children && <DialogTrigger asChild>{children}</DialogTrigger>}
         <DialogContent className="max-w-[680px] max-h-[90vh] p-0 overflow-hidden rounded-2xl border-0 gap-0 [&>button]:hidden">
           <div className="overflow-y-auto max-h-[90vh]">
             {showForm ? (
@@ -251,18 +287,13 @@ const PartnerDrawer = ({ children, drawerOpen, onDrawerOpenChange }: PartnerDraw
     );
   }
 
-  /* Mobile: bottom Drawer */
   return (
     <Drawer open={open} onOpenChange={(v) => { if (!v) setShowForm(false); setOpen(v); }} shouldScaleBackground={false} handleOnly>
-      {children && (
-        <DrawerTrigger asChild>
-          {children}
-        </DrawerTrigger>
-      )}
-      <DrawerContent className="!mt-0 h-[98vh] max-h-[98vh] outline-none rounded-t-[28px] border-0 bg-background [&>div:first-child]:!hidden [&>div:first-child]:!h-0 [&>div:first-child]:!m-0 [&>div:first-child]:!p-0 overflow-hidden">
+      {children && <DrawerTrigger asChild>{children}</DrawerTrigger>}
+      <DrawerContent className="!mt-0 h-[98vh] max-h-[98vh] outline-none rounded-t-[28px] border-0 bg-secondary [&>div:first-child]:!hidden [&>div:first-child]:!h-0 [&>div:first-child]:!m-0 [&>div:first-child]:!p-0 overflow-hidden">
         <div className="overflow-y-auto h-full pb-[calc(80px+env(safe-area-inset-bottom))]">
           {showForm ? (
-            <div className="pt-6">
+            <div className="pt-6 bg-background min-h-full">
               <PartnerApplicationForm onBack={handleFormBack} variant="drawer" />
             </div>
           ) : (
@@ -270,14 +301,13 @@ const PartnerDrawer = ({ children, drawerOpen, onDrawerOpenChange }: PartnerDraw
           )}
         </div>
 
-        {/* Fixed CTA — mobile only, hide when form is shown */}
         {!showForm && (
-          <div className="fixed bottom-0 left-0 right-0 bg-background border-t border-border px-4 pt-2.5 pb-[calc(16px+env(safe-area-inset-bottom))]">
+          <div className="fixed bottom-0 left-0 right-0 bg-background border-t border-border px-3 pt-2.5 pb-[calc(16px+env(safe-area-inset-bottom))]">
             <button
               onClick={handleStartChat}
-              className="w-full h-[52px] bg-primary text-primary-foreground rounded-2xl text-[15px] font-bold"
+              className="w-full h-[52px] bg-primary text-primary-foreground rounded-xl text-[15px] font-bold"
             >
-              Подключиться
+              Оставить заявку
             </button>
           </div>
         )}
