@@ -347,7 +347,7 @@ const ProjectDetail = () => {
                 </div>
               ))}
             </div>
-            <span className="absolute bottom-3 left-4 text-xs text-white bg-black/45 px-2.5 py-1 rounded-full">
+            <span className="absolute bottom-3 right-4 text-xs text-white bg-black/45 px-2.5 py-1 rounded-full">
               {activeImage + 1} из {galleryImages.length}
             </span>
           </div>
@@ -390,7 +390,7 @@ const ProjectDetail = () => {
                 <ChevronDown className="w-5 h-5 text-foreground -rotate-90" />
               </button>
               {/* Counter */}
-              <span className="absolute bottom-3 left-4 text-xs text-white bg-black/45 px-2.5 py-1 rounded-full z-20">
+              <span className="absolute bottom-3 right-4 text-xs text-white bg-black/45 px-2.5 py-1 rounded-full z-20">
                 {activeImage + 1} из {galleryImages.length}
               </span>
             </div>
