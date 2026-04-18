@@ -26,10 +26,17 @@ const MobileTabBar = ({ ctaLabel, onCtaClick }: { ctaLabel?: string; onCtaClick?
         <div className="flex">
           {tabs.map((tab) => {
             const active = location.pathname === tab.path;
+            const handleClick = () => {
+              if (active && tab.path === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                return;
+              }
+              navigate(tab.path);
+            };
             return (
               <button
                 key={tab.path}
-                onClick={() => navigate(tab.path)}
+                onClick={handleClick}
                 className="flex-1 flex items-center justify-center py-2.5 px-4"
               >
                 <tab.icon
