@@ -1,5 +1,4 @@
-import { Heart, Loader2 } from "lucide-react";
-import { formatSpecs } from "@/lib/utils";
+import { Heart, Loader2, Maximize, BedDouble, Bath } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import SwipeableGallery from "@/components/SwipeableGallery";
@@ -289,9 +288,20 @@ const FeaturedProjects = () => {
                     <h2 className="text-[12px] font-bold text-foreground truncate">{project.name}</h2>
                     <span className="text-[12px] font-normal text-foreground/80 whitespace-nowrap shrink-0">от {project.price}</span>
                   </div>
-                  <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">
-                    {formatSpecs(project.area, project.beds, project.baths)}
-                  </p>
+                  <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">
+                    <span className="inline-flex items-center gap-[3px]">
+                      <Maximize className="w-3 h-3" strokeWidth={1.75} />
+                      {project.area}
+                    </span>
+                    <span className="inline-flex items-center gap-[3px]">
+                      <BedDouble className="w-3 h-3" strokeWidth={1.75} />
+                      {project.beds}
+                    </span>
+                    <span className="inline-flex items-center gap-[3px]">
+                      <Bath className="w-3 h-3" strokeWidth={1.75} />
+                      {project.baths}
+                    </span>
+                  </div>
                 </div>
               </a>
             </article>
