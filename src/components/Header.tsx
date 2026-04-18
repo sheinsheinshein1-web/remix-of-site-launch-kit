@@ -11,23 +11,13 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-  // Инициализируем состояния синхронно: учитываем и текущий scrollY, и сохранённую
-  // позицию из sessionStorage (на случай возврата с детальной страницы — тогда
-  // FeaturedProjects ещё не успел выполнить scrollTo)
-  const initialY = (() => {
-    if (typeof window === "undefined") return 0;
-    const saved = sessionStorage.getItem("home_feed_scroll");
-    if (saved) {
-      const y = parseInt(saved, 10);
-      if (Number.isFinite(y)) return Math.max(window.scrollY, y);
-    }
-    return window.scrollY;
-  })();
-  // Если возвращаемся на проскролленную страницу — сразу показываем компактный
-  // хедер, чтобы не было «пустой» полоски сверху между скрытым синим и не появившимся белым
-  const [showCompactHeader, setShowCompactHeader] = useState(initialY > 60);
-  const [scrolled, setScrolled] = useState(initialY > 60);
-  const [mobileScrolled, setMobileScrolled] = useState(initialY > 10);
+  // При первом монтировании всегда стартуем с «непроскролленным» состоянием:
+  // показываем обычный (синий/статичный) хедер. Это критично при возврате
+  // с детальной страницы — иначе компактный поиск моргает сверху.
+  // Реальное состояние подхватится из onScroll, когда пользователь начнёт скроллить.
+  const [showCompactHeader, setShowCompactHeader] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileScrolled, setMobileScrolled] = useState(false);
   const [cityOpen, setCityOpen] = useState(false);
   const { city, selectCity } = useCity();
 
@@ -35,6 +25,14 @@ const Header = () => {
     let lastY = window.scrollY;
     let upDistance = 0; // накопленное расстояние скролла вверх
     const UP_THRESHOLD = 80; // пикселей вверх до показа компактного хедера
+    // Первые ~400ms игнорируем «скролл», чтобы восстановление позиции из
+    // sessionStorage (FeaturedProjects делает scrollTo) не считалось «скроллом вверх»
+    let settled = false;
+    const settleTimer = window.setTimeout(() => {
+      settled = true;
+      lastY = window.scrollY;
+    }, 400);
+
     const sync = () => {
       const y = window.scrollY;
       const pastThreshold = y > 60;
@@ -48,24 +46,27 @@ const Header = () => {
     const onScroll = () => {
       const y = window.scrollY;
       const delta = y - lastY;
-      const scrollingDown = delta > 0;
       const pastThreshold = y > 60;
       setScrolled(pastThreshold);
       setMobileScrolled(y > 10);
 
+      // Пока не «устаканились» — только обновляем lastY, не трогаем компактный хедер
+      if (!settled) {
+        lastY = y;
+        return;
+      }
+
+      const scrollingDown = delta > 0;
       if (scrollingDown) {
-        // при скролле вниз сбрасываем накопление и прячем
         upDistance = 0;
         setShowCompactHeader(false);
       } else if (delta < 0) {
-        // копим расстояние вверх
         upDistance += -delta;
         if (pastThreshold && upDistance >= UP_THRESHOLD) {
           setShowCompactHeader(true);
         }
       }
 
-      // если ушли выше порога — точно прячем и сбрасываем
       if (!pastThreshold) {
         upDistance = 0;
         setShowCompactHeader(false);
@@ -76,6 +77,7 @@ const Header = () => {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       cancelAnimationFrame(raf);
+      window.clearTimeout(settleTimer);
       window.removeEventListener("scroll", onScroll);
     };
   }, []);
