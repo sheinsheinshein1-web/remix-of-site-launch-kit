@@ -11,23 +11,13 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-  // Инициализируем состояния синхронно: учитываем и текущий scrollY, и сохранённую
-  // позицию из sessionStorage (на случай возврата с детальной страницы — тогда
-  // FeaturedProjects ещё не успел выполнить scrollTo)
-  const initialY = (() => {
-    if (typeof window === "undefined") return 0;
-    const saved = sessionStorage.getItem("home_feed_scroll");
-    if (saved) {
-      const y = parseInt(saved, 10);
-      if (Number.isFinite(y)) return Math.max(window.scrollY, y);
-    }
-    return window.scrollY;
-  })();
-  // Если возвращаемся на проскролленную страницу — сразу показываем компактный
-  // хедер, чтобы не было «пустой» полоски сверху между скрытым синим и не появившимся белым
-  const [showCompactHeader, setShowCompactHeader] = useState(initialY > 60);
-  const [scrolled, setScrolled] = useState(initialY > 60);
-  const [mobileScrolled, setMobileScrolled] = useState(initialY > 10);
+  // При первом монтировании всегда стартуем с «непроскролленным» состоянием:
+  // показываем обычный (синий/статичный) хедер. Это критично при возврате
+  // с детальной страницы — иначе компактный поиск моргает сверху.
+  // Реальное состояние подхватится из onScroll, когда пользователь начнёт скроллить.
+  const [showCompactHeader, setShowCompactHeader] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileScrolled, setMobileScrolled] = useState(false);
   const [cityOpen, setCityOpen] = useState(false);
   const { city, selectCity } = useCity();
 
