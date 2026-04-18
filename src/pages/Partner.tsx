@@ -42,7 +42,7 @@ const Partner = () => {
     return (
       <div className="min-h-screen bg-secondary font-sans">
         <Header />
-        <div className="pt-[108px] pb-6">
+        <div className="pt-[152px] pb-6">
           <div className="max-w-[1400px] mx-auto bg-background rounded-b-2xl overflow-hidden">
             {/* Main bento card */}
             <div className="bg-background">
