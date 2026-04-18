@@ -194,9 +194,10 @@ const AllCategoriesPage = () => {
                       <img
                         src={item.img}
                         alt={item.name}
-                        loading="eager"
-                        decoding="sync"
-                        fetchPriority="high"
+                        loading={sIdx === 0 ? "eager" : "lazy"}
+                        decoding="async"
+                        width={isMobile ? 100 : 180}
+                        height={isMobile ? 100 : 180}
                         className={`absolute object-contain ${isMobile ? "w-[100px] h-[100px]" : "w-[180px] h-[180px]"} ${
                           item.name === "Дома" 
                             ? (isMobile ? "bottom-[-14px] right-[-16px]" : "bottom-[-20px] right-[-50px]")
