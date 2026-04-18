@@ -23,7 +23,9 @@ const Header = () => {
     }
     return window.scrollY;
   })();
-  const [showCompactHeader, setShowCompactHeader] = useState(false);
+  // Если возвращаемся на проскролленную страницу — сразу показываем компактный
+  // хедер, чтобы не было «пустой» полоски сверху между скрытым синим и не появившимся белым
+  const [showCompactHeader, setShowCompactHeader] = useState(initialY > 60);
   const [scrolled, setScrolled] = useState(initialY > 60);
   const [mobileScrolled, setMobileScrolled] = useState(initialY > 10);
   const [cityOpen, setCityOpen] = useState(false);
