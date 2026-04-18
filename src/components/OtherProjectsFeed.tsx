@@ -123,6 +123,10 @@ const OtherProjectsFeed = ({ currentId }: Props) => {
             </a>
           </article>
         ))}
+        {isLoadingMore &&
+          Array.from({ length: PAGE_SIZE }).map((_, i) => (
+            <ProjectCardSkeleton key={`skeleton-${i}`} />
+          ))}
       </div>
       <div ref={sentinelRef} aria-hidden="true" className="h-1 w-full" />
     </>
