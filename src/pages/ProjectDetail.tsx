@@ -428,6 +428,15 @@ const ProjectDetail = () => {
               60 м² · 2 спальни · санузел · одноэтажный
             </div>
 
+            {/* Локация доставки */}
+            <div className="mt-2 flex items-center gap-1.5">
+              <MapPin className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0" strokeWidth={2} />
+              <span className="flex-1 text-[13px] text-foreground truncate">Москва и область</span>
+              <button className="text-[13px] font-medium text-primary hover:underline">
+                Изменить
+              </button>
+            </div>
+
             {/* Maker pill */}
             <div
               className="mt-3 flex items-center gap-2.5 bg-secondary rounded-xl px-2.5 py-2 cursor-pointer"
@@ -471,15 +480,6 @@ const ProjectDetail = () => {
             )}
 
             {/* Комплектация и Характеристики временно скрыты */}
-
-            {/* Локация доставки */}
-            <div className="mt-3 flex items-center gap-2 bg-secondary rounded-xl px-3 py-2.5">
-              <MapPin className="w-4 h-4 text-muted-foreground flex-shrink-0" strokeWidth={2} />
-              <span className="flex-1 text-[13px] text-foreground truncate">Москва и область</span>
-              <button className="text-[13px] font-medium text-primary hover:underline">
-                Изменить
-              </button>
-            </div>
 
             {/* CTA в самом низу */}
             <a
