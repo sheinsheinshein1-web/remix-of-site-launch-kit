@@ -225,9 +225,9 @@ const Partner = () => {
             </button>
             <div className="flex-1 min-w-0 ml-3">
               <div className="text-[14px] font-semibold text-foreground truncate">Sherwood Home</div>
-              <div className="flex items-center gap-1">
-                <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-                <span className="text-[13px] font-medium text-foreground">4.8</span>
+              <div className="flex items-center gap-1 text-[12px] text-muted-foreground">
+                <ShieldCheck className="w-3 h-3" strokeWidth={2} />
+                <span>Не верифицирован</span>
               </div>
             </div>
             <button
@@ -260,220 +260,80 @@ const Partner = () => {
       {/* Header Banner */}
       <div className="w-full h-[200px] bg-gradient-to-br from-[#2a3528] to-[#111]" />
 
-      {/* Main Info Card */}
+      {/* Main Info Card — empty state */}
       <div className="bg-background rounded-t-2xl -mt-4 relative z-10">
         <div className="p-4">
-          <div className="flex gap-3 mb-3">
-            <div className="w-[72px] h-[72px] rounded-2xl bg-foreground text-background flex items-center justify-center text-lg font-bold shrink-0">SW</div>
+          <div className="flex gap-3 mb-4">
+            <div className="w-[72px] h-[72px] rounded-2xl bg-secondary text-foreground/40 flex items-center justify-center text-lg font-bold shrink-0">SW</div>
             <div className="flex-1 min-w-0">
-              <h1 className="text-[17px] font-bold text-foreground leading-tight mb-0.5">ООО «Sherwood Home»</h1>
-              <p className="text-xs text-muted-foreground mb-2">ИНН: 631905302478</p>
-              <div className="flex items-center gap-1.5">
-                <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
-                <span className="text-base font-bold text-foreground">4.8</span>
-                <span className="text-[13px] text-primary">22 отзыва</span>
+              <h1 className="text-[17px] font-bold text-foreground leading-tight mb-1">Sherwood Home</h1>
+              <p className="text-xs text-muted-foreground mb-2">Карточка компании ещё не заполнена</p>
+              <div className="inline-flex items-center gap-1.5 text-[11px] font-medium bg-secondary text-muted-foreground rounded-full px-2.5 py-1">
+                <ShieldCheck className="w-3 h-3" />
+                <span>Не верифицирован</span>
               </div>
             </div>
-          </div>
-
-          <div className="flex flex-col gap-1.5 mb-3">
-            <div className="flex items-start gap-2 text-[13px] text-muted-foreground">
-              <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0" />
-              <span>Самара, ул. Мичурина, д. 15</span>
-            </div>
-            <div className="flex items-start gap-2 text-[13px] text-muted-foreground">
-              <Clock className="w-3.5 h-3.5 mt-0.5 shrink-0" />
-              <span>График работы <span className="text-primary">с 10:00 до 19:30</span></span>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap gap-1.5 mb-3">
-            <span className="inline-flex items-center gap-1.5 text-[11px] font-medium bg-secondary text-muted-foreground rounded-full px-2.5 py-1">
-              <Factory className="w-3 h-3" /> Собственное производство
-            </span>
-            <span className="inline-flex items-center gap-1.5 text-[11px] font-medium bg-secondary text-muted-foreground rounded-full px-2.5 py-1">
-              <ShieldCheck className="w-3 h-3" /> Эскроу-счёт
-            </span>
-            <span className="inline-flex items-center gap-1.5 text-[11px] font-medium bg-secondary text-muted-foreground rounded-full px-2.5 py-1">
-              <CheckCircle2 className="w-3 h-3" /> Проверен платформой
-            </span>
-          </div>
-
-          <div className="grid grid-cols-2 gap-2">
-            {[
-              { val: "10 лет", label: "на рынке" },
-              { val: "500+ домов", label: "построено" },
-              { val: "16 сделок", label: "за последний год" },
-              { val: "3 региона", label: "строительства" },
-            ].map((s, i) => (
-              <div key={i} className="bg-secondary rounded-xl p-3">
-                <div className="text-base font-bold text-foreground">{s.val}</div>
-                <div className="text-[11px] text-muted-foreground">{s.label}</div>
-              </div>
-            ))}
           </div>
         </div>
       </div>
 
-      {/* Content blocks */}
-      <div className="flex flex-col gap-2 mt-2">
-        {/* Projects */}
-        <div className="bg-background p-4 rounded-2xl">
-          <h2 className="text-[17px] font-bold text-foreground mb-3">
-            Проекты домов <span className="text-muted-foreground font-normal text-[15px] ml-1">24</span>
-          </h2>
-          <div className="flex gap-2.5 overflow-x-auto scrollbar-hide pb-1 mb-3">
-            {projects.map((p) => (
-              <div key={p.id} className="shrink-0 w-[160px] cursor-pointer" onClick={() => navigate(`/project/${p.id}`)}>
-                <div className={`h-[110px] bg-gradient-to-br ${p.gradient} rounded-xl flex items-center justify-center relative overflow-hidden mb-2`}>
-                  {p.badge && (
-                    <div className="absolute top-2 left-2 bg-primary/90 text-primary-foreground text-[10px] font-semibold px-2 py-0.5 rounded-full">
-                      {p.badge}
-                    </div>
-                  )}
-                </div>
-                <div className="text-[13px] font-semibold text-foreground truncate">{p.name}</div>
-                <div className="text-xs text-primary font-medium">{p.price}</div>
-                <div className="text-[11px] text-muted-foreground">{p.meta}</div>
-              </div>
-            ))}
+      {/* Empty state hero */}
+      <div className="bg-background rounded-2xl mt-2 px-4 py-8">
+        <div className="flex flex-col items-center text-center">
+          <div className="w-20 h-20 rounded-3xl bg-secondary flex items-center justify-center mb-4">
+            <ShieldCheck className="w-10 h-10 text-foreground/30" strokeWidth={1.5} />
           </div>
-          <button className="w-full h-11 bg-secondary border border-border rounded-xl text-sm font-medium text-muted-foreground flex items-center justify-center gap-1.5">
-            Смотреть все <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
-
-        {/* About */}
-        <div className="bg-background p-4 rounded-2xl">
-          <h2 className="text-[17px] font-bold text-foreground mb-3">О подрядчике</h2>
-          <p className={`text-sm text-muted-foreground leading-relaxed ${!aboutExpanded ? 'line-clamp-4' : ''}`}>
-            Наша компания занимается модульным домостроительством с 2015 года. Собственное производство в Самарской области, собственные строительные бригады. Даём 5 лет гарантии на конструктив. Работаем с качественными материалами: каркас из сухой строганой доски камерной сушки, утеплитель KNAUF. Аккредитованы в банках: Сбер, ВТБ, Альфа-банк. Осуществляем поддержку на всех этапах кредитования.
+          <h2 className="text-[18px] font-bold text-foreground mb-1.5">Недостаточно данных</h2>
+          <p className="text-[13px] text-muted-foreground leading-snug max-w-[280px] mb-6">
+            Компания пока не прошла верификацию. После проверки здесь появятся проекты, отзывы, контакты и реквизиты.
           </p>
-          <button onClick={() => setAboutExpanded(!aboutExpanded)} className="text-[13px] text-primary mt-2">
-            {aboutExpanded ? 'Свернуть' : 'Показать полностью'}
-          </button>
-        </div>
 
-        {/* Regions + Tech */}
-        <div className="bg-background p-4 rounded-2xl">
-          <h2 className="text-[17px] font-bold text-foreground mb-3">Регионы строительства</h2>
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {["Московская область", "Самарская область", "Нижегородская обл.", "Казань и РТ"].map((r, i) => (
-              <span key={i} className="text-[11px] font-medium bg-secondary text-muted-foreground rounded-full px-2.5 py-1">{r}</span>
-            ))}
-          </div>
-          <h2 className="text-[17px] font-bold text-foreground mb-3">Технологии строительства</h2>
-          <div className="flex flex-wrap gap-1.5">
-            {["Модульный дом", "Каркасный дом", "Панельно-каркасный"].map((t, i) => (
-              <span key={i} className="text-[11px] font-medium bg-secondary text-muted-foreground rounded-full px-2.5 py-1">{t}</span>
-            ))}
-          </div>
-        </div>
-
-        {/* Built Homes */}
-        <div className="bg-background p-4 rounded-2xl">
-          <h2 className="text-[17px] font-bold text-foreground mb-3">Построенные дома</h2>
-          <div className="flex gap-2.5 overflow-x-auto scrollbar-hide pb-1">
-            {builtHomes.map((h, i) => (
-              <div key={h.id} className="shrink-0 w-[280px] rounded-xl overflow-hidden relative cursor-pointer">
-                <div className={`h-[180px] bg-gradient-to-br ${h.gradient} flex items-center justify-center relative`}>
-                  {h.hasVideo && (
-                    <div className="absolute w-12 h-12 bg-background/90 rounded-full flex items-center justify-center">
-                      <Play className="w-5 h-5 text-foreground ml-0.5" />
-                    </div>
-                  )}
-                  <div className="absolute bottom-2.5 left-2.5 bg-foreground/50 text-primary-foreground text-xs px-2 py-0.5 rounded-full">
-                    {i + 1} из 105
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Showroom */}
-        <div className="bg-background p-4 rounded-2xl">
-          <h2 className="text-[17px] font-bold text-foreground mb-3">Выставочные дома</h2>
-          <div className="border border-border rounded-xl overflow-hidden">
-            <div className="h-[160px] bg-gradient-to-br from-[#2a3528] to-[#111]" />
-            <div className="p-3">
-              <div className="text-sm font-semibold text-foreground mb-1">Барнхаус «ДБХ-12» 6x8 с лофтом</div>
-              <div className="flex items-start gap-1.5 text-xs text-muted-foreground mb-3">
-                <MapPin className="w-3 h-3 mt-0.5 shrink-0" />
-                Москва, Каширское шоссе, вл63 к1 ст68
-              </div>
-              <button className="w-full h-10 bg-secondary border border-border rounded-xl text-[13px] font-medium text-foreground">
-                Записаться на просмотр
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Reviews */}
-        <div className="bg-background p-4 rounded-2xl">
-          <h2 className="text-[17px] font-bold text-foreground mb-3">
-            Отзывы о подрядчике <span className="text-muted-foreground font-normal text-[15px] ml-1">22</span>
-          </h2>
-          <div className="flex items-center gap-4 mb-4">
-            <div className="text-[44px] font-bold text-foreground leading-none">4.8</div>
-            <div className="flex-1">
+          <div className="w-full bg-secondary rounded-2xl p-4 mb-2">
+            <p className="text-[13px] font-semibold text-foreground mb-3 text-left">После верификации появится:</p>
+            <ul className="flex flex-col gap-2.5 text-left">
               {[
-                { star: 5, pct: 85, cnt: 11 },
-                { star: 4, pct: 15, cnt: 2 },
-                { star: 3, pct: 0, cnt: 0 },
-                { star: 2, pct: 0, cnt: 0 },
-                { star: 1, pct: 0, cnt: 0 },
-              ].map((r) => (
-                <div key={r.star} className="flex items-center gap-1.5 mb-0.5">
-                  <span className="text-[11px] text-muted-foreground w-2 text-right">{r.star}</span>
-                  <div className="flex-1 h-1 bg-border rounded-full overflow-hidden">
-                    <div className="h-full bg-amber-400 rounded-full" style={{ width: `${r.pct}%` }} />
-                  </div>
-                  <span className="text-[11px] text-muted-foreground w-4 text-right">{r.cnt}</span>
-                </div>
+                "Проекты домов и галерея работ",
+                "Реквизиты, ИНН и адрес офиса",
+                "Отзывы клиентов и рейтинг",
+                "Контакты и приём заявок",
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-2 text-[13px] text-foreground/80">
+                  <CheckCircle2 className="w-4 h-4 text-primary mt-px shrink-0" strokeWidth={2} />
+                  <span>{item}</span>
+                </li>
               ))}
-              <div className="text-[11px] text-muted-foreground mt-1">На основе 13 отзывов покупателей</div>
-            </div>
+            </ul>
           </div>
-          <div className="flex gap-2.5 overflow-x-auto scrollbar-hide pb-1 mb-3">
-            {reviews.map((r) => (
-              <div key={r.id} className="shrink-0 w-[260px] bg-secondary rounded-xl p-3">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 rounded-full bg-foreground text-background text-xs font-semibold flex items-center justify-center shrink-0">
-                    {r.initial}
-                  </div>
-                  <div>
-                    <div className="text-[13px] font-semibold text-foreground">
-                      {r.name} <span className="text-amber-400">★ {r.rating}.0</span>
-                    </div>
-                    <div className="text-[11px] text-muted-foreground">Построено · {r.date}</div>
-                  </div>
-                </div>
-                <p className="text-[13px] text-muted-foreground leading-snug line-clamp-3 mb-1">{r.text}</p>
-                <button className="text-xs text-primary">Показать полностью</button>
-                <div className="text-[11px] text-muted-foreground mt-1.5">{r.meta}</div>
-              </div>
-            ))}
+        </div>
+      </div>
+
+      {/* Owner CTA */}
+      <div className="bg-background rounded-2xl mt-2 p-4">
+        <div className="flex items-start gap-3">
+          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <Factory className="w-5 h-5 text-primary" strokeWidth={2} />
           </div>
-          <div className="flex flex-col gap-2">
-            <button className="w-full h-11 bg-primary text-primary-foreground rounded-xl text-sm font-medium">
-              Оставить отзыв
-            </button>
-            <button className="w-full h-11 bg-secondary border border-border rounded-xl text-sm font-medium text-foreground">
-              Смотреть все отзывы (22)
-            </button>
+          <div className="flex-1 min-w-0">
+            <p className="text-[14px] font-semibold text-foreground mb-0.5">Это ваша компания?</p>
+            <p className="text-[12px] text-muted-foreground leading-snug">
+              Подтвердите владение и заполните карточку — заявки от клиентов начнут поступать сразу.
+            </p>
           </div>
         </div>
       </div>
 
       <div className="h-28" />
 
-      {/* Bottom Bar — mobile only */}
+      {/* Bottom Bar — verification CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-50">
         <div className="bg-background border-t border-border p-3 pb-[calc(0.75rem+max(env(safe-area-inset-bottom),20px))]">
-          <a href="https://sherwood-home.ru" target="_blank" rel="noopener noreferrer" className="w-full h-[50px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center">
-            Перейти на сайт
-          </a>
+          <button
+            onClick={() => navigate("/partner-landing")}
+            className="w-full h-[50px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center gap-2"
+          >
+            <ShieldCheck className="w-[18px] h-[18px]" strokeWidth={2} />
+            Пройти верификацию
+          </button>
         </div>
       </div>
     </div>
