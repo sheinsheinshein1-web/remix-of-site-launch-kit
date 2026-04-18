@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { navigateWithTransition } from "@/lib/viewTransition";
+import { Maximize, BedDouble, Bath } from "lucide-react";
 import ProjectCardSkeleton from "@/components/ProjectCardSkeleton";
 import house1 from "@/assets/house-1.jpg";
 import house2 from "@/assets/house-2.jpg";
@@ -15,15 +16,15 @@ import house9 from "@/assets/house-9.jpg";
 // Базовый набор проектов «других» от подрядчика.
 // id указывает на маршрут /project/:id.
 const baseOtherProjects = [
-  { id: 1, name: "Тайга 72", price: "от 2,4 млн ₽", meta: "72 м² · 2 спальни · 1 этаж", image: house1 },
-  { id: 6, name: "Мидленд 66", price: "от 4,4 млн ₽", meta: "56 м² · 2 спальни · 1 этаж", image: house6 },
-  { id: 5, name: "Шервуд 72", price: "от 4,4 млн ₽", meta: "70 м² · 2 спальни · 1 этаж", image: house7 },
-  { id: 3, name: "Бонд 88", price: "от 5,8 млн ₽", meta: "88 м² · 3 спальни · 1 этаж", image: house8 },
-  { id: 10, name: "Печора", price: "от 4,6 млн ₽", meta: "73 м² · 2 спальни · 1 этаж", image: house4 },
-  { id: 13, name: "БД-109", price: "от 5,7 млн ₽", meta: "109 м² · 3 спальни · 1 этаж", image: house5 },
-  { id: 24, name: "Шале 76", price: "от 2,7 млн ₽", meta: "76 м² · 3 спальни · 1 этаж", image: house3 },
-  { id: 19, name: "Модуль 68", price: "от 2,4 млн ₽", meta: "68 м² · 3 спальни · 1 этаж", image: house9 },
-  { id: 11, name: "Барн 80", price: "от 2,9 млн ₽", meta: "80 м² · 3 спальни · 1 этаж", image: house2 },
+  { id: 1, name: "Тайга 72", price: "от 2,4 млн ₽", area: "72 м²", beds: 2, baths: 1, image: house1 },
+  { id: 6, name: "Мидленд 66", price: "от 4,4 млн ₽", area: "56 м²", beds: 2, baths: 1, image: house6 },
+  { id: 5, name: "Шервуд 72", price: "от 4,4 млн ₽", area: "70 м²", beds: 2, baths: 1, image: house7 },
+  { id: 3, name: "Бонд 88", price: "от 5,8 млн ₽", area: "88 м²", beds: 3, baths: 2, image: house8 },
+  { id: 10, name: "Печора", price: "от 4,6 млн ₽", area: "73 м²", beds: 2, baths: 1, image: house4 },
+  { id: 13, name: "БД-109", price: "от 5,7 млн ₽", area: "109 м²", beds: 3, baths: 2, image: house5 },
+  { id: 24, name: "Шале 76", price: "от 2,7 млн ₽", area: "76 м²", beds: 3, baths: 2, image: house3 },
+  { id: 19, name: "Модуль 68", price: "от 2,4 млн ₽", area: "68 м²", beds: 3, baths: 2, image: house9 },
+  { id: 11, name: "Барн 80", price: "от 2,9 млн ₽", area: "80 м²", beds: 3, baths: 2, image: house2 },
 ];
 
 const PAGE_SIZE = 6;
@@ -115,10 +116,13 @@ const OtherProjectsFeed = ({ currentId }: Props) => {
                 />
               </div>
               <div className="px-[10px] pt-1 pb-1">
-                <div className="text-[12px] font-bold text-foreground">{project.price}</div>
-                <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">
-                  {project.meta}
-                </p>
+                <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{project.name}</h2>
+                <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">{project.price}</div>
+                <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[3px]">
+                  <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{project.area}</span>
+                  <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{project.beds}</span>
+                  <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{project.baths}</span>
+                </div>
               </div>
             </a>
           </article>
