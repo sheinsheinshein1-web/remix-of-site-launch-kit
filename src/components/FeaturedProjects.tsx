@@ -288,7 +288,13 @@ const FeaturedProjects = () => {
                     <span className="text-[12px] font-bold text-foreground whitespace-nowrap">от {project.price}</span>
                   </div>
                   <div className="flex items-center justify-between gap-2 mt-[2px]">
-                    <h2 className="text-[12px] font-normal text-foreground/80 truncate">{project.name}</h2>
+                    <h2
+                      className="text-[12px] font-normal text-foreground/80 whitespace-nowrap overflow-hidden min-w-0 flex-1"
+                      style={{
+                        maskImage: 'linear-gradient(to right, black calc(100% - 16px), transparent)',
+                        WebkitMaskImage: 'linear-gradient(to right, black calc(100% - 16px), transparent)',
+                      }}
+                    >{project.name}</h2>
                     <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none shrink-0">
                       <span className="inline-flex items-center gap-[3px]">
                         <Maximize className="w-3 h-3" strokeWidth={1.75} />
