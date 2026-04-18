@@ -26,7 +26,7 @@ const Index = () => {
         <div className="hidden md:block px-3 md:px-8 md:pt-[92px]">
           <HeroSection />
         </div>
-        <div className="hidden md:block px-3 md:px-8 pt-3 md:pt-4">
+        <div className="md:hidden px-3 pt-3">
           <CategoriesSection />
         </div>
         <div className="md:hidden pt-[50px]" />
