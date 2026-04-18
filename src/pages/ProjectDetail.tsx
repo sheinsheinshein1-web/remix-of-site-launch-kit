@@ -245,9 +245,6 @@ const ProjectDetail = () => {
                 <button onClick={handleToggleFav} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
                   <Heart className={`w-[18px] h-[18px] ${liked ? "text-red-500 fill-red-500" : "text-foreground"}`} strokeWidth={1.8} />
                 </button>
-                <button onClick={() => setShowActions(true)} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
-                  <MoreHorizontal className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
-                </button>
               </div>
             </div>
           </div>
