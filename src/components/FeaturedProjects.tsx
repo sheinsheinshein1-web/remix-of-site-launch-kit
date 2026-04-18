@@ -232,6 +232,10 @@ const FeaturedProjects = () => {
               </a>
             </article>
           ))}
+          {isLoadingMore &&
+            Array.from({ length: 8 }).map((_, i) => (
+              <ProjectCardSkeleton key={`skeleton-${i}`} height="h-[260px] md:h-[240px]" />
+            ))}
         </div>
         {/* Сентинел для IntersectionObserver — невидимый */}
         <div ref={sentinelRef} aria-hidden="true" className="h-1 w-full" />
