@@ -98,10 +98,10 @@ const Header = () => {
       {/* Mobile header */}
       <div className="md:hidden relative">
         {/* Safe-area background — виден всегда при скролле, чтобы под status bar не просвечивал контент */}
-        <div className={`absolute inset-x-0 top-0 z-0 bg-background pt-[env(safe-area-inset-top)] transition-opacity duration-300 ${mobileScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} aria-hidden />
+        <div className={`absolute inset-x-0 top-0 z-0 bg-background pt-[env(safe-area-inset-top)] ${enableTransitions ? 'transition-opacity duration-300' : ''} ${mobileScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} aria-hidden />
 
         {/* Static header - visible when not scrolled */}
-        <div className={`transition-all duration-300 relative z-10 ${mobileScrolled ? 'opacity-0 pointer-events-none scale-95 -translate-y-full' : 'opacity-100 scale-100 translate-y-0'}`}>
+        <div className={`relative z-10 ${enableTransitions ? 'transition-all duration-300' : ''} ${mobileScrolled ? 'opacity-0 pointer-events-none scale-95 -translate-y-full' : 'opacity-100 scale-100 translate-y-0'}`}>
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),6px)] pb-1.5">
             <div className="flex items-center justify-between">
               <Link to="/" className="text-[22px] font-bold text-foreground tracking-tight">
@@ -116,7 +116,7 @@ const Header = () => {
         </div>
 
         {/* Compact white header - visible when scrolled */}
-        <div className={`transition-all duration-300 absolute inset-x-0 top-0 z-20 ${showCompactHeader ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`absolute inset-x-0 top-0 z-20 ${enableTransitions ? 'transition-all duration-300' : ''} ${showCompactHeader ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 rounded-b-2xl shadow-sm">
             <SearchDropdown inputClassName="bg-secondary" />
           </div>
