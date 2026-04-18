@@ -312,9 +312,8 @@ const Partner = () => {
             href="https://sherwood-home.ru"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full h-[50px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center gap-2"
+            className="w-full h-[50px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center"
           >
-            <Globe className="w-[18px] h-[18px]" strokeWidth={2} />
             Перейти на сайт
           </a>
         </div>
