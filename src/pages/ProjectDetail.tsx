@@ -415,7 +415,7 @@ const ProjectDetail = () => {
         {/* ===== MAIN INFO — BENTO ===== */}
         <div className={`flex flex-col gap-2 ${isMobile ? "" : "sticky top-[80px]"}`}>
           {/* Row 1: Title + Price + Specs + Maker + Description (inline expandable) + Accordions + CTA */}
-          <div className="bg-background rounded-b-2xl px-3 pt-3 pb-3">
+          <div className="bg-background rounded-b-2xl px-2 pt-3 pb-3">
             <div className="flex items-baseline justify-between gap-3 mb-1">
               <h1 className="text-[18px] font-bold text-foreground tracking-tight leading-tight truncate">Шервуд 72.1</h1>
               <div className="text-[15px] whitespace-nowrap">
