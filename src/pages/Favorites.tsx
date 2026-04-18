@@ -246,10 +246,10 @@ const Favorites = () => {
             </p>
           </div>
         ) : (
-          <div className="mt-2 flex flex-col pb-[calc(140px+env(safe-area-inset-bottom))]">
+          <div className="mt-2 flex flex-col flex-1 pb-[calc(140px+env(safe-area-inset-bottom))]">
 
             {/* Cards */}
-            <div className={`bg-background rounded-2xl px-2 py-3 ${viewMode === "grid" ? "" : ""}`}>
+            <div className={`bg-background rounded-2xl px-2 py-3 flex-1 ${viewMode === "grid" ? "" : ""}`}>
             <div className={viewMode === "grid" ? "grid grid-cols-2 gap-x-[2px] gap-y-[6px]" : "flex flex-col gap-[10px]"}>
               {favoriteItems.map((item) => viewMode === "list" ? (
                 <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer overflow-hidden">
