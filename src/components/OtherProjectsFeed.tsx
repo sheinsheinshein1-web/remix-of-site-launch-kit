@@ -97,7 +97,7 @@ const OtherProjectsFeed = ({ currentId }: Props) => {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-x-[2px] gap-y-[6px]">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-x-[2px] gap-y-[6px] md:gap-4">
         {items.map(({ project, key }) => (
           <article key={key} className="overflow-hidden">
             <a
