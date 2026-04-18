@@ -312,7 +312,7 @@ const ProjectDetail = () => {
         </>
       )}
 
-      <main className={`${isMobile ? "pt-0" : "pt-[108px] max-w-[1400px] mx-auto bg-background rounded-b-2xl px-8 pb-8"}`}>
+      <main className={`${isMobile ? "pt-0" : "pt-[152px] max-w-[1400px] mx-auto px-8"}`}>
         {!isMobile && (
           <div className="pt-6 pb-2">
             <button onClick={() => navigate("/catalog")} className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
