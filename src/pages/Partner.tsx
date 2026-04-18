@@ -225,9 +225,9 @@ const Partner = () => {
             </button>
             <div className="flex-1 min-w-0 ml-3">
               <div className="text-[14px] font-semibold text-foreground truncate">Sherwood Home</div>
-              <div className="flex items-center gap-1">
-                <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-                <span className="text-[13px] font-medium text-foreground">4.8</span>
+              <div className="flex items-center gap-1 text-[12px] text-muted-foreground">
+                <ShieldCheck className="w-3 h-3" strokeWidth={2} />
+                <span>Не верифицирован</span>
               </div>
             </div>
             <button
@@ -260,7 +260,87 @@ const Partner = () => {
       {/* Header Banner */}
       <div className="w-full h-[200px] bg-gradient-to-br from-[#2a3528] to-[#111]" />
 
-      {/* Main Info Card */}
+      {/* Main Info Card — empty state */}
+      <div className="bg-background rounded-t-2xl -mt-4 relative z-10">
+        <div className="p-4">
+          <div className="flex gap-3 mb-4">
+            <div className="w-[72px] h-[72px] rounded-2xl bg-secondary text-foreground/40 flex items-center justify-center text-lg font-bold shrink-0">SW</div>
+            <div className="flex-1 min-w-0">
+              <h1 className="text-[17px] font-bold text-foreground leading-tight mb-1">Sherwood Home</h1>
+              <p className="text-xs text-muted-foreground mb-2">Карточка компании ещё не заполнена</p>
+              <div className="inline-flex items-center gap-1.5 text-[11px] font-medium bg-secondary text-muted-foreground rounded-full px-2.5 py-1">
+                <ShieldCheck className="w-3 h-3" />
+                <span>Не верифицирован</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Empty state hero */}
+      <div className="bg-background rounded-2xl mt-2 px-4 py-8">
+        <div className="flex flex-col items-center text-center">
+          <div className="w-20 h-20 rounded-3xl bg-secondary flex items-center justify-center mb-4">
+            <ShieldCheck className="w-10 h-10 text-foreground/30" strokeWidth={1.5} />
+          </div>
+          <h2 className="text-[18px] font-bold text-foreground mb-1.5">Недостаточно данных</h2>
+          <p className="text-[13px] text-muted-foreground leading-snug max-w-[280px] mb-6">
+            Компания пока не прошла верификацию. После проверки здесь появятся проекты, отзывы, контакты и реквизиты.
+          </p>
+
+          <div className="w-full bg-secondary rounded-2xl p-4 mb-2">
+            <p className="text-[13px] font-semibold text-foreground mb-3 text-left">После верификации появится:</p>
+            <ul className="flex flex-col gap-2.5 text-left">
+              {[
+                "Проекты домов и галерея работ",
+                "Реквизиты, ИНН и адрес офиса",
+                "Отзывы клиентов и рейтинг",
+                "Контакты и приём заявок",
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-2 text-[13px] text-foreground/80">
+                  <CheckCircle2 className="w-4 h-4 text-primary mt-px shrink-0" strokeWidth={2} />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Owner CTA */}
+      <div className="bg-background rounded-2xl mt-2 p-4">
+        <div className="flex items-start gap-3">
+          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <Factory className="w-5 h-5 text-primary" strokeWidth={2} />
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-[14px] font-semibold text-foreground mb-0.5">Это ваша компания?</p>
+            <p className="text-[12px] text-muted-foreground leading-snug">
+              Подтвердите владение и заполните карточку — заявки от клиентов начнут поступать сразу.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="h-28" />
+
+      {/* Bottom Bar — verification CTA */}
+      <div className="fixed bottom-0 left-0 right-0 z-50">
+        <div className="bg-background border-t border-border p-3 pb-[calc(0.75rem+max(env(safe-area-inset-bottom),20px))]">
+          <button
+            onClick={() => navigate("/partner-landing")}
+            className="w-full h-[50px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center gap-2"
+          >
+            <ShieldCheck className="w-[18px] h-[18px]" strokeWidth={2} />
+            Пройти верификацию
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Partner;
       <div className="bg-background rounded-t-2xl -mt-4 relative z-10">
         <div className="p-4">
           <div className="flex gap-3 mb-3">
