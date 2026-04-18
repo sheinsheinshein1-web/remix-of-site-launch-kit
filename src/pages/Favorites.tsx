@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { formatSpecs } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { navigateWithTransition } from "@/lib/viewTransition";
-import { Heart, Check, MoreHorizontal, Grid2X2, List, Calculator, Search, ArrowUpDown, SlidersHorizontal, Camera, Truck, Maximize, BedDouble, Bath } from "lucide-react";
+import { Heart, Check, MoreHorizontal, Grid2X2, List, Calculator, Search, ArrowUpDown, SlidersHorizontal, Camera, Truck, Maximize, BedDouble, Bath, ChevronDown } from "lucide-react";
 import SwipeableGallery from "@/components/SwipeableGallery";
 import MobileTabBar from "@/components/MobileTabBar";
 import Header from "@/components/Header";
@@ -335,25 +335,33 @@ const Favorites = () => {
   return (
     <div className="min-h-screen bg-secondary font-sans">
       <Header />
-      <div className="pt-[152px] pb-8">
-        <div className="max-w-[1400px] mx-auto px-8">
+      <div className="pt-[108px] pb-6">
+        <div className="max-w-[1400px] mx-auto bg-background rounded-b-2xl">
+          <div className="px-8 pt-8 pb-6">
           {/* Sort row */}
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <span className="text-[13px] font-light text-muted-foreground">{favoriteItems.length > 0 ? `${favoriteItems.length} проектов` : "Нет проектов"}</span>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="text-[13px] font-light text-muted-foreground bg-background border-none rounded-xl px-3 py-1.5 outline-none"
-              >
-                {sortOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
-              </select>
+              <span className="text-[14px] font-medium text-foreground">{favoriteItems.length > 0 ? `${favoriteItems.length} проектов` : "Нет проектов"}</span>
+              <div className="relative inline-flex items-center gap-1 cursor-pointer bg-secondary rounded-xl px-3 py-1.5">
+                <span className="text-[13px] font-medium text-foreground">
+                  {sortOptions.find(o => o.value === sortBy)?.label ?? "Сортировка"}
+                </span>
+                <ChevronDown className="w-4 h-4 text-foreground" strokeWidth={2} />
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  aria-label="Сортировка"
+                >
+                  {sortOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+                </select>
+              </div>
             </div>
-            <div className="flex bg-background rounded-xl p-0.5 gap-0.5">
-              <button onClick={() => setViewMode("grid")} className={`w-8 h-7 rounded-lg flex items-center justify-center ${viewMode === "grid" ? "bg-secondary" : ""}`}>
+            <div className="flex bg-secondary rounded-xl p-0.5 gap-0.5">
+              <button onClick={() => setViewMode("grid")} className={`w-8 h-7 rounded-lg flex items-center justify-center ${viewMode === "grid" ? "bg-background" : ""}`}>
                 <GridIcon active={viewMode === "grid"} />
               </button>
-              <button onClick={() => setViewMode("list")} className={`w-8 h-7 rounded-lg flex items-center justify-center ${viewMode === "list" ? "bg-secondary" : ""}`}>
+              <button onClick={() => setViewMode("list")} className={`w-8 h-7 rounded-lg flex items-center justify-center ${viewMode === "list" ? "bg-background" : ""}`}>
                 <ListIcon active={viewMode === "list"} />
               </button>
             </div>
@@ -372,7 +380,7 @@ const Favorites = () => {
           ) : viewMode === "grid" ? (
             <div className="grid grid-cols-3 gap-4">
               {favoriteItems.map((item) => (
-                <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer bg-background rounded-2xl overflow-hidden shadow-sm">
+                <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer group bg-background rounded-2xl overflow-hidden">
                   <SwipeableGallery images={getProjectImages(item.image, item.id)} alt={item.name} height="h-[260px]">
                     <div className="absolute top-2.5 right-2.5 z-10">
                       <button
@@ -384,21 +392,13 @@ const Favorites = () => {
                       </button>
                     </div>
                   </SwipeableGallery>
-                  <div className="px-[10px] pt-2 pb-[10px]">
-                    <div className="text-[14px] font-bold text-foreground mb-[1px]">{item.price}</div>
-                    <div className="text-[12px] text-muted-foreground mb-[6px]">{item.name}</div>
-                    <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">{formatSpecs(item.area, item.beds, item.baths)}</p>
-                    <div className="h-px bg-border mb-[6px]" />
-                    <div className="flex items-center gap-2 overflow-hidden will-change-transform" style={{ maskImage: 'linear-gradient(to right, black calc(100% - 10px), transparent)', WebkitMaskImage: 'linear-gradient(to right, black calc(100% - 10px), transparent)' }}>
-                      <div className="flex items-center gap-[3px] flex-shrink-0">
-                        <span className="text-[10px] text-yellow-500">★</span>
-                        <span className="text-[10px] font-semibold text-foreground mr-[2px]">4.8</span>
-                        <span className="text-[10px] text-muted-foreground whitespace-nowrap">{item.maker.split(" · ")[0]}</span>
-                      </div>
-                      <div className="flex items-center gap-[3px] flex-shrink-0">
-                        <Truck className="w-[10px] h-[10px] text-green-700" strokeWidth={2.5} />
-                        <span className="text-[10px] text-green-700 whitespace-nowrap">{item.city}</span>
-                      </div>
+                  <div className="px-[10px] pt-1 pb-1">
+                    <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{item.name}</h2>
+                    <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">от {item.price}</div>
+                    <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[3px]">
+                      <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{item.area}</span>
+                      <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{item.beds}</span>
+                      <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{item.baths}</span>
                     </div>
                   </div>
                 </div>
@@ -440,6 +440,7 @@ const Favorites = () => {
               ))}
             </div>
           )}
+          </div>
         </div>
       </div>
     </div>
