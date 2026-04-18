@@ -11,9 +11,18 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-  // Инициализируем состояния синхронно из текущего scrollY,
-  // чтобы при возврате на страницу (с восстановлением скролла) хедер сразу был в нужном состоянии и не мерцал
-  const initialY = typeof window !== "undefined" ? window.scrollY : 0;
+  // Инициализируем состояния синхронно: учитываем и текущий scrollY, и сохранённую
+  // позицию из sessionStorage (на случай возврата с детальной страницы — тогда
+  // FeaturedProjects ещё не успел выполнить scrollTo)
+  const initialY = (() => {
+    if (typeof window === "undefined") return 0;
+    const saved = sessionStorage.getItem("home_feed_scroll");
+    if (saved) {
+      const y = parseInt(saved, 10);
+      if (Number.isFinite(y)) return Math.max(window.scrollY, y);
+    }
+    return window.scrollY;
+  })();
   const [showCompactHeader, setShowCompactHeader] = useState(false);
   const [scrolled, setScrolled] = useState(initialY > 60);
   const [mobileScrolled, setMobileScrolled] = useState(initialY > 10);
@@ -22,9 +31,6 @@ const Header = () => {
 
   useEffect(() => {
     let lastY = window.scrollY;
-    // Подстрахуемся: после монтирования синхронизируем «скрытое» состояние
-    // (фон/blur), но НЕ показываем компактный хедер с поиском —
-    // он должен появляться только при явном скролле вверх
     const sync = () => {
       const y = window.scrollY;
       const pastThreshold = y > 60;
