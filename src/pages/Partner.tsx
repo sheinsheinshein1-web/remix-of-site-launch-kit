@@ -42,8 +42,8 @@ const Partner = () => {
     return (
       <div className="min-h-screen bg-secondary font-sans">
         <Header />
-        <div className="pt-[108px] pb-12">
-          <div className="max-w-[760px] mx-auto px-3">
+        <div className="pt-[140px] pb-12">
+          <div className="max-w-[1400px] mx-auto px-3">
             {/* Main bento card */}
             <div className="bg-background rounded-2xl overflow-hidden">
               {/* Header row: back / share */}
