@@ -347,7 +347,7 @@ const ProjectDetail = () => {
                 </div>
               ))}
             </div>
-            <span className="absolute bottom-3 left-4 text-xs text-white bg-black/45 px-2.5 py-1 rounded-full">
+            <span className="absolute bottom-3 right-4 text-xs text-white bg-black/45 px-2.5 py-1 rounded-full">
               {activeImage + 1} из {galleryImages.length}
             </span>
           </div>
