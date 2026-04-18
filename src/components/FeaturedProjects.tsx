@@ -1,4 +1,4 @@
-import { Heart } from "lucide-react";
+import { Heart, Loader2 } from "lucide-react";
 import { formatSpecs } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "@/contexts/FavoritesContext";
@@ -6,6 +6,7 @@ import SwipeableGallery from "@/components/SwipeableGallery";
 import ProjectCardSkeleton from "@/components/ProjectCardSkeleton";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import { useEffect, useRef, useState, useCallback } from "react";
+import { usePullToRefresh } from "@/hooks/usePullToRefresh";
 import house1 from "@/assets/house-1.jpg";
 import house2 from "@/assets/house-2.jpg";
 import house3 from "@/assets/house-3.jpg";
@@ -66,15 +67,40 @@ const PAGE_SIZE = 8;
 const SCROLL_KEY = "home_feed_scroll";
 const PAGE_PARAM = "page";
 
-// Циклически генерируем «бесконечную» ленту, переиспользуя базовые проекты.
-// id у дубликатов остаётся оригинальным (для перехода на /project/:id),
-// а React-key делается уникальным через индекс.
-function getPagedProjects(page: number) {
+// Mulberry32 — детерминированный PRNG
+function mulberry32(seed: number) {
+  return function () {
+    seed |= 0;
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = seed;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+// Стабильно перемешанный порядок baseProjects под конкретный seed.
+// seed=0 — оригинальный порядок (после первой загрузки).
+function getOrderedProjects(seed: number) {
+  if (seed === 0) return baseProjects;
+  const rng = mulberry32(seed);
+  const arr = [...baseProjects];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// Циклически генерируем «бесконечную» ленту, переиспользуя проекты в порядке seed.
+function getPagedProjects(page: number, seed: number) {
+  const ordered = getOrderedProjects(seed);
   const total = page * PAGE_SIZE;
   const items: { project: typeof baseProjects[number]; key: string }[] = [];
   for (let i = 0; i < total; i++) {
-    const project = baseProjects[i % baseProjects.length];
-    items.push({ project, key: `${project.id}-${i}` });
+    const project = ordered[i % ordered.length];
+    // Включаем seed в key, чтобы React переиспользовал DOM правильно при reshuffle
+    items.push({ project, key: `${seed}-${project.id}-${i}` });
   }
   return items;
 }
@@ -92,9 +118,22 @@ const FeaturedProjects = () => {
 
   const [page, setPage] = useState(initialPage);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [seed, setSeed] = useState(0);
   const sentinelRef = useRef<HTMLDivElement>(null);
-  const items = getPagedProjects(page);
+  const items = getPagedProjects(page, seed);
   const MAX_PAGE = 50;
+
+  // Pull-to-refresh: перемешиваем порядок и сбрасываем на первую страницу
+  const handleRefresh = useCallback(async () => {
+    const newSeed = Date.now() & 0xffffffff;
+    setSeed(newSeed);
+    setPage(1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    // Небольшая задержка чтобы индикатор успел показаться (UX)
+    await new Promise((r) => setTimeout(r, 400));
+  }, []);
+
+  const { pull, refreshing } = usePullToRefresh({ onRefresh: handleRefresh });
 
   // Подгрузка при появлении сентинела
   useEffect(() => {
@@ -170,7 +209,29 @@ const FeaturedProjects = () => {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJson) }}
       />
-      <div className="md:py-5">
+      {/* Pull-to-refresh индикатор */}
+      <div
+        aria-hidden={!refreshing && pull === 0}
+        className="flex justify-center items-center overflow-hidden md:hidden"
+        style={{
+          height: `${pull}px`,
+          transition: refreshing || pull === 0 ? "height 0.25s ease-out" : "none",
+        }}
+      >
+        <Loader2
+          className={`w-5 h-5 text-primary ${refreshing ? "animate-spin" : ""}`}
+          style={{
+            opacity: Math.min(1, pull / 50),
+            transform: `rotate(${refreshing ? 0 : pull * 4}deg)`,
+          }}
+        />
+      </div>
+      <div
+        className="md:py-5"
+        style={{
+          transform: pull > 0 && !refreshing ? `translateY(0)` : undefined,
+        }}
+      >
         <div className="grid grid-cols-2 md:grid-cols-3 gap-x-[2px] gap-y-[6px] md:gap-4 md:mt-0">
           {items.map(({ project, key }) => (
             <article key={key} className="overflow-hidden">
