@@ -13,6 +13,52 @@ const cities = [
 ];
 
 const CITY_STORAGE_KEY = "selected_city";
+const CITY_AUTO_DETECTED_KEY = "city_auto_detected";
+
+// Сопоставление того, что отдаёт ipapi.co (город на английском или русском),
+// с нашими каноническими названиями.
+const IP_CITY_MAP: Record<string, string> = {
+  "moscow": "Москва и МО",
+  "москва": "Москва и МО",
+  "saint petersburg": "Санкт-Петербург и ЛО",
+  "st petersburg": "Санкт-Петербург и ЛО",
+  "st. petersburg": "Санкт-Петербург и ЛО",
+  "санкт-петербург": "Санкт-Петербург и ЛО",
+  "novosibirsk": "Новосибирск",
+  "yekaterinburg": "Екатеринбург",
+  "ekaterinburg": "Екатеринбург",
+  "kazan": "Казань",
+  "krasnodar": "Краснодар",
+  "sochi": "Сочи",
+  "nizhny novgorod": "Нижний Новгород",
+  "samara": "Самара",
+  "rostov-on-don": "Ростов-на-Дону",
+  "rostov": "Ростов-на-Дону",
+  "ufa": "Уфа",
+  "voronezh": "Воронеж",
+  "perm": "Пермь",
+  "chelyabinsk": "Челябинск",
+  "tyumen": "Тюмень",
+  "kaliningrad": "Калининград",
+  "tver": "Тверь",
+  "krasnoyarsk": "Красноярск",
+  "irkutsk": "Иркутск",
+  "vladivostok": "Владивосток",
+  "murmansk": "Мурманск",
+  "petrozavodsk": "Петрозаводск",
+  "barnaul": "Барнаул",
+  "khabarovsk": "Хабаровск",
+  "tomsk": "Томск",
+};
+
+const matchCityFromIp = (raw: string | undefined | null): string | null => {
+  if (!raw) return null;
+  const key = raw.trim().toLowerCase();
+  if (IP_CITY_MAP[key]) return IP_CITY_MAP[key];
+  // частичное совпадение по нашему списку
+  const direct = cities.find((c) => c.toLowerCase().includes(key) || key.includes(c.toLowerCase().split(" ")[0]));
+  return direct || null;
+};
 
 export function useCity() {
   const [city, setCity] = useState(() => {
@@ -21,8 +67,50 @@ export function useCity() {
 
   const selectCity = (c: string) => {
     setCity(c);
-    try { localStorage.setItem(CITY_STORAGE_KEY, c); } catch {}
+    try {
+      localStorage.setItem(CITY_STORAGE_KEY, c);
+      // Помечаем как ручной выбор, чтобы автоопределение больше не перезаписывало
+      localStorage.setItem(CITY_AUTO_DETECTED_KEY, "manual");
+    } catch {}
   };
+
+  // Автоопределение города по IP при первом заходе
+  useEffect(() => {
+    let cancelled = false;
+    try {
+      const stored = localStorage.getItem(CITY_STORAGE_KEY);
+      const flag = localStorage.getItem(CITY_AUTO_DETECTED_KEY);
+      // Если пользователь уже выбирал город вручную или автоопределение уже отработало — выходим
+      if (stored || flag) return;
+    } catch {
+      return;
+    }
+
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 4000);
+
+    fetch("https://ipapi.co/json/", { signal: controller.signal })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (cancelled || !data) return;
+        const matched = matchCityFromIp(data.city);
+        if (matched) {
+          setCity(matched);
+          try { localStorage.setItem(CITY_STORAGE_KEY, matched); } catch {}
+        }
+        try { localStorage.setItem(CITY_AUTO_DETECTED_KEY, "auto"); } catch {}
+      })
+      .catch(() => {
+        // тихо игнорируем — оставляем дефолт
+      })
+      .finally(() => window.clearTimeout(timeout));
+
+    return () => {
+      cancelled = true;
+      controller.abort();
+      window.clearTimeout(timeout);
+    };
+  }, []);
 
   return { city, selectCity };
 }
