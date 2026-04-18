@@ -31,6 +31,8 @@ const Header = () => {
 
   useEffect(() => {
     let lastY = window.scrollY;
+    let upDistance = 0; // накопленное расстояние скролла вверх
+    const UP_THRESHOLD = 80; // пикселей вверх до показа компактного хедера
     const sync = () => {
       const y = window.scrollY;
       const pastThreshold = y > 60;
@@ -43,12 +45,30 @@ const Header = () => {
 
     const onScroll = () => {
       const y = window.scrollY;
-      const scrollingDown = y > lastY;
+      const delta = y - lastY;
+      const scrollingDown = delta > 0;
       const pastThreshold = y > 60;
       setScrolled(pastThreshold);
       setMobileScrolled(y > 10);
-      // Show compact header only when scrolling UP past threshold
-      setShowCompactHeader(pastThreshold && !scrollingDown);
+
+      if (scrollingDown) {
+        // при скролле вниз сбрасываем накопление и прячем
+        upDistance = 0;
+        setShowCompactHeader(false);
+      } else if (delta < 0) {
+        // копим расстояние вверх
+        upDistance += -delta;
+        if (pastThreshold && upDistance >= UP_THRESHOLD) {
+          setShowCompactHeader(true);
+        }
+      }
+
+      // если ушли выше порога — точно прячем и сбрасываем
+      if (!pastThreshold) {
+        upDistance = 0;
+        setShowCompactHeader(false);
+      }
+
       lastY = y;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
