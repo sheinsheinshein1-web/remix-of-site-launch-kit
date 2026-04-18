@@ -1,9 +1,10 @@
-import { Heart, Camera, Truck } from "lucide-react";
+import { Heart } from "lucide-react";
 import { formatSpecs } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import SwipeableGallery from "@/components/SwipeableGallery";
 import { navigateWithTransition } from "@/lib/viewTransition";
+import { useEffect, useRef, useState, useCallback } from "react";
 import house1 from "@/assets/house-1.jpg";
 import house2 from "@/assets/house-2.jpg";
 import house3 from "@/assets/house-3.jpg";
@@ -26,7 +27,7 @@ function getProjectImages(mainImage: string, id: number): string[] {
   return [mainImage, ...sorted.slice(0, 3)];
 }
 
-const projects = [
+const baseProjects = [
   { id: 1, name: "Тайга 72", maker: "СибМодуль", area: "72 м²", beds: 2, baths: 1, term: "30 д.", price: "2 450 000 ₽", image: house1, liked: false, likes: 124, hasRealPhotos: true, city: "Москва и МО", rating: "4.8" },
   { id: 2, name: "Кедр 24", maker: "УралДом", area: "24 м²", beds: 0, baths: 1, term: "14 д.", price: "890 000 ₽", image: house4, liked: true, likes: 89, hasRealPhotos: false, city: "Екатеринбург", rating: "4.8" },
   { id: 3, name: "Купол Альпика", maker: "ГлэмпингСтрой", area: "36 м²", beds: 1, baths: 1, term: "7 д.", price: "1 200 000 ₽", image: house8, liked: false, likes: 56, hasRealPhotos: true, city: "Сочи", rating: "4.6" },
@@ -60,38 +61,168 @@ const projects = [
   { id: 31, name: "Ранчо 110", maker: "ФермаДом", area: "110 м²", beds: 4, baths: 3, term: "65 д.", price: "3 800 000 ₽", image: house5, liked: false, likes: 134, hasRealPhotos: false, city: "Краснодар", rating: "4.8" },
 ];
 
+const PAGE_SIZE = 8;
+const SCROLL_KEY = "home_feed_scroll";
+const PAGE_PARAM = "page";
+
+// Циклически генерируем «бесконечную» ленту, переиспользуя базовые проекты.
+// id у дубликатов остаётся оригинальным (для перехода на /project/:id),
+// а React-key делается уникальным через индекс.
+function getPagedProjects(page: number) {
+  const total = page * PAGE_SIZE;
+  const items: { project: typeof baseProjects[number]; key: string }[] = [];
+  for (let i = 0; i < total; i++) {
+    const project = baseProjects[i % baseProjects.length];
+    items.push({ project, key: `${project.id}-${i}` });
+  }
+  return items;
+}
+
 const FeaturedProjects = () => {
   const navigate = useNavigate();
   const { isFavorite, toggleFavorite } = useFavorites();
 
+  const initialPage = (() => {
+    if (typeof window === "undefined") return 1;
+    const url = new URL(window.location.href);
+    const p = parseInt(url.searchParams.get(PAGE_PARAM) || "1", 10);
+    return Number.isFinite(p) && p > 0 ? Math.min(p, 50) : 1;
+  })();
+
+  const [page, setPage] = useState(initialPage);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+  const items = getPagedProjects(page);
+
+  // Подгрузка при появлении сентинела
+  useEffect(() => {
+    if (!sentinelRef.current) return;
+    const el = sentinelRef.current;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setPage((p) => Math.min(p + 1, 50));
+        }
+      },
+      { rootMargin: "600px 0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Синхронизация ?page= с URL
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (page === 1) url.searchParams.delete(PAGE_PARAM);
+    else url.searchParams.set(PAGE_PARAM, String(page));
+    window.history.replaceState({}, "", url.toString());
+  }, [page]);
+
+  // Восстановление позиции при возврате с детальной
+  useEffect(() => {
+    const saved = sessionStorage.getItem(SCROLL_KEY);
+    if (saved) {
+      const y = parseInt(saved, 10);
+      if (Number.isFinite(y)) {
+        // Ждём отрисовки нужного количества карточек
+        requestAnimationFrame(() => window.scrollTo(0, y));
+      }
+      sessionStorage.removeItem(SCROLL_KEY);
+    }
+  }, []);
+
+  const handleCardClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, projectId: number) => {
+      // Сохраняем позицию для восстановления
+      sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
+      navigateWithTransition(e, navigate, `/project/${projectId}`);
+    },
+    [navigate]
+  );
+
+  // JSON-LD ItemList для SEO
+  const itemListJson = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: baseProjects.slice(0, 20).map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${typeof window !== "undefined" ? window.location.origin : ""}/project/${p.id}`,
+      name: p.name,
+    })),
+  };
+
   return (
-    <section>
+    <section aria-label="Лента проектов">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJson) }}
+      />
       <div className="md:py-5">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-x-[2px] gap-y-[6px] md:gap-4 md:mt-0">
-          {projects.map((project) => (
-            <div
-              key={project.id}
-              onClick={(e) => navigateWithTransition(e, navigate, `/project/${project.id}`)}
-              className="cursor-pointer overflow-hidden"
-            >
-              <SwipeableGallery images={getProjectImages(project.image, project.id)} alt={project.name} height="h-[260px] md:h-[240px]">
-                <div className="absolute top-2 right-2 z-10">
-                  <button
-                    onClick={(e) => { e.stopPropagation(); toggleFavorite({ id: project.id, badge: "", maker: project.maker, name: project.name, price: project.price, area: project.area, beds: project.beds, baths: project.baths, term: project.term, image: project.image, likes: project.likes, city: project.city }); }}
-                    className="flex items-center gap-1 bg-foreground/40 backdrop-blur-md rounded-full px-2 py-[4px]"
-                  >
-                    <Heart className={`w-3.5 h-3.5 ${isFavorite(project.id) ? "fill-red-500 text-red-500" : "text-white/70"}`} strokeWidth={1.5} />
-                    <span className="text-[11px] font-medium text-white">{project.likes + (isFavorite(project.id) && !project.liked ? 1 : !isFavorite(project.id) && project.liked ? -1 : 0)}</span>
-                  </button>
+          {items.map(({ project, key }) => (
+            <article key={key} className="overflow-hidden">
+              <a
+                href={`/project/${project.id}`}
+                onClick={(e) => handleCardClick(e, project.id)}
+                className="block cursor-pointer"
+                aria-label={`${project.name} — от ${project.price}`}
+              >
+                <SwipeableGallery
+                  images={getProjectImages(project.image, project.id)}
+                  alt={project.name}
+                  height="h-[260px] md:h-[240px]"
+                >
+                  <div className="absolute top-2 right-2 z-10">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleFavorite({
+                          id: project.id,
+                          badge: "",
+                          maker: project.maker,
+                          name: project.name,
+                          price: project.price,
+                          area: project.area,
+                          beds: project.beds,
+                          baths: project.baths,
+                          term: project.term,
+                          image: project.image,
+                          likes: project.likes,
+                          city: project.city,
+                        });
+                      }}
+                      className="flex items-center gap-1 bg-foreground/40 backdrop-blur-md rounded-full px-2 py-[4px]"
+                      aria-label="В избранное"
+                    >
+                      <Heart
+                        className={`w-3.5 h-3.5 ${isFavorite(project.id) ? "fill-red-500 text-red-500" : "text-white/70"}`}
+                        strokeWidth={1.5}
+                      />
+                      <span className="text-[11px] font-medium text-white">
+                        {project.likes +
+                          (isFavorite(project.id) && !project.liked
+                            ? 1
+                            : !isFavorite(project.id) && project.liked
+                            ? -1
+                            : 0)}
+                      </span>
+                    </button>
+                  </div>
+                </SwipeableGallery>
+                <div className="px-[10px] pt-1 pb-1">
+                  <h2 className="text-[12px] font-bold text-foreground">от {project.price}</h2>
+                  <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">
+                    {formatSpecs(project.area, project.beds, project.baths)}
+                  </p>
                 </div>
-              </SwipeableGallery>
-              <div className="px-[10px] pt-1 pb-1">
-                <div className="text-[12px] font-bold text-foreground">от {project.price}</div>
-                <p className="text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[2px]">{formatSpecs(project.area, project.beds, project.baths)}</p>
-              </div>
-            </div>
+              </a>
+            </article>
           ))}
         </div>
+        {/* Сентинел для IntersectionObserver — невидимый */}
+        <div ref={sentinelRef} aria-hidden="true" className="h-1 w-full" />
       </div>
     </section>
   );
