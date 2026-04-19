@@ -231,7 +231,7 @@ const Catalog = () => {
   const [filterPriceMinVal, setFilterPriceMinVal] = useState(500000);
   const [filterPriceMaxVal, setFilterPriceMaxVal] = useState(15000000);
   const PRICE_MIN = 0;
-  const PRICE_MAX = 7000000;
+  const PRICE_MAX = 15000000;
   // 3. Базовые параметры
   const [filterAreaMin, setFilterAreaMin] = useState("");
   const [filterAreaMax, setFilterAreaMax] = useState("");
