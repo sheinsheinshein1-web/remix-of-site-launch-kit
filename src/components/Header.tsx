@@ -107,7 +107,7 @@ const Header = () => {
         <div className={`relative z-10 ${enableTransitions ? 'transition-all duration-300' : ''} ${mobileScrolled ? 'opacity-0 pointer-events-none scale-95 -translate-y-full' : 'opacity-100 scale-100 translate-y-0'}`}>
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),6px)] pb-1.5">
             <div className="flex items-center justify-between">
-              <Link to="/" className="flex items-center gap-1 text-[24px] font-bold text-foreground tracking-[-0.02em]">
+              <Link to="/" className="flex items-center gap-1 text-[24px] font-bold text-foreground tracking-[-0.04em]">
                 <img src={logoMark} alt="" className="h-[22px] w-[22px]" aria-hidden />
                 Много места
               </Link>
