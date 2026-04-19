@@ -32,6 +32,11 @@ import bear77_1 from "@/assets/bear77-1.webp";
 import bear77_2 from "@/assets/bear77-2.webp";
 import bear77Plan3d from "@/assets/bear77-plan-3d.webp";
 import bear77Plan from "@/assets/bear77-plan.webp";
+import bear86_1 from "@/assets/bear86-1.webp";
+import bear86_2 from "@/assets/bear86-2.webp";
+import bear86_3 from "@/assets/bear86-3.webp";
+import bear86Plan3d from "@/assets/bear86-plan-3d.webp";
+import bear86Plan from "@/assets/bear86-plan.webp";
 
 const houseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
@@ -40,6 +45,8 @@ const projectGalleries: Record<number, string[]> = {
   32: [wideHouse, wideHouse2, wideHousePlan3d, wideHousePlan],
   33: [cabin31_1, cabin31_2, cabin31Plan3d, cabin31Plan],
   34: [bear1, bear2, bear3, bearPlan3d, bearPlan],
+  35: [bear77_1, bear77_2, bear77Plan3d, bear77Plan],
+  36: [bear86_1, bear86_2, bear86_3, bear86Plan3d, bear86Plan],
 };
 
 // Per-image fit для проектов: "contain" — фото с blur-фоном (для горизонтальных планировок).
@@ -47,6 +54,8 @@ const projectFits: Record<number, ("cover" | "contain")[]> = {
   32: ["cover", "cover", "contain", "contain"],
   33: ["cover", "cover", "contain", "contain"],
   34: ["cover", "cover", "cover", "contain", "contain"],
+  35: ["cover", "cover", "contain", "contain"],
+  36: ["cover", "cover", "cover", "contain", "contain"],
 };
 
 function getProjectImages(mainImage: string, id: number): string[] {
@@ -65,6 +74,7 @@ const baseProjects = [
   { id: 33, name: "Barn House", maker: "Платформа", area: "42,9 м²", beds: 1, baths: 1, term: "30 д.", price: "1 680 000 ₽", image: cabin31_1, liked: false, likes: 48, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
   { id: 34, name: "Bear House 45", maker: "Платформа", area: "41 м²", beds: 1, baths: 1, term: "30 д.", price: "2 207 000 ₽", image: bear1, liked: false, likes: 39, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
   { id: 35, name: "Bear House 77", maker: "Платформа", area: "61,32 м²", beds: 2, baths: 1, term: "45 д.", price: "3 894 700 ₽", image: bear77_1, liked: false, likes: 52, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
+  { id: 36, name: "Bear House 86", maker: "Платформа", area: "68,7 м²", beds: 2, baths: 2, term: "50 д.", price: "4 349 000 ₽", image: bear86_1, liked: false, likes: 58, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
   { id: 1, name: "Тайга 72", maker: "СибМодуль", area: "72 м²", beds: 2, baths: 1, term: "30 д.", price: "2 450 000 ₽", image: house1, liked: false, likes: 124, hasRealPhotos: true, city: "Москва и МО", rating: "4.8" },
   { id: 2, name: "Кедр 24", maker: "УралДом", area: "24 м²", beds: 0, baths: 1, term: "14 д.", price: "890 000 ₽", image: house4, liked: true, likes: 89, hasRealPhotos: false, city: "Екатеринбург", rating: "4.8" },
   { id: 3, name: "Купол Альпика", maker: "ГлэмпингСтрой", area: "36 м²", beds: 1, baths: 1, term: "7 д.", price: "1 200 000 ₽", image: house8, liked: false, likes: 56, hasRealPhotos: true, city: "Сочи", rating: "4.6" },
