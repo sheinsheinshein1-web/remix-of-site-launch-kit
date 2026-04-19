@@ -27,6 +27,7 @@ import bear77_1 from "@/assets/bear77-1.webp";
 import bear86_1 from "@/assets/bear86-1.webp";
 import bear134_1 from "@/assets/bear134-1.webp";
 import vast140_1 from "@/assets/vast140-1.webp";
+import bear168_1 from "@/assets/bear168-1.webp";
 
 const allHouseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
@@ -90,6 +91,7 @@ const catalogItems = [
   { id: 36, badge: "Жилой дом", maker: "Платформа · Екатеринбург", name: "Bear House 86", price: "4 349 000 ₽", area: "68,7 м²", beds: 2, baths: 2, term: "50 д.", rooms: "2 спальни", purpose: "ИЖС / СНТ", image: bear86_1, fav: false, likes: 58, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна"], style: "Скандинавский", landSize: "6–10 соток", hasRealPhotos: true, rating: 4.8, hasShowroom: true, hasInstallment: true },
   { id: 37, badge: "Жилой дом", maker: "Платформа · Екатеринбург", name: "Bear House 134", price: "8 762 000 ₽", area: "110 м²", beds: 3, baths: 3, term: "70 д.", rooms: "3 спальни", purpose: "ИЖС / СНТ", image: bear134_1, fav: false, likes: 71, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна"], style: "Скандинавский", landSize: "от 10 соток", hasRealPhotos: true, rating: 4.9, hasShowroom: true, hasInstallment: true },
   { id: 38, badge: "Жилой дом", maker: "Платформа · Екатеринбург", name: "Vast House 140", price: "8 077 600 ₽", area: "114,9 м²", beds: 4, baths: 2, term: "75 д.", rooms: "4 спальни", purpose: "ИЖС / СНТ", image: vast140_1, fav: false, likes: 83, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна"], style: "Скандинавский", landSize: "от 10 соток", hasRealPhotos: true, rating: 4.9, hasShowroom: true, hasInstallment: true },
+  { id: 39, badge: "Жилой дом", maker: "Платформа · Екатеринбург", name: "Bear House 168", price: "12 110 400 ₽", area: "146,4 м²", beds: 4, baths: 3, term: "90 д.", rooms: "4 спальни", purpose: "ИЖС / СНТ", image: bear168_1, fav: false, likes: 95, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна", "Камин"], style: "Скандинавский", landSize: "от 10 соток", hasRealPhotos: true, rating: 4.9, hasShowroom: true, hasInstallment: true },
 ];
 
 const sidebarFilters = [

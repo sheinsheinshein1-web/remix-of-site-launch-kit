@@ -48,6 +48,10 @@ import vast140_2 from "@/assets/vast140-2.webp";
 import vast140_3 from "@/assets/vast140-3.webp";
 import vast140Plan3d from "@/assets/vast140-plan-3d.webp";
 import vast140Plan from "@/assets/vast140-plan.webp";
+import bear168_1 from "@/assets/bear168-1.webp";
+import bear168_2 from "@/assets/bear168-2.webp";
+import bear168Plan3d from "@/assets/bear168-plan-3d.webp";
+import bear168Plan from "@/assets/bear168-plan.webp";
 import makerPlatforma from "@/assets/maker-platforma.png";
 
 const defaultGallery = [
@@ -216,6 +220,26 @@ const projectOverrides: Record<string, {
       { id: 3, image: vast140_3, type: "photo" },
       { id: 4, image: vast140Plan3d, type: "photo", fit: "contain" },
       { id: 5, image: vast140Plan, type: "photo", fit: "contain" },
+    ],
+  },
+  "39": {
+    name: "Bear House 168",
+    maker: "Платформа",
+    makerInitials: "ПЛ",
+    makerLogo: undefined,
+    price: "12 110 400 ₽",
+    area: "146,4 м²",
+    beds: 4,
+    baths: 3,
+    floors: 1,
+    city: "Екатеринбург",
+    description: "Просторный одноэтажный модульный дом 14,1 × 13,1 м со сложной геометрией кровли, камином и террасой-пирсом. Четыре спальни, три санузла, гардероб, гостиная-кухня 51,25 м².",
+    descriptionLong: "Bear House 168 — флагманский проект площадью 146,4 м² для большой семьи: гостиная с камином 41,72 м², кухня 9,53 м², четыре спальни (13,29, 9,99, 8,79 и одна гостевая), три санузла (3,80, 2,98, 1,80 м²), гардероб 3,23 м², кладовая 4,67 м², помещение ИОС 3,50 м², коридор 7,66 м² и прихожая 2,44 м². Комбинированный фасад: контрастный темный объем с фальцевой кровлей и теплый деревянный объем с двускатной крышей, две крытых террасы.",
+    gallery: [
+      { id: 1, image: bear168_1, type: "photo" },
+      { id: 2, image: bear168_2, type: "photo" },
+      { id: 3, image: bear168Plan3d, type: "photo", fit: "contain" },
+      { id: 4, image: bear168Plan, type: "photo", fit: "contain" },
     ],
   },
 };
