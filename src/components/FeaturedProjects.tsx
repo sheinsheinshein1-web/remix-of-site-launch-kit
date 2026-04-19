@@ -80,7 +80,7 @@ const projectFits: Record<number, ("cover" | "contain")[]> = {
 
 // Per-image object-position для широких/несбалансированных фото.
 const projectObjectPositions: Record<number, (string | undefined)[]> = {
-  38: ["left center"],
+  38: ["right center"],
 };
 
 function getProjectImages(mainImage: string, id: number): string[] {
