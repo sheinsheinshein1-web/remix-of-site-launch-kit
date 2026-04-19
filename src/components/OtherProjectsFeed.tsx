@@ -114,13 +114,15 @@ const OtherProjectsFeed = ({ currentId }: Props) => {
               className="block cursor-pointer"
               aria-label={`${project.name} — ${project.price}`}
             >
-              <div className="h-[260px] rounded-[14px] overflow-hidden">
+              <div className="h-[260px] rounded-[14px] overflow-hidden bg-muted">
                 <img
                   src={project.image}
-                  alt={project.name}
+                  alt=""
                   className="w-full h-full object-cover"
                   style={project.id === 38 ? { objectPosition: "right center" } : undefined}
-                  loading="lazy"
+                  loading="eager"
+                  decoding="sync"
+                  fetchPriority="high"
                 />
               </div>
               <div className="px-[10px] pt-1 pb-1">
