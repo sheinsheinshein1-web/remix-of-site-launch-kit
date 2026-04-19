@@ -171,8 +171,9 @@ const Header = () => {
           <div className="max-w-[1400px] mx-auto">
             <div className="bg-background backdrop-blur-lg shadow-sm rounded-b-2xl">
               <div className="flex items-center gap-6 px-8 py-3">
-                <Link to="/" className="flex items-center flex-shrink-0">
-                  <img src={logoColor} alt="многоместа.рф" className="h-8" />
+                <Link to="/" className="flex items-center gap-1.5 text-[24px] font-bold text-foreground tracking-[-0.04em] flex-shrink-0">
+                  <img src={logoMark} alt="" className="h-[23px] w-[23px]" aria-hidden />
+                  Много места
                 </Link>
                 <div className="flex-1">
                   <SearchDropdown inputClassName="bg-secondary" />
