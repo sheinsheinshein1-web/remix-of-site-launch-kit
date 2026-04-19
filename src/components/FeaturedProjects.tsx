@@ -27,6 +27,11 @@ const projectGalleries: Record<number, string[]> = {
   32: [wideHouse, wideHouse2, wideHousePlan3d, wideHousePlan],
 };
 
+// Per-image fit для проектов: "contain" — фото с blur-фоном (для горизонтальных планировок).
+const projectFits: Record<number, ("cover" | "contain")[]> = {
+  32: ["cover", "cover", "contain", "contain"],
+};
+
 function getProjectImages(mainImage: string, id: number): string[] {
   if (projectGalleries[id]) return projectGalleries[id];
   const others = houseImages.filter(img => img !== mainImage);
@@ -256,6 +261,7 @@ const FeaturedProjects = () => {
               >
                 <SwipeableGallery
                   images={getProjectImages(project.image, project.id)}
+                  fits={projectFits[project.id]}
                   alt={project.name}
                   height="aspect-[3/4] h-auto md:h-[240px] md:aspect-auto"
                 >

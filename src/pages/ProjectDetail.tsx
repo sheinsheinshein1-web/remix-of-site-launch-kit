@@ -449,7 +449,14 @@ const ProjectDetail = () => {
                 return (
                   <div key={img.id} className="w-full flex-shrink-0 aspect-[4/5] relative bg-muted overflow-hidden">
                     {isContain && (
-                      <img src={img.image} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-60" draggable={false} />
+                      <img
+                        src={img.image}
+                        alt=""
+                        aria-hidden
+                        className="absolute inset-0 w-full h-full object-cover blur-md opacity-60"
+                        style={{ transform: "translateZ(0) scale(1.15)" }}
+                        draggable={false}
+                      />
                     )}
                     <img
                       src={img.image}
@@ -644,29 +651,73 @@ const ProjectDetail = () => {
       <MobileTabBar />
       <CitySelector open={cityOpen} onOpenChange={setCityOpen} city={city} onSelect={selectCity} />
 
-      {/* Lightbox — полноэкранный просмотр исходного фото */}
+      {/* Lightbox — полноэкранный просмотр исходного фото со свайпом */}
       {lightboxOpen && (
         <div
           className="fixed inset-0 z-[80] bg-black/95 flex items-center justify-center"
           onClick={() => setLightboxOpen(false)}
+          onTouchStart={(e) => {
+            (e.currentTarget as any)._lbx = e.touches[0].clientX;
+            (e.currentTarget as any)._lby = e.touches[0].clientY;
+            (e.currentTarget as any)._lbAxis = null;
+          }}
+          onTouchMove={(e) => {
+            const startX = (e.currentTarget as any)._lbx;
+            const startY = (e.currentTarget as any)._lby;
+            if (startX == null) return;
+            const dx = e.touches[0].clientX - startX;
+            const dy = e.touches[0].clientY - startY;
+            if (!(e.currentTarget as any)._lbAxis && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+              (e.currentTarget as any)._lbAxis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+            }
+          }}
+          onTouchEnd={(e) => {
+            const startX = (e.currentTarget as any)._lbx;
+            if (startX == null) return;
+            const dx = e.changedTouches[0].clientX - startX;
+            const axis = (e.currentTarget as any)._lbAxis;
+            if (axis === "x" && Math.abs(dx) > 50) {
+              if (dx < 0 && activeImage < galleryImages.length - 1) setActiveImage(activeImage + 1);
+              else if (dx > 0 && activeImage > 0) setActiveImage(activeImage - 1);
+            }
+            (e.currentTarget as any)._lbx = null;
+          }}
         >
           <button
             onClick={(e) => { e.stopPropagation(); setLightboxOpen(false); }}
-            className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white"
+            className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/15 flex items-center justify-center text-white"
             aria-label="Закрыть"
           >
             <X className="w-5 h-5" />
           </button>
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white text-xs bg-white/15 backdrop-blur rounded-full px-3 py-1">
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white text-xs bg-white/15 rounded-full px-3 py-1">
             {activeImage + 1} из {galleryImages.length}
           </div>
           <img
             src={galleryImages[activeImage].image}
             alt={`Фото ${activeImage + 1}`}
-            className="max-w-full max-h-full object-contain"
+            className="max-w-full max-h-full object-contain select-none"
             onClick={(e) => e.stopPropagation()}
             draggable={false}
           />
+          {!isMobile && activeImage > 0 && (
+            <button
+              onClick={(e) => { e.stopPropagation(); setActiveImage(activeImage - 1); }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/15 flex items-center justify-center text-white"
+              aria-label="Предыдущее"
+            >
+              <ChevronDown className="w-6 h-6 rotate-90" />
+            </button>
+          )}
+          {!isMobile && activeImage < galleryImages.length - 1 && (
+            <button
+              onClick={(e) => { e.stopPropagation(); setActiveImage(activeImage + 1); }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/15 flex items-center justify-center text-white"
+              aria-label="Следующее"
+            >
+              <ChevronDown className="w-6 h-6 -rotate-90" />
+            </button>
+          )}
         </div>
       )}
     </div>
