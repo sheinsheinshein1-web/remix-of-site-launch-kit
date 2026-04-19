@@ -169,17 +169,19 @@ const FeaturedProjects = () => {
   }, [page]);
 
   // Восстановление позиции при возврате с детальной — синхронно перед paint,
-  // чтобы Header сразу инициализировался с правильным scrollY и не моргал
+  // чтобы Header сразу инициализировался с правильным scrollY и не моргал.
+  // Только при POP (кнопка "Назад"), не при PUSH (клик по лого/таб-бару).
   useLayoutEffect(() => {
     const saved = sessionStorage.getItem(SCROLL_KEY);
-    if (saved) {
+    if (saved && navigationType === "POP") {
       const y = parseInt(saved, 10);
       if (Number.isFinite(y)) {
         window.scrollTo(0, y);
       }
-      sessionStorage.removeItem(SCROLL_KEY);
     }
-  }, []);
+    // Чистим в любом случае, чтобы старая позиция не «выстрелила» позже
+    sessionStorage.removeItem(SCROLL_KEY);
+  }, [navigationType]);
 
   const handleCardClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, projectId: number) => {
