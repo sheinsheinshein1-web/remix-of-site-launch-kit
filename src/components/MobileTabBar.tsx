@@ -28,7 +28,9 @@ const MobileTabBar = ({ ctaLabel, onCtaClick }: { ctaLabel?: string; onCtaClick?
             const active = location.pathname === tab.path;
             const handleClick = () => {
               if (active && tab.path === "/") {
-                window.scrollTo({ top: 0, behavior: "smooth" });
+                // Мгновенный scroll, чтобы не триггерить логику Header'а
+                // «пользователь скроллит вверх» (которая показывает компактный поиск)
+                window.scrollTo({ top: 0, left: 0 });
                 return;
               }
               navigate(tab.path);
