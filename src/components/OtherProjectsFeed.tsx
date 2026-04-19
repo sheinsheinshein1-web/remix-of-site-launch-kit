@@ -19,6 +19,7 @@ import bear77_1 from "@/assets/bear77-1.webp";
 import bear86_1 from "@/assets/bear86-1.webp";
 import bear134_1 from "@/assets/bear134-1.webp";
 import vast140_1 from "@/assets/vast140-1.webp";
+import bear168_1 from "@/assets/bear168-1.webp";
 
 // Базовый набор проектов «других» от подрядчика.
 // id указывает на маршрут /project/:id.
