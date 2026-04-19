@@ -120,6 +120,12 @@ const AssetPreloader = () => {
   return null;
 };
 
+// Forces ProjectDetail to remount on :id change so internal state and scroll reset cleanly.
+const ProjectDetailRoute = () => {
+  const { id } = useParams();
+  return <ProjectDetail key={id} />;
+};
+
 const AppRoutes = () => (
   <>
     <ScrollToTop />
