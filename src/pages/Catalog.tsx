@@ -901,6 +901,7 @@ const Catalog = () => {
                       src={item.image}
                       alt={item.name}
                       className="w-full h-full object-cover"
+                      style={projectObjectPositions[item.id]?.[0] ? { objectPosition: projectObjectPositions[item.id]![0] } : undefined}
                       loading="lazy"
                     />
                     <div className="absolute top-2 right-2">
