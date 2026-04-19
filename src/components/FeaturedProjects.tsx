@@ -15,6 +15,7 @@ import house6 from "@/assets/house-6.jpg";
 import house7 from "@/assets/house-7.jpg";
 import house8 from "@/assets/house-8.jpg";
 import house9 from "@/assets/house-9.jpg";
+import wideHouse from "@/assets/wide-house-1.webp";
 
 const houseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
@@ -29,6 +30,7 @@ function getProjectImages(mainImage: string, id: number): string[] {
 }
 
 const baseProjects = [
+  { id: 32, name: "Wide House", maker: "Платформа", area: "46,4 м²", beds: 2, baths: 1, term: "30 д.", price: "2 320 000 ₽", image: wideHouse, liked: false, likes: 64, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
   { id: 1, name: "Тайга 72", maker: "СибМодуль", area: "72 м²", beds: 2, baths: 1, term: "30 д.", price: "2 450 000 ₽", image: house1, liked: false, likes: 124, hasRealPhotos: true, city: "Москва и МО", rating: "4.8" },
   { id: 2, name: "Кедр 24", maker: "УралДом", area: "24 м²", beds: 0, baths: 1, term: "14 д.", price: "890 000 ₽", image: house4, liked: true, likes: 89, hasRealPhotos: false, city: "Екатеринбург", rating: "4.8" },
   { id: 3, name: "Купол Альпика", maker: "ГлэмпингСтрой", area: "36 м²", beds: 1, baths: 1, term: "7 д.", price: "1 200 000 ₽", image: house8, liked: false, likes: 56, hasRealPhotos: true, city: "Сочи", rating: "4.6" },
