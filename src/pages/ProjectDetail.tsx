@@ -38,6 +38,11 @@ import bear86_2 from "@/assets/bear86-2.webp";
 import bear86_3 from "@/assets/bear86-3.webp";
 import bear86Plan3d from "@/assets/bear86-plan-3d.webp";
 import bear86Plan from "@/assets/bear86-plan.webp";
+import bear134_1 from "@/assets/bear134-1.webp";
+import bear134_2 from "@/assets/bear134-2.webp";
+import bear134_3 from "@/assets/bear134-3.webp";
+import bear134Plan3d from "@/assets/bear134-plan-3d.webp";
+import bear134Plan from "@/assets/bear134-plan.webp";
 import makerPlatforma from "@/assets/maker-platforma.png";
 
 const defaultGallery = [
@@ -164,6 +169,27 @@ const projectOverrides: Record<string, {
       { id: 3, image: bear86_3, type: "photo" },
       { id: 4, image: bear86Plan3d, type: "photo", fit: "contain" },
       { id: 5, image: bear86Plan, type: "photo", fit: "contain" },
+    ],
+  },
+  "37": {
+    name: "Bear House 134",
+    maker: "Платформа",
+    makerInitials: "ПЛ",
+    makerLogo: undefined,
+    price: "8 762 000 ₽",
+    area: "110 м²",
+    beds: 3,
+    baths: 3,
+    floors: 1,
+    city: "Екатеринбург",
+    description: "Одноэтажный модульный дом 15,8 × 9,9 м с двускатной кровлей и двумя террасами. Три спальни, три санузла, гардероб, гостиная-кухня.",
+    descriptionLong: "Bear House 134 — просторный загородный дом площадью 110 м² с продуманной планировкой: гостиная 20,20 м², кухня 9,53 м², три спальни (14,26, 16,49 и одна дополнительная), три санузла, гардероб 4,43 м², коридор 8,06 м², прихожая 3,17 м² и две крытых террасы (13,5 и 8,0 м²). Деревянный каркас, фальцевая металлическая кровля, панорамное остекление гостиной с выходом на террасу.",
+    gallery: [
+      { id: 1, image: bear134_1, type: "photo" },
+      { id: 2, image: bear134_2, type: "photo" },
+      { id: 3, image: bear134_3, type: "photo" },
+      { id: 4, image: bear134Plan3d, type: "photo", fit: "contain" },
+      { id: 5, image: bear134Plan, type: "photo", fit: "contain" },
     ],
   },
 };

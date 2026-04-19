@@ -92,7 +92,7 @@ const Partner = () => {
               {/* Stats row */}
               <div className="border-t border-border grid grid-cols-3">
                 {[
-                  { val: "5", label: "Проекты" },
+                  { val: "6", label: "Проекты" },
                   { val: "—", label: "Отзывы" },
                   { val: "—", label: "Рейтинг" },
                 ].map((s, i) => (
@@ -194,7 +194,7 @@ const Partner = () => {
           {/* Stats row */}
           <div className="border-t border-border grid grid-cols-3">
             {[
-              { val: "5", label: "Проекты" },
+              { val: "6", label: "Проекты" },
               { val: "—", label: "Отзывы" },
               { val: "—", label: "Рейтинг" },
             ].map((s, i) => (
