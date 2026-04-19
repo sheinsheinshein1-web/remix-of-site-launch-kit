@@ -28,6 +28,10 @@ import bear2 from "@/assets/bear-2.webp";
 import bear3 from "@/assets/bear-3.webp";
 import bearPlan3d from "@/assets/bear-plan-3d.webp";
 import bearPlan from "@/assets/bear-plan.webp";
+import bear77_1 from "@/assets/bear77-1.webp";
+import bear77_2 from "@/assets/bear77-2.webp";
+import bear77Plan3d from "@/assets/bear77-plan-3d.webp";
+import bear77Plan from "@/assets/bear77-plan.webp";
 
 const houseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
@@ -60,6 +64,7 @@ const baseProjects = [
   { id: 32, name: "Wide House", maker: "Платформа", area: "46,4 м²", beds: 2, baths: 1, term: "30 д.", price: "5 480 000 ₽", image: wideHouse, liked: false, likes: 64, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
   { id: 33, name: "Barn House", maker: "Платформа", area: "42,9 м²", beds: 1, baths: 1, term: "30 д.", price: "1 680 000 ₽", image: cabin31_1, liked: false, likes: 48, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
   { id: 34, name: "Bear House 45", maker: "Платформа", area: "41 м²", beds: 1, baths: 1, term: "30 д.", price: "2 207 000 ₽", image: bear1, liked: false, likes: 39, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
+  { id: 35, name: "Bear House 77", maker: "Платформа", area: "61,32 м²", beds: 2, baths: 1, term: "45 д.", price: "3 894 700 ₽", image: bear77_1, liked: false, likes: 52, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
   { id: 1, name: "Тайга 72", maker: "СибМодуль", area: "72 м²", beds: 2, baths: 1, term: "30 д.", price: "2 450 000 ₽", image: house1, liked: false, likes: 124, hasRealPhotos: true, city: "Москва и МО", rating: "4.8" },
   { id: 2, name: "Кедр 24", maker: "УралДом", area: "24 м²", beds: 0, baths: 1, term: "14 д.", price: "890 000 ₽", image: house4, liked: true, likes: 89, hasRealPhotos: false, city: "Екатеринбург", rating: "4.8" },
   { id: 3, name: "Купол Альпика", maker: "ГлэмпингСтрой", area: "36 м²", beds: 1, baths: 1, term: "7 д.", price: "1 200 000 ₽", image: house8, liked: false, likes: 56, hasRealPhotos: true, city: "Сочи", rating: "4.6" },
