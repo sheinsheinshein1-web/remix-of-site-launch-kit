@@ -47,6 +47,10 @@ import vast140_2 from "@/assets/vast140-2.webp";
 import vast140_3 from "@/assets/vast140-3.webp";
 import vast140Plan3d from "@/assets/vast140-plan-3d.webp";
 import vast140Plan from "@/assets/vast140-plan.webp";
+import bear168_1 from "@/assets/bear168-1.webp";
+import bear168_2 from "@/assets/bear168-2.webp";
+import bear168Plan3d from "@/assets/bear168-plan-3d.webp";
+import bear168Plan from "@/assets/bear168-plan.webp";
 
 const houseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
