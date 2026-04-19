@@ -25,6 +25,7 @@ import cabin31_1 from "@/assets/cabin-31-1.webp";
 import bear1 from "@/assets/bear-1.webp";
 import bear77_1 from "@/assets/bear77-1.webp";
 import bear86_1 from "@/assets/bear86-1.webp";
+import bear134_1 from "@/assets/bear134-1.webp";
 
 const allHouseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
