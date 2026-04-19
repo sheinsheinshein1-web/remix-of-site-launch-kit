@@ -44,7 +44,7 @@ const projectOverrides: Record<string, {
   city: string;
   description: string;
   descriptionLong: string;
-  gallery: { id: number; image: string; type: string }[];
+  gallery: { id: number; image: string; type: string; fit?: "cover" | "contain" }[];
 }> = {
   "32": {
     name: "Wide House",
@@ -61,9 +61,9 @@ const projectOverrides: Record<string, {
     descriptionLong: "Wide House — компактный загородный дом площадью 46,4 м² с продуманной планировкой: две спальни (6,25 и 13,88 м²), санузел 4,44 м², кухня 7,94 м², гостиная 8,9 м², прихожая 2,57 м² и терраса 10,36 м². Деревянный каркас, металлическая фальцевая кровля, панорамное остекление гостиной.",
     gallery: [
       { id: 1, image: wideHouse1, type: "photo" },
-      { id: 2, image: wideHouse2, type: "photo" },
-      { id: 3, image: wideHousePlan3d, type: "photo" },
-      { id: 4, image: wideHousePlan, type: "photo" },
+      { id: 2, image: wideHouse2, type: "photo", fit: "contain" },
+      { id: 3, image: wideHousePlan3d, type: "photo", fit: "contain" },
+      { id: 4, image: wideHousePlan, type: "photo", fit: "contain" },
     ],
   },
 };
@@ -248,6 +248,7 @@ const ProjectDetail = () => {
   const [scrolled, setScrolled] = useState(false);
   const { city, selectCity } = useCity();
   const [cityOpen, setCityOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   // Gallery slider touch
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -398,16 +399,29 @@ const ProjectDetail = () => {
               onTouchMove={onTouchMove}
               onTouchEnd={onTouchEnd}
             >
-              {galleryImages.map((img, i) => (
-                <div key={img.id} className="w-full flex-shrink-0 aspect-[4/5] relative">
-                  <img src={img.image} alt={`Фото ${i + 1}`} className="w-full h-full object-cover" draggable={false} style={i === 0 ? { viewTransitionName: 'project-hero' } as React.CSSProperties : undefined} />
-                  {img.type === "video" && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Play className="w-12 h-12 text-white/80" />
-                    </div>
-                  )}
-                </div>
-              ))}
+              {galleryImages.map((img, i) => {
+                const isContain = (img as any).fit === "contain";
+                return (
+                  <div key={img.id} className="w-full flex-shrink-0 aspect-[4/5] relative bg-muted overflow-hidden">
+                    {isContain && (
+                      <img src={img.image} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-60" draggable={false} />
+                    )}
+                    <img
+                      src={img.image}
+                      alt={`Фото ${i + 1}`}
+                      className={`relative z-10 w-full h-full ${isContain ? "object-contain" : "object-cover"}`}
+                      draggable={false}
+                      onClick={() => setLightboxOpen(true)}
+                      style={i === 0 ? { viewTransitionName: 'project-hero' } as React.CSSProperties : undefined}
+                    />
+                    {img.type === "video" && (
+                      <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+                        <Play className="w-12 h-12 text-white/80" />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
             <span className="absolute bottom-3 right-4 text-xs text-white bg-black/45 px-2.5 py-1 rounded-full">
               {activeImage + 1} из {galleryImages.length}
@@ -584,6 +598,32 @@ const ProjectDetail = () => {
 
       <MobileTabBar />
       <CitySelector open={cityOpen} onOpenChange={setCityOpen} city={city} onSelect={selectCity} />
+
+      {/* Lightbox — полноэкранный просмотр исходного фото */}
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 z-[80] bg-black/95 flex items-center justify-center"
+          onClick={() => setLightboxOpen(false)}
+        >
+          <button
+            onClick={(e) => { e.stopPropagation(); setLightboxOpen(false); }}
+            className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white"
+            aria-label="Закрыть"
+          >
+            <X className="w-5 h-5" />
+          </button>
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white text-xs bg-white/15 backdrop-blur rounded-full px-3 py-1">
+            {activeImage + 1} из {galleryImages.length}
+          </div>
+          <img
+            src={galleryImages[activeImage].image}
+            alt={`Фото ${activeImage + 1}`}
+            className="max-w-full max-h-full object-contain"
+            onClick={(e) => e.stopPropagation()}
+            draggable={false}
+          />
+        </div>
+      )}
     </div>
   );
 };
