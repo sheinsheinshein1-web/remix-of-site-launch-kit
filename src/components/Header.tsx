@@ -3,6 +3,7 @@ import { useNavigate, useLocation, useNavigationType, Link } from "react-router-
 import logoColor from "@/assets/logo-color.svg";
 import logoIcon from "@/assets/logo-icon.svg";
 import logoMark from "@/assets/logo-mark.svg";
+import logoMarkWhite from "@/assets/logo-mark-white.svg";
 import { SlidersHorizontal, ChevronDown, LayoutGrid, Heart, MessageSquare } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 import SearchDropdown from "./SearchDropdown";
@@ -136,8 +137,9 @@ const Header = () => {
               {/* Top row: logo + location + nav + CTA */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-6">
-                  <a href="/" className="flex items-center">
-                    <img src={logoColor} alt="многоместа.рф" className="h-9 brightness-0 invert" />
+                  <a href="/" className="flex items-center gap-1.5 text-[26px] font-bold text-primary-foreground tracking-[-0.04em]">
+                    <img src={logoMarkWhite} alt="" className="h-[25px] w-[25px]" aria-hidden />
+                    Много места
                   </a>
                   <button onClick={() => setCityOpen(true)} className="inline-flex items-center gap-1.5 text-primary-foreground/90 hover:text-primary-foreground transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -169,8 +171,9 @@ const Header = () => {
           <div className="max-w-[1400px] mx-auto">
             <div className="bg-background backdrop-blur-lg shadow-sm rounded-b-2xl">
               <div className="flex items-center gap-6 px-8 py-3">
-                <Link to="/" className="flex items-center flex-shrink-0">
-                  <img src={logoColor} alt="многоместа.рф" className="h-8" />
+                <Link to="/" className="flex items-center gap-1.5 text-[24px] font-bold text-foreground tracking-[-0.04em] flex-shrink-0">
+                  <img src={logoMark} alt="" className="h-[23px] w-[23px]" aria-hidden />
+                  Много места
                 </Link>
                 <div className="flex-1">
                   <SearchDropdown inputClassName="bg-secondary" />
