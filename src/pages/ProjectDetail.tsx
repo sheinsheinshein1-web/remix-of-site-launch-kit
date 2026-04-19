@@ -477,17 +477,17 @@ const ProjectDetail = () => {
           {/* Row 1: Title + Price + Specs + Maker + Description (inline expandable) + Accordions + CTA */}
           <div className={`bg-background px-2 pt-3 pb-3 ${isMobile ? "rounded-b-2xl" : "rounded-2xl"}`}>
             <div className="flex items-baseline justify-between gap-3 mb-1">
-              <h1 className="text-[18px] font-bold text-foreground tracking-tight leading-tight truncate">Шервуд 72.1</h1>
+              <h1 className="text-[18px] font-bold text-foreground tracking-tight leading-tight truncate">{project.name}</h1>
               <div className="text-[15px] whitespace-nowrap">
                 <span className="text-muted-foreground font-normal">от </span>
-                <span className="font-bold text-foreground">4 950 000 ₽</span>
+                <span className="font-bold text-foreground">{project.price}</span>
               </div>
             </div>
             <div className="flex items-center gap-2.5 text-[12px] text-muted-foreground">
-              <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />60 м²</span>
-              <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />2</span>
-              <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />1</span>
-              <span className="inline-flex items-center gap-[3px]"><Layers className="w-3 h-3" strokeWidth={1.75} />1</span>
+              <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{project.area}</span>
+              <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{project.beds}</span>
+              <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{project.baths}</span>
+              <span className="inline-flex items-center gap-[3px]"><Layers className="w-3 h-3" strokeWidth={1.75} />{project.floors}</span>
             </div>
 
             {/* Локация доставки */}
