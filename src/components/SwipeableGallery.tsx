@@ -128,12 +128,10 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, children }:
     ? `calc(${-current * 100}% / ${count} + ${dragX}px)`
     : `${-current * 100}%`;
 
-  const hasContain = !!fits?.some((fit) => fit === "contain");
-
   return (
     <div
       ref={containerRef}
-      className={`relative ${height} overflow-hidden select-none rounded-[14px] ${hasContain ? "" : "bg-muted"}`}
+      className={`relative ${height} overflow-hidden select-none rounded-[14px] bg-muted`}
       onMouseMove={!isMobile ? onMouseMove : undefined}
       onMouseLeave={!isMobile ? onMouseLeave : undefined}
     >
@@ -151,27 +149,13 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, children }:
             return (
               <div
                 key={i}
-                className={`relative isolate h-full flex-shrink-0 overflow-hidden ${fit === "contain" ? "" : "bg-muted"}`}
+                className="relative h-full flex-shrink-0 overflow-hidden bg-muted"
                 style={{ width: `${100 / count}%` }}
               >
-                {fit === "contain" && (
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 z-0 pointer-events-none"
-                    style={{
-                      backgroundImage: `url(${src})`,
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: "cover",
-                      filter: "blur(28px)",
-                      transform: "translateZ(0) scale(1.4)",
-                    }}
-                  />
-                )}
                 <img
                   src={src}
                   alt={`${alt} ${i + 1}`}
-                  className={`relative z-10 w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} pointer-events-none`}
+                  className={`w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} pointer-events-none`}
                   loading={i === 0 || fit === "contain" ? "eager" : "lazy"}
                   decoding="sync"
                   draggable={false}
@@ -186,27 +170,13 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, children }:
           return (
             <div
               key={i}
-              className={`absolute inset-0 isolate overflow-hidden ${fit === "contain" ? "" : "bg-muted"}`}
+              className="absolute inset-0 overflow-hidden bg-muted"
               style={{ zIndex: i === current ? 2 : 1, opacity: i === current ? 1 : 0 }}
             >
-              {fit === "contain" && (
-                <div
-                  aria-hidden
-                  className="absolute inset-0 z-0 pointer-events-none"
-                  style={{
-                    backgroundImage: `url(${src})`,
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "cover",
-                    filter: "blur(28px)",
-                    transform: "translateZ(0) scale(1.4)",
-                  }}
-                />
-              )}
               <img
                 src={src}
                 alt={`${alt} ${i + 1}`}
-                className={`relative z-10 w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
+                className={`w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
                 loading="eager"
                 decoding="sync"
                 draggable={false}
