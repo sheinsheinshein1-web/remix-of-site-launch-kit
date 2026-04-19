@@ -55,7 +55,7 @@ const projectOverrides: Record<string, {
     maker: "Платформа",
     makerInitials: "ПЛ",
     makerLogo: undefined,
-    price: "1 680 000 ₽",
+    price: "5 480 000 ₽",
     area: "46,4 м²",
     beds: 2,
     baths: 1,
