@@ -598,6 +598,32 @@ const ProjectDetail = () => {
 
       <MobileTabBar />
       <CitySelector open={cityOpen} onOpenChange={setCityOpen} city={city} onSelect={selectCity} />
+
+      {/* Lightbox — полноэкранный просмотр исходного фото */}
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 z-[80] bg-black/95 flex items-center justify-center"
+          onClick={() => setLightboxOpen(false)}
+        >
+          <button
+            onClick={(e) => { e.stopPropagation(); setLightboxOpen(false); }}
+            className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white"
+            aria-label="Закрыть"
+          >
+            <X className="w-5 h-5" />
+          </button>
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white text-xs bg-white/15 backdrop-blur rounded-full px-3 py-1">
+            {activeImage + 1} из {galleryImages.length}
+          </div>
+          <img
+            src={galleryImages[activeImage].image}
+            alt={`Фото ${activeImage + 1}`}
+            className="max-w-full max-h-full object-contain"
+            onClick={(e) => e.stopPropagation()}
+            draggable={false}
+          />
+        </div>
+      )}
     </div>
   );
 };
