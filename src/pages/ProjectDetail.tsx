@@ -145,6 +145,27 @@ const projectOverrides: Record<string, {
       { id: 4, image: bear77Plan, type: "photo", fit: "contain" },
     ],
   },
+  "36": {
+    name: "Bear House 86",
+    maker: "Платформа",
+    makerInitials: "ПЛ",
+    makerLogo: undefined,
+    price: "4 349 000 ₽",
+    area: "68,7 м²",
+    beds: 2,
+    baths: 2,
+    floors: 1,
+    city: "Екатеринбург",
+    description: "Одноэтажный модульный дом 13,7 × 6,17 м с двускатной кровлей и террасой 9,24 м². Две спальни, два санузла, кухня и гостиная.",
+    descriptionLong: "Bear House 86 — загородный дом площадью 68,7 м² с продуманной планировкой: кухня 15,06 м², гостиная 12,01 м², две спальни (9,24 и 13,60 м²), два санузла (4,44 и 2,60 м²), коридор 2,51 м² и крытая терраса 9,24 м². Деревянный каркас, фальцевая металлическая кровля, панорамное остекление гостиной с выходом на террасу.",
+    gallery: [
+      { id: 1, image: bear86_1, type: "photo" },
+      { id: 2, image: bear86_2, type: "photo" },
+      { id: 3, image: bear86_3, type: "photo" },
+      { id: 4, image: bear86Plan3d, type: "photo", fit: "contain" },
+      { id: 5, image: bear86Plan, type: "photo", fit: "contain" },
+    ],
+  },
 };
 
 const baseParams = [

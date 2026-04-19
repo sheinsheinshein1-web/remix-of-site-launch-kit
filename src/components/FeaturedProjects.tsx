@@ -32,6 +32,11 @@ import bear77_1 from "@/assets/bear77-1.webp";
 import bear77_2 from "@/assets/bear77-2.webp";
 import bear77Plan3d from "@/assets/bear77-plan-3d.webp";
 import bear77Plan from "@/assets/bear77-plan.webp";
+import bear86_1 from "@/assets/bear86-1.webp";
+import bear86_2 from "@/assets/bear86-2.webp";
+import bear86_3 from "@/assets/bear86-3.webp";
+import bear86Plan3d from "@/assets/bear86-plan-3d.webp";
+import bear86Plan from "@/assets/bear86-plan.webp";
 
 const houseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
