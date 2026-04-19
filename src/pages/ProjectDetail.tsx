@@ -449,14 +449,17 @@ const ProjectDetail = () => {
                 return (
                   <div key={img.id} className="w-full flex-shrink-0 aspect-[4/5] relative bg-muted overflow-hidden">
                     {isContain && (
-                      <img
-                        src={img.image}
-                        alt=""
-                        aria-hidden
-                        className="absolute inset-0 w-full h-full object-cover blur-md opacity-60"
-                        style={{ transform: "translateZ(0) scale(1.15)" }}
-                        draggable={false}
-                      />
+                      <>
+                        <img
+                          src={img.image}
+                          alt=""
+                          aria-hidden
+                          className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-40"
+                          style={{ transform: "translateZ(0) scale(1.3)" }}
+                          draggable={false}
+                        />
+                        <div className="absolute inset-0 bg-foreground/30" />
+                      </>
                     )}
                     <img
                       src={img.image}
