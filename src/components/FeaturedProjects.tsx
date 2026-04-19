@@ -106,6 +106,7 @@ function getPagedProjects(page: number, seed: number) {
 
 const FeaturedProjects = () => {
   const navigate = useNavigate();
+  const navigationType = useNavigationType();
   const { isFavorite, toggleFavorite } = useFavorites();
 
   const initialPage = (() => {
