@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 interface SwipeableGalleryProps {
@@ -8,28 +8,78 @@ interface SwipeableGalleryProps {
   children?: React.ReactNode;
 }
 
+const SWIPE_THRESHOLD_RATIO = 0.18; // 18% ширины — чтобы засчитать смену слайда
+const SWIPE_VELOCITY = 0.45; // px/ms — быстрый флик тоже листает
+
 const SwipeableGallery = ({ images, alt, height = "h-[200px]", children }: SwipeableGalleryProps) => {
   const [current, setCurrent] = useState(0);
+  const [dragX, setDragX] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
   const startX = useRef(0);
-  const hasMoved = useRef(false);
+  const startY = useRef(0);
+  const startTime = useRef(0);
+  const lockedAxis = useRef<"x" | "y" | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
   const count = images.length;
 
-  const handleEnd = useCallback((endX: number) => {
-    const diff = startX.current - endX;
-    if (Math.abs(diff) > 30) {
-      hasMoved.current = true;
-      setCurrent((c) => diff > 0 ? Math.min(c + 1, count - 1) : Math.max(c - 1, 0));
+  const width = containerRef.current?.clientWidth ?? 1;
+
+  const settle = useCallback((deltaX: number, elapsed: number) => {
+    const w = containerRef.current?.clientWidth ?? 1;
+    const velocity = Math.abs(deltaX) / Math.max(elapsed, 1);
+    const passedThreshold = Math.abs(deltaX) > w * SWIPE_THRESHOLD_RATIO;
+    const fastSwipe = velocity > SWIPE_VELOCITY && Math.abs(deltaX) > 10;
+    if (passedThreshold || fastSwipe) {
+      setCurrent((c) => {
+        if (deltaX < 0) return Math.min(c + 1, count - 1);
+        return Math.max(c - 1, 0);
+      });
     }
+    setDragX(0);
+    setIsDragging(false);
+    lockedAxis.current = null;
   }, [count]);
 
   const onTouchStart = (e: React.TouchEvent) => {
     startX.current = e.touches[0].clientX;
-    hasMoved.current = false;
+    startY.current = e.touches[0].clientY;
+    startTime.current = performance.now();
+    lockedAxis.current = null;
+    setIsDragging(true);
   };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    const dx = e.touches[0].clientX - startX.current;
+    const dy = e.touches[0].clientY - startY.current;
+    if (!lockedAxis.current) {
+      if (Math.abs(dx) > 6 || Math.abs(dy) > 6) {
+        lockedAxis.current = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+      }
+    }
+    if (lockedAxis.current === "x") {
+      // Сопротивление на краях
+      let resisted = dx;
+      if ((current === 0 && dx > 0) || (current === count - 1 && dx < 0)) {
+        resisted = dx * 0.35;
+      }
+      setDragX(resisted);
+    } else {
+      setDragX(0);
+    }
+  };
+
   const onTouchEnd = (e: React.TouchEvent) => {
-    handleEnd(e.changedTouches[0].clientX);
+    const endX = e.changedTouches[0].clientX;
+    const dx = endX - startX.current;
+    const elapsed = performance.now() - startTime.current;
+    if (lockedAxis.current === "x") {
+      settle(dx, elapsed);
+    } else {
+      setDragX(0);
+      setIsDragging(false);
+      lockedAxis.current = null;
+    }
   };
 
   const onMouseMove = (e: React.MouseEvent) => {
@@ -45,26 +95,40 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", children }: Swipe
     if (!isMobile) setCurrent(0);
   };
 
+  // Сброс drag при смене слайда (на случай rapid swipe)
+  useEffect(() => {
+    if (!isDragging) setDragX(0);
+  }, [current, isDragging]);
+
+  const translatePct = isMobile
+    ? `calc(${-current * 100}% / ${count} + ${dragX}px)`
+    : `${-current * 100}%`;
+
   return (
     <div
       ref={containerRef}
       className={`relative ${height} overflow-hidden select-none rounded-[14px]`}
       onTouchStart={isMobile ? onTouchStart : undefined}
+      onTouchMove={isMobile ? onTouchMove : undefined}
       onTouchEnd={isMobile ? onTouchEnd : undefined}
       onMouseMove={!isMobile ? onMouseMove : undefined}
       onMouseLeave={!isMobile ? onMouseLeave : undefined}
     >
       {isMobile ? (
         <div
-          className="flex h-full transition-transform duration-300 ease-out"
-          style={{ transform: `translateX(-${current * 100}%)`, width: `${count * 100}%` }}
+          className={`flex h-full ${isDragging ? "" : "transition-transform duration-300 ease-out"}`}
+          style={{
+            transform: `translate3d(${translatePct}, 0, 0)`,
+            width: `${count * 100}%`,
+            willChange: "transform",
+          }}
         >
           {images.map((src, i) => (
             <img
               key={i}
               src={src}
               alt={`${alt} ${i + 1}`}
-              className="h-full object-cover flex-shrink-0"
+              className="h-full object-cover flex-shrink-0 pointer-events-none"
               style={{ width: `${100 / count}%` }}
               loading={i === 0 ? "eager" : "lazy"}
               draggable={false}
