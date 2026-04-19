@@ -13,11 +13,13 @@ import house7 from "@/assets/house-7.jpg";
 import house8 from "@/assets/house-8.jpg";
 import house9 from "@/assets/house-9.jpg";
 import wideHouse from "@/assets/wide-house-1.webp";
+import cabin31_1 from "@/assets/cabin-31-1.webp";
 
 // Базовый набор проектов «других» от подрядчика.
 // id указывает на маршрут /project/:id.
 const baseOtherProjects = [
-  { id: 32, name: "Wide House", price: "от 2,3 млн ₽", area: "46,4 м²", beds: 2, baths: 1, image: wideHouse },
+  { id: 32, name: "Wide House", price: "от 1,68 млн ₽", area: "46,4 м²", beds: 2, baths: 1, image: wideHouse },
+  { id: 33, name: "Лесной модуль 42", price: "от 1,68 млн ₽", area: "42,9 м²", beds: 1, baths: 1, image: cabin31_1 },
   { id: 1, name: "Тайга 72", price: "от 2,4 млн ₽", area: "72 м²", beds: 2, baths: 1, image: house1 },
   { id: 6, name: "Мидленд 66", price: "от 4,4 млн ₽", area: "56 м²", beds: 2, baths: 1, image: house6 },
   { id: 5, name: "Шервуд 72", price: "от 4,4 млн ₽", area: "70 м²", beds: 2, baths: 1, image: house7 },
