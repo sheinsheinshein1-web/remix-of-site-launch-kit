@@ -1,5 +1,5 @@
 import { Heart, Loader2, Maximize, BedDouble, Bath } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useNavigationType } from "react-router-dom";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import SwipeableGallery from "@/components/SwipeableGallery";
 import ProjectCardSkeleton from "@/components/ProjectCardSkeleton";
