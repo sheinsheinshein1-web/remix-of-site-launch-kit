@@ -398,16 +398,29 @@ const ProjectDetail = () => {
               onTouchMove={onTouchMove}
               onTouchEnd={onTouchEnd}
             >
-              {galleryImages.map((img, i) => (
-                <div key={img.id} className="w-full flex-shrink-0 aspect-[4/5] relative">
-                  <img src={img.image} alt={`Фото ${i + 1}`} className="w-full h-full object-cover" draggable={false} style={i === 0 ? { viewTransitionName: 'project-hero' } as React.CSSProperties : undefined} />
-                  {img.type === "video" && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Play className="w-12 h-12 text-white/80" />
-                    </div>
-                  )}
-                </div>
-              ))}
+              {galleryImages.map((img, i) => {
+                const isContain = (img as any).fit === "contain";
+                return (
+                  <div key={img.id} className="w-full flex-shrink-0 aspect-[4/5] relative bg-muted overflow-hidden">
+                    {isContain && (
+                      <img src={img.image} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-60" draggable={false} />
+                    )}
+                    <img
+                      src={img.image}
+                      alt={`Фото ${i + 1}`}
+                      className={`relative z-10 w-full h-full ${isContain ? "object-contain" : "object-cover"}`}
+                      draggable={false}
+                      onClick={() => setLightboxOpen(true)}
+                      style={i === 0 ? { viewTransitionName: 'project-hero' } as React.CSSProperties : undefined}
+                    />
+                    {img.type === "video" && (
+                      <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+                        <Play className="w-12 h-12 text-white/80" />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
             <span className="absolute bottom-3 right-4 text-xs text-white bg-black/45 px-2.5 py-1 rounded-full">
               {activeImage + 1} из {galleryImages.length}
