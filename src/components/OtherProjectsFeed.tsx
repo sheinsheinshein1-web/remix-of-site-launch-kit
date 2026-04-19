@@ -18,6 +18,7 @@ import bear1 from "@/assets/bear-1.webp";
 import bear77_1 from "@/assets/bear77-1.webp";
 import bear86_1 from "@/assets/bear86-1.webp";
 import bear134_1 from "@/assets/bear134-1.webp";
+import vast140_1 from "@/assets/vast140-1.webp";
 
 // Базовый набор проектов «других» от подрядчика.
 // id указывает на маршрут /project/:id.
@@ -28,6 +29,7 @@ const baseOtherProjects = [
   { id: 35, name: "Bear House 77", price: "от 3,89 млн ₽", area: "61,32 м²", beds: 2, baths: 1, image: bear77_1 },
   { id: 36, name: "Bear House 86", price: "от 4,35 млн ₽", area: "68,7 м²", beds: 2, baths: 2, image: bear86_1 },
   { id: 37, name: "Bear House 134", price: "от 8,76 млн ₽", area: "110 м²", beds: 3, baths: 3, image: bear134_1 },
+  { id: 38, name: "Vast House 140", price: "от 8,08 млн ₽", area: "114,9 м²", beds: 4, baths: 2, image: vast140_1 },
   { id: 1, name: "Тайга 72", price: "от 2,4 млн ₽", area: "72 м²", beds: 2, baths: 1, image: house1 },
   { id: 6, name: "Мидленд 66", price: "от 4,4 млн ₽", area: "56 м²", beds: 2, baths: 1, image: house6 },
   { id: 5, name: "Шервуд 72", price: "от 4,4 млн ₽", area: "70 м²", beds: 2, baths: 1, image: house7 },
