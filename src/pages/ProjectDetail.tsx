@@ -20,6 +20,7 @@ import wideHouse1 from "@/assets/wide-house-1.webp";
 import wideHouse2 from "@/assets/wide-house-2.webp";
 import wideHousePlan3d from "@/assets/wide-house-plan-3d.webp";
 import wideHousePlan from "@/assets/wide-house-plan.webp";
+import makerPlatforma from "@/assets/maker-platforma.png";
 
 const defaultGallery = [
   { id: 1, image: house1, type: "photo" },
@@ -34,6 +35,7 @@ const projectOverrides: Record<string, {
   name: string;
   maker: string;
   makerInitials: string;
+  makerLogo?: string;
   price: string;
   area: string;
   beds: number;
@@ -48,6 +50,7 @@ const projectOverrides: Record<string, {
     name: "Wide House",
     maker: "Платформа",
     makerInitials: "ПЛ",
+    makerLogo: makerPlatforma,
     price: "2 320 000 ₽",
     area: "46,4 м²",
     beds: 2,
