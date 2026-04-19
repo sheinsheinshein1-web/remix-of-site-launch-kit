@@ -76,7 +76,7 @@ const sections: { title: string; items: CategoryItem[] }[] = [
   {
     title: "Для бизнеса",
     items: [
-      { name: "Глэмпинг", count: "31", img: catGlamping, imgClass: "bottom-[-28px] right-[-16px]" },
+      { name: "Глэмпинг", count: "31", img: catGlamping, tag: "soon", imgClass: "bottom-[-28px] right-[-16px]" },
       { name: "Магазины", count: "25", img: catCommercial, tag: "soon" },
       { name: "Офисы", count: "11", img: catOffice, tag: "soon" },
       { name: "Мастерские", count: "8", img: catWorkshop, tag: "soon" },
@@ -106,7 +106,7 @@ const sections: { title: string; items: CategoryItem[] }[] = [
   {
     title: "Блог",
     items: [
-      { name: "Как выбрать\nдом", count: "2 мин", img: catGuide, imgClass: "bottom-[-24px] right-[-16px]" },
+      { name: "Как выбрать\nдом", count: "2 мин", img: catGuide, tag: "soon", imgClass: "bottom-[-24px] right-[-16px]" },
       { name: "Право и\nдокументы", count: "2 мин", img: catLaw, tag: "soon" },
       { name: "Истории\nпокупателей", count: "2 мин", img: catStories, tag: "soon" },
       { name: "Глэмпинг-\nбизнес", count: "2 мин", img: catGlampingBiz, tag: "soon" },
