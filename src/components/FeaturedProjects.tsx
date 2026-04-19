@@ -78,6 +78,11 @@ const projectFits: Record<number, ("cover" | "contain")[]> = {
   39: ["cover", "cover", "contain", "contain"],
 };
 
+// Per-image object-position для широких/несбалансированных фото.
+const projectObjectPositions: Record<number, (string | undefined)[]> = {
+  38: ["left center"],
+};
+
 function getProjectImages(mainImage: string, id: number): string[] {
   if (projectGalleries[id]) return projectGalleries[id];
   const others = houseImages.filter(img => img !== mainImage);
@@ -315,6 +320,7 @@ const FeaturedProjects = () => {
                 <SwipeableGallery
                   images={getProjectImages(project.image, project.id)}
                   fits={projectFits[project.id]}
+                  objectPositions={projectObjectPositions[project.id]}
                   alt={project.name}
                   height="aspect-[3/4] h-auto md:h-[240px] md:aspect-auto"
                 >
