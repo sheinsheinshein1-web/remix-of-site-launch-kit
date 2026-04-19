@@ -4,12 +4,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 
 const cities = [
-  "Вся Россия", "Москва и МО", "Санкт-Петербург и ЛО", "Новосибирск", "Екатеринбург",
-  "Казань", "Краснодар", "Сочи", "Нижний Новгород", "Самара", "Ростов-на-Дону",
-  "Уфа", "Воронеж", "Пермь", "Челябинск", "Тюмень", "Калининград",
-  "Тверь", "Красноярск", "Иркутск", "Владивосток", "Мурманск",
-  "Петрозаводск", "Барнаул", "Хабаровск", "Томск", "Алтай",
-  "Карелия",
+  "Екатеринбург",
 ];
 
 const CITY_STORAGE_KEY = "selected_city";
@@ -62,7 +57,7 @@ const matchCityFromIp = (raw: string | undefined | null): string | null => {
 
 export function useCity() {
   const [city, setCity] = useState(() => {
-    try { return localStorage.getItem(CITY_STORAGE_KEY) || "Вся Россия"; } catch { return "Вся Россия"; }
+    try { return localStorage.getItem(CITY_STORAGE_KEY) || "Екатеринбург"; } catch { return "Екатеринбург"; }
   });
 
   const selectCity = (c: string) => {
