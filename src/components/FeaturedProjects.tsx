@@ -261,6 +261,7 @@ const FeaturedProjects = () => {
               >
                 <SwipeableGallery
                   images={getProjectImages(project.image, project.id)}
+                  fits={projectFits[project.id]}
                   alt={project.name}
                   height="aspect-[3/4] h-auto md:h-[240px] md:aspect-auto"
                 >
