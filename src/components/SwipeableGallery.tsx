@@ -7,13 +7,15 @@ interface SwipeableGalleryProps {
   height?: string;
   /** Per-image fit. "contain" — фото показывается целиком с blur-фоном. По умолчанию "cover". */
   fits?: ("cover" | "contain")[];
+  /** Per-image object-position (CSS), например "left center" — для широких фото. По умолчанию "center". */
+  objectPositions?: (string | undefined)[];
   children?: React.ReactNode;
 }
 
 const SWIPE_THRESHOLD_RATIO = 0.18; // 18% ширины — чтобы засчитать смену слайда
 const SWIPE_VELOCITY = 0.45; // px/ms — быстрый флик тоже листает
 
-const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, children }: SwipeableGalleryProps) => {
+const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPositions, children }: SwipeableGalleryProps) => {
   const [current, setCurrent] = useState(0);
   const [dragX, setDragX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -156,6 +158,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, children }:
                   src={src}
                   alt={`${alt} ${i + 1}`}
                   className={`w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} pointer-events-none`}
+                  style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
                   loading={i === 0 || fit === "contain" ? "eager" : "lazy"}
                   decoding="sync"
                   draggable={false}
@@ -177,6 +180,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, children }:
                 src={src}
                 alt={`${alt} ${i + 1}`}
                 className={`w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
+                style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
                 loading="eager"
                 decoding="sync"
                 draggable={false}
