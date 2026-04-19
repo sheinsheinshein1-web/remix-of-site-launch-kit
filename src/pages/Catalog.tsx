@@ -145,7 +145,7 @@ const Catalog = () => {
 
   const resetAllFilters = () => {
     setFilterPriceMinVal(500000);
-    setFilterPriceMaxVal(5000000);
+    setFilterPriceMaxVal(15000000);
     setFilterAreaMin("");
     setFilterAreaMax("");
     setFilterSuitableFor(new Set());
@@ -229,9 +229,9 @@ const Catalog = () => {
   const [filterSuitableFor, setFilterSuitableFor] = useState<Set<string>>(new Set());
   // 2. Цена
   const [filterPriceMinVal, setFilterPriceMinVal] = useState(500000);
-  const [filterPriceMaxVal, setFilterPriceMaxVal] = useState(5000000);
+  const [filterPriceMaxVal, setFilterPriceMaxVal] = useState(15000000);
   const PRICE_MIN = 0;
-  const PRICE_MAX = 7000000;
+  const PRICE_MAX = 15000000;
   // 3. Базовые параметры
   const [filterAreaMin, setFilterAreaMin] = useState("");
   const [filterAreaMax, setFilterAreaMax] = useState("");
@@ -268,7 +268,7 @@ const Catalog = () => {
     setActiveChip("Все");
     setCatalogSearch(q);
     setFilterPriceMinVal(minPrice ? parseInt(minPrice) : 500000);
-    setFilterPriceMaxVal(maxPrice ? parseInt(maxPrice) : 5000000);
+    setFilterPriceMaxVal(maxPrice ? parseInt(maxPrice) : 15000000);
     setFilterAreaMin(minArea || "");
     setFilterAreaMax(maxArea || "");
     setFilterBedrooms(beds ? new Set([beds]) : new Set());
@@ -297,7 +297,7 @@ const Catalog = () => {
       setFilterInsulation(new Set());
       setFilterExtras(new Set());
       setFilterPriceMinVal(500000);
-      setFilterPriceMaxVal(5000000);
+      setFilterPriceMaxVal(15000000);
       return;
     }
     // Activate preset
@@ -312,7 +312,7 @@ const Catalog = () => {
     setFilterInsulation(new Set());
     setFilterExtras(new Set());
     setFilterPriceMinVal(500000);
-    setFilterPriceMaxVal(5000000);
+    setFilterPriceMaxVal(15000000);
 
     switch (preset) {
       case "Для одного / пары":
@@ -369,7 +369,7 @@ const Catalog = () => {
     }
   }, [filterSuitableFor, filterMoveIn]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const hasActiveFilters = filterPriceMinVal !== 500000 || filterPriceMaxVal !== 5000000 || filterAreaMin !== "" || filterAreaMax !== "" || filterBedrooms.size > 0 || filterBathrooms.size > 0 || filterSuitableFor.size > 0 || filterMoveIn.size > 0 || filterFloors.size > 0 || filterKit.size > 0 || filterInsulation.size > 0 || filterFeatures.size > 0 || filterStyle.size > 0 || filterLandType.size > 0 || filterExtras.size > 0;
+  const hasActiveFilters = filterPriceMinVal !== 500000 || filterPriceMaxVal !== 15000000 || filterAreaMin !== "" || filterAreaMax !== "" || filterBedrooms.size > 0 || filterBathrooms.size > 0 || filterSuitableFor.size > 0 || filterMoveIn.size > 0 || filterFloors.size > 0 || filterKit.size > 0 || filterInsulation.size > 0 || filterFeatures.size > 0 || filterStyle.size > 0 || filterLandType.size > 0 || filterExtras.size > 0;
 
   const priceNum = (s: string) => parseInt(s.replace(/\D/g, ""), 10);
   const areaNum = (s: string) => parseFloat(s.replace(/[^\d.]/g, ""));
