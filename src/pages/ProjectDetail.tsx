@@ -504,9 +504,9 @@ const ProjectDetail = () => {
               className="mt-3 flex items-center gap-2.5 bg-secondary rounded-xl px-2.5 py-2 cursor-pointer"
               onClick={() => navigate('/partner/1')}
             >
-              <div className="w-9 h-9 bg-background rounded-lg flex items-center justify-center text-foreground text-[10px] font-bold flex-shrink-0">SW</div>
+              <div className="w-9 h-9 bg-background rounded-lg flex items-center justify-center text-foreground text-[10px] font-bold flex-shrink-0">{project.makerInitials}</div>
               <div className="flex-1 min-w-0">
-                <div className="text-[13px] font-semibold text-foreground leading-tight truncate">Sherwood Home</div>
+                <div className="text-[13px] font-semibold text-foreground leading-tight truncate">{project.maker}</div>
                 <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-0.5">
                   <Star className="w-3 h-3 text-muted-foreground" strokeWidth={1.5} />
                   <span>0,0 · Недостаточно данных</span>
@@ -518,7 +518,7 @@ const ProjectDetail = () => {
             {/* Описание — inline раскрытие */}
             {!descExpanded ? (
               <p className="mt-3 text-[14px] text-foreground leading-snug">
-                <span className="line-clamp-2">Компактный одноэтажный дом с панорамным остеклением. Каркасная технология, сборка за 45 дней.</span>
+                <span className="line-clamp-2">{project.description}</span>
                 {" "}
                 <button
                   onClick={() => setDescExpanded(true)}
@@ -530,10 +530,9 @@ const ProjectDetail = () => {
             ) : (
               <div className="mt-3">
                 <p className="text-[14px] text-foreground leading-relaxed mb-3">
-                  <span className="font-semibold">Шервуд 72.1 — ваш дом за 6 недель.</span> Компактный одноэтажный дом с продуманной планировкой для комфортной жизни за городом. Две изолированные спальни, просторная кухня-гостиная с панорамным остеклением и уютная веранда — всё, что нужно для семьи.
+                  {project.descriptionLong}
                 </p>
                 <p className="text-[14px] text-foreground leading-relaxed">
-                  Дом изготавливается на заводе и доставляется в готовом виде — вы заселяетесь через 4–6 недель после заказа. Утепление 200 мм позволяет жить круглый год даже в регионах до −40°C.{" "}
                   <button onClick={() => setDescExpanded(false)} className="text-primary hover:underline">
                     Свернуть
                   </button>
