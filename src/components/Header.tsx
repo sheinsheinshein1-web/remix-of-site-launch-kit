@@ -3,6 +3,7 @@ import { useNavigate, useLocation, useNavigationType, Link } from "react-router-
 import logoColor from "@/assets/logo-color.svg";
 import logoIcon from "@/assets/logo-icon.svg";
 import logoMark from "@/assets/logo-mark.svg";
+import logoMarkWhite from "@/assets/logo-mark-white.svg";
 import { SlidersHorizontal, ChevronDown, LayoutGrid, Heart, MessageSquare } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 import SearchDropdown from "./SearchDropdown";
