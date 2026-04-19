@@ -250,35 +250,83 @@ const ProjectDetail = () => {
   const [cityOpen, setCityOpen] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
-  // Gallery slider touch
+  // Gallery slider touch — с фиксацией оси, чтобы вертикальный скролл не дёргал страницу
   const sliderRef = useRef<HTMLDivElement>(null);
+  const galleryWrapRef = useRef<HTMLDivElement>(null);
   const [dragOffset, setDragOffset] = useState(0);
+  const dragOffsetRef = useRef(0);
   const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
+  const lockedAxis = useRef<"x" | "y" | null>(null);
   const isDragging = useRef(false);
 
-  const onTouchStart = useCallback((e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-    isDragging.current = true;
-    if (sliderRef.current) sliderRef.current.style.transition = 'none';
-  }, []);
-
-  const onTouchMove = useCallback((e: React.TouchEvent) => {
+  const finishSwipe = useCallback(() => {
     if (!isDragging.current) return;
-    setDragOffset(e.touches[0].clientX - touchStartX.current);
-  }, []);
-
-  const onTouchEnd = useCallback(() => {
     isDragging.current = false;
     if (sliderRef.current) sliderRef.current.style.transition = '';
-    if (Math.abs(dragOffset) > 60) {
-      if (dragOffset < 0 && activeImage < galleryImages.length - 1) {
+    const offset = dragOffsetRef.current;
+    if (lockedAxis.current === "x" && Math.abs(offset) > 60) {
+      if (offset < 0 && activeImage < galleryImages.length - 1) {
         setActiveImage(prev => prev + 1);
-      } else if (dragOffset > 0 && activeImage > 0) {
+      } else if (offset > 0 && activeImage > 0) {
         setActiveImage(prev => prev - 1);
       }
     }
+    lockedAxis.current = null;
+    dragOffsetRef.current = 0;
     setDragOffset(0);
-  }, [dragOffset, activeImage]);
+  }, [activeImage, galleryImages.length]);
+
+  // Нативные non-passive listeners — нужны чтобы preventDefault блокировал
+  // вертикальный скролл во время горизонтального свайпа
+  useEffect(() => {
+    const el = galleryWrapRef.current;
+    if (!el) return;
+
+    const handleStart = (e: TouchEvent) => {
+      touchStartX.current = e.touches[0].clientX;
+      touchStartY.current = e.touches[0].clientY;
+      lockedAxis.current = null;
+      isDragging.current = true;
+      dragOffsetRef.current = 0;
+      if (sliderRef.current) sliderRef.current.style.transition = 'none';
+    };
+
+    const handleMove = (e: TouchEvent) => {
+      if (!isDragging.current) return;
+      const dx = e.touches[0].clientX - touchStartX.current;
+      const dy = e.touches[0].clientY - touchStartY.current;
+
+      if (!lockedAxis.current) {
+        if (Math.abs(dx) > 8 || Math.abs(dy) > 8) {
+          lockedAxis.current = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+        } else {
+          return;
+        }
+      }
+
+      if (lockedAxis.current === "x") {
+        // Блокируем вертикальный скролл, пока листаем горизонтально
+        if (e.cancelable) e.preventDefault();
+        dragOffsetRef.current = dx;
+        setDragOffset(dx);
+      }
+    };
+
+    const handleEnd = () => finishSwipe();
+
+    el.addEventListener("touchstart", handleStart, { passive: true });
+    el.addEventListener("touchmove", handleMove, { passive: false });
+    el.addEventListener("touchend", handleEnd, { passive: true });
+    el.addEventListener("touchcancel", handleEnd, { passive: true });
+
+    return () => {
+      el.removeEventListener("touchstart", handleStart);
+      el.removeEventListener("touchmove", handleMove);
+      el.removeEventListener("touchend", handleEnd);
+      el.removeEventListener("touchcancel", handleEnd);
+    };
+  }, [finishSwipe]);
 
   const navigateBack = useCallback(() => navigate(-1), [navigate]);
 
