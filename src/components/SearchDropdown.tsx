@@ -265,11 +265,11 @@ function filterProjects(filters: ParsedFilters) {
 // Popular searches shown when input is empty
 const popularSearches = [
   "Модульный дом под ключ",
-  "Дом до 1 млн",
-  "Баня-бочка",
-  "Глэмпинг купол",
-  "Дом для дачи",
-  "Двухэтажный дом",
+  "Дом до 3 млн",
+  "Bear House",
+  "Дом с террасой",
+  "Большой дом для семьи",
+  "Одноэтажный дом",
 ];
 
 interface SearchDropdownProps {
