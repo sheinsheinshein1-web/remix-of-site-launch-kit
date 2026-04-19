@@ -108,7 +108,7 @@ const Header = () => {
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),6px)] pb-1.5">
             <div className="flex items-center justify-between">
               <Link to="/" className="flex items-center gap-1.5 text-[22px] font-bold text-foreground tracking-tight">
-                <img src={logoMark} alt="" className="h-[18px] w-[18px]" aria-hidden />
+                <img src={logoMark} alt="" className="h-[19px] w-[19px]" aria-hidden />
                 Много места
               </Link>
               <button onClick={() => setCityOpen(true)} className="flex items-center gap-1 text-[13px] font-medium text-primary bg-secondary rounded-xl h-9 px-3">
