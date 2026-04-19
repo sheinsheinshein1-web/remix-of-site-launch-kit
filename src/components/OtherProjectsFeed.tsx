@@ -15,6 +15,7 @@ import house9 from "@/assets/house-9.jpg";
 import wideHouse from "@/assets/wide-house-1.webp";
 import cabin31_1 from "@/assets/cabin-31-1.webp";
 import bear1 from "@/assets/bear-1.webp";
+import bear77_1 from "@/assets/bear77-1.webp";
 
 // Базовый набор проектов «других» от подрядчика.
 // id указывает на маршрут /project/:id.
