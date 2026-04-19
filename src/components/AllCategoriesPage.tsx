@@ -56,8 +56,8 @@ const sections: { title: string; items: CategoryItem[] }[] = [
     title: "Дома",
     items: [
       { name: "Дома", count: "84", img: catHouses, imgClass: "bottom-[-20px] right-[-50px]" },
-      { name: "Дачные домики", count: "19", img: catDacha, imgClass: "bottom-[-20px] right-[-16px]" },
-      { name: "Двух-\nэтажные", count: "15", img: catTwostory, imgClass: "bottom-[-20px] right-[-16px]" },
+      { name: "Дачные домики", count: "19", img: catDacha, tag: "soon", imgClass: "bottom-[-20px] right-[-16px]" },
+      { name: "Двух-\nэтажные", count: "15", img: catTwostory, tag: "soon", imgClass: "bottom-[-20px] right-[-16px]" },
       { name: "Студии", count: "12", img: catStudio, tag: "soon", imgClass: "bottom-[-20px] right-[-16px]" },
       { name: "Гостевые дома", count: "28", img: catGuest, tag: "soon" },
     ],
