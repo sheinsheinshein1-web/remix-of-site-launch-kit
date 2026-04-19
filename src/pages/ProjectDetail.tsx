@@ -50,7 +50,7 @@ const projectOverrides: Record<string, {
     name: "Wide House",
     maker: "Платформа",
     makerInitials: "ПЛ",
-    makerLogo: makerPlatforma,
+    makerLogo: undefined,
     price: "2 320 000 ₽",
     area: "46,4 м²",
     beds: 2,
