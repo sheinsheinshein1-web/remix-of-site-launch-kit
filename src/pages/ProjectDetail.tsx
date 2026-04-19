@@ -202,19 +202,38 @@ const ProjectDetail = () => {
   const isMobile = useIsMobile();
   const { toggleFavorite, isFavorite } = useFavorites();
   const [activeImage, setActiveImage] = useState(0);
+
+  // Данные проекта (с override по id)
+  const override = id ? projectOverrides[id] : undefined;
+  const project = {
+    id: id ? Number(id) : 1,
+    name: override?.name ?? "Шервуд 72.1",
+    maker: override?.maker ?? "Sherwood Home",
+    makerInitials: override?.makerInitials ?? "SW",
+    price: override?.price ?? "4 950 000 ₽",
+    area: override?.area ?? "60 м²",
+    beds: override?.beds ?? 2,
+    baths: override?.baths ?? 1,
+    floors: override?.floors ?? 1,
+    cityDefault: override?.city,
+    description: override?.description ?? "Компактный одноэтажный дом с панорамным остеклением. Каркасная технология, сборка за 45 дней.",
+    descriptionLong: override?.descriptionLong ?? "Шервуд 72.1 — ваш дом за 6 недель. Компактный одноэтажный дом с продуманной планировкой для комфортной жизни за городом. Две изолированные спальни, просторная кухня-гостиная с панорамным остеклением и уютная веранда — всё, что нужно для семьи.",
+  };
+  const galleryImages = override?.gallery ?? defaultGallery;
+
   const projectFavItem = {
-    id: 1,
+    id: project.id,
     badge: "Хит",
-    maker: "Sherwood Home",
-    name: "Шервуд 72.1",
-    price: "от 4 950 000 ₽",
-    area: "60 м²",
-    beds: 2,
-    baths: 1,
+    maker: project.maker,
+    name: project.name,
+    price: `от ${project.price}`,
+    area: project.area,
+    beds: project.beds,
+    baths: project.baths,
     term: "3–6 мес.",
-    image: "",
+    image: galleryImages[0]?.image ?? "",
     likes: 0,
-    city: "",
+    city: project.cityDefault ?? "",
   };
   const liked = isFavorite(projectFavItem.id);
   const handleToggleFav = () => toggleFavorite(projectFavItem);
