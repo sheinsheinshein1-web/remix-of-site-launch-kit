@@ -149,27 +149,31 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, children }:
             return (
               <div
                 key={i}
-                className="relative h-full flex-shrink-0 overflow-hidden bg-muted"
+                className="relative isolate h-full flex-shrink-0 overflow-hidden bg-muted"
                 style={{ width: `${100 / count}%` }}
               >
                 {fit === "contain" && (
                   <>
-                    <img
-                      src={src}
-                      alt=""
+                    <div
                       aria-hidden
-                      className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-40 pointer-events-none"
-                      style={{ transform: "translateZ(0) scale(1.3)" }}
-                      draggable={false}
+                      className="absolute inset-0 z-0 blur-3xl opacity-40 pointer-events-none"
+                      style={{
+                        backgroundImage: `url(${src})`,
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
+                        transform: "translateZ(0) scale(1.3)",
+                      }}
                     />
-                    <div className="absolute inset-0 bg-foreground/30 pointer-events-none" />
+                    <div className="absolute inset-0 z-[1] bg-foreground/30 pointer-events-none" />
                   </>
                 )}
                 <img
                   src={src}
                   alt={`${alt} ${i + 1}`}
-                  className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} pointer-events-none`}
-                  loading={i === 0 ? "eager" : "lazy"}
+                  className={`relative z-10 w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} pointer-events-none`}
+                  loading={i === 0 || fit === "contain" ? "eager" : "lazy"}
+                  decoding="sync"
                   draggable={false}
                 />
               </div>
@@ -182,27 +186,31 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, children }:
           return (
             <div
               key={i}
-              className="absolute inset-0 overflow-hidden bg-muted"
+              className="absolute inset-0 isolate overflow-hidden bg-muted"
               style={{ zIndex: i === current ? 1 : 0, opacity: i === current ? 1 : 0 }}
             >
               {fit === "contain" && (
                 <>
-                  <img
-                    src={src}
-                    alt=""
+                  <div
                     aria-hidden
-                    className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-40 pointer-events-none"
-                    style={{ transform: "translateZ(0) scale(1.3)" }}
-                    draggable={false}
+                    className="absolute inset-0 z-0 blur-3xl opacity-40 pointer-events-none"
+                    style={{
+                      backgroundImage: `url(${src})`,
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                      transform: "translateZ(0) scale(1.3)",
+                    }}
                   />
-                  <div className="absolute inset-0 bg-foreground/30 pointer-events-none" />
+                  <div className="absolute inset-0 z-[1] bg-foreground/30 pointer-events-none" />
                 </>
               )}
               <img
                 src={src}
                 alt={`${alt} ${i + 1}`}
-                className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
+                className={`relative z-10 w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
                 loading="eager"
+                decoding="sync"
                 draggable={false}
               />
             </div>
