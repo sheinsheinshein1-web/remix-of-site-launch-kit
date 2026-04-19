@@ -24,6 +24,11 @@ import cabin31_1 from "@/assets/cabin-31-1.webp";
 import cabin31_2 from "@/assets/cabin-31-2.webp";
 import cabin31Plan3d from "@/assets/cabin-31-plan-3d.webp";
 import cabin31Plan from "@/assets/cabin-31-plan.webp";
+import bear1 from "@/assets/bear-1.webp";
+import bear2 from "@/assets/bear-2.webp";
+import bear3 from "@/assets/bear-3.webp";
+import bearPlan3d from "@/assets/bear-plan-3d.webp";
+import bearPlan from "@/assets/bear-plan.webp";
 import makerPlatforma from "@/assets/maker-platforma.png";
 
 const defaultGallery = [
