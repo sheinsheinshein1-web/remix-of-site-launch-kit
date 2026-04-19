@@ -714,10 +714,10 @@ const ProjectDetail = () => {
           {/* Row 1: Title + Price + Specs + Maker + Description (inline expandable) + Accordions + CTA */}
           <div className={`bg-background px-2 pt-3 pb-3 ${isMobile ? "rounded-b-2xl" : "rounded-2xl"}`}>
             <div className="flex items-baseline justify-between gap-3 mb-1">
-              <h1 className="text-[18px] font-bold text-foreground tracking-tight leading-tight truncate">{project.name}</h1>
-              <div className="text-[15px] whitespace-nowrap">
+              <h1 className="text-[18px] font-bold text-foreground tracking-tight leading-tight min-w-0 flex-1 break-words">{project.name}</h1>
+              <div className="text-[15px] whitespace-nowrap flex-shrink-0">
                 <span className="text-muted-foreground font-normal">от </span>
-                <span className="font-bold text-foreground">{project.price}</span>
+                <span className="font-bold text-foreground">{project.price.replace(/^от\s*/i, "")}</span>
               </div>
             </div>
             <div className="flex items-center gap-2.5 text-[12px] text-muted-foreground">
