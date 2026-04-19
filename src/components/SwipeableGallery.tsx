@@ -144,30 +144,64 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, children }:
             willChange: "transform",
           }}
         >
-          {images.map((src, i) => (
-            <img
-              key={i}
-              src={src}
-              alt={`${alt} ${i + 1}`}
-              className="h-full object-cover flex-shrink-0 pointer-events-none"
-              style={{ width: `${100 / count}%` }}
-              loading={i === 0 ? "eager" : "lazy"}
-              draggable={false}
-            />
-          ))}
+          {images.map((src, i) => {
+            const fit = fits?.[i] ?? "cover";
+            return (
+              <div
+                key={i}
+                className="relative h-full flex-shrink-0 overflow-hidden bg-muted"
+                style={{ width: `${100 / count}%` }}
+              >
+                {fit === "contain" && (
+                  <img
+                    src={src}
+                    alt=""
+                    aria-hidden
+                    className="absolute inset-0 w-full h-full object-cover blur-md opacity-60 pointer-events-none"
+                    style={{ transform: "translateZ(0) scale(1.15)", willChange: "auto" }}
+                    draggable={false}
+                  />
+                )}
+                <img
+                  src={src}
+                  alt={`${alt} ${i + 1}`}
+                  className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} pointer-events-none`}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  draggable={false}
+                />
+              </div>
+            );
+          })}
         </div>
       ) : (
-        images.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt={`${alt} ${i + 1}`}
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ zIndex: i === current ? 1 : 0, opacity: i === current ? 1 : 0 }}
-            loading="eager"
-            draggable={false}
-          />
-        ))
+        images.map((src, i) => {
+          const fit = fits?.[i] ?? "cover";
+          return (
+            <div
+              key={i}
+              className="absolute inset-0 overflow-hidden bg-muted"
+              style={{ zIndex: i === current ? 1 : 0, opacity: i === current ? 1 : 0 }}
+            >
+              {fit === "contain" && (
+                <img
+                  src={src}
+                  alt=""
+                  aria-hidden
+                  className="absolute inset-0 w-full h-full object-cover blur-md opacity-60 pointer-events-none"
+                  style={{ transform: "translateZ(0) scale(1.15)" }}
+                  draggable={false}
+                />
+              )}
+              <img
+                src={src}
+                alt={`${alt} ${i + 1}`}
+                className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
+                loading="eager"
+                draggable={false}
+              />
+            </div>
+          );
+        })
       )}
       <div className="absolute inset-0 z-10 pointer-events-none [&>*]:pointer-events-auto">{children}</div>
       {count > 1 && (
