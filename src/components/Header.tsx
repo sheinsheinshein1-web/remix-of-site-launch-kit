@@ -137,8 +137,9 @@ const Header = () => {
               {/* Top row: logo + location + nav + CTA */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-6">
-                  <a href="/" className="flex items-center">
-                    <img src={logoColor} alt="многоместа.рф" className="h-9 brightness-0 invert" />
+                  <a href="/" className="flex items-center gap-1.5 text-[26px] font-bold text-primary-foreground tracking-[-0.04em]">
+                    <img src={logoMarkWhite} alt="" className="h-[25px] w-[25px]" aria-hidden />
+                    Много места
                   </a>
                   <button onClick={() => setCityOpen(true)} className="inline-flex items-center gap-1.5 text-primary-foreground/90 hover:text-primary-foreground transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
