@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation, useNavigationType, Link } from "react-router-dom";
 import logoColor from "@/assets/logo-color.svg";
 import logoIcon from "@/assets/logo-icon.svg";
+import logoMark from "@/assets/logo-mark.svg";
 import { SlidersHorizontal, ChevronDown, LayoutGrid, Heart, MessageSquare } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 import SearchDropdown from "./SearchDropdown";
