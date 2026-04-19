@@ -20,6 +20,10 @@ import wideHouse1 from "@/assets/wide-house-1.webp";
 import wideHouse2 from "@/assets/wide-house-2.webp";
 import wideHousePlan3d from "@/assets/wide-house-plan-3d.webp";
 import wideHousePlan from "@/assets/wide-house-plan.webp";
+import cabin31_1 from "@/assets/cabin-31-1.webp";
+import cabin31_2 from "@/assets/cabin-31-2.webp";
+import cabin31Plan3d from "@/assets/cabin-31-plan-3d.webp";
+import cabin31Plan from "@/assets/cabin-31-plan.webp";
 import makerPlatforma from "@/assets/maker-platforma.png";
 
 const defaultGallery = [
@@ -64,6 +68,26 @@ const projectOverrides: Record<string, {
       { id: 2, image: wideHouse2, type: "photo", fit: "contain" },
       { id: 3, image: wideHousePlan3d, type: "photo", fit: "contain" },
       { id: 4, image: wideHousePlan, type: "photo", fit: "contain" },
+    ],
+  },
+  "33": {
+    name: "Лесной модуль 42",
+    maker: "Платформа",
+    makerInitials: "ПЛ",
+    makerLogo: undefined,
+    price: "1 680 000 ₽",
+    area: "42,9 м²",
+    beds: 1,
+    baths: 1,
+    floors: 1,
+    city: "Екатеринбург",
+    description: "Одноэтажный модульный дом 9,8 × 5,2 м с двускатной кровлей и террасой 22,9 м². Спальня-гостиная, санузел с ванной, кухня.",
+    descriptionLong: "Лесной модуль 42 — компактный загородный дом площадью 42,9 м² с продуманной планировкой: гостиная 14,07 м², санузел 4,06 м², прихожая 1,92 м² и просторная терраса 22,89 м². Деревянный каркас, фальцевая металлическая кровля, панорамное остекление по торцу с выходом на террасу.",
+    gallery: [
+      { id: 1, image: cabin31_1, type: "photo" },
+      { id: 2, image: cabin31_2, type: "photo" },
+      { id: 3, image: cabin31Plan3d, type: "photo", fit: "contain" },
+      { id: 4, image: cabin31Plan, type: "photo", fit: "contain" },
     ],
   },
 };

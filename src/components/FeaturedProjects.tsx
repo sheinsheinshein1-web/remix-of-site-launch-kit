@@ -19,17 +19,23 @@ import wideHouse from "@/assets/wide-house-1.webp";
 import wideHouse2 from "@/assets/wide-house-2.webp";
 import wideHousePlan3d from "@/assets/wide-house-plan-3d.webp";
 import wideHousePlan from "@/assets/wide-house-plan.webp";
+import cabin31_1 from "@/assets/cabin-31-1.webp";
+import cabin31_2 from "@/assets/cabin-31-2.webp";
+import cabin31Plan3d from "@/assets/cabin-31-plan-3d.webp";
+import cabin31Plan from "@/assets/cabin-31-plan.webp";
 
 const houseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
 // Галереи проектов по id (синхронизированы с ProjectDetail).
 const projectGalleries: Record<number, string[]> = {
   32: [wideHouse, wideHouse2, wideHousePlan3d, wideHousePlan],
+  33: [cabin31_1, cabin31_2, cabin31Plan3d, cabin31Plan],
 };
 
 // Per-image fit для проектов: "contain" — фото с blur-фоном (для горизонтальных планировок).
 const projectFits: Record<number, ("cover" | "contain")[]> = {
   32: ["cover", "cover", "contain", "contain"],
+  33: ["cover", "cover", "contain", "contain"],
 };
 
 function getProjectImages(mainImage: string, id: number): string[] {
@@ -45,6 +51,7 @@ function getProjectImages(mainImage: string, id: number): string[] {
 
 const baseProjects = [
   { id: 32, name: "Wide House", maker: "Платформа", area: "46,4 м²", beds: 2, baths: 1, term: "30 д.", price: "1 680 000 ₽", image: wideHouse, liked: false, likes: 64, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
+  { id: 33, name: "Лесной модуль 42", maker: "Платформа", area: "42,9 м²", beds: 1, baths: 1, term: "30 д.", price: "1 680 000 ₽", image: cabin31_1, liked: false, likes: 48, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
   { id: 1, name: "Тайга 72", maker: "СибМодуль", area: "72 м²", beds: 2, baths: 1, term: "30 д.", price: "2 450 000 ₽", image: house1, liked: false, likes: 124, hasRealPhotos: true, city: "Москва и МО", rating: "4.8" },
   { id: 2, name: "Кедр 24", maker: "УралДом", area: "24 м²", beds: 0, baths: 1, term: "14 д.", price: "890 000 ₽", image: house4, liked: true, likes: 89, hasRealPhotos: false, city: "Екатеринбург", rating: "4.8" },
   { id: 3, name: "Купол Альпика", maker: "ГлэмпингСтрой", area: "36 м²", beds: 1, baths: 1, term: "7 д.", price: "1 200 000 ₽", image: house8, liked: false, likes: 56, hasRealPhotos: true, city: "Сочи", rating: "4.6" },
