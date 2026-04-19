@@ -29,6 +29,10 @@ import bear2 from "@/assets/bear-2.webp";
 import bear3 from "@/assets/bear-3.webp";
 import bearPlan3d from "@/assets/bear-plan-3d.webp";
 import bearPlan from "@/assets/bear-plan.webp";
+import bear77_1 from "@/assets/bear77-1.webp";
+import bear77_2 from "@/assets/bear77-2.webp";
+import bear77Plan3d from "@/assets/bear77-plan-3d.webp";
+import bear77Plan from "@/assets/bear77-plan.webp";
 import makerPlatforma from "@/assets/maker-platforma.png";
 
 const defaultGallery = [
