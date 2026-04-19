@@ -128,7 +128,7 @@ const OtherProjectsFeed = ({ currentId }: Props) => {
                   src={project.image}
                   alt={project.name}
                   className="w-full h-full object-cover"
-                  style={project.id === 38 ? { objectPosition: "left center" } : undefined}
+                  style={project.id === 38 ? { objectPosition: "right center" } : undefined}
                   loading="lazy"
                 />
               </div>
