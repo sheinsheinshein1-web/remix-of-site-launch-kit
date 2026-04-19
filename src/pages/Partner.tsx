@@ -82,17 +82,17 @@ const Partner = () => {
 
               {/* Profile */}
               <div className="px-6 pt-5 pb-6 flex items-center gap-4">
-                <div className="w-[80px] h-[80px] rounded-2xl bg-secondary text-foreground/30 flex items-center justify-center text-lg font-bold shrink-0">SW</div>
+                <div className="w-[80px] h-[80px] rounded-2xl bg-secondary text-foreground/30 flex items-center justify-center text-lg font-bold shrink-0">ПЛ</div>
                 <div className="flex-1 min-w-0">
-                  <h1 className="text-[22px] font-bold text-foreground leading-tight mb-1 truncate">Sherwood Home</h1>
-                  <p className="text-[14px] text-muted-foreground truncate">Модульные дома · Москва и МО</p>
+                  <h1 className="text-[22px] font-bold text-foreground leading-tight mb-1 truncate">Платформа</h1>
+                  <p className="text-[14px] text-muted-foreground truncate">Модульные дома · Екатеринбург</p>
                 </div>
               </div>
 
               {/* Stats row */}
               <div className="border-t border-border grid grid-cols-3">
                 {[
-                  { val: "12", label: "Проекты" },
+                  { val: "2", label: "Проекты" },
                   { val: "—", label: "Отзывы" },
                   { val: "—", label: "Рейтинг" },
                 ].map((s, i) => (
@@ -107,14 +107,14 @@ const Partner = () => {
               <div className="border-t border-border px-6 py-5">
                 <p className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground mb-2">О компании</p>
                 <p className="text-[15px] text-foreground/85 leading-relaxed">
-                  Производитель модульных домов из Московской области. Специализируется на одно- и двухэтажных домах для круглогодичного проживания.
+                  Производитель модульных домов из Екатеринбурга. Проектируем и собираем компактные одноэтажные дома для круглогодичного проживания и загородного отдыха.
                 </p>
               </div>
 
               {/* Go to site CTA */}
               <div className="border-t border-border p-5">
                 <a
-                  href="https://sherwood-home.ru"
+                  href="https://platforma-modul.ru"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full h-[52px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center hover:opacity-90 transition-opacity"
@@ -140,8 +140,8 @@ const Partner = () => {
               <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
             </button>
             <div className="flex-1 min-w-0 ml-3">
-              <div className="text-[14px] font-semibold text-foreground truncate">Sherwood Home</div>
-              <div className="text-[12px] text-muted-foreground truncate">Модульные дома · Москва и МО</div>
+              <div className="text-[14px] font-semibold text-foreground truncate">Платформа</div>
+              <div className="text-[12px] text-muted-foreground truncate">Модульные дома · Екатеринбург</div>
             </div>
             <button
               className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center"
@@ -184,17 +184,17 @@ const Partner = () => {
 
           {/* Profile */}
           <div className="px-4 pt-4 pb-5 flex items-center gap-3">
-            <div className="w-[68px] h-[68px] rounded-2xl bg-secondary text-foreground/30 flex items-center justify-center text-base font-bold shrink-0">SW</div>
+            <div className="w-[68px] h-[68px] rounded-2xl bg-secondary text-foreground/30 flex items-center justify-center text-base font-bold shrink-0">ПЛ</div>
             <div className="flex-1 min-w-0">
-              <h1 className="text-[19px] font-bold text-foreground leading-tight mb-0.5 truncate">Sherwood Home</h1>
-              <p className="text-[13px] text-muted-foreground truncate">Модульные дома · Москва и МО</p>
+              <h1 className="text-[19px] font-bold text-foreground leading-tight mb-0.5 truncate">Платформа</h1>
+              <p className="text-[13px] text-muted-foreground truncate">Модульные дома · Екатеринбург</p>
             </div>
           </div>
 
           {/* Stats row */}
           <div className="border-t border-border grid grid-cols-3">
             {[
-              { val: "12", label: "Проекты" },
+              { val: "2", label: "Проекты" },
               { val: "—", label: "Отзывы" },
               { val: "—", label: "Рейтинг" },
             ].map((s, i) => (
@@ -209,7 +209,7 @@ const Partner = () => {
           <div className="border-t border-border px-4 py-4">
             <p className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground mb-2">О компании</p>
             <p className="text-[14px] text-foreground/85 leading-relaxed">
-              Производитель модульных домов из Московской области. Специализируется на одно- и двухэтажных домах для круглогодичного проживания.
+              Производитель модульных домов из Екатеринбурга. Проектируем и собираем компактные одноэтажные дома для круглогодичного проживания и загородного отдыха.
             </p>
           </div>
 
@@ -222,7 +222,7 @@ const Partner = () => {
       <div className="fixed bottom-0 left-0 right-0 z-50">
         <div className="bg-background border-t border-border p-3 pb-[calc(0.75rem+max(env(safe-area-inset-bottom),20px))]">
           <a
-            href="https://sherwood-home.ru"
+            href="https://platforma-modul.ru"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full h-[50px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center"
