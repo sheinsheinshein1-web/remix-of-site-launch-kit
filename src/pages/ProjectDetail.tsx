@@ -248,6 +248,7 @@ const ProjectDetail = () => {
   const [scrolled, setScrolled] = useState(false);
   const { city, selectCity } = useCity();
   const [cityOpen, setCityOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   // Gallery slider touch
   const sliderRef = useRef<HTMLDivElement>(null);
