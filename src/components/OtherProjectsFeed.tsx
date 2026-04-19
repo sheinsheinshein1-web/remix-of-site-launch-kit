@@ -31,6 +31,7 @@ const baseOtherProjects = [
   { id: 36, name: "Bear House 86", price: "от 4,35 млн ₽", area: "68,7 м²", beds: 2, baths: 2, image: bear86_1 },
   { id: 37, name: "Bear House 134", price: "от 8,76 млн ₽", area: "110 м²", beds: 3, baths: 3, image: bear134_1 },
   { id: 38, name: "Vast House 140", price: "от 8,08 млн ₽", area: "114,9 м²", beds: 4, baths: 2, image: vast140_1 },
+  { id: 39, name: "Bear House 168", price: "от 12,11 млн ₽", area: "146,4 м²", beds: 4, baths: 3, image: bear168_1 },
   { id: 1, name: "Тайга 72", price: "от 2,4 млн ₽", area: "72 м²", beds: 2, baths: 1, image: house1 },
   { id: 6, name: "Мидленд 66", price: "от 4,4 млн ₽", area: "56 м²", beds: 2, baths: 1, image: house6 },
   { id: 5, name: "Шервуд 72", price: "от 4,4 млн ₽", area: "70 м²", beds: 2, baths: 1, image: house7 },
