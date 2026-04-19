@@ -803,7 +803,7 @@ const ProjectDetail = () => {
 
             {/* CTA в самом низу */}
             <a
-              href="https://sherwood-home.ru"
+              href="https://platforma-modul.ru/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full h-12 bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold mt-4 flex items-center justify-center hover:opacity-90 transition-opacity"
