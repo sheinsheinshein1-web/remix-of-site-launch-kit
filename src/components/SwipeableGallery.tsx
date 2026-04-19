@@ -41,46 +41,68 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", children }: Swipe
     lockedAxis.current = null;
   }, [count]);
 
-  const onTouchStart = (e: React.TouchEvent) => {
-    startX.current = e.touches[0].clientX;
-    startY.current = e.touches[0].clientY;
-    startTime.current = performance.now();
-    lockedAxis.current = null;
-    setIsDragging(true);
-  };
+  // Нативные non-passive listeners — нужны чтобы preventDefault блокировал
+  // вертикальный скролл во время горизонтального свайпа (без дёрганья страницы).
+  useEffect(() => {
+    if (!isMobile) return;
+    const el = containerRef.current;
+    if (!el) return;
 
-  const onTouchMove = (e: React.TouchEvent) => {
-    const dx = e.touches[0].clientX - startX.current;
-    const dy = e.touches[0].clientY - startY.current;
-    if (!lockedAxis.current) {
-      if (Math.abs(dx) > 6 || Math.abs(dy) > 6) {
-        lockedAxis.current = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
-      }
-    }
-    if (lockedAxis.current === "x") {
-      // Сопротивление на краях
-      let resisted = dx;
-      if ((current === 0 && dx > 0) || (current === count - 1 && dx < 0)) {
-        resisted = dx * 0.35;
-      }
-      setDragX(resisted);
-    } else {
-      setDragX(0);
-    }
-  };
-
-  const onTouchEnd = (e: React.TouchEvent) => {
-    const endX = e.changedTouches[0].clientX;
-    const dx = endX - startX.current;
-    const elapsed = performance.now() - startTime.current;
-    if (lockedAxis.current === "x") {
-      settle(dx, elapsed);
-    } else {
-      setDragX(0);
-      setIsDragging(false);
+    const handleStart = (e: TouchEvent) => {
+      startX.current = e.touches[0].clientX;
+      startY.current = e.touches[0].clientY;
+      startTime.current = performance.now();
       lockedAxis.current = null;
-    }
-  };
+      setIsDragging(true);
+    };
+
+    const handleMove = (e: TouchEvent) => {
+      const dx = e.touches[0].clientX - startX.current;
+      const dy = e.touches[0].clientY - startY.current;
+      if (!lockedAxis.current) {
+        if (Math.abs(dx) > 8 || Math.abs(dy) > 8) {
+          lockedAxis.current = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+        } else {
+          return;
+        }
+      }
+      if (lockedAxis.current === "x") {
+        if (e.cancelable) e.preventDefault();
+        let resisted = dx;
+        if ((current === 0 && dx > 0) || (current === count - 1 && dx < 0)) {
+          resisted = dx * 0.35;
+        }
+        setDragX(resisted);
+      } else {
+        setDragX(0);
+      }
+    };
+
+    const handleEnd = (e: TouchEvent) => {
+      const endX = e.changedTouches[0].clientX;
+      const dx = endX - startX.current;
+      const elapsed = performance.now() - startTime.current;
+      if (lockedAxis.current === "x") {
+        settle(dx, elapsed);
+      } else {
+        setDragX(0);
+        setIsDragging(false);
+        lockedAxis.current = null;
+      }
+    };
+
+    el.addEventListener("touchstart", handleStart, { passive: true });
+    el.addEventListener("touchmove", handleMove, { passive: false });
+    el.addEventListener("touchend", handleEnd, { passive: true });
+    el.addEventListener("touchcancel", handleEnd, { passive: true });
+
+    return () => {
+      el.removeEventListener("touchstart", handleStart);
+      el.removeEventListener("touchmove", handleMove);
+      el.removeEventListener("touchend", handleEnd);
+      el.removeEventListener("touchcancel", handleEnd);
+    };
+  }, [isMobile, current, count, settle]);
 
   const onMouseMove = (e: React.MouseEvent) => {
     if (isMobile || count <= 1) return;
@@ -108,9 +130,6 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", children }: Swipe
     <div
       ref={containerRef}
       className={`relative ${height} overflow-hidden select-none rounded-[14px]`}
-      onTouchStart={isMobile ? onTouchStart : undefined}
-      onTouchMove={isMobile ? onTouchMove : undefined}
-      onTouchEnd={isMobile ? onTouchEnd : undefined}
       onMouseMove={!isMobile ? onMouseMove : undefined}
       onMouseLeave={!isMobile ? onMouseLeave : undefined}
     >
