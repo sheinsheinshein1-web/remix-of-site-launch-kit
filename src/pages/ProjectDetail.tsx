@@ -213,6 +213,7 @@ const ProjectDetail = () => {
     name: override?.name ?? "Шервуд 72.1",
     maker: override?.maker ?? "Sherwood Home",
     makerInitials: override?.makerInitials ?? "SW",
+    makerLogo: override?.makerLogo,
     price: override?.price ?? "4 950 000 ₽",
     area: override?.area ?? "60 м²",
     beds: override?.beds ?? 2,
@@ -507,7 +508,13 @@ const ProjectDetail = () => {
               className="mt-3 flex items-center gap-2.5 bg-secondary rounded-xl px-2.5 py-2 cursor-pointer"
               onClick={() => navigate('/partner/1')}
             >
-              <div className="w-9 h-9 bg-background rounded-lg flex items-center justify-center text-foreground text-[10px] font-bold flex-shrink-0">{project.makerInitials}</div>
+              <div className="w-9 h-9 bg-background rounded-lg flex items-center justify-center text-foreground text-[10px] font-bold flex-shrink-0 overflow-hidden">
+                {project.makerLogo ? (
+                  <img src={project.makerLogo} alt={project.maker} className="w-full h-full object-contain" />
+                ) : (
+                  project.makerInitials
+                )}
+              </div>
               <div className="flex-1 min-w-0">
                 <div className="text-[13px] font-semibold text-foreground leading-tight truncate">{project.maker}</div>
                 <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-0.5">
