@@ -128,36 +128,16 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, children }:
     ? `calc(${-current * 100}% / ${count} + ${dragX}px)`
     : `${-current * 100}%`;
 
-  // Один общий blur-слой под всей галереей: монтируется один раз и плавно меняет
-  // фон при смене слайда. Используем фото текущего contain-слайда, либо ближайшего.
-  const hasContain = !!fits?.some((f) => f === "contain");
-  const blurSrc = hasContain
-    ? (fits?.[current] === "contain" ? images[current] : images.find((_, i) => fits?.[i] === "contain")) ?? images[current]
-    : null;
-
   return (
     <div
       ref={containerRef}
-      className={`relative ${height} overflow-hidden select-none rounded-[14px] ${hasContain ? "" : "bg-muted"}`}
+      className={`relative ${height} overflow-hidden select-none rounded-[14px] bg-muted`}
       onMouseMove={!isMobile ? onMouseMove : undefined}
       onMouseLeave={!isMobile ? onMouseLeave : undefined}
     >
-      {hasContain && blurSrc && (
-        <div
-          aria-hidden
-          className="absolute inset-0 z-0 blur-2xl pointer-events-none transition-[background-image] duration-300"
-          style={{
-            backgroundImage: `url(${blurSrc})`,
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            transform: "translateZ(0) scale(1.4)",
-          }}
-        />
-      )}
       {isMobile ? (
         <div
-          className={`relative z-10 flex h-full ${isDragging ? "" : "transition-transform duration-300 ease-out"}`}
+          className={`flex h-full ${isDragging ? "" : "transition-transform duration-300 ease-out"}`}
           style={{
             transform: `translate3d(${translatePct}, 0, 0)`,
             width: `${count * 100}%`,
@@ -169,9 +149,23 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, children }:
             return (
               <div
                 key={i}
-                className="relative h-full flex-shrink-0 overflow-hidden"
+                className="relative h-full flex-shrink-0 overflow-hidden bg-muted"
                 style={{ width: `${100 / count}%` }}
               >
+                {fit === "contain" && (
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      backgroundImage: `url(${src})`,
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                      filter: "blur(28px)",
+                      transform: "translateZ(0) scale(1.4)",
+                    }}
+                  />
+                )}
                 <img
                   src={src}
                   alt={`${alt} ${i + 1}`}
@@ -190,9 +184,23 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, children }:
           return (
             <div
               key={i}
-              className="absolute inset-0 overflow-hidden"
+              className="absolute inset-0 overflow-hidden bg-muted"
               style={{ zIndex: i === current ? 2 : 1, opacity: i === current ? 1 : 0 }}
             >
+              {fit === "contain" && (
+                <div
+                  aria-hidden
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    backgroundImage: `url(${src})`,
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                    filter: "blur(28px)",
+                    transform: "translateZ(0) scale(1.4)",
+                  }}
+                />
+              )}
               <img
                 src={src}
                 alt={`${alt} ${i + 1}`}
