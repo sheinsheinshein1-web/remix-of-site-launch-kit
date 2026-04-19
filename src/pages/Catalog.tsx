@@ -41,6 +41,11 @@ function getProjectImages(mainImage: string, id: number): string[] {
   return [mainImage, ...sorted.slice(0, 3)];
 }
 
+// Per-image object-position для широких/несбалансированных фото.
+const projectObjectPositions: Record<number, (string | undefined)[]> = {
+  38: ["left center"],
+};
+
 const chips = ["Все", "Для жизни", "Для выходных", "Для сдачи", "Для семьи", "Быстро поставить"];
 const mobileChips = ["Все", "Для жизни", "Для выходных", "Для сдачи", "Для семьи", "Быстро поставить"];
 
