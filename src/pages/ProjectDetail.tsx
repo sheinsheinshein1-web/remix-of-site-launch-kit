@@ -16,14 +16,54 @@ import house6 from "@/assets/house-6.jpg";
 import house7 from "@/assets/house-7.jpg";
 import house8 from "@/assets/house-8.jpg";
 import house9 from "@/assets/house-9.jpg";
+import wideHouse1 from "@/assets/wide-house-1.webp";
+import wideHouse2 from "@/assets/wide-house-2.webp";
+import wideHousePlan3d from "@/assets/wide-house-plan-3d.webp";
+import wideHousePlan from "@/assets/wide-house-plan.webp";
 
-const galleryImages = [
+const defaultGallery = [
   { id: 1, image: house1, type: "photo" },
   { id: 2, image: house2, type: "photo" },
   { id: 3, image: house3, type: "photo" },
   { id: 4, image: house4, type: "photo" },
   { id: 5, image: house5, type: "video" },
 ];
+
+// Переопределения данных проекта по id (минимальное решение для новых карточек).
+const projectOverrides: Record<string, {
+  name: string;
+  maker: string;
+  makerInitials: string;
+  price: string;
+  area: string;
+  beds: number;
+  baths: number;
+  floors: number;
+  city: string;
+  description: string;
+  descriptionLong: string;
+  gallery: { id: number; image: string; type: string }[];
+}> = {
+  "32": {
+    name: "Wide House",
+    maker: "Платформа",
+    makerInitials: "ПЛ",
+    price: "2 320 000 ₽",
+    area: "46,4 м²",
+    beds: 2,
+    baths: 1,
+    floors: 1,
+    city: "Екатеринбург",
+    description: "Одноэтажный дом 9,2 × 7,2 м с двускатной кровлей и террасой. Две спальни, санузел, кухня-гостиная.",
+    descriptionLong: "Wide House — компактный загородный дом площадью 46,4 м² с продуманной планировкой: две спальни (6,25 и 13,88 м²), санузел 4,44 м², кухня 7,94 м², гостиная 8,9 м², прихожая 2,57 м² и терраса 10,36 м². Деревянный каркас, металлическая фальцевая кровля, панорамное остекление гостиной.",
+    gallery: [
+      { id: 1, image: wideHouse1, type: "photo" },
+      { id: 2, image: wideHouse2, type: "photo" },
+      { id: 3, image: wideHousePlan3d, type: "photo" },
+      { id: 4, image: wideHousePlan, type: "photo" },
+    ],
+  },
+};
 
 const baseParams = [
   { key: "Тип фундамента", value: "Свайный", link: true },
