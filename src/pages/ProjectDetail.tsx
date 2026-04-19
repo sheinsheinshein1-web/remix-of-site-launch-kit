@@ -43,6 +43,11 @@ import bear134_2 from "@/assets/bear134-2.webp";
 import bear134_3 from "@/assets/bear134-3.webp";
 import bear134Plan3d from "@/assets/bear134-plan-3d.webp";
 import bear134Plan from "@/assets/bear134-plan.webp";
+import vast140_1 from "@/assets/vast140-1.webp";
+import vast140_2 from "@/assets/vast140-2.webp";
+import vast140_3 from "@/assets/vast140-3.webp";
+import vast140Plan3d from "@/assets/vast140-plan-3d.webp";
+import vast140Plan from "@/assets/vast140-plan.webp";
 import makerPlatforma from "@/assets/maker-platforma.png";
 
 const defaultGallery = [
@@ -190,6 +195,27 @@ const projectOverrides: Record<string, {
       { id: 3, image: bear134_3, type: "photo" },
       { id: 4, image: bear134Plan3d, type: "photo", fit: "contain" },
       { id: 5, image: bear134Plan, type: "photo", fit: "contain" },
+    ],
+  },
+  "38": {
+    name: "Vast House 140",
+    maker: "Платформа",
+    makerInitials: "ПЛ",
+    makerLogo: undefined,
+    price: "8 077 600 ₽",
+    area: "114,9 м²",
+    beds: 4,
+    baths: 2,
+    floors: 1,
+    city: "Екатеринбург",
+    description: "Просторный одноэтажный модульный дом 17,9 × 7,9 м с двускатной кровлей и акцентными деревянными фронтонами. Четыре спальни, два санузла, гостиная-кухня 41,9 м².",
+    descriptionLong: "Vast House 140 — просторный загородный дом площадью 114,9 м² с продуманной планировкой для большой семьи: гостиная 23,76 м², кухня 18,10 м², четыре спальни (13,63, 9,37, 9,26 и 6,75 м²), два санузла (5,65 м²), коридор 6,39 м², прихожая 4,05 м² и помещение ИОС 5,67 м². Деревянный каркас, фальцевая металлическая кровля, контрастные деревянные акценты на фронтонах и входной группе.",
+    gallery: [
+      { id: 1, image: vast140_1, type: "photo" },
+      { id: 2, image: vast140_2, type: "photo" },
+      { id: 3, image: vast140_3, type: "photo" },
+      { id: 4, image: vast140Plan3d, type: "photo", fit: "contain" },
+      { id: 5, image: vast140Plan, type: "photo", fit: "contain" },
     ],
   },
 };
