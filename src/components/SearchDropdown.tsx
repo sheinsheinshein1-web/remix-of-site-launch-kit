@@ -2,72 +2,39 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import { Search, X, Home, Factory, FileText, LayoutGrid, ArrowRight, ChevronRight, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-// Searchable data
+// Searchable data — все проекты от Платформы (синхронизировано с FeaturedProjects/Catalog)
 const projects = [
-  { id: 1, name: "Тайга 72", maker: "СибМодуль", price: "2 450 000 ₽", area: "72 м²", beds: 2, baths: 1, tags: "дом одноэтажный модульный для жизни" },
-  { id: 2, name: "Кедр 24", maker: "УралДом", price: "890 000 ₽", area: "24 м²", beds: 0, baths: 1, tags: "дом одноэтажный студия дачный маленький" },
-  { id: 3, name: "Купол Альпика", maker: "ГлэмпингСтрой", price: "1 200 000 ₽", area: "36 м²", beds: 1, baths: 1, tags: "глэмпинг купол сфера для бизнеса" },
-  { id: 4, name: "Loft 48", maker: "МодульХаус", price: "1 750 000 ₽", area: "48 м²", beds: 2, baths: 1, tags: "дом одноэтажный лофт модульный" },
-  { id: 5, name: "Сосна 18", maker: "БаняМастер", price: "650 000 ₽", area: "18 м²", beds: 0, baths: 1, tags: "баня одноэтажный мобильная" },
-  { id: 6, name: "Модуль 56", maker: "ЭкоДом", price: "1 950 000 ₽", area: "56 м²", beds: 2, baths: 1, tags: "дом одноэтажный модульный эко" },
-  { id: 7, name: "Сканди 64", maker: "НордХаус", price: "2 180 000 ₽", area: "64 м²", beds: 3, baths: 2, tags: "дом одноэтажный скандинавский для семьи" },
-  { id: 8, name: "Бочка 12", maker: "БаняПро", price: "490 000 ₽", area: "12 м²", beds: 0, baths: 1, tags: "баня бочка мобильная" },
-  { id: 9, name: "Куб 36", maker: "МодернДом", price: "1 350 000 ₽", area: "36 м²", beds: 1, baths: 1, tags: "дом одноэтажный минимализм куб" },
-  { id: 10, name: "Мини 28", maker: "КомфортДом", price: "980 000 ₽", area: "28 м²", beds: 1, baths: 1, tags: "дом одноэтажный мини дачный" },
-  { id: 11, name: "Барн 80", maker: "РусМодуль", price: "2 890 000 ₽", area: "80 м²", beds: 3, baths: 2, tags: "дом одноэтажный барнхаус для семьи" },
-  { id: 12, name: "A-Frame 32", maker: "ГлэмпПарк", price: "1 100 000 ₽", area: "32 м²", beds: 1, baths: 1, tags: "глэмпинг а-фрейм шалаш одноэтажный" },
-  { id: 13, name: "Эко 44", maker: "ЗелёныйДом", price: "1 580 000 ₽", area: "44 м²", beds: 2, baths: 1, tags: "дом одноэтажный эко модульный" },
-  { id: 14, name: "Премиум 30", maker: "ПарнаяЛюкс", price: "1 250 000 ₽", area: "30 м²", beds: 0, baths: 2, tags: "баня премиум одноэтажный" },
-  { id: 15, name: "Хайтек 52", maker: "ТехноМодуль", price: "2 100 000 ₽", area: "52 м²", beds: 2, baths: 1, tags: "дом одноэтажный хайтек модульный" },
-  { id: 16, name: "Уют 20", maker: "ДачаСтрой", price: "720 000 ₽", area: "20 м²", beds: 1, baths: 1, tags: "дом одноэтажный дачный маленький" },
-  { id: 17, name: "Фахверк 96", maker: "ПремиумДом", price: "3 450 000 ₽", area: "96 м²", beds: 4, baths: 3, tags: "дом двухэтажный фахверк премиум для семьи" },
-  { id: 18, name: "Классик 16", maker: "СтройБаня", price: "580 000 ₽", area: "16 м²", beds: 0, baths: 1, tags: "баня классическая одноэтажный" },
-  { id: 19, name: "Модуль 68", maker: "АльфаДом", price: "2 350 000 ₽", area: "68 м²", beds: 3, baths: 2, tags: "дом одноэтажный модульный для семьи" },
-  { id: 20, name: "Сфера 24", maker: "КуполСтрой", price: "950 000 ₽", area: "24 м²", beds: 1, baths: 1, tags: "глэмпинг купол сфера" },
-  { id: 21, name: "Вилла 120", maker: "ЛюксМодуль", price: "4 200 000 ₽", area: "120 м²", beds: 4, baths: 3, tags: "дом двухэтажный вилла премиум для семьи" },
+  { id: 32, name: "Wide House", maker: "Платформа", price: "5 480 000 ₽", area: "46,4 м²", beds: 2, baths: 1, tags: "дом одноэтажный модульный для жизни барнхаус скандинавский с террасой панорамные окна" },
+  { id: 33, name: "Barn House", maker: "Платформа", price: "1 680 000 ₽", area: "42,9 м²", beds: 1, baths: 1, tags: "дом одноэтажный модульный барнхаус скандинавский недорогой бюджетный для дачи" },
+  { id: 34, name: "Bear House 45", maker: "Платформа", price: "2 207 000 ₽", area: "41 м²", beds: 1, baths: 1, tags: "дом одноэтажный модульный мини маленький компактный для дачи скандинавский" },
+  { id: 35, name: "Bear House 77", maker: "Платформа", price: "3 894 700 ₽", area: "61,32 м²", beds: 2, baths: 1, tags: "дом одноэтажный модульный для семьи скандинавский с террасой" },
+  { id: 36, name: "Bear House 86", maker: "Платформа", price: "4 349 000 ₽", area: "68,7 м²", beds: 2, baths: 2, tags: "дом одноэтажный модульный для семьи скандинавский с террасой два санузла" },
+  { id: 37, name: "Bear House 134", maker: "Платформа", price: "8 762 000 ₽", area: "110 м²", beds: 3, baths: 3, tags: "дом одноэтажный модульный большой для семьи премиум скандинавский с террасой" },
+  { id: 38, name: "Vast House 140", maker: "Платформа", price: "8 077 600 ₽", area: "114,9 м²", beds: 4, baths: 2, tags: "дом одноэтажный модульный большой для семьи премиум четырехкомнатный с террасой" },
+  { id: 39, name: "Bear House 168", maker: "Платформа", price: "12 110 400 ₽", area: "146,4 м²", beds: 4, baths: 3, tags: "дом одноэтажный модульный большой премиум вилла для семьи с камином с террасой" },
 ];
 
 const categories = [
   { name: "Дома", slug: "houses" },
-  { name: "Дачные домики", slug: "dacha" },
-  { name: "Двухэтажные", slug: "twostory" },
-  { name: "Бани и сауны", slug: "baths" },
-  { name: "Бани-бочки", slug: "barrel" },
-  { name: "Глэмпинг", slug: "glamping" },
-  { name: "Бытовки", slug: "sheds" },
-  { name: "Гостевые дома", slug: "guest" },
-  { name: "Студии", slug: "studio" },
-  { name: "Купели и чаны", slug: "hottub" },
-  { name: "Беседки", slug: "gazebo" },
-  { name: "Террасы", slug: "terrace" },
 ];
 
 const manufacturers = [
-  { name: "СибМодуль", location: "Новосибирск" },
-  { name: "УралДом", location: "Екатеринбург" },
-  { name: "МодульХаус", location: "Москва" },
-  { name: "ГлэмпингСтрой", location: "Сочи" },
-  { name: "АрктикДом", location: "Мурманск" },
-  { name: "ДомКомплект", location: "Казань" },
-  { name: "БаняМастер", location: "Тюмень" },
-  { name: "БаняПро", location: "Тюмень" },
-  { name: "НордХаус", location: "СПб" },
-  { name: "ЭкоДом", location: "Ростов" },
+  { name: "Платформа", location: "Екатеринбург" },
 ];
 
 const articlesList = [
   { title: "Как выбрать модульный дом", tag: "Гайд" },
-  { title: "Сколько стоит баня под ключ", tag: "Цены" },
-  { title: "Глэмпинг как бизнес", tag: "Бизнес" },
-  { title: "Фундамент для модульного дома", tag: "Советы" },
 ];
 
 // Quick suggestion chips shown when query has text
 const quickSuggestions: Record<string, string[]> = {
-  "дом": ["под ключ", "для дачи", "каркасный", "двухэтажный", "с террасой", "до 1 млн"],
-  "бан": ["бочка", "под ключ", "с парной", "из бруса", "мобильная"],
-  "глэмп": ["купол", "A-frame", "для бизнеса", "с панорамой"],
-  "модуль": ["для жизни", "под ключ", "двухэтажный", "с отделкой"],
+  "дом": ["под ключ", "для семьи", "с террасой", "до 5 млн", "большой", "одноэтажный"],
+  "модуль": ["для жизни", "под ключ", "с отделкой", "скандинавский"],
+  "barn": ["barn house", "недорогой"],
+  "bear": ["bear house 45", "bear house 77", "bear house 86", "bear house 134", "bear house 168"],
+  "vast": ["vast house 140"],
+  "wide": ["wide house"],
+  "платформ": ["wide house", "barn house", "bear house"],
 };
 
 function formatPrice(v: number): string {
@@ -298,11 +265,11 @@ function filterProjects(filters: ParsedFilters) {
 // Popular searches shown when input is empty
 const popularSearches = [
   "Модульный дом под ключ",
-  "Дом до 1 млн",
-  "Баня-бочка",
-  "Глэмпинг купол",
-  "Дом для дачи",
-  "Двухэтажный дом",
+  "Дом до 3 млн",
+  "Bear House",
+  "Дом с террасой",
+  "Большой дом для семьи",
+  "Одноэтажный дом",
 ];
 
 interface SearchDropdownProps {
