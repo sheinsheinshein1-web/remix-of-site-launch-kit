@@ -16,10 +16,19 @@ import house7 from "@/assets/house-7.jpg";
 import house8 from "@/assets/house-8.jpg";
 import house9 from "@/assets/house-9.jpg";
 import wideHouse from "@/assets/wide-house-1.webp";
+import wideHouse2 from "@/assets/wide-house-2.webp";
+import wideHousePlan3d from "@/assets/wide-house-plan-3d.webp";
+import wideHousePlan from "@/assets/wide-house-plan.webp";
 
 const houseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
+// Галереи проектов по id (синхронизированы с ProjectDetail).
+const projectGalleries: Record<number, string[]> = {
+  32: [wideHouse, wideHouse2, wideHousePlan3d, wideHousePlan],
+};
+
 function getProjectImages(mainImage: string, id: number): string[] {
+  if (projectGalleries[id]) return projectGalleries[id];
   const others = houseImages.filter(img => img !== mainImage);
   const sorted = [...others].sort((a, b) => {
     const ha = a.charCodeAt(a.length - 5) ^ id;
