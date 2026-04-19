@@ -153,14 +153,17 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, children }:
                 style={{ width: `${100 / count}%` }}
               >
                 {fit === "contain" && (
-                  <img
-                    src={src}
-                    alt=""
-                    aria-hidden
-                    className="absolute inset-0 w-full h-full object-cover blur-md opacity-60 pointer-events-none"
-                    style={{ transform: "translateZ(0) scale(1.15)", willChange: "auto" }}
-                    draggable={false}
-                  />
+                  <>
+                    <img
+                      src={src}
+                      alt=""
+                      aria-hidden
+                      className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-40 pointer-events-none"
+                      style={{ transform: "translateZ(0) scale(1.3)" }}
+                      draggable={false}
+                    />
+                    <div className="absolute inset-0 bg-foreground/30 pointer-events-none" />
+                  </>
                 )}
                 <img
                   src={src}
@@ -183,14 +186,17 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, children }:
               style={{ zIndex: i === current ? 1 : 0, opacity: i === current ? 1 : 0 }}
             >
               {fit === "contain" && (
-                <img
-                  src={src}
-                  alt=""
-                  aria-hidden
-                  className="absolute inset-0 w-full h-full object-cover blur-md opacity-60 pointer-events-none"
-                  style={{ transform: "translateZ(0) scale(1.15)" }}
-                  draggable={false}
-                />
+                <>
+                  <img
+                    src={src}
+                    alt=""
+                    aria-hidden
+                    className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-40 pointer-events-none"
+                    style={{ transform: "translateZ(0) scale(1.3)" }}
+                    draggable={false}
+                  />
+                  <div className="absolute inset-0 bg-foreground/30 pointer-events-none" />
+                </>
               )}
               <img
                 src={src}
