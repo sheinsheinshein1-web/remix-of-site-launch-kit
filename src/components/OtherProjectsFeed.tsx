@@ -32,15 +32,6 @@ const baseOtherProjects = [
   { id: 37, name: "Bear House 134", price: "от 8,76 млн ₽", area: "110 м²", beds: 3, baths: 3, image: bear134_1 },
   { id: 38, name: "Vast House 140", price: "от 8,08 млн ₽", area: "114,9 м²", beds: 4, baths: 2, image: vast140_1 },
   { id: 39, name: "Bear House 168", price: "от 12,11 млн ₽", area: "146,4 м²", beds: 4, baths: 3, image: bear168_1 },
-  { id: 1, name: "Тайга 72", price: "от 2,4 млн ₽", area: "72 м²", beds: 2, baths: 1, image: house1 },
-  { id: 6, name: "Мидленд 66", price: "от 4,4 млн ₽", area: "56 м²", beds: 2, baths: 1, image: house6 },
-  { id: 5, name: "Шервуд 72", price: "от 4,4 млн ₽", area: "70 м²", beds: 2, baths: 1, image: house7 },
-  { id: 3, name: "Бонд 88", price: "от 5,8 млн ₽", area: "88 м²", beds: 3, baths: 2, image: house8 },
-  { id: 10, name: "Печора", price: "от 4,6 млн ₽", area: "73 м²", beds: 2, baths: 1, image: house4 },
-  { id: 13, name: "БД-109", price: "от 5,7 млн ₽", area: "109 м²", beds: 3, baths: 2, image: house5 },
-  { id: 24, name: "Шале 76", price: "от 2,7 млн ₽", area: "76 м²", beds: 3, baths: 2, image: house3 },
-  { id: 19, name: "Модуль 68", price: "от 2,4 млн ₽", area: "68 м²", beds: 3, baths: 2, image: house9 },
-  { id: 11, name: "Барн 80", price: "от 2,9 млн ₽", area: "80 м²", beds: 3, baths: 2, image: house2 },
 ];
 
 const PAGE_SIZE = 6;
