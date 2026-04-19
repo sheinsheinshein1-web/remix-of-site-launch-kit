@@ -149,24 +149,21 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, children }:
             return (
               <div
                 key={i}
-                className="relative isolate h-full flex-shrink-0 overflow-hidden bg-muted"
+                className={`relative isolate h-full flex-shrink-0 overflow-hidden ${fit === "contain" ? "" : "bg-muted"}`}
                 style={{ width: `${100 / count}%` }}
               >
                 {fit === "contain" && (
-                  <>
-                    <div
-                      aria-hidden
-                      className="absolute inset-0 z-0 blur-3xl opacity-40 pointer-events-none"
-                      style={{
-                        backgroundImage: `url(${src})`,
-                        backgroundPosition: "center",
-                        backgroundRepeat: "no-repeat",
-                        backgroundSize: "cover",
-                        transform: "translateZ(0) scale(1.3)",
-                      }}
-                    />
-                    <div className="absolute inset-0 z-[1] bg-foreground/30 pointer-events-none" />
-                  </>
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 z-0 blur-2xl pointer-events-none"
+                    style={{
+                      backgroundImage: `url(${src})`,
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                      transform: "translateZ(0) scale(1.4)",
+                    }}
+                  />
                 )}
                 <img
                   src={src}
