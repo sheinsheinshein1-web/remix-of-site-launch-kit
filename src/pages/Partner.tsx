@@ -56,7 +56,7 @@ const Partner = () => {
             <div className="bg-background">
               {/* Header row: back / share */}
               <div className="flex items-center justify-between px-6 pt-6">
-                <button onClick={() => navigate(-1)} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center hover:bg-secondary/80 transition-colors">
+                <button onClick={handleBack} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center hover:bg-secondary/80 transition-colors">
                   <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
                 </button>
                 <button
@@ -136,7 +136,7 @@ const Partner = () => {
       <div className={`fixed top-0 left-0 right-0 z-50 transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 rounded-b-2xl shadow-sm">
           <div className="flex items-center justify-between">
-            <button onClick={() => navigate(-1)} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
+            <button onClick={handleBack} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
               <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
             </button>
             <div className="flex-1 min-w-0 ml-3">
@@ -158,7 +158,7 @@ const Partner = () => {
         <div>
           {/* Header row: back / share */}
           <div className="flex items-center justify-between px-4 pt-[max(env(safe-area-inset-top),12px)]">
-            <button onClick={() => navigate(-1)} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
+            <button onClick={handleBack} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
               <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
             </button>
             <button
