@@ -31,6 +31,14 @@ const Partner = () => {
   const [aboutExpanded, setAboutExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/catalog");
+    }
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 200);
     window.addEventListener("scroll", onScroll, { passive: true });
