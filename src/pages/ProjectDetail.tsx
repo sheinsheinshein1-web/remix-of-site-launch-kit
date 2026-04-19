@@ -624,22 +624,6 @@ const ProjectDetail = () => {
                 const isContain = (img as any).fit === "contain";
                 return (
                   <div key={img.id} className="relative isolate w-full flex-shrink-0 aspect-[4/5] bg-muted overflow-hidden">
-                    {isContain && (
-                      <>
-                        <div
-                          aria-hidden
-                          className="absolute inset-0 z-0 blur-3xl opacity-40 pointer-events-none"
-                          style={{
-                            backgroundImage: `url(${img.image})`,
-                            backgroundPosition: "center",
-                            backgroundRepeat: "no-repeat",
-                            backgroundSize: "cover",
-                            transform: "translateZ(0) scale(1.3)",
-                          }}
-                        />
-                        <div className="absolute inset-0 z-[1] bg-foreground/30 pointer-events-none" />
-                      </>
-                    )}
                     <img
                       src={img.image}
                       alt={`Фото ${i + 1}`}
