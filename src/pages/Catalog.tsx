@@ -20,6 +20,7 @@ import house6 from "@/assets/house-6.jpg";
 import house7 from "@/assets/house-7.jpg";
 import house8 from "@/assets/house-8.jpg";
 import house9 from "@/assets/house-9.jpg";
+import wideHouse from "@/assets/wide-house-1.webp";
 
 const allHouseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
