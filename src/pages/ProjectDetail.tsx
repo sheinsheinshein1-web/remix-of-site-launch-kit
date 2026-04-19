@@ -120,6 +120,26 @@ const projectOverrides: Record<string, {
       { id: 5, image: bearPlan, type: "photo", fit: "contain" },
     ],
   },
+  "35": {
+    name: "Bear House 77",
+    maker: "Платформа",
+    makerInitials: "ПЛ",
+    makerLogo: undefined,
+    price: "3 894 700 ₽",
+    area: "61,32 м²",
+    beds: 2,
+    baths: 1,
+    floors: 1,
+    city: "Екатеринбург",
+    description: "Одноэтажный модульный дом 11,1 × 6,06 м с плоской кровлей и террасой 15,92 м². Две спальни, кухня-гостиная, санузел.",
+    descriptionLong: "Bear House 77 — загородный дом площадью 61,32 м² с продуманной планировкой: гостиная 17,08 м², кухня 4,88 м², две спальни по 8,21 м², санузел 3,76 м², прихожая 3,26 м² и просторная терраса 15,92 м². Деревянный каркас, плоская кровля, панорамное остекление гостиной с выходом на террасу.",
+    gallery: [
+      { id: 1, image: bear77_1, type: "photo" },
+      { id: 2, image: bear77_2, type: "photo" },
+      { id: 3, image: bear77Plan3d, type: "photo", fit: "contain" },
+      { id: 4, image: bear77Plan, type: "photo", fit: "contain" },
+    ],
+  },
 };
 
 const baseParams = [
