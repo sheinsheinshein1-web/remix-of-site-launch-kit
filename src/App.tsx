@@ -128,7 +128,7 @@ const AppRoutes = () => (
       <Route path="/" element={<Index />} />
       <Route path="/catalog" element={<Catalog />} />
       <Route path="/favorites" element={<Favorites />} />
-      <Route path="/project/:id" element={<ProjectDetail />} />
+      <Route path="/project/:id" element={<ProjectDetailRoute />} />
       <Route path="/categories" element={<AllCategoriesPage />} />
       <Route path="/messages" element={<MessagesLayout />}>
         <Route index element={<Messages />} />
