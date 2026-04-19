@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation, useNavigationType, Link } from "react-router-dom";
 import logoColor from "@/assets/logo-color.svg";
 import logoIcon from "@/assets/logo-icon.svg";
 import { SlidersHorizontal, ChevronDown, LayoutGrid, Heart, MessageSquare } from "lucide-react";
@@ -10,12 +10,14 @@ import CitySelector, { useCity } from "./CitySelector";
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const navigationType = useNavigationType();
   const [menuOpen, setMenuOpen] = useState(false);
   // Синхронно определяем, возвращаемся ли мы на проскролленную главную.
-  // Если да — стартуем со скрытым синим хедером (но БЕЗ компактного поиска),
-  // чтобы он не мелькнул на долю секунды до восстановления скролла.
+  // Только при POP (кнопка «Назад» браузера) — при PUSH (клик по таб-бару/лого)
+  // считаем, что страница открывается с нуля, чтобы не показывать компактный поиск.
   const isReturningScrolled = (() => {
     if (typeof window === "undefined") return false;
+    if (navigationType !== "POP") return false;
     if (window.scrollY > 10) return true;
     const saved = sessionStorage.getItem("home_feed_scroll");
     if (!saved) return false;
