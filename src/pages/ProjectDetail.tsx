@@ -95,6 +95,27 @@ const projectOverrides: Record<string, {
       { id: 4, image: cabin31Plan, type: "photo", fit: "contain" },
     ],
   },
+  "34": {
+    name: "Bear House",
+    maker: "Платформа",
+    makerInitials: "ПЛ",
+    makerLogo: undefined,
+    price: "2 207 000 ₽",
+    area: "41 м²",
+    beds: 1,
+    baths: 1,
+    floors: 1,
+    city: "Екатеринбург",
+    description: "Одноэтажный модульный дом 9,0 × 5,3 м с двускатной кровлей и крытой террасой 12,3 м². Спальня, санузел, кухня-гостиная с панорамным остеклением.",
+    descriptionLong: "Bear House — компактный загородный дом площадью 41 м² с продуманной планировкой: кухня-гостиная 18,22 м², спальня 5,29 м², санузел 5,09 м² и крытая терраса 12,34 м². Деревянный каркас, фальцевая металлическая кровля, панорамное остекление с выходом на террасу.",
+    gallery: [
+      { id: 1, image: bear1, type: "photo" },
+      { id: 2, image: bear2, type: "photo" },
+      { id: 3, image: bear3, type: "photo" },
+      { id: 4, image: bearPlan3d, type: "photo", fit: "contain" },
+      { id: 5, image: bearPlan, type: "photo", fit: "contain" },
+    ],
+  },
 };
 
 const baseParams = [
