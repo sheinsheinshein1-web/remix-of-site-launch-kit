@@ -57,7 +57,7 @@ const matchCityFromIp = (raw: string | undefined | null): string | null => {
 
 export function useCity() {
   const [city, setCity] = useState(() => {
-    try { return localStorage.getItem(CITY_STORAGE_KEY) || "Вся Россия"; } catch { return "Вся Россия"; }
+    try { return localStorage.getItem(CITY_STORAGE_KEY) || "Екатеринбург"; } catch { return "Екатеринбург"; }
   });
 
   const selectCity = (c: string) => {
