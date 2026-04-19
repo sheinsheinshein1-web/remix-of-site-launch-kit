@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation, useNavigationType, Link } from "react-router-dom";
 import logoColor from "@/assets/logo-color.svg";
 import logoIcon from "@/assets/logo-icon.svg";
 import { SlidersHorizontal, ChevronDown, LayoutGrid, Heart, MessageSquare } from "lucide-react";
