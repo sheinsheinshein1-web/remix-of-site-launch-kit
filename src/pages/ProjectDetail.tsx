@@ -74,7 +74,7 @@ const projectOverrides: Record<string, {
     descriptionLong: "Wide House — компактный загородный дом площадью 46,4 м² с продуманной планировкой: две спальни (6,25 и 13,88 м²), санузел 4,44 м², кухня 7,94 м², гостиная 8,9 м², прихожая 2,57 м² и терраса 10,36 м². Деревянный каркас, металлическая фальцевая кровля, панорамное остекление гостиной.",
     gallery: [
       { id: 1, image: wideHouse1, type: "photo" },
-      { id: 2, image: wideHouse2, type: "photo", fit: "contain" },
+      { id: 2, image: wideHouse2, type: "photo" },
       { id: 3, image: wideHousePlan3d, type: "photo", fit: "contain" },
       { id: 4, image: wideHousePlan, type: "photo", fit: "contain" },
     ],
