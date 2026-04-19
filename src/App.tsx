@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -120,6 +120,12 @@ const AssetPreloader = () => {
   return null;
 };
 
+// Forces ProjectDetail to remount on :id change so internal state and scroll reset cleanly.
+const ProjectDetailRoute = () => {
+  const { id } = useParams();
+  return <ProjectDetail key={id} />;
+};
+
 const AppRoutes = () => (
   <>
     <ScrollToTop />
@@ -128,7 +134,7 @@ const AppRoutes = () => (
       <Route path="/" element={<Index />} />
       <Route path="/catalog" element={<Catalog />} />
       <Route path="/favorites" element={<Favorites />} />
-      <Route path="/project/:id" element={<ProjectDetail />} />
+      <Route path="/project/:id" element={<ProjectDetailRoute />} />
       <Route path="/categories" element={<AllCategoriesPage />} />
       <Route path="/messages" element={<MessagesLayout />}>
         <Route index element={<Messages />} />
