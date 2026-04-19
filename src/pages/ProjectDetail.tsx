@@ -438,14 +438,11 @@ const ProjectDetail = () => {
         {/* ===== GALLERY ===== */}
         {isMobile ? (
           <div className="relative bg-background">
-            <div className="relative overflow-hidden touch-pan-y rounded-b-2xl">
+            <div ref={galleryWrapRef} className="relative overflow-hidden rounded-b-2xl">
             <div
               ref={sliderRef}
               className="flex transition-transform duration-300 ease-out"
               style={{ transform: `translateX(calc(-${activeImage * 100}% + ${dragOffset}px))` }}
-              onTouchStart={onTouchStart}
-              onTouchMove={onTouchMove}
-              onTouchEnd={onTouchEnd}
             >
               {galleryImages.map((img, i) => {
                 const isContain = (img as any).fit === "contain";
