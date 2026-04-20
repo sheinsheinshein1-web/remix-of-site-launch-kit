@@ -889,16 +889,11 @@ const Catalog = () => {
               {sortedItems.map((item) => (
                 <div key={item.id} data-project-id={item.id} className="flex gap-4 cursor-pointer bg-background rounded-2xl overflow-hidden group" onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)}>
                   <div className="w-[220px] h-[180px] flex-shrink-0 relative overflow-hidden rounded-2xl">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover"
-                      style={projectObjectPositions[item.id]?.[0] ? { objectPosition: projectObjectPositions[item.id]![0] } : undefined}
-                      loading="lazy"
-                    />
-                    <div className="absolute top-2 right-2">
-                      <FavButton active={isFavorite(item.id)} onClick={(e) => { e.stopPropagation(); toggleFav(item); }} size="sm" count={item.likes + (isFavorite(item.id) && !item.fav ? 1 : !isFavorite(item.id) && item.fav ? -1 : 0)} />
-                    </div>
+                    <SwipeableGallery images={getProjectImages(item.image, item.id)} objectPositions={projectObjectPositions[item.id]} alt={item.name} height="h-[180px]">
+                      <div className="absolute top-2 right-2 z-10">
+                        <FavButton active={isFavorite(item.id)} onClick={(e) => { e.stopPropagation(); toggleFav(item); }} size="sm" count={item.likes + (isFavorite(item.id) && !item.fav ? 1 : !isFavorite(item.id) && item.fav ? -1 : 0)} />
+                      </div>
+                    </SwipeableGallery>
                   </div>
                   <div className="flex-1 py-2 pr-3 flex flex-col justify-center">
                     <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{item.name}</h2>
