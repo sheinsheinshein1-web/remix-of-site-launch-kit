@@ -11,25 +11,41 @@ import { useNavigate } from "react-router-dom";
 import SwipeableGallery from "@/components/SwipeableGallery";
 import { navigateWithTransition } from "@/lib/viewTransition";
 
-import wideHouse from "@/assets/wide-house-1.webp";
+import wideHouse1 from "@/assets/wide-house-1.webp";
+import wideHouse2 from "@/assets/wide-house-2.webp";
 import cabin31_1 from "@/assets/cabin-31-1.webp";
+import cabin31_2 from "@/assets/cabin-31-2.webp";
 import bear1 from "@/assets/bear-1.webp";
+import bear2 from "@/assets/bear-2.webp";
+import bear3 from "@/assets/bear-3.webp";
 import bear77_1 from "@/assets/bear77-1.webp";
+import bear77_2 from "@/assets/bear77-2.webp";
 import bear86_1 from "@/assets/bear86-1.webp";
+import bear86_2 from "@/assets/bear86-2.webp";
+import bear86_3 from "@/assets/bear86-3.webp";
 import bear134_1 from "@/assets/bear134-1.webp";
+import bear134_2 from "@/assets/bear134-2.webp";
+import bear134_3 from "@/assets/bear134-3.webp";
 import vast140_1 from "@/assets/vast140-1.webp";
+import vast140_2 from "@/assets/vast140-2.webp";
+import vast140_3 from "@/assets/vast140-3.webp";
 import bear168_1 from "@/assets/bear168-1.webp";
+import bear168_2 from "@/assets/bear168-2.webp";
 
-const allHouseImages = [wideHouse, cabin31_1, bear1, bear77_1, bear86_1, bear134_1, vast140_1, bear168_1];
+// У каждого проекта — собственный набор рендеров. Никакого перемешивания.
+const projectGalleries: Record<number, string[]> = {
+  32: [wideHouse1, wideHouse2],
+  33: [cabin31_1, cabin31_2],
+  34: [bear1, bear2, bear3],
+  35: [bear77_1, bear77_2],
+  36: [bear86_1, bear86_2, bear86_3],
+  37: [bear134_1, bear134_2, bear134_3],
+  38: [vast140_1, vast140_2, vast140_3],
+  39: [bear168_1, bear168_2],
+};
 
 function getProjectImages(mainImage: string, id: number): string[] {
-  const others = allHouseImages.filter(img => img !== mainImage);
-  const sorted = [...others].sort((a, b) => {
-    const ha = a.charCodeAt(a.length - 5) ^ id;
-    const hb = b.charCodeAt(b.length - 5) ^ id;
-    return ha - hb;
-  });
-  return [mainImage, ...sorted.slice(0, 3)];
+  return projectGalleries[id] ?? [mainImage];
 }
 
 // Per-image object-position для широких/несбалансированных фото.
