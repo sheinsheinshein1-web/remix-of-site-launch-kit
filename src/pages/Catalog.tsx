@@ -64,6 +64,18 @@ function getProjectImages(_mainImage: string, id: number): string[] {
   return projectGalleries[id] ?? [_mainImage];
 }
 
+// Per-image fit: "contain" — горизонтальные планировки показываем целиком на сером фоне.
+const projectFits: Record<number, ("cover" | "contain")[]> = {
+  32: ["cover", "cover", "contain", "contain"],
+  33: ["cover", "cover", "contain", "contain"],
+  34: ["cover", "cover", "cover", "contain", "contain"],
+  35: ["cover", "cover", "contain", "contain"],
+  36: ["cover", "cover", "cover", "contain", "contain"],
+  37: ["cover", "cover", "cover", "contain", "contain"],
+  38: ["cover", "cover", "cover", "contain", "contain"],
+  39: ["cover", "cover", "contain", "contain"],
+};
+
 // Per-image object-position для широких/несбалансированных фото.
 const projectObjectPositions: Record<number, (string | undefined)[]> = {
   38: ["right center"],
