@@ -44,14 +44,14 @@ import bear168Plan from "@/assets/bear168-plan.webp";
 // Базовый набор проектов «других» от подрядчика.
 // id указывает на маршрут /project/:id.
 const baseOtherProjects = [
-  { id: 32, name: "Wide House", price: "от 5,48 млн ₽", area: "46,4 м²", beds: 2, baths: 1, image: wideHouse },
-  { id: 33, name: "Barn House", price: "от 1,68 млн ₽", area: "42,9 м²", beds: 1, baths: 1, image: cabin31_1 },
-  { id: 34, name: "Bear House 45", price: "от 2,2 млн ₽", area: "41 м²", beds: 1, baths: 1, image: bear1 },
-  { id: 35, name: "Bear House 77", price: "от 3,89 млн ₽", area: "61,32 м²", beds: 2, baths: 1, image: bear77_1 },
-  { id: 36, name: "Bear House 86", price: "от 4,35 млн ₽", area: "68,7 м²", beds: 2, baths: 2, image: bear86_1 },
-  { id: 37, name: "Bear House 134", price: "от 8,76 млн ₽", area: "110 м²", beds: 3, baths: 3, image: bear134_1 },
-  { id: 38, name: "Vast House 140", price: "от 8,08 млн ₽", area: "114,9 м²", beds: 4, baths: 2, image: vast140_1 },
-  { id: 39, name: "Bear House 168", price: "от 12,11 млн ₽", area: "146,4 м²", beds: 4, baths: 3, image: bear168_1 },
+  { id: 32, name: "Wide House", price: "5 480 000 ₽", area: "46,4 м²", beds: 2, baths: 1, image: wideHouse },
+  { id: 33, name: "Barn House", price: "1 680 000 ₽", area: "42,9 м²", beds: 1, baths: 1, image: cabin31_1 },
+  { id: 34, name: "Bear House 45", price: "2 207 000 ₽", area: "41 м²", beds: 1, baths: 1, image: bear1 },
+  { id: 35, name: "Bear House 77", price: "3 894 700 ₽", area: "61,32 м²", beds: 2, baths: 1, image: bear77_1 },
+  { id: 36, name: "Bear House 86", price: "4 349 000 ₽", area: "68,7 м²", beds: 2, baths: 2, image: bear86_1 },
+  { id: 37, name: "Bear House 134", price: "8 762 000 ₽", area: "110 м²", beds: 3, baths: 3, image: bear134_1 },
+  { id: 38, name: "Vast House 140", price: "8 077 600 ₽", area: "114,9 м²", beds: 4, baths: 2, image: vast140_1 },
+  { id: 39, name: "Bear House 168", price: "12 110 400 ₽", area: "146,4 м²", beds: 4, baths: 3, image: bear168_1 },
 ];
 
 // Галереи проектов по id (синхронизированы с FeaturedProjects/Catalog).
