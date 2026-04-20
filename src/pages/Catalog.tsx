@@ -11,15 +11,6 @@ import { useNavigate } from "react-router-dom";
 import SwipeableGallery from "@/components/SwipeableGallery";
 import { navigateWithTransition } from "@/lib/viewTransition";
 
-import house1 from "@/assets/house-1.jpg";
-import house2 from "@/assets/house-2.jpg";
-import house3 from "@/assets/house-3.jpg";
-import house4 from "@/assets/house-4.jpg";
-import house5 from "@/assets/house-5.jpg";
-import house6 from "@/assets/house-6.jpg";
-import house7 from "@/assets/house-7.jpg";
-import house8 from "@/assets/house-8.jpg";
-import house9 from "@/assets/house-9.jpg";
 import wideHouse from "@/assets/wide-house-1.webp";
 import cabin31_1 from "@/assets/cabin-31-1.webp";
 import bear1 from "@/assets/bear-1.webp";
@@ -29,7 +20,7 @@ import bear134_1 from "@/assets/bear134-1.webp";
 import vast140_1 from "@/assets/vast140-1.webp";
 import bear168_1 from "@/assets/bear168-1.webp";
 
-const allHouseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
+const allHouseImages = [wideHouse, cabin31_1, bear1, bear77_1, bear86_1, bear134_1, vast140_1, bear168_1];
 
 function getProjectImages(mainImage: string, id: number): string[] {
   const others = allHouseImages.filter(img => img !== mainImage);

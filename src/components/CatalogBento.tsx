@@ -1,30 +1,30 @@
-import house1 from "@/assets/house-1.jpg";
-import house2 from "@/assets/house-2.jpg";
-import house3 from "@/assets/house-3.jpg";
+import wideHouse from "@/assets/wide-house-1.webp";
+import bear86_1 from "@/assets/bear86-1.webp";
+import bear134_1 from "@/assets/bear134-1.webp";
 
 const houses = [
   {
-    name: 'Модульный дом «Студия 12»',
-    image: house1,
-    price: "1 809 983 ₽",
-    area: "12 м²",
+    name: 'Wide House',
+    image: wideHouse,
+    price: "5 480 000 ₽",
+    area: "46,4 м²",
     floors: "1 этаж",
     delivery: "Доставка в Москву",
   },
   {
-    name: 'Модульный дом «Антрацит»',
-    image: house2,
-    price: "4 200 000 ₽",
-    area: "70,9 м²",
+    name: 'Bear House 86',
+    image: bear86_1,
+    price: "4 349 000 ₽",
+    area: "68,7 м²",
     floors: "1 этаж",
     delivery: "Доставка в Москву",
   },
   {
-    name: 'Модульный дом «Сканди 112»',
-    image: house3,
-    price: "5 800 000 ₽",
-    area: "112 м²",
-    floors: "2 этажа",
+    name: 'Bear House 134',
+    image: bear134_1,
+    price: "8 762 000 ₽",
+    area: "110 м²",
+    floors: "1 этаж",
     delivery: "Доставка в Москву",
   },
 ];
