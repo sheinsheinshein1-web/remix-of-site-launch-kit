@@ -13,39 +13,55 @@ import { navigateWithTransition } from "@/lib/viewTransition";
 
 import wideHouse1 from "@/assets/wide-house-1.webp";
 import wideHouse2 from "@/assets/wide-house-2.webp";
+import wideHousePlan3d from "@/assets/wide-house-plan-3d.webp";
+import wideHousePlan from "@/assets/wide-house-plan.webp";
 import cabin31_1 from "@/assets/cabin-31-1.webp";
 import cabin31_2 from "@/assets/cabin-31-2.webp";
+import cabin31Plan3d from "@/assets/cabin-31-plan-3d.webp";
+import cabin31Plan from "@/assets/cabin-31-plan.webp";
 import bear1 from "@/assets/bear-1.webp";
 import bear2 from "@/assets/bear-2.webp";
 import bear3 from "@/assets/bear-3.webp";
+import bearPlan3d from "@/assets/bear-plan-3d.webp";
+import bearPlan from "@/assets/bear-plan.webp";
 import bear77_1 from "@/assets/bear77-1.webp";
 import bear77_2 from "@/assets/bear77-2.webp";
+import bear77Plan3d from "@/assets/bear77-plan-3d.webp";
+import bear77Plan from "@/assets/bear77-plan.webp";
 import bear86_1 from "@/assets/bear86-1.webp";
 import bear86_2 from "@/assets/bear86-2.webp";
 import bear86_3 from "@/assets/bear86-3.webp";
+import bear86Plan3d from "@/assets/bear86-plan-3d.webp";
+import bear86Plan from "@/assets/bear86-plan.webp";
 import bear134_1 from "@/assets/bear134-1.webp";
 import bear134_2 from "@/assets/bear134-2.webp";
 import bear134_3 from "@/assets/bear134-3.webp";
+import bear134Plan3d from "@/assets/bear134-plan-3d.webp";
+import bear134Plan from "@/assets/bear134-plan.webp";
 import vast140_1 from "@/assets/vast140-1.webp";
 import vast140_2 from "@/assets/vast140-2.webp";
 import vast140_3 from "@/assets/vast140-3.webp";
+import vast140Plan3d from "@/assets/vast140-plan-3d.webp";
+import vast140Plan from "@/assets/vast140-plan.webp";
 import bear168_1 from "@/assets/bear168-1.webp";
 import bear168_2 from "@/assets/bear168-2.webp";
+import bear168Plan3d from "@/assets/bear168-plan-3d.webp";
+import bear168Plan from "@/assets/bear168-plan.webp";
 
-// У каждого проекта — собственный набор рендеров. Никакого перемешивания.
+// У каждого проекта — полный набор как в карточке проекта: рендеры + планы.
 const projectGalleries: Record<number, string[]> = {
-  32: [wideHouse1, wideHouse2],
-  33: [cabin31_1, cabin31_2],
-  34: [bear1, bear2, bear3],
-  35: [bear77_1, bear77_2],
-  36: [bear86_1, bear86_2, bear86_3],
-  37: [bear134_1, bear134_2, bear134_3],
-  38: [vast140_1, vast140_2, vast140_3],
-  39: [bear168_1, bear168_2],
+  32: [wideHouse1, wideHouse2, wideHousePlan3d, wideHousePlan],
+  33: [cabin31_1, cabin31_2, cabin31Plan3d, cabin31Plan],
+  34: [bear1, bear2, bear3, bearPlan3d, bearPlan],
+  35: [bear77_1, bear77_2, bear77Plan3d, bear77Plan],
+  36: [bear86_1, bear86_2, bear86_3, bear86Plan3d, bear86Plan],
+  37: [bear134_1, bear134_2, bear134_3, bear134Plan3d, bear134Plan],
+  38: [vast140_1, vast140_2, vast140_3, vast140Plan3d, vast140Plan],
+  39: [bear168_1, bear168_2, bear168Plan3d, bear168Plan],
 };
 
-function getProjectImages(mainImage: string, id: number): string[] {
-  return projectGalleries[id] ?? [mainImage];
+function getProjectImages(_mainImage: string, id: number): string[] {
+  return projectGalleries[id] ?? [_mainImage];
 }
 
 // Per-image object-position для широких/несбалансированных фото.
