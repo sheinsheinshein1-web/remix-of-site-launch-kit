@@ -3,23 +3,43 @@ import { useNavigate } from "react-router-dom";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import { Maximize, BedDouble, Bath } from "lucide-react";
 import ProjectCardSkeleton from "@/components/ProjectCardSkeleton";
-import house1 from "@/assets/house-1.jpg";
-import house2 from "@/assets/house-2.jpg";
-import house3 from "@/assets/house-3.jpg";
-import house4 from "@/assets/house-4.jpg";
-import house5 from "@/assets/house-5.jpg";
-import house6 from "@/assets/house-6.jpg";
-import house7 from "@/assets/house-7.jpg";
-import house8 from "@/assets/house-8.jpg";
-import house9 from "@/assets/house-9.jpg";
+import SwipeableGallery from "@/components/SwipeableGallery";
 import wideHouse from "@/assets/wide-house-1.webp";
+import wideHouse2 from "@/assets/wide-house-2.webp";
+import wideHousePlan3d from "@/assets/wide-house-plan-3d.webp";
+import wideHousePlan from "@/assets/wide-house-plan.webp";
 import cabin31_1 from "@/assets/cabin-31-1.webp";
+import cabin31_2 from "@/assets/cabin-31-2.webp";
+import cabin31Plan3d from "@/assets/cabin-31-plan-3d.webp";
+import cabin31Plan from "@/assets/cabin-31-plan.webp";
 import bear1 from "@/assets/bear-1.webp";
+import bear2 from "@/assets/bear-2.webp";
+import bear3 from "@/assets/bear-3.webp";
+import bearPlan3d from "@/assets/bear-plan-3d.webp";
+import bearPlan from "@/assets/bear-plan.webp";
 import bear77_1 from "@/assets/bear77-1.webp";
+import bear77_2 from "@/assets/bear77-2.webp";
+import bear77Plan3d from "@/assets/bear77-plan-3d.webp";
+import bear77Plan from "@/assets/bear77-plan.webp";
 import bear86_1 from "@/assets/bear86-1.webp";
+import bear86_2 from "@/assets/bear86-2.webp";
+import bear86_3 from "@/assets/bear86-3.webp";
+import bear86Plan3d from "@/assets/bear86-plan-3d.webp";
+import bear86Plan from "@/assets/bear86-plan.webp";
 import bear134_1 from "@/assets/bear134-1.webp";
+import bear134_2 from "@/assets/bear134-2.webp";
+import bear134_3 from "@/assets/bear134-3.webp";
+import bear134Plan3d from "@/assets/bear134-plan-3d.webp";
+import bear134Plan from "@/assets/bear134-plan.webp";
 import vast140_1 from "@/assets/vast140-1.webp";
+import vast140_2 from "@/assets/vast140-2.webp";
+import vast140_3 from "@/assets/vast140-3.webp";
+import vast140Plan3d from "@/assets/vast140-plan-3d.webp";
+import vast140Plan from "@/assets/vast140-plan.webp";
 import bear168_1 from "@/assets/bear168-1.webp";
+import bear168_2 from "@/assets/bear168-2.webp";
+import bear168Plan3d from "@/assets/bear168-plan-3d.webp";
+import bear168Plan from "@/assets/bear168-plan.webp";
 
 // Базовый набор проектов «других» от подрядчика.
 // id указывает на маршрут /project/:id.
@@ -33,6 +53,37 @@ const baseOtherProjects = [
   { id: 38, name: "Vast House 140", price: "от 8,08 млн ₽", area: "114,9 м²", beds: 4, baths: 2, image: vast140_1 },
   { id: 39, name: "Bear House 168", price: "от 12,11 млн ₽", area: "146,4 м²", beds: 4, baths: 3, image: bear168_1 },
 ];
+
+// Галереи проектов по id (синхронизированы с FeaturedProjects/Catalog).
+const projectGalleries: Record<number, string[]> = {
+  32: [wideHouse, wideHouse2, wideHousePlan3d, wideHousePlan],
+  33: [cabin31_1, cabin31_2, cabin31Plan3d, cabin31Plan],
+  34: [bear1, bear2, bear3, bearPlan3d, bearPlan],
+  35: [bear77_1, bear77_2, bear77Plan3d, bear77Plan],
+  36: [bear86_1, bear86_2, bear86_3, bear86Plan3d, bear86Plan],
+  37: [bear134_1, bear134_2, bear134_3, bear134Plan3d, bear134Plan],
+  38: [vast140_1, vast140_2, vast140_3, vast140Plan3d, vast140Plan],
+  39: [bear168_1, bear168_2, bear168Plan3d, bear168Plan],
+};
+
+const projectFits: Record<number, ("cover" | "contain")[]> = {
+  32: ["cover", "cover", "contain", "contain"],
+  33: ["cover", "cover", "contain", "contain"],
+  34: ["cover", "cover", "cover", "contain", "contain"],
+  35: ["cover", "cover", "contain", "contain"],
+  36: ["cover", "cover", "cover", "contain", "contain"],
+  37: ["cover", "cover", "cover", "contain", "contain"],
+  38: ["cover", "cover", "cover", "contain", "contain"],
+  39: ["cover", "cover", "contain", "contain"],
+};
+
+const projectObjectPositions: Record<number, (string | undefined)[]> = {
+  38: ["right center"],
+};
+
+function getProjectImages(mainImage: string, id: number): string[] {
+  return projectGalleries[id] ?? [mainImage];
+}
 
 const PAGE_SIZE = 6;
 const SCROLL_KEY_PREFIX = "project_feed_scroll_";
@@ -114,17 +165,13 @@ const OtherProjectsFeed = ({ currentId }: Props) => {
               className="block cursor-pointer"
               aria-label={`${project.name} — ${project.price}`}
             >
-              <div className="h-[260px] rounded-[14px] overflow-hidden bg-muted">
-                <img
-                  src={project.image}
-                  alt=""
-                  className="w-full h-full object-cover"
-                  style={project.id === 38 ? { objectPosition: "right center" } : undefined}
-                  loading="eager"
-                  decoding="sync"
-                  fetchPriority="high"
-                />
-              </div>
+              <SwipeableGallery
+                images={getProjectImages(project.image, project.id)}
+                fits={projectFits[project.id]}
+                objectPositions={projectObjectPositions[project.id]}
+                alt={project.name}
+                height="aspect-[3/4] h-auto md:h-[240px] md:aspect-auto"
+              />
               <div className="px-[10px] pt-1 pb-1">
                 <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{project.name}</h2>
                 <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">{project.price}</div>
