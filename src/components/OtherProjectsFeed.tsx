@@ -108,9 +108,12 @@ const OtherProjectsFeed = ({ currentId }: Props) => {
     return { project, key: `${project.id}-${i}` };
   });
 
-  // IntersectionObserver — автоподгрузка
+  // IntersectionObserver — автоподгрузка.
+  // Пересоздаём при изменении page, иначе на десктопе сентинел может остаться
+  // в зоне видимости и повторного триггера не будет.
   useEffect(() => {
     if (!sentinelRef.current) return;
+    if (page >= MAX_PAGE) return;
     const el = sentinelRef.current;
     const observer = new IntersectionObserver(
       (entries) => {
@@ -122,11 +125,11 @@ const OtherProjectsFeed = ({ currentId }: Props) => {
           });
         }
       },
-      { rootMargin: "600px 0px" }
+      { rootMargin: "800px 0px" }
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [page]);
 
   // Снимаем флаг после отрисовки
   useEffect(() => {

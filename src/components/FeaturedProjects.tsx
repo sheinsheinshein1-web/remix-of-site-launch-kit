@@ -178,9 +178,12 @@ const FeaturedProjects = () => {
 
   const { pull, refreshing } = usePullToRefresh({ onRefresh: handleRefresh });
 
-  // Подгрузка при появлении сентинела
+  // Подгрузка при появлении сентинела.
+  // Пересоздаём observer при изменении page — иначе на десктопе, если сентинел
+  // остаётся в viewport после подгрузки, новый триггер не приходит.
   useEffect(() => {
     if (!sentinelRef.current) return;
+    if (page >= MAX_PAGE) return;
     const el = sentinelRef.current;
     const observer = new IntersectionObserver(
       (entries) => {
@@ -192,11 +195,11 @@ const FeaturedProjects = () => {
           });
         }
       },
-      { rootMargin: "600px 0px" }
+      { rootMargin: "800px 0px" }
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [page, seed]);
 
   // Снимаем флаг загрузки после отрисовки новых карточек
   useEffect(() => {
