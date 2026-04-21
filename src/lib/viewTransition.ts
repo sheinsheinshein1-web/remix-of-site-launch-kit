@@ -14,14 +14,38 @@ export function navigateWithTransition(
   // Предотвращаем нативную навигацию по <a href>, чтобы не было двойной записи в history
   e.preventDefault();
 
+  // Гарантируем, что новая страница откроется сверху (особенно когда React Router
+  // переиспользует тот же маршрут /project/:id и не размонтирует компонент).
+  const resetScroll = () => window.scrollTo(0, 0);
+
   const imgEl = (e.currentTarget as HTMLElement).querySelector("img");
   if (imgEl && (document as any).startViewTransition) {
+    // Снимаем view-transition-name с любых уже существующих элементов на странице,
+    // иначе при переходе /project/:id → /project/:id будет конфликт двух элементов
+    // с одним и тем же именем — браузер тихо отменит анимацию.
+    const previous = document.querySelectorAll<HTMLElement>('[style*="view-transition-name"]');
+    const cleared: HTMLElement[] = [];
+    previous.forEach((el) => {
+      if (el !== imgEl && el.style.viewTransitionName) {
+        el.style.viewTransitionName = "";
+        cleared.push(el);
+      }
+    });
+
     imgEl.style.viewTransitionName = "project-hero";
-    (document as any).startViewTransition(() => {
+    const transition = (document as any).startViewTransition(() => {
       imgEl.style.viewTransitionName = "";
-      flushSync(() => navigate(path));
+      flushSync(() => {
+        navigate(path);
+      });
+      resetScroll();
+    });
+    // На всякий случай — после завершения транзишна
+    transition?.finished?.finally?.(() => {
+      resetScroll();
     });
   } else {
     navigate(path);
+    resetScroll();
   }
 }
