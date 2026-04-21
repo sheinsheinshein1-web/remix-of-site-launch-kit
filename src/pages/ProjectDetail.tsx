@@ -713,13 +713,18 @@ const ProjectDetail = () => {
         <div className={`flex flex-col gap-2 ${isMobile ? "" : "sticky top-[80px]"}`}>
           {/* Row 1: Title + Price + Specs + Maker + Description (inline expandable) + Accordions + CTA */}
           <div className={`bg-background px-2 pt-3 pb-3 ${isMobile ? "rounded-b-2xl" : "rounded-2xl"}`}>
-            <div className="flex items-baseline justify-between gap-3 mb-1">
+            <button
+              type="button"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="flex items-baseline justify-between gap-3 mb-1 w-full text-left -mx-1 px-1 py-0.5 rounded-md hover:bg-muted/50 active:bg-muted transition-colors cursor-pointer"
+              aria-label="Наверх страницы"
+            >
               <h1 className="text-[18px] font-bold text-foreground tracking-tight leading-tight min-w-0 flex-1 break-words">{project.name}</h1>
               <div className="text-[15px] whitespace-nowrap flex-shrink-0">
                 <span className="text-muted-foreground font-normal">от </span>
                 <span className="font-bold text-foreground">{project.price.replace(/^от\s*/i, "")}</span>
               </div>
-            </div>
+            </button>
             <div className="flex items-center gap-2.5 text-[12px] text-muted-foreground">
               <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{project.area}</span>
               <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{project.beds}</span>
