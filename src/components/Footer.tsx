@@ -44,7 +44,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-x-8 gap-y-10">
           {/* Brand */}
           <div>
-            <img src={logoWhite} alt="многоместа.рф" className="h-6 mb-4 invert" />
+            <img src={logoWhite} alt="многоместа.рф" className="h-6 mb-4" />
             <p className="text-muted-foreground text-[13px] leading-relaxed max-w-[220px] mb-5">
               Маркетплейс модульных домов. Подберите, сравните и&nbsp;закажите у&nbsp;проверенных производителей.
             </p>
