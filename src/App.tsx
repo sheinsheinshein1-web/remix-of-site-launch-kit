@@ -19,6 +19,7 @@ import Profile from "./pages/Profile.tsx";
 import Requests from "./pages/Requests.tsx";
 import Partner from "./pages/Partner.tsx";
 import PartnerLanding from "./pages/PartnerLanding.tsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 import MessagesLayout from "./pages/MessagesLayout.tsx";
 
@@ -146,6 +147,7 @@ const AppRoutes = () => (
       <Route path="/requests" element={<Requests />} />
       <Route path="/partner" element={<PartnerLanding />} />
       <Route path="/partner/:id" element={<Partner />} />
+      <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </>
