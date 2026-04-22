@@ -104,11 +104,16 @@ const Footer = () => {
 
       {/* Bottom bar */}
       <div className="border-t border-border py-4">
-        <div className="max-w-[1400px] mx-auto px-5 md:px-8 flex items-center justify-between text-[12px] text-muted-foreground">
-          <span>© многоместа.рф, {new Date().getFullYear()}</span>
-          <div className="flex gap-4">
-            <a href="/privacy" onClick={go("/privacy")} className="hover:text-foreground transition-colors">Политика конфиденциальности</a>
-            <a href="#" className="hover:text-foreground transition-colors">Пользовательское соглашение</a>
+        <div className="max-w-[1400px] mx-auto px-5 md:px-8">
+          <p className="text-[11px] text-muted-foreground text-center leading-relaxed mb-3">
+            Сайт носит информационный характер и не является публичной офертой, определяемой положениями п. 2 статьи 437 ГК РФ.
+          </p>
+          <div className="flex items-center justify-between text-[12px] text-muted-foreground">
+            <span>© многоместа.рф, {new Date().getFullYear()}</span>
+            <div className="flex gap-4">
+              <a href="/privacy" onClick={go("/privacy")} className="hover:text-foreground transition-colors">Политика конфиденциальности</a>
+              <a href="#" className="hover:text-foreground transition-colors">Пользовательское соглашение</a>
+            </div>
           </div>
         </div>
       </div>
