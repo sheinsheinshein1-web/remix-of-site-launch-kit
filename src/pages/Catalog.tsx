@@ -47,6 +47,7 @@ import bear168_1 from "@/assets/bear168-1.webp";
 import bear168_2 from "@/assets/bear168-2.webp";
 import bear168Plan3d from "@/assets/bear168-plan-3d.webp";
 import bear168Plan from "@/assets/bear168-plan.webp";
+import patio1 from "@/assets/patio-1.jpg";
 
 // У каждого проекта — полный набор как в карточке проекта: рендеры + планы.
 const projectGalleries: Record<number, string[]> = {
@@ -58,6 +59,7 @@ const projectGalleries: Record<number, string[]> = {
   37: [bear134_1, bear134_2, bear134_3, bear134Plan3d, bear134Plan],
   38: [vast140_1, vast140_2, vast140_3, vast140Plan3d, vast140Plan],
   39: [bear168_1, bear168_2, bear168Plan3d, bear168Plan],
+  40: [patio1],
 };
 
 function getProjectImages(_mainImage: string, id: number): string[] {

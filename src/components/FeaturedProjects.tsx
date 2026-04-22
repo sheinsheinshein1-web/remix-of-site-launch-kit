@@ -51,6 +51,7 @@ import bear168_1 from "@/assets/bear168-1.webp";
 import bear168_2 from "@/assets/bear168-2.webp";
 import bear168Plan3d from "@/assets/bear168-plan-3d.webp";
 import bear168Plan from "@/assets/bear168-plan.webp";
+import patio1 from "@/assets/patio-1.jpg";
 
 const houseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
@@ -64,6 +65,7 @@ const projectGalleries: Record<number, string[]> = {
   37: [bear134_1, bear134_2, bear134_3, bear134Plan3d, bear134Plan],
   38: [vast140_1, vast140_2, vast140_3, vast140Plan3d, vast140Plan],
   39: [bear168_1, bear168_2, bear168Plan3d, bear168Plan],
+  40: [patio1],
 };
 
 // Per-image fit для проектов: "contain" — фото с blur-фоном (для горизонтальных планировок).
@@ -103,6 +105,7 @@ const baseProjects = [
   { id: 37, name: "Bear House 134", maker: "Платформа", area: "110 м²", beds: 3, baths: 3, term: "70 д.", price: "8 762 000 ₽", image: bear134_1, liked: false, likes: 71, hasRealPhotos: true, city: "Екатеринбург", rating: "4.9" },
   { id: 38, name: "Vast House 140", maker: "Платформа", area: "114,9 м²", beds: 4, baths: 2, term: "75 д.", price: "8 077 600 ₽", image: vast140_1, liked: false, likes: 83, hasRealPhotos: true, city: "Екатеринбург", rating: "4.9" },
   { id: 39, name: "Bear House 168", maker: "Платформа", area: "146,4 м²", beds: 4, baths: 3, term: "90 д.", price: "12 110 400 ₽", image: bear168_1, liked: false, likes: 95, hasRealPhotos: true, city: "Екатеринбург", rating: "4.9" },
+  { id: 40, name: "ПАТИО", maker: "Bygge", area: "45 м²", beds: 3, baths: 1, term: "60 д.", price: "2 598 000 ₽", image: patio1, liked: false, likes: 27, hasRealPhotos: true, city: "Екатеринбург", rating: "4.7" },
 ];
 
 const PAGE_SIZE = 8;
