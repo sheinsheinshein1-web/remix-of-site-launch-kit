@@ -87,7 +87,7 @@ const projectFits: Record<number, ("cover" | "contain")[]> = {
   37: ["cover", "cover", "cover", "contain", "contain"],
   38: ["cover", "cover", "cover", "contain", "contain"],
   39: ["cover", "cover", "contain", "contain"],
-  40: ["cover", "cover", "cover", "cover", "cover", "cover", "cover", "cover", "contain", "contain"],
+  40: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
 };
 
 // Per-image object-position для широких/несбалансированных фото.
