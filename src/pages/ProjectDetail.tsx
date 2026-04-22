@@ -270,11 +270,11 @@ const projectOverrides: Record<string, {
     description: "Модульный дом 7,3 × 6,1 м под ключ. Высота потолка 2,5 м, тёплые полы, оборудованный санузел, вытяжная вентиляция с выходом на крышу.",
     descriptionLong: "ПАТИО — модульный дом площадью 45 м² с продуманной планировкой и полной заводской готовностью. Высота потолка 2,5 м. Утепление пол / стена / потолок — 200 / 150 / 150 мм. Полностью оборудованный санузел, вытяжная вентиляция с выходом на крышу, кабельные тёплые полы. В подарок — защитная сетка от грызунов.",
     gallery: [
-      { id: 1, image: patio1, type: "photo", fit: "contain" },
+      { id: 1, image: patio5, type: "photo", fit: "contain" },
       { id: 2, image: patio2, type: "photo", fit: "contain" },
       { id: 3, image: patio3, type: "photo", fit: "contain" },
       { id: 4, image: patio4, type: "photo", fit: "contain" },
-      { id: 5, image: patio5, type: "photo", fit: "contain" },
+      { id: 5, image: patio1, type: "photo", fit: "contain" },
       { id: 6, image: patio6, type: "photo", fit: "contain" },
       { id: 7, image: patio7, type: "photo", fit: "contain" },
       { id: 8, image: patio8, type: "photo", fit: "contain" },
