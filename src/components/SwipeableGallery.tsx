@@ -192,8 +192,8 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
       <div className="absolute inset-0 z-10 pointer-events-none [&>*]:pointer-events-auto">{children}</div>
       {count > 1 && (() => {
         const MAX_VISIBLE = 5;
-        const DOT = 6; // px (w-1.5)
-        const GAP = 3; // px
+        const DOT = 3; // px
+        const GAP = 2; // px
         const STEP = DOT + GAP;
         const visible = Math.min(count, MAX_VISIBLE);
         const trackWidth = visible * DOT + (visible - 1) * GAP;
