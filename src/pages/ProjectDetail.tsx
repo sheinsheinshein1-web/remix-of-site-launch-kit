@@ -53,7 +53,16 @@ import bear168_2 from "@/assets/bear168-2.webp";
 import bear168Plan3d from "@/assets/bear168-plan-3d.webp";
 import bear168Plan from "@/assets/bear168-plan.webp";
 import makerPlatforma from "@/assets/maker-platforma.png";
-import patio1 from "@/assets/patio-1.jpg";
+import patio1 from "@/assets/patio-2.jpeg";
+import patio2 from "@/assets/patio-3.jpg";
+import patio3 from "@/assets/patio-4.jpg";
+import patio4 from "@/assets/patio-5.jpg";
+import patio5 from "@/assets/patio-6.jpg";
+import patio6 from "@/assets/patio-9.jpg";
+import patio7 from "@/assets/patio-10.jpg";
+import patio8 from "@/assets/patio-11.jpg";
+import patioPlan1 from "@/assets/patio-plan-1.jpg";
+import patioPlan2 from "@/assets/patio-plan-2.jpg";
 
 const defaultGallery = [
   { id: 1, image: house1, type: "photo" },
@@ -262,6 +271,15 @@ const projectOverrides: Record<string, {
     descriptionLong: "ПАТИО — модульный дом площадью 45 м² с продуманной планировкой и полной заводской готовностью. Высота потолка 2,5 м. Утепление пол / стена / потолок — 200 / 150 / 150 мм. Полностью оборудованный санузел, вытяжная вентиляция с выходом на крышу, кабельные тёплые полы. В подарок — защитная сетка от грызунов.",
     gallery: [
       { id: 1, image: patio1, type: "photo" },
+      { id: 2, image: patio2, type: "photo" },
+      { id: 3, image: patio3, type: "photo" },
+      { id: 4, image: patio4, type: "photo" },
+      { id: 5, image: patio5, type: "photo" },
+      { id: 6, image: patio6, type: "photo" },
+      { id: 7, image: patio7, type: "photo" },
+      { id: 8, image: patio8, type: "photo" },
+      { id: 9, image: patioPlan1, type: "photo", fit: "contain" },
+      { id: 10, image: patioPlan2, type: "photo", fit: "contain" },
     ],
   },
 };
