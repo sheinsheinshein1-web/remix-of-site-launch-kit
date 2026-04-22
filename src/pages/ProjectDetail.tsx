@@ -667,7 +667,7 @@ const ProjectDetail = () => {
                 const isActive = i === activeImage;
                 return (
                   <div key={img.id} className="relative isolate w-full flex-shrink-0 aspect-[4/5] bg-muted overflow-hidden">
-                    {isContain && isActive && (
+                    {isContain && isActive && id === "40" && (
                       <>
                         <img
                           src={img.image}

@@ -306,6 +306,7 @@ const FeaturedProjects = () => {
                   images={getProjectImages(project.image, project.id)}
                   fits={projectFits[project.id]}
                   objectPositions={projectObjectPositions[project.id]}
+                  blurBackground={project.id === 40}
                   alt={project.name}
                   height="aspect-[3/4] h-auto md:h-[240px] md:aspect-auto"
                 >
