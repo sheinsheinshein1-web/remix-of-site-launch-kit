@@ -115,7 +115,7 @@ const baseProjects = [
   { id: 37, name: "Bear House 134", maker: "Платформа", area: "110 м²", beds: 3, baths: 3, term: "70 д.", price: "8 762 000 ₽", image: bear134_1, liked: false, likes: 71, hasRealPhotos: true, city: "Екатеринбург", rating: "4.9" },
   { id: 38, name: "Vast House 140", maker: "Платформа", area: "114,9 м²", beds: 4, baths: 2, term: "75 д.", price: "8 077 600 ₽", image: vast140_1, liked: false, likes: 83, hasRealPhotos: true, city: "Екатеринбург", rating: "4.9" },
   { id: 39, name: "Bear House 168", maker: "Платформа", area: "146,4 м²", beds: 4, baths: 3, term: "90 д.", price: "12 110 400 ₽", image: bear168_1, liked: false, likes: 95, hasRealPhotos: true, city: "Екатеринбург", rating: "4.9" },
-  { id: 40, name: "ПАТИО", maker: "Bygge", area: "45 м²", beds: 3, baths: 1, term: "60 д.", price: "2 598 000 ₽", image: patio1, liked: false, likes: 27, hasRealPhotos: true, city: "Екатеринбург", rating: "4.7" },
+  { id: 40, name: "ПАТИО", maker: "Bygge", area: "45 м²", beds: 3, baths: 1, term: "60 д.", price: "2 598 000 ₽", image: patio5, liked: false, likes: 27, hasRealPhotos: true, city: "Екатеринбург", rating: "4.7" },
 ];
 
 const PAGE_SIZE = 8;
