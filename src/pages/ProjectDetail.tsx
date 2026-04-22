@@ -63,6 +63,16 @@ import patio7 from "@/assets/patio-10.jpg";
 import patio8 from "@/assets/patio-11.jpg";
 import patioPlan1 from "@/assets/patio-plan-1.jpg";
 import patioPlan2 from "@/assets/patio-plan-2.jpg";
+import tundra1 from "@/assets/tundra-1.jpg";
+import tundra2 from "@/assets/tundra-2.jpg";
+import tundra3 from "@/assets/tundra-3.jpg";
+import tundra4 from "@/assets/tundra-4.jpg";
+import tundra5 from "@/assets/tundra-5.jpg";
+import tundra6 from "@/assets/tundra-6.jpg";
+import tundra7 from "@/assets/tundra-7.jpg";
+import tundraPlan1 from "@/assets/tundra-plan-1.jpg";
+import tundraPlan2 from "@/assets/tundra-plan-2.jpg";
+import tundraPlan3 from "@/assets/tundra-plan-3.jpg";
 
 const defaultGallery = [
   { id: 1, image: house1, type: "photo" },
@@ -280,6 +290,34 @@ const projectOverrides: Record<string, {
       { id: 8, image: patio8, type: "photo", fit: "contain" },
       { id: 9, image: patioPlan1, type: "photo", fit: "contain" },
       { id: 10, image: patioPlan2, type: "photo", fit: "contain" },
+    ],
+  },
+  "41": {
+    name: "ТУНДРА",
+    maker: "Bygge",
+    makerInitials: "BG",
+    makerLogo: undefined,
+    makerId: "bygge",
+    siteUrl: "https://bygge.ru/katalog/tundra/",
+    price: "5 990 000 ₽",
+    area: "96 м²",
+    beds: 4,
+    baths: 1,
+    floors: 1,
+    city: "Екатеринбург",
+    description: "Барнхаус 8 × 12 м для круглогодичного проживания. Высота потолка 3 м, оборудованный санузел, вытяжная вентиляция с выходом на крышу.",
+    descriptionLong: "ТУНДРА — барнхаус площадью 96 м² для круглогодичного проживания. Высота потолка 3 м. Утепление пол / стена / потолок — 200 / 150 / 150 мм. Полностью оборудованный санузел, вытяжная вентиляция с выходом на крышу. В подарок — конвекторы отопления.",
+    gallery: [
+      { id: 1, image: tundra1, type: "photo", fit: "contain" },
+      { id: 2, image: tundra2, type: "photo", fit: "contain" },
+      { id: 3, image: tundra3, type: "photo", fit: "contain" },
+      { id: 4, image: tundra4, type: "photo", fit: "contain" },
+      { id: 5, image: tundra5, type: "photo", fit: "contain" },
+      { id: 6, image: tundra6, type: "photo", fit: "contain" },
+      { id: 7, image: tundra7, type: "photo", fit: "contain" },
+      { id: 8, image: tundraPlan1, type: "photo", fit: "contain" },
+      { id: 9, image: tundraPlan2, type: "photo", fit: "contain" },
+      { id: 10, image: tundraPlan3, type: "photo", fit: "contain" },
     ],
   },
 };
@@ -667,7 +705,7 @@ const ProjectDetail = () => {
                 const isActive = i === activeImage;
                 return (
                   <div key={img.id} className="relative isolate w-full flex-shrink-0 aspect-[4/5] bg-muted overflow-hidden">
-                    {isContain && id === "40" && img.id <= 8 && (
+                    {isContain && ((id === "40" && img.id <= 8) || (id === "41" && img.id <= 7)) && (
                       <>
                         <img
                           src={img.image}
