@@ -51,7 +51,16 @@ import bear168_1 from "@/assets/bear168-1.webp";
 import bear168_2 from "@/assets/bear168-2.webp";
 import bear168Plan3d from "@/assets/bear168-plan-3d.webp";
 import bear168Plan from "@/assets/bear168-plan.webp";
-import patio1 from "@/assets/patio-1.jpg";
+import patio1 from "@/assets/patio-2.jpeg";
+import patio2 from "@/assets/patio-3.jpg";
+import patio3 from "@/assets/patio-4.jpg";
+import patio4 from "@/assets/patio-5.jpg";
+import patio5 from "@/assets/patio-6.jpg";
+import patio6 from "@/assets/patio-9.jpg";
+import patio7 from "@/assets/patio-10.jpg";
+import patio8 from "@/assets/patio-11.jpg";
+import patioPlan1 from "@/assets/patio-plan-1.jpg";
+import patioPlan2 from "@/assets/patio-plan-2.jpg";
 
 const houseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
@@ -65,7 +74,7 @@ const projectGalleries: Record<number, string[]> = {
   37: [bear134_1, bear134_2, bear134_3, bear134Plan3d, bear134Plan],
   38: [vast140_1, vast140_2, vast140_3, vast140Plan3d, vast140Plan],
   39: [bear168_1, bear168_2, bear168Plan3d, bear168Plan],
-  40: [patio1],
+  40: [patio1, patio2, patio3, patio4, patio5, patio6, patio7, patio8, patioPlan1, patioPlan2],
 };
 
 // Per-image fit для проектов: "contain" — фото с blur-фоном (для горизонтальных планировок).
@@ -78,6 +87,7 @@ const projectFits: Record<number, ("cover" | "contain")[]> = {
   37: ["cover", "cover", "cover", "contain", "contain"],
   38: ["cover", "cover", "cover", "contain", "contain"],
   39: ["cover", "cover", "contain", "contain"],
+  40: ["cover", "cover", "cover", "cover", "cover", "cover", "cover", "cover", "contain", "contain"],
 };
 
 // Per-image object-position для широких/несбалансированных фото.
