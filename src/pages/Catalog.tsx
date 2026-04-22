@@ -93,6 +93,11 @@ const projectObjectPositions: Record<number, (string | undefined)[]> = {
   38: ["right center"],
 };
 
+// Per-image blur-фон (true только для фото; для планов false → серый дефолт).
+const projectBlurBackground: Record<number, boolean[]> = {
+  40: [true, true, true, true, true, true, true, true, false, false],
+};
+
 const chips = ["Все", "Для жизни", "Для выходных", "Для сдачи", "Для семьи", "Быстро поставить"];
 const mobileChips = ["Все", "Для жизни", "Для выходных", "Для сдачи", "Для семьи", "Быстро поставить"];
 
