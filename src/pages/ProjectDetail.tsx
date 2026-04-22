@@ -768,7 +768,7 @@ const ProjectDetail = () => {
             {/* Maker pill */}
             <div
               className="mt-3 flex items-center gap-2.5 bg-secondary rounded-xl px-2.5 py-2 cursor-pointer"
-              onClick={() => navigate('/partner/1')}
+              onClick={() => navigate(project.makerHref)}
             >
               <div className="w-9 h-9 bg-background rounded-lg flex items-center justify-center text-foreground text-[10px] font-bold flex-shrink-0 overflow-hidden">
                 {project.makerLogo ? (
@@ -816,7 +816,7 @@ const ProjectDetail = () => {
 
             {/* CTA в самом низу */}
             <a
-              href="https://platforma-modul.ru/"
+              href={project.siteUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full h-12 bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold mt-4 flex items-center justify-center hover:opacity-90 transition-opacity"
