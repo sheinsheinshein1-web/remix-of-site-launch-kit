@@ -150,7 +150,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
         >
           {images.map((src, i) => {
             const fit = fits?.[i] ?? "cover";
-            const showBlur = fit === "contain" && Math.abs(i - current) <= 1;
+            const showBlur = blurBackground && fit === "contain" && Math.abs(i - current) <= 1;
             return (
               <div
                 key={i}
@@ -189,7 +189,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
         images.map((src, i) => {
           const fit = fits?.[i] ?? "cover";
           const isActive = i === current;
-          const showBlur = fit === "contain" && isActive;
+          const showBlur = blurBackground && fit === "contain" && isActive;
           return (
             <div
               key={i}
