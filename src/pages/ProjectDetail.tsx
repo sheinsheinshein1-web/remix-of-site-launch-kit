@@ -73,6 +73,16 @@ import tundra7 from "@/assets/tundra-7.jpg";
 import tundraPlan1 from "@/assets/tundra-plan-1.jpg";
 import tundraPlan2 from "@/assets/tundra-plan-2.jpg";
 import tundraPlan3 from "@/assets/tundra-plan-3.jpg";
+import sherwood1 from "@/assets/sherwood-1.jpg";
+import sherwood2 from "@/assets/sherwood-2.jpg";
+import sherwood3 from "@/assets/sherwood-3.jpg";
+import sherwood4 from "@/assets/sherwood-4.jpg";
+import sherwood5 from "@/assets/sherwood-5.jpg";
+import sherwood6 from "@/assets/sherwood-6.jpg";
+import sherwood7 from "@/assets/sherwood-7.jpg";
+import sherwood8 from "@/assets/sherwood-8.jpg";
+import sherwood9 from "@/assets/sherwood-9.jpg";
+import sherwoodPlan1 from "@/assets/sherwood-plan-1.jpg";
 
 const defaultGallery = [
   { id: 1, image: house1, type: "photo" },
@@ -318,6 +328,34 @@ const projectOverrides: Record<string, {
       { id: 8, image: tundraPlan1, type: "photo", fit: "contain" },
       { id: 9, image: tundraPlan2, type: "photo", fit: "contain" },
       { id: 10, image: tundraPlan3, type: "photo", fit: "contain" },
+    ],
+  },
+  "42": {
+    name: "ШЕРВУД",
+    maker: "Bygge",
+    makerInitials: "BG",
+    makerLogo: undefined,
+    makerId: "bygge",
+    siteUrl: "https://bygge.ru/katalog/sherwood/",
+    price: "5 635 000 ₽",
+    area: "87 м²",
+    beds: 4,
+    baths: 1,
+    floors: 1,
+    city: "Екатеринбург",
+    description: "Модульный дом 7,3 × 12 м для круглогодичного проживания. Высота потолка 2,95 м, оборудованный санузел, вытяжная вентиляция с выходом на крышу.",
+    descriptionLong: "ШЕРВУД — модульный дом площадью 87 м² для круглогодичного проживания. Высота потолка 2,95 м. Утепление пол / стена / потолок — 200 / 150 / 150 мм. Полностью оборудованный санузел, вытяжная вентиляция с выходом на крышу. В подарок — конвекторы отопления.",
+    gallery: [
+      { id: 1, image: sherwood1, type: "photo", fit: "contain" },
+      { id: 2, image: sherwood2, type: "photo", fit: "contain" },
+      { id: 3, image: sherwood3, type: "photo", fit: "contain" },
+      { id: 4, image: sherwood4, type: "photo", fit: "contain" },
+      { id: 5, image: sherwood5, type: "photo", fit: "contain" },
+      { id: 6, image: sherwood6, type: "photo", fit: "contain" },
+      { id: 7, image: sherwood7, type: "photo", fit: "contain" },
+      { id: 8, image: sherwood8, type: "photo", fit: "contain" },
+      { id: 9, image: sherwood9, type: "photo", fit: "contain" },
+      { id: 10, image: sherwoodPlan1, type: "photo", fit: "contain" },
     ],
   },
 };
