@@ -5,17 +5,19 @@ interface SwipeableGalleryProps {
   images: string[];
   alt: string;
   height?: string;
-  /** Per-image fit. "contain" — фото показывается целиком с blur-фоном. По умолчанию "cover". */
+  /** Per-image fit. "contain" — фото показывается целиком. По умолчанию "cover". */
   fits?: ("cover" | "contain")[];
   /** Per-image object-position (CSS), например "left center" — для широких фото. По умолчанию "center". */
   objectPositions?: (string | undefined)[];
+  /** Включить blur-фон под фото с fit="contain". По умолчанию false (серый фон bg-muted). */
+  blurBackground?: boolean;
   children?: React.ReactNode;
 }
 
 const SWIPE_THRESHOLD_RATIO = 0.18; // 18% ширины — чтобы засчитать смену слайда
 const SWIPE_VELOCITY = 0.45; // px/ms — быстрый флик тоже листает
 
-const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPositions, children }: SwipeableGalleryProps) => {
+const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPositions, blurBackground = false, children }: SwipeableGalleryProps) => {
   const [current, setCurrent] = useState(0);
   const [dragX, setDragX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
