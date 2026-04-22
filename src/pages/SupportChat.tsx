@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, Send, Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 import supportIcon from "@/assets/support-icon.png";
+
+const API = "https://sheinsheinshein1-web-chat-telegram-bridge-77c4.twc1.net";
 
 interface Message {
   id: number;
@@ -23,42 +25,86 @@ const quickActions = [
   "Другой вопрос",
 ];
 
+function getSessionId(): string {
+  const key = "support_chat_session";
+  let id = localStorage.getItem(key);
+  if (!id) {
+    id = `s_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+    localStorage.setItem(key, id);
+  }
+  return id;
+}
+
+function formatTime(ts?: number): string {
+  const d = ts ? new Date(ts) : new Date();
+  return `${d.getHours()}:${String(d.getMinutes()).padStart(2, "0")}`;
+}
+
 const SupportChat = () => {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [input, setInput] = useState("");
+  const sessionId = useRef(getSessionId());
+  const bottomRef = useRef<HTMLDivElement>(null);
 
-  const sendMessage = () => {
-    const text = input.trim();
+  // SSE — слушаем ответы из Telegram
+  useEffect(() => {
+    const es = new EventSource(`${API}/listen?session=${sessionId.current}`);
+
+    es.onmessage = (e) => {
+      const data = JSON.parse(e.data);
+
+      if (data.type === "history") {
+        const restored: Message[] = data.messages
+          .filter((m: any) => m.from === "admin")
+          .map((m: any) => ({
+            id: m.timestamp,
+            text: m.text,
+            fromSupport: true,
+            time: formatTime(m.timestamp),
+          }));
+        if (restored.length > 0) {
+          setMessages((prev) => [...prev, ...restored]);
+        }
+        return;
+      }
+
+      if (data.from === "admin") {
+        setMessages((prev) => [
+          ...prev,
+          { id: Date.now(), text: data.text, fromSupport: true, time: formatTime(data.timestamp) },
+        ]);
+      }
+    };
+
+    return () => es.close();
+  }, []);
+
+  // Скролл вниз при новых сообщениях
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  const sendMessage = async (text = input.trim()) => {
     if (!text) return;
-    const now = new Date();
-    const time = `${now.getHours()}:${String(now.getMinutes()).padStart(2, "0")}`;
+    const time = formatTime();
+
     setMessages((prev) => [...prev, { id: Date.now(), text, fromSupport: false, time }]);
     setInput("");
-    setTimeout(() => {
-      const replyTime = new Date();
-      const rt = `${replyTime.getHours()}:${String(replyTime.getMinutes()).padStart(2, "0")}`;
-      setMessages((prev) => [
-        ...prev,
-        { id: Date.now(), text: "Спасибо за обращение! Менеджер ответит вам в ближайшее время.", fromSupport: true, time: rt },
-      ]);
-    }, 1500);
+
+    try {
+      await fetch(`${API}/send`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ session: sessionId.current, text }),
+      });
+    } catch {
+      // сеть недоступна — сообщение уже показано локально
+    }
   };
 
-  const handleQuickAction = (action: string) => {
-    const now = new Date();
-    const time = `${now.getHours()}:${String(now.getMinutes()).padStart(2, "0")}`;
-    setMessages((prev) => [...prev, { id: Date.now(), text: action, fromSupport: false, time }]);
-    setTimeout(() => {
-      const replyTime = new Date();
-      const rt = `${replyTime.getHours()}:${String(replyTime.getMinutes()).padStart(2, "0")}`;
-      setMessages((prev) => [
-        ...prev,
-        { id: Date.now(), text: "Спасибо! Менеджер свяжется с вами в ближайшее время.", fromSupport: true, time: rt },
-      ]);
-    }, 1500);
-  };
+  const handleQuickAction = (action: string) => sendMessage(action);
 
   // Desktop header inside the chat area
   const desktopHeader = (
@@ -102,7 +148,6 @@ const SupportChat = () => {
             </div>
           </div>
         ))}
-
         {messages.length <= 3 && (
           <div className="flex flex-wrap gap-2 mt-1">
             {quickActions.map((action) => (
@@ -113,6 +158,7 @@ const SupportChat = () => {
             ))}
           </div>
         )}
+        <div ref={bottomRef} />
       </div>
 
       <div className="border-t border-border bg-card px-5 py-3.5 shrink-0">
@@ -124,7 +170,7 @@ const SupportChat = () => {
             placeholder="Введите сообщение"
             className="flex-1 h-11 rounded-2xl bg-secondary border border-border px-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
           />
-          <button onClick={sendMessage} disabled={!input.trim()}
+          <button onClick={() => sendMessage()} disabled={!input.trim()}
             className="w-11 h-11 rounded-xl bg-primary flex items-center justify-center shrink-0 disabled:opacity-40 transition-opacity">
             <Send className="w-4 h-4 text-primary-foreground fill-primary-foreground" />
           </button>
@@ -133,7 +179,7 @@ const SupportChat = () => {
     </div>
   );
 
-  // Mobile: full-screen chat page (UNCHANGED)
+  // Mobile: full-screen chat page
   if (isMobile) {
     return (
       <div className="min-h-screen bg-card font-sans flex flex-col">
@@ -148,7 +194,7 @@ const SupportChat = () => {
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-1">
                 <p className="text-sm font-semibold text-foreground leading-tight">Поддержка Много места</p>
-                <span className="w-3 h-3 rounded-full bg-primary/70 flex items-center justify-center shrink-0">
+                <span className="w-3 h-3 rounded-[6px] bg-primary/70 flex items-center justify-center shrink-0">
                   <Check className="w-1.5 h-1.5 text-primary-foreground" strokeWidth={3} />
                 </span>
               </div>
@@ -187,6 +233,7 @@ const SupportChat = () => {
               ))}
             </div>
           )}
+          <div ref={bottomRef} />
         </div>
 
         <div className="sticky bottom-0 bg-background/70 backdrop-blur-lg border-t border-border px-3 py-2.5 pb-[calc(0.625rem+max(env(safe-area-inset-bottom),20px))]">
@@ -195,7 +242,7 @@ const SupportChat = () => {
               onKeyDown={(e) => e.key === "Enter" && sendMessage()} placeholder="Введите сообщение"
               className="flex-1 h-10 rounded-full bg-muted border border-border px-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
               style={{ fontSize: "16px" }} />
-            <button onClick={sendMessage} disabled={!input.trim()}
+            <button onClick={() => sendMessage()} disabled={!input.trim()}
               className="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0 disabled:opacity-40 transition-opacity">
               <Send className="w-4.5 h-4.5 text-primary-foreground fill-primary-foreground" />
             </button>
