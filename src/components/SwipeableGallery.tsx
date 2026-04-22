@@ -190,16 +190,62 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
         })
       )}
       <div className="absolute inset-0 z-10 pointer-events-none [&>*]:pointer-events-auto">{children}</div>
-      {count > 1 && (
-        <div className="absolute bottom-[6px] right-[6px] z-10 bg-foreground/40 backdrop-blur-md rounded-full px-[5px] py-[3px] flex items-center gap-[2px]">
-          {images.map((_, i) => (
-            <div
-              key={i}
-              className={`w-[3px] h-[3px] rounded-full transition-colors ${i === current ? "bg-white" : "bg-white/50"}`}
-            />
-          ))}
-        </div>
-      )}
+      {count > 1 && (() => {
+        const MAX_VISIBLE = 5;
+        const DOT = 6; // px (w-1.5)
+        const GAP = 3; // px
+        const STEP = DOT + GAP;
+        const visible = Math.min(count, MAX_VISIBLE);
+        const trackWidth = visible * DOT + (visible - 1) * GAP;
+
+        // Активная точка должна оставаться по центру окна (когда возможно).
+        // window = индекс самой левой видимой точки.
+        const half = Math.floor(MAX_VISIBLE / 2);
+        let windowStart = 0;
+        if (count > MAX_VISIBLE) {
+          windowStart = Math.max(0, Math.min(current - half, count - MAX_VISIBLE));
+        }
+        const offset = -windowStart * STEP;
+
+        return (
+          <div
+            className="absolute bottom-[6px] right-[6px] z-10 bg-foreground/40 backdrop-blur-md rounded-full px-[5px] py-[3px] flex items-center"
+            style={{ width: trackWidth + 10 /* px-[5px]*2 */ }}
+          >
+            <div className="relative h-[6px] overflow-hidden" style={{ width: trackWidth }}>
+              <div
+                className="absolute top-0 left-0 flex items-center transition-transform duration-300 ease-out"
+                style={{ gap: `${GAP}px`, transform: `translateX(${offset}px)` }}
+              >
+                {images.map((_, i) => {
+                  const posInWindow = i - windowStart;
+                  // Уменьшаем крайние точки только когда есть скрытые с этой стороны
+                  const hiddenLeft = windowStart > 0;
+                  const hiddenRight = windowStart + MAX_VISIBLE < count;
+                  let scale = 1;
+                  if (hiddenLeft && posInWindow === 0) scale = 0.5;
+                  else if (hiddenLeft && posInWindow === 1) scale = 0.75;
+                  else if (hiddenRight && posInWindow === MAX_VISIBLE - 1) scale = 0.5;
+                  else if (hiddenRight && posInWindow === MAX_VISIBLE - 2) scale = 0.75;
+
+                  return (
+                    <div
+                      key={i}
+                      className={`rounded-full transition-all duration-200 ${i === current ? "bg-white" : "bg-white/50"}`}
+                      style={{
+                        width: `${DOT}px`,
+                        height: `${DOT}px`,
+                        transform: `scale(${scale})`,
+                        flexShrink: 0,
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 };
