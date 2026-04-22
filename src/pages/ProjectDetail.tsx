@@ -412,6 +412,8 @@ const ProjectDetail = () => {
     maker: override?.maker ?? "Sherwood Home",
     makerInitials: override?.makerInitials ?? "SW",
     makerLogo: override?.makerLogo,
+    makerHref: `/partner/${override?.makerId ?? "1"}`,
+    siteUrl: override?.siteUrl ?? "https://platforma-modul.ru/",
     price: override?.price ?? "4 950 000 ₽",
     area: override?.area ?? "60 м²",
     beds: override?.beds ?? 2,
