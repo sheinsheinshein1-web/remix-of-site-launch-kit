@@ -95,6 +95,11 @@ const projectObjectPositions: Record<number, (string | undefined)[]> = {
   38: ["right center"],
 };
 
+// Per-image blur-фон (true только для фото; для планов false → серый дефолт).
+const projectBlurBackground: Record<number, boolean[]> = {
+  40: [true, true, true, true, true, true, true, true, false, false],
+};
+
 function getProjectImages(mainImage: string, id: number): string[] {
   if (projectGalleries[id]) return projectGalleries[id];
   const others = houseImages.filter(img => img !== mainImage);
@@ -306,7 +311,7 @@ const FeaturedProjects = () => {
                   images={getProjectImages(project.image, project.id)}
                   fits={projectFits[project.id]}
                   objectPositions={projectObjectPositions[project.id]}
-                  blurBackground={project.id === 40}
+                  blurBackground={projectBlurBackground[project.id]}
                   alt={project.name}
                   height="aspect-[3/4] h-auto md:h-[240px] md:aspect-auto"
                 >
