@@ -851,7 +851,7 @@ const ProjectDetail = () => {
               href={project.siteUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full h-12 bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold mt-4 flex items-center justify-center hover:opacity-90 transition-opacity"
+              className="w-full h-12 bg-secondary text-foreground rounded-xl text-[15px] font-semibold mt-4 flex items-center justify-center hover:bg-secondary/80 transition-colors"
             >
               Перейти на сайт
             </a>
