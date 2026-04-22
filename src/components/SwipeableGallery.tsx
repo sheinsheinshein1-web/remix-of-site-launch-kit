@@ -148,30 +148,34 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
         >
           {images.map((src, i) => {
             const fit = fits?.[i] ?? "cover";
+            const showBlur = fit === "contain" && Math.abs(i - current) <= 1;
             return (
               <div
                 key={i}
                 className="relative h-full flex-shrink-0 overflow-hidden bg-muted"
                 style={{ width: `${100 / count}%` }}
               >
-                {/* Blur-фон: тот же src, чтобы не было дополнительной загрузки/мерцания */}
-                <img
-                  src={src}
-                  alt=""
-                  aria-hidden="true"
-                  className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                  style={{ filter: "blur(24px)", transform: "scale(1.15)" }}
-                  loading="eager"
-                  decoding="sync"
-                  draggable={false}
-                />
-                <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+                {showBlur && (
+                  <>
+                    <img
+                      src={src}
+                      alt=""
+                      aria-hidden="true"
+                      className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                      style={{ filter: "blur(16px)", transform: "scale(1.08)" }}
+                      loading="eager"
+                      decoding="sync"
+                      draggable={false}
+                    />
+                    <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+                  </>
+                )}
                 <img
                   src={src}
                   alt={`${alt} ${i + 1}`}
                   className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} pointer-events-none`}
                   style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
-                  loading="eager"
+                  loading={Math.abs(i - current) <= 1 ? "eager" : "lazy"}
                   decoding="sync"
                   draggable={false}
                 />
@@ -182,29 +186,35 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
       ) : (
         images.map((src, i) => {
           const fit = fits?.[i] ?? "cover";
+          const isActive = i === current;
+          const showBlur = fit === "contain" && isActive;
           return (
             <div
               key={i}
               className="absolute inset-0 overflow-hidden bg-muted"
-              style={{ zIndex: i === current ? 2 : 1, opacity: i === current ? 1 : 0 }}
+              style={{ zIndex: isActive ? 2 : 1, opacity: isActive ? 1 : 0 }}
             >
-              <img
-                src={src}
-                alt=""
-                aria-hidden="true"
-                className="absolute inset-0 w-full h-full object-cover"
-                style={{ filter: "blur(24px)", transform: "scale(1.15)" }}
-                loading="eager"
-                decoding="sync"
-                draggable={false}
-              />
-              <div className="absolute inset-0 bg-black/10" />
+              {showBlur && (
+                <>
+                  <img
+                    src={src}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{ filter: "blur(16px)", transform: "scale(1.08)" }}
+                    loading="eager"
+                    decoding="sync"
+                    draggable={false}
+                  />
+                  <div className="absolute inset-0 bg-black/10" />
+                </>
+              )}
               <img
                 src={src}
                 alt={`${alt} ${i + 1}`}
                 className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
                 style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
-                loading="eager"
+                loading={isActive ? "eager" : "lazy"}
                 decoding="sync"
                 draggable={false}
               />
@@ -232,7 +242,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
 
         return (
           <div
-            className="absolute bottom-[6px] right-[6px] z-10 bg-foreground/40 backdrop-blur-md rounded-full px-[5px] py-[3px] flex items-center"
+            className="absolute bottom-[6px] right-[6px] z-10 rounded-full bg-foreground/40 px-[5px] py-[3px] flex items-center"
             style={{ width: trackWidth + 10 /* px-[5px]*2 */ }}
           >
             <div className="relative flex items-center overflow-hidden" style={{ width: trackWidth, height: DOT }}>

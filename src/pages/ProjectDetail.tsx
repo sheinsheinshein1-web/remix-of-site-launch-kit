@@ -664,16 +664,17 @@ const ProjectDetail = () => {
             >
               {galleryImages.map((img, i) => {
                 const isContain = (img as any).fit === "contain";
+                const isActive = i === activeImage;
                 return (
                   <div key={img.id} className="relative isolate w-full flex-shrink-0 aspect-[4/5] bg-muted overflow-hidden">
-                    {isContain && (
+                    {isContain && isActive && (
                       <>
                         <img
                           src={img.image}
                           alt=""
                           aria-hidden="true"
                           className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                          style={{ filter: "blur(24px)", transform: "scale(1.15)" }}
+                          style={{ filter: "blur(16px)", transform: "scale(1.08)" }}
                           decoding="sync"
                           draggable={false}
                         />
@@ -698,7 +699,7 @@ const ProjectDetail = () => {
                 );
               })}
             </div>
-            <span className="absolute bottom-3 right-4 text-xs text-white bg-black/45 px-2.5 py-1 rounded-full">
+            <span className="absolute bottom-3 right-4 text-xs text-white bg-black/45 px-2.5 py-1 rounded-full" style={{ textShadow: "0 1px 3px rgba(0,0,0,0.45)" }}>
               {activeImage + 1} из {galleryImages.length}
             </span>
             </div>
@@ -711,7 +712,8 @@ const ProjectDetail = () => {
               <img
                 src={galleryImages[activeImage].image}
                 alt=""
-                className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-60"
+                className="absolute inset-0 w-full h-full object-cover opacity-60"
+                style={{ filter: "blur(16px)", transform: "scale(1.08)" }}
                 draggable={false}
               />
               {/* Main image */}
@@ -731,13 +733,13 @@ const ProjectDetail = () => {
               {/* Nav arrows */}
               <button
                 onClick={() => setActiveImage(Math.max(0, activeImage - 1))}
-                className={`absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-xl bg-background/80 backdrop-blur-sm flex items-center justify-center transition-opacity ${activeImage === 0 ? "opacity-30 pointer-events-none" : "opacity-100 hover:bg-background"}`}
+                className={`absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-xl bg-background/90 shadow-sm flex items-center justify-center transition-opacity ${activeImage === 0 ? "opacity-30 pointer-events-none" : "opacity-100 hover:bg-background"}`}
               >
                 <ChevronDown className="w-5 h-5 text-foreground rotate-90" />
               </button>
               <button
                 onClick={() => setActiveImage(Math.min(galleryImages.length - 1, activeImage + 1))}
-                className={`absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-xl bg-background/80 backdrop-blur-sm flex items-center justify-center transition-opacity ${activeImage === galleryImages.length - 1 ? "opacity-30 pointer-events-none" : "opacity-100 hover:bg-background"}`}
+                className={`absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-xl bg-background/90 shadow-sm flex items-center justify-center transition-opacity ${activeImage === galleryImages.length - 1 ? "opacity-30 pointer-events-none" : "opacity-100 hover:bg-background"}`}
               >
                 <ChevronDown className="w-5 h-5 text-foreground -rotate-90" />
               </button>
