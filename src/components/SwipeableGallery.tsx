@@ -181,7 +181,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
         </div>
       ) : (
         images.map((src, i) => {
-          const fit = fits?.[i] ?? "contain";
+          const fit = fits?.[i] ?? "cover";
           return (
             <div
               key={i}
