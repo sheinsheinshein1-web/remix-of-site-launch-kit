@@ -66,8 +66,38 @@ const PartnerApplicationForm = ({ onBack, variant = "page" }: PartnerApplication
 
   const handleSubmit = () => {
     if (!validate()) return;
+    const submittedAt = new Date().toISOString();
     // Save to localStorage for now
-    localStorage.setItem("partner_application", JSON.stringify({ ...form, submittedAt: new Date().toISOString() }));
+    localStorage.setItem("partner_application", JSON.stringify({ ...form, submittedAt }));
+
+    // Отправка уведомления в Telegram через тот же мост, что и поддержка
+    const API = "https://sheinsheinshein1-web-chat-telegram-bridge-77c4.twc1.net";
+    const sessionKey = "partner_application_session";
+    let session = localStorage.getItem(sessionKey);
+    if (!session) {
+      session = `partner_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+      localStorage.setItem(sessionKey, session);
+    }
+
+    const text =
+      `🆕 Новая заявка на партнёрство\n\n` +
+      `Компания: ${form.companyName}\n` +
+      `ИНН: ${form.inn}\n` +
+      `Вид деятельности: ${form.activityType}\n` +
+      (form.website ? `Сайт: ${form.website}\n` : "") +
+      `Контактное лицо: ${form.contactName}\n` +
+      `Телефон: ${form.phone}\n` +
+      `Время: ${new Date(submittedAt).toLocaleString("ru-RU")}`;
+
+    // fire-and-forget — не блокируем переход в чат
+    fetch(`${API}/send`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ session, text }),
+    }).catch(() => {
+      // сеть недоступна — заявка уже сохранена локально
+    });
+
     navigate("/messages/partner?start=1");
   };
 
