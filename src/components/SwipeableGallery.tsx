@@ -212,7 +212,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
             className="absolute bottom-[6px] right-[6px] z-10 bg-foreground/40 backdrop-blur-md rounded-full px-[5px] py-[3px] flex items-center"
             style={{ width: trackWidth + 10 /* px-[5px]*2 */ }}
           >
-            <div className="relative h-[6px] overflow-hidden" style={{ width: trackWidth }}>
+            <div className="relative flex items-center overflow-hidden" style={{ width: trackWidth, height: DOT }}>
               <div
                 className="absolute top-0 left-0 flex items-center transition-transform duration-300 ease-out"
                 style={{ gap: `${GAP}px`, transform: `translateX(${offset}px)` }}
