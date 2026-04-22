@@ -53,6 +53,7 @@ import bear168_2 from "@/assets/bear168-2.webp";
 import bear168Plan3d from "@/assets/bear168-plan-3d.webp";
 import bear168Plan from "@/assets/bear168-plan.webp";
 import makerPlatforma from "@/assets/maker-platforma.png";
+import patio1 from "@/assets/patio-1.jpg";
 
 const defaultGallery = [
   { id: 1, image: house1, type: "photo" },
@@ -68,6 +69,8 @@ const projectOverrides: Record<string, {
   maker: string;
   makerInitials: string;
   makerLogo?: string;
+  makerId?: string;
+  siteUrl?: string;
   price: string;
   area: string;
   beds: number;
@@ -242,6 +245,25 @@ const projectOverrides: Record<string, {
       { id: 4, image: bear168Plan, type: "photo", fit: "contain" },
     ],
   },
+  "40": {
+    name: "ПАТИО",
+    maker: "Bygge",
+    makerInitials: "BG",
+    makerLogo: undefined,
+    makerId: "bygge",
+    siteUrl: "https://bygge.ru/katalog/patio/",
+    price: "2 598 000 ₽",
+    area: "45 м²",
+    beds: 3,
+    baths: 1,
+    floors: 1,
+    city: "Екатеринбург",
+    description: "Модульный дом 7,3 × 6,1 м под ключ. Высота потолка 2,5 м, тёплые полы, оборудованный санузел, вытяжная вентиляция с выходом на крышу.",
+    descriptionLong: "ПАТИО — модульный дом площадью 45 м² с продуманной планировкой и полной заводской готовностью. Высота потолка 2,5 м. Утепление пол / стена / потолок — 200 / 150 / 150 мм. Полностью оборудованный санузел, вытяжная вентиляция с выходом на крышу, кабельные тёплые полы. В подарок — защитная сетка от грызунов.",
+    gallery: [
+      { id: 1, image: patio1, type: "photo" },
+    ],
+  },
 };
 
 const baseParams = [
@@ -390,6 +412,8 @@ const ProjectDetail = () => {
     maker: override?.maker ?? "Sherwood Home",
     makerInitials: override?.makerInitials ?? "SW",
     makerLogo: override?.makerLogo,
+    makerHref: `/partner/${override?.makerId ?? "1"}`,
+    siteUrl: override?.siteUrl ?? "https://platforma-modul.ru/",
     price: override?.price ?? "4 950 000 ₽",
     area: override?.area ?? "60 м²",
     beds: override?.beds ?? 2,
@@ -744,7 +768,7 @@ const ProjectDetail = () => {
             {/* Maker pill */}
             <div
               className="mt-3 flex items-center gap-2.5 bg-secondary rounded-xl px-2.5 py-2 cursor-pointer"
-              onClick={() => navigate('/partner/1')}
+              onClick={() => navigate(project.makerHref)}
             >
               <div className="w-9 h-9 bg-background rounded-lg flex items-center justify-center text-foreground text-[10px] font-bold flex-shrink-0 overflow-hidden">
                 {project.makerLogo ? (
@@ -792,7 +816,7 @@ const ProjectDetail = () => {
 
             {/* CTA в самом низу */}
             <a
-              href="https://platforma-modul.ru/"
+              href={project.siteUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full h-12 bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold mt-4 flex items-center justify-center hover:opacity-90 transition-opacity"

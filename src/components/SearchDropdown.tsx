@@ -12,6 +12,7 @@ const projects = [
   { id: 37, name: "Bear House 134", maker: "Платформа", price: "8 762 000 ₽", area: "110 м²", beds: 3, baths: 3, tags: "дом одноэтажный модульный большой для семьи премиум скандинавский с террасой" },
   { id: 38, name: "Vast House 140", maker: "Платформа", price: "8 077 600 ₽", area: "114,9 м²", beds: 4, baths: 2, tags: "дом одноэтажный модульный большой для семьи премиум четырехкомнатный с террасой" },
   { id: 39, name: "Bear House 168", maker: "Платформа", price: "12 110 400 ₽", area: "146,4 м²", beds: 4, baths: 3, tags: "дом одноэтажный модульный большой премиум вилла для семьи с камином с террасой" },
+  { id: 40, name: "ПАТИО", maker: "Bygge", price: "2 598 000 ₽", area: "45 м²", beds: 3, baths: 1, tags: "дом одноэтажный модульный для семьи современный тёплые полы санузел вентиляция bygge патио" },
 ];
 
 const categories = [
@@ -20,6 +21,7 @@ const categories = [
 
 const manufacturers = [
   { name: "Платформа", location: "Екатеринбург" },
+  { name: "Bygge", location: "Екатеринбург" },
 ];
 
 const articlesList = [
