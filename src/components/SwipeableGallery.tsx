@@ -151,7 +151,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
         >
           {images.map((src, i) => {
             const fit = fits?.[i] ?? "cover";
-            const showBlur = blurAt(i) && fit === "contain" && Math.abs(i - current) <= 1;
+            const showBlur = blurAt(i) && fit === "contain";
             return (
               <div
                 key={i}
@@ -178,7 +178,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                   alt={`${alt} ${i + 1}`}
                   className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} pointer-events-none`}
                   style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
-                  loading={Math.abs(i - current) <= 1 ? "eager" : "lazy"}
+                  loading={blurAt(i) || Math.abs(i - current) <= 1 ? "eager" : "lazy"}
                   decoding="sync"
                   draggable={false}
                 />
