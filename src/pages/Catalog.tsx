@@ -67,6 +67,16 @@ import tundra7 from "@/assets/tundra-7.jpg";
 import tundraPlan1 from "@/assets/tundra-plan-1.jpg";
 import tundraPlan2 from "@/assets/tundra-plan-2.jpg";
 import tundraPlan3 from "@/assets/tundra-plan-3.jpg";
+import sherwood1 from "@/assets/sherwood-1.jpg";
+import sherwood2 from "@/assets/sherwood-2.jpg";
+import sherwood3 from "@/assets/sherwood-3.jpg";
+import sherwood4 from "@/assets/sherwood-4.jpg";
+import sherwood5 from "@/assets/sherwood-5.jpg";
+import sherwood6 from "@/assets/sherwood-6.jpg";
+import sherwood7 from "@/assets/sherwood-7.jpg";
+import sherwood8 from "@/assets/sherwood-8.jpg";
+import sherwood9 from "@/assets/sherwood-9.jpg";
+import sherwoodPlan1 from "@/assets/sherwood-plan-1.jpg";
 
 // У каждого проекта — полный набор как в карточке проекта: рендеры + планы.
 const projectGalleries: Record<number, string[]> = {
@@ -80,6 +90,7 @@ const projectGalleries: Record<number, string[]> = {
   39: [bear168_1, bear168_2, bear168Plan3d, bear168Plan],
   40: [patio5, patio2, patio3, patio4, patio1, patio6, patio7, patio8, patioPlan1, patioPlan2],
   41: [tundra1, tundra2, tundra3, tundra4, tundra5, tundra6, tundra7, tundraPlan1, tundraPlan2, tundraPlan3],
+  42: [sherwood1, sherwood2, sherwood3, sherwood4, sherwood5, sherwood6, sherwood7, sherwood8, sherwood9, sherwoodPlan1],
 };
 
 function getProjectImages(_mainImage: string, id: number): string[] {
@@ -98,6 +109,7 @@ const projectFits: Record<number, ("cover" | "contain")[]> = {
   39: ["cover", "cover", "contain", "contain"],
   40: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
   41: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
+  42: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
 };
 
 // Per-image object-position для широких/несбалансированных фото.
@@ -109,6 +121,7 @@ const projectObjectPositions: Record<number, (string | undefined)[]> = {
 const projectBlurBackground: Record<number, boolean[]> = {
   40: [true, true, true, true, true, true, true, true, false, false],
   41: [true, true, true, true, true, true, true, false, false, false],
+  42: [true, true, true, true, true, true, true, true, true, false],
 };
 
 const chips = ["Все", "Для жизни", "Для выходных", "Для сдачи", "Для семьи", "Быстро поставить"];
@@ -133,6 +146,7 @@ const catalogItems = [
   { id: 39, badge: "Жилой дом", maker: "Платформа · Екатеринбург", name: "Bear House 168", price: "12 110 400 ₽", area: "146,4 м²", beds: 4, baths: 3, term: "90 д.", rooms: "4 спальни", purpose: "ИЖС / СНТ", image: bear168_1, fav: false, likes: 95, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна", "Камин"], style: "Скандинавский", landSize: "от 10 соток", hasRealPhotos: true, rating: 4.9, hasShowroom: true, hasInstallment: true },
   { id: 40, badge: "Жилой дом", maker: "Bygge · Екатеринбург", name: "ПАТИО", price: "2 598 000 ₽", area: "45 м²", beds: 3, baths: 1, term: "60 д.", rooms: "3 комнаты", purpose: "ИЖС / СНТ", image: patio5, fav: false, likes: 27, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Тёплые полы", "Вытяжная вентиляция"], style: "Современный", landSize: "3–6 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: true, hasInstallment: true },
   { id: 41, badge: "Жилой дом", maker: "Bygge · Екатеринбург", name: "ТУНДРА", price: "5 990 000 ₽", area: "96 м²", beds: 4, baths: 1, term: "60 д.", rooms: "4 спальни", purpose: "ИЖС / СНТ", image: tundra1, fav: false, likes: 34, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Тёплые полы", "Вытяжная вентиляция", "Барнхаус"], style: "Барнхаус", landSize: "6–10 соток", hasRealPhotos: true, rating: 4.8, hasShowroom: true, hasInstallment: true },
+  { id: 42, badge: "Жилой дом", maker: "Bygge · Екатеринбург", name: "ШЕРВУД", price: "5 635 000 ₽", area: "87 м²", beds: 4, baths: 1, term: "60 д.", rooms: "4 спальни", purpose: "ИЖС / СНТ", image: sherwood1, fav: false, likes: 29, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Тёплые полы", "Вытяжная вентиляция"], style: "Современный", landSize: "6–10 соток", hasRealPhotos: true, rating: 4.8, hasShowroom: true, hasInstallment: true },
 ];
 
 const sidebarFilters = [

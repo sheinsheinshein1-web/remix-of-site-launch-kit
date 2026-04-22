@@ -71,6 +71,16 @@ import tundra7 from "@/assets/tundra-7.jpg";
 import tundraPlan1 from "@/assets/tundra-plan-1.jpg";
 import tundraPlan2 from "@/assets/tundra-plan-2.jpg";
 import tundraPlan3 from "@/assets/tundra-plan-3.jpg";
+import sherwood1 from "@/assets/sherwood-1.jpg";
+import sherwood2 from "@/assets/sherwood-2.jpg";
+import sherwood3 from "@/assets/sherwood-3.jpg";
+import sherwood4 from "@/assets/sherwood-4.jpg";
+import sherwood5 from "@/assets/sherwood-5.jpg";
+import sherwood6 from "@/assets/sherwood-6.jpg";
+import sherwood7 from "@/assets/sherwood-7.jpg";
+import sherwood8 from "@/assets/sherwood-8.jpg";
+import sherwood9 from "@/assets/sherwood-9.jpg";
+import sherwoodPlan1 from "@/assets/sherwood-plan-1.jpg";
 
 const houseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
@@ -86,6 +96,7 @@ const projectGalleries: Record<number, string[]> = {
   39: [bear168_1, bear168_2, bear168Plan3d, bear168Plan],
   40: [patio5, patio2, patio3, patio4, patio1, patio6, patio7, patio8, patioPlan1, patioPlan2],
   41: [tundra1, tundra2, tundra3, tundra4, tundra5, tundra6, tundra7, tundraPlan1, tundraPlan2, tundraPlan3],
+  42: [sherwood1, sherwood2, sherwood3, sherwood4, sherwood5, sherwood6, sherwood7, sherwood8, sherwood9, sherwoodPlan1],
 };
 
 // Per-image fit для проектов: "contain" — фото с blur-фоном (для горизонтальных планировок).
@@ -100,6 +111,7 @@ const projectFits: Record<number, ("cover" | "contain")[]> = {
   39: ["cover", "cover", "contain", "contain"],
   40: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
   41: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
+  42: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
 };
 
 // Per-image object-position для широких/несбалансированных фото.
@@ -111,6 +123,7 @@ const projectObjectPositions: Record<number, (string | undefined)[]> = {
 const projectBlurBackground: Record<number, boolean[]> = {
   40: [true, true, true, true, true, true, true, true, false, false],
   41: [true, true, true, true, true, true, true, false, false, false],
+  42: [true, true, true, true, true, true, true, true, true, false],
 };
 
 function getProjectImages(mainImage: string, id: number): string[] {
@@ -135,6 +148,7 @@ const baseProjects = [
   { id: 39, name: "Bear House 168", maker: "Платформа", area: "146,4 м²", beds: 4, baths: 3, term: "90 д.", price: "12 110 400 ₽", image: bear168_1, liked: false, likes: 95, hasRealPhotos: true, city: "Екатеринбург", rating: "4.9" },
   { id: 40, name: "ПАТИО", maker: "Bygge", area: "45 м²", beds: 3, baths: 1, term: "60 д.", price: "2 598 000 ₽", image: patio5, liked: false, likes: 27, hasRealPhotos: true, city: "Екатеринбург", rating: "4.7" },
   { id: 41, name: "ТУНДРА", maker: "Bygge", area: "96 м²", beds: 4, baths: 1, term: "60 д.", price: "5 990 000 ₽", image: tundra1, liked: false, likes: 34, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
+  { id: 42, name: "ШЕРВУД", maker: "Bygge", area: "87 м²", beds: 4, baths: 1, term: "60 д.", price: "5 635 000 ₽", image: sherwood1, liked: false, likes: 29, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
 ];
 
 const PAGE_SIZE = 8;
