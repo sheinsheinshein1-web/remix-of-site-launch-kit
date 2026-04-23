@@ -757,7 +757,7 @@ const ProjectDetail = () => {
                         <div className="absolute inset-0 bg-black/10 pointer-events-none" />
                       </>
                     )}
-                    {isContain && id === "42" && img.id <= 9 && (
+                    {isContain && ((id === "40" && img.id <= 8) || (id === "41" && img.id <= 7) || (id === "42" && img.id <= 9)) && (
                       <>
                         {/* Верх — растянутая полоска верхнего края */}
                         <div

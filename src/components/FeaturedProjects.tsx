@@ -128,6 +128,8 @@ const projectBlurBackground: Record<number, boolean[]> = {
 
 // Edge-bleed (бесшовное продолжение краёв вместо обычного blur).
 const projectEdgeBleed: Record<number, boolean[]> = {
+  40: [true, true, true, true, true, true, true, true, false, false],
+  41: [true, true, true, true, true, true, true, false, false, false],
   42: [true, true, true, true, true, true, true, true, true, false],
 };
 
