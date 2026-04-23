@@ -109,9 +109,9 @@ const projectFits: Record<number, ("cover" | "contain")[]> = {
   37: ["cover", "cover", "cover", "contain", "contain"],
   38: ["cover", "cover", "cover", "contain", "contain"],
   39: ["cover", "cover", "contain", "contain"],
-  40: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
-  41: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
-  42: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
+  40: ["cover", "cover", "cover", "cover", "cover", "cover", "cover", "cover", "contain", "contain"],
+  41: ["cover", "cover", "cover", "cover", "cover", "cover", "cover", "contain", "contain", "contain"],
+  42: ["cover", "cover", "cover", "cover", "cover", "cover", "cover", "cover", "cover", "contain"],
 };
 
 // Per-image object-position для широких/несбалансированных фото.
@@ -121,16 +121,16 @@ const projectObjectPositions: Record<number, (string | undefined)[]> = {
 
 // Per-image blur-фон (true только для фото; для планов false → серый дефолт).
 const projectBlurBackground: Record<number, boolean[]> = {
-  40: [true, true, true, true, true, true, true, true, false, false],
-  41: [true, true, true, true, true, true, true, false, false, false],
-  42: [true, true, true, true, true, true, true, true, true, false],
+  40: [false, false, false, false, false, false, false, false, false, false],
+  41: [false, false, false, false, false, false, false, false, false, false],
+  42: [false, false, false, false, false, false, false, false, false, false],
 };
 
 // Edge-bleed (бесшовное продолжение краёв вместо обычного blur).
 const projectEdgeBleed: Record<number, boolean[]> = {
-  40: [true, true, true, true, true, true, true, true, false, false],
-  41: [true, true, true, true, true, true, true, false, false, false],
-  42: [true, true, true, true, true, true, true, true, true, false],
+  40: [false, false, false, false, false, false, false, false, false, false],
+  41: [false, false, false, false, false, false, false, false, false, false],
+  42: [false, false, false, false, false, false, false, false, false, false],
 };
 
 function getProjectImages(mainImage: string, id: number): string[] {
