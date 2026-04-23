@@ -185,7 +185,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                         top: "-4%",
                         left: "-7%",
                         right: "-7%",
-                        height: "22%",
+                        height: "24%",
                       }}
                     >
                       <div
@@ -209,7 +209,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                         bottom: "-4%",
                         left: "-7%",
                         right: "-7%",
-                        height: "22%",
+                        height: "24%",
                       }}
                     >
                       <div
@@ -277,7 +277,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                       top: "-4%",
                       left: "-7%",
                       right: "-7%",
-                      height: "22%",
+                      height: "24%",
                     }}
                   >
                     <div
@@ -301,7 +301,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                       bottom: "-4%",
                       left: "-7%",
                       right: "-7%",
-                      height: "22%",
+                      height: "24%",
                     }}
                   >
                     <div
