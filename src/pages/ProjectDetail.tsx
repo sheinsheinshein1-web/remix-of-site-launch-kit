@@ -748,34 +748,54 @@ const ProjectDetail = () => {
                       <>
                         {/* Верх */}
                         <div
-                          className="absolute pointer-events-none z-10"
+                          className="absolute overflow-hidden pointer-events-none z-10"
                           style={{
-                            top: "-2%",
-                            left: "-4%",
-                            right: "-4%",
-                            height: "26%",
-                            backgroundImage: `url(${img.image})`,
-                            backgroundRepeat: "no-repeat",
-                            backgroundPosition: "top center",
-                            backgroundSize: "108% 5000%",
-                            filter: "blur(10px)",
+                            top: "-4%",
+                            left: "-7%",
+                            right: "-7%",
+                            height: "28%",
                           }}
-                        />
+                        >
+                          <div
+                            className="absolute inset-0"
+                            style={{
+                              top: "-18%",
+                              left: "-10%",
+                              right: "-10%",
+                              bottom: "-18%",
+                              backgroundImage: `url(${img.image})`,
+                              backgroundRepeat: "no-repeat",
+                              backgroundPosition: "top center",
+                              backgroundSize: "114% 8000%",
+                              filter: "blur(10px)",
+                            }}
+                          />
+                        </div>
                         {/* Низ */}
                         <div
-                          className="absolute pointer-events-none z-10"
+                          className="absolute overflow-hidden pointer-events-none z-10"
                           style={{
-                            bottom: "-2%",
-                            left: "-4%",
-                            right: "-4%",
-                            height: "26%",
-                            backgroundImage: `url(${img.image})`,
-                            backgroundRepeat: "no-repeat",
-                            backgroundPosition: "bottom center",
-                            backgroundSize: "108% 5000%",
-                            filter: "blur(10px)",
+                            bottom: "-4%",
+                            left: "-7%",
+                            right: "-7%",
+                            height: "28%",
                           }}
-                        />
+                        >
+                          <div
+                            className="absolute inset-0"
+                            style={{
+                              top: "-18%",
+                              left: "-10%",
+                              right: "-10%",
+                              bottom: "-18%",
+                              backgroundImage: `url(${img.image})`,
+                              backgroundRepeat: "no-repeat",
+                              backgroundPosition: "bottom center",
+                              backgroundSize: "114% 8000%",
+                              filter: "blur(10px)",
+                            }}
+                          />
+                        </div>
                       </>
                     )}
                     <img
