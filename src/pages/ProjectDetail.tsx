@@ -746,56 +746,60 @@ const ProjectDetail = () => {
                     {/* старый blur-фон убран — для Bygge используется edge-bleed ниже */}
                     {isContain && ((id === "40" && img.id <= 8) || (id === "41" && img.id <= 7) || (id === "42" && img.id <= 9)) && (
                       <>
-                        {/* Верх — растянутая полоска верхнего края */}
+                        {/* Верх */}
                         <div
                           className="absolute inset-x-0 top-0 pointer-events-none z-10"
                           style={{
-                            height: "19%",
+                            height: "22%",
                             backgroundImage: `url(${img.image})`,
                             backgroundRepeat: "no-repeat",
                             backgroundPosition: "top center",
                             backgroundSize: "100% 5000%",
                             filter: "blur(10px)",
-                            transform: "translateY(2%)",
+                            transform: "translateY(-3%) scaleY(1.08)",
+                            transformOrigin: "top",
                           }}
                         />
-                        {/* Низ — растянутая полоска нижнего края */}
+                        {/* Низ */}
                         <div
                           className="absolute inset-x-0 bottom-0 pointer-events-none z-10"
                           style={{
-                            height: "19%",
+                            height: "22%",
                             backgroundImage: `url(${img.image})`,
                             backgroundRepeat: "no-repeat",
                             backgroundPosition: "bottom center",
                             backgroundSize: "100% 5000%",
                             filter: "blur(10px)",
-                            transform: "translateY(-2%)",
+                            transform: "translateY(3%) scaleY(1.08)",
+                            transformOrigin: "bottom",
                           }}
                         />
-                        {/* Лево — растянутая полоска левого края */}
+                        {/* Лево */}
                         <div
                           className="absolute inset-y-0 left-0 pointer-events-none z-10"
                           style={{
-                            width: "14%",
+                            width: "16%",
                             backgroundImage: `url(${img.image})`,
                             backgroundRepeat: "no-repeat",
                             backgroundPosition: "left center",
                             backgroundSize: "5000% 100%",
                             filter: "blur(10px)",
-                            transform: "translateX(2%)",
+                            transform: "translateX(-3%) scaleX(1.08)",
+                            transformOrigin: "left",
                           }}
                         />
-                        {/* Право — растянутая полоска правого края */}
+                        {/* Право */}
                         <div
                           className="absolute inset-y-0 right-0 pointer-events-none z-10"
                           style={{
-                            width: "14%",
+                            width: "16%",
                             backgroundImage: `url(${img.image})`,
                             backgroundRepeat: "no-repeat",
                             backgroundPosition: "right center",
                             backgroundSize: "5000% 100%",
                             filter: "blur(10px)",
-                            transform: "translateX(-2%)",
+                            transform: "translateX(3%) scaleX(1.08)",
+                            transformOrigin: "right",
                           }}
                         />
                       </>
