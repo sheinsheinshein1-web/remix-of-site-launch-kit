@@ -763,26 +763,24 @@ const ProjectDetail = () => {
                         <div
                           className="absolute inset-x-0 top-0 pointer-events-none overflow-hidden"
                           style={{
-                            height: "12%",
+                            height: "13%",
                             backgroundImage: `url(${img.image})`,
                             backgroundRepeat: "no-repeat",
                             backgroundPosition: "top center",
-                            backgroundSize: "100% 1000%",
-                            filter: "blur(12px)",
-                            transform: "scale(1.05)",
+                            backgroundSize: "100% 5000%",
+                            filter: "blur(6px)",
                           }}
                         />
                         {/* Низ — полоска нижнего края фото, растянутая по высоте */}
                         <div
                           className="absolute inset-x-0 bottom-0 pointer-events-none overflow-hidden"
                           style={{
-                            height: "12%",
+                            height: "13%",
                             backgroundImage: `url(${img.image})`,
                             backgroundRepeat: "no-repeat",
                             backgroundPosition: "bottom center",
-                            backgroundSize: "100% 1000%",
-                            filter: "blur(12px)",
-                            transform: "scale(1.05)",
+                            backgroundSize: "100% 5000%",
+                            filter: "blur(6px)",
                           }}
                         />
                       </>
