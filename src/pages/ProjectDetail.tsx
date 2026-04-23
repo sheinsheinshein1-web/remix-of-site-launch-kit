@@ -792,13 +792,7 @@ const ProjectDetail = () => {
                       decoding="sync"
                       draggable={false}
                       onClick={() => setLightboxOpen(true)}
-                      style={{
-                        ...(i === 0 ? { viewTransitionName: 'project-hero' } : {}),
-                        ...(isContain && id === "42" && img.id <= 9 ? {
-                          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%)",
-                          maskImage: "linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%)",
-                        } : {}),
-                      } as React.CSSProperties}
+                      style={i === 0 ? { viewTransitionName: 'project-hero' } as React.CSSProperties : undefined}
                     />
                     {img.type === "video" && (
                       <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
