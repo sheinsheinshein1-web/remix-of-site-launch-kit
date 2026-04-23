@@ -743,7 +743,7 @@ const ProjectDetail = () => {
                 const isActive = i === activeImage;
                 return (
                   <div key={img.id} className="relative isolate w-full flex-shrink-0 aspect-[4/5] bg-muted overflow-hidden">
-                    {isContain && ((id === "40" && img.id <= 8) || (id === "41" && img.id <= 7)) && (
+                    {isContain && ((id === "40" && img.id <= 8) || (id === "41" && img.id <= 7) || (id === "42" && img.id <= 9)) && (
                       <>
                         <img
                           src={img.image}
