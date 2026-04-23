@@ -753,16 +753,16 @@ const ProjectDetail = () => {
                             top: "-4%",
                             left: "-7%",
                             right: "-7%",
-                            height: "28%",
+                            height: "22%",
                           }}
                         >
                           <div
                             className="absolute inset-0"
                             style={{
-                              top: "-18%",
+                              top: "0%",
                               left: "-10%",
                               right: "-10%",
-                              bottom: "-18%",
+                              bottom: "0%",
                               backgroundImage: `url(${img.image})`,
                               backgroundRepeat: "no-repeat",
                               backgroundPosition: "top center",
@@ -778,16 +778,16 @@ const ProjectDetail = () => {
                             bottom: "-4%",
                             left: "-7%",
                             right: "-7%",
-                            height: "28%",
+                            height: "22%",
                           }}
                         >
                           <div
                             className="absolute inset-0"
                             style={{
-                              top: "-18%",
+                              top: "0%",
                               left: "-10%",
                               right: "-10%",
-                              bottom: "-18%",
+                              bottom: "0%",
                               backgroundImage: `url(${img.image})`,
                               backgroundRepeat: "no-repeat",
                               backgroundPosition: "bottom center",

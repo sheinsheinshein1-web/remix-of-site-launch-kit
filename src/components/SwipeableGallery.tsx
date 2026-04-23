@@ -185,16 +185,16 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                         top: "-4%",
                         left: "-7%",
                         right: "-7%",
-                        height: "28%",
+                        height: "22%",
                       }}
                     >
                       <div
                         className="absolute inset-0"
                         style={{
-                          top: "-18%",
+                          top: "0%",
                           left: "-10%",
                           right: "-10%",
-                          bottom: "-18%",
+                          bottom: "0%",
                           backgroundImage: `url(${src})`,
                           backgroundRepeat: "no-repeat",
                           backgroundPosition: "top center",
@@ -209,16 +209,16 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                         bottom: "-4%",
                         left: "-7%",
                         right: "-7%",
-                        height: "28%",
+                        height: "22%",
                       }}
                     >
                       <div
                         className="absolute inset-0"
                         style={{
-                          top: "-18%",
+                          top: "0%",
                           left: "-10%",
                           right: "-10%",
-                          bottom: "-18%",
+                          bottom: "0%",
                           backgroundImage: `url(${src})`,
                           backgroundRepeat: "no-repeat",
                           backgroundPosition: "bottom center",
@@ -277,16 +277,16 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                       top: "-4%",
                       left: "-7%",
                       right: "-7%",
-                      height: "28%",
+                      height: "22%",
                     }}
                   >
                     <div
                       className="absolute inset-0"
                       style={{
-                        top: "-18%",
+                        top: "0%",
                         left: "-10%",
                         right: "-10%",
-                        bottom: "-18%",
+                        bottom: "0%",
                         backgroundImage: `url(${src})`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "top center",
@@ -301,16 +301,16 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                       bottom: "-4%",
                       left: "-7%",
                       right: "-7%",
-                      height: "28%",
+                      height: "22%",
                     }}
                   >
                     <div
                       className="absolute inset-0"
                       style={{
-                        top: "-18%",
+                        top: "0%",
                         left: "-10%",
                         right: "-10%",
-                        bottom: "-18%",
+                        bottom: "0%",
                         backgroundImage: `url(${src})`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "bottom center",
