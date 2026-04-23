@@ -198,7 +198,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                           backgroundImage: `url(${src})`,
                           backgroundRepeat: "no-repeat",
                           backgroundPosition: "top center",
-                          backgroundSize: "114% 11000%",
+                          backgroundSize: "114% 5000%",
                           filter: "blur(10px)",
                         }}
                       />
@@ -222,7 +222,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                           backgroundImage: `url(${src})`,
                           backgroundRepeat: "no-repeat",
                           backgroundPosition: "bottom center",
-                          backgroundSize: "114% 11000%",
+                          backgroundSize: "114% 5000%",
                           filter: "blur(10px)",
                         }}
                       />
@@ -290,7 +290,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                         backgroundImage: `url(${src})`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "top center",
-                        backgroundSize: "114% 11000%",
+                        backgroundSize: "114% 5000%",
                         filter: "blur(10px)",
                       }}
                     />
@@ -314,7 +314,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                         backgroundImage: `url(${src})`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "bottom center",
-                        backgroundSize: "114% 11000%",
+                        backgroundSize: "114% 5000%",
                         filter: "blur(10px)",
                       }}
                     />
