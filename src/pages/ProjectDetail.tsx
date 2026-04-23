@@ -759,28 +759,28 @@ const ProjectDetail = () => {
                     )}
                     {isContain && id === "42" && img.id <= 9 && (
                       <>
-                        {/* Верх — полоска верхнего края фото, растянутая по высоте */}
+                        {/* Верх — растянутая полоска верхнего края */}
                         <div
-                          className="absolute inset-x-0 top-0 pointer-events-none overflow-hidden"
+                          className="absolute inset-x-0 top-0 pointer-events-none"
                           style={{
-                            height: "13%",
+                            height: "16%",
                             backgroundImage: `url(${img.image})`,
                             backgroundRepeat: "no-repeat",
                             backgroundPosition: "top center",
                             backgroundSize: "100% 5000%",
-                            filter: "blur(6px)",
+                            filter: "blur(8px)",
                           }}
                         />
-                        {/* Низ — полоска нижнего края фото, растянутая по высоте */}
+                        {/* Низ — растянутая полоска нижнего края */}
                         <div
-                          className="absolute inset-x-0 bottom-0 pointer-events-none overflow-hidden"
+                          className="absolute inset-x-0 bottom-0 pointer-events-none"
                           style={{
-                            height: "13%",
+                            height: "16%",
                             backgroundImage: `url(${img.image})`,
                             backgroundRepeat: "no-repeat",
                             backgroundPosition: "bottom center",
                             backgroundSize: "100% 5000%",
-                            filter: "blur(6px)",
+                            filter: "blur(8px)",
                           }}
                         />
                       </>
@@ -792,7 +792,13 @@ const ProjectDetail = () => {
                       decoding="sync"
                       draggable={false}
                       onClick={() => setLightboxOpen(true)}
-                      style={i === 0 ? { viewTransitionName: 'project-hero' } as React.CSSProperties : undefined}
+                      style={{
+                        ...(i === 0 ? { viewTransitionName: 'project-hero' } : {}),
+                        ...(isContain && id === "42" && img.id <= 9 ? {
+                          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%)",
+                          maskImage: "linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%)",
+                        } : {}),
+                      } as React.CSSProperties}
                     />
                     {img.type === "video" && (
                       <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
