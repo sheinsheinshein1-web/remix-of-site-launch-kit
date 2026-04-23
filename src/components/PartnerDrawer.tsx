@@ -69,7 +69,7 @@ interface PartnerDrawerProps {
 }
 
 const PartnerContent = ({ onClose, onStartChat }: { onClose: () => void; onStartChat: () => void }) => (
-  <div className="flex flex-col gap-3 px-3 pt-3 pb-4 bg-secondary">
+  <div className="flex w-full min-w-0 flex-col gap-3 overflow-x-hidden px-3 pt-3 pb-4 bg-secondary">
     {/* HERO */}
     <div className="bg-primary rounded-2xl relative overflow-hidden">
       <div className="absolute top-3 right-3 z-20">
@@ -86,7 +86,7 @@ const PartnerContent = ({ onClose, onStartChat }: { onClose: () => void; onStart
         <div className="w-10 h-1 rounded-md bg-primary-foreground/20" />
       </div>
       <div className="flex justify-center pt-4 pb-1 px-2">
-        <img src={partnerHeroImg} alt="" className="w-[260px] h-auto relative z-[1]" />
+        <img src={partnerHeroImg} alt="" className="relative z-[1] h-auto w-full max-w-[260px]" />
       </div>
       <div className="px-5 pb-7 relative z-[1] text-center">
         <p className="text-[11px] font-bold tracking-wider uppercase text-primary-foreground/50 mb-2">Для застройщиков</p>
@@ -289,10 +289,10 @@ const PartnerDrawer = ({ children, drawerOpen, onDrawerOpenChange }: PartnerDraw
   return (
     <Drawer open={open} onOpenChange={(v) => { if (!v) setShowForm(false); setOpen(v); }} shouldScaleBackground={false} handleOnly>
       {children && <DrawerTrigger asChild>{children}</DrawerTrigger>}
-      <DrawerContent className="!mt-0 h-[98vh] max-h-[98vh] outline-none rounded-t-[28px] border-0 bg-secondary [&>div:first-child]:!hidden [&>div:first-child]:!h-0 [&>div:first-child]:!m-0 [&>div:first-child]:!p-0 overflow-hidden">
-        <div className="overflow-y-auto h-full pb-[calc(80px+env(safe-area-inset-bottom))]">
+      <DrawerContent className="!mt-0 h-[98vh] w-full max-h-[98vh] max-w-full overflow-x-hidden outline-none rounded-t-[28px] border-0 bg-secondary [&>div:first-child]:!hidden [&>div:first-child]:!h-0 [&>div:first-child]:!m-0 [&>div:first-child]:!p-0">
+        <div className="h-full min-w-0 overflow-y-auto overflow-x-hidden pb-[calc(80px+env(safe-area-inset-bottom))]">
           {showForm ? (
-            <div className="pt-6 bg-background min-h-full">
+            <div className="min-h-full overflow-x-hidden bg-background pt-6">
               <PartnerApplicationForm onBack={handleFormBack} variant="drawer" />
             </div>
           ) : (
