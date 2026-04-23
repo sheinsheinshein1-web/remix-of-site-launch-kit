@@ -182,28 +182,28 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                     <div
                       className="absolute pointer-events-none z-10"
                       style={{
-                        top: "-2%",
-                        left: "-4%",
-                        right: "-4%",
-                        height: "26%",
+                        top: "-4%",
+                        left: "-7%",
+                        right: "-7%",
+                        height: "28%",
                         backgroundImage: `url(${src})`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "top center",
-                        backgroundSize: "108% 5000%",
+                        backgroundSize: "114% 5000%",
                         filter: "blur(10px)",
                       }}
                     />
                     <div
                       className="absolute pointer-events-none z-10"
                       style={{
-                        bottom: "-2%",
-                        left: "-4%",
-                        right: "-4%",
-                        height: "26%",
+                        bottom: "-4%",
+                        left: "-7%",
+                        right: "-7%",
+                        height: "28%",
                         backgroundImage: `url(${src})`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "bottom center",
-                        backgroundSize: "108% 5000%",
+                        backgroundSize: "114% 5000%",
                         filter: "blur(10px)",
                       }}
                     />
@@ -254,28 +254,28 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                   <div
                     className="absolute pointer-events-none z-10"
                     style={{
-                      top: "-2%",
-                      left: "-4%",
-                      right: "-4%",
-                      height: "26%",
+                      top: "-4%",
+                      left: "-7%",
+                      right: "-7%",
+                      height: "28%",
                       backgroundImage: `url(${src})`,
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "top center",
-                      backgroundSize: "108% 5000%",
+                      backgroundSize: "114% 5000%",
                       filter: "blur(10px)",
                     }}
                   />
                   <div
                     className="absolute pointer-events-none z-10"
                     style={{
-                      bottom: "-2%",
-                      left: "-4%",
-                      right: "-4%",
-                      height: "26%",
+                      bottom: "-4%",
+                      left: "-7%",
+                      right: "-7%",
+                      height: "28%",
                       backgroundImage: `url(${src})`,
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "bottom center",
-                      backgroundSize: "108% 5000%",
+                      backgroundSize: "114% 5000%",
                       filter: "blur(10px)",
                     }}
                   />
