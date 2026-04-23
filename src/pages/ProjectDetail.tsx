@@ -743,7 +743,7 @@ const ProjectDetail = () => {
                 const isActive = i === activeImage;
                 return (
                   <div key={img.id} className="relative isolate w-full flex-shrink-0 aspect-[4/5] bg-muted overflow-hidden">
-                    {isContain && ((id === "40" && img.id <= 8) || (id === "41" && img.id <= 7) || (id === "42" && img.id <= 9)) && (
+                    {isContain && ((id === "40" && img.id <= 8) || (id === "41" && img.id <= 7)) && (
                       <>
                         <img
                           src={img.image}
@@ -755,6 +755,42 @@ const ProjectDetail = () => {
                           draggable={false}
                         />
                         <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+                      </>
+                    )}
+                    {isContain && id === "42" && img.id <= 9 && (
+                      <>
+                        {/* Верхняя полоса — растянутый верх фото */}
+                        <div className="absolute inset-x-0 top-0 h-[20%] overflow-hidden pointer-events-none">
+                          <img
+                            src={img.image}
+                            alt=""
+                            aria-hidden="true"
+                            className="absolute inset-x-0 top-0 w-full h-auto object-cover"
+                            style={{
+                              filter: "blur(24px)",
+                              transform: "scaleY(3)",
+                              transformOrigin: "top",
+                            }}
+                            decoding="sync"
+                            draggable={false}
+                          />
+                        </div>
+                        {/* Нижняя полоса — растянутый низ фото */}
+                        <div className="absolute inset-x-0 bottom-0 h-[20%] overflow-hidden pointer-events-none">
+                          <img
+                            src={img.image}
+                            alt=""
+                            aria-hidden="true"
+                            className="absolute inset-x-0 bottom-0 w-full h-auto object-cover"
+                            style={{
+                              filter: "blur(24px)",
+                              transform: "scaleY(3)",
+                              transformOrigin: "bottom",
+                            }}
+                            decoding="sync"
+                            draggable={false}
+                          />
+                        </div>
                       </>
                     )}
                     <img
