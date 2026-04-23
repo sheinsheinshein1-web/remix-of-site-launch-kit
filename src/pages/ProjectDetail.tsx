@@ -774,34 +774,6 @@ const ProjectDetail = () => {
                             transformOrigin: "bottom",
                           }}
                         />
-                        {/* Лево */}
-                        <div
-                          className="absolute inset-y-0 left-0 pointer-events-none z-10"
-                          style={{
-                            width: "16%",
-                            backgroundImage: `url(${img.image})`,
-                            backgroundRepeat: "no-repeat",
-                            backgroundPosition: "left center",
-                            backgroundSize: "5000% 100%",
-                            filter: "blur(10px)",
-                            transform: "translateX(-3%) scaleX(1.08)",
-                            transformOrigin: "left",
-                          }}
-                        />
-                        {/* Право */}
-                        <div
-                          className="absolute inset-y-0 right-0 pointer-events-none z-10"
-                          style={{
-                            width: "16%",
-                            backgroundImage: `url(${img.image})`,
-                            backgroundRepeat: "no-repeat",
-                            backgroundPosition: "right center",
-                            backgroundSize: "5000% 100%",
-                            filter: "blur(10px)",
-                            transform: "translateX(3%) scaleX(1.08)",
-                            transformOrigin: "right",
-                          }}
-                        />
                       </>
                     )}
                     <img
