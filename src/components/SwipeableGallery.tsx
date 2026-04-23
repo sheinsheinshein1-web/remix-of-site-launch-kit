@@ -207,13 +207,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                   src={src}
                   alt={`${alt} ${i + 1}`}
                   className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} pointer-events-none`}
-                  style={{
-                    ...(objectPositions?.[i] ? { objectPosition: objectPositions[i] } : {}),
-                    ...(showEdge ? {
-                      WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%)",
-                      maskImage: "linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%)",
-                    } : {}),
-                  }}
+                  style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
                   loading={blurAt(i) || edgeAt(i) || Math.abs(i - current) <= 1 ? "eager" : "lazy"}
                   decoding="sync"
                   draggable={false}
@@ -279,13 +273,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                 src={src}
                 alt={`${alt} ${i + 1}`}
                 className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
-                style={{
-                  ...(objectPositions?.[i] ? { objectPosition: objectPositions[i] } : {}),
-                  ...(showEdge ? {
-                    WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%)",
-                    maskImage: "linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%)",
-                  } : {}),
-                }}
+                style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
                 loading={isActive ? "eager" : "lazy"}
                 decoding="sync"
                 draggable={false}
