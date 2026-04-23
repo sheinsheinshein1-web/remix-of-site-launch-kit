@@ -185,14 +185,12 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                         top: "-2%",
                         left: "-4%",
                         right: "-4%",
-                        height: "32%",
+                        height: "26%",
                         backgroundImage: `url(${src})`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "top center",
                         backgroundSize: "108% 5000%",
-                        filter: "blur(14px)",
-                        WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%)",
-                        maskImage: "linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%)",
+                        filter: "blur(10px)",
                       }}
                     />
                     <div
@@ -201,14 +199,12 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                         bottom: "-2%",
                         left: "-4%",
                         right: "-4%",
-                        height: "32%",
+                        height: "26%",
                         backgroundImage: `url(${src})`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "bottom center",
                         backgroundSize: "108% 5000%",
-                        filter: "blur(14px)",
-                        WebkitMaskImage: "linear-gradient(to top, #000 0%, #000 55%, transparent 100%)",
-                        maskImage: "linear-gradient(to top, #000 0%, #000 55%, transparent 100%)",
+                        filter: "blur(10px)",
                       }}
                     />
                   </>
@@ -261,14 +257,12 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                       top: "-2%",
                       left: "-4%",
                       right: "-4%",
-                      height: "32%",
+                      height: "26%",
                       backgroundImage: `url(${src})`,
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "top center",
                       backgroundSize: "108% 5000%",
-                      filter: "blur(14px)",
-                      WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%)",
-                      maskImage: "linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%)",
+                      filter: "blur(10px)",
                     }}
                   />
                   <div
@@ -277,14 +271,12 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                       bottom: "-2%",
                       left: "-4%",
                       right: "-4%",
-                      height: "32%",
+                      height: "26%",
                       backgroundImage: `url(${src})`,
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "bottom center",
                       backgroundSize: "108% 5000%",
-                      filter: "blur(14px)",
-                      WebkitMaskImage: "linear-gradient(to top, #000 0%, #000 55%, transparent 100%)",
-                      maskImage: "linear-gradient(to top, #000 0%, #000 55%, transparent 100%)",
+                      filter: "blur(10px)",
                     }}
                   />
                 </>

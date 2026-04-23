@@ -753,14 +753,12 @@ const ProjectDetail = () => {
                             top: "-2%",
                             left: "-4%",
                             right: "-4%",
-                            height: "32%",
+                            height: "26%",
                             backgroundImage: `url(${img.image})`,
                             backgroundRepeat: "no-repeat",
                             backgroundPosition: "top center",
                             backgroundSize: "108% 5000%",
-                            filter: "blur(14px)",
-                            WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%)",
-                            maskImage: "linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%)",
+                            filter: "blur(10px)",
                           }}
                         />
                         {/* Низ */}
@@ -770,14 +768,12 @@ const ProjectDetail = () => {
                             bottom: "-2%",
                             left: "-4%",
                             right: "-4%",
-                            height: "32%",
+                            height: "26%",
                             backgroundImage: `url(${img.image})`,
                             backgroundRepeat: "no-repeat",
                             backgroundPosition: "bottom center",
                             backgroundSize: "108% 5000%",
-                            filter: "blur(14px)",
-                            WebkitMaskImage: "linear-gradient(to top, #000 0%, #000 55%, transparent 100%)",
-                            maskImage: "linear-gradient(to top, #000 0%, #000 55%, transparent 100%)",
+                            filter: "blur(10px)",
                           }}
                         />
                       </>
