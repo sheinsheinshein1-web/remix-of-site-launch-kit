@@ -226,7 +226,8 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
         images.map((src, i) => {
           const fit = fits?.[i] ?? "cover";
           const isActive = i === current;
-          const showBlur = blurAt(i) && fit === "contain" && isActive;
+          const showEdge = edgeAt(i) && fit === "contain" && isActive;
+          const showBlur = !showEdge && blurAt(i) && fit === "contain" && isActive;
           return (
             <div
               key={i}
@@ -248,11 +249,43 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                   <div className="absolute inset-0 bg-black/10" />
                 </>
               )}
+              {showEdge && (
+                <>
+                  <div
+                    className="absolute inset-x-0 top-0 pointer-events-none"
+                    style={{
+                      height: "16%",
+                      backgroundImage: `url(${src})`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "top center",
+                      backgroundSize: "100% 5000%",
+                      filter: "blur(8px)",
+                    }}
+                  />
+                  <div
+                    className="absolute inset-x-0 bottom-0 pointer-events-none"
+                    style={{
+                      height: "16%",
+                      backgroundImage: `url(${src})`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "bottom center",
+                      backgroundSize: "100% 5000%",
+                      filter: "blur(8px)",
+                    }}
+                  />
+                </>
+              )}
               <img
                 src={src}
                 alt={`${alt} ${i + 1}`}
                 className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
-                style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
+                style={{
+                  ...(objectPositions?.[i] ? { objectPosition: objectPositions[i] } : {}),
+                  ...(showEdge ? {
+                    WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%)",
+                    maskImage: "linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%)",
+                  } : {}),
+                }}
                 loading={isActive ? "eager" : "lazy"}
                 decoding="sync"
                 draggable={false}
