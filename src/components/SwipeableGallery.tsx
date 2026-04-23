@@ -11,14 +11,17 @@ interface SwipeableGalleryProps {
   objectPositions?: (string | undefined)[];
   /** Включить blur-фон под фото с fit="contain". true для всех или массив per-image. По умолчанию false. */
   blurBackground?: boolean | boolean[];
+  /** Бесшовное продолжение краёв (растянутая полоска + маска вместо обычного blur). true для всех или массив. */
+  edgeBleed?: boolean | boolean[];
   children?: React.ReactNode;
 }
 
 const SWIPE_THRESHOLD_RATIO = 0.18; // 18% ширины — чтобы засчитать смену слайда
 const SWIPE_VELOCITY = 0.45; // px/ms — быстрый флик тоже листает
 
-const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPositions, blurBackground = false, children }: SwipeableGalleryProps) => {
+const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPositions, blurBackground = false, edgeBleed = false, children }: SwipeableGalleryProps) => {
   const blurAt = (i: number) => Array.isArray(blurBackground) ? !!blurBackground[i] : !!blurBackground;
+  const edgeAt = (i: number) => Array.isArray(edgeBleed) ? !!edgeBleed[i] : !!edgeBleed;
   const [current, setCurrent] = useState(0);
   const [dragX, setDragX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
