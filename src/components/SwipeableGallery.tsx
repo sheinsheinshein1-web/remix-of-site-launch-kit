@@ -191,10 +191,10 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                       <div
                         className="absolute inset-0"
                         style={{
-                          top: "0%",
+                          top: "-18%",
                           left: "-10%",
                           right: "-10%",
-                          bottom: "0%",
+                          bottom: "-18%",
                           backgroundImage: `url(${src})`,
                           backgroundRepeat: "no-repeat",
                           backgroundPosition: "top center",
@@ -215,10 +215,10 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                       <div
                         className="absolute inset-0"
                         style={{
-                          top: "0%",
+                          top: "-18%",
                           left: "-10%",
                           right: "-10%",
-                          bottom: "0%",
+                          bottom: "-18%",
                           backgroundImage: `url(${src})`,
                           backgroundRepeat: "no-repeat",
                           backgroundPosition: "bottom center",
@@ -283,10 +283,10 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                     <div
                       className="absolute inset-0"
                       style={{
-                        top: "0%",
+                        top: "-18%",
                         left: "-10%",
                         right: "-10%",
-                        bottom: "0%",
+                        bottom: "-18%",
                         backgroundImage: `url(${src})`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "top center",
@@ -307,10 +307,10 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                     <div
                       className="absolute inset-0"
                       style={{
-                        top: "0%",
+                        top: "-18%",
                         left: "-10%",
                         right: "-10%",
-                        bottom: "0%",
+                        bottom: "-18%",
                         backgroundImage: `url(${src})`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "bottom center",
