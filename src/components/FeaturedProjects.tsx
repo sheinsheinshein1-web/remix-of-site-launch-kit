@@ -126,6 +126,11 @@ const projectBlurBackground: Record<number, boolean[]> = {
   42: [true, true, true, true, true, true, true, true, true, false],
 };
 
+// Edge-bleed (бесшовное продолжение краёв вместо обычного blur).
+const projectEdgeBleed: Record<number, boolean[]> = {
+  42: [true, true, true, true, true, true, true, true, true, false],
+};
+
 function getProjectImages(mainImage: string, id: number): string[] {
   if (projectGalleries[id]) return projectGalleries[id];
   const others = houseImages.filter(img => img !== mainImage);
@@ -340,6 +345,7 @@ const FeaturedProjects = () => {
                   fits={projectFits[project.id]}
                   objectPositions={projectObjectPositions[project.id]}
                   blurBackground={projectBlurBackground[project.id]}
+                  edgeBleed={projectEdgeBleed[project.id]}
                   alt={project.name}
                   height="aspect-[3/4] h-auto md:h-[240px] md:aspect-auto"
                 >
