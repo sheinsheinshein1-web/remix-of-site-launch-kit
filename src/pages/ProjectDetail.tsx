@@ -759,38 +759,32 @@ const ProjectDetail = () => {
                     )}
                     {isContain && id === "42" && img.id <= 9 && (
                       <>
-                        {/* Верхняя полоса — растянутый верх фото */}
-                        <div className="absolute inset-x-0 top-0 h-[20%] overflow-hidden pointer-events-none">
-                          <img
-                            src={img.image}
-                            alt=""
-                            aria-hidden="true"
-                            className="absolute inset-x-0 top-0 w-full h-auto object-cover"
-                            style={{
-                              filter: "blur(24px)",
-                              transform: "scaleY(3)",
-                              transformOrigin: "top",
-                            }}
-                            decoding="sync"
-                            draggable={false}
-                          />
-                        </div>
-                        {/* Нижняя полоса — растянутый низ фото */}
-                        <div className="absolute inset-x-0 bottom-0 h-[20%] overflow-hidden pointer-events-none">
-                          <img
-                            src={img.image}
-                            alt=""
-                            aria-hidden="true"
-                            className="absolute inset-x-0 bottom-0 w-full h-auto object-cover"
-                            style={{
-                              filter: "blur(24px)",
-                              transform: "scaleY(3)",
-                              transformOrigin: "bottom",
-                            }}
-                            decoding="sync"
-                            draggable={false}
-                          />
-                        </div>
+                        {/* Верх — полоска верхнего края фото, растянутая по высоте */}
+                        <div
+                          className="absolute inset-x-0 top-0 pointer-events-none overflow-hidden"
+                          style={{
+                            height: "12%",
+                            backgroundImage: `url(${img.image})`,
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "top center",
+                            backgroundSize: "100% 1000%",
+                            filter: "blur(12px)",
+                            transform: "scale(1.05)",
+                          }}
+                        />
+                        {/* Низ — полоска нижнего края фото, растянутая по высоте */}
+                        <div
+                          className="absolute inset-x-0 bottom-0 pointer-events-none overflow-hidden"
+                          style={{
+                            height: "12%",
+                            backgroundImage: `url(${img.image})`,
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "bottom center",
+                            backgroundSize: "100% 1000%",
+                            filter: "blur(12px)",
+                            transform: "scale(1.05)",
+                          }}
+                        />
                       </>
                     )}
                     <img
