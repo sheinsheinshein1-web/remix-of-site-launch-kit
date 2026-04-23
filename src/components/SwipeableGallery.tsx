@@ -203,6 +203,30 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                         transform: "translateY(-2%)",
                       }}
                     />
+                    <div
+                      className="absolute inset-y-0 left-0 pointer-events-none z-10"
+                      style={{
+                        width: "14%",
+                        backgroundImage: `url(${src})`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "left center",
+                        backgroundSize: "5000% 100%",
+                        filter: "blur(10px)",
+                        transform: "translateX(2%)",
+                      }}
+                    />
+                    <div
+                      className="absolute inset-y-0 right-0 pointer-events-none z-10"
+                      style={{
+                        width: "14%",
+                        backgroundImage: `url(${src})`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "right center",
+                        backgroundSize: "5000% 100%",
+                        filter: "blur(10px)",
+                        transform: "translateX(-2%)",
+                      }}
+                    />
                   </>
                 )}
                 <img
@@ -269,6 +293,30 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                       backgroundSize: "100% 5000%",
                       filter: "blur(10px)",
                       transform: "translateY(-2%)",
+                    }}
+                  />
+                  <div
+                    className="absolute inset-y-0 left-0 pointer-events-none z-10"
+                    style={{
+                      width: "14%",
+                      backgroundImage: `url(${src})`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "left center",
+                      backgroundSize: "5000% 100%",
+                      filter: "blur(10px)",
+                      transform: "translateX(2%)",
+                    }}
+                  />
+                  <div
+                    className="absolute inset-y-0 right-0 pointer-events-none z-10"
+                    style={{
+                      width: "14%",
+                      backgroundImage: `url(${src})`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "right center",
+                      backgroundSize: "5000% 100%",
+                      filter: "blur(10px)",
+                      transform: "translateX(-2%)",
                     }}
                   />
                 </>

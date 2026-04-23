@@ -772,6 +772,32 @@ const ProjectDetail = () => {
                             transform: "translateY(-2%)",
                           }}
                         />
+                        {/* Лево — растянутая полоска левого края */}
+                        <div
+                          className="absolute inset-y-0 left-0 pointer-events-none z-10"
+                          style={{
+                            width: "14%",
+                            backgroundImage: `url(${img.image})`,
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "left center",
+                            backgroundSize: "5000% 100%",
+                            filter: "blur(10px)",
+                            transform: "translateX(2%)",
+                          }}
+                        />
+                        {/* Право — растянутая полоска правого края */}
+                        <div
+                          className="absolute inset-y-0 right-0 pointer-events-none z-10"
+                          style={{
+                            width: "14%",
+                            backgroundImage: `url(${img.image})`,
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "right center",
+                            backgroundSize: "5000% 100%",
+                            filter: "blur(10px)",
+                            transform: "translateX(-2%)",
+                          }}
+                        />
                       </>
                     )}
                     <img
