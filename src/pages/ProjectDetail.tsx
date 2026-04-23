@@ -766,7 +766,7 @@ const ProjectDetail = () => {
                               backgroundImage: `url(${img.image})`,
                               backgroundRepeat: "no-repeat",
                               backgroundPosition: "top center",
-                              backgroundSize: "114% 8000%",
+                              backgroundSize: "114% 11000%",
                               filter: "blur(10px)",
                             }}
                           />
@@ -791,7 +791,7 @@ const ProjectDetail = () => {
                               backgroundImage: `url(${img.image})`,
                               backgroundRepeat: "no-repeat",
                               backgroundPosition: "bottom center",
-                              backgroundSize: "114% 8000%",
+                              backgroundSize: "114% 11000%",
                               filter: "blur(10px)",
                             }}
                           />
