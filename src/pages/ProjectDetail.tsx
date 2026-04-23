@@ -743,20 +743,7 @@ const ProjectDetail = () => {
                 const isActive = i === activeImage;
                 return (
                   <div key={img.id} className="relative isolate w-full flex-shrink-0 aspect-[4/5] bg-muted overflow-hidden">
-                    {isContain && ((id === "40" && img.id <= 8) || (id === "41" && img.id <= 7)) && (
-                      <>
-                        <img
-                          src={img.image}
-                          alt=""
-                          aria-hidden="true"
-                          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                          style={{ filter: "blur(16px)", transform: "scale(1.08)" }}
-                          decoding="sync"
-                          draggable={false}
-                        />
-                        <div className="absolute inset-0 bg-black/10 pointer-events-none" />
-                      </>
-                    )}
+                    {/* старый blur-фон убран — для Bygge используется edge-bleed ниже */}
                     {isContain && ((id === "40" && img.id <= 8) || (id === "41" && img.id <= 7) || (id === "42" && img.id <= 9)) && (
                       <>
                         {/* Верх — растянутая полоска верхнего края */}
