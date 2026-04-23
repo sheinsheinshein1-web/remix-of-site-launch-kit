@@ -180,29 +180,31 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                 {showEdge && (
                   <>
                     <div
-                      className="absolute inset-x-0 top-0 pointer-events-none z-10"
+                      className="absolute pointer-events-none z-10"
                       style={{
-                        height: "22%",
+                        top: "-2%",
+                        left: "-4%",
+                        right: "-4%",
+                        height: "26%",
                         backgroundImage: `url(${src})`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "top center",
-                        backgroundSize: "100% 5000%",
+                        backgroundSize: "108% 5000%",
                         filter: "blur(10px)",
-                        transform: "translateY(-3%) scaleY(1.08)",
-                        transformOrigin: "top",
                       }}
                     />
                     <div
-                      className="absolute inset-x-0 bottom-0 pointer-events-none z-10"
+                      className="absolute pointer-events-none z-10"
                       style={{
-                        height: "22%",
+                        bottom: "-2%",
+                        left: "-4%",
+                        right: "-4%",
+                        height: "26%",
                         backgroundImage: `url(${src})`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "bottom center",
-                        backgroundSize: "100% 5000%",
+                        backgroundSize: "108% 5000%",
                         filter: "blur(10px)",
-                        transform: "translateY(3%) scaleY(1.08)",
-                        transformOrigin: "bottom",
                       }}
                     />
                   </>
