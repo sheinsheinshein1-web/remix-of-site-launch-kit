@@ -111,7 +111,7 @@ const projectFits: Record<number, ("cover" | "contain")[]> = {
   39: ["cover", "cover", "contain", "contain"],
   40: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
   41: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
-  42: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
+  42: ["cover", "cover", "cover", "cover", "cover", "cover", "cover", "cover", "cover", "contain"],
 };
 
 // Per-image object-position для широких/несбалансированных фото.
@@ -123,7 +123,7 @@ const projectObjectPositions: Record<number, (string | undefined)[]> = {
 const projectBlurBackground: Record<number, boolean[]> = {
   40: [true, true, true, true, true, true, true, true, false, false],
   41: [true, true, true, true, true, true, true, false, false, false],
-  42: [true, true, true, true, true, true, true, true, true, false],
+  42: [false, false, false, false, false, false, false, false, false, false],
 };
 
 function getProjectImages(mainImage: string, id: number): string[] {
