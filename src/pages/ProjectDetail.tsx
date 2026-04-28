@@ -84,6 +84,16 @@ import sherwood7 from "@/assets/sherwood-7.jpg";
 import sherwood8 from "@/assets/sherwood-8.jpg";
 import sherwood9 from "@/assets/sherwood-9.jpg";
 import sherwoodPlan1 from "@/assets/sherwood-plan-1.jpg";
+import senat1 from "@/assets/senat-1.jpg";
+import senat2 from "@/assets/senat-2.jpg";
+import senat3 from "@/assets/senat-3.png";
+import senat4 from "@/assets/senat-4.png";
+import senat5 from "@/assets/senat-5.png";
+import senat6 from "@/assets/senat-6.png";
+import senat7 from "@/assets/senat-7.jpg";
+import senat8 from "@/assets/senat-8.jpg";
+import senat9 from "@/assets/senat-9.jpg";
+import senatPlan1 from "@/assets/senat-plan-1.jpg";
 
 const defaultGallery = [
   { id: 1, image: house1, type: "photo" },
@@ -357,6 +367,34 @@ const projectOverrides: Record<string, {
       { id: 8, image: sherwood8, type: "photo", fit: "contain" },
       { id: 9, image: sherwood9, type: "photo", fit: "contain" },
       { id: 10, image: sherwoodPlan1, type: "photo", fit: "contain" },
+    ],
+  },
+  "43": {
+    name: "СЕНАТ",
+    maker: "Bygge",
+    makerInitials: "BG",
+    makerLogo: undefined,
+    makerId: "bygge",
+    siteUrl: "https://bygge.ru/katalog/senat/",
+    price: "6 545 000 ₽",
+    area: "96 м²",
+    beds: 4,
+    baths: 1,
+    floors: 1,
+    city: "Екатеринбург",
+    description: "Барнхаус 96 м² для круглогодичного проживания. Три спальни, кухня-гостиная, оборудованный санузел, тёплые полы и просторная терраса.",
+    descriptionLong: "СЕНАТ — барнхаус площадью 96 м² для круглогодичного проживания. Планировка: кухня-гостиная 30,2 м², три спальни (10,2; 10; 7 м²), санузел 4,6 м², прихожая 7,5 м², терраса 11,8 м² и крыльцо 3 м². Утепление пол / стена / потолок — 200 / 150 / 150 мм, полностью оборудованный санузел, вытяжная вентиляция с выходом на крышу, кабельные тёплые полы. Доступны опции: утепление крыши +50 мм, печь-камин или печь длительного горения с дымоходом, москитные сетки, ограждение террасы, свайный фундамент с обвязкой, доставка и монтаж на участке.",
+    gallery: [
+      { id: 1, image: senat1, type: "photo", fit: "contain" },
+      { id: 2, image: senat2, type: "photo", fit: "contain" },
+      { id: 3, image: senat7, type: "photo", fit: "contain" },
+      { id: 4, image: senat8, type: "photo", fit: "contain" },
+      { id: 5, image: senat9, type: "photo", fit: "contain" },
+      { id: 6, image: senat3, type: "photo", fit: "contain" },
+      { id: 7, image: senat4, type: "photo", fit: "contain" },
+      { id: 8, image: senat5, type: "photo", fit: "contain" },
+      { id: 9, image: senat6, type: "photo", fit: "contain" },
+      { id: 10, image: senatPlan1, type: "photo", fit: "contain" },
     ],
   },
 };
