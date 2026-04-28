@@ -109,7 +109,7 @@ const Header = () => {
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),6px)] pb-1.5">
             <div className="flex items-center justify-between">
               <Link to="/" className="flex items-center gap-1 text-[24px] font-bold text-foreground tracking-[-0.04em]">
-                <img src={logoMark} alt="" className="h-[23px] w-[23px]" aria-hidden />
+                <img src={logoMark} alt="" className="h-[23px] w-[23px]" aria-hidden loading="lazy" decoding="async" />
                 Много места
               </Link>
               <button onClick={() => setCityOpen(true)} className="flex items-center gap-1 text-[13px] font-medium text-primary bg-secondary rounded-xl h-9 px-3">
@@ -138,7 +138,7 @@ const Header = () => {
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-6">
                   <a href="/" className="flex items-center gap-1.5 text-[26px] font-bold text-primary-foreground tracking-[-0.04em]">
-                    <img src={logoMarkWhite} alt="" className="h-[25px] w-[25px]" aria-hidden />
+                    <img src={logoMarkWhite} alt="" className="h-[25px] w-[25px]" aria-hidden loading="lazy" decoding="async" />
                     Много места
                   </a>
                   <button onClick={() => setCityOpen(true)} className="inline-flex items-center gap-1.5 text-primary-foreground/90 hover:text-primary-foreground transition-colors">
@@ -172,7 +172,7 @@ const Header = () => {
             <div className="bg-background backdrop-blur-lg shadow-sm rounded-b-2xl">
               <div className="flex items-center gap-6 px-8 py-3">
                 <Link to="/" className="flex items-center gap-1.5 text-[24px] font-bold text-foreground tracking-[-0.04em] flex-shrink-0">
-                  <img src={logoMark} alt="" className="h-[23px] w-[23px]" aria-hidden />
+                  <img src={logoMark} alt="" className="h-[23px] w-[23px]" aria-hidden loading="lazy" decoding="async" />
                   Много места
                 </Link>
                 <div className="flex-1">

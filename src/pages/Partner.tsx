@@ -85,7 +85,7 @@ const Partner = () => {
                   className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center hover:bg-secondary/80 transition-colors"
                   onClick={() => { if (navigator.share) { navigator.share({ title: partner.name, url: window.location.href }); } else { navigator.clipboard.writeText(window.location.href); } }}
                 >
-                  <img src={shareIcon} alt="" className="w-[18px] h-[18px]" />
+                  <img src={shareIcon} alt="" className="w-[18px] h-[18px]" loading="lazy" decoding="async" />
                 </button>
               </div>
 
@@ -165,7 +165,7 @@ const Partner = () => {
               className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center"
               onClick={() => { if (navigator.share) { navigator.share({ title: partner.name, url: window.location.href }); } else { navigator.clipboard.writeText(window.location.href); } }}
             >
-              <img src={shareIcon} alt="" className="w-[18px] h-[18px]" />
+              <img src={shareIcon} alt="" className="w-[18px] h-[18px]" loading="lazy" decoding="async" />
             </button>
           </div>
         </div>
@@ -183,7 +183,7 @@ const Partner = () => {
               className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center"
               onClick={() => { if (navigator.share) { navigator.share({ title: partner.name, url: window.location.href }); } else { navigator.clipboard.writeText(window.location.href); } }}
             >
-              <img src={shareIcon} alt="" className="w-[18px] h-[18px]" />
+              <img src={shareIcon} alt="" className="w-[18px] h-[18px]" loading="lazy" decoding="async" />
             </button>
           </div>
 

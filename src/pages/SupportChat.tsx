@@ -111,7 +111,7 @@ const SupportChat = () => {
     <div className="border-b border-border bg-card shrink-0">
       <div className="px-5 h-[60px] flex items-center gap-3">
         <div className="w-10 h-10 shrink-0 rounded-xl bg-muted flex items-center justify-center">
-          <img src={supportIcon} alt="Поддержка" className="w-7 h-7 object-contain" />
+          <img src={supportIcon} alt="Поддержка" className="w-7 h-7 object-contain" loading="lazy" decoding="async" />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1.5">
@@ -134,7 +134,7 @@ const SupportChat = () => {
           <div key={msg.id} className={`flex items-end gap-2 ${msg.fromSupport ? "justify-start" : "justify-end"}`}>
             {msg.fromSupport && (
               <div className="w-8 h-8 shrink-0 rounded-xl bg-muted flex items-center justify-center mb-0.5">
-                <img src={supportIcon} alt="" className="w-5 h-5 object-contain" />
+                <img src={supportIcon} alt="" className="w-5 h-5 object-contain" loading="lazy" decoding="async" />
               </div>
             )}
             <div className={`max-w-[70%] rounded-2xl px-3.5 py-3 ${
@@ -189,7 +189,7 @@ const SupportChat = () => {
               <ChevronLeft className="w-6 h-6" />
             </button>
             <div className="w-11 h-11 shrink-0 rounded-xl bg-muted flex items-center justify-center">
-              <img src={supportIcon} alt="Поддержка" className="w-9 h-9 object-contain" />
+              <img src={supportIcon} alt="Поддержка" className="w-9 h-9 object-contain" loading="lazy" decoding="async" />
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-1">
@@ -211,7 +211,7 @@ const SupportChat = () => {
             <div key={msg.id} className={`flex items-end gap-2 ${msg.fromSupport ? "justify-start" : "justify-end"}`}>
               {msg.fromSupport && (
                 <div className="w-7 h-7 shrink-0 rounded-lg bg-muted flex items-center justify-center mb-0.5">
-                  <img src={supportIcon} alt="" className="w-5 h-5 object-contain" />
+                  <img src={supportIcon} alt="" className="w-5 h-5 object-contain" loading="lazy" decoding="async" />
                 </div>
               )}
               <div className={`max-w-[75%] rounded-2xl px-3.5 py-2.5 ${

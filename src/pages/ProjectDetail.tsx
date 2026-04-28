@@ -832,7 +832,7 @@ const ProjectDetail = () => {
                       className={`relative z-10 w-full h-full ${isContain ? "object-contain" : "object-cover"}`}
                       decoding="sync"
                       draggable={false}
-                      onClick={() => setLightboxOpen(true)}
+                      onClick={() = loading="lazy" decoding="async"> setLightboxOpen(true)}
                       style={i === 0 ? { viewTransitionName: 'project-hero' } as React.CSSProperties : undefined}
                     />
                     {img.type === "video" && (
@@ -859,16 +859,14 @@ const ProjectDetail = () => {
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover opacity-60"
                 style={{ filter: "blur(16px)", transform: "scale(1.08)" }}
-                draggable={false}
-              />
+                draggable={false} loading="lazy" decoding="async" />
               {/* Main image */}
               <div className="relative h-full flex items-center justify-center">
                 <img
                   src={galleryImages[activeImage].image}
                   alt={`Фото ${activeImage + 1}`}
                   className="max-h-full max-w-full object-contain relative z-10"
-                  draggable={false}
-                />
+                  draggable={false} loading="lazy" decoding="async" />
                 {galleryImages[activeImage].type === "video" && (
                   <div className="absolute inset-0 flex items-center justify-center z-20">
                     <Play className="w-14 h-14 text-white/80" />
@@ -901,7 +899,7 @@ const ProjectDetail = () => {
                   onClick={() => setActiveImage(i)}
                   className={`flex-shrink-0 w-[80px] h-[56px] rounded-lg overflow-hidden border-2 transition-colors ${activeImage === i ? "border-primary" : "border-transparent opacity-70 hover:opacity-100"}`}
                 >
-                  <img src={img.image} alt={`Миниатюра ${i + 1}`} className="w-full h-full object-cover" />
+                  <img src={img.image} alt={`Миниатюра ${i + 1}`} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                 </button>
               ))}
             </div>
@@ -951,7 +949,7 @@ const ProjectDetail = () => {
             >
               <div className="w-9 h-9 bg-background rounded-lg flex items-center justify-center text-foreground text-[10px] font-bold flex-shrink-0 overflow-hidden">
                 {project.makerLogo ? (
-                  <img src={project.makerLogo} alt={project.maker} className="w-full h-full object-contain" />
+                  <img src={project.makerLogo} alt={project.maker} className="w-full h-full object-contain" loading="lazy" decoding="async" />
                 ) : (
                   project.makerInitials
                 )}
@@ -1072,7 +1070,7 @@ const ProjectDetail = () => {
             src={galleryImages[activeImage].image}
             alt={`Фото ${activeImage + 1}`}
             className="max-w-full max-h-full object-contain select-none"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) = loading="lazy" decoding="async"> e.stopPropagation()}
             draggable={false}
           />
           {!isMobile && activeImage > 0 && (

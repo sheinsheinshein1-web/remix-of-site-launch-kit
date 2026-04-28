@@ -494,7 +494,7 @@ const CompanyChat = forwardRef<HTMLDivElement>((_, ref) => {
       return (
         <div key={msg.id} className="flex items-end gap-2 justify-end">
           <div className={`rounded-2xl overflow-hidden ${isMobile ? "max-w-[75%]" : "max-w-[320px]"} bg-primary text-primary-foreground rounded-br-md`}>
-            {card.image ? <img src={card.image} alt={card.name} className="w-full h-[140px] object-cover" /> : null}
+            {card.image ? <img src={card.image} alt={card.name} className="w-full h-[140px] object-cover" loading="lazy" decoding="async" /> : null}
             <div className="px-3.5 py-2.5">
               <p className="text-[15px] font-semibold">{card.name}</p>
               <div className="flex items-center gap-2 mt-1">

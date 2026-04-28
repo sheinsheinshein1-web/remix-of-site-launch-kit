@@ -154,7 +154,7 @@ const Profile = () => {
           <ChevronRight className="w-5 h-5 text-muted-foreground/50" strokeWidth={1.5} />
         </button>
         <button onClick={() => navigate("/messages")} className="flex items-center gap-3 w-full px-4 py-3.5 border-b border-border">
-          <img src={projectTaiga} alt="Тайга 72" className="w-9 h-9 rounded-[10px] object-cover flex-shrink-0" />
+          <img src={projectTaiga} alt="Тайга 72" className="w-9 h-9 rounded-[10px] object-cover flex-shrink-0" loading="lazy" decoding="async" />
           <div className="flex-1 text-left min-w-0">
             <div className="flex items-center gap-2">
               <span className="text-[14px] font-medium text-foreground">Тайга 72</span>
@@ -165,7 +165,7 @@ const Profile = () => {
           <span className="text-[13px] font-medium text-primary flex-shrink-0">Чат ›</span>
         </button>
         <div className="flex items-center gap-3 px-4 py-3.5">
-          <img src={projectKedr} alt="Кедр 24" className="w-9 h-9 rounded-[10px] object-cover flex-shrink-0" />
+          <img src={projectKedr} alt="Кедр 24" className="w-9 h-9 rounded-[10px] object-cover flex-shrink-0" loading="lazy" decoding="async" />
           <div className="flex-1 text-left min-w-0">
             <div className="flex items-center gap-2">
               <span className="text-[14px] font-medium text-foreground">Кедр 24</span>
