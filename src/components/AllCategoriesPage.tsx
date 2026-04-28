@@ -5,6 +5,7 @@ import MobileTabBar from "./MobileTabBar";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
+import Seo from "@/components/Seo";
 import catHouses from "@/assets/cat-houses.png";
 import catBaths from "@/assets/cat-baths.png";
 import catGlamping from "@/assets/cat-glamping.png";
@@ -127,6 +128,19 @@ const AllCategoriesPage = () => {
 
   return (
     <div className="min-h-screen bg-secondary font-sans flex flex-col">
+      <Seo
+        title="Категории — модульные дома, бани, глэмпинг | многоместа.рф"
+        description="Все категории проектов: жилые дома, бани, глэмпинг, гостевые дома, коммерческие модули и многое другое."
+        canonicalPath="/categories"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Главная", item: "https://многоместа.рф/" },
+            { "@type": "ListItem", position: 2, name: "Категории", item: "https://многоместа.рф/categories" },
+          ],
+        }}
+      />
       {/* Desktop header */}
       {!isMobile && <Header />}
 
