@@ -4,6 +4,7 @@ import {
   Cog, Headset, HelpCircle, Info, Search
 } from "lucide-react";
 import MobileTabBar from "@/components/MobileTabBar";
+import Seo from "@/components/Seo";
 import { useIsMobile } from "@/hooks/use-mobile";
 import svcCalculator from "@/assets/svc-calculator.png";
 import svcManufacturers from "@/assets/svc-manufacturers.png";
@@ -31,6 +32,7 @@ const Profile = () => {
   if (isMobile && !isLoggedIn) {
     return (
       <div className="min-h-screen bg-muted font-sans flex flex-col">
+        <Seo title="Профиль — многоместа.рф" description="Личный кабинет: заявки, сообщения, избранное." canonicalPath="/profile" noIndex />
         {/* Bento header */}
         <div className="sticky top-0 z-40 bg-background rounded-b-2xl shadow-sm shrink-0">
           <div className="flex items-center justify-center h-14">
