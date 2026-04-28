@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>многоместа.рф</title>
-    <meta name="description" content="Маркетплейс модульных и префаб домов. Сотни проектов от проверенных производителей с доставкой по России.">
+    <title>многоместа.рф — модульные и префаб дома с доставкой по России</title>
+    <meta name="description" content="Маркетплейс модульных и префаб домов. Сотни проектов от проверенных производителей с доставкой и сборкой по России.">
     <meta name="author" content="многоместа.рф" />
+    <link rel="canonical" href="https://многоместа.рф/" />
 
     <!-- PWA / Standalone -->
     <link rel="manifest" href="/manifest.json" />
@@ -16,10 +17,39 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png?v=3" />
     <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png?v=3" />
     <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png?v=3" />
+
+    <!-- SEO fallback styling: hidden visually but parseable by crawlers -->
+    <style>
+      .seo-fallback{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+    </style>
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- SEO fallback content: visible to crawlers before React hydrates, replaced after. -->
+      <div class="seo-fallback">
+        <h1>многоместа.рф — маркетплейс модульных и префаб домов</h1>
+        <p>Сотни проектов модульных, префаб и каркасных домов от проверенных производителей. Доставка и сборка по всей России. Сравнивайте цены, площадь, сроки изготовления и выбирайте проект под ваш участок.</p>
+        <h2>Категории</h2>
+        <ul>
+          <li><a href="/catalog?category=houses">Жилые модульные дома</a></li>
+          <li><a href="/catalog?category=baths">Бани и СПА</a></li>
+          <li><a href="/catalog?category=glamping">Глэмпинг и купола</a></li>
+          <li><a href="/catalog?category=guest">Гостевые дома</a></li>
+          <li><a href="/catalog?category=commercial">Коммерческие модули</a></li>
+          <li><a href="/catalog?category=dacha">Дачные дома</a></li>
+        </ul>
+        <h2>Разделы</h2>
+        <ul>
+          <li><a href="/">Главная</a></li>
+          <li><a href="/catalog">Каталог проектов</a></li>
+          <li><a href="/categories">Все категории</a></li>
+          <li><a href="/partner">Стать партнёром</a></li>
+          <li><a href="/privacy">Политика конфиденциальности</a></li>
+        </ul>
+        <p>многоместа.рф помогает быстро выбрать модульный дом под ключ: жилые проекты для ИЖС, гостевые дома, бани, глэмпинг-купола, коммерческие модули и дачные постройки.</p>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
