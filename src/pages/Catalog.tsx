@@ -88,6 +88,10 @@ import senat7 from "@/assets/senat-7.jpg";
 import senat8 from "@/assets/senat-8.jpg";
 import senat9 from "@/assets/senat-9.jpg";
 import senatPlan1 from "@/assets/senat-plan-1.jpg";
+import familySuite1 from "@/assets/family-suite-1.jpg";
+import familySuite2 from "@/assets/family-suite-2.jpg";
+import familySuite3 from "@/assets/family-suite-3.jpg";
+import familySuitePlan1 from "@/assets/family-suite-plan-1.jpg";
 
 // У каждого проекта — полный набор как в карточке проекта: рендеры + планы.
 const projectGalleries: Record<number, string[]> = {
