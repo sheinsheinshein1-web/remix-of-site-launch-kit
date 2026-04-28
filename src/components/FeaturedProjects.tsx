@@ -103,6 +103,14 @@ import gallant5 from "@/assets/gallant-5.jpg";
 import gallant6 from "@/assets/gallant-6.jpg";
 import gallant7 from "@/assets/gallant-7.jpg";
 import gallantPlan1 from "@/assets/gallant-plan-1.jpg";
+import grandis1 from "@/assets/grandis-1.jpg";
+import grandis2 from "@/assets/grandis-2.jpg";
+import grandis3 from "@/assets/grandis-3.jpg";
+import grandis4 from "@/assets/grandis-4.jpg";
+import grandis5 from "@/assets/grandis-5.jpg";
+import grandis6 from "@/assets/grandis-6.jpg";
+import grandis7 from "@/assets/grandis-7.jpg";
+import grandisPlan1 from "@/assets/grandis-plan-1.jpg";
 
 const houseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
@@ -122,6 +130,7 @@ const projectGalleries: Record<number, string[]> = {
   43: [senat3, senat4, senat5, senat6, senat1, senat2, senat7, senat8, senat9, senatPlan1],
   44: [familySuite1, familySuite2, familySuite3, familySuitePlan1],
   45: [gallant1, gallant2, gallant3, gallant4, gallant5, gallant6, gallant7, gallantPlan1],
+  46: [grandis1, grandis2, grandis3, grandis4, grandis5, grandis6, grandis7, grandisPlan1],
 };
 
 // Per-image fit для проектов: "contain" — фото с blur-фоном (для горизонтальных планировок).
@@ -140,6 +149,7 @@ const projectFits: Record<number, ("cover" | "contain")[]> = {
   43: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
   44: ["contain", "contain", "contain", "contain"],
   45: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
+  46: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
 };
 
 // Per-image object-position для широких/несбалансированных фото.
@@ -155,6 +165,7 @@ const projectBlurBackground: Record<number, boolean[]> = {
   43: [true, true, true, true, true, true, true, true, true, false],
   44: [true, true, true, false],
   45: [true, true, true, true, true, true, true, false],
+  46: [true, true, true, true, true, true, true, false],
 };
 
 // Edge-bleed (бесшовное продолжение краёв вместо обычного blur).
@@ -165,6 +176,7 @@ const projectEdgeBleed: Record<number, boolean[]> = {
   43: [false, false, false, false, false, false, false, false, false, false],
   44: [false, false, false, false],
   45: [false, false, false, false, false, false, false, false],
+  46: [false, false, false, false, false, false, false, false],
 };
 
 function getProjectImages(mainImage: string, id: number): string[] {
@@ -193,6 +205,7 @@ const baseProjects = [
   { id: 43, name: "СЕНАТ", maker: "Bygge", area: "96 м²", beds: 4, baths: 1, term: "60 д.", price: "6 545 000 ₽", image: senat1, liked: false, likes: 31, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
   { id: 44, name: "ФАМИЛЬНЫЙ", maker: "Bygge", area: "72 м²", beds: 1, baths: 1, term: "60 д.", price: "4 050 000 ₽", image: familySuite1, liked: false, likes: 26, hasRealPhotos: true, city: "Екатеринбург", rating: "4.7" },
   { id: 45, name: "ГАЛАНТ", maker: "Bygge", area: "59 м²", beds: 2, baths: 1, term: "35 д.", price: "3 346 000 ₽", image: gallant1, liked: false, likes: 24, hasRealPhotos: true, city: "Екатеринбург", rating: "4.7" },
+  { id: 46, name: "ГРАНДИС", maker: "Bygge", area: "30 м²", beds: 1, baths: 1, term: "30 д.", price: "1 585 000 ₽", image: grandis1, liked: false, likes: 19, hasRealPhotos: true, city: "Екатеринбург", rating: "4.7" },
 ];
 
 const PAGE_SIZE = 8;
