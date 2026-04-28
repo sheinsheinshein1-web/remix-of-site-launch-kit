@@ -94,6 +94,10 @@ import senat7 from "@/assets/senat-7.jpg";
 import senat8 from "@/assets/senat-8.jpg";
 import senat9 from "@/assets/senat-9.jpg";
 import senatPlan1 from "@/assets/senat-plan-1.jpg";
+import familySuite1 from "@/assets/family-suite-1.jpg";
+import familySuite2 from "@/assets/family-suite-2.jpg";
+import familySuite3 from "@/assets/family-suite-3.jpg";
+import familySuitePlan1 from "@/assets/family-suite-plan-1.jpg";
 
 const defaultGallery = [
   { id: 1, image: house1, type: "photo" },
@@ -395,6 +399,28 @@ const projectOverrides: Record<string, {
       { id: 8, image: senat8, type: "photo", fit: "contain" },
       { id: 9, image: senat9, type: "photo", fit: "contain" },
       { id: 10, image: senatPlan1, type: "photo", fit: "contain" },
+    ],
+  },
+  "44": {
+    name: "ФАМИЛЬНЫЙ",
+    maker: "Bygge",
+    makerInitials: "BG",
+    makerLogo: undefined,
+    makerId: "bygge",
+    siteUrl: "https://bygge.ru/katalog/family-suite/",
+    price: "4 050 000 ₽",
+    area: "72 м²",
+    beds: 1,
+    baths: 1,
+    floors: 1,
+    city: "Екатеринбург",
+    description: "Модульный дом 8 × 9 м для круглогодичного проживания. Кухня-гостиная 29 м², спальня 7,2 м², санузел 4,6 м² и просторная терраса.",
+    descriptionLong: "ФАМИЛЬНЫЙ (Family Suite) — модульный дом площадью 72 м² для круглогодичного проживания. Высота потолка 3 м. Утепление пол / стена / потолок — 200 / 150 / 150 мм. Просторная кухня-гостиная 29 м², отдельная спальня 7,2 м², полностью оборудованный санузел 4,6 м², большая терраса. Вытяжная вентиляция с выходом на крышу, кабельные тёплые полы. В подарок — конвекторы отопления.",
+    gallery: [
+      { id: 1, image: familySuite1, type: "photo", fit: "contain" },
+      { id: 2, image: familySuite2, type: "photo", fit: "contain" },
+      { id: 3, image: familySuite3, type: "photo", fit: "contain" },
+      { id: 4, image: familySuitePlan1, type: "photo", fit: "contain" },
     ],
   },
 };
@@ -814,7 +840,8 @@ const ProjectDetail = () => {
                       (id === "40" && img.id <= 8) ||
                       (id === "41" && img.id <= 7) ||
                       (id === "42" && img.id <= 9) ||
-                      (id === "43" && img.id <= 9)
+                      (id === "43" && img.id <= 9) ||
+                      (id === "44" && img.id <= 3)
                     ) && (
                       <img
                         src={img.image}
