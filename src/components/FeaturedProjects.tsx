@@ -95,6 +95,14 @@ import familySuite1 from "@/assets/family-suite-1.jpg";
 import familySuite2 from "@/assets/family-suite-2.jpg";
 import familySuite3 from "@/assets/family-suite-3.jpg";
 import familySuitePlan1 from "@/assets/family-suite-plan-1.jpg";
+import gallant1 from "@/assets/gallant-1.jpg";
+import gallant2 from "@/assets/gallant-2.jpg";
+import gallant3 from "@/assets/gallant-3.jpg";
+import gallant4 from "@/assets/gallant-4.jpg";
+import gallant5 from "@/assets/gallant-5.jpg";
+import gallant6 from "@/assets/gallant-6.jpg";
+import gallant7 from "@/assets/gallant-7.jpg";
+import gallantPlan1 from "@/assets/gallant-plan-1.jpg";
 
 const houseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
@@ -113,6 +121,7 @@ const projectGalleries: Record<number, string[]> = {
   42: [sherwood1, sherwood2, sherwood3, sherwood4, sherwood5, sherwood6, sherwood7, sherwood8, sherwood9, sherwoodPlan1],
   43: [senat3, senat4, senat5, senat6, senat1, senat2, senat7, senat8, senat9, senatPlan1],
   44: [familySuite1, familySuite2, familySuite3, familySuitePlan1],
+  45: [gallant1, gallant2, gallant3, gallant4, gallant5, gallant6, gallant7, gallantPlan1],
 };
 
 // Per-image fit для проектов: "contain" — фото с blur-фоном (для горизонтальных планировок).
@@ -130,6 +139,7 @@ const projectFits: Record<number, ("cover" | "contain")[]> = {
   42: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
   43: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
   44: ["contain", "contain", "contain", "contain"],
+  45: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
 };
 
 // Per-image object-position для широких/несбалансированных фото.
@@ -144,6 +154,7 @@ const projectBlurBackground: Record<number, boolean[]> = {
   42: [false, false, false, false, false, false, false, false, false, false],
   43: [true, true, true, true, true, true, true, true, true, false],
   44: [true, true, true, false],
+  45: [true, true, true, true, true, true, true, false],
 };
 
 // Edge-bleed (бесшовное продолжение краёв вместо обычного blur).
@@ -153,6 +164,7 @@ const projectEdgeBleed: Record<number, boolean[]> = {
   42: [true, true, true, true, true, true, true, true, true, false],
   43: [false, false, false, false, false, false, false, false, false, false],
   44: [false, false, false, false],
+  45: [false, false, false, false, false, false, false, false],
 };
 
 function getProjectImages(mainImage: string, id: number): string[] {
@@ -180,6 +192,7 @@ const baseProjects = [
   { id: 42, name: "ШЕРВУД", maker: "Bygge", area: "87 м²", beds: 4, baths: 1, term: "60 д.", price: "5 635 000 ₽", image: sherwood1, liked: false, likes: 29, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
   { id: 43, name: "СЕНАТ", maker: "Bygge", area: "96 м²", beds: 4, baths: 1, term: "60 д.", price: "6 545 000 ₽", image: senat1, liked: false, likes: 31, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
   { id: 44, name: "ФАМИЛЬНЫЙ", maker: "Bygge", area: "72 м²", beds: 1, baths: 1, term: "60 д.", price: "4 050 000 ₽", image: familySuite1, liked: false, likes: 26, hasRealPhotos: true, city: "Екатеринбург", rating: "4.7" },
+  { id: 45, name: "ГАЛАНТ", maker: "Bygge", area: "59 м²", beds: 2, baths: 1, term: "35 д.", price: "3 346 000 ₽", image: gallant1, liked: false, likes: 24, hasRealPhotos: true, city: "Екатеринбург", rating: "4.7" },
 ];
 
 const PAGE_SIZE = 8;

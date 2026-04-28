@@ -92,6 +92,14 @@ import familySuite1 from "@/assets/family-suite-1.jpg";
 import familySuite2 from "@/assets/family-suite-2.jpg";
 import familySuite3 from "@/assets/family-suite-3.jpg";
 import familySuitePlan1 from "@/assets/family-suite-plan-1.jpg";
+import gallant1 from "@/assets/gallant-1.jpg";
+import gallant2 from "@/assets/gallant-2.jpg";
+import gallant3 from "@/assets/gallant-3.jpg";
+import gallant4 from "@/assets/gallant-4.jpg";
+import gallant5 from "@/assets/gallant-5.jpg";
+import gallant6 from "@/assets/gallant-6.jpg";
+import gallant7 from "@/assets/gallant-7.jpg";
+import gallantPlan1 from "@/assets/gallant-plan-1.jpg";
 
 // У каждого проекта — полный набор как в карточке проекта: рендеры + планы.
 const projectGalleries: Record<number, string[]> = {
@@ -108,6 +116,7 @@ const projectGalleries: Record<number, string[]> = {
   42: [sherwood1, sherwood2, sherwood3, sherwood4, sherwood5, sherwood6, sherwood7, sherwood8, sherwood9, sherwoodPlan1],
   43: [senat3, senat4, senat5, senat6, senat1, senat2, senat7, senat8, senat9, senatPlan1],
   44: [familySuite1, familySuite2, familySuite3, familySuitePlan1],
+  45: [gallant1, gallant2, gallant3, gallant4, gallant5, gallant6, gallant7, gallantPlan1],
 };
 
 function getProjectImages(_mainImage: string, id: number): string[] {
@@ -129,6 +138,7 @@ const projectFits: Record<number, ("cover" | "contain")[]> = {
   42: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
   43: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
   44: ["contain", "contain", "contain", "contain"],
+  45: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
 };
 
 // Per-image object-position для широких/несбалансированных фото.
@@ -143,6 +153,7 @@ const projectBlurBackground: Record<number, boolean[]> = {
   42: [true, true, true, true, true, true, true, true, true, false],
   43: [true, true, true, true, true, true, true, true, true, false],
   44: [true, true, true, false],
+  45: [true, true, true, true, true, true, true, false],
 };
 
 const chips = ["Все", "Для жизни", "Для выходных", "Для сдачи", "Для семьи", "Быстро поставить"];
@@ -170,6 +181,7 @@ const catalogItems = [
   { id: 42, badge: "Жилой дом", maker: "Bygge · Екатеринбург", name: "ШЕРВУД", price: "5 635 000 ₽", area: "87 м²", beds: 4, baths: 1, term: "60 д.", rooms: "4 спальни", purpose: "ИЖС / СНТ", image: sherwood1, fav: false, likes: 29, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Тёплые полы", "Вытяжная вентиляция"], style: "Современный", landSize: "6–10 соток", hasRealPhotos: true, rating: 4.8, hasShowroom: true, hasInstallment: true },
   { id: 43, badge: "Жилой дом", maker: "Bygge · Екатеринбург", name: "СЕНАТ", price: "6 545 000 ₽", area: "96 м²", beds: 4, baths: 1, term: "60 д.", rooms: "4 комнаты", purpose: "ИЖС / СНТ", image: senat1, fav: false, likes: 31, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Тёплые полы", "Вытяжная вентиляция", "Барнхаус"], style: "Барнхаус", landSize: "6–10 соток", hasRealPhotos: true, rating: 4.8, hasShowroom: true, hasInstallment: true },
   { id: 44, badge: "Жилой дом", maker: "Bygge · Екатеринбург", name: "ФАМИЛЬНЫЙ", price: "4 050 000 ₽", area: "72 м²", beds: 1, baths: 1, term: "60 д.", rooms: "2 комнаты", purpose: "ИЖС / СНТ", image: familySuite1, fav: false, likes: 26, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Тёплые полы", "Вытяжная вентиляция", "Терраса"], style: "Современный", landSize: "3–6 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: true, hasInstallment: true },
+  { id: 45, badge: "Жилой дом", maker: "Bygge · Екатеринбург", name: "ГАЛАНТ", price: "3 346 000 ₽", area: "59 м²", beds: 2, baths: 1, term: "35 д.", rooms: "3 комнаты", purpose: "ИЖС / СНТ", image: gallant1, fav: false, likes: 24, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Тёплые полы", "Вытяжная вентиляция", "Терраса"], style: "Современный", landSize: "3–6 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: true, hasInstallment: true },
 ];
 
 const sidebarFilters = [
