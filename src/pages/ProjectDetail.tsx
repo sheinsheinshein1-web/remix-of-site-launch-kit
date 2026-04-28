@@ -409,6 +409,32 @@ const projectOverrides: Record<string, {
       { id: 10, image: senatPlan1, type: "photo", fit: "contain" },
     ],
   },
+  "45": {
+    name: "ГАЛАНТ",
+    maker: "Bygge",
+    makerInitials: "BG",
+    makerLogo: undefined,
+    makerId: "bygge",
+    siteUrl: "https://bygge.ru/katalog/gallant/",
+    price: "3 346 000 ₽",
+    area: "59 м²",
+    beds: 2,
+    baths: 1,
+    floors: 1,
+    city: "Екатеринбург",
+    description: "Модульный дом 7,3 × 8,1 м, 3 комнаты. Полностью оборудованный санузел, кабельные тёплые полы, вытяжная вентиляция.",
+    descriptionLong: "ГАЛАНТ — модульный дом площадью 59 м², размеры 7,3 × 8,1 м, 3 комнаты. Высота потолка 2,5 м. Утепление пол / стена / потолок — 200 / 150 / 150 мм. Полностью оборудованный санузел, вытяжная вентиляция с выходом на крышу, кабельные тёплые полы. В подарок — защитная сетка от грызунов.",
+    gallery: [
+      { id: 1, image: gallant1, type: "photo", fit: "contain" },
+      { id: 2, image: gallant2, type: "photo", fit: "contain" },
+      { id: 3, image: gallant3, type: "photo", fit: "contain" },
+      { id: 4, image: gallant4, type: "photo", fit: "contain" },
+      { id: 5, image: gallant5, type: "photo", fit: "contain" },
+      { id: 6, image: gallant6, type: "photo", fit: "contain" },
+      { id: 7, image: gallant7, type: "photo", fit: "contain" },
+      { id: 8, image: gallantPlan1, type: "photo", fit: "contain" },
+    ],
+  },
   "44": {
     name: "ФАМИЛЬНЫЙ",
     maker: "Bygge",
@@ -849,7 +875,8 @@ const ProjectDetail = () => {
                       (id === "41" && img.id <= 7) ||
                       (id === "42" && img.id <= 9) ||
                       (id === "43" && img.id <= 9) ||
-                      (id === "44" && img.id <= 3)
+                      (id === "44" && img.id <= 3) ||
+                      (id === "45" && img.id <= 7)
                     ) && (
                       <img
                         src={img.image}
