@@ -10,6 +10,7 @@ import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { useNavigate } from "react-router-dom";
 import SwipeableGallery from "@/components/SwipeableGallery";
 import { navigateWithTransition } from "@/lib/viewTransition";
+import Seo from "@/components/Seo";
 
 import wideHouse1 from "@/assets/wide-house-1.webp";
 import wideHouse2 from "@/assets/wide-house-2.webp";
@@ -617,6 +618,19 @@ const Catalog = () => {
 
   return (
     <div className="min-h-screen bg-secondary font-sans pb-[calc(72px+max(env(safe-area-inset-bottom),16px))] md:pb-0">
+      <Seo
+        title="Каталог модульных и префаб домов — многоместа.рф"
+        description="Каталог проектов модульных и префаб домов: цены, площадь, сроки изготовления. Сравните и выберите проект под ваш участок."
+        canonicalPath="/catalog"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Главная", item: "https://многоместа.рф/" },
+            { "@type": "ListItem", position: 2, name: "Каталог", item: "https://многоместа.рф/catalog" },
+          ],
+        }}
+      />
       {/* Desktop: reuse site header */}
       <div className="hidden md:block">
         <Header />

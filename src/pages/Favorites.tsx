@@ -9,6 +9,7 @@ import Header from "@/components/Header";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
+import Seo from "@/components/Seo";
 
 import house1 from "@/assets/house-1.jpg";
 import house2 from "@/assets/house-2.jpg";
@@ -191,6 +192,7 @@ const Favorites = () => {
   if (isMobile) {
     return (
       <div className="min-h-screen bg-muted font-sans flex flex-col">
+        <Seo title="Избранное — многоместа.рф" description="Сохранённые проекты модульных и префаб домов." canonicalPath="/favorites" noIndex />
         {/* Search bar — catalog-style header */}
         <div className="sticky top-0 z-40">
           <div className="bg-background rounded-b-2xl shadow-sm pt-[env(safe-area-inset-top)]">
@@ -334,6 +336,7 @@ const Favorites = () => {
   /* ═══════ DESKTOP ═══════ */
   return (
     <div className="min-h-screen bg-secondary font-sans">
+      <Seo title="Избранное — многоместа.рф" description="Сохранённые проекты модульных и префаб домов." canonicalPath="/favorites" noIndex />
       <Header />
       <div className="pt-[108px] pb-6">
         <div className="max-w-[1400px] mx-auto bg-background rounded-b-2xl">

@@ -7,6 +7,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import CitySelector, { useCity } from "@/components/CitySelector";
 import OtherProjectsFeed from "@/components/OtherProjectsFeed";
+import Seo from "@/components/Seo";
 import house1 from "@/assets/house-1.jpg";
 import house2 from "@/assets/house-2.jpg";
 import house3 from "@/assets/house-3.jpg";
@@ -630,8 +631,35 @@ const ProjectDetail = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const priceDigits = (project.price.match(/\d+/g) ?? []).join("");
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: project.name,
+    description: project.descriptionLong || project.description,
+    brand: { "@type": "Brand", name: project.maker },
+    image: galleryImages[0]?.image ? `https://многоместа.рф${galleryImages[0].image}` : undefined,
+    offers: priceDigits
+      ? {
+          "@type": "Offer",
+          priceCurrency: "RUB",
+          price: priceDigits,
+          availability: "https://schema.org/InStock",
+          url: typeof window !== "undefined" ? window.location.href : `https://многоместа.рф/project/${project.id}`,
+        }
+      : undefined,
+  };
+
   return (
     <div className="min-h-screen bg-muted pb-24 md:pb-0">
+      <Seo
+        title={`${project.name} от ${project.maker} — ${project.price} | многоместа.рф`}
+        description={`${project.name} (${project.area}, ${project.beds} спальни). ${project.description}`.slice(0, 160)}
+        canonicalPath={`/project/${project.id}`}
+        type="product"
+        image={galleryImages[0]?.image}
+        jsonLd={productJsonLd}
+      />
       {/* Desktop header */}
       <div className="hidden md:block"><Header /></div>
       {/* Sticky bento header on scroll */}

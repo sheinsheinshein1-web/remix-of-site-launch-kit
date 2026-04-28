@@ -7,6 +7,7 @@ import supportIcon from "@/assets/support-icon.png";
 import partnerIcon from "@/assets/partner-icon.png";
 import { getCompanyChats, type CompanyChatEntry } from "@/lib/companyChats";
 import PartnerDrawer from "@/components/PartnerDrawer";
+import Seo from "@/components/Seo";
 
 const Messages = () => {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ const Messages = () => {
 
   return (
     <div className="h-screen bg-muted font-sans flex flex-col">
+      <Seo title="Сообщения — многоместа.рф" description="Чаты с поддержкой и партнёрами." canonicalPath="/messages" noIndex />
         <div className="sticky top-0 z-40 bg-background rounded-b-2xl shadow-sm shrink-0 pt-[env(safe-area-inset-top)]">
           <div className="flex items-center justify-center h-14">
           <h1 className="text-base font-semibold text-foreground">Сообщения</h1>

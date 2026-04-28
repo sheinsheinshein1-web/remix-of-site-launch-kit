@@ -7,6 +7,7 @@ import PartnerDrawer from "@/components/PartnerDrawer";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useEffect, useState } from "react";
 import partnerHeroImg from "@/assets/partner-hero-illustration.png";
+import Seo from "@/components/Seo";
 
 const features = [
   { icon: ShieldCheck, title: "Бейдж «Проверено»", desc: "На карточке компании и на каждом проекте. Покупатели отличают вас от непроверенных." },
@@ -82,9 +83,12 @@ const PartnerLanding = () => {
 
   if (isMobile) {
     return (
-      <PartnerDrawer drawerOpen={drawerOpen} onDrawerOpenChange={handleDrawerChange}>
-        <div />
-      </PartnerDrawer>
+      <>
+        <Seo title="Стать партнёром — многоместа.рф" description="Размещайте проекты модульных и префаб домов на маркетплейсе многоместа.рф." canonicalPath="/partner" />
+        <PartnerDrawer drawerOpen={drawerOpen} onDrawerOpenChange={handleDrawerChange}>
+          <div />
+        </PartnerDrawer>
+      </>
     );
   }
 
@@ -106,6 +110,7 @@ const PartnerLanding = () => {
 
   return (
     <div className="min-h-screen bg-secondary font-sans">
+      <Seo title="Стать партнёром — многоместа.рф" description="Размещайте проекты модульных и префаб домов на маркетплейсе многоместа.рф." canonicalPath="/partner" />
       <Header />
       <div className="pt-[152px] pb-12">
         <div className="max-w-[1200px] mx-auto px-8 flex flex-col gap-3">
