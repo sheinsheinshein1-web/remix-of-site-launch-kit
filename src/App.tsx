@@ -133,25 +133,27 @@ const AppRoutes = () => (
   <>
     <ScrollToTop />
     <AssetPreloader />
-    <Routes>
-      <Route path="/" element={<Index />} />
-      <Route path="/catalog" element={<Catalog />} />
-      <Route path="/favorites" element={<Favorites />} />
-      <Route path="/project/:id" element={<ProjectDetailRoute />} />
-      <Route path="/categories" element={<AllCategoriesPage />} />
-      <Route path="/messages" element={<MessagesLayout />}>
-        <Route index element={<Messages />} />
-        <Route path="support" element={<SupportChat />} />
-        <Route path="partner" element={<PartnerChat />} />
-        <Route path="company" element={<CompanyChat />} />
-      </Route>
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/requests" element={<Requests />} />
-      <Route path="/partner" element={<PartnerLanding />} />
-      <Route path="/partner/:id" element={<Partner />} />
-      <Route path="/privacy" element={<PrivacyPolicy />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <Suspense fallback={<div className="min-h-screen bg-secondary" />}>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/project/:id" element={<ProjectDetailRoute />} />
+        <Route path="/categories" element={<AllCategoriesPage />} />
+        <Route path="/messages" element={<MessagesLayout />}>
+          <Route index element={<Messages />} />
+          <Route path="support" element={<SupportChat />} />
+          <Route path="partner" element={<PartnerChat />} />
+          <Route path="company" element={<CompanyChat />} />
+        </Route>
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/requests" element={<Requests />} />
+        <Route path="/partner" element={<PartnerLanding />} />
+        <Route path="/partner/:id" element={<Partner />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
   </>
 );
 
