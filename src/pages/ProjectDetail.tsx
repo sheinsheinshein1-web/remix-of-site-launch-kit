@@ -469,6 +469,7 @@ const projectOverrides: Record<string, {
       { id: 8, image: grandisPlan1, type: "photo", fit: "contain" },
     ],
   },
+  "44": {
     name: "ФАМИЛЬНЫЙ",
     maker: "Bygge",
     makerInitials: "BG",
