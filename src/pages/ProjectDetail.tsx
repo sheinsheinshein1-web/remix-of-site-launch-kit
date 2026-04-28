@@ -809,60 +809,23 @@ const ProjectDetail = () => {
                 const isActive = i === activeImage;
                 return (
                   <div key={img.id} className="relative isolate w-full flex-shrink-0 aspect-[4/5] bg-muted overflow-hidden">
-                    {/* старый blur-фон убран — для Bygge используется edge-bleed ниже */}
-                    {isContain && ((id === "40" && img.id <= 8) || (id === "41" && img.id <= 7) || (id === "42" && img.id <= 9)) && (
-                      <>
-                        {/* Верх */}
-                        <div
-                          className="absolute overflow-hidden pointer-events-none z-10"
-                          style={{
-                            top: "-4%",
-                            left: "-7%",
-                            right: "-7%",
-                            height: "22%",
-                          }}
-                        >
-                          <div
-                            className="absolute inset-0"
-                            style={{
-                              top: "-18%",
-                              left: "-10%",
-                              right: "-10%",
-                              bottom: "-18%",
-                              backgroundImage: `url(${img.image})`,
-                              backgroundRepeat: "no-repeat",
-                              backgroundPosition: "top center",
-                              backgroundSize: "114% 5000%",
-                              filter: "blur(10px)",
-                            }}
-                          />
-                        </div>
-                        {/* Низ */}
-                        <div
-                          className="absolute overflow-hidden pointer-events-none z-10"
-                          style={{
-                            bottom: "-4%",
-                            left: "-7%",
-                            right: "-7%",
-                            height: "22%",
-                          }}
-                        >
-                          <div
-                            className="absolute inset-0"
-                            style={{
-                              top: "-18%",
-                              left: "-10%",
-                              right: "-10%",
-                              bottom: "-18%",
-                              backgroundImage: `url(${img.image})`,
-                              backgroundRepeat: "no-repeat",
-                              backgroundPosition: "bottom center",
-                              backgroundSize: "114% 5000%",
-                              filter: "blur(10px)",
-                            }}
-                          />
-                        </div>
-                      </>
+                    {/* Blur-фон для contain-фото у Bygge (40,41,42,43), кроме планов в конце галереи */}
+                    {isContain && (
+                      (id === "40" && img.id <= 8) ||
+                      (id === "41" && img.id <= 7) ||
+                      (id === "42" && img.id <= 9) ||
+                      (id === "43" && img.id <= 9)
+                    ) && (
+                      <img
+                        src={img.image}
+                        alt=""
+                        aria-hidden="true"
+                        className="absolute inset-0 w-full h-full object-cover opacity-70 z-0"
+                        style={{ filter: "blur(18px)", transform: "scale(1.12)" }}
+                        draggable={false}
+                        loading="lazy"
+                        decoding="async"
+                      />
                     )}
                     <img
                       src={img.image}
