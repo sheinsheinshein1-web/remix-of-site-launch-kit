@@ -1,0 +1,73 @@
+import { Helmet } from "react-helmet-async";
+
+const SITE_URL = "https://многоместа.рф";
+const DEFAULT_OG = "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3549bc00-a8fc-4925-a318-04b3736efd56/id-preview-2590390d--4f1f63b9-3e1f-4ede-8df6-5d7432d04c7a.lovable.app-1775667597166.png";
+
+interface SeoProps {
+  title: string;
+  description: string;
+  /** Path starting with "/" or full URL. Defaults to current location. */
+  canonicalPath?: string;
+  image?: string;
+  /** "website" | "article" | "product" */
+  type?: string;
+  noIndex?: boolean;
+  /** Any number of JSON-LD objects to inject as <script type="application/ld+json"> */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const buildCanonical = (path?: string) => {
+  if (!path) {
+    if (typeof window !== "undefined") {
+      return `${SITE_URL}${window.location.pathname}`;
+    }
+    return SITE_URL;
+  }
+  if (path.startsWith("http")) return path;
+  return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
+};
+
+const Seo = ({
+  title,
+  description,
+  canonicalPath,
+  image = DEFAULT_OG,
+  type = "website",
+  noIndex = false,
+  jsonLd,
+}: SeoProps) => {
+  const canonical = buildCanonical(canonicalPath);
+  const fullTitle = title.length > 60 ? title.slice(0, 57) + "…" : title;
+  const fullDescription = description.length > 160 ? description.slice(0, 157) + "…" : description;
+  const ldArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+
+  return (
+    <Helmet>
+      <title>{fullTitle}</title>
+      <meta name="description" content={fullDescription} />
+      <link rel="canonical" href={canonical} />
+      {noIndex && <meta name="robots" content="noindex,nofollow" />}
+
+      <meta property="og:type" content={type} />
+      <meta property="og:title" content={fullTitle} />
+      <meta property="og:description" content={fullDescription} />
+      <meta property="og:url" content={canonical} />
+      <meta property="og:image" content={image} />
+      <meta property="og:site_name" content="многоместа.рф" />
+      <meta property="og:locale" content="ru_RU" />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:description" content={fullDescription} />
+      <meta name="twitter:image" content={image} />
+
+      {ldArray.map((data, i) => (
+        <script key={i} type="application/ld+json">
+          {JSON.stringify(data)}
+        </script>
+      ))}
+    </Helmet>
+  );
+};
+
+export default Seo;
