@@ -110,6 +110,7 @@ const PartnerLanding = () => {
 
   return (
     <div className="min-h-screen bg-secondary font-sans">
+      <Seo title="Стать партнёром — многоместа.рф" description="Размещайте проекты модульных и префаб домов на маркетплейсе многоместа.рф." canonicalPath="/partner" />
       <Header />
       <div className="pt-[152px] pb-12">
         <div className="max-w-[1200px] mx-auto px-8 flex flex-col gap-3">
