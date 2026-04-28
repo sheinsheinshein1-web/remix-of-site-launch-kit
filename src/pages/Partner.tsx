@@ -127,6 +127,9 @@ const Partner = () => {
                 <p className="text-[15px] text-foreground/85 leading-relaxed">
                   {partner.about}
                 </p>
+                <p className="mt-3 text-[12px] text-muted-foreground/80 leading-relaxed">
+                  Все проекты и торговые знаки принадлежат компании {partner.name}. Информация собрана из открытых источников и приведена в ознакомительных целях.
+                </p>
               </div>
 
               {/* Go to site CTA */}
@@ -224,6 +227,9 @@ const Partner = () => {
             <p className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground mb-2">О компании</p>
             <p className="text-[14px] text-foreground/85 leading-relaxed">
               {partner.about}
+            </p>
+            <p className="mt-3 text-[12px] text-muted-foreground/80 leading-relaxed">
+              Все проекты и торговые знаки принадлежат компании {partner.name}. Информация собрана из открытых источников и приведена в ознакомительных целях.
             </p>
           </div>
 
