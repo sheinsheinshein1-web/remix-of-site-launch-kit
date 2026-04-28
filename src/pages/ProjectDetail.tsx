@@ -1071,7 +1071,9 @@ const ProjectDetail = () => {
             src={galleryImages[activeImage].image}
             alt={`Фото ${activeImage + 1}`}
             className="max-w-full max-h-full object-contain select-none"
-            onClick={(e) = loading="lazy" decoding="async"> e.stopPropagation()}
+            loading="lazy"
+            decoding="async"
+            onClick={(e) => e.stopPropagation()}
             draggable={false}
           />
           {!isMobile && activeImage > 0 && (
