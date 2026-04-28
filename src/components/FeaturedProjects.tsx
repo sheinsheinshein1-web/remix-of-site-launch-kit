@@ -144,7 +144,7 @@ const projectEdgeBleed: Record<number, boolean[]> = {
   40: [true, true, true, true, true, true, true, true, false, false],
   41: [true, true, true, true, true, true, true, false, false, false],
   42: [true, true, true, true, true, true, true, true, true, false],
-  43: [true, true, true, true, true, true, true, true, true, false],
+  43: [false, false, false, false, false, false, false, false, false, false],
 };
 
 function getProjectImages(mainImage: string, id: number): string[] {
