@@ -92,6 +92,14 @@ import familySuite1 from "@/assets/family-suite-1.jpg";
 import familySuite2 from "@/assets/family-suite-2.jpg";
 import familySuite3 from "@/assets/family-suite-3.jpg";
 import familySuitePlan1 from "@/assets/family-suite-plan-1.jpg";
+import gallant1 from "@/assets/gallant-1.jpg";
+import gallant2 from "@/assets/gallant-2.jpg";
+import gallant3 from "@/assets/gallant-3.jpg";
+import gallant4 from "@/assets/gallant-4.jpg";
+import gallant5 from "@/assets/gallant-5.jpg";
+import gallant6 from "@/assets/gallant-6.jpg";
+import gallant7 from "@/assets/gallant-7.jpg";
+import gallantPlan1 from "@/assets/gallant-plan-1.jpg";
 
 // У каждого проекта — полный набор как в карточке проекта: рендеры + планы.
 const projectGalleries: Record<number, string[]> = {
