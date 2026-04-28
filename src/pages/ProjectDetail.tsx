@@ -106,6 +106,14 @@ import gallant5 from "@/assets/gallant-5.jpg";
 import gallant6 from "@/assets/gallant-6.jpg";
 import gallant7 from "@/assets/gallant-7.jpg";
 import gallantPlan1 from "@/assets/gallant-plan-1.jpg";
+import grandis1 from "@/assets/grandis-1.jpg";
+import grandis2 from "@/assets/grandis-2.jpg";
+import grandis3 from "@/assets/grandis-3.jpg";
+import grandis4 from "@/assets/grandis-4.jpg";
+import grandis5 from "@/assets/grandis-5.jpg";
+import grandis6 from "@/assets/grandis-6.jpg";
+import grandis7 from "@/assets/grandis-7.jpg";
+import grandisPlan1 from "@/assets/grandis-plan-1.jpg";
 
 const defaultGallery = [
   { id: 1, image: house1, type: "photo" },
@@ -433,6 +441,32 @@ const projectOverrides: Record<string, {
       { id: 6, image: gallant6, type: "photo", fit: "contain" },
       { id: 7, image: gallant7, type: "photo", fit: "contain" },
       { id: 8, image: gallantPlan1, type: "photo", fit: "contain" },
+    ],
+  },
+  "46": {
+    name: "ГРАНДИС",
+    maker: "Bygge",
+    makerInitials: "BG",
+    makerLogo: undefined,
+    makerId: "bygge",
+    siteUrl: "https://bygge.ru/katalog/grandis/",
+    price: "1 585 000 ₽",
+    area: "30 м²",
+    beds: 1,
+    baths: 1,
+    floors: 1,
+    city: "Екатеринбург",
+    description: "Барнхаус 6 × 5 м, 2 комнаты. Полностью оборудованный санузел, кабельные тёплые полы, вытяжная вентиляция.",
+    descriptionLong: "ГРАНДИС — барнхаус площадью 30 м², размеры 6 × 5 м, 2 комнаты. Высота потолка 2,5 м. Утепление пол / стена / потолок — 200 / 150 / 150 мм. Полностью оборудованный санузел, вытяжная вентиляция с выходом на крышу, кабельные тёплые полы. В подарок — защитная сетка от грызунов.",
+    gallery: [
+      { id: 1, image: grandis1, type: "photo", fit: "contain" },
+      { id: 2, image: grandis2, type: "photo", fit: "contain" },
+      { id: 3, image: grandis3, type: "photo", fit: "contain" },
+      { id: 4, image: grandis4, type: "photo", fit: "contain" },
+      { id: 5, image: grandis5, type: "photo", fit: "contain" },
+      { id: 6, image: grandis6, type: "photo", fit: "contain" },
+      { id: 7, image: grandis7, type: "photo", fit: "contain" },
+      { id: 8, image: grandisPlan1, type: "photo", fit: "contain" },
     ],
   },
   "44": {
@@ -876,7 +910,8 @@ const ProjectDetail = () => {
                       (id === "42" && img.id <= 9) ||
                       (id === "43" && img.id <= 9) ||
                       (id === "44" && img.id <= 3) ||
-                      (id === "45" && img.id <= 7)
+                      (id === "45" && img.id <= 7) ||
+                      (id === "46" && img.id <= 7)
                     ) && (
                       <img
                         src={img.image}
