@@ -831,8 +831,9 @@ const ProjectDetail = () => {
                       alt={`Фото ${i + 1}`}
                       className={`relative z-10 w-full h-full ${isContain ? "object-contain" : "object-cover"}`}
                       decoding="sync"
+                      loading="lazy"
                       draggable={false}
-                      onClick={() = loading="lazy" decoding="async"> setLightboxOpen(true)}
+                      onClick={() => setLightboxOpen(true)}
                       style={i === 0 ? { viewTransitionName: 'project-hero' } as React.CSSProperties : undefined}
                     />
                     {img.type === "video" && (
