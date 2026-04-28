@@ -137,7 +137,7 @@ const PartnerChat = () => {
       <div className={`flex items-end gap-2 ${msg.fromBot ? "justify-start" : "justify-end"}`}>
         {msg.fromBot && (
           <div className={`${isDesktop ? "w-8 h-8 rounded-xl" : "w-7 h-7 rounded-lg"} shrink-0 bg-muted flex items-center justify-center mb-0.5 overflow-hidden`}>
-            <img src={partnerIcon} alt="" className="w-10 h-10 object-contain" />
+            <img src={partnerIcon} alt="" className="w-10 h-10 object-contain" loading="lazy" decoding="async" />
           </div>
         )}
         <div className={`max-w-[${isDesktop ? "70" : "75"}%] rounded-2xl px-3.5 ${isDesktop ? "py-3" : "py-2.5"} ${
@@ -173,7 +173,7 @@ const PartnerChat = () => {
     <div className="border-b border-border bg-card shrink-0">
       <div className="px-5 h-[60px] flex items-center gap-3">
         <div className="w-10 h-10 shrink-0 rounded-xl bg-muted flex items-center justify-center overflow-hidden">
-          <img src={partnerIcon} alt="Партнер" className="w-14 h-14 object-contain" />
+          <img src={partnerIcon} alt="Партнер" className="w-14 h-14 object-contain" loading="lazy" decoding="async" />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1.5">
@@ -219,7 +219,7 @@ const PartnerChat = () => {
               <ChevronLeft className="w-6 h-6" />
             </button>
             <div className="w-11 h-11 shrink-0 rounded-xl bg-muted flex items-center justify-center overflow-hidden">
-              <img src={partnerIcon} alt="Партнер" className="w-16 h-16 object-contain" />
+              <img src={partnerIcon} alt="Партнер" className="w-16 h-16 object-contain" loading="lazy" decoding="async" />
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-1">

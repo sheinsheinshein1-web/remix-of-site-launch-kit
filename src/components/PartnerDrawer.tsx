@@ -86,7 +86,7 @@ const PartnerContent = ({ onClose, onStartChat }: { onClose: () => void; onStart
         <div className="w-10 h-1 rounded-md bg-primary-foreground/20" />
       </div>
       <div className="flex justify-center pt-4 pb-1 px-2">
-        <img src={partnerHeroImg} alt="" className="relative z-[1] h-auto w-full max-w-[260px]" />
+        <img src={partnerHeroImg} alt="" className="relative z-[1] h-auto w-full max-w-[260px]" loading="lazy" decoding="async" />
       </div>
       <div className="px-5 pb-7 relative z-[1] text-center">
         <p className="text-[11px] font-bold tracking-wider uppercase text-primary-foreground/50 mb-2">Для застройщиков</p>

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -6,22 +6,24 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { FavoritesProvider } from "@/contexts/FavoritesContext";
 import Index from "./pages/Index.tsx";
-import Catalog from "./pages/Catalog.tsx";
-import Favorites from "./pages/Favorites.tsx";
-import ProjectDetail from "./pages/ProjectDetail.tsx";
-import NotFound from "./pages/NotFound.tsx";
-import AllCategoriesPage from "./components/AllCategoriesPage.tsx";
-import Messages from "./pages/Messages.tsx";
-import SupportChat from "./pages/SupportChat.tsx";
-import PartnerChat from "./pages/PartnerChat.tsx";
-import CompanyChat from "./pages/CompanyChat.tsx";
-import Profile from "./pages/Profile.tsx";
-import Requests from "./pages/Requests.tsx";
-import Partner from "./pages/Partner.tsx";
-import PartnerLanding from "./pages/PartnerLanding.tsx";
-import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
-import MessagesLayout from "./pages/MessagesLayout.tsx";
+
+// Lazy-loaded routes — each becomes its own chunk, kept out of the main bundle.
+const Catalog = lazy(() => import("./pages/Catalog.tsx"));
+const Favorites = lazy(() => import("./pages/Favorites.tsx"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail.tsx"));
+const NotFound = lazy(() => import("./pages/NotFound.tsx"));
+const AllCategoriesPage = lazy(() => import("./components/AllCategoriesPage.tsx"));
+const Messages = lazy(() => import("./pages/Messages.tsx"));
+const SupportChat = lazy(() => import("./pages/SupportChat.tsx"));
+const PartnerChat = lazy(() => import("./pages/PartnerChat.tsx"));
+const CompanyChat = lazy(() => import("./pages/CompanyChat.tsx"));
+const Profile = lazy(() => import("./pages/Profile.tsx"));
+const Requests = lazy(() => import("./pages/Requests.tsx"));
+const Partner = lazy(() => import("./pages/Partner.tsx"));
+const PartnerLanding = lazy(() => import("./pages/PartnerLanding.tsx"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.tsx"));
+const MessagesLayout = lazy(() => import("./pages/MessagesLayout.tsx"));
 
 import avatar3d from "@/assets/avatar-3d.png";
 import heart3d from "@/assets/heart-3d.png";
@@ -131,25 +133,27 @@ const AppRoutes = () => (
   <>
     <ScrollToTop />
     <AssetPreloader />
-    <Routes>
-      <Route path="/" element={<Index />} />
-      <Route path="/catalog" element={<Catalog />} />
-      <Route path="/favorites" element={<Favorites />} />
-      <Route path="/project/:id" element={<ProjectDetailRoute />} />
-      <Route path="/categories" element={<AllCategoriesPage />} />
-      <Route path="/messages" element={<MessagesLayout />}>
-        <Route index element={<Messages />} />
-        <Route path="support" element={<SupportChat />} />
-        <Route path="partner" element={<PartnerChat />} />
-        <Route path="company" element={<CompanyChat />} />
-      </Route>
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/requests" element={<Requests />} />
-      <Route path="/partner" element={<PartnerLanding />} />
-      <Route path="/partner/:id" element={<Partner />} />
-      <Route path="/privacy" element={<PrivacyPolicy />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <Suspense fallback={<div className="min-h-screen bg-secondary" />}>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/project/:id" element={<ProjectDetailRoute />} />
+        <Route path="/categories" element={<AllCategoriesPage />} />
+        <Route path="/messages" element={<MessagesLayout />}>
+          <Route index element={<Messages />} />
+          <Route path="support" element={<SupportChat />} />
+          <Route path="partner" element={<PartnerChat />} />
+          <Route path="company" element={<CompanyChat />} />
+        </Route>
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/requests" element={<Requests />} />
+        <Route path="/partner" element={<PartnerLanding />} />
+        <Route path="/partner/:id" element={<Partner />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
   </>
 );
 

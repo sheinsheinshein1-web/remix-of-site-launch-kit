@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+/* Rubik font is now loaded via <link> in index.html for faster FCP */
 
 @tailwind base;
 @tailwind components;

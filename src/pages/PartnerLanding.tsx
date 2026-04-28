@@ -136,7 +136,7 @@ const PartnerLanding = () => {
                 </button>
               </div>
               <div className="w-[360px] shrink-0 flex items-center justify-center">
-                <img src={partnerHeroImg} alt="" className="w-full h-auto" />
+                <img src={partnerHeroImg} alt="" className="w-full h-auto" loading="lazy" decoding="async" />
               </div>
             </div>
           </div>
