@@ -910,7 +910,8 @@ const ProjectDetail = () => {
                       (id === "42" && img.id <= 9) ||
                       (id === "43" && img.id <= 9) ||
                       (id === "44" && img.id <= 3) ||
-                      (id === "45" && img.id <= 7)
+                      (id === "45" && img.id <= 7) ||
+                      (id === "46" && img.id <= 7)
                     ) && (
                       <img
                         src={img.image}
