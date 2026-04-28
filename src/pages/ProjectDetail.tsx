@@ -396,9 +396,6 @@ const projectOverrides: Record<string, {
       { id: 9, image: senat9, type: "photo", fit: "contain" },
       { id: 10, image: senatPlan1, type: "photo", fit: "contain" },
     ],
-      { id: 9, image: senat6, type: "photo", fit: "contain" },
-      { id: 10, image: senatPlan1, type: "photo", fit: "contain" },
-    ],
   },
 };
 
