@@ -107,6 +107,7 @@ const projectGalleries: Record<number, string[]> = {
   41: [tundra1, tundra2, tundra3, tundra4, tundra5, tundra6, tundra7, tundraPlan1, tundraPlan2, tundraPlan3],
   42: [sherwood1, sherwood2, sherwood3, sherwood4, sherwood5, sherwood6, sherwood7, sherwood8, sherwood9, sherwoodPlan1],
   43: [senat3, senat4, senat5, senat6, senat1, senat2, senat7, senat8, senat9, senatPlan1],
+  44: [familySuite1, familySuite2, familySuite3, familySuitePlan1],
 };
 
 function getProjectImages(_mainImage: string, id: number): string[] {
@@ -127,6 +128,7 @@ const projectFits: Record<number, ("cover" | "contain")[]> = {
   41: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
   42: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
   43: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
+  44: ["contain", "contain", "contain", "contain"],
 };
 
 // Per-image object-position для широких/несбалансированных фото.
@@ -140,6 +142,7 @@ const projectBlurBackground: Record<number, boolean[]> = {
   41: [true, true, true, true, true, true, true, false, false, false],
   42: [true, true, true, true, true, true, true, true, true, false],
   43: [true, true, true, true, true, true, true, true, true, false],
+  44: [true, true, true, false],
 };
 
 const chips = ["Все", "Для жизни", "Для выходных", "Для сдачи", "Для семьи", "Быстро поставить"];
