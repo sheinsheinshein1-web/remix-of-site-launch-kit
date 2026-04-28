@@ -107,7 +107,7 @@ const projectGalleries: Record<number, string[]> = {
   40: [patio5, patio2, patio3, patio4, patio1, patio6, patio7, patio8, patioPlan1, patioPlan2],
   41: [tundra1, tundra2, tundra3, tundra4, tundra5, tundra6, tundra7, tundraPlan1, tundraPlan2, tundraPlan3],
   42: [sherwood1, sherwood2, sherwood3, sherwood4, sherwood5, sherwood6, sherwood7, sherwood8, sherwood9, sherwoodPlan1],
-  43: [senat1, senat2, senat7, senat8, senat9, senat3, senat4, senat5, senat6, senatPlan1],
+  43: [senat3, senat4, senat5, senat6, senat1, senat2, senat7, senat8, senat9, senatPlan1],
 };
 
 // Per-image fit для проектов: "contain" — фото с blur-фоном (для горизонтальных планировок).
@@ -136,7 +136,7 @@ const projectBlurBackground: Record<number, boolean[]> = {
   40: [false, false, false, false, false, false, false, false, false, false],
   41: [false, false, false, false, false, false, false, false, false, false],
   42: [false, false, false, false, false, false, false, false, false, false],
-  43: [false, false, false, false, false, false, false, false, false, false],
+  43: [true, true, true, true, true, true, true, true, true, false],
 };
 
 // Edge-bleed (бесшовное продолжение краёв вместо обычного blur).
