@@ -197,9 +197,7 @@ const MobileMenu = ({ open, onOpenChange }: MobileMenuProps) => {
 
         {/* Bottom CTA */}
         <div className="px-5 py-4 border-t border-border space-y-3">
-          <button className="w-full text-sm font-light text-primary border border-primary rounded-[10px] py-3">
-            Вы производитель? Разместить объект →
-          </button>
+          {/* CTA "Вы производитель?" временно скрыт */}
           <button
             onClick={() => setIsLoggedIn(!isLoggedIn)}
             className="w-full text-xs text-muted-foreground border border-dashed border-border rounded-lg py-2"

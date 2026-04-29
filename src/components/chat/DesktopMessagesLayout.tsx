@@ -16,14 +16,7 @@ const staticChats = [
     iconClassName: "w-12 h-12",
     href: "/messages/support",
   },
-  {
-    id: "partner",
-    title: "Стать партнером",
-    subtitle: "Сотрудничество",
-    icon: partnerIcon,
-    iconClassName: "w-20 h-20",
-    href: "/partner",
-  },
+  // Чат "Стать партнером" временно скрыт
 ];
 
 const DesktopMessagesLayout = () => {

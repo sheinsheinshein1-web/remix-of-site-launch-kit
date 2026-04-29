@@ -154,9 +154,7 @@ const Header = () => {
                     <Link to="/favorites" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname === "/favorites" ? "font-semibold text-primary-foreground" : "font-medium text-primary-foreground/80 hover:text-primary-foreground"}`}><Heart className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Избранное</Link>
                     <Link to="/messages" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname.startsWith("/messages") ? "font-semibold text-primary-foreground" : "font-medium text-primary-foreground/80 hover:text-primary-foreground"}`}><MessageSquare className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Сообщения</Link>
                   </nav>
-                  <button onClick={() => navigate("/partner")} className="text-sm font-medium text-primary bg-primary-foreground rounded-xl px-5 py-2.5 hover:opacity-90 transition-opacity">
-                    Стать партнером
-                  </button>
+                  {/* Кнопка "Стать партнером" временно скрыта */}
                 </div>
               </div>
 
@@ -183,9 +181,7 @@ const Header = () => {
                   <Link to="/favorites" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname === "/favorites" ? "font-semibold text-foreground" : "font-medium text-muted-foreground hover:text-foreground"}`}><Heart className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Избранное</Link>
                   <Link to="/messages" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname.startsWith("/messages") ? "font-semibold text-foreground" : "font-medium text-muted-foreground hover:text-foreground"}`}><MessageSquare className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Сообщения</Link>
                 </nav>
-                <button onClick={() => navigate("/partner")} className="text-sm font-medium text-foreground bg-secondary rounded-xl px-4 py-2 hover:bg-secondary/80 transition-colors flex-shrink-0">
-                  Стать партнером
-                </button>
+                {/* Кнопка "Стать партнером" временно скрыта */}
               </div>
             </div>
           </div>
