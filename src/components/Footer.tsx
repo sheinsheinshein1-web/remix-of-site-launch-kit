@@ -77,17 +77,12 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-[13px] mb-4 text-foreground">Компания</h4>
             <div className="flex flex-col gap-2 text-[13px] text-muted-foreground mb-6">
-              <a href="/partner" onClick={go("/partner")} className="hover:text-foreground transition-colors">Стать партнером</a>
               <a href="/categories" onClick={go("/categories")} className="hover:text-foreground transition-colors">Все категории</a>
               <a href="/favorites" onClick={go("/favorites")} className="hover:text-foreground transition-colors">Избранное</a>
               <a href="/messages/support" onClick={go("/messages/support")} className="hover:text-foreground transition-colors">Поддержка</a>
             </div>
 
-            <h4 className="font-semibold text-[13px] mb-3 text-foreground">Производителям</h4>
-            <div className="flex flex-col gap-2 text-[13px] text-muted-foreground">
-              <a href="/partner" onClick={go("/partner")} className="hover:text-foreground transition-colors">Разместить проекты</a>
-              <a href="/partner" onClick={go("/partner")} className="hover:text-foreground transition-colors">Получать заявки</a>
-            </div>
+            {/* Блок "Производителям" временно скрыт */}
           </div>
         </div>
 

@@ -52,27 +52,7 @@ const Messages = () => {
           <span className="text-[12px] text-muted-foreground shrink-0">19:05</span>
         </button>
 
-        <div className="h-px bg-border mx-4" />
-
-        {/* Partner */}
-        <PartnerDrawer>
-          <button
-            className="w-full px-4 py-3.5 flex items-center gap-3 text-left active:bg-muted/50 hover:bg-muted/30 transition-colors shrink-0"
-          >
-            <div className="w-14 h-14 shrink-0 rounded-2xl bg-muted flex items-center justify-center overflow-hidden">
-              <img src={partnerIcon} alt="Партнер" className="w-24 h-24 object-contain" loading="eager" decoding="sync" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-1">
-                <span className="font-semibold text-[15px] text-foreground">Стать партнером</span>
-                <span className="w-3 h-3 rounded-full bg-primary/70 flex items-center justify-center shrink-0">
-                  <Check className="w-1.5 h-1.5 text-primary-foreground" strokeWidth={3} />
-                </span>
-              </div>
-              <p className="text-[13px] text-muted-foreground mt-0.5 truncate">Сотрудничество</p>
-            </div>
-          </button>
-        </PartnerDrawer>
+        {/* Чат "Стать партнером" временно скрыт */}
 
         {/* Company chats */}
         {companyChats.map((chat) => {

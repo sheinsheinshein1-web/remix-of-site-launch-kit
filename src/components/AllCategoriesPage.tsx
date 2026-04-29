@@ -99,8 +99,6 @@ const sections: { title: string; items: CategoryItem[] }[] = [
   {
     title: "Сервисы",
     items: [
-      { name: "Стать партнером", count: "", img: catPartner, imgClass: "bottom-[-34px] right-[-16px]" },
-      
       { name: "Ипотека", count: "", img: catMortgage, tag: "soon", imgClass: "bottom-[-20px] right-[-16px]" },
     ],
   },
