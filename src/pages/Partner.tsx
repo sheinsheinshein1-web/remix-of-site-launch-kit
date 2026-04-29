@@ -96,7 +96,7 @@ const Partner = () => {
                     <ShieldCheck className="w-[18px] h-[18px] text-muted-foreground shrink-0" strokeWidth={1.8} />
                     <span className="text-[14px] text-foreground/80 truncate">Это ваша компания?</span>
                   </div>
-                  <Link to="/partner" className="text-[14px] font-medium text-primary inline-flex items-center gap-1 shrink-0 hover:underline">
+                  <Link to="/messages/support" className="text-[14px] font-medium text-primary inline-flex items-center gap-1 shrink-0 hover:underline">
                     Подтвердить <ChevronRight className="w-4 h-4" />
                   </Link>
                 </div>
@@ -197,7 +197,7 @@ const Partner = () => {
                 <ShieldCheck className="w-[18px] h-[18px] text-muted-foreground shrink-0" strokeWidth={1.8} />
                 <span className="text-[13px] text-foreground/80 truncate">Это ваша компания?</span>
               </div>
-              <Link to="/partner" className="text-[13px] font-medium text-primary inline-flex items-center gap-1 shrink-0">
+              <Link to="/messages/support" className="text-[13px] font-medium text-primary inline-flex items-center gap-1 shrink-0">
                 Подтвердить <ChevronRight className="w-3.5 h-3.5" />
               </Link>
             </div>
