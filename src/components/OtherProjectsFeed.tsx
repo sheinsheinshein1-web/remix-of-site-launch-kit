@@ -96,6 +96,7 @@ interface Props {
 const OtherProjectsFeed = ({ currentId }: Props) => {
   const navigate = useNavigate();
   const sentinelRef = useRef<HTMLDivElement>(null);
+  const { isFavorite, toggleFavorite } = useFavorites();
 
   // Исключаем текущий проект из ленты
   const pool = baseOtherProjects.filter((p) => String(p.id) !== currentId);
