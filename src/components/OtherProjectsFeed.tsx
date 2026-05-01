@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { navigateWithTransition } from "@/lib/viewTransition";
-import { Maximize, BedDouble, Bath } from "lucide-react";
+import { Heart, Maximize, BedDouble, Bath } from "lucide-react";
 import ProjectCardSkeleton from "@/components/ProjectCardSkeleton";
 import SwipeableGallery from "@/components/SwipeableGallery";
+import { useFavorites } from "@/contexts/FavoritesContext";
 import wideHouse from "@/assets/wide-house-1.webp";
 import wideHouse2 from "@/assets/wide-house-2.webp";
 import wideHousePlan3d from "@/assets/wide-house-plan-3d.webp";
