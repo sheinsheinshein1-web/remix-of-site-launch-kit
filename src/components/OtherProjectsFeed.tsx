@@ -43,16 +43,16 @@ import bear168Plan3d from "@/assets/bear168-plan-3d.webp";
 import bear168Plan from "@/assets/bear168-plan.webp";
 
 // Базовый набор проектов «других» от подрядчика.
-// id указывает на маршрут /project/:id.
+// id указывает на маршрут /project/:id. maker/term/city/likes синхронизированы с FeaturedProjects.
 const baseOtherProjects = [
-  { id: 32, name: "Wide House", price: "5 480 000 ₽", area: "46,4 м²", beds: 2, baths: 1, image: wideHouse },
-  { id: 33, name: "Barn House", price: "1 680 000 ₽", area: "42,9 м²", beds: 1, baths: 1, image: cabin31_1 },
-  { id: 34, name: "Bear House 45", price: "2 207 000 ₽", area: "41 м²", beds: 1, baths: 1, image: bear1 },
-  { id: 35, name: "Bear House 77", price: "3 894 700 ₽", area: "61,32 м²", beds: 2, baths: 1, image: bear77_1 },
-  { id: 36, name: "Bear House 86", price: "4 349 000 ₽", area: "68,7 м²", beds: 2, baths: 2, image: bear86_1 },
-  { id: 37, name: "Bear House 134", price: "8 762 000 ₽", area: "110 м²", beds: 3, baths: 3, image: bear134_1 },
-  { id: 38, name: "Vast House 140", price: "8 077 600 ₽", area: "114,9 м²", beds: 4, baths: 2, image: vast140_1 },
-  { id: 39, name: "Bear House 168", price: "12 110 400 ₽", area: "146,4 м²", beds: 4, baths: 3, image: bear168_1 },
+  { id: 32, name: "Wide House", maker: "Платформа", price: "5 480 000 ₽", area: "46,4 м²", beds: 2, baths: 1, term: "30 д.", image: wideHouse, likes: 64, city: "Екатеринбург" },
+  { id: 33, name: "Barn House", maker: "Платформа", price: "1 680 000 ₽", area: "42,9 м²", beds: 1, baths: 1, term: "30 д.", image: cabin31_1, likes: 48, city: "Екатеринбург" },
+  { id: 34, name: "Bear House 45", maker: "Платформа", price: "2 207 000 ₽", area: "41 м²", beds: 1, baths: 1, term: "30 д.", image: bear1, likes: 39, city: "Екатеринбург" },
+  { id: 35, name: "Bear House 77", maker: "Платформа", price: "3 894 700 ₽", area: "61,32 м²", beds: 2, baths: 1, term: "45 д.", image: bear77_1, likes: 52, city: "Екатеринбург" },
+  { id: 36, name: "Bear House 86", maker: "Платформа", price: "4 349 000 ₽", area: "68,7 м²", beds: 2, baths: 2, term: "50 д.", image: bear86_1, likes: 58, city: "Екатеринбург" },
+  { id: 37, name: "Bear House 134", maker: "Платформа", price: "8 762 000 ₽", area: "110 м²", beds: 3, baths: 3, term: "70 д.", image: bear134_1, likes: 71, city: "Екатеринбург" },
+  { id: 38, name: "Vast House 140", maker: "Платформа", price: "8 077 600 ₽", area: "114,9 м²", beds: 4, baths: 2, term: "75 д.", image: vast140_1, likes: 83, city: "Екатеринбург" },
+  { id: 39, name: "Bear House 168", maker: "Платформа", price: "12 110 400 ₽", area: "146,4 м²", beds: 4, baths: 3, term: "90 д.", image: bear168_1, likes: 95, city: "Екатеринбург" },
 ];
 
 // Галереи проектов по id (синхронизированы с FeaturedProjects/Catalog).
