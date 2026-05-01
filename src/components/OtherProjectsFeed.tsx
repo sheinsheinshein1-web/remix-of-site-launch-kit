@@ -176,7 +176,40 @@ const OtherProjectsFeed = ({ currentId }: Props) => {
                 objectPositions={projectObjectPositions[project.id]}
                 alt={project.name}
                 height="aspect-[3/4] h-auto md:h-[240px] md:aspect-auto"
-              />
+              >
+                <div className="absolute top-2 right-2 z-10">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      toggleFavorite({
+                        id: project.id,
+                        badge: "",
+                        maker: project.maker,
+                        name: project.name,
+                        price: project.price,
+                        area: project.area,
+                        beds: project.beds,
+                        baths: project.baths,
+                        term: project.term,
+                        image: project.image,
+                        likes: project.likes,
+                        city: project.city,
+                      });
+                    }}
+                    className="flex items-center gap-1 bg-foreground/40 backdrop-blur-md rounded-full px-2 py-[4px]"
+                    aria-label="В избранное"
+                  >
+                    <Heart
+                      className={`w-3.5 h-3.5 ${isFavorite(project.id) ? "fill-red-500 text-red-500" : "text-white/70"}`}
+                      strokeWidth={1.5}
+                    />
+                    <span className="text-[11px] font-medium text-white">
+                      {project.likes + (isFavorite(project.id) ? 1 : 0)}
+                    </span>
+                  </button>
+                </div>
+              </SwipeableGallery>
               <div className="px-[10px] pt-1 pb-1">
                 <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{project.name}</h2>
                 <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">{project.price}</div>
