@@ -17,7 +17,7 @@ import house6 from "@/assets/house-6.jpg";
 import house7 from "@/assets/house-7.jpg";
 import house8 from "@/assets/house-8.jpg";
 import house9 from "@/assets/house-9.jpg";
-import { projectOverrides } from "@/data/projects";
+import { projectOverrides, projectsCountByMakerId } from "@/data/projects";
 
 const defaultGallery = [
   { id: 1, image: house1, type: "photo" },
@@ -175,6 +175,7 @@ const ProjectDetail = () => {
     maker: override?.maker ?? "Sherwood Home",
     makerInitials: override?.makerInitials ?? "SW",
     makerLogo: override?.makerLogo,
+    makerId: override?.makerId ?? "1",
     makerHref: `/partner/${override?.makerId ?? "1"}`,
     siteUrl: override?.siteUrl ?? "https://platforma-modul.ru/",
     price: override?.price ?? "4 950 000 ₽",
@@ -583,9 +584,14 @@ const ProjectDetail = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-[13px] font-semibold text-foreground leading-tight truncate">{project.maker}</div>
-                <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-0.5">
-                  <Star className="w-3 h-3 text-muted-foreground" strokeWidth={1.5} />
-                  <span>0,0 · Недостаточно данных</span>
+                <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground mt-0.5">
+                  {(() => {
+                    const count = projectsCountByMakerId[project.makerId] ?? 0;
+                    const word = count % 10 === 1 && count % 100 !== 11 ? "проект" : (count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20)) ? "проекта" : "проектов";
+                    return <span>{count} {word}</span>;
+                  })()}
+                  <span>·</span>
+                  <span className="inline-flex items-center gap-0.5"><Star className="w-3 h-3" strokeWidth={1.5} />0,0</span>
                 </div>
               </div>
               <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
