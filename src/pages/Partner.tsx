@@ -58,6 +58,20 @@ const partners: Record<string, PartnerData> = {
       { val: "—", label: "Рейтинг" },
     ],
   },
+  divodom: {
+    name: "ДивоДом",
+    initials: "ДД",
+    city: "Пермь",
+    category: "Модульные дома",
+    about:
+      "ДивоДом — производитель модульных домов из Перми. Линейка ДИВО: дома полной заводской готовности площадью от 30 до 110 м² с террасами, утеплением до −30°C и монтажом за 1 день.",
+    siteUrl: "https://www.divodom.net",
+    stats: [
+      { val: "5", label: "Проекты" },
+      { val: "—", label: "Отзывы" },
+      { val: "—", label: "Рейтинг" },
+    ],
+  },
 };
 
 const Partner = () => {
