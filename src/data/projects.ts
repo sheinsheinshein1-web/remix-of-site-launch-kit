@@ -530,7 +530,7 @@ export const projects: Project[] = [
 
   // ── Glezman Group · Пермь ───────────────────────────────────────────────
   {
-    id: 47, name: "La Rus 45", badge: "Жилой дом", price: "по запросу",
+    id: 47, name: "La Rus 45", badge: "Жилой дом", price: "4 114 800 ₽",
     area: "45,72 м²", area_m2: 45.72, beds: 1, baths: 1, floors: 1, term: "60 д.",
     rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Пермь",
     maker: { ...GLEZMAN, siteUrl: "https://glezman-group.ru/la-rus_45" },
@@ -548,7 +548,7 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 48, name: "La Rus 75", badge: "Жилой дом", price: "по запросу",
+    id: 48, name: "La Rus 75", badge: "Жилой дом", price: "6 750 000 ₽",
     area: "75 м²", area_m2: 75, beds: 2, baths: 1, floors: 1, term: "70 д.",
     rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермь",
     maker: { ...GLEZMAN, siteUrl: "https://glezman-group.ru/la-rus_75" },
@@ -566,7 +566,7 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 49, name: "La Rus 100", badge: "Жилой дом", price: "по запросу",
+    id: 49, name: "La Rus 100", badge: "Жилой дом", price: "9 360 000 ₽",
     area: "104 м²", area_m2: 104, beds: 2, baths: 2, floors: 1, term: "80 д.",
     rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермь",
     maker: { ...GLEZMAN, siteUrl: "https://glezman-group.ru/la-rus_100" },
@@ -586,7 +586,7 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 50, name: "La Rus 120", badge: "Жилой дом", price: "по запросу",
+    id: 50, name: "La Rus 120", badge: "Жилой дом", price: "10 800 000 ₽",
     area: "120 м²", area_m2: 120, beds: 2, baths: 2, floors: 1, term: "85 д.",
     rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермь",
     maker: { ...GLEZMAN, siteUrl: "https://glezman-group.ru/la-rus_120" },
@@ -606,7 +606,7 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 51, name: "La Rus 127", badge: "Жилой дом", price: "по запросу",
+    id: 51, name: "La Rus 127", badge: "Жилой дом", price: "11 430 000 ₽",
     area: "127 м²", area_m2: 127, beds: 3, baths: 2, floors: 1, term: "90 д.",
     rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Пермь",
     maker: { ...GLEZMAN, siteUrl: "https://glezman-group.ru/la-rus_127" },
