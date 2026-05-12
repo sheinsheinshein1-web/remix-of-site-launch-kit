@@ -40,6 +40,16 @@ import catGlampingBiz from "@/assets/cat-glamping-biz.png";
 import catSeasonal from "@/assets/cat-seasonal.png";
 import catStudio from "@/assets/cat-studio.png";
 import catTwostory from "@/assets/cat-twostory.png";
+import catHousesModular from "@/assets/cat-houses-modular.png";
+import catDachaModular from "@/assets/cat-dacha-modular.png";
+import catTwostoryModular from "@/assets/cat-twostory-modular.png";
+import catStudioModular from "@/assets/cat-studio-modular.png";
+import catGuestModular from "@/assets/cat-guest-modular.png";
+import catHousesPrefab from "@/assets/cat-houses-prefab.png";
+import catDachaPrefab from "@/assets/cat-dacha-prefab.png";
+import catTwostoryPrefab from "@/assets/cat-twostory-prefab.png";
+import catStudioPrefab from "@/assets/cat-studio-prefab.png";
+import catGuestPrefab from "@/assets/cat-guest-prefab.png";
 
 type Tag = "new" | "soon" | "later";
 
@@ -52,18 +62,18 @@ interface CategoryItem {
   imgClass?: string;
 }
 
-const houseItems: CategoryItem[] = [
-  { name: "Дома", count: "84", img: catHouses, imgClass: "bottom-[-20px] right-[-50px]" },
-  { name: "Дачные домики", count: "19", img: catDacha, tag: "soon", imgClass: "bottom-[-20px] right-[-16px]" },
-  { name: "Двух-\nэтажные", count: "15", img: catTwostory, tag: "soon", imgClass: "bottom-[-20px] right-[-16px]" },
-  { name: "Студии", count: "12", img: catStudio, tag: "soon", imgClass: "bottom-[-20px] right-[-16px]" },
-  { name: "Гостевые дома", count: "28", img: catGuest, tag: "soon" },
+const makeHouseItems = (imgs: { house: string; dacha: string; twostory: string; studio: string; guest: string }): CategoryItem[] => [
+  { name: "Дома", count: "84", img: imgs.house, imgClass: "bottom-[-20px] right-[-50px]" },
+  { name: "Дачные домики", count: "19", img: imgs.dacha, tag: "soon", imgClass: "bottom-[-20px] right-[-16px]" },
+  { name: "Двух-\nэтажные", count: "15", img: imgs.twostory, tag: "soon", imgClass: "bottom-[-20px] right-[-16px]" },
+  { name: "Студии", count: "12", img: imgs.studio, tag: "soon", imgClass: "bottom-[-20px] right-[-16px]" },
+  { name: "Гостевые дома", count: "28", img: imgs.guest, tag: "soon" },
 ];
 
 const sections: { title: string; items: CategoryItem[] }[] = [
-  { title: "Каркасные дома", items: houseItems },
-  { title: "Модульные дома", items: houseItems },
-  { title: "Префаб дома", items: houseItems },
+  { title: "Каркасные дома", items: makeHouseItems({ house: catHouses, dacha: catDacha, twostory: catTwostory, studio: catStudio, guest: catGuest }) },
+  { title: "Модульные дома", items: makeHouseItems({ house: catHousesModular, dacha: catDachaModular, twostory: catTwostoryModular, studio: catStudioModular, guest: catGuestModular }) },
+  { title: "Префаб дома", items: makeHouseItems({ house: catHousesPrefab, dacha: catDachaPrefab, twostory: catTwostoryPrefab, studio: catStudioPrefab, guest: catGuestPrefab }) },
   {
     title: "Для бизнеса",
     items: [
