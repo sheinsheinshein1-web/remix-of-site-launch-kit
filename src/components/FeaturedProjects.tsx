@@ -36,23 +36,34 @@ function getProjectImages(mainImage: string, id: number): string[] {
   return [mainImage, ...sorted.slice(0, 3)];
 }
 
-const baseProjects = [
-  { id: 32, name: "Wide House", maker: "Платформа", area: "46,4 м²", beds: 2, baths: 1, term: "30 д.", price: "5 480 000 ₽", image: wideHouse, liked: false, likes: 64, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
-  { id: 33, name: "Barn House", maker: "Платформа", area: "42,9 м²", beds: 1, baths: 1, term: "30 д.", price: "1 680 000 ₽", image: cabin31_1, liked: false, likes: 48, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
-  { id: 34, name: "Bear House 45", maker: "Платформа", area: "41 м²", beds: 1, baths: 1, term: "30 д.", price: "2 207 000 ₽", image: bear1, liked: false, likes: 39, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
-  { id: 35, name: "Bear House 77", maker: "Платформа", area: "61,32 м²", beds: 2, baths: 1, term: "45 д.", price: "3 894 700 ₽", image: bear77_1, liked: false, likes: 52, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
-  { id: 36, name: "Bear House 86", maker: "Платформа", area: "68,7 м²", beds: 2, baths: 2, term: "50 д.", price: "4 349 000 ₽", image: bear86_1, liked: false, likes: 58, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
-  { id: 37, name: "Bear House 134", maker: "Платформа", area: "110 м²", beds: 3, baths: 3, term: "70 д.", price: "8 762 000 ₽", image: bear134_1, liked: false, likes: 71, hasRealPhotos: true, city: "Екатеринбург", rating: "4.9" },
-  { id: 38, name: "Vast House 140", maker: "Платформа", area: "114,9 м²", beds: 4, baths: 2, term: "75 д.", price: "8 077 600 ₽", image: vast140_1, liked: false, likes: 83, hasRealPhotos: true, city: "Екатеринбург", rating: "4.9" },
-  { id: 39, name: "Bear House 168", maker: "Платформа", area: "146,4 м²", beds: 4, baths: 3, term: "90 д.", price: "12 110 400 ₽", image: bear168_1, liked: false, likes: 95, hasRealPhotos: true, city: "Екатеринбург", rating: "4.9" },
-  { id: 40, name: "ПАТИО", maker: "Bygge", area: "45 м²", beds: 3, baths: 1, term: "60 д.", price: "2 598 000 ₽", image: patio5, liked: false, likes: 27, hasRealPhotos: true, city: "Екатеринбург", rating: "4.7" },
-  { id: 41, name: "ТУНДРА", maker: "Bygge", area: "96 м²", beds: 4, baths: 1, term: "60 д.", price: "5 990 000 ₽", image: tundra1, liked: false, likes: 34, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
-  { id: 42, name: "ШЕРВУД", maker: "Bygge", area: "87 м²", beds: 4, baths: 1, term: "60 д.", price: "5 635 000 ₽", image: sherwood1, liked: false, likes: 29, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
-  { id: 43, name: "СЕНАТ", maker: "Bygge", area: "96 м²", beds: 4, baths: 1, term: "60 д.", price: "6 545 000 ₽", image: senat1, liked: false, likes: 31, hasRealPhotos: true, city: "Екатеринбург", rating: "4.8" },
-  { id: 44, name: "ФАМИЛЬНЫЙ", maker: "Bygge", area: "72 м²", beds: 1, baths: 1, term: "60 д.", price: "4 050 000 ₽", image: familySuite1, liked: false, likes: 26, hasRealPhotos: true, city: "Екатеринбург", rating: "4.7" },
-  { id: 45, name: "ГАЛАНТ", maker: "Bygge", area: "59 м²", beds: 2, baths: 1, term: "35 д.", price: "3 346 000 ₽", image: gallant1, liked: false, likes: 24, hasRealPhotos: true, city: "Екатеринбург", rating: "4.7" },
-  { id: 46, name: "ГРАНДИС", maker: "Bygge", area: "30 м²", beds: 1, baths: 1, term: "30 д.", price: "1 585 000 ₽", image: grandis1, liked: false, likes: 19, hasRealPhotos: true, city: "Екатеринбург", rating: "4.7" },
-];
+// baseProjects берётся из единого источника правды (src/data/projects.ts).
+const baseProjects = projects.map((p) => ({
+  id: p.id,
+  name: p.name,
+  maker: p.maker.name,
+  area: p.area,
+  beds: p.beds,
+  baths: p.baths,
+  term: p.term,
+  price: p.price,
+  image: p.gallery[0]?.image ?? "",
+  liked: false,
+  likes: p.likes,
+  hasRealPhotos: p.hasRealPhotos,
+  city: p.city,
+  rating: String(p.rating),
+}));
+
+// Edge-bleed (бесшовное продолжение краёв вместо обычного blur). Локальный override.
+const projectEdgeBleed: Record<number, boolean[]> = {
+  40: [true, true, true, true, true, true, true, true, false, false],
+  41: [true, true, true, true, true, true, true, false, false, false],
+  42: [true, true, true, true, true, true, true, true, true, false],
+  43: [false, false, false, false, false, false, false, false, false, false],
+  44: [false, false, false, false],
+  45: [false, false, false, false, false, false, false, false],
+  46: [false, false, false, false, false, false, false, false],
+};
 
 const PAGE_SIZE = 8;
 const SCROLL_KEY = "home_feed_scroll";
