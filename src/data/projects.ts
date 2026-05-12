@@ -679,10 +679,10 @@ export const projects: Project[] = [
     description: "ДИВО 51 — модульный дом 51 м² с двумя спальнями и террасой 12 м². Для постоянного проживания семьи.",
     descriptionLong: "ДИВО 51 — модульный дом полной заводской готовности: две спальни, санузел, кухня-гостиная и терраса 12 м². Утепление до −30°C, готов к круглогодичному проживанию.",
     gallery: [
-      { image: "https://static.tildacdn.com/tild6266-3835-4634-b735-643464666563/_68.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3034-6233-4436-b231-306461376131/img60.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3666-6430-4635-a332-323132616261/img94.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3332-3666-4436-a639-323236646135/img128.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild6266-3835-4634-b735-643464666563/_68.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3531-3162-4231-b431-306537353331/106.jpg", type: "photo", fit: "contain", blur: true },
     ],
     likes: 16, rating: 4.6,
