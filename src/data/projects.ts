@@ -693,7 +693,7 @@ export const projectOverrides: Record<string, {
   city: string;
   description: string;
   descriptionLong: string;
-  gallery: { id: number; image: string; type: string; fit?: "cover" | "contain" }[];
+  gallery: { id: number; image: string; type: string; fit?: "cover" | "contain"; blur?: boolean }[];
 }> = Object.fromEntries(
   projects.map((p) => [
     String(p.id),
@@ -717,6 +717,7 @@ export const projectOverrides: Record<string, {
         image: g.image,
         type: g.type ?? "photo",
         fit: g.fit,
+        blur: g.blur,
       })),
     },
   ])
