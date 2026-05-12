@@ -699,10 +699,10 @@ export const projects: Project[] = [
     description: "ДИВО 64 — модульный дом 64 м² с двумя спальнями и просторной террасой 18 м².",
     descriptionLong: "ДИВО 64 — модульный дом для семьи: две спальни, санузел, кухня-гостиная и терраса 18 м². Полная заводская готовность, утепление до −30°C.",
     gallery: [
-      { image: "https://static.tildacdn.com/tild3334-6564-4062-b363-653161376234/_728.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3064-3734-4630-a661-393462666562/1_1-min.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3132-6631-4563-b935-656162376236/2-min.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3131-3035-4839-b435-396336366265/img94.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3334-6564-4062-b363-653161376234/_728.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3565-3535-4763-a639-623264633635/892.jpg", type: "photo", fit: "contain", blur: true },
     ],
     likes: 18, rating: 4.7,
