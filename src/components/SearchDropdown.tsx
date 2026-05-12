@@ -34,8 +34,8 @@ const categories = [
 const manufacturers = [
   { name: "Платформа", location: "Екатеринбург" },
   { name: "Bygge", location: "Екатеринбург" },
-  { name: "Glezman Group", location: "Пермь" },
-  { name: "ДивоДом", location: "Пермь" },
+  { name: "Glezman Group", location: "Пермский край" },
+  { name: "ДивоДом", location: "Пермский край" },
 ];
 
 const articlesList = [

@@ -28,7 +28,7 @@ const IP_CITY_MAP: Record<string, string> = {
   "rostov": "Ростов-на-Дону",
   "ufa": "Уфа",
   "voronezh": "Воронеж",
-  "perm": "Пермь",
+  "perm": "Пермский край",
   "chelyabinsk": "Челябинск",
   "tyumen": "Тюмень",
   "kaliningrad": "Калининград",
