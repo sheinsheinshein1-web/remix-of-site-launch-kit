@@ -592,29 +592,32 @@ const ProjectDetail = () => {
             </div>
 
             {/* Описание — inline раскрытие */}
-            {!descExpanded ? (
-              <p className="mt-3 text-[14px] text-foreground leading-snug">
-                <span className="line-clamp-2">{project.description}</span>
-                {" "}
-                <button
-                  onClick={() => setDescExpanded(true)}
-                  className="text-primary hover:underline transition-colors"
-                >
-                  Подробнее
-                </button>
-              </p>
-            ) : (
-              <div className="mt-3">
-                <p className="text-[14px] text-foreground leading-relaxed mb-3">
-                  {project.descriptionLong}
-                </p>
-                <p className="text-[14px] text-foreground leading-relaxed">
-                  <button onClick={() => setDescExpanded(false)} className="text-primary hover:underline">
-                    Свернуть
+            {(() => {
+              const fullText = project.descriptionLong || project.description;
+              return !descExpanded ? (
+                <p className="mt-3 text-[14px] text-foreground leading-snug">
+                  <span className="line-clamp-2">{fullText}</span>
+                  {" "}
+                  <button
+                    onClick={() => setDescExpanded(true)}
+                    className="text-primary hover:underline transition-colors"
+                  >
+                    Подробнее
                   </button>
                 </p>
-              </div>
-            )}
+              ) : (
+                <div className="mt-3">
+                  <p className="text-[14px] text-foreground leading-relaxed mb-3">
+                    {fullText}
+                  </p>
+                  <p className="text-[14px] text-foreground leading-relaxed">
+                    <button onClick={() => setDescExpanded(false)} className="text-primary hover:underline">
+                      Свернуть
+                    </button>
+                  </p>
+                </div>
+              );
+            })()}
 
             {/* Комплектация и Характеристики временно скрыты */}
 
