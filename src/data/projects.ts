@@ -34,20 +34,6 @@ import bear86_2 from "@/assets/bear86-2.webp";
 import bear86_3 from "@/assets/bear86-3.webp";
 import bear86Plan3d from "@/assets/bear86-plan-3d.webp";
 import bear86Plan from "@/assets/bear86-plan.webp";
-import bear134_1 from "@/assets/bear134-1.webp";
-import bear134_2 from "@/assets/bear134-2.webp";
-import bear134_3 from "@/assets/bear134-3.webp";
-import bear134Plan3d from "@/assets/bear134-plan-3d.webp";
-import bear134Plan from "@/assets/bear134-plan.webp";
-import vast140_1 from "@/assets/vast140-1.webp";
-import vast140_2 from "@/assets/vast140-2.webp";
-import vast140_3 from "@/assets/vast140-3.webp";
-import vast140Plan3d from "@/assets/vast140-plan-3d.webp";
-import vast140Plan from "@/assets/vast140-plan.webp";
-import bear168_1 from "@/assets/bear168-1.webp";
-import bear168_2 from "@/assets/bear168-2.webp";
-import bear168Plan3d from "@/assets/bear168-plan-3d.webp";
-import bear168Plan from "@/assets/bear168-plan.webp";
 
 // Bygge
 import patio1 from "@/assets/patio-2.jpeg";
