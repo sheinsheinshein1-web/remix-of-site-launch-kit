@@ -25,6 +25,7 @@ const PartnerLanding = lazy(() => import("./pages/PartnerLanding.tsx"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.tsx"));
 const MessagesLayout = lazy(() => import("./pages/MessagesLayout.tsx"));
 const Lab = lazy(() => import("./pages/Lab.tsx"));
+const OperatorChat = lazy(() => import("./pages/OperatorChat.tsx"));
 
 import avatar3d from "@/assets/avatar-3d.png";
 import heart3d from "@/assets/heart-3d.png";
@@ -151,6 +152,7 @@ const AppRoutes = () => (
         <Route path="/requests" element={<Requests />} />
         <Route path="/partner" element={<PartnerLanding />} />
         <Route path="/partner/:id" element={<Partner />} />
+        <Route path="/operator" element={<OperatorChat />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/lab" element={<Lab />} />
         <Route path="*" element={<NotFound />} />
