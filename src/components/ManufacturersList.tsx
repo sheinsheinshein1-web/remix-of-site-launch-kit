@@ -7,6 +7,7 @@ const makers = [
   { name: "ГлэмпингСтрой", location: "Сочи", count: "12 проектов" },
   { name: "АрктикДом", location: "Мурманск", count: "9 проектов" },
   { name: "ДомКомплект", location: "Казань", count: "15 проектов" },
+  { name: "Glezman Group", location: "Пермь", count: "10 проектов" },
 ];
 
 const ManufacturersList = () => {
