@@ -98,7 +98,25 @@ function getOrderedProjects(seed: number) {
 // Циклически генерируем «бесконечную» ленту, переиспользуя проекты в порядке seed.
 function getPagedProjects(page: number, seed: number, source: typeof baseProjects) {
   if (source.length === 0) return [];
-  const ordered = seed === 0 ? source : (() => {
+  // Чередуем проекты по производителю — чтобы карточки одного бренда не стояли подряд.
+  const interleaveByMaker = (arr: typeof baseProjects) => {
+    const buckets = new Map<string, typeof baseProjects>();
+    for (const p of arr) {
+      const list = buckets.get(p.maker) ?? [];
+      list.push(p);
+      buckets.set(p.maker, list);
+    }
+    const queues = Array.from(buckets.values());
+    const out: typeof baseProjects = [];
+    while (queues.some((q) => q.length > 0)) {
+      for (const q of queues) {
+        const next = q.shift();
+        if (next) out.push(next);
+      }
+    }
+    return out;
+  };
+  const ordered = seed === 0 ? interleaveByMaker(source) : (() => {
     const rng = mulberry32(seed);
     const arr = [...source];
     for (let i = arr.length - 1; i > 0; i--) {
