@@ -534,11 +534,11 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
   },
 
-  // ── Glezman Group · Пермь ───────────────────────────────────────────────
+  // ── Glezman Group · Пермский край ───────────────────────────────────────────────
   {
     id: 47, name: "La Rus 45", badge: "Жилой дом", price: "4 114 800 ₽",
     area: "45,72 м²", area_m2: 45.72, beds: 1, baths: 1, floors: 1, term: "60 д.",
-    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Пермь",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Пермский край",
     maker: { ...GLEZMAN, siteUrl: "https://glezman-group.ru/la-rus_45" },
     description: "La Rus 45 — каркасный дом площадью 45,72 м² с особой атмосферой уюта, тепла и комфорта.",
     descriptionLong: "La Rus 45 — особая атмосфера уюта, тепла и комфорта. Модульный дом с продуманной планировкой: одна спальня, санузел, просторная зона кухни-гостиной с панорамным остеклением.",
@@ -556,7 +556,7 @@ export const projects: Project[] = [
   {
     id: 48, name: "La Rus 75", badge: "Жилой дом", price: "6 750 000 ₽",
     area: "75 м²", area_m2: 75, beds: 2, baths: 1, floors: 1, term: "70 д.",
-    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермь",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край",
     maker: { ...GLEZMAN, siteUrl: "https://glezman-group.ru/la-rus_75" },
     description: "La Rus 75 — каркасный дом 75 м² с двумя спальнями и террасой. Сочетание функциональности, простора и эстетики.",
     descriptionLong: "La Rus 75 — сочетание функциональности, простора и эстетики. Две спальни, санузел, открытая зона кухни-гостиной и терраса для отдыха на свежем воздухе.",
@@ -574,7 +574,7 @@ export const projects: Project[] = [
   {
     id: 49, name: "La Rus 100", badge: "Жилой дом", price: "9 360 000 ₽",
     area: "104 м²", area_m2: 104, beds: 2, baths: 2, floors: 1, term: "80 д.",
-    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермь",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край",
     maker: { ...GLEZMAN, siteUrl: "https://glezman-group.ru/la-rus_100" },
     description: "La Rus 100 — каркасный дом 104 м² с гармоничным сочетанием общих зон и уютных приватных помещений.",
     descriptionLong: "La Rus 100 — гармоничное сочетание общих зон и уютных приватных помещений. Две спальни, два санузла, просторная гостиная-кухня и продуманное зонирование для семьи.",
@@ -594,7 +594,7 @@ export const projects: Project[] = [
   {
     id: 50, name: "La Rus 120", badge: "Жилой дом", price: "10 800 000 ₽",
     area: "120 м²", area_m2: 120, beds: 2, baths: 2, floors: 1, term: "85 д.",
-    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермь",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край",
     maker: { ...GLEZMAN, siteUrl: "https://glezman-group.ru/la-rus_120" },
     description: "La Rus 120 — каркасный дом 120 м² с террасой. Гармоничное сочетание общих зон и уютных приватных помещений.",
     descriptionLong: "La Rus 120 — гармоничное сочетание общих зон и уютных приватных помещений. Две спальни, два санузла, открытая гостиная-кухня и просторная терраса для отдыха.",
@@ -614,7 +614,7 @@ export const projects: Project[] = [
   {
     id: 51, name: "La Rus 127", badge: "Жилой дом", price: "11 430 000 ₽",
     area: "127 м²", area_m2: 127, beds: 3, baths: 2, floors: 1, term: "90 д.",
-    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Пермь",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Пермский край",
     maker: { ...GLEZMAN, siteUrl: "https://glezman-group.ru/la-rus_127" },
     description: "La Rus 127 — просторный каркасный дом 127 м² с тремя спальнями и террасой.",
     descriptionLong: "La Rus 127 — просторный дом с продуманной и удобной планировкой, объединяющей просторные общественные зоны и уединённые комнаты. Три спальни, два санузла, большая гостиная-кухня и терраса.",
@@ -630,11 +630,11 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
 
-  // ── ДивоДом · Пермь ─────────────────────────────────────────────────────
+  // ── ДивоДом · Пермский край ─────────────────────────────────────────────────────
   {
     id: 52, name: "ДИВО START", badge: "Жилой дом", price: "1 100 000 ₽",
     area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 1, term: "30 д.",
-    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Пермь",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Пермский край",
     maker: { ...DIVODOM, siteUrl: "https://www.divodom.net/start1" },
     description: "ДИВО START — модульный дом 30 м² с террасой 15 м². Базовое решение для дачи и круглогодичного отдыха.",
     descriptionLong: "ДИВО START — компактный модульный дом полной заводской готовности: одна спальня, санузел 3 м², кухня-гостиная и просторная терраса 15 м². Доставляется готовым, монтаж за 1 день.",
@@ -654,7 +654,7 @@ export const projects: Project[] = [
   {
     id: 53, name: "ДИВО 34", badge: "Жилой дом", price: "1 632 000 ₽",
     area: "34 м²", area_m2: 34, beds: 1, baths: 1, floors: 1, term: "30 д.",
-    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Пермь",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Пермский край",
     maker: { ...DIVODOM, siteUrl: "https://www.divodom.net/dom-ploshhadyu-38-kvm" },
     description: "ДИВО 34 — модульный дом 34 м² с террасой 10 м². Удобная планировка для пары или небольшой семьи.",
     descriptionLong: "ДИВО 34 — модульный дом полной заводской готовности: спальня, санузел, кухня-гостиная и терраса 10 м². Привозим уже собранным, подключаем к коммуникациям.",
@@ -674,7 +674,7 @@ export const projects: Project[] = [
   {
     id: 54, name: "ДИВО 51", badge: "Жилой дом", price: "2 645 000 ₽",
     area: "51 м²", area_m2: 51, beds: 2, baths: 1, floors: 1, term: "40 д.",
-    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермь",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край",
     maker: { ...DIVODOM, siteUrl: "https://www.divodom.net/dom-ploshhadyu-60-kvm" },
     description: "ДИВО 51 — модульный дом 51 м² с двумя спальнями и террасой 12 м². Для постоянного проживания семьи.",
     descriptionLong: "ДИВО 51 — модульный дом полной заводской готовности: две спальни, санузел, кухня-гостиная и терраса 12 м². Утепление до −30°C, готов к круглогодичному проживанию.",
@@ -694,7 +694,7 @@ export const projects: Project[] = [
   {
     id: 55, name: "ДИВО 64", badge: "Жилой дом", price: "3 195 000 ₽",
     area: "64 м²", area_m2: 64, beds: 2, baths: 1, floors: 1, term: "45 д.",
-    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермь",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край",
     maker: { ...DIVODOM, siteUrl: "https://www.divodom.net/dom-ploshhadyu-72-kvm" },
     description: "ДИВО 64 — модульный дом 64 м² с двумя спальнями и просторной террасой 18 м².",
     descriptionLong: "ДИВО 64 — модульный дом для семьи: две спальни, санузел, кухня-гостиная и терраса 18 м². Полная заводская готовность, утепление до −30°C.",
@@ -714,7 +714,7 @@ export const projects: Project[] = [
   {
     id: 56, name: "ДИВО 88", badge: "Жилой дом", price: "4 179 000 ₽",
     area: "88 м²", area_m2: 88, beds: 2, baths: 1, floors: 1, term: "50 д.",
-    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермь",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край",
     maker: { ...DIVODOM, siteUrl: "https://www.divodom.net/dom-ploshhadyu-77-kvm" },
     description: "ДИВО 88 — просторный модульный дом 88 м² с террасой 18 м². Подходит для постоянного проживания.",
     descriptionLong: "ДИВО 88 — крупный модульный дом полной заводской готовности: две спальни, санузел, просторная кухня-гостиная и терраса 18 м². Утепление до −30°C.",
@@ -880,4 +880,4 @@ export const manufacturers = [
 // ГОРОДА
 // ============================================================================
 
-export const cities = ["Екатеринбург", "Пермь"];
+export const cities = ["Екатеринбург", "Пермский край"];
