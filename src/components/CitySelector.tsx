@@ -52,18 +52,43 @@ const matchCityFromIp = (raw: string | undefined | null): string | null => {
   return direct || null;
 };
 
+const CITY_EVENT = "city-changed";
+
+const readStoredCity = () => {
+  try { return localStorage.getItem(CITY_STORAGE_KEY) || "Екатеринбург"; } catch { return "Екатеринбург"; }
+};
+
+const broadcastCity = (c: string) => {
+  try { localStorage.setItem(CITY_STORAGE_KEY, c); } catch {}
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent(CITY_EVENT, { detail: c }));
+  }
+};
+
 export function useCity() {
-  const [city, setCity] = useState(() => {
-    try { return localStorage.getItem(CITY_STORAGE_KEY) || "Екатеринбург"; } catch { return "Екатеринбург"; }
-  });
+  const [city, setCity] = useState(readStoredCity);
+
+  // Подписка на изменения города из других компонентов / вкладок
+  useEffect(() => {
+    const onCustom = (e: Event) => {
+      const detail = (e as CustomEvent<string>).detail;
+      if (typeof detail === "string") setCity(detail);
+    };
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === CITY_STORAGE_KEY && e.newValue) setCity(e.newValue);
+    };
+    window.addEventListener(CITY_EVENT, onCustom as EventListener);
+    window.addEventListener("storage", onStorage);
+    return () => {
+      window.removeEventListener(CITY_EVENT, onCustom as EventListener);
+      window.removeEventListener("storage", onStorage);
+    };
+  }, []);
 
   const selectCity = (c: string) => {
     setCity(c);
-    try {
-      localStorage.setItem(CITY_STORAGE_KEY, c);
-      // Помечаем как ручной выбор, чтобы автоопределение больше не перезаписывало
-      localStorage.setItem(CITY_AUTO_DETECTED_KEY, "manual");
-    } catch {}
+    broadcastCity(c);
+    try { localStorage.setItem(CITY_AUTO_DETECTED_KEY, "manual"); } catch {}
   };
 
   // Автоопределение города по IP при первом заходе
@@ -72,7 +97,6 @@ export function useCity() {
     try {
       const stored = localStorage.getItem(CITY_STORAGE_KEY);
       const flag = localStorage.getItem(CITY_AUTO_DETECTED_KEY);
-      // Если пользователь уже выбирал город вручную или автоопределение уже отработало — выходим
       if (stored || flag) return;
     } catch {
       return;
@@ -88,13 +112,11 @@ export function useCity() {
         const matched = matchCityFromIp(data.city);
         if (matched) {
           setCity(matched);
-          try { localStorage.setItem(CITY_STORAGE_KEY, matched); } catch {}
+          broadcastCity(matched);
         }
         try { localStorage.setItem(CITY_AUTO_DETECTED_KEY, "auto"); } catch {}
       })
-      .catch(() => {
-        // тихо игнорируем — оставляем дефолт
-      })
+      .catch(() => {})
       .finally(() => window.clearTimeout(timeout));
 
     return () => {
