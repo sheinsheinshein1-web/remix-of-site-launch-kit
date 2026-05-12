@@ -52,64 +52,22 @@ interface CategoryItem {
   imgClass?: string;
 }
 
+const houseItems: CategoryItem[] = [
+  { name: "Дома", count: "84", img: catHouses, imgClass: "bottom-[-20px] right-[-50px]" },
+  { name: "Дачные домики", count: "19", img: catDacha, tag: "soon", imgClass: "bottom-[-20px] right-[-16px]" },
+  { name: "Двух-\nэтажные", count: "15", img: catTwostory, tag: "soon", imgClass: "bottom-[-20px] right-[-16px]" },
+  { name: "Студии", count: "12", img: catStudio, tag: "soon", imgClass: "bottom-[-20px] right-[-16px]" },
+  { name: "Гостевые дома", count: "28", img: catGuest, tag: "soon" },
+];
+
 const sections: { title: string; items: CategoryItem[] }[] = [
-  {
-    title: "Дома",
-    items: [
-      { name: "Дома", count: "84", img: catHouses, imgClass: "bottom-[-20px] right-[-50px]" },
-      { name: "Дачные домики", count: "19", img: catDacha, tag: "soon", imgClass: "bottom-[-20px] right-[-16px]" },
-      { name: "Двух-\nэтажные", count: "15", img: catTwostory, tag: "soon", imgClass: "bottom-[-20px] right-[-16px]" },
-      { name: "Студии", count: "12", img: catStudio, tag: "soon", imgClass: "bottom-[-20px] right-[-16px]" },
-      { name: "Гостевые дома", count: "28", img: catGuest, tag: "soon" },
-    ],
-  },
-  {
-    title: "Бани и отдых",
-    items: [
-      { name: "Бани и сауны", count: "46", img: catBaths, tag: "soon", imgClass: "bottom-[-22px] right-[-16px]" },
-      { name: "Бани-бочки", count: "14", img: catBarrelBath, tag: "soon", imgClass: "bottom-[-22px] right-[-16px]" },
-      { name: "Купели и чаны", count: "8", img: catHotTub, tag: "soon" },
-      { name: "Беседки", count: "11", img: catGazebo, tag: "soon" },
-      { name: "Террасы", count: "7", img: catTerrace, tag: "soon" },
-      { name: "Барбекю-зоны", count: "5", img: catBbq, tag: "soon" },
-    ],
-  },
+  { title: "Каркасные дома", items: houseItems },
+  { title: "Модульные дома", items: houseItems },
+  { title: "Префаб дома", items: houseItems },
   {
     title: "Для бизнеса",
     items: [
       { name: "Глэмпинг", count: "31", img: catGlamping, tag: "soon", imgClass: "bottom-[-28px] right-[-16px]" },
-      { name: "Магазины", count: "25", img: catCommercial, tag: "soon" },
-      { name: "Офисы", count: "11", img: catOffice, tag: "soon" },
-      { name: "Мастерские", count: "8", img: catWorkshop, tag: "soon" },
-      { name: "Гостиницы", count: "3", img: catHotel, tag: "soon" },
-      { name: "Кафе и\nрестораны", count: "2", img: catCafe, tag: "soon" },
-    ],
-  },
-  {
-    title: "Участок и инженерия",
-    items: [
-      { name: "Бытовки", count: "14", img: catShed, tag: "soon", imgClass: "bottom-[-14px] right-[-22px]" },
-      { name: "Гаражи", count: "6", img: catGarage, tag: "soon" },
-      { name: "Навесы", count: "4", img: catCanopy, tag: "soon" },
-      { name: "Заборы", count: "3", img: catFence, tag: "soon" },
-      { name: "Септики", count: "5", img: catSeptic, tag: "soon" },
-      { name: "Скважины", count: "2", img: catWell, tag: "soon" },
-    ],
-  },
-  {
-    title: "Сервисы",
-    items: [
-      { name: "Ипотека", count: "", img: catMortgage, tag: "soon", imgClass: "bottom-[-20px] right-[-16px]" },
-    ],
-  },
-  {
-    title: "Блог",
-    items: [
-      { name: "Как выбрать\nдом", count: "2 мин", img: catGuide, tag: "soon", imgClass: "bottom-[-24px] right-[-16px]" },
-      { name: "Право и\nдокументы", count: "2 мин", img: catLaw, tag: "soon" },
-      { name: "Истории\nпокупателей", count: "2 мин", img: catStories, tag: "soon" },
-      { name: "Глэмпинг-\nбизнес", count: "2 мин", img: catGlampingBiz, tag: "soon" },
-      { name: "Сезонные\nподборки", count: "2 мин", img: catSeasonal, tag: "later" },
     ],
   },
 ];
