@@ -1,14 +1,5 @@
 import { Factory } from "lucide-react";
-
-const makers = [
-  { name: "СибМодуль", location: "Новосибирск", count: "18 проектов" },
-  { name: "УралДом", location: "Екатеринбург", count: "24 проекта" },
-  { name: "МодульХаус", location: "Москва", count: "31 проект" },
-  { name: "ГлэмпингСтрой", location: "Сочи", count: "12 проектов" },
-  { name: "АрктикДом", location: "Мурманск", count: "9 проектов" },
-  { name: "ДомКомплект", location: "Казань", count: "15 проектов" },
-  { name: "Glezman Group", location: "Пермь", count: "10 проектов" },
-];
+import { manufacturers as makers } from "@/data/projects";
 
 const ManufacturersList = () => {
   return (
