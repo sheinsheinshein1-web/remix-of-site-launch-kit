@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import { Search, X, Home, Factory, FileText, LayoutGrid, ArrowRight, ChevronRight, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-// Searchable data — все проекты от Платформы (синхронизировано с FeaturedProjects/Catalog)
+// Searchable data — синхронизировано с FeaturedProjects/Catalog
 const projects = [
   { id: 32, name: "Wide House", maker: "Платформа", price: "5 480 000 ₽", area: "46,4 м²", beds: 2, baths: 1, tags: "дом одноэтажный модульный для жизни барнхаус скандинавский с террасой панорамные окна" },
   { id: 33, name: "Barn House", maker: "Платформа", price: "1 680 000 ₽", area: "42,9 м²", beds: 1, baths: 1, tags: "дом одноэтажный модульный барнхаус скандинавский недорогой бюджетный для дачи" },
@@ -13,15 +13,23 @@ const projects = [
   { id: 38, name: "Vast House 140", maker: "Платформа", price: "8 077 600 ₽", area: "114,9 м²", beds: 4, baths: 2, tags: "дом одноэтажный модульный большой для семьи премиум четырехкомнатный с террасой" },
   { id: 39, name: "Bear House 168", maker: "Платформа", price: "12 110 400 ₽", area: "146,4 м²", beds: 4, baths: 3, tags: "дом одноэтажный модульный большой премиум вилла для семьи с камином с террасой" },
   { id: 40, name: "ПАТИО", maker: "Bygge", price: "2 598 000 ₽", area: "45 м²", beds: 3, baths: 1, tags: "дом одноэтажный модульный для семьи современный тёплые полы санузел вентиляция bygge патио" },
+  { id: 47, name: "La Rus 45", maker: "Glezman Group", price: "4 114 800 ₽", area: "45,72 м²", beds: 1, baths: 1, tags: "дом одноэтажный каркасный пермь la rus larus глезман для дачи компактный" },
+  { id: 48, name: "La Rus 75", maker: "Glezman Group", price: "6 750 000 ₽", area: "75 м²", beds: 2, baths: 1, tags: "дом одноэтажный каркасный пермь la rus larus глезман с террасой для семьи" },
+  { id: 49, name: "La Rus 100", maker: "Glezman Group", price: "9 360 000 ₽", area: "104 м²", beds: 2, baths: 2, tags: "дом одноэтажный каркасный пермь la rus larus глезман для семьи два санузла" },
+  { id: 50, name: "La Rus 120", maker: "Glezman Group", price: "10 800 000 ₽", area: "120 м²", beds: 2, baths: 2, tags: "дом одноэтажный каркасный пермь la rus larus глезман с террасой для семьи" },
+  { id: 51, name: "La Rus 127", maker: "Glezman Group", price: "11 430 000 ₽", area: "127 м²", beds: 3, baths: 2, tags: "дом одноэтажный каркасный пермь la rus larus глезман с террасой большой для семьи" },
 ];
 
 const categories = [
   { name: "Дома", slug: "houses" },
+  { name: "Каркасные дома", slug: "frame" },
+  { name: "Модульные дома", slug: "modular" },
 ];
 
 const manufacturers = [
   { name: "Платформа", location: "Екатеринбург" },
   { name: "Bygge", location: "Екатеринбург" },
+  { name: "Glezman Group", location: "Пермь" },
 ];
 
 const articlesList = [
@@ -32,10 +40,15 @@ const articlesList = [
 const quickSuggestions: Record<string, string[]> = {
   "дом": ["под ключ", "для семьи", "с террасой", "до 5 млн", "большой", "одноэтажный"],
   "модуль": ["для жизни", "под ключ", "с отделкой", "скандинавский"],
+  "каркас": ["la rus", "пермь", "для семьи", "с террасой"],
   "barn": ["barn house", "недорогой"],
   "bear": ["bear house 45", "bear house 77", "bear house 86", "bear house 134", "bear house 168"],
   "vast": ["vast house 140"],
   "wide": ["wide house"],
+  "la ru": ["la rus 45", "la rus 75", "la rus 100", "la rus 120", "la rus 127"],
+  "larus": ["la rus 45", "la rus 75", "la rus 100", "la rus 120", "la rus 127"],
+  "глезман": ["la rus 45", "la rus 75", "la rus 100", "la rus 120", "la rus 127"],
+  "пермь": ["la rus", "каркасный дом", "глезман"],
   "платформ": ["wide house", "barn house", "bear house"],
 };
 
