@@ -96,13 +96,21 @@ function getOrderedProjects(seed: number) {
 }
 
 // Циклически генерируем «бесконечную» ленту, переиспользуя проекты в порядке seed.
-function getPagedProjects(page: number, seed: number) {
-  const ordered = getOrderedProjects(seed);
+function getPagedProjects(page: number, seed: number, source: typeof baseProjects) {
+  if (source.length === 0) return [];
+  const ordered = seed === 0 ? source : (() => {
+    const rng = mulberry32(seed);
+    const arr = [...source];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(rng() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  })();
   const total = page * PAGE_SIZE;
   const items: { project: typeof baseProjects[number]; key: string }[] = [];
   for (let i = 0; i < total; i++) {
     const project = ordered[i % ordered.length];
-    // Включаем seed в key, чтобы React переиспользовал DOM правильно при reshuffle
     items.push({ project, key: `${seed}-${project.id}-${i}` });
   }
   return items;
