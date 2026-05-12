@@ -18,6 +18,11 @@ const projects = [
   { id: 49, name: "La Rus 100", maker: "Glezman Group", price: "9 360 000 ₽", area: "104 м²", beds: 2, baths: 2, tags: "дом одноэтажный каркасный пермь la rus larus глезман для семьи два санузла" },
   { id: 50, name: "La Rus 120", maker: "Glezman Group", price: "10 800 000 ₽", area: "120 м²", beds: 2, baths: 2, tags: "дом одноэтажный каркасный пермь la rus larus глезман с террасой для семьи" },
   { id: 51, name: "La Rus 127", maker: "Glezman Group", price: "11 430 000 ₽", area: "127 м²", beds: 3, baths: 2, tags: "дом одноэтажный каркасный пермь la rus larus глезман с террасой большой для семьи" },
+  { id: 52, name: "ДИВО START", maker: "ДивоДом", price: "1 100 000 ₽", area: "30 м²", beds: 1, baths: 1, tags: "дом одноэтажный модульный пермь диво divodom дивадом для дачи компактный с террасой бюджетный недорогой" },
+  { id: 53, name: "ДИВО 34", maker: "ДивоДом", price: "1 632 000 ₽", area: "34 м²", beds: 1, baths: 1, tags: "дом одноэтажный модульный пермь диво divodom для дачи компактный с террасой" },
+  { id: 54, name: "ДИВО 51", maker: "ДивоДом", price: "2 645 000 ₽", area: "51 м²", beds: 2, baths: 1, tags: "дом одноэтажный модульный пермь диво divodom для семьи с террасой" },
+  { id: 55, name: "ДИВО 64", maker: "ДивоДом", price: "3 195 000 ₽", area: "64 м²", beds: 2, baths: 1, tags: "дом одноэтажный модульный пермь диво divodom для семьи с террасой" },
+  { id: 56, name: "ДИВО 88", maker: "ДивоДом", price: "4 179 000 ₽", area: "88 м²", beds: 2, baths: 1, tags: "дом одноэтажный модульный пермь диво divodom для семьи большой с террасой" },
 ];
 
 const categories = [
