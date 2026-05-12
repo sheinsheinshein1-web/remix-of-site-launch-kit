@@ -436,19 +436,11 @@ const ProjectDetail = () => {
             >
               {galleryImages.map((img, i) => {
                 const isContain = (img as any).fit === "contain";
+                const hasBlur = Boolean((img as any).blur);
                 const isActive = i === activeImage;
                 return (
                   <div key={img.id} className="relative isolate w-full flex-shrink-0 aspect-[4/5] bg-muted overflow-hidden">
-                    {/* Blur-фон для contain-фото у Bygge (40,41,42,43), кроме планов в конце галереи */}
-                    {isContain && (
-                      (id === "40" && img.id <= 8) ||
-                      (id === "41" && img.id <= 7) ||
-                      (id === "42" && img.id <= 9) ||
-                      (id === "43" && img.id <= 9) ||
-                      (id === "44" && img.id <= 3) ||
-                      (id === "45" && img.id <= 7) ||
-                      (id === "46" && img.id <= 7)
-                    ) && (
+                    {isContain && hasBlur && (
                       <img
                         src={img.image}
                         alt=""
