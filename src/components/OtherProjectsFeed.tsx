@@ -5,7 +5,12 @@ import { Heart, Maximize, BedDouble, Bath } from "lucide-react";
 import ProjectCardSkeleton from "@/components/ProjectCardSkeleton";
 import SwipeableGallery from "@/components/SwipeableGallery";
 import { useFavorites } from "@/contexts/FavoritesContext";
-import { projects as allProjects } from "@/data/projects";
+import {
+  projects as allProjects,
+  projectFits,
+  projectBlurBackground,
+  projectObjectPositions,
+} from "@/data/projects";
 
 const PAGE_SIZE = 6;
 const SCROLL_KEY_PREFIX = "project_feed_scroll_";
