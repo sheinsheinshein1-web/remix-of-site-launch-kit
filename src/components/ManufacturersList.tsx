@@ -18,14 +18,14 @@ const ManufacturersList = () => {
 
         {/* Desktop: 3-col grid */}
         <div className="hidden md:grid md:grid-cols-3 gap-3">
-          {makers.map((m) => (
+          {list.map((m) => (
             <MakerCardDesktop key={m.name} {...m} />
           ))}
         </div>
 
         {/* Mobile: vertical list */}
         <div className="flex flex-col gap-2 md:hidden">
-          {makers.map((m) => (
+          {list.map((m) => (
             <button key={m.name} className="flex items-center gap-3.5 bg-card border border-border rounded-2xl p-3.5 text-left">
               <div className="w-10 h-10 rounded-lg bg-background flex items-center justify-center shrink-0">
                 <Factory className="w-[18px] h-[18px] text-muted-foreground" strokeWidth={1.5} />
