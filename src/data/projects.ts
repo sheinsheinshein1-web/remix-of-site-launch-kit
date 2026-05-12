@@ -205,6 +205,12 @@ const GLEZMAN: Maker = {
   initials: "GG",
   id: "glezman",
 };
+const DIVODOM: Maker = {
+  name: "ДивоДом",
+  initials: "ДД",
+  id: "divodom",
+  siteUrl: "https://www.divodom.net/",
+};
 
 // ============================================================================
 // ПРОЕКТЫ — единый источник правды
