@@ -534,7 +534,7 @@ export const projects: Project[] = [
     area: "45,72 м²", area_m2: 45.72, beds: 1, baths: 1, floors: 1, term: "60 д.",
     rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Пермь",
     maker: { ...GLEZMAN, siteUrl: "https://glezman-group.ru/la-rus_45" },
-    description: "La Rus 45 — модульный дом площадью 45,72 м² с особой атмосферой уюта, тепла и комфорта.",
+    description: "La Rus 45 — каркасный дом площадью 45,72 м² с особой атмосферой уюта, тепла и комфорта.",
     descriptionLong: "La Rus 45 — особая атмосфера уюта, тепла и комфорта. Модульный дом с продуманной планировкой: одна спальня, санузел, просторная зона кухни-гостиной с панорамным остеклением.",
     gallery: [
       { image: larus45_1, type: "photo", fit: "contain", blur: true },
@@ -552,7 +552,7 @@ export const projects: Project[] = [
     area: "75 м²", area_m2: 75, beds: 2, baths: 1, floors: 1, term: "70 д.",
     rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермь",
     maker: { ...GLEZMAN, siteUrl: "https://glezman-group.ru/la-rus_75" },
-    description: "La Rus 75 — модульный дом 75 м² с двумя спальнями и террасой. Сочетание функциональности, простора и эстетики.",
+    description: "La Rus 75 — каркасный дом 75 м² с двумя спальнями и террасой. Сочетание функциональности, простора и эстетики.",
     descriptionLong: "La Rus 75 — сочетание функциональности, простора и эстетики. Две спальни, санузел, открытая зона кухни-гостиной и терраса для отдыха на свежем воздухе.",
     gallery: [
       { image: larus75_1, type: "photo", fit: "contain", blur: true },
@@ -570,7 +570,7 @@ export const projects: Project[] = [
     area: "104 м²", area_m2: 104, beds: 2, baths: 2, floors: 1, term: "80 д.",
     rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермь",
     maker: { ...GLEZMAN, siteUrl: "https://glezman-group.ru/la-rus_100" },
-    description: "La Rus 100 — модульный дом 104 м² с гармоничным сочетанием общих зон и уютных приватных помещений.",
+    description: "La Rus 100 — каркасный дом 104 м² с гармоничным сочетанием общих зон и уютных приватных помещений.",
     descriptionLong: "La Rus 100 — гармоничное сочетание общих зон и уютных приватных помещений. Две спальни, два санузла, просторная гостиная-кухня и продуманное зонирование для семьи.",
     gallery: [
       { image: larus100_1, type: "photo", fit: "contain", blur: true },
@@ -590,7 +590,7 @@ export const projects: Project[] = [
     area: "120 м²", area_m2: 120, beds: 2, baths: 2, floors: 1, term: "85 д.",
     rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермь",
     maker: { ...GLEZMAN, siteUrl: "https://glezman-group.ru/la-rus_120" },
-    description: "La Rus 120 — модульный дом 120 м² с террасой. Гармоничное сочетание общих зон и уютных приватных помещений.",
+    description: "La Rus 120 — каркасный дом 120 м² с террасой. Гармоничное сочетание общих зон и уютных приватных помещений.",
     descriptionLong: "La Rus 120 — гармоничное сочетание общих зон и уютных приватных помещений. Две спальни, два санузла, открытая гостиная-кухня и просторная терраса для отдыха.",
     gallery: [
       { image: larus120_1, type: "photo", fit: "contain", blur: true },
@@ -610,7 +610,7 @@ export const projects: Project[] = [
     area: "127 м²", area_m2: 127, beds: 3, baths: 2, floors: 1, term: "90 д.",
     rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Пермь",
     maker: { ...GLEZMAN, siteUrl: "https://glezman-group.ru/la-rus_127" },
-    description: "La Rus 127 — просторный модульный дом 127 м² с тремя спальнями и террасой.",
+    description: "La Rus 127 — просторный каркасный дом 127 м² с тремя спальнями и террасой.",
     descriptionLong: "La Rus 127 — просторный дом с продуманной и удобной планировкой, объединяющей просторные общественные зоны и уединённые комнаты. Три спальни, два санузла, большая гостиная-кухня и терраса.",
     gallery: [
       { image: larus127_1, type: "photo", fit: "contain", blur: true },
