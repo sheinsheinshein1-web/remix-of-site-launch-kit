@@ -373,9 +373,12 @@ const Catalog = () => {
     .filter((term) => term.length > 1);
 
   const { city: selectedCity } = useCity();
+  const techFilter = searchParams.get("tech") || "";
   const filteredItems = catalogItems.filter(item => {
     // Гео: показываем только проекты выбранного города
     if (item.city !== selectedCity) return false;
+    // Технология строительства из URL (?tech=Модульный дом / Каркасный / Префаб)
+    if (techFilter && item.technology !== techFilter) return false;
     if (catalogSearchTerms.length > 0) {
       const floorsLabel = item.floors === 1 ? "одноэтажный 1 этаж" : item.floors === 2 ? "двухэтажный 2 этажа" : `${item.floors} этаж`;
       const bedsLabel = item.beds === 0 ? "студия без спальни" : `${item.beds} спальня ${item.beds} спальни ${item.beds} спален`;
