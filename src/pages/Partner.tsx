@@ -99,7 +99,9 @@ const Partner = () => {
 
   const partnerBase = (id && partners[id]) || partners["1"];
   const makerId = (id && partnerMakerIds[id]) || "platforma";
-  const projectsCount = projectsCountByMakerId[makerId] ?? 0;
+  // Для Bygge показываем заявленные 5 проектов (в каталоге пока 1 — остальные появятся по мере загрузки данных).
+  const manualCounts: Record<string, number> = { bygge: 5 };
+  const projectsCount = manualCounts[makerId] ?? projectsCountByMakerId[makerId] ?? 0;
   const partner: PartnerData = {
     ...partnerBase,
     stats: [
