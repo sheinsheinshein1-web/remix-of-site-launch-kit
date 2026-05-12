@@ -108,6 +108,25 @@ import grandis5 from "@/assets/grandis-5.jpg";
 import grandis6 from "@/assets/grandis-6.jpg";
 import grandis7 from "@/assets/grandis-7.jpg";
 import grandisPlan1 from "@/assets/grandis-plan-1.jpg";
+import larus45_1 from "@/assets/glezman/larus-45.jpg";
+import larus45_2 from "@/assets/glezman/larus-45-2.jpg";
+import larus45_3 from "@/assets/glezman/larus-45-3.png";
+import larus75_1 from "@/assets/glezman/larus-75.jpg";
+import larus75_2 from "@/assets/glezman/larus-75-2.jpg";
+import larus75_3 from "@/assets/glezman/larus-75-3.png";
+import larus100_1 from "@/assets/glezman/larus-100.jpg";
+import larus100_2 from "@/assets/glezman/larus-100-2.jpg";
+import larus100_3 from "@/assets/glezman/larus-100-3.jpg";
+import larus100_4 from "@/assets/glezman/larus-100-4.jpg";
+import larus100_5 from "@/assets/glezman/larus-100-5.jpg";
+import larus120_1 from "@/assets/glezman/larus-120.jpg";
+import larus120_2 from "@/assets/glezman/larus-120-2.jpg";
+import larus120_3 from "@/assets/glezman/larus-120-3.jpg";
+import larus120_4 from "@/assets/glezman/larus-120-4.jpg";
+import larus120_5 from "@/assets/glezman/larus-120-5.jpg";
+import larus127_1 from "@/assets/glezman/larus-127.jpg";
+import larus127_2 from "@/assets/glezman/larus-127-2.jpg";
+import larus127_3 from "@/assets/glezman/larus-127-3.png";
 
 // У каждого проекта — полный набор как в карточке проекта: рендеры + планы.
 const projectGalleries: Record<number, string[]> = {
@@ -126,6 +145,11 @@ const projectGalleries: Record<number, string[]> = {
   44: [familySuite1, familySuite2, familySuite3, familySuitePlan1],
   45: [gallant1, gallant2, gallant3, gallant4, gallant5, gallant6, gallant7, gallantPlan1],
   46: [grandis1, grandis2, grandis3, grandis4, grandis5, grandis6, grandis7, grandisPlan1],
+  47: [larus45_1, larus45_2, larus45_3],
+  48: [larus75_1, larus75_2, larus75_3],
+  49: [larus100_1, larus100_2, larus100_3, larus100_4, larus100_5],
+  50: [larus120_1, larus120_2, larus120_3, larus120_4, larus120_5],
+  51: [larus127_1, larus127_2, larus127_3],
 };
 
 function getProjectImages(_mainImage: string, id: number): string[] {
@@ -194,6 +218,11 @@ const catalogItems = [
   { id: 44, badge: "Жилой дом", maker: "Bygge · Екатеринбург", name: "ФАМИЛЬНЫЙ", price: "4 050 000 ₽", area: "72 м²", beds: 1, baths: 1, term: "60 д.", rooms: "2 комнаты", purpose: "ИЖС / СНТ", image: familySuite1, fav: false, likes: 26, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Тёплые полы", "Вытяжная вентиляция", "Терраса"], style: "Современный", landSize: "3–6 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: true, hasInstallment: true },
   { id: 45, badge: "Жилой дом", maker: "Bygge · Екатеринбург", name: "ГАЛАНТ", price: "3 346 000 ₽", area: "59 м²", beds: 2, baths: 1, term: "35 д.", rooms: "3 комнаты", purpose: "ИЖС / СНТ", image: gallant1, fav: false, likes: 24, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Тёплые полы", "Вытяжная вентиляция", "Терраса"], style: "Современный", landSize: "3–6 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: true, hasInstallment: true },
   { id: 46, badge: "Барнхаус", maker: "Bygge · Екатеринбург", name: "ГРАНДИС", price: "1 585 000 ₽", area: "30 м²", beds: 1, baths: 1, term: "30 д.", rooms: "2 комнаты", purpose: "ИЖС / СНТ", image: grandis1, fav: false, likes: 19, city: "Екатеринбург", floors: 1, suitableFor: ["Для одного / пары", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Тёплые полы", "Вытяжная вентиляция", "Терраса"], style: "Барнхаус", landSize: "3–6 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: true, hasInstallment: true },
+  { id: 47, badge: "Жилой дом", maker: "Glezman Group · Пермь", name: "La Rus 45", price: "по запросу", area: "45,72 м²", beds: 1, baths: 1, term: "60 д.", rooms: "1 спальня", purpose: "ИЖС / СНТ", image: larus45_1, fav: false, likes: 14, city: "Пермь", floors: 1, suitableFor: ["Для одного / пары", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Панорамные окна"], style: "Современный", landSize: "3–6 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: false, hasInstallment: false },
+  { id: 48, badge: "Жилой дом", maker: "Glezman Group · Пермь", name: "La Rus 75", price: "по запросу", area: "75 м²", beds: 2, baths: 1, term: "70 д.", rooms: "2 спальни", purpose: "ИЖС / СНТ", image: larus75_1, fav: false, likes: 18, city: "Пермь", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна"], style: "Современный", landSize: "3–6 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: false, hasInstallment: false },
+  { id: 49, badge: "Жилой дом", maker: "Glezman Group · Пермь", name: "La Rus 100", price: "по запросу", area: "104 м²", beds: 2, baths: 2, term: "80 д.", rooms: "2 спальни", purpose: "ИЖС / СНТ", image: larus100_1, fav: false, likes: 22, city: "Пермь", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Панорамные окна"], style: "Современный", landSize: "6–10 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: false, hasInstallment: false },
+  { id: 50, badge: "Жилой дом", maker: "Glezman Group · Пермь", name: "La Rus 120", price: "по запросу", area: "120 м²", beds: 2, baths: 2, term: "85 д.", rooms: "2 спальни", purpose: "ИЖС / СНТ", image: larus120_1, fav: false, likes: 25, city: "Пермь", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна"], style: "Современный", landSize: "6–10 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: false, hasInstallment: false },
+  { id: 51, badge: "Жилой дом", maker: "Glezman Group · Пермь", name: "La Rus 127", price: "по запросу", area: "127 м²", beds: 3, baths: 2, term: "90 д.", rooms: "3 спальни", purpose: "ИЖС / СНТ", image: larus127_1, fav: false, likes: 28, city: "Пермь", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна"], style: "Современный", landSize: "6–10 соток", hasRealPhotos: true, rating: 4.8, hasShowroom: false, hasInstallment: false },
 ];
 
 const sidebarFilters = [
