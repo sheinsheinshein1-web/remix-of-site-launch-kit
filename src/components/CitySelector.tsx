@@ -5,6 +5,7 @@ import { Drawer, DrawerContent } from "@/components/ui/drawer";
 
 const cities = [
   "Екатеринбург",
+  "Пермь",
 ];
 
 const CITY_STORAGE_KEY = "selected_city";
