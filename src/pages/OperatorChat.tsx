@@ -140,6 +140,17 @@ const OperatorChat = () => {
     }
   };
 
+  useEffect(() => {
+    if (!token) return;
+
+    refreshSessions(token);
+    const interval = window.setInterval(() => {
+      refreshSessions(token);
+    }, 2500);
+
+    return () => window.clearInterval(interval);
+  }, [token]);
+
   const sendReply = async () => {
     const text = input.trim();
     if (!text || !activeSession) return;
