@@ -157,10 +157,11 @@ const AllCategoriesPage = () => {
                 {section.items.map((item) => {
                   const isPartner = item.name === "Стать партнером";
                   const isSmallSection = section.items.length <= 3 && !isMobile;
+                  const targetUrl = section.tech ? `/catalog?tech=${encodeURIComponent(section.tech)}` : "/catalog";
                   const card = (
                     <button
                       key={item.name}
-                      onClick={() => !isPartner && item.tag !== "soon" && item.tag !== "later" ? navigate("/catalog") : undefined}
+                      onClick={() => !isPartner && item.tag !== "soon" && item.tag !== "later" ? navigate(targetUrl) : undefined}
                       className={`bg-secondary rounded-2xl p-2.5 md:p-3.5 flex flex-col items-start text-left overflow-hidden relative ${isMobile ? "h-[95px]" : "h-[180px]"} ${item.span === 2 ? "col-span-2" : ""} ${item.tag === "soon" || item.tag === "later" ? "opacity-45 grayscale pointer-events-none" : "hover:text-primary active:text-primary transition-colors"} ${isSmallSection && !isPartner ? "w-[calc(20%-10px)]" : isSmallSection && isPartner ? "w-full" : ""}`}
                     >
                       <span className={`${isMobile ? "text-[13px]" : "text-[14px]"} font-normal leading-tight z-10 whitespace-pre-line max-w-[85%]`}>
