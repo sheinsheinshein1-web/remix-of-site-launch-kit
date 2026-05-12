@@ -831,6 +831,14 @@ export const projectOverrides: Record<string, {
   ])
 );
 
+// Кол-во проектов по makerId — для карточки производителя на странице проекта.
+export const projectsCountByMakerId: Record<string, number> = projects.reduce((acc, p) => {
+  const id = p.maker.id;
+  if (!id) return acc;
+  acc[id] = (acc[id] ?? 0) + 1;
+  return acc;
+}, {} as Record<string, number>);
+
 // ============================================================================
 // ПРОИЗВОДИТЕЛИ — count рассчитывается из projects автоматически
 // ============================================================================
