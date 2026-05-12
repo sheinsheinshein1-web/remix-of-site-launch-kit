@@ -19,6 +19,7 @@ import {
   projectBlurBackground,
   projectObjectPositions,
 } from "@/data/projects";
+import { useCity } from "@/components/CitySelector";
 
 function getProjectImages(_mainImage: string, id: number): string[] {
   return projectGalleries[id] ?? [_mainImage];
