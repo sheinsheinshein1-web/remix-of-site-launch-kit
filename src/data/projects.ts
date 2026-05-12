@@ -34,20 +34,6 @@ import bear86_2 from "@/assets/bear86-2.webp";
 import bear86_3 from "@/assets/bear86-3.webp";
 import bear86Plan3d from "@/assets/bear86-plan-3d.webp";
 import bear86Plan from "@/assets/bear86-plan.webp";
-import bear134_1 from "@/assets/bear134-1.webp";
-import bear134_2 from "@/assets/bear134-2.webp";
-import bear134_3 from "@/assets/bear134-3.webp";
-import bear134Plan3d from "@/assets/bear134-plan-3d.webp";
-import bear134Plan from "@/assets/bear134-plan.webp";
-import vast140_1 from "@/assets/vast140-1.webp";
-import vast140_2 from "@/assets/vast140-2.webp";
-import vast140_3 from "@/assets/vast140-3.webp";
-import vast140Plan3d from "@/assets/vast140-plan-3d.webp";
-import vast140Plan from "@/assets/vast140-plan.webp";
-import bear168_1 from "@/assets/bear168-1.webp";
-import bear168_2 from "@/assets/bear168-2.webp";
-import bear168Plan3d from "@/assets/bear168-plan-3d.webp";
-import bear168Plan from "@/assets/bear168-plan.webp";
 
 // Bygge
 import patio1 from "@/assets/patio-2.jpeg";
@@ -310,63 +296,6 @@ export const projects: Project[] = [
     features: ["Терраса", "Панорамные окна"], style: "Скандинавский", landSize: "6–10 соток",
     hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
   },
-  {
-    id: 37, name: "Bear House 134", badge: "Жилой дом", price: "8 762 000 ₽",
-    area: "110 м²", beds: 3, baths: 3, floors: 1, term: "70 д.",
-    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург", maker: PLATFORMA,
-    description: "Одноэтажный модульный дом 15,8 × 9,9 м с двускатной кровлей и двумя террасами. Три спальни, три санузла, гардероб, гостиная-кухня.",
-    descriptionLong: "Bear House 134 — просторный загородный дом площадью 110 м² с продуманной планировкой: гостиная 20,20 м², кухня 9,53 м², три спальни (14,26, 16,49 и одна дополнительная), три санузла, гардероб 4,43 м², коридор 8,06 м², прихожая 3,17 м² и две крытых террасы (13,5 и 8,0 м²). Деревянный каркас, фальцевая металлическая кровля, панорамное остекление гостиной с выходом на террасу.",
-    gallery: [
-      { image: bear134_1, type: "photo" },
-      { image: bear134_2, type: "photo" },
-      { image: bear134_3, type: "photo" },
-      { image: bear134Plan3d, type: "photo", fit: "contain" },
-      { image: bear134Plan, type: "photo", fit: "contain" },
-    ],
-    likes: 71, rating: 4.9,
-    suitableFor: ["Постоянное проживание", "Для семьи"],
-    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
-    features: ["Терраса", "Панорамные окна"], style: "Скандинавский", landSize: "от 10 соток",
-    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
-  },
-  {
-    id: 38, name: "Vast House 140", badge: "Жилой дом", price: "8 077 600 ₽",
-    area: "114,9 м²", beds: 4, baths: 2, floors: 1, term: "75 д.",
-    rooms: "4 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург", maker: PLATFORMA,
-    description: "Просторный одноэтажный модульный дом 17,9 × 7,9 м с двускатной кровлей и акцентными деревянными фронтонами. Четыре спальни, два санузла, гостиная-кухня 41,9 м².",
-    descriptionLong: "Vast House 140 — просторный загородный дом площадью 114,9 м² с продуманной планировкой для большой семьи: гостиная 23,76 м², кухня 18,10 м², четыре спальни (13,63, 9,37, 9,26 и 6,75 м²), два санузла (5,65 м²), коридор 6,39 м², прихожая 4,05 м² и помещение ИОС 5,67 м². Деревянный каркас, фальцевая металлическая кровля, контрастные деревянные акценты на фронтонах и входной группе.",
-    gallery: [
-      { image: vast140_1, type: "photo", objectPosition: "right center" },
-      { image: vast140_2, type: "photo" },
-      { image: vast140_3, type: "photo" },
-      { image: vast140Plan3d, type: "photo", fit: "contain" },
-      { image: vast140Plan, type: "photo", fit: "contain" },
-    ],
-    likes: 83, rating: 4.9,
-    suitableFor: ["Постоянное проживание", "Для семьи"],
-    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
-    features: ["Терраса", "Панорамные окна"], style: "Скандинавский", landSize: "от 10 соток",
-    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
-  },
-  {
-    id: 39, name: "Bear House 168", badge: "Жилой дом", price: "12 110 400 ₽",
-    area: "146,4 м²", beds: 4, baths: 3, floors: 1, term: "90 д.",
-    rooms: "4 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург", maker: PLATFORMA,
-    description: "Просторный одноэтажный модульный дом 14,1 × 13,1 м со сложной геометрией кровли, камином и террасой-пирсом. Четыре спальни, три санузла, гардероб, гостиная-кухня 51,25 м².",
-    descriptionLong: "Bear House 168 — флагманский проект площадью 146,4 м² для большой семьи: гостиная с камином 41,72 м², кухня 9,53 м², четыре спальни (13,29, 9,99, 8,79 и одна гостевая), три санузла (3,80, 2,98, 1,80 м²), гардероб 3,23 м², кладовая 4,67 м², помещение ИОС 3,50 м², коридор 7,66 м² и прихожая 2,44 м². Комбинированный фасад: контрастный темный объем с фальцевой кровлей и теплый деревянный объем с двускатной крышей, две крытых террасы.",
-    gallery: [
-      { image: bear168_1, type: "photo" },
-      { image: bear168_2, type: "photo" },
-      { image: bear168Plan3d, type: "photo", fit: "contain" },
-      { image: bear168Plan, type: "photo", fit: "contain" },
-    ],
-    likes: 95, rating: 4.9,
-    suitableFor: ["Постоянное проживание", "Для семьи"],
-    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
-    features: ["Терраса", "Панорамные окна", "Камин"], style: "Скандинавский", landSize: "от 10 соток",
-    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
-  },
-
   // ── Bygge · Екатеринбург ────────────────────────────────────────────────
   {
     id: 40, name: "ПАТИО", badge: "Жилой дом", price: "2 598 000 ₽",
