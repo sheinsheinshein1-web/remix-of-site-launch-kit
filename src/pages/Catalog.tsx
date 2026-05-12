@@ -12,184 +12,17 @@ import SwipeableGallery from "@/components/SwipeableGallery";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import Seo from "@/components/Seo";
 
-import wideHouse1 from "@/assets/wide-house-1.webp";
-import wideHouse2 from "@/assets/wide-house-2.webp";
-import wideHousePlan3d from "@/assets/wide-house-plan-3d.webp";
-import wideHousePlan from "@/assets/wide-house-plan.webp";
-import cabin31_1 from "@/assets/cabin-31-1.webp";
-import cabin31_2 from "@/assets/cabin-31-2.webp";
-import cabin31Plan3d from "@/assets/cabin-31-plan-3d.webp";
-import cabin31Plan from "@/assets/cabin-31-plan.webp";
-import bear1 from "@/assets/bear-1.webp";
-import bear2 from "@/assets/bear-2.webp";
-import bear3 from "@/assets/bear-3.webp";
-import bearPlan3d from "@/assets/bear-plan-3d.webp";
-import bearPlan from "@/assets/bear-plan.webp";
-import bear77_1 from "@/assets/bear77-1.webp";
-import bear77_2 from "@/assets/bear77-2.webp";
-import bear77Plan3d from "@/assets/bear77-plan-3d.webp";
-import bear77Plan from "@/assets/bear77-plan.webp";
-import bear86_1 from "@/assets/bear86-1.webp";
-import bear86_2 from "@/assets/bear86-2.webp";
-import bear86_3 from "@/assets/bear86-3.webp";
-import bear86Plan3d from "@/assets/bear86-plan-3d.webp";
-import bear86Plan from "@/assets/bear86-plan.webp";
-import bear134_1 from "@/assets/bear134-1.webp";
-import bear134_2 from "@/assets/bear134-2.webp";
-import bear134_3 from "@/assets/bear134-3.webp";
-import bear134Plan3d from "@/assets/bear134-plan-3d.webp";
-import bear134Plan from "@/assets/bear134-plan.webp";
-import vast140_1 from "@/assets/vast140-1.webp";
-import vast140_2 from "@/assets/vast140-2.webp";
-import vast140_3 from "@/assets/vast140-3.webp";
-import vast140Plan3d from "@/assets/vast140-plan-3d.webp";
-import vast140Plan from "@/assets/vast140-plan.webp";
-import bear168_1 from "@/assets/bear168-1.webp";
-import bear168_2 from "@/assets/bear168-2.webp";
-import bear168Plan3d from "@/assets/bear168-plan-3d.webp";
-import bear168Plan from "@/assets/bear168-plan.webp";
-import patio1 from "@/assets/patio-2.jpeg";
-import patio2 from "@/assets/patio-3.jpg";
-import patio3 from "@/assets/patio-4.jpg";
-import patio4 from "@/assets/patio-5.jpg";
-import patio5 from "@/assets/patio-6.jpg";
-import patio6 from "@/assets/patio-9.jpg";
-import patio7 from "@/assets/patio-10.jpg";
-import patio8 from "@/assets/patio-11.jpg";
-import patioPlan1 from "@/assets/patio-plan-1.jpg";
-import patioPlan2 from "@/assets/patio-plan-2.jpg";
-import tundra1 from "@/assets/tundra-1.jpg";
-import tundra2 from "@/assets/tundra-2.jpg";
-import tundra3 from "@/assets/tundra-3.jpg";
-import tundra4 from "@/assets/tundra-4.jpg";
-import tundra5 from "@/assets/tundra-5.jpg";
-import tundra6 from "@/assets/tundra-6.jpg";
-import tundra7 from "@/assets/tundra-7.jpg";
-import tundraPlan1 from "@/assets/tundra-plan-1.jpg";
-import tundraPlan2 from "@/assets/tundra-plan-2.jpg";
-import tundraPlan3 from "@/assets/tundra-plan-3.jpg";
-import sherwood1 from "@/assets/sherwood-1.jpg";
-import sherwood2 from "@/assets/sherwood-2.jpg";
-import sherwood3 from "@/assets/sherwood-3.jpg";
-import sherwood4 from "@/assets/sherwood-4.jpg";
-import sherwood5 from "@/assets/sherwood-5.jpg";
-import sherwood6 from "@/assets/sherwood-6.jpg";
-import sherwood7 from "@/assets/sherwood-7.jpg";
-import sherwood8 from "@/assets/sherwood-8.jpg";
-import sherwood9 from "@/assets/sherwood-9.jpg";
-import sherwoodPlan1 from "@/assets/sherwood-plan-1.jpg";
-import senat1 from "@/assets/senat-1.jpg";
-import senat2 from "@/assets/senat-2.jpg";
-import senat3 from "@/assets/senat-3.png";
-import senat4 from "@/assets/senat-4.png";
-import senat5 from "@/assets/senat-5.png";
-import senat6 from "@/assets/senat-6.png";
-import senat7 from "@/assets/senat-7.jpg";
-import senat8 from "@/assets/senat-8.jpg";
-import senat9 from "@/assets/senat-9.jpg";
-import senatPlan1 from "@/assets/senat-plan-1.jpg";
-import familySuite1 from "@/assets/family-suite-1.jpg";
-import familySuite2 from "@/assets/family-suite-2.jpg";
-import familySuite3 from "@/assets/family-suite-3.jpg";
-import familySuitePlan1 from "@/assets/family-suite-plan-1.jpg";
-import gallant1 from "@/assets/gallant-1.jpg";
-import gallant2 from "@/assets/gallant-2.jpg";
-import gallant3 from "@/assets/gallant-3.jpg";
-import gallant4 from "@/assets/gallant-4.jpg";
-import gallant5 from "@/assets/gallant-5.jpg";
-import gallant6 from "@/assets/gallant-6.jpg";
-import gallant7 from "@/assets/gallant-7.jpg";
-import gallantPlan1 from "@/assets/gallant-plan-1.jpg";
-import grandis1 from "@/assets/grandis-1.jpg";
-import grandis2 from "@/assets/grandis-2.jpg";
-import grandis3 from "@/assets/grandis-3.jpg";
-import grandis4 from "@/assets/grandis-4.jpg";
-import grandis5 from "@/assets/grandis-5.jpg";
-import grandis6 from "@/assets/grandis-6.jpg";
-import grandis7 from "@/assets/grandis-7.jpg";
-import grandisPlan1 from "@/assets/grandis-plan-1.jpg";
-import larus45_1 from "@/assets/glezman/larus-45.jpg";
-import larus45_2 from "@/assets/glezman/larus-45-2.jpg";
-import larus45_3 from "@/assets/glezman/larus-45-3.png";
-import larus75_1 from "@/assets/glezman/larus-75.jpg";
-import larus75_2 from "@/assets/glezman/larus-75-2.jpg";
-import larus75_3 from "@/assets/glezman/larus-75-3.png";
-import larus100_1 from "@/assets/glezman/larus-100.jpg";
-import larus100_2 from "@/assets/glezman/larus-100-2.jpg";
-import larus100_3 from "@/assets/glezman/larus-100-3.jpg";
-import larus100_4 from "@/assets/glezman/larus-100-4.jpg";
-import larus100_5 from "@/assets/glezman/larus-100-5.jpg";
-import larus120_1 from "@/assets/glezman/larus-120.jpg";
-import larus120_2 from "@/assets/glezman/larus-120-2.jpg";
-import larus120_3 from "@/assets/glezman/larus-120-3.jpg";
-import larus120_4 from "@/assets/glezman/larus-120-4.jpg";
-import larus120_5 from "@/assets/glezman/larus-120-5.jpg";
-import larus127_1 from "@/assets/glezman/larus-127.jpg";
-import larus127_2 from "@/assets/glezman/larus-127-2.jpg";
-import larus127_3 from "@/assets/glezman/larus-127-3.png";
-
-// У каждого проекта — полный набор как в карточке проекта: рендеры + планы.
-const projectGalleries: Record<number, string[]> = {
-  32: [wideHouse1, wideHouse2, wideHousePlan3d, wideHousePlan],
-  33: [cabin31_1, cabin31_2, cabin31Plan3d, cabin31Plan],
-  34: [bear1, bear2, bear3, bearPlan3d, bearPlan],
-  35: [bear77_1, bear77_2, bear77Plan3d, bear77Plan],
-  36: [bear86_1, bear86_2, bear86_3, bear86Plan3d, bear86Plan],
-  37: [bear134_1, bear134_2, bear134_3, bear134Plan3d, bear134Plan],
-  38: [vast140_1, vast140_2, vast140_3, vast140Plan3d, vast140Plan],
-  39: [bear168_1, bear168_2, bear168Plan3d, bear168Plan],
-  40: [patio5, patio2, patio3, patio4, patio1, patio6, patio7, patio8, patioPlan1, patioPlan2],
-  41: [tundra1, tundra2, tundra3, tundra4, tundra5, tundra6, tundra7, tundraPlan1, tundraPlan2, tundraPlan3],
-  42: [sherwood1, sherwood2, sherwood3, sherwood4, sherwood5, sherwood6, sherwood7, sherwood8, sherwood9, sherwoodPlan1],
-  43: [senat3, senat4, senat5, senat6, senat1, senat2, senat7, senat8, senat9, senatPlan1],
-  44: [familySuite1, familySuite2, familySuite3, familySuitePlan1],
-  45: [gallant1, gallant2, gallant3, gallant4, gallant5, gallant6, gallant7, gallantPlan1],
-  46: [grandis1, grandis2, grandis3, grandis4, grandis5, grandis6, grandis7, grandisPlan1],
-  47: [larus45_1, larus45_2, larus45_3],
-  48: [larus75_1, larus75_2, larus75_3],
-  49: [larus100_1, larus100_2, larus100_3, larus100_4, larus100_5],
-  50: [larus120_1, larus120_2, larus120_3, larus120_4, larus120_5],
-  51: [larus127_1, larus127_2, larus127_3],
-};
+import {
+  catalogItems,
+  projectGalleries,
+  projectFits,
+  projectBlurBackground,
+  projectObjectPositions,
+} from "@/data/projects";
 
 function getProjectImages(_mainImage: string, id: number): string[] {
   return projectGalleries[id] ?? [_mainImage];
 }
-
-// Per-image fit: "contain" — горизонтальные планировки показываем целиком на сером фоне.
-const projectFits: Record<number, ("cover" | "contain")[]> = {
-  32: ["cover", "cover", "contain", "contain"],
-  33: ["cover", "cover", "contain", "contain"],
-  34: ["cover", "cover", "cover", "contain", "contain"],
-  35: ["cover", "cover", "contain", "contain"],
-  36: ["cover", "cover", "cover", "contain", "contain"],
-  37: ["cover", "cover", "cover", "contain", "contain"],
-  38: ["cover", "cover", "cover", "contain", "contain"],
-  39: ["cover", "cover", "contain", "contain"],
-  40: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
-  41: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
-  42: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
-  43: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
-  44: ["contain", "contain", "contain", "contain"],
-  45: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
-  46: ["contain", "contain", "contain", "contain", "contain", "contain", "contain", "contain"],
-};
-
-// Per-image object-position для широких/несбалансированных фото.
-const projectObjectPositions: Record<number, (string | undefined)[]> = {
-  38: ["right center"],
-};
-
-// Per-image blur-фон (true только для фото; для планов false → серый дефолт).
-const projectBlurBackground: Record<number, boolean[]> = {
-  40: [true, true, true, true, true, true, true, true, false, false],
-  41: [true, true, true, true, true, true, true, false, false, false],
-  42: [true, true, true, true, true, true, true, true, true, false],
-  43: [true, true, true, true, true, true, true, true, true, false],
-  44: [true, true, true, false],
-  45: [true, true, true, true, true, true, true, false],
-  46: [true, true, true, true, true, true, true, false],
-};
 
 const chips = ["Все", "Для жизни", "Для выходных", "Для сдачи", "Для семьи", "Быстро поставить"];
 const mobileChips = ["Все", "Для жизни", "Для выходных", "Для сдачи", "Для семьи", "Быстро поставить"];
@@ -202,28 +35,6 @@ const bundles = [
   { name: "Хиты сезона", count: "12 проектов" },
 ];
 
-const catalogItems = [
-  { id: 32, badge: "Жилой дом", maker: "Платформа · Екатеринбург", name: "Wide House", price: "5 480 000 ₽", area: "46,4 м²", beds: 2, baths: 1, term: "30 д.", rooms: "2 спальни", purpose: "ИЖС / СНТ", image: wideHouse1, fav: false, likes: 64, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна"], style: "Скандинавский", landSize: "6–10 соток", hasRealPhotos: true, rating: 4.8, hasShowroom: true, hasInstallment: true },
-  { id: 33, badge: "Жилой дом", maker: "Платформа · Екатеринбург", name: "Barn House", price: "1 680 000 ₽", area: "42,9 м²", beds: 1, baths: 1, term: "30 д.", rooms: "1 спальня", purpose: "ИЖС / СНТ", image: cabin31_1, fav: false, likes: 48, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для одного / пары", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна"], style: "Скандинавский", landSize: "3–6 соток", hasRealPhotos: true, rating: 4.8, hasShowroom: true, hasInstallment: true },
-  { id: 34, badge: "Жилой дом", maker: "Платформа · Екатеринбург", name: "Bear House 45", price: "2 207 000 ₽", area: "41 м²", beds: 1, baths: 1, term: "30 д.", rooms: "1 спальня", purpose: "ИЖС / СНТ", image: bear1, fav: false, likes: 39, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для одного / пары", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна"], style: "Скандинавский", landSize: "3–6 соток", hasRealPhotos: true, rating: 4.8, hasShowroom: true, hasInstallment: true },
-  { id: 35, badge: "Жилой дом", maker: "Платформа · Екатеринбург", name: "Bear House 77", price: "3 894 700 ₽", area: "61,32 м²", beds: 2, baths: 1, term: "45 д.", rooms: "2 спальни", purpose: "ИЖС / СНТ", image: bear77_1, fav: false, likes: 52, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна"], style: "Скандинавский", landSize: "6–10 соток", hasRealPhotos: true, rating: 4.8, hasShowroom: true, hasInstallment: true },
-  { id: 36, badge: "Жилой дом", maker: "Платформа · Екатеринбург", name: "Bear House 86", price: "4 349 000 ₽", area: "68,7 м²", beds: 2, baths: 2, term: "50 д.", rooms: "2 спальни", purpose: "ИЖС / СНТ", image: bear86_1, fav: false, likes: 58, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна"], style: "Скандинавский", landSize: "6–10 соток", hasRealPhotos: true, rating: 4.8, hasShowroom: true, hasInstallment: true },
-  { id: 37, badge: "Жилой дом", maker: "Платформа · Екатеринбург", name: "Bear House 134", price: "8 762 000 ₽", area: "110 м²", beds: 3, baths: 3, term: "70 д.", rooms: "3 спальни", purpose: "ИЖС / СНТ", image: bear134_1, fav: false, likes: 71, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна"], style: "Скандинавский", landSize: "от 10 соток", hasRealPhotos: true, rating: 4.9, hasShowroom: true, hasInstallment: true },
-  { id: 38, badge: "Жилой дом", maker: "Платформа · Екатеринбург", name: "Vast House 140", price: "8 077 600 ₽", area: "114,9 м²", beds: 4, baths: 2, term: "75 д.", rooms: "4 спальни", purpose: "ИЖС / СНТ", image: vast140_1, fav: false, likes: 83, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна"], style: "Скандинавский", landSize: "от 10 соток", hasRealPhotos: true, rating: 4.9, hasShowroom: true, hasInstallment: true },
-  { id: 39, badge: "Жилой дом", maker: "Платформа · Екатеринбург", name: "Bear House 168", price: "12 110 400 ₽", area: "146,4 м²", beds: 4, baths: 3, term: "90 д.", rooms: "4 спальни", purpose: "ИЖС / СНТ", image: bear168_1, fav: false, likes: 95, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна", "Камин"], style: "Скандинавский", landSize: "от 10 соток", hasRealPhotos: true, rating: 4.9, hasShowroom: true, hasInstallment: true },
-  { id: 40, badge: "Жилой дом", maker: "Bygge · Екатеринбург", name: "ПАТИО", price: "2 598 000 ₽", area: "45 м²", beds: 3, baths: 1, term: "60 д.", rooms: "3 комнаты", purpose: "ИЖС / СНТ", image: patio5, fav: false, likes: 27, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Тёплые полы", "Вытяжная вентиляция"], style: "Современный", landSize: "3–6 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: true, hasInstallment: true },
-  { id: 41, badge: "Жилой дом", maker: "Bygge · Екатеринбург", name: "ТУНДРА", price: "5 990 000 ₽", area: "96 м²", beds: 4, baths: 1, term: "60 д.", rooms: "4 спальни", purpose: "ИЖС / СНТ", image: tundra1, fav: false, likes: 34, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Тёплые полы", "Вытяжная вентиляция", "Барнхаус"], style: "Барнхаус", landSize: "6–10 соток", hasRealPhotos: true, rating: 4.8, hasShowroom: true, hasInstallment: true },
-  { id: 42, badge: "Жилой дом", maker: "Bygge · Екатеринбург", name: "ШЕРВУД", price: "5 635 000 ₽", area: "87 м²", beds: 4, baths: 1, term: "60 д.", rooms: "4 спальни", purpose: "ИЖС / СНТ", image: sherwood1, fav: false, likes: 29, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Тёплые полы", "Вытяжная вентиляция"], style: "Современный", landSize: "6–10 соток", hasRealPhotos: true, rating: 4.8, hasShowroom: true, hasInstallment: true },
-  { id: 43, badge: "Жилой дом", maker: "Bygge · Екатеринбург", name: "СЕНАТ", price: "6 545 000 ₽", area: "96 м²", beds: 4, baths: 1, term: "60 д.", rooms: "4 комнаты", purpose: "ИЖС / СНТ", image: senat1, fav: false, likes: 31, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Тёплые полы", "Вытяжная вентиляция", "Барнхаус"], style: "Барнхаус", landSize: "6–10 соток", hasRealPhotos: true, rating: 4.8, hasShowroom: true, hasInstallment: true },
-  { id: 44, badge: "Жилой дом", maker: "Bygge · Екатеринбург", name: "ФАМИЛЬНЫЙ", price: "4 050 000 ₽", area: "72 м²", beds: 1, baths: 1, term: "60 д.", rooms: "2 комнаты", purpose: "ИЖС / СНТ", image: familySuite1, fav: false, likes: 26, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Тёплые полы", "Вытяжная вентиляция", "Терраса"], style: "Современный", landSize: "3–6 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: true, hasInstallment: true },
-  { id: 45, badge: "Жилой дом", maker: "Bygge · Екатеринбург", name: "ГАЛАНТ", price: "3 346 000 ₽", area: "59 м²", beds: 2, baths: 1, term: "35 д.", rooms: "3 комнаты", purpose: "ИЖС / СНТ", image: gallant1, fav: false, likes: 24, city: "Екатеринбург", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Тёплые полы", "Вытяжная вентиляция", "Терраса"], style: "Современный", landSize: "3–6 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: true, hasInstallment: true },
-  { id: 46, badge: "Барнхаус", maker: "Bygge · Екатеринбург", name: "ГРАНДИС", price: "1 585 000 ₽", area: "30 м²", beds: 1, baths: 1, term: "30 д.", rooms: "2 комнаты", purpose: "ИЖС / СНТ", image: grandis1, fav: false, likes: 19, city: "Екатеринбург", floors: 1, suitableFor: ["Для одного / пары", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Тёплые полы", "Вытяжная вентиляция", "Терраса"], style: "Барнхаус", landSize: "3–6 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: true, hasInstallment: true },
-  { id: 47, badge: "Жилой дом", maker: "Glezman Group · Пермь", name: "La Rus 45", price: "по запросу", area: "45,72 м²", beds: 1, baths: 1, term: "60 д.", rooms: "1 спальня", purpose: "ИЖС / СНТ", image: larus45_1, fav: false, likes: 14, city: "Пермь", floors: 1, suitableFor: ["Для одного / пары", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Панорамные окна"], style: "Современный", landSize: "3–6 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: false, hasInstallment: false },
-  { id: 48, badge: "Жилой дом", maker: "Glezman Group · Пермь", name: "La Rus 75", price: "по запросу", area: "75 м²", beds: 2, baths: 1, term: "70 д.", rooms: "2 спальни", purpose: "ИЖС / СНТ", image: larus75_1, fav: false, likes: 18, city: "Пермь", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна"], style: "Современный", landSize: "3–6 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: false, hasInstallment: false },
-  { id: 49, badge: "Жилой дом", maker: "Glezman Group · Пермь", name: "La Rus 100", price: "по запросу", area: "104 м²", beds: 2, baths: 2, term: "80 д.", rooms: "2 спальни", purpose: "ИЖС / СНТ", image: larus100_1, fav: false, likes: 22, city: "Пермь", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Панорамные окна"], style: "Современный", landSize: "6–10 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: false, hasInstallment: false },
-  { id: 50, badge: "Жилой дом", maker: "Glezman Group · Пермь", name: "La Rus 120", price: "по запросу", area: "120 м²", beds: 2, baths: 2, term: "85 д.", rooms: "2 спальни", purpose: "ИЖС / СНТ", image: larus120_1, fav: false, likes: 25, city: "Пермь", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна"], style: "Современный", landSize: "6–10 соток", hasRealPhotos: true, rating: 4.7, hasShowroom: false, hasInstallment: false },
-  { id: 51, badge: "Жилой дом", maker: "Glezman Group · Пермь", name: "La Rus 127", price: "по запросу", area: "127 м²", beds: 3, baths: 2, term: "90 д.", rooms: "3 спальни", purpose: "ИЖС / СНТ", image: larus127_1, fav: false, likes: 28, city: "Пермь", floors: 1, suitableFor: ["Постоянное проживание", "Для семьи"], technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C", features: ["Терраса", "Панорамные окна"], style: "Современный", landSize: "6–10 соток", hasRealPhotos: true, rating: 4.8, hasShowroom: false, hasInstallment: false },
-];
 
 const sidebarFilters = [
   {
