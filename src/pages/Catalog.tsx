@@ -700,7 +700,7 @@ const Catalog = () => {
             <div className="mb-5">
               <div className="text-[10px] tracking-[2px] font-normal text-muted-foreground mb-2.5">ТЕХНОЛОГИЯ</div>
               <div className="flex flex-wrap gap-1.5">
-                {["Модульный дом", "Домокомплект", "СИП-Префаб"].map(c => (
+                {["Модульный дом", "Каркасный", "Домокомплект", "СИП-Префаб"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterKit, c)}
                     className={`text-[12px] rounded-xl px-3 py-[6px] transition-colors ${
                       filterKit.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
@@ -1079,7 +1079,7 @@ const Catalog = () => {
             <div className="px-5 py-3.5 border-b border-border/50">
               <div className="text-[11px] tracking-[1.5px] font-medium text-muted-foreground mb-2.5">ТЕХНОЛОГИЯ</div>
               <div className="flex flex-wrap gap-2">
-                {["Модульный дом", "Домокомплект", "СИП-Префаб"].map(c => (
+                {["Модульный дом", "Каркасный", "Домокомплект", "СИП-Префаб"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterKit, c)}
                     className={`text-[13px] rounded-xl px-3.5 py-[7px] transition-colors ${
                       filterKit.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
