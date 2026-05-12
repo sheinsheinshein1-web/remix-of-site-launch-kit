@@ -55,7 +55,14 @@ const matchCityFromIp = (raw: string | undefined | null): string | null => {
 const CITY_EVENT = "city-changed";
 
 const readStoredCity = () => {
-  try { return localStorage.getItem(CITY_STORAGE_KEY) || "Екатеринбург"; } catch { return "Екатеринбург"; }
+  try {
+    const v = localStorage.getItem(CITY_STORAGE_KEY) || "Екатеринбург";
+    if (v === "Пермь") {
+      try { localStorage.setItem(CITY_STORAGE_KEY, "Пермский край"); } catch {}
+      return "Пермский край";
+    }
+    return v;
+  } catch { return "Екатеринбург"; }
 };
 
 const broadcastCity = (c: string) => {
