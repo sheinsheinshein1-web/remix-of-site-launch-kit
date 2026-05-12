@@ -128,12 +128,16 @@ const FeaturedProjects = () => {
     return Number.isFinite(p) && p > 0 ? Math.min(p, 50) : 1;
   })();
 
+  const { city } = useCity();
+  const cityProjects = baseProjects.filter((p) => p.city === city);
+
   const [page, setPage] = useState(initialPage);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [seed, setSeed] = useState(0);
   const sentinelRef = useRef<HTMLDivElement>(null);
-  const items = getPagedProjects(page, seed);
+  const items = getPagedProjects(page, seed, cityProjects);
   const MAX_PAGE = 50;
+  const isEmpty = cityProjects.length === 0;
 
   // Pull-to-refresh: перемешиваем порядок и сбрасываем на первую страницу
   const handleRefresh = useCallback(async () => {
