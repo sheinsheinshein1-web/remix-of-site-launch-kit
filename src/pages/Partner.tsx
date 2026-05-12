@@ -97,13 +97,16 @@ const Partner = () => {
   const { id } = useParams();
   const [scrolled, setScrolled] = useState(false);
 
-  const partner = (id && partners[id]) || partners["1"];
+  const partnerBase = (id && partners[id]) || partners["1"];
   const makerId = (id && partnerMakerIds[id]) || "platforma";
   const projectsCount = projectsCountByMakerId[makerId] ?? 0;
-  partner.stats = [
-    { val: String(projectsCount), label: wordForm(projectsCount, ["Проект", "Проекта", "Проектов"]) },
-    ...partner.stats.slice(1),
-  ];
+  const partner: PartnerData = {
+    ...partnerBase,
+    stats: [
+      { val: String(projectsCount), label: wordForm(projectsCount, ["Проект", "Проекта", "Проектов"]) },
+      ...partnerBase.stats.slice(1),
+    ],
+  };
 
   const handleBack = () => {
     if (window.history.length > 1) {
