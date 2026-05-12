@@ -22,6 +22,7 @@ import {
   projectBlurBackground,
   projectObjectPositions,
 } from "@/data/projects";
+import { useCity } from "@/components/CitySelector";
 
 const houseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
