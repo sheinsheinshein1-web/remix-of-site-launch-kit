@@ -719,10 +719,10 @@ export const projects: Project[] = [
     description: "ДИВО 88 — просторный модульный дом 88 м² с террасой 18 м². Подходит для постоянного проживания.",
     descriptionLong: "ДИВО 88 — крупный модульный дом полной заводской готовности: две спальни, санузел, просторная кухня-гостиная и терраса 18 м². Утепление до −30°C.",
     gallery: [
-      { image: "https://static.tildacdn.com/tild6364-3266-4232-b534-336633613738/_7211.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3261-3638-4564-a137-326666303230/1_2-min.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild6165-3365-4335-b534-373731333031/2_1-min.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild6130-3235-4164-a461-636133623232/4_1-min.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild6364-3266-4232-b534-336633613738/_7211.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild6162-6233-4830-b039-383632356165/119.png", type: "photo", fit: "contain", blur: true },
     ],
     likes: 20, rating: 4.7,
