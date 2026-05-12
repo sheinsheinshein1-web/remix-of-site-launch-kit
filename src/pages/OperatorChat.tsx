@@ -47,6 +47,23 @@ function upsertMessage(sessions: ChatSession[], sessionId: string, message: Chat
   });
 }
 
+function replacePendingMessage(sessions: ChatSession[], sessionId: string, pendingTimestamp: number, message: ChatMessage): ChatSession[] {
+  return sessions.map((session) => {
+    if (session.id !== sessionId) return session;
+
+    const messages = session.messages.map((item) =>
+      item.timestamp === pendingTimestamp && item.from === "admin" ? message : item,
+    );
+
+    return {
+      ...session,
+      messages,
+      lastActivity: message.timestamp,
+      lastMessage: message,
+    };
+  });
+}
+
 const OperatorChat = () => {
   const [token, setToken] = useState(() => localStorage.getItem(TOKEN_KEY) || "");
   const [tokenInput, setTokenInput] = useState(token);
@@ -144,21 +161,14 @@ const OperatorChat = () => {
         body: JSON.stringify({ session: sessionId, text }),
       });
 
-      if (!res.ok) throw new Error("reply failed");
+      const data = await res.json();
+      if (!res.ok || !data.ok) throw new Error("reply failed");
 
-      setSessions((prev) =>
-        prev.map((session) => {
-          if (session.id !== sessionId) return session;
-          return {
-            ...session,
-            messages: session.messages.map((message) =>
-              message.timestamp === timestamp && message.from === "admin"
-                ? { ...message, pending: false }
-                : message,
-            ),
-          };
-        }),
-      );
+      const confirmedMessage: ChatMessage = data.reply || { from: "admin", text, timestamp, pending: false };
+
+      setAuthError("");
+      setSessions((prev) => replacePendingMessage(prev, sessionId, timestamp, confirmedMessage));
+      refreshSessions();
     } catch {
       setInput(text);
       setAuthError("Ответ не отправился. Проверьте подключение и попробуйте ещё раз.");
