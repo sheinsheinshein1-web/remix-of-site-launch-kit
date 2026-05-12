@@ -5,6 +5,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import supportIcon from "@/assets/support-icon.png";
 
 const API = "https://sheinsheinshein1-web-chat-telegram-bridge-77c4.twc1.net";
+const STORAGE_KEY_PREFIX = "support_chat_messages";
+const STORAGE_TTL = 7 * 24 * 60 * 60 * 1000;
 
 interface Message {
   id: number;
@@ -40,15 +42,64 @@ function formatTime(ts?: number): string {
   return `${d.getHours()}:${String(d.getMinutes()).padStart(2, "0")}`;
 }
 
+function getStorageKey(sessionId: string): string {
+  return `${STORAGE_KEY_PREFIX}_${sessionId}`;
+}
+
+function loadStoredMessages(sessionId: string): Message[] {
+  try {
+    const storageKey = getStorageKey(sessionId);
+    const raw = localStorage.getItem(storageKey);
+    if (!raw) return initialMessages;
+
+    const data = JSON.parse(raw);
+    if (!data.savedAt || Date.now() - data.savedAt > STORAGE_TTL) {
+      localStorage.removeItem(storageKey);
+      return initialMessages;
+    }
+
+    return Array.isArray(data.messages) && data.messages.length > 0 ? data.messages : initialMessages;
+  } catch {
+    return initialMessages;
+  }
+}
+
+function saveStoredMessages(sessionId: string, messages: Message[]) {
+  localStorage.setItem(getStorageKey(sessionId), JSON.stringify({ savedAt: Date.now(), messages }));
+}
+
+function mergeMessages(current: Message[], incoming: Message[]): Message[] {
+  const next = [...current];
+
+  incoming.forEach((message) => {
+    const duplicate = next.some((item) => {
+      if (item.id === message.id) return true;
+      return (
+        item.fromSupport === message.fromSupport &&
+        item.text === message.text &&
+        Math.abs(item.id - message.id) < 5000
+      );
+    });
+
+    if (!duplicate) next.push(message);
+  });
+
+  return next.sort((a, b) => a.id - b.id);
+}
+
 const SupportChat = () => {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
-  const [messages, setMessages] = useState<Message[]>(initialMessages);
-  const [input, setInput] = useState("");
   const sessionId = useRef(getSessionId());
+  const [messages, setMessages] = useState<Message[]>(() => loadStoredMessages(sessionId.current));
+  const [input, setInput] = useState("");
   const bottomRef = useRef<HTMLDivElement>(null);
 
-  // SSE — слушаем ответы из Telegram
+  useEffect(() => {
+    saveStoredMessages(sessionId.current, messages);
+  }, [messages]);
+
+  // SSE — слушаем ответы оператора
   useEffect(() => {
     const es = new EventSource(`${API}/listen?session=${sessionId.current}`);
 
@@ -57,24 +108,23 @@ const SupportChat = () => {
 
       if (data.type === "history") {
         const restored: Message[] = data.messages
-          .filter((m: any) => m.from === "admin")
           .map((m: any) => ({
             id: m.timestamp,
             text: m.text,
-            fromSupport: true,
+            fromSupport: m.from === "admin",
             time: formatTime(m.timestamp),
           }));
         if (restored.length > 0) {
-          setMessages((prev) => [...prev, ...restored]);
+          setMessages((prev) => mergeMessages(prev, restored));
         }
         return;
       }
 
       if (data.from === "admin") {
-        setMessages((prev) => [
-          ...prev,
-          { id: Date.now(), text: data.text, fromSupport: true, time: formatTime(data.timestamp) },
-        ]);
+        const timestamp = data.timestamp || Date.now();
+        setMessages((prev) => mergeMessages(prev, [
+          { id: timestamp, text: data.text, fromSupport: true, time: formatTime(timestamp) },
+        ]));
       }
     };
 
@@ -88,9 +138,10 @@ const SupportChat = () => {
 
   const sendMessage = async (text = input.trim()) => {
     if (!text) return;
-    const time = formatTime();
+    const timestamp = Date.now();
+    const time = formatTime(timestamp);
 
-    setMessages((prev) => [...prev, { id: Date.now(), text, fromSupport: false, time }]);
+    setMessages((prev) => [...prev, { id: timestamp, text, fromSupport: false, time }]);
     setInput("");
 
     try {
