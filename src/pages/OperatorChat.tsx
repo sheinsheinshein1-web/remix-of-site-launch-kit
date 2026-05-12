@@ -3,6 +3,7 @@ import { Check, Lock, MessageCircle, RefreshCw, Send } from "lucide-react";
 
 const API = "https://sheinsheinshein1-web-chat-telegram-bridge-77c4.twc1.net";
 const TOKEN_KEY = "operator_chat_token";
+const DEFAULT_OPERATOR_TOKEN = "MM_OPERATOR_2026_7QK9";
 
 interface ChatMessage {
   from: "client" | "admin";
@@ -65,7 +66,7 @@ function replacePendingMessage(sessions: ChatSession[], sessionId: string, pendi
 }
 
 const OperatorChat = () => {
-  const [token, setToken] = useState(() => localStorage.getItem(TOKEN_KEY) || "");
+  const [token, setToken] = useState(() => localStorage.getItem(TOKEN_KEY) || DEFAULT_OPERATOR_TOKEN);
   const [tokenInput, setTokenInput] = useState(token);
   const [sessions, setSessions] = useState<ChatSession[]>([]);
   const [activeId, setActiveId] = useState("");
