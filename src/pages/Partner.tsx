@@ -55,6 +55,7 @@ const partners: Record<string, PartnerData> = {
     stats: [
       { val: "5", label: "Проекты" },
       { val: "—", label: "Отзывы" },
+      { val: "—", label: "Рейтинг" },
     ],
   },
 };
