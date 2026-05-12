@@ -259,7 +259,13 @@ const FeaturedProjects = () => {
           transform: pull > 0 && !refreshing ? `translateY(0)` : undefined,
         }}
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-[2px] gap-y-[6px] md:gap-4 md:mt-0">
+        {isEmpty && (
+          <div className="px-3 py-10 md:py-16 text-center">
+            <div className="text-[15px] font-medium text-foreground mb-1">Пока нет проектов в городе «{city}»</div>
+            <div className="text-[13px] font-light text-muted-foreground">Выберите другой город в шапке, чтобы увидеть подборку</div>
+          </div>
+        )}
+        <div className={`grid grid-cols-2 md:grid-cols-4 gap-x-[2px] gap-y-[6px] md:gap-4 md:mt-0 ${isEmpty ? "hidden" : ""}`}>
           {items.map(({ project, key }) => (
             <article key={key} className="overflow-hidden">
               <a
