@@ -4,6 +4,23 @@ import { ArrowLeft, ChevronRight, ShieldCheck } from "lucide-react";
 import Header from "@/components/Header";
 import { useIsMobile } from "@/hooks/use-mobile";
 import shareIcon from "@/assets/share-icon.svg";
+import { projectsCountByMakerId } from "@/data/projects";
+
+const wordForm = (n: number, forms: [string, string, string]) => {
+  const m = Math.abs(n) % 100;
+  const m1 = m % 10;
+  if (m > 10 && m < 20) return forms[2];
+  if (m1 > 1 && m1 < 5) return forms[1];
+  if (m1 === 1) return forms[0];
+  return forms[2];
+};
+
+const partnerMakerIds: Record<string, string> = {
+  "1": "platforma",
+  bygge: "bygge",
+  glezman: "glezman",
+  divodom: "divodom",
+};
 
 type PartnerData = {
   name: string;
