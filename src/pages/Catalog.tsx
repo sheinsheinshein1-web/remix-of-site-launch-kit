@@ -19,6 +19,7 @@ import {
   projectBlurBackground,
   projectObjectPositions,
 } from "@/data/projects";
+import { useCity } from "@/components/CitySelector";
 
 function getProjectImages(_mainImage: string, id: number): string[] {
   return projectGalleries[id] ?? [_mainImage];
@@ -371,7 +372,10 @@ const Catalog = () => {
     .map((term) => stemSearchTerm(term))
     .filter((term) => term.length > 1);
 
+  const { city: selectedCity } = useCity();
   const filteredItems = catalogItems.filter(item => {
+    // Гео: показываем только проекты выбранного города
+    if (item.city !== selectedCity) return false;
     if (catalogSearchTerms.length > 0) {
       const floorsLabel = item.floors === 1 ? "одноэтажный 1 этаж" : item.floors === 2 ? "двухэтажный 2 этажа" : `${item.floors} этаж`;
       const bedsLabel = item.beds === 0 ? "студия без спальни" : `${item.beds} спальня ${item.beds} спальни ${item.beds} спален`;

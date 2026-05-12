@@ -22,6 +22,7 @@ import {
   projectBlurBackground,
   projectObjectPositions,
 } from "@/data/projects";
+import { useCity } from "@/components/CitySelector";
 
 const houseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
@@ -95,13 +96,21 @@ function getOrderedProjects(seed: number) {
 }
 
 // Циклически генерируем «бесконечную» ленту, переиспользуя проекты в порядке seed.
-function getPagedProjects(page: number, seed: number) {
-  const ordered = getOrderedProjects(seed);
+function getPagedProjects(page: number, seed: number, source: typeof baseProjects) {
+  if (source.length === 0) return [];
+  const ordered = seed === 0 ? source : (() => {
+    const rng = mulberry32(seed);
+    const arr = [...source];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(rng() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  })();
   const total = page * PAGE_SIZE;
   const items: { project: typeof baseProjects[number]; key: string }[] = [];
   for (let i = 0; i < total; i++) {
     const project = ordered[i % ordered.length];
-    // Включаем seed в key, чтобы React переиспользовал DOM правильно при reshuffle
     items.push({ project, key: `${seed}-${project.id}-${i}` });
   }
   return items;
@@ -119,12 +128,16 @@ const FeaturedProjects = () => {
     return Number.isFinite(p) && p > 0 ? Math.min(p, 50) : 1;
   })();
 
+  const { city } = useCity();
+  const cityProjects = baseProjects.filter((p) => p.city === city);
+
   const [page, setPage] = useState(initialPage);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [seed, setSeed] = useState(0);
   const sentinelRef = useRef<HTMLDivElement>(null);
-  const items = getPagedProjects(page, seed);
+  const items = getPagedProjects(page, seed, cityProjects);
   const MAX_PAGE = 50;
+  const isEmpty = cityProjects.length === 0;
 
   // Pull-to-refresh: перемешиваем порядок и сбрасываем на первую страницу
   const handleRefresh = useCallback(async () => {
@@ -138,12 +151,18 @@ const FeaturedProjects = () => {
 
   const { pull, refreshing } = usePullToRefresh({ onRefresh: handleRefresh });
 
+  // При смене города — сбрасываем страницу
+  useEffect(() => {
+    setPage(1);
+  }, [city]);
+
   // Подгрузка при появлении сентинела.
   // Пересоздаём observer при изменении page — иначе на десктопе, если сентинел
   // остаётся в viewport после подгрузки, новый триггер не приходит.
   useEffect(() => {
     if (!sentinelRef.current) return;
     if (page >= MAX_PAGE) return;
+    if (isEmpty) return;
     const el = sentinelRef.current;
     const observer = new IntersectionObserver(
       (entries) => {
@@ -159,7 +178,7 @@ const FeaturedProjects = () => {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [page, seed]);
+  }, [page, seed, isEmpty]);
 
   // Снимаем флаг загрузки после отрисовки новых карточек
   useEffect(() => {
@@ -240,7 +259,13 @@ const FeaturedProjects = () => {
           transform: pull > 0 && !refreshing ? `translateY(0)` : undefined,
         }}
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-[2px] gap-y-[6px] md:gap-4 md:mt-0">
+        {isEmpty && (
+          <div className="px-3 py-10 md:py-16 text-center">
+            <div className="text-[15px] font-medium text-foreground mb-1">Пока нет проектов в городе «{city}»</div>
+            <div className="text-[13px] font-light text-muted-foreground">Выберите другой город в шапке, чтобы увидеть подборку</div>
+          </div>
+        )}
+        <div className={`grid grid-cols-2 md:grid-cols-4 gap-x-[2px] gap-y-[6px] md:gap-4 md:mt-0 ${isEmpty ? "hidden" : ""}`}>
           {items.map(({ project, key }) => (
             <article key={key} className="overflow-hidden">
               <a
