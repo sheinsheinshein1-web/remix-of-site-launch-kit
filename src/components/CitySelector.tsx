@@ -75,6 +75,14 @@ const broadcastCity = (c: string) => {
 export function useCity() {
   const [city, setCity] = useState(readStoredCity);
 
+  // Принудительная миграция старого значения "Пермь" → "Пермский край"
+  useEffect(() => {
+    if (city === "Пермь") {
+      setCity("Пермский край");
+      broadcastCity("Пермский край");
+    }
+  }, [city]);
+
   // Подписка на изменения города из других компонентов / вкладок
   useEffect(() => {
     const onCustom = (e: Event) => {
