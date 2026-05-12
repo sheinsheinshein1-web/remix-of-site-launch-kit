@@ -17,7 +17,7 @@ import house6 from "@/assets/house-6.jpg";
 import house7 from "@/assets/house-7.jpg";
 import house8 from "@/assets/house-8.jpg";
 import house9 from "@/assets/house-9.jpg";
-import { projectOverrides } from "@/data/projects";
+import { projectOverrides, projectsCountByMakerId } from "@/data/projects";
 
 const defaultGallery = [
   { id: 1, image: house1, type: "photo" },
