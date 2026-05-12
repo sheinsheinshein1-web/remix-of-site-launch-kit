@@ -44,6 +44,20 @@ const partners: Record<string, PartnerData> = {
       { val: "—", label: "Рейтинг" },
     ],
   },
+  glezman: {
+    name: "Glezman Group",
+    initials: "GG",
+    city: "Пермь",
+    category: "Модульные дома",
+    about:
+      "Glezman Group — производитель модульных домов из Перми. Линейка La Rus: компактные и просторные дома площадью от 45 до 127 м² с панорамным остеклением и продуманной планировкой.",
+    siteUrl: "https://glezman-group.ru",
+    stats: [
+      { val: "5", label: "Проекты" },
+      { val: "—", label: "Отзывы" },
+      { val: "4.7", label: "Рейтинг" },
+    ],
+  },
 };
 
 const Partner = () => {
