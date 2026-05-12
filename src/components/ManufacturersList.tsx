@@ -1,7 +1,11 @@
 import { Factory } from "lucide-react";
 import { manufacturers as makers } from "@/data/projects";
+import { useCity } from "@/components/CitySelector";
 
 const ManufacturersList = () => {
+  const { city } = useCity();
+  const filtered = makers.filter((m) => m.location === city);
+  const list = filtered.length > 0 ? filtered : makers;
   return (
     <section>
       <div className="py-2 md:px-6 md:py-7">
