@@ -40,10 +40,15 @@ const articlesList = [
 const quickSuggestions: Record<string, string[]> = {
   "дом": ["под ключ", "для семьи", "с террасой", "до 5 млн", "большой", "одноэтажный"],
   "модуль": ["для жизни", "под ключ", "с отделкой", "скандинавский"],
+  "каркас": ["la rus", "пермь", "для семьи", "с террасой"],
   "barn": ["barn house", "недорогой"],
   "bear": ["bear house 45", "bear house 77", "bear house 86", "bear house 134", "bear house 168"],
   "vast": ["vast house 140"],
   "wide": ["wide house"],
+  "la ru": ["la rus 45", "la rus 75", "la rus 100", "la rus 120", "la rus 127"],
+  "larus": ["la rus 45", "la rus 75", "la rus 100", "la rus 120", "la rus 127"],
+  "глезман": ["la rus 45", "la rus 75", "la rus 100", "la rus 120", "la rus 127"],
+  "пермь": ["la rus", "каркасный дом", "глезман"],
   "платформ": ["wide house", "barn house", "bear house"],
 };
 
