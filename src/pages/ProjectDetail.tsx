@@ -114,6 +114,25 @@ import grandis5 from "@/assets/grandis-5.jpg";
 import grandis6 from "@/assets/grandis-6.jpg";
 import grandis7 from "@/assets/grandis-7.jpg";
 import grandisPlan1 from "@/assets/grandis-plan-1.jpg";
+import larus45_1 from "@/assets/glezman/larus-45.jpg";
+import larus45_2 from "@/assets/glezman/larus-45-2.jpg";
+import larus45_3 from "@/assets/glezman/larus-45-3.png";
+import larus75_1 from "@/assets/glezman/larus-75.jpg";
+import larus75_2 from "@/assets/glezman/larus-75-2.jpg";
+import larus75_3 from "@/assets/glezman/larus-75-3.png";
+import larus100_1 from "@/assets/glezman/larus-100.jpg";
+import larus100_2 from "@/assets/glezman/larus-100-2.jpg";
+import larus100_3 from "@/assets/glezman/larus-100-3.jpg";
+import larus100_4 from "@/assets/glezman/larus-100-4.jpg";
+import larus100_5 from "@/assets/glezman/larus-100-5.jpg";
+import larus120_1 from "@/assets/glezman/larus-120.jpg";
+import larus120_2 from "@/assets/glezman/larus-120-2.jpg";
+import larus120_3 from "@/assets/glezman/larus-120-3.jpg";
+import larus120_4 from "@/assets/glezman/larus-120-4.jpg";
+import larus120_5 from "@/assets/glezman/larus-120-5.jpg";
+import larus127_1 from "@/assets/glezman/larus-127.jpg";
+import larus127_2 from "@/assets/glezman/larus-127-2.jpg";
+import larus127_3 from "@/assets/glezman/larus-127-3.png";
 
 const defaultGallery = [
   { id: 1, image: house1, type: "photo" },
@@ -489,6 +508,115 @@ const projectOverrides: Record<string, {
       { id: 2, image: familySuite2, type: "photo", fit: "contain" },
       { id: 3, image: familySuite3, type: "photo", fit: "contain" },
       { id: 4, image: familySuitePlan1, type: "photo", fit: "contain" },
+    ],
+  },
+  "47": {
+    name: "La Rus 45",
+    maker: "Glezman Group",
+    makerInitials: "GG",
+    makerLogo: undefined,
+    makerId: "glezman",
+    siteUrl: "https://glezman-group.ru/la-rus_45",
+    price: "по запросу",
+    area: "45,72 м²",
+    beds: 1,
+    baths: 1,
+    floors: 1,
+    city: "Пермь",
+    description: "La Rus 45 — модульный дом площадью 45,72 м² с особой атмосферой уюта, тепла и комфорта.",
+    descriptionLong: "La Rus 45 — особая атмосфера уюта, тепла и комфорта. Модульный дом с продуманной планировкой: одна спальня, санузел, просторная зона кухни-гостиной с панорамным остеклением.",
+    gallery: [
+      { id: 1, image: larus45_1, type: "photo", fit: "contain" },
+      { id: 2, image: larus45_2, type: "photo", fit: "contain" },
+      { id: 3, image: larus45_3, type: "photo", fit: "contain" },
+    ],
+  },
+  "48": {
+    name: "La Rus 75",
+    maker: "Glezman Group",
+    makerInitials: "GG",
+    makerLogo: undefined,
+    makerId: "glezman",
+    siteUrl: "https://glezman-group.ru/la-rus_75",
+    price: "по запросу",
+    area: "75 м²",
+    beds: 2,
+    baths: 1,
+    floors: 1,
+    city: "Пермь",
+    description: "La Rus 75 — модульный дом 75 м² с двумя спальнями и террасой. Сочетание функциональности, простора и эстетики.",
+    descriptionLong: "La Rus 75 — сочетание функциональности, простора и эстетики. Две спальни, санузел, открытая зона кухни-гостиной и терраса для отдыха на свежем воздухе.",
+    gallery: [
+      { id: 1, image: larus75_1, type: "photo", fit: "contain" },
+      { id: 2, image: larus75_2, type: "photo", fit: "contain" },
+      { id: 3, image: larus75_3, type: "photo", fit: "contain" },
+    ],
+  },
+  "49": {
+    name: "La Rus 100",
+    maker: "Glezman Group",
+    makerInitials: "GG",
+    makerLogo: undefined,
+    makerId: "glezman",
+    siteUrl: "https://glezman-group.ru/la-rus_100",
+    price: "по запросу",
+    area: "104 м²",
+    beds: 2,
+    baths: 2,
+    floors: 1,
+    city: "Пермь",
+    description: "La Rus 100 — модульный дом 104 м² с гармоничным сочетанием общих зон и уютных приватных помещений.",
+    descriptionLong: "La Rus 100 — гармоничное сочетание общих зон и уютных приватных помещений. Две спальни, два санузла, просторная гостиная-кухня и продуманное зонирование для семьи.",
+    gallery: [
+      { id: 1, image: larus100_1, type: "photo", fit: "contain" },
+      { id: 2, image: larus100_2, type: "photo", fit: "contain" },
+      { id: 3, image: larus100_3, type: "photo", fit: "contain" },
+      { id: 4, image: larus100_4, type: "photo", fit: "contain" },
+      { id: 5, image: larus100_5, type: "photo", fit: "contain" },
+    ],
+  },
+  "50": {
+    name: "La Rus 120",
+    maker: "Glezman Group",
+    makerInitials: "GG",
+    makerLogo: undefined,
+    makerId: "glezman",
+    siteUrl: "https://glezman-group.ru/la-rus_120",
+    price: "по запросу",
+    area: "120 м²",
+    beds: 2,
+    baths: 2,
+    floors: 1,
+    city: "Пермь",
+    description: "La Rus 120 — модульный дом 120 м² с террасой. Гармоничное сочетание общих зон и уютных приватных помещений.",
+    descriptionLong: "La Rus 120 — гармоничное сочетание общих зон и уютных приватных помещений. Две спальни, два санузла, открытая гостиная-кухня и просторная терраса для отдыха.",
+    gallery: [
+      { id: 1, image: larus120_1, type: "photo", fit: "contain" },
+      { id: 2, image: larus120_2, type: "photo", fit: "contain" },
+      { id: 3, image: larus120_3, type: "photo", fit: "contain" },
+      { id: 4, image: larus120_4, type: "photo", fit: "contain" },
+      { id: 5, image: larus120_5, type: "photo", fit: "contain" },
+    ],
+  },
+  "51": {
+    name: "La Rus 127",
+    maker: "Glezman Group",
+    makerInitials: "GG",
+    makerLogo: undefined,
+    makerId: "glezman",
+    siteUrl: "https://glezman-group.ru/la-rus_127",
+    price: "по запросу",
+    area: "127 м²",
+    beds: 3,
+    baths: 2,
+    floors: 1,
+    city: "Пермь",
+    description: "La Rus 127 — просторный модульный дом 127 м² с тремя спальнями и террасой.",
+    descriptionLong: "La Rus 127 — просторный дом с продуманной и удобной планировкой, объединяющей просторные общественные зоны и уединённые комнаты. Три спальни, два санузла, большая гостиная-кухня и терраса.",
+    gallery: [
+      { id: 1, image: larus127_1, type: "photo", fit: "contain" },
+      { id: 2, image: larus127_2, type: "photo", fit: "contain" },
+      { id: 3, image: larus127_3, type: "photo", fit: "contain" },
     ],
   },
 };
