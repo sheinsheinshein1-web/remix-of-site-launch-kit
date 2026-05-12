@@ -36,6 +36,7 @@ const OperatorChat = () => {
   const [activeId, setActiveId] = useState("");
   const [input, setInput] = useState("");
   const [status, setStatus] = useState<"connecting" | "online" | "offline">("connecting");
+  const [authError, setAuthError] = useState("");
   const bottomRef = useRef<HTMLDivElement>(null);
 
   const activeSession = useMemo(
@@ -77,16 +78,30 @@ const OperatorChat = () => {
   const saveToken = () => {
     const nextToken = tokenInput.trim();
     localStorage.setItem(TOKEN_KEY, nextToken);
+    setAuthError("");
     setToken(nextToken);
+    refreshSessions(nextToken);
   };
 
-  const refreshSessions = async () => {
-    const res = await fetch(`${API}/admin/sessions`, {
-      headers: token ? { "x-admin-token": token } : undefined,
-    });
-    const data = await res.json();
-    if (data.ok) {
-      setSessions(data.sessions || []);
+  const refreshSessions = async (tokenOverride = token) => {
+    try {
+      const res = await fetch(`${API}/admin/sessions`, {
+        headers: tokenOverride ? { "x-admin-token": tokenOverride } : undefined,
+      });
+      const data = await res.json();
+      if (res.status === 401) {
+        setAuthError("Токен не подошёл. Введите ADMIN_TOKEN или точный ADMIN_CHAT_ID из backend.");
+        setStatus("offline");
+        return;
+      }
+      if (data.ok) {
+        setAuthError("");
+        setStatus("online");
+        setSessions(data.sessions || []);
+      }
+    } catch {
+      setAuthError("Не удалось подключиться к bridge. Проверьте деплой backend.");
+      setStatus("offline");
     }
   };
 
@@ -146,6 +161,7 @@ const OperatorChat = () => {
                 OK
               </button>
             </div>
+            {authError && <p className="mt-2 text-[12px] leading-snug text-red-500">{authError}</p>}
           </div>
 
           <div className="flex-1 overflow-y-auto">
