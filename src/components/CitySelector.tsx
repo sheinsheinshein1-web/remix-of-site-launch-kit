@@ -2,11 +2,7 @@ import { useState, useMemo, useEffect } from "react";
 import { MapPin, Search, X, Check } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
-
-const cities = [
-  "Екатеринбург",
-  "Пермь",
-];
+import { cities } from "@/data/projects";
 
 const CITY_STORAGE_KEY = "selected_city";
 const CITY_AUTO_DETECTED_KEY = "city_auto_detected";
