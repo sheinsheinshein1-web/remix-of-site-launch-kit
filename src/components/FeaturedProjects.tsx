@@ -116,15 +116,20 @@ function getPagedProjects(page: number, seed: number, source: typeof baseProject
     }
     return out;
   };
-  const ordered = seed === 0 ? interleaveByMaker(source) : (() => {
-    const rng = mulberry32(seed);
-    const arr = [...source];
-    for (let i = arr.length - 1; i > 0; i--) {
+  // Базовый порядок: интерливим по производителю, затем стабильно тасуем,
+  // чтобы в 2-колоночной сетке не получалось "столбцов" одного бренда.
+  const shuffleWithSeed = (arr: typeof baseProjects, s: number) => {
+    const rng = mulberry32(s);
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
       const j = Math.floor(rng() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
+      [a[i], a[j]] = [a[j], a[i]];
     }
-    return arr;
-  })();
+    return a;
+  };
+  const ordered = seed === 0
+    ? shuffleWithSeed(interleaveByMaker(source), 1337)
+    : shuffleWithSeed(source, seed);
   const total = page * PAGE_SIZE;
   const items: { project: typeof baseProjects[number]; key: string }[] = [];
   for (let i = 0; i < total; i++) {
