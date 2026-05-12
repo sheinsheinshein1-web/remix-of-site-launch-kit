@@ -9,6 +9,7 @@ interface ChatMessage {
   text: string;
   timestamp: number;
   seenByAdmin?: boolean;
+  pending?: boolean;
 }
 
 interface ChatSession {
@@ -27,6 +28,23 @@ function formatTime(ts?: number): string {
 function formatDate(ts?: number): string {
   if (!ts) return "";
   return new Date(ts).toLocaleDateString("ru-RU", { day: "2-digit", month: "short" });
+}
+
+function upsertMessage(sessions: ChatSession[], sessionId: string, message: ChatMessage): ChatSession[] {
+  return sessions.map((session) => {
+    if (session.id !== sessionId) return session;
+
+    const exists = session.messages.some((item) => item.timestamp === message.timestamp && item.from === message.from);
+    if (exists) return session;
+
+    const messages = [...session.messages, message];
+    return {
+      ...session,
+      messages,
+      lastActivity: message.timestamp,
+      lastMessage: message,
+    };
+  });
 }
 
 const OperatorChat = () => {
@@ -109,15 +127,54 @@ const OperatorChat = () => {
     const text = input.trim();
     if (!text || !activeSession) return;
 
+    const sessionId = activeSession.id;
+    const timestamp = Date.now();
+    const optimisticMessage: ChatMessage = { from: "admin", text, timestamp, pending: true };
+
     setInput("");
-    await fetch(`${API}/admin/reply`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        ...(token ? { "x-admin-token": token } : {}),
-      },
-      body: JSON.stringify({ session: activeSession.id, text }),
-    });
+    setSessions((prev) => upsertMessage(prev, sessionId, optimisticMessage));
+
+    try {
+      const res = await fetch(`${API}/admin/reply`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { "x-admin-token": token } : {}),
+        },
+        body: JSON.stringify({ session: sessionId, text }),
+      });
+
+      if (!res.ok) throw new Error("reply failed");
+
+      setSessions((prev) =>
+        prev.map((session) => {
+          if (session.id !== sessionId) return session;
+          return {
+            ...session,
+            messages: session.messages.map((message) =>
+              message.timestamp === timestamp && message.from === "admin"
+                ? { ...message, pending: false }
+                : message,
+            ),
+          };
+        }),
+      );
+    } catch {
+      setInput(text);
+      setAuthError("Ответ не отправился. Проверьте подключение и попробуйте ещё раз.");
+      setSessions((prev) =>
+        prev.map((session) => {
+          if (session.id !== sessionId) return session;
+          const messages = session.messages.filter((message) => !(message.timestamp === timestamp && message.from === "admin"));
+          return {
+            ...session,
+            messages,
+            lastMessage: messages[messages.length - 1] || null,
+            lastActivity: messages[messages.length - 1]?.timestamp || session.lastActivity,
+          };
+        }),
+      );
+    }
   };
 
   return (
@@ -234,7 +291,7 @@ const OperatorChat = () => {
                   >
                     <p className="whitespace-pre-wrap break-words">{message.text}</p>
                     <p className={`text-[11px] mt-1 ${message.from === "admin" ? "text-background/65" : "text-muted-foreground"}`}>
-                      {formatTime(message.timestamp)}
+                      {message.pending ? "отправляется" : formatTime(message.timestamp)}
                     </p>
                   </div>
                 </div>
