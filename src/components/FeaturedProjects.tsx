@@ -170,19 +170,34 @@ const FeaturedProjects = () => {
     window.history.replaceState({}, "", url.toString());
   }, [page]);
 
-  // Восстановление позиции при возврате с детальной — синхронно перед paint,
-  // чтобы Header сразу инициализировался с правильным scrollY и не моргал.
-  // Только при POP (кнопка "Назад"), не при PUSH (клик по лого/таб-бару).
+  // Восстановление позиции при возврате с детальной.
+  // Проблема: на момент mount часть картинок ещё не загружена, document короче
+  // сохранённой позиции — браузер «прижимает» скролл к низу страницы (футеру).
+  // Решение: повторяем scrollTo, пока высота документа не дорастёт до нужной,
+  // либо пока не истечёт таймаут.
   useLayoutEffect(() => {
+    if (navigationType !== "POP") return;
     const saved = sessionStorage.getItem(SCROLL_KEY);
-    if (saved && navigationType === "POP") {
-      const y = parseInt(saved, 10);
-      if (Number.isFinite(y)) {
-        window.scrollTo(0, y);
-      }
-    }
-    // Чистим в любом случае, чтобы старая позиция не «выстрелила» позже
     sessionStorage.removeItem(SCROLL_KEY);
+    if (!saved) return;
+    const targetY = parseInt(saved, 10);
+    if (!Number.isFinite(targetY) || targetY <= 0) return;
+
+    let cancelled = false;
+    const start = performance.now();
+    const TIMEOUT = 2000;
+
+    const tryScroll = () => {
+      if (cancelled) return;
+      const maxY = document.documentElement.scrollHeight - window.innerHeight;
+      window.scrollTo(0, Math.min(targetY, Math.max(0, maxY)));
+      if (Math.abs(window.scrollY - targetY) < 2) return;
+      if (performance.now() - start > TIMEOUT) return;
+      requestAnimationFrame(tryScroll);
+    };
+    tryScroll();
+
+    return () => { cancelled = true; };
   }, [navigationType]);
 
   const handleCardClick = useCallback(
