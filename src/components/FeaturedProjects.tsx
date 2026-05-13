@@ -56,16 +56,7 @@ const baseProjects = projects.map((p) => ({
   rating: String(p.rating),
 }));
 
-// Edge-bleed (бесшовное продолжение краёв вместо обычного blur). Локальный override.
-const projectEdgeBleed: Record<number, boolean[]> = {
-  40: [true, true, true, true, true, true, true, true, false, false],
-  41: [true, true, true, true, true, true, true, false, false, false],
-  42: [true, true, true, true, true, true, true, true, true, false],
-  43: [false, false, false, false, false, false, false, false, false, false],
-  44: [false, false, false, false],
-  45: [false, false, false, false, false, false, false, false],
-  46: [false, false, false, false, false, false, false, false],
-};
+// Edge-bleed берётся автоматически из projectEdgeBleed в projects.ts
 
 const PAGE_SIZE = 8;
 const SCROLL_KEY = "home_feed_scroll";
