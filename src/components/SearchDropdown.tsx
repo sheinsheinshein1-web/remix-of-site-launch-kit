@@ -261,8 +261,8 @@ function parseFilters(raw: string): ParsedFilters {
   return filters;
 }
 
-function filterProjects(filters: ParsedFilters) {
-  return projects.filter(p => {
+function filterProjects(filters: ParsedFilters, list: typeof projects = projects) {
+  return list.filter(p => {
     if (filters.beds !== undefined && p.beds !== filters.beds) return false;
     if (filters.baths !== undefined && p.baths !== filters.baths) return false;
     const price = parsePrice(p.price);
