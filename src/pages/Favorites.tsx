@@ -254,52 +254,8 @@ const Favorites = () => {
             {/* Cards */}
             <div className={`bg-background rounded-2xl px-2 py-3 flex-1 pb-[calc(140px+env(safe-area-inset-bottom))] ${viewMode === "grid" ? "" : ""}`}>
             <div className={viewMode === "grid" ? "grid grid-cols-2 gap-x-[2px] gap-y-[6px]" : "flex flex-col gap-[10px]"}>
-              {favoriteItems.map((item) => viewMode === "list" ? (
-                <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer overflow-hidden">
-                  <SwipeableGallery images={getProjectImages(item.image, item.id)} fits={projectFits[item.id]} objectPositions={projectObjectPositions[item.id]} blurBackground={projectBlurBackground[item.id]} edgeBleed={projectEdgeBleed[item.id]} alt={item.name} height="aspect-[3/4] h-auto">
-                    <div className="absolute top-2 right-2 z-10">
-                      <button
-                        onClick={(e) => { e.stopPropagation(); toggleFavorite(item); }}
-                        className="flex items-center gap-1 bg-foreground/40 backdrop-blur-md rounded-full px-2 py-[4px]"
-                      >
-                        <Heart className="w-3.5 h-3.5 fill-red-500 text-red-500" strokeWidth={1.5} />
-                        <span className="text-[11px] font-medium text-white">{getLikes(item.id, item.likes)}</span>
-                      </button>
-                    </div>
-                  </SwipeableGallery>
-                  <div className="px-[10px] pt-1 pb-1">
-                    <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{item.name}</h2>
-                    <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">от {item.price}</div>
-                    <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[3px]">
-                      <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{item.area}</span>
-                      <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{item.beds}</span>
-                      <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{item.baths}</span>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer overflow-hidden">
-                  <SwipeableGallery images={getProjectImages(item.image, item.id)} fits={projectFits[item.id]} objectPositions={projectObjectPositions[item.id]} blurBackground={projectBlurBackground[item.id]} edgeBleed={projectEdgeBleed[item.id]} alt={item.name} height="aspect-[3/4] h-auto">
-                    <div className="absolute top-2 right-2 z-10">
-                      <button
-                        onClick={(e) => { e.stopPropagation(); toggleFavorite(item); }}
-                        className="flex items-center gap-1 bg-foreground/40 backdrop-blur-md rounded-full px-2 py-[4px]"
-                      >
-                        <Heart className="w-3.5 h-3.5 fill-red-500 text-red-500" strokeWidth={1.5} />
-                        <span className="text-[11px] font-medium text-white">{getLikes(item.id, item.likes)}</span>
-                      </button>
-                    </div>
-                  </SwipeableGallery>
-                  <div className="px-[10px] pt-1 pb-1">
-                    <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{item.name}</h2>
-                    <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">от {item.price}</div>
-                    <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[3px]">
-                      <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{item.area}</span>
-                      <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{item.beds}</span>
-                      <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{item.baths}</span>
-                    </div>
-                  </div>
-                </div>
+              {favoriteItems.map((item) => (
+                <ProjectCard key={item.id} projectId={item.id} height="aspect-[3/4] h-auto" />
               ))}
             </div>
             </div>
