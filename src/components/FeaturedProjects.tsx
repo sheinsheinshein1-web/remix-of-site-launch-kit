@@ -7,38 +7,18 @@ import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react
 import { usePullToRefresh } from "@/hooks/usePullToRefresh";
 import { projects } from "@/data/projects";
 
-const houseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
-
-function getProjectImages(mainImage: string, id: number): string[] {
-  if (projectGalleries[id]) return projectGalleries[id];
-  const others = houseImages.filter(img => img !== mainImage);
-  const sorted = [...others].sort((a, b) => {
-    const ha = a.charCodeAt(a.length - 5) ^ id;
-    const hb = b.charCodeAt(b.length - 5) ^ id;
-    return ha - hb;
-  });
-  return [mainImage, ...sorted.slice(0, 3)];
-}
+import { useCity } from "@/components/CitySelector";
 
 // baseProjects берётся из единого источника правды (src/data/projects.ts).
+// Здесь храним только то, что нужно для пагинации/перемешивания. Сама карточка
+// читает все остальные поля сама из projects.ts по id (см. ProjectCard).
 const baseProjects = projects.map((p) => ({
   id: p.id,
-  name: p.name,
   maker: p.maker.name,
-  area: p.area,
-  beds: p.beds,
-  baths: p.baths,
-  term: p.term,
-  price: p.price,
-  image: p.gallery[0]?.image ?? "",
-  liked: false,
-  likes: p.likes,
-  hasRealPhotos: p.hasRealPhotos,
   city: p.city,
-  rating: String(p.rating),
+  name: p.name,
+  price: p.price,
 }));
-
-// Edge-bleed берётся автоматически из projectEdgeBleed в projects.ts
 
 const PAGE_SIZE = 8;
 const SCROLL_KEY = "home_feed_scroll";
