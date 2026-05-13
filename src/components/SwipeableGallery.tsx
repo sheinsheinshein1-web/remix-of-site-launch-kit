@@ -170,8 +170,8 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                       aria-hidden="true"
                       className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                       style={{ filter: "blur(16px)", transform: "scale(1.08)" }}
-                      loading="eager"
-                      decoding="sync"
+                      loading="lazy"
+                      decoding="async"
                       draggable={false}
                     />
                     <div className="absolute inset-0 bg-black/10 pointer-events-none" />
@@ -234,8 +234,8 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                   alt={`${alt} ${i + 1}`}
                   className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} pointer-events-none`}
                   style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
-                  loading={blurAt(i) || edgeAt(i) || Math.abs(i - current) <= 1 ? "eager" : "lazy"}
-                  decoding="sync"
+                  loading={i === current ? "eager" : "lazy"}
+                  decoding={i === current ? "sync" : "async"}
                   draggable={false}
                 />
               </div>
@@ -262,8 +262,8 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                     aria-hidden="true"
                     className="absolute inset-0 w-full h-full object-cover"
                     style={{ filter: "blur(16px)", transform: "scale(1.08)" }}
-                    loading="eager"
-                    decoding="sync"
+                    loading="lazy"
+                    decoding="async"
                     draggable={false}
                   />
                   <div className="absolute inset-0 bg-black/10" />
@@ -327,7 +327,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                 className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
                 style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
                 loading={isActive ? "eager" : "lazy"}
-                decoding="sync"
+                decoding={isActive ? "sync" : "async"}
                 draggable={false}
               />
             </div>

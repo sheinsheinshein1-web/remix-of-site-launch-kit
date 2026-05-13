@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import catHouses from "@/assets/cat-houses.png";
 
 const HeroSection = () => {
@@ -6,6 +7,9 @@ const HeroSection = () => {
 
   return (
     <section className="pt-[112px] md:pt-24 md:pb-6 pb-3">
+      <Helmet>
+        <link rel="preload" as="image" href={catHouses} fetchpriority="high" />
+      </Helmet>
       <div className="max-w-[1400px] mx-auto">
         <div
           className="rounded-2xl overflow-hidden relative cursor-pointer bg-primary mx-0"
@@ -14,6 +18,11 @@ const HeroSection = () => {
           <img
             src={catHouses}
             alt=""
+            width={420}
+            height={420}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
             className="absolute -bottom-12 -right-16 md:-bottom-20 md:right-[-120px] w-[240px] h-[240px] md:w-[420px] md:h-[420px] object-contain pointer-events-none z-10 opacity-90"
           />
 
