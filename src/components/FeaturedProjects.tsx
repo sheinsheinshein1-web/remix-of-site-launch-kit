@@ -1,29 +1,11 @@
-import { Heart, Loader2, Maximize, BedDouble, Bath } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useNavigate, useNavigationType } from "react-router-dom";
-import { useFavorites } from "@/contexts/FavoritesContext";
-import SwipeableGallery from "@/components/SwipeableGallery";
+import ProjectCard from "@/components/ProjectCard";
 import ProjectCardSkeleton from "@/components/ProjectCardSkeleton";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
 import { usePullToRefresh } from "@/hooks/usePullToRefresh";
-import house1 from "@/assets/house-1.jpg";
-import house2 from "@/assets/house-2.jpg";
-import house3 from "@/assets/house-3.jpg";
-import house4 from "@/assets/house-4.jpg";
-import house5 from "@/assets/house-5.jpg";
-import house6 from "@/assets/house-6.jpg";
-import house7 from "@/assets/house-7.jpg";
-import house8 from "@/assets/house-8.jpg";
-import house9 from "@/assets/house-9.jpg";
-import {
-  projects,
-  projectGalleries,
-  projectFits,
-  projectBlurBackground,
-  projectObjectPositions,
-  projectEdgeBleed,
-} from "@/data/projects";
-import { useCity } from "@/components/CitySelector";
+import { projects } from "@/data/projects";
 
 const houseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
 
