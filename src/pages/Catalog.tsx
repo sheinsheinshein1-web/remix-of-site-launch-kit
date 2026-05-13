@@ -879,54 +879,13 @@ const Catalog = () => {
 
       {/* Mobile content */}
       <div className="md:hidden">
-        {viewMode === "list" ? (
-          <div className="mt-2 py-3 bg-background rounded-2xl px-2">
-            <div className="grid grid-cols-1 gap-y-[6px]">
+        <div className="mt-2 py-3 bg-background rounded-2xl px-2">
+          <div className={viewMode === "list" ? "grid grid-cols-1 gap-y-[6px]" : "grid grid-cols-2 gap-x-[2px] gap-y-[6px]"}>
             {sortedItems.map((item) => (
-              <div key={item.id} data-project-id={item.id} className="cursor-pointer overflow-hidden" onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)}>
-                <SwipeableGallery images={getProjectImages(item.image, item.id)} fits={projectFits[item.id]} objectPositions={projectObjectPositions[item.id]} blurBackground={projectBlurBackground[item.id]} edgeBleed={projectEdgeBleed[item.id]} alt={item.name} height="aspect-[3/4] h-auto">
-                  <div className="absolute top-2 right-2 z-10">
-                    <FavButton active={isFavorite(item.id)} onClick={(e) => { e.stopPropagation(); toggleFav(item); }} size="sm" count={item.likes + (isFavorite(item.id) && !item.fav ? 1 : !isFavorite(item.id) && item.fav ? -1 : 0)} />
-                  </div>
-                </SwipeableGallery>
-                <div className="px-[10px] pt-1 pb-1">
-                  <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{item.name}</h2>
-                  <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">от {item.price}</div>
-                  <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[3px]">
-                    <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{item.area}</span>
-                    <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{item.beds}</span>
-                    <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{item.baths}</span>
-                  </div>
-                </div>
-              </div>
+              <ProjectCard key={item.id} projectId={item.id} height="aspect-[3/4] h-auto" />
             ))}
-            </div>
           </div>
-        ) : (
-          <div className="mt-2 py-3 bg-background rounded-2xl px-2">
-            <div className="grid grid-cols-2 gap-x-[2px] gap-y-[6px]">
-            {sortedItems.map((item) => (
-              <div key={item.id} data-project-id={item.id} className="cursor-pointer overflow-hidden" onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)}>
-                <SwipeableGallery images={getProjectImages(item.image, item.id)} fits={projectFits[item.id]} objectPositions={projectObjectPositions[item.id]} blurBackground={projectBlurBackground[item.id]} edgeBleed={projectEdgeBleed[item.id]} alt={item.name} height="aspect-[3/4] h-auto">
-                  <div className="absolute top-2 right-2 z-10">
-                    <FavButton active={isFavorite(item.id)} onClick={(e) => { e.stopPropagation(); toggleFav(item); }} size="sm" count={item.likes + (isFavorite(item.id) && !item.fav ? 1 : !isFavorite(item.id) && item.fav ? -1 : 0)} />
-                  </div>
-                </SwipeableGallery>
-                {/* Body */}
-                <div className="px-[10px] pt-1 pb-1">
-                  <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{item.name}</h2>
-                  <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">от {item.price}</div>
-                  <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[3px]">
-                    <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{item.area}</span>
-                    <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{item.beds}</span>
-                    <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{item.baths}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-            </div>
-          </div>
-        )}
+        </div>
       </div>
       </div>
 
