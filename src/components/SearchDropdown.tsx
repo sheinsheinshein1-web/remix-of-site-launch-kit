@@ -2,12 +2,14 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import { Search, X, Home, Factory, FileText, LayoutGrid, ArrowRight, ChevronRight, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { manufacturers as dataManufacturers, projects as dataProjects } from "@/data/projects";
+import { useCity } from "@/components/CitySelector";
 
 // Поиск всегда строится из единого источника правды src/data/projects.ts.
 const projects = dataProjects.map((p) => ({
   id: p.id,
   name: p.name,
   maker: p.maker.name,
+  city: p.city,
   price: p.price,
   area: p.area,
   beds: p.beds,
@@ -36,10 +38,6 @@ const categories = [
 ];
 
 const manufacturers = dataManufacturers.map((m) => ({ name: m.name, location: m.location }));
-
-const articlesList = [
-  { title: "Как выбрать модульный дом", tag: "Гайд" },
-];
 
 // Quick suggestion chips shown when query has text
 const quickSuggestions: Record<string, string[]> = {
@@ -122,7 +120,7 @@ const dictWords = (() => {
     ...projects.flatMap(p => [p.name, p.maker]),
     ...categories.map(c => c.name),
     ...manufacturers.flatMap(m => [m.name, m.location]),
-    ...articlesList.flatMap(a => [a.title]),
+    
     "модульный", "модульные", "модульного", "дом", "дома", "дому",
     "спальня", "спальни", "спальнями", "спален",
     "комната", "комнаты", "комнатный", "комнатные",
@@ -263,8 +261,8 @@ function parseFilters(raw: string): ParsedFilters {
   return filters;
 }
 
-function filterProjects(filters: ParsedFilters) {
-  return projects.filter(p => {
+function filterProjects(filters: ParsedFilters, list: typeof projects = projects) {
+  return list.filter(p => {
     if (filters.beds !== undefined && p.beds !== filters.beds) return false;
     if (filters.baths !== undefined && p.baths !== filters.baths) return false;
     const price = parsePrice(p.price);
@@ -310,6 +308,7 @@ interface SearchDropdownProps {
 
 const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, initialQuery = "", showFilterButton, onFilterClick, hasActiveFilters, onQueryChange, iconOnly }: SearchDropdownProps) => {
   const navigate = useNavigate();
+  const { city } = useCity();
   const [query, setQuery] = useState(initialQuery);
 
   // Sync initialQuery from parent (e.g. URL change)
@@ -360,6 +359,10 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
     const filters = parseFilters(nq);
     const hasFilters = filters.beds !== undefined || filters.baths !== undefined || filters.minPrice !== undefined || filters.maxPrice !== undefined || filters.minArea !== undefined || filters.maxArea !== undefined;
 
+    // Гео-фильтр: показываем только проекты и производителей выбранного города.
+    const cityProjects = city ? projects.filter(p => p.city === city) : projects;
+    const cityManufacturers = city ? manufacturers.filter(m => m.location === city) : manufacturers;
+
     const suggestions: { label: string; sub: string; url: string }[] = [];
 
     if (hasFilters) {
@@ -382,7 +385,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
       if (filters.beds !== undefined) { parts.push(`${filters.beds} ${filters.beds === 1 ? 'спальня' : filters.beds < 5 ? 'спальни' : 'спален'}`); urlParams.beds = filters.beds; }
       if (filters.baths !== undefined) { parts.push(`${filters.baths} санузл.`); urlParams.baths = filters.baths; }
 
-      const matchCount = filterProjects(filters).length;
+      const matchCount = filterProjects(filters, cityProjects).length;
       const label = parts.join(", ");
 
       suggestions.push({
@@ -393,7 +396,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
 
       if (filters.maxPrice && !filters.minPrice) {
         const halfPrice = filters.maxPrice / 2;
-        const cheaperCount = filterProjects({ ...filters, maxPrice: halfPrice }).length;
+        const cheaperCount = filterProjects({ ...filters, maxPrice: halfPrice }, cityProjects).length;
         if (cheaperCount > 0) {
           suggestions.push({
             label: `${filters.textQuery ? filters.textQuery + " " : ""}до ${formatPrice(halfPrice)}`,
@@ -405,7 +408,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
     } else if (nq.length >= 1) {
       // Show catalog suggestion even without parsed filters
       const words = nq.split(/\s+/).filter(w => w.length >= 1);
-      const matchingProjects = projects.filter(p => {
+      const matchingProjects = cityProjects.filter(p => {
         const haystack = (p.name + " " + p.maker + " " + (p.tags || "")).toLowerCase();
         return words.some(w => haystack.includes(w));
       });
@@ -423,11 +426,11 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
 
     let filteredProjects;
     if (hasFilters) {
-      filteredProjects = filterProjects(filters).slice(0, 3);
+      filteredProjects = filterProjects(filters, cityProjects).slice(0, 3);
     } else {
       const words = nq.split(/\s+/).filter(w => w.length >= 1);
       const rawWords = rawQ.split(/\s+/).filter(w => w.length >= 1);
-      filteredProjects = projects.filter(p => {
+      filteredProjects = cityProjects.filter(p => {
         const haystack = (p.name + " " + p.maker + " " + (p.tags || "")).toLowerCase();
         return words.some(w => haystack.includes(w)) || rawWords.some(w => haystack.includes(w));
       }).slice(0, 4);
@@ -442,11 +445,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
       : [];
 
     const matchedManufacturers = allSearchWords.length > 0
-      ? manufacturers.filter(m => allSearchWords.some(w => m.name.toLowerCase().includes(w) || m.location.toLowerCase().includes(w))).slice(0, 3)
-      : [];
-
-    const matchedArticles = allSearchWords.length > 0
-      ? articlesList.filter(a => allSearchWords.some(w => a.title.toLowerCase().includes(w))).slice(0, 2)
+      ? cityManufacturers.filter(m => allSearchWords.some(w => m.name.toLowerCase().includes(w) || m.location.toLowerCase().includes(w))).slice(0, 3)
       : [];
 
     return {
@@ -454,10 +453,10 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
       projects: filteredProjects,
       categories: matchedCategories,
       manufacturers: matchedManufacturers,
-      articles: matchedArticles,
+      articles: [] as { title: string; tag: string }[],
       hasFilters,
     };
-  }, [query]);
+  }, [query, city]);
 
   const hasResults = results.suggestions.length + results.projects.length + results.categories.length + results.manufacturers.length + results.articles.length > 0;
 

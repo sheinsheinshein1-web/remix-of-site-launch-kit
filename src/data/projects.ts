@@ -1061,19 +1061,8 @@ const wordForm = (n: number, forms: [string, string, string]) => {
   return forms[2];
 };
 
-type ManufacturerExtra = { name: string; location: string; manualCount?: string };
-
-// Список «вспомогательных» производителей, у которых пока нет проектов в каталоге.
-const extraManufacturers: ManufacturerExtra[] = [
-  { name: "СибМодуль", location: "Новосибирск", manualCount: "18 проектов" },
-  { name: "УралДом", location: "Екатеринбург", manualCount: "24 проекта" },
-  { name: "МодульХаус", location: "Москва", manualCount: "31 проект" },
-  { name: "ГлэмпингСтрой", location: "Сочи", manualCount: "12 проектов" },
-  { name: "АрктикДом", location: "Мурманск", manualCount: "9 проектов" },
-  { name: "ДомКомплект", location: "Казань", manualCount: "15 проектов" },
-];
-
-// Реальные производители — count считаем из массива projects.
+// Производители считаются автоматически из массива projects.
+// Никаких «вспомогательных» хардкод-производителей: всё, что есть, — реальные компании с проектами.
 const realManufacturers = Array.from(
   projects.reduce((acc, p) => {
     const key = p.maker.name;
@@ -1088,10 +1077,7 @@ const realManufacturers = Array.from(
   count: `${m.count} ${wordForm(m.count, ["проект", "проекта", "проектов"])}`,
 }));
 
-export const manufacturers = [
-  ...extraManufacturers.map((m) => ({ name: m.name, location: m.location, count: m.manualCount! })),
-  ...realManufacturers,
-];
+export const manufacturers = realManufacturers;
 
 // ============================================================================
 // ГОРОДА
