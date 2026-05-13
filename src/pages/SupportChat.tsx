@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, Send, Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
-import supportIcon from "@/assets/support-icon.png";
+import supportIcon from "@/assets/support-icon.webp";
 
 const API = "https://sheinsheinshein1-web-chat-telegram-bridge-77c4.twc1.net";
 const STORAGE_KEY_PREFIX = "support_chat_messages";

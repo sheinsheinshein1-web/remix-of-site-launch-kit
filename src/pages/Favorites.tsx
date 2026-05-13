@@ -12,10 +12,10 @@ import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import Seo from "@/components/Seo";
 import ProjectCard from "@/components/ProjectCard";
 
-import house1 from "@/assets/house-1.jpg";
-import house2 from "@/assets/house-2.jpg";
-import house3 from "@/assets/house-3.jpg";
-import heart3d from "@/assets/heart-3d.png";
+import house1 from "@/assets/house-1.webp";
+import house2 from "@/assets/house-2.webp";
+import house3 from "@/assets/house-3.webp";
+import heart3d from "@/assets/heart-3d.webp";
 import {
   projectGalleries,
   projectFits,

@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { Check, MessageSquare } from "lucide-react";
 import { useNavigate, useLocation, Outlet } from "react-router-dom";
 import Header from "@/components/Header";
-import supportIcon from "@/assets/support-icon.png";
-import partnerIcon from "@/assets/partner-icon.png";
+import supportIcon from "@/assets/support-icon.webp";
+import partnerIcon from "@/assets/partner-icon.webp";
 import { getCompanyChats, type CompanyChatEntry } from "@/lib/companyChats";
 
 const staticChats = [

@@ -1,4 +1,4 @@
-import blueprintHome from "@/assets/blueprint-home.jpg";
+import blueprintHome from "@/assets/blueprint-home.webp";
 
 const BlueprintSection = () => {
   return (

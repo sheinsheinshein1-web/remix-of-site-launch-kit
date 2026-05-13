@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import PartnerApplicationForm from "@/components/PartnerApplicationForm";
-import partnerHeroImg from "@/assets/partner-hero-illustration.png";
+import partnerHeroImg from "@/assets/partner-hero-illustration.webp";
 
 const features = [
   { icon: ShieldCheck, title: "Бейдж «Проверено»", desc: "На карточке компании и каждом проекте" },
