@@ -127,6 +127,7 @@ export type GalleryItem = {
   type?: "photo" | "video";
   fit?: "cover" | "contain";
   blur?: boolean; // blur-фон в каталоге для фото с прозрачным/неровным фоном
+  edgeBleed?: boolean; // бесшовное продолжение краёв вместо blur
   objectPosition?: string;
 };
 
@@ -712,6 +713,10 @@ export const projectBlurBackground: Record<number, boolean[]> = Object.fromEntri
 
 export const projectObjectPositions: Record<number, (string | undefined)[]> = Object.fromEntries(
   projects.map((p) => [p.id, p.gallery.map((g) => g.objectPosition)])
+);
+
+export const projectEdgeBleed: Record<number, boolean[]> = Object.fromEntries(
+  projects.map((p) => [p.id, p.gallery.map((g) => g.edgeBleed ?? false)])
 );
 
 // Структура для ProjectDetail.tsx (override по id).
