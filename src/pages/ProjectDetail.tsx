@@ -461,7 +461,7 @@ const ProjectDetail = () => {
                       loading="lazy"
                       draggable={false}
                       onClick={() => setLightboxOpen(true)}
-                      style={i === 0 ? { viewTransitionName: 'project-hero' } as React.CSSProperties : undefined}
+                      style={undefined}
                     />
                     {img.type === "video" && (
                       <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
