@@ -10,6 +10,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import Seo from "@/components/Seo";
+import ProjectCard from "@/components/ProjectCard";
 
 import house1 from "@/assets/house-1.jpg";
 import house2 from "@/assets/house-2.jpg";
