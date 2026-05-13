@@ -115,6 +115,12 @@ const FeaturedProjects = () => {
   const items = getPagedProjects(page, seed, cityProjects);
   const MAX_PAGE = 50;
   const isEmpty = cityProjects.length === 0;
+  const [restoreMinHeight, setRestoreMinHeight] = useState<number | undefined>(() => {
+    if (typeof window === "undefined" || navigationType !== "POP") return undefined;
+    const saved = sessionStorage.getItem(SCROLL_KEY);
+    const targetY = parseInt(saved || "", 10);
+    return Number.isFinite(targetY) && targetY > 0 ? targetY + window.innerHeight + 8 : undefined;
+  });
 
   // Pull-to-refresh: перемешиваем порядок и сбрасываем на первую страницу
   const handleRefresh = useCallback(async () => {
@@ -175,12 +181,23 @@ const FeaturedProjects = () => {
   // на мобильном это выглядит как резкий прыжок в футер и возврат обратно.
   // Вместо этого ждём, пока высота документа дорастёт, и только затем делаем scrollTo.
   useLayoutEffect(() => {
-    if (navigationType !== "POP") return;
+    if (navigationType !== "POP") {
+      setRestoreMinHeight(undefined);
+      return;
+    }
     const saved = sessionStorage.getItem(SCROLL_KEY);
     sessionStorage.removeItem(SCROLL_KEY);
-    if (!saved) return;
+    if (!saved) {
+      setRestoreMinHeight(undefined);
+      return;
+    }
     const targetY = parseInt(saved, 10);
-    if (!Number.isFinite(targetY) || targetY <= 0) return;
+    if (!Number.isFinite(targetY) || targetY <= 0) {
+      setRestoreMinHeight(undefined);
+      return;
+    }
+
+    setRestoreMinHeight(targetY + window.innerHeight + 8);
 
     let cancelled = false;
     const start = performance.now();
@@ -194,6 +211,9 @@ const FeaturedProjects = () => {
 
       if (hasEnoughHeight || timedOut) {
         window.scrollTo(0, Math.min(targetY, Math.max(0, maxY)));
+        window.setTimeout(() => {
+          if (!cancelled) setRestoreMinHeight(undefined);
+        }, 600);
         return;
       }
 
@@ -226,7 +246,7 @@ const FeaturedProjects = () => {
   };
 
   return (
-    <section aria-label="Лента проектов">
+    <section aria-label="Лента проектов" style={restoreMinHeight ? { minHeight: `${restoreMinHeight}px` } : undefined}>
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
