@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useEffect, useLayoutEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -109,6 +109,21 @@ const preloadedAssets = [
 
 const queryClient = new QueryClient();
 
+const BrowserScrollRestoration = () => {
+  useLayoutEffect(() => {
+    if (!("scrollRestoration" in window.history)) return;
+
+    const previous = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+
+    return () => {
+      window.history.scrollRestoration = previous;
+    };
+  }, []);
+
+  return null;
+};
+
 const AssetPreloader = () => {
   const { pathname } = useLocation();
   const shouldPreload = pathname === "/" || pathname === "/categories" || pathname === "/catalog" || pathname.startsWith("/project/");
@@ -133,6 +148,7 @@ const ProjectDetailRoute = () => {
 
 const AppRoutes = () => (
   <>
+    <BrowserScrollRestoration />
     <ScrollToTop />
     <AssetPreloader />
     <Suspense fallback={<div className="min-h-screen bg-secondary" />}>
