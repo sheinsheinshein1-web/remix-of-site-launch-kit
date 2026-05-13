@@ -565,9 +565,6 @@ const ProjectDetail = () => {
             <div className="mt-1.5 flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0" strokeWidth={2} />
               <span className="flex-1 text-[12px] text-muted-foreground truncate">{project.cityDefault ?? city}</span>
-              <button onClick={() => setCityOpen(true)} className="text-[12px] text-primary hover:underline">
-                изменить
-              </button>
             </div>
 
             {/* Maker pill */}
