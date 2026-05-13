@@ -308,6 +308,7 @@ interface SearchDropdownProps {
 
 const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, initialQuery = "", showFilterButton, onFilterClick, hasActiveFilters, onQueryChange, iconOnly }: SearchDropdownProps) => {
   const navigate = useNavigate();
+  const city = useCity();
   const [query, setQuery] = useState(initialQuery);
 
   // Sync initialQuery from parent (e.g. URL change)
