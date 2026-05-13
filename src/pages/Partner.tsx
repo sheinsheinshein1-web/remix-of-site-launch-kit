@@ -130,7 +130,7 @@ const Partner = () => {
 
               {/* Stats row */}
               <div className="border-t border-border grid grid-cols-3">
-                {partner.stats.map((s, i) => (
+                {stats.map((s, i) => (
                   <div key={i} className={`py-5 text-center ${i > 0 ? 'border-l border-border' : ''}`}>
                     <div className="text-[22px] font-bold text-foreground leading-none mb-1.5">{s.val}</div>
                     <div className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground">{s.label}</div>
@@ -231,7 +231,7 @@ const Partner = () => {
 
           {/* Stats row */}
           <div className="border-t border-border grid grid-cols-3">
-            {partner.stats.map((s, i) => (
+            {stats.map((s, i) => (
               <div key={i} className={`py-4 text-center ${i > 0 ? 'border-l border-border' : ''}`}>
                 <div className="text-[20px] font-bold text-foreground leading-none mb-1.5">{s.val}</div>
                 <div className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground">{s.label}</div>
