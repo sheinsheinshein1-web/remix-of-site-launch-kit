@@ -151,6 +151,28 @@ import alester73_3 from "@/assets/gradodom/alester-73-3.jpg";
 import alester73_plan1 from "@/assets/gradodom/alester-73-plan1.jpg";
 import alester73_plan2 from "@/assets/gradodom/alester-73-plan2.jpg";
 
+// Загородом
+import zg_soul1 from "@/assets/zagorodom/soul-1.jpg";
+import zg_soul2 from "@/assets/zagorodom/soul-2.jpg";
+import zg_soul3 from "@/assets/zagorodom/soul-3.jpg";
+import zg_soul_plan from "@/assets/zagorodom/soul-plan.jpg";
+import zg_strong1 from "@/assets/zagorodom/strong-1.jpg";
+import zg_strong2 from "@/assets/zagorodom/strong-2.jpg";
+import zg_strong3 from "@/assets/zagorodom/strong-3.jpg";
+import zg_strong_plan from "@/assets/zagorodom/strong-plan.jpg";
+import zg_lumo1 from "@/assets/zagorodom/lumo-1.jpg";
+import zg_lumo2 from "@/assets/zagorodom/lumo-2.jpg";
+import zg_lumo3 from "@/assets/zagorodom/lumo-3.jpg";
+import zg_lumo_plan from "@/assets/zagorodom/lumo-plan.jpg";
+import zg_happy1 from "@/assets/zagorodom/happy-1.jpg";
+import zg_happy2 from "@/assets/zagorodom/happy-2.jpg";
+import zg_happy3 from "@/assets/zagorodom/happy-3.jpg";
+import zg_happy_plan from "@/assets/zagorodom/happy-plan.jpg";
+import zg_favorite1 from "@/assets/zagorodom/favorite-1.jpg";
+import zg_favorite2 from "@/assets/zagorodom/favorite-2.jpg";
+import zg_favorite3 from "@/assets/zagorodom/favorite-3.jpg";
+import zg_favorite_plan from "@/assets/zagorodom/favorite-plan.jpg";
+
 // ============================================================================
 // ТИПЫ
 // ============================================================================
@@ -236,6 +258,12 @@ const GRADODOM: Maker = {
   initials: "ГД",
   id: "gradodom",
   siteUrl: "https://novostroy159.ru/",
+};
+const ZAGORODOM: Maker = {
+  name: "СК «Загородом»",
+  initials: "ЗГ",
+  id: "zagorodom",
+  siteUrl: "https://zagorodom59.ru/",
 };
 
 // ============================================================================
@@ -789,6 +817,97 @@ export const projects: Project[] = [
     suitableFor: ["Постоянное проживание", "Для семьи"],
     technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
     features: [], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  // ── СК «Загородом» · Пермский край ──────────────────────────────────────
+  {
+    id: 62, name: "Дом SOUL Душевный", badge: "Жилой дом", price: "от 3 500 000 ₽",
+    area: "63 м²", area_m2: 63, beds: 1, baths: 1, floors: 1, term: "90 д.",
+    rooms: "Дом 42 м² + терраса 21 м²", purpose: "ИЖС / СНТ", city: "Пермский край", maker: ZAGORODOM,
+    description: "Каркасный дом 7 × 9 м: дом 42 м² и терраса 21 м². Современная архитектура с панорамным остеклением.",
+    descriptionLong: "Дом SOUL «Душевный» — каркасный дом размером 7 × 9 м общей площадью 63 м² (жилая часть 42 м² + терраса 21 м²). Современная архитектура, панорамное остекление, утеплённая каркасная конструкция.",
+    gallery: [
+      { image: zg_soul1, type: "photo", fit: "contain", blur: true },
+      { image: zg_soul2, type: "photo", fit: "contain", blur: true },
+      { image: zg_soul3, type: "photo", fit: "contain", blur: true },
+      { image: zg_soul_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 17, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 63, name: "Барнхаус STRONG Крепкий", badge: "Барнхаус", price: "от 3 700 000 ₽",
+    area: "60 м²", area_m2: 60, beds: 2, baths: 1, floors: 1, term: "90 д.",
+    rooms: "Дом 45 м² + терраса 15 м²", purpose: "ИЖС / СНТ", city: "Пермский край", maker: ZAGORODOM,
+    description: "Каркасный барнхаус 7,5 × 8 м: дом 45 м² и терраса 15 м². Лаконичный силуэт двускатной крыши.",
+    descriptionLong: "Барнхаус STRONG «Крепкий» — каркасный дом размером 7,5 × 8 м, общая площадь 60 м² (жилая 45 м² + терраса 15 м²). Лаконичный силуэт двускатной крыши, панорамное остекление.",
+    gallery: [
+      { image: zg_strong1, type: "photo", fit: "contain", blur: true },
+      { image: zg_strong2, type: "photo", fit: "contain", blur: true },
+      { image: zg_strong3, type: "photo", fit: "contain", blur: true },
+      { image: zg_strong_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 19, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Барнхаус", "Панорамные окна"], style: "Барнхаус", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 64, name: "Дом LUMO Очаровательный", badge: "Жилой дом", price: "от 5 850 000 ₽",
+    area: "97 м²", area_m2: 97, beds: 3, baths: 1, floors: 1, term: "120 д.",
+    rooms: "Дом 78 м² + терраса 19 м²", purpose: "ИЖС / СНТ", city: "Пермский край", maker: ZAGORODOM,
+    description: "Каркасный дом 10,5 × 11 м: дом 78 м² и терраса 19 м². Просторная планировка для семьи.",
+    descriptionLong: "Дом LUMO «Очаровательный» — каркасный дом размером 10,5 × 11 м, общая площадь 97 м² (жилая 78 м² + терраса 19 м²). Просторная планировка для семьи, утеплённая каркасная конструкция.",
+    gallery: [
+      { image: zg_lumo1, type: "photo", fit: "contain", blur: true },
+      { image: zg_lumo2, type: "photo", fit: "contain", blur: true },
+      { image: zg_lumo3, type: "photo", fit: "contain", blur: true },
+      { image: zg_lumo_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 24, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 65, name: "Дом HAPPY Счастливый", badge: "Жилой дом", price: "от 5 900 000 ₽",
+    area: "100 м²", area_m2: 100, beds: 3, baths: 1, floors: 1, term: "120 д.",
+    rooms: "Дом 77 м² + терраса 23 м²", purpose: "ИЖС / СНТ", city: "Пермский край", maker: ZAGORODOM,
+    description: "Каркасный дом 8,3 × 11,8 м: дом 77 м² и терраса 23 м². Светлый фасад и большая терраса.",
+    descriptionLong: "Дом HAPPY «Счастливый» — каркасный дом размером 8,3 × 11,8 м, общая площадь 100 м² (жилая 77 м² + терраса 23 м²). Светлый фасад, большая терраса для семейного отдыха.",
+    gallery: [
+      { image: zg_happy1, type: "photo", fit: "contain", blur: true },
+      { image: zg_happy2, type: "photo", fit: "contain", blur: true },
+      { image: zg_happy3, type: "photo", fit: "contain", blur: true },
+      { image: zg_happy_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 26, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 66, name: "Дом FAVORITE Любимый", badge: "Жилой дом", price: "от 5 490 000 ₽",
+    area: "89 м²", area_m2: 89, beds: 3, baths: 1, floors: 1, term: "120 д.",
+    rooms: "Дом 71 м² + терраса 18 м²", purpose: "ИЖС / СНТ", city: "Пермский край", maker: ZAGORODOM,
+    description: "Каркасный дом 7,8 × 10,9 м: дом 71 м² и терраса 18 м². Уютный современный коттедж.",
+    descriptionLong: "Дом FAVORITE «Любимый» — каркасный дом размером 7,8 × 10,9 м, общая площадь 89 м² (жилая 71 м² + терраса 18 м²). Уютный современный коттедж с просторной террасой.",
+    gallery: [
+      { image: zg_favorite1, type: "photo", fit: "contain", blur: true },
+      { image: zg_favorite2, type: "photo", fit: "contain", blur: true },
+      { image: zg_favorite3, type: "photo", fit: "contain", blur: true },
+      { image: zg_favorite_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 21, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна"], style: "Современный", landSize: "6–10 соток",
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
 ];
