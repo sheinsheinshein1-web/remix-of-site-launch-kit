@@ -259,6 +259,12 @@ const GRADODOM: Maker = {
   id: "gradodom",
   siteUrl: "https://novostroy159.ru/",
 };
+const ZAGORODOM: Maker = {
+  name: "СК «Загородом»",
+  initials: "ЗГ",
+  id: "zagorodom",
+  siteUrl: "https://zagorodom59.ru/",
+};
 
 // ============================================================================
 // ПРОЕКТЫ — единый источник правды
