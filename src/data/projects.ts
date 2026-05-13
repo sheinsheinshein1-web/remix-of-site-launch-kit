@@ -266,6 +266,12 @@ const ZAGORODOM: Maker = {
   id: "zagorodom",
   siteUrl: "https://zagorodom59.ru/",
 };
+const APA: Maker = {
+  name: "Апа Групп",
+  initials: "АА",
+  id: "apa",
+  siteUrl: "https://apagrupp.ru/",
+};
 
 // ============================================================================
 // ПРОЕКТЫ — единый источник правды
@@ -911,6 +917,105 @@ export const projects: Project[] = [
     features: ["Терраса", "Панорамные окна"], style: "Современный", landSize: "6–10 соток",
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
+
+  // ── Апа Групп · Санкт-Петербург ─────────────────────────────────────────
+  {
+    id: 67, name: "АА-1. Каркасный дом 68 м²", badge: "Жилой дом", price: "от 3 160 000 ₽",
+    area: "68 м²", area_m2: 68, beds: 2, baths: 2, floors: 1, term: "от 3 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург", maker: APA,
+    description: "Одноэтажный каркасный дом 8,6 × 14 м с террасой. 4 комнаты, 2 санузла.",
+    descriptionLong: "Небольшой одноэтажный каркасный дом площадью 68 м² (габариты 8,6 × 14 м) с террасой. Планировка на 4 комнаты и 2 санузла. Срок строительства — от 3 месяцев.",
+    gallery: [
+      { image: "https://static.tildacdn.com/tild3365-6634-4439-a639-623133343865/1.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3464-6538-4832-a630-393062333462/1.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3266-3636-4434-b739-303235323264/2.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild6364-3830-4965-b831-303363306332/3.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3866-3435-4565-a666-326366313233/__2024-02-28_115521.jpg", type: "photo", fit: "contain" },
+    ],
+    likes: 18, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 68, name: "АА-2. Каркасный дом 82 м²", badge: "Жилой дом", price: "от 2 770 000 ₽",
+    area: "82 м²", area_m2: 82, beds: 2, baths: 2, floors: 1, term: "от 3 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург", maker: APA,
+    description: "Одноэтажный каркасный дом 9,5 × 9,5 м. 4 комнаты, 2 санузла.",
+    descriptionLong: "Одноэтажный каркасный дом площадью 82 м² (габариты 9,5 × 9,5 м) с планировкой на 4 комнаты и 2 санузла. Срок строительства — от 3 месяцев.",
+    gallery: [
+      { image: "https://static.tildacdn.com/tild6438-3462-4539-b339-663030393834/1.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild6536-3634-4931-b235-396432646136/3.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild6233-6338-4562-a332-393761333934/1.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3530-6134-4364-b736-356266633866/4.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3636-3264-4532-b566-303264643239/2.jpg", type: "photo", fit: "contain" },
+    ],
+    likes: 15, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: [], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 69, name: "АА-3. Каркасный дом 90 м²", badge: "Жилой дом", price: "от 3 280 000 ₽",
+    area: "90 м²", area_m2: 90, beds: 2, baths: 1, floors: 1, term: "от 3 мес.",
+    rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Санкт-Петербург", maker: APA,
+    description: "Одноэтажный каркасный дом 13 × 8,8 м. 3 просторные комнаты.",
+    descriptionLong: "Одноэтажный каркасный дом площадью 90 м² (габариты 13 × 8,8 м) с тремя просторными комнатами и санузлом. Срок строительства — от 3 месяцев.",
+    gallery: [
+      { image: "https://static.tildacdn.com/tild6631-3731-4762-b562-303338333864/1.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild6139-3863-4839-b063-393564353935/4.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3934-3038-4238-a639-316336306436/1.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3163-3833-4335-b538-666465356663/2.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3962-6432-4431-b364-636364313338/3.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3463-3736-4635-a266-643565313633/__2023-09-19_124333.jpg", type: "photo", fit: "contain" },
+    ],
+    likes: 22, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: [], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 70, name: "АА-4. Каркасный дом 94 м² с террасой", badge: "Жилой дом", price: "от 3 666 000 ₽",
+    area: "94 м²", area_m2: 94, beds: 3, baths: 2, floors: 2, term: "от 3 мес.",
+    rooms: "5 комнат", purpose: "ИЖС / СНТ", city: "Санкт-Петербург", maker: APA,
+    description: "Двухэтажный каркасный дом 7,5 × 7,5 м с балконом. 5 комнат, 2 санузла.",
+    descriptionLong: "Двухэтажный каркасный дом площадью 94 м² (габариты 7,5 × 7,5 м) с балконом. Планировка на 5 комнат и 2 санузла. Срок строительства — от 3 месяцев.",
+    gallery: [
+      { image: "https://static.tildacdn.com/tild3031-6262-4139-b436-613738643163/__2023-08-29_172430.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3061-3432-4333-b432-366533346130/__2023-08-29_172416.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3935-6138-4862-a263-393863646166/__2023-08-29_172430.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3832-6534-4435-a239-326531326165/__2023-08-29_172403.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3132-3564-4236-b766-366261326562/__2023-08-29_171732.jpg", type: "photo", fit: "contain" },
+      { image: "https://static.tildacdn.com/tild6234-3135-4533-b433-613838316538/__2023-08-29_171743.jpg", type: "photo", fit: "contain" },
+    ],
+    likes: 27, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Балкон"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 71, name: "АА-5. Каркасный дом 106 м²", badge: "Жилой дом", price: "от 3 844 000 ₽",
+    area: "106 м²", area_m2: 106, beds: 3, baths: 2, floors: 1, term: "от 3 мес.",
+    rooms: "4 комнаты", purpose: "ИЖС / СНТ", city: "Санкт-Петербург", maker: APA,
+    description: "Одноэтажный каркасный дом 8,6 × 14 м в стиле хай-тек. 4 комнаты, 2 санузла.",
+    descriptionLong: "Современный одноэтажный каркасный дом площадью 106 м² (габариты 8,6 × 14 м) в стиле хай-тек. Планировка на 4 комнаты и 2 санузла. Срок строительства — от 3 месяцев.",
+    gallery: [
+      { image: "https://static.tildacdn.com/tild3135-6231-4235-a163-363963396361/1.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3738-3232-4265-a235-333366633337/1.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3939-6339-4336-b331-653065333361/1_Photo_-_4.png", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3836-3239-4236-b532-393130356661/1_Photo_-_8.png", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3938-3132-4330-b062-313963646439/__2024-02-28_192654.jpg", type: "photo", fit: "contain" },
+    ],
+    likes: 31, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Хай-тек"], style: "Хай-тек", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
 ];
 
 // ============================================================================
@@ -1083,4 +1188,4 @@ export const manufacturers = realManufacturers;
 // ГОРОДА
 // ============================================================================
 
-export const cities = ["Екатеринбург", "Пермский край"];
+export const cities = ["Екатеринбург", "Пермский край", "Санкт-Петербург"];
