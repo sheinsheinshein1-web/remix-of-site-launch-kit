@@ -396,7 +396,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
 
       if (filters.maxPrice && !filters.minPrice) {
         const halfPrice = filters.maxPrice / 2;
-        const cheaperCount = filterProjects({ ...filters, maxPrice: halfPrice }).length;
+        const cheaperCount = filterProjects({ ...filters, maxPrice: halfPrice }, cityProjects).length;
         if (cheaperCount > 0) {
           suggestions.push({
             label: `${filters.textQuery ? filters.textQuery + " " : ""}до ${formatPrice(halfPrice)}`,
