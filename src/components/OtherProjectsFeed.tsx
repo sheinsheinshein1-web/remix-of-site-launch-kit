@@ -10,6 +10,7 @@ import {
   projectFits,
   projectBlurBackground,
   projectObjectPositions,
+  projectEdgeBleed,
 } from "@/data/projects";
 
 const PAGE_SIZE = 6;
