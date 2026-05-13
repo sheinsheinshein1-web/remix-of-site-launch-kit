@@ -211,7 +211,7 @@ const OperatorChat = () => {
               </p>
             </div>
             <button
-              onClick={refreshSessions}
+              onClick={() => refreshSessions()}
               className="w-10 h-10 rounded-lg bg-secondary hover:bg-border flex items-center justify-center transition-colors"
               aria-label="Обновить"
               title="Обновить"
