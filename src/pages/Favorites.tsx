@@ -91,31 +91,7 @@ const ListIcon = ({ active }: { active: boolean }) => (
   </svg>
 );
 
-/* ─── PROJECT CARD ─── */
-const ProjectCard = ({ item }: { item: typeof favoriteProjects[0] }) => (
-  <div className="cursor-pointer">
-    <div className="rounded-[14px] overflow-hidden relative">
-      <img src={item.image} alt={item.name} className="w-full aspect-[16/10] object-cover" loading="lazy" />
-      <span className="absolute top-2.5 left-2.5 text-[11px] font-normal bg-black/45 text-white rounded-md px-2.5 py-1">{item.badge}</span>
-      <button className="absolute top-2 right-2 flex items-center gap-1 bg-foreground/40 backdrop-blur-md rounded-full px-2.5 py-[5px]">
-        <Heart className="w-3.5 h-3.5 fill-primary text-primary" strokeWidth={1.5} />
-        <span className="text-[11px] font-medium text-white">124</span>
-      </button>
-    </div>
-    <div className="pt-2.5 px-0.5">
-      <p className="text-[11px] font-light text-muted-foreground mb-0.5">{item.maker}</p>
-      <h3 className="text-[15px] font-medium text-foreground mb-1.5">{item.name}</h3>
-      <div className="flex items-center justify-between">
-        <span className="text-[14px] font-medium text-foreground">{item.price}</span>
-        <div className="flex items-center gap-2 text-xs font-light text-muted-foreground">
-          <span>{item.area}</span>
-          <span>·</span>
-          <span>{item.term}</span>
-        </div>
-      </div>
-    </div>
-  </div>
-);
+/* PROJECT CARD — единый компонент @/components/ProjectCard, импорт ниже */
 
 /* ─── CALC CARD ─── */
 const CalcCard = ({ calc }: { calc: typeof savedCalcs[0] }) => (
