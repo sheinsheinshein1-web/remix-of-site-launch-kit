@@ -647,7 +647,7 @@ export const projects: Project[] = [
       { image: "https://static.tildacdn.com/tild3539-6662-4333-a536-316664306533/8_1.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild6635-6461-4264-a539-643331396536/7.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3737-3336-4138-b131-383565343035/4bpngqLiS-E.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3866-3464-4335-b462-323430396366/_1.png", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3866-3464-4335-b462-323430396366/_1.png", type: "photo", fit: "contain" },
     ],
     likes: 12, rating: 4.6,
     suitableFor: ["Для одного / пары", "Выходные / дача"],
