@@ -408,7 +408,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
     } else if (nq.length >= 1) {
       // Show catalog suggestion even without parsed filters
       const words = nq.split(/\s+/).filter(w => w.length >= 1);
-      const matchingProjects = projects.filter(p => {
+      const matchingProjects = cityProjects.filter(p => {
         const haystack = (p.name + " " + p.maker + " " + (p.tags || "")).toLowerCase();
         return words.some(w => haystack.includes(w));
       });
