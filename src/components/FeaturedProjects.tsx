@@ -21,6 +21,7 @@ import {
   projectFits,
   projectBlurBackground,
   projectObjectPositions,
+  projectEdgeBleed,
 } from "@/data/projects";
 import { useCity } from "@/components/CitySelector";
 
