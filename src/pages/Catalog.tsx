@@ -855,7 +855,7 @@ const Catalog = () => {
               {sortedItems.map((item) => (
                 <div key={item.id} data-project-id={item.id} className="flex gap-4 cursor-pointer bg-background rounded-2xl overflow-hidden group" onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)}>
                   <div className="w-[220px] h-[180px] flex-shrink-0 relative overflow-hidden rounded-2xl">
-                    <SwipeableGallery images={getProjectImages(item.image, item.id)} fits={projectFits[item.id]} objectPositions={projectObjectPositions[item.id]} blurBackground={projectBlurBackground[item.id]} alt={item.name} height="h-[180px]">
+                    <SwipeableGallery images={getProjectImages(item.image, item.id)} fits={projectFits[item.id]} objectPositions={projectObjectPositions[item.id]} blurBackground={projectBlurBackground[item.id]} edgeBleed={projectEdgeBleed[item.id]} alt={item.name} height="h-[180px]">
                       <div className="absolute top-2 right-2 z-10">
                         <FavButton active={isFavorite(item.id)} onClick={(e) => { e.stopPropagation(); toggleFav(item); }} size="sm" count={item.likes + (isFavorite(item.id) && !item.fav ? 1 : !isFavorite(item.id) && item.fav ? -1 : 0)} />
                       </div>
@@ -884,7 +884,7 @@ const Catalog = () => {
             <div className="grid grid-cols-1 gap-y-[6px]">
             {sortedItems.map((item) => (
               <div key={item.id} data-project-id={item.id} className="cursor-pointer overflow-hidden" onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)}>
-                <SwipeableGallery images={getProjectImages(item.image, item.id)} fits={projectFits[item.id]} objectPositions={projectObjectPositions[item.id]} blurBackground={projectBlurBackground[item.id]} alt={item.name} height="aspect-[3/4] h-auto">
+                <SwipeableGallery images={getProjectImages(item.image, item.id)} fits={projectFits[item.id]} objectPositions={projectObjectPositions[item.id]} blurBackground={projectBlurBackground[item.id]} edgeBleed={projectEdgeBleed[item.id]} alt={item.name} height="aspect-[3/4] h-auto">
                   <div className="absolute top-2 right-2 z-10">
                     <FavButton active={isFavorite(item.id)} onClick={(e) => { e.stopPropagation(); toggleFav(item); }} size="sm" count={item.likes + (isFavorite(item.id) && !item.fav ? 1 : !isFavorite(item.id) && item.fav ? -1 : 0)} />
                   </div>
@@ -907,7 +907,7 @@ const Catalog = () => {
             <div className="grid grid-cols-2 gap-x-[2px] gap-y-[6px]">
             {sortedItems.map((item) => (
               <div key={item.id} data-project-id={item.id} className="cursor-pointer overflow-hidden" onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)}>
-                <SwipeableGallery images={getProjectImages(item.image, item.id)} fits={projectFits[item.id]} objectPositions={projectObjectPositions[item.id]} blurBackground={projectBlurBackground[item.id]} alt={item.name} height="aspect-[3/4] h-auto">
+                <SwipeableGallery images={getProjectImages(item.image, item.id)} fits={projectFits[item.id]} objectPositions={projectObjectPositions[item.id]} blurBackground={projectBlurBackground[item.id]} edgeBleed={projectEdgeBleed[item.id]} alt={item.name} height="aspect-[3/4] h-auto">
                   <div className="absolute top-2 right-2 z-10">
                     <FavButton active={isFavorite(item.id)} onClick={(e) => { e.stopPropagation(); toggleFav(item); }} size="sm" count={item.likes + (isFavorite(item.id) && !item.fav ? 1 : !isFavorite(item.id) && item.fav ? -1 : 0)} />
                   </div>
