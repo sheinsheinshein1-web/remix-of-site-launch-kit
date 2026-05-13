@@ -5,7 +5,7 @@ import { manufacturers as dataManufacturers, projects as dataProjects } from "@/
 import { useCity } from "@/components/CitySelector";
 
 // Поиск всегда строится из единого источника правды src/data/projects.ts.
-const allProjects = dataProjects.map((p) => ({
+const projects = dataProjects.map((p) => ({
   id: p.id,
   name: p.name,
   maker: p.maker.name,
@@ -37,7 +37,7 @@ const categories = [
   { name: "Модульные дома", slug: "modular" },
 ];
 
-const allManufacturers = dataManufacturers.map((m) => ({ name: m.name, location: m.location }));
+const manufacturers = dataManufacturers.map((m) => ({ name: m.name, location: m.location }));
 
 // Quick suggestion chips shown when query has text
 const quickSuggestions: Record<string, string[]> = {
