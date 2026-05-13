@@ -479,15 +479,17 @@ const ProjectDetail = () => {
           </div>
         ) : (
           <div className="bg-background rounded-2xl p-3 flex flex-col gap-3">
-            {/* Main image with blurred background */}
+            {/* Main image with optional blurred background */}
             <div className="relative rounded-xl overflow-hidden bg-muted h-[500px]">
-              {/* Blurred background */}
-              <img
-                src={galleryImages[activeImage].image}
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover opacity-60"
-                style={{ filter: "blur(16px)", transform: "scale(1.08)" }}
-                draggable={false} loading="lazy" decoding="async" />
+              {/* Blurred background — только если у изображения явно включён blur (планировки рендерятся на сером bg-muted) */}
+              {(galleryImages[activeImage] as any).fit === "contain" && Boolean((galleryImages[activeImage] as any).blur) && (
+                <img
+                  src={galleryImages[activeImage].image}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover opacity-60"
+                  style={{ filter: "blur(16px)", transform: "scale(1.08)" }}
+                  draggable={false} loading="lazy" decoding="async" />
+              )}
               {/* Main image */}
               <div className="relative h-full flex items-center justify-center">
                 <img
