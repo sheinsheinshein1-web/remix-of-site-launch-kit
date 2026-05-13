@@ -359,6 +359,10 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
     const filters = parseFilters(nq);
     const hasFilters = filters.beds !== undefined || filters.baths !== undefined || filters.minPrice !== undefined || filters.maxPrice !== undefined || filters.minArea !== undefined || filters.maxArea !== undefined;
 
+    // Гео-фильтр: показываем только проекты и производителей выбранного города.
+    const cityProjects = city ? projects.filter(p => p.city === city) : projects;
+    const cityManufacturers = city ? manufacturers.filter(m => m.location === city) : manufacturers;
+
     const suggestions: { label: string; sub: string; url: string }[] = [];
 
     if (hasFilters) {
