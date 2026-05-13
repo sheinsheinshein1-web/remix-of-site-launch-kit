@@ -10,6 +10,7 @@ import {
   projectFits,
   projectBlurBackground,
   projectObjectPositions,
+  projectEdgeBleed,
 } from "@/data/projects";
 
 const PAGE_SIZE = 6;
@@ -124,6 +125,7 @@ const OtherProjectsFeed = ({ currentId }: Props) => {
                   fits={fits}
                   blurBackground={projectBlurBackground[project.id]}
                   objectPositions={projectObjectPositions[project.id]}
+                  edgeBleed={projectEdgeBleed[project.id]}
                   alt={project.name}
                   height="aspect-[3/4] h-auto md:h-[240px] md:aspect-auto"
                 >

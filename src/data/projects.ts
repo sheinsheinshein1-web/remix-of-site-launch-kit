@@ -127,6 +127,7 @@ export type GalleryItem = {
   type?: "photo" | "video";
   fit?: "cover" | "contain";
   blur?: boolean; // blur-фон в каталоге для фото с прозрачным/неровным фоном
+  edgeBleed?: boolean; // бесшовное продолжение краёв вместо blur
   objectPosition?: string;
 };
 
@@ -305,14 +306,14 @@ export const projects: Project[] = [
     description: "Модульный дом 7,3 × 6,1 м под ключ. Высота потолка 2,5 м, тёплые полы, оборудованный санузел, вытяжная вентиляция с выходом на крышу.",
     descriptionLong: "ПАТИО — модульный дом площадью 45 м² с продуманной планировкой и полной заводской готовностью. Высота потолка 2,5 м. Утепление пол / стена / потолок — 200 / 150 / 150 мм. Полностью оборудованный санузел, вытяжная вентиляция с выходом на крышу, кабельные тёплые полы. В подарок — защитная сетка от грызунов.",
     gallery: [
-      { image: patio5, type: "photo", fit: "contain", blur: true },
-      { image: patio2, type: "photo", fit: "contain", blur: true },
-      { image: patio3, type: "photo", fit: "contain", blur: true },
-      { image: patio4, type: "photo", fit: "contain", blur: true },
-      { image: patio1, type: "photo", fit: "contain", blur: true },
-      { image: patio6, type: "photo", fit: "contain", blur: true },
-      { image: patio7, type: "photo", fit: "contain", blur: true },
-      { image: patio8, type: "photo", fit: "contain", blur: true },
+      { image: patio5, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: patio2, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: patio3, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: patio4, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: patio1, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: patio6, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: patio7, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: patio8, type: "photo", fit: "contain", blur: true, edgeBleed: true },
       { image: patioPlan1, type: "photo", fit: "contain" },
       { image: patioPlan2, type: "photo", fit: "contain" },
     ],
@@ -330,13 +331,13 @@ export const projects: Project[] = [
     description: "Барнхаус 8 × 12 м для круглогодичного проживания. Высота потолка 3 м, оборудованный санузел, вытяжная вентиляция с выходом на крышу.",
     descriptionLong: "ТУНДРА — барнхаус площадью 96 м² для круглогодичного проживания. Высота потолка 3 м. Утепление пол / стена / потолок — 200 / 150 / 150 мм. Полностью оборудованный санузел, вытяжная вентиляция с выходом на крышу. В подарок — конвекторы отопления.",
     gallery: [
-      { image: tundra1, type: "photo", fit: "contain", blur: true },
-      { image: tundra2, type: "photo", fit: "contain", blur: true },
-      { image: tundra3, type: "photo", fit: "contain", blur: true },
-      { image: tundra4, type: "photo", fit: "contain", blur: true },
-      { image: tundra5, type: "photo", fit: "contain", blur: true },
-      { image: tundra6, type: "photo", fit: "contain", blur: true },
-      { image: tundra7, type: "photo", fit: "contain", blur: true },
+      { image: tundra1, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: tundra2, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: tundra3, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: tundra4, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: tundra5, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: tundra6, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: tundra7, type: "photo", fit: "contain", blur: true, edgeBleed: true },
       { image: tundraPlan1, type: "photo", fit: "contain" },
       { image: tundraPlan2, type: "photo", fit: "contain" },
       { image: tundraPlan3, type: "photo", fit: "contain" },
@@ -355,15 +356,15 @@ export const projects: Project[] = [
     description: "Модульный дом 7,3 × 12 м для круглогодичного проживания. Высота потолка 2,95 м, оборудованный санузел, вытяжная вентиляция с выходом на крышу.",
     descriptionLong: "ШЕРВУД — модульный дом площадью 87 м² для круглогодичного проживания. Высота потолка 2,95 м. Утепление пол / стена / потолок — 200 / 150 / 150 мм. Полностью оборудованный санузел, вытяжная вентиляция с выходом на крышу. В подарок — конвекторы отопления.",
     gallery: [
-      { image: sherwood1, type: "photo", fit: "contain", blur: true },
-      { image: sherwood2, type: "photo", fit: "contain", blur: true },
-      { image: sherwood3, type: "photo", fit: "contain", blur: true },
-      { image: sherwood4, type: "photo", fit: "contain", blur: true },
-      { image: sherwood5, type: "photo", fit: "contain", blur: true },
-      { image: sherwood6, type: "photo", fit: "contain", blur: true },
-      { image: sherwood7, type: "photo", fit: "contain", blur: true },
-      { image: sherwood8, type: "photo", fit: "contain", blur: true },
-      { image: sherwood9, type: "photo", fit: "contain", blur: true },
+      { image: sherwood1, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: sherwood2, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: sherwood3, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: sherwood4, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: sherwood5, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: sherwood6, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: sherwood7, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: sherwood8, type: "photo", fit: "contain", blur: true, edgeBleed: true },
+      { image: sherwood9, type: "photo", fit: "contain", blur: true, edgeBleed: true },
       { image: sherwoodPlan1, type: "photo", fit: "contain" },
     ],
     likes: 29, rating: 4.8,
@@ -712,6 +713,10 @@ export const projectBlurBackground: Record<number, boolean[]> = Object.fromEntri
 
 export const projectObjectPositions: Record<number, (string | undefined)[]> = Object.fromEntries(
   projects.map((p) => [p.id, p.gallery.map((g) => g.objectPosition)])
+);
+
+export const projectEdgeBleed: Record<number, boolean[]> = Object.fromEntries(
+  projects.map((p) => [p.id, p.gallery.map((g) => g.edgeBleed ?? false)])
 );
 
 // Структура для ProjectDetail.tsx (override по id).
