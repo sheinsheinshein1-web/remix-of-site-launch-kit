@@ -445,7 +445,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
       : [];
 
     const matchedManufacturers = allSearchWords.length > 0
-      ? manufacturers.filter(m => allSearchWords.some(w => m.name.toLowerCase().includes(w) || m.location.toLowerCase().includes(w))).slice(0, 3)
+      ? cityManufacturers.filter(m => allSearchWords.some(w => m.name.toLowerCase().includes(w) || m.location.toLowerCase().includes(w))).slice(0, 3)
       : [];
 
     return {
