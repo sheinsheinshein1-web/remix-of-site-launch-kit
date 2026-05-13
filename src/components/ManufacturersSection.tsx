@@ -1,6 +1,6 @@
-import floorplanStudio from "@/assets/floorplan-studio.jpg";
-import floorplan2bed from "@/assets/floorplan-2bed.jpg";
-import aduOffice from "@/assets/adu-office.jpg";
+import floorplanStudio from "@/assets/floorplan-studio.webp";
+import floorplan2bed from "@/assets/floorplan-2bed.webp";
+import aduOffice from "@/assets/adu-office.webp";
 
 const ManufacturersSection = () => {
   return (

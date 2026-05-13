@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import catAll from "@/assets/cat-all.png";
-import catHouses from "@/assets/cat-houses.png";
-import catBaths from "@/assets/cat-baths.png";
-import catGlamping from "@/assets/cat-glamping.png";
-import catDacha from "@/assets/cat-dacha.png";
-import catShed from "@/assets/cat-shed.png";
-import catTwostory from "@/assets/cat-twostory.png";
-import catBarrelBath from "@/assets/cat-barrel-bath.png";
-import catPartner from "@/assets/partner-icon.png";
-import catGuide from "@/assets/cat-guide.png";
+import catAll from "@/assets/cat-all.webp";
+import catHouses from "@/assets/cat-houses.webp";
+import catBaths from "@/assets/cat-baths.webp";
+import catGlamping from "@/assets/cat-glamping.webp";
+import catDacha from "@/assets/cat-dacha.webp";
+import catShed from "@/assets/cat-shed.webp";
+import catTwostory from "@/assets/cat-twostory.webp";
+import catBarrelBath from "@/assets/cat-barrel-bath.webp";
+import catPartner from "@/assets/partner-icon.webp";
+import catGuide from "@/assets/cat-guide.webp";
 import PartnerDrawer from "@/components/PartnerDrawer";
 
 const categories = [

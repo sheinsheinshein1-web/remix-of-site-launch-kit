@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import PartnerDrawer from "@/components/PartnerDrawer";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useEffect, useState } from "react";
-import partnerHeroImg from "@/assets/partner-hero-illustration.png";
+import partnerHeroImg from "@/assets/partner-hero-illustration.webp";
 import Seo from "@/components/Seo";
 
 const features = [

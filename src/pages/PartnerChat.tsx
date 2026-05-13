@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, Send, Check, BookOpen, MapPin, Layers } from "lucide-react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import partnerIcon from "@/assets/partner-icon.png";
+import partnerIcon from "@/assets/partner-icon.webp";
 import PartnerDrawer from "@/components/PartnerDrawer";
 import { useIsMobile } from "@/hooks/use-mobile";
 

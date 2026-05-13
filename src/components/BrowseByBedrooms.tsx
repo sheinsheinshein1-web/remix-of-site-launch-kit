@@ -1,5 +1,5 @@
-import floorplanStudio from "@/assets/floorplan-studio.jpg";
-import floorplan2bed from "@/assets/floorplan-2bed.jpg";
+import floorplanStudio from "@/assets/floorplan-studio.webp";
+import floorplan2bed from "@/assets/floorplan-2bed.webp";
 
 const rooms = [
   { label: "Студии", image: floorplanStudio },

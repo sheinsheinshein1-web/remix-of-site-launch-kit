@@ -8,15 +8,15 @@ import { useFavorites } from "@/contexts/FavoritesContext";
 import CitySelector, { useCity } from "@/components/CitySelector";
 import OtherProjectsFeed from "@/components/OtherProjectsFeed";
 import Seo from "@/components/Seo";
-import house1 from "@/assets/house-1.jpg";
-import house2 from "@/assets/house-2.jpg";
-import house3 from "@/assets/house-3.jpg";
-import house4 from "@/assets/house-4.jpg";
-import house5 from "@/assets/house-5.jpg";
-import house6 from "@/assets/house-6.jpg";
-import house7 from "@/assets/house-7.jpg";
-import house8 from "@/assets/house-8.jpg";
-import house9 from "@/assets/house-9.jpg";
+import house1 from "@/assets/house-1.webp";
+import house2 from "@/assets/house-2.webp";
+import house3 from "@/assets/house-3.webp";
+import house4 from "@/assets/house-4.webp";
+import house5 from "@/assets/house-5.webp";
+import house6 from "@/assets/house-6.webp";
+import house7 from "@/assets/house-7.webp";
+import house8 from "@/assets/house-8.webp";
+import house9 from "@/assets/house-9.webp";
 import { projectOverrides, projectsCountByMakerId } from "@/data/projects";
 
 const defaultGallery = [

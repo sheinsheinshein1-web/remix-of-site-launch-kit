@@ -1,4 +1,4 @@
-import aduOffice from "@/assets/adu-office.jpg";
+import aduOffice from "@/assets/adu-office.webp";
 
 const ADUSection = () => {
   return (

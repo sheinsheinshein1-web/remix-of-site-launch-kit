@@ -1,14 +1,14 @@
 import { ArrowRight, ArrowUpRight, Search, ChevronDown, Heart, SlidersHorizontal } from "lucide-react";
 import { Link } from "react-router-dom";
 import logoMarkWhite from "@/assets/logo-mark-white.svg";
-import house1 from "@/assets/house-1.jpg";
-import house2 from "@/assets/house-2.jpg";
-import house3 from "@/assets/house-3.jpg";
-import house4 from "@/assets/house-4.jpg";
-import catHouses from "@/assets/cat-houses.png";
-import catBaths from "@/assets/cat-baths.png";
-import catGlamping from "@/assets/cat-glamping.png";
-import catGuest from "@/assets/cat-guest.png";
+import house1 from "@/assets/house-1.webp";
+import house2 from "@/assets/house-2.webp";
+import house3 from "@/assets/house-3.webp";
+import house4 from "@/assets/house-4.webp";
+import catHouses from "@/assets/cat-houses.webp";
+import catBaths from "@/assets/cat-baths.webp";
+import catGlamping from "@/assets/cat-glamping.webp";
+import catGuest from "@/assets/cat-guest.webp";
 
 /**
  * /lab — экспериментальная мобильная главная в стиле "BLUEBIRD".

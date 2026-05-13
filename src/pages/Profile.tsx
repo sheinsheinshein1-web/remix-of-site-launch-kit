@@ -6,14 +6,14 @@ import {
 import MobileTabBar from "@/components/MobileTabBar";
 import Seo from "@/components/Seo";
 import { useIsMobile } from "@/hooks/use-mobile";
-import svcCalculator from "@/assets/svc-calculator.png";
-import svcManufacturers from "@/assets/svc-manufacturers.png";
-import svcMortgage from "@/assets/svc-mortgage.png";
-import svcJournal from "@/assets/svc-journal.png";
-import svcCompare from "@/assets/svc-compare.png";
-import projectTaiga from "@/assets/project-taiga72.jpg";
-import projectKedr from "@/assets/project-kedr24.jpg";
-import avatar3d from "@/assets/avatar-3d.png";
+import svcCalculator from "@/assets/svc-calculator.webp";
+import svcManufacturers from "@/assets/svc-manufacturers.webp";
+import svcMortgage from "@/assets/svc-mortgage.webp";
+import svcJournal from "@/assets/svc-journal.webp";
+import svcCompare from "@/assets/svc-compare.webp";
+import projectTaiga from "@/assets/project-taiga72.webp";
+import projectKedr from "@/assets/project-kedr24.webp";
+import avatar3d from "@/assets/avatar-3d.webp";
 
 const profileServices = [
   { name: "Калькулятор", img: svcCalculator },

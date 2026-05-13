@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import catHouses from "@/assets/cat-houses.png";
+import catHouses from "@/assets/cat-houses.webp";
 
 const HeroSection = () => {
   const navigate = useNavigate();
