@@ -4,7 +4,7 @@ import { ArrowLeft, ChevronRight, ShieldCheck } from "lucide-react";
 import Header from "@/components/Header";
 import { useIsMobile } from "@/hooks/use-mobile";
 import shareIcon from "@/assets/share-icon.svg";
-import { projectsCountByMakerId } from "@/data/projects";
+import { projectsCountByMakerId, makersById } from "@/data/projects";
 
 const wordForm = (n: number, forms: [string, string, string]) => {
   const m = Math.abs(n) % 100;
@@ -15,12 +15,27 @@ const wordForm = (n: number, forms: [string, string, string]) => {
   return forms[2];
 };
 
+// Маппинг id из URL → makerId. Поддерживаем легаси "1" → platforma.
 const partnerMakerIds: Record<string, string> = {
   "1": "platforma",
-  bygge: "bygge",
-  glezman: "glezman",
-  divodom: "divodom",
 };
+
+// Тексты «о компании» — единственное, что не выводится автоматически из projects.ts.
+const aboutByMakerId: Record<string, string> = {
+  platforma:
+    "Производитель модульных домов из Екатеринбурга. Проектируем и собираем компактные одноэтажные дома для круглогодичного проживания и загородного отдыха.",
+  bygge:
+    "Bygge — производитель модульных домов из Екатеринбурга. Дома полной заводской готовности под ключ: с тёплыми полами, оборудованным санузлом и вытяжной вентиляцией.",
+  glezman:
+    "Glezman Group — производитель каркасных домов из Перми. Линейка La Rus: компактные и просторные дома площадью от 45 до 127 м² с панорамным остеклением и продуманной планировкой.",
+  divodom:
+    "ДивоДом — производитель модульных домов из Перми. Линейка ДИВО: дома полной заводской готовности площадью от 30 до 110 м² с террасами, утеплением до −30°C и монтажом за 1 день.",
+  gradodom:
+    "ГрадоДом — производитель каркасных домов из Пермского края. Каркасные одно- и двухэтажные дома площадью от 55 м² с продуманной планировкой и сроком строительства от 3 месяцев.",
+};
+
+// На случай, если каталог временно не отражает реальное число проектов производителя.
+const manualCounts: Record<string, number> = { bygge: 5 };
 
 type PartnerData = {
   name: string;
@@ -29,66 +44,6 @@ type PartnerData = {
   category: string;
   about: string;
   siteUrl: string;
-  stats: { val: string; label: string }[];
-};
-
-const partners: Record<string, PartnerData> = {
-  "1": {
-    name: "Платформа",
-    initials: "ПЛ",
-    city: "Екатеринбург",
-    category: "Модульные дома",
-    about:
-      "Производитель модульных домов из Екатеринбурга. Проектируем и собираем компактные одноэтажные дома для круглогодичного проживания и загородного отдыха.",
-    siteUrl: "https://platforma-modul.ru",
-    stats: [
-      { val: "8", label: "Проекты" },
-      { val: "—", label: "Отзывы" },
-      { val: "—", label: "Рейтинг" },
-    ],
-  },
-  bygge: {
-    name: "Bygge",
-    initials: "BG",
-    city: "Екатеринбург",
-    category: "Модульные дома",
-    about:
-      "Bygge — производитель модульных домов из Екатеринбурга. Дома полной заводской готовности под ключ: с тёплыми полами, оборудованным санузлом и вытяжной вентиляцией.",
-    siteUrl: "https://bygge.ru",
-    stats: [
-      { val: "1", label: "Проекты" },
-      { val: "—", label: "Отзывы" },
-      { val: "—", label: "Рейтинг" },
-    ],
-  },
-  glezman: {
-    name: "Glezman Group",
-    initials: "GG",
-    city: "Пермский край",
-    category: "Каркасные дома",
-    about:
-      "Glezman Group — производитель каркасных домов из Перми. Линейка La Rus: компактные и просторные дома площадью от 45 до 127 м² с панорамным остеклением и продуманной планировкой.",
-    siteUrl: "https://glezman-group.ru",
-    stats: [
-      { val: "5", label: "Проекты" },
-      { val: "—", label: "Отзывы" },
-      { val: "—", label: "Рейтинг" },
-    ],
-  },
-  divodom: {
-    name: "ДивоДом",
-    initials: "ДД",
-    city: "Пермский край",
-    category: "Модульные дома",
-    about:
-      "ДивоДом — производитель модульных домов из Перми. Линейка ДИВО: дома полной заводской готовности площадью от 30 до 110 м² с террасами, утеплением до −30°C и монтажом за 1 день.",
-    siteUrl: "https://www.divodom.net",
-    stats: [
-      { val: "5", label: "Проекты" },
-      { val: "—", label: "Отзывы" },
-      { val: "—", label: "Рейтинг" },
-    ],
-  },
 };
 
 const Partner = () => {
@@ -97,18 +52,24 @@ const Partner = () => {
   const { id } = useParams();
   const [scrolled, setScrolled] = useState(false);
 
-  const partnerBase = (id && partners[id]) || partners["1"];
-  const makerId = (id && partnerMakerIds[id]) || "platforma";
-  // Для Bygge показываем заявленные 5 проектов (в каталоге пока 1 — остальные появятся по мере загрузки данных).
-  const manualCounts: Record<string, number> = { bygge: 5 };
+  // Резолвим makerId: либо легаси-маппинг, либо id уже совпадает с makerId.
+  const makerId = (id && (partnerMakerIds[id] ?? (makersById[id] ? id : undefined))) || "platforma";
+  const summary = makersById[makerId];
   const projectsCount = manualCounts[makerId] ?? projectsCountByMakerId[makerId] ?? 0;
+
   const partner: PartnerData = {
-    ...partnerBase,
-    stats: [
-      { val: String(projectsCount), label: wordForm(projectsCount, ["Проект", "Проекта", "Проектов"]) },
-      ...partnerBase.stats.slice(1),
-    ],
+    name: summary?.name ?? "Партнёр",
+    initials: summary?.initials ?? "—",
+    city: summary?.city ?? "",
+    category: summary?.technology ?? "Производитель домов",
+    about: aboutByMakerId[makerId] ?? `${summary?.name ?? "Партнёр"} — производитель домов из города ${summary?.city ?? ""}.`,
+    siteUrl: summary?.siteUrl ?? "#",
   };
+  const stats = [
+    { val: String(projectsCount), label: wordForm(projectsCount, ["Проект", "Проекта", "Проектов"]) },
+    { val: "—", label: "Отзывы" },
+    { val: "—", label: "Рейтинг" },
+  ];
 
   const handleBack = () => {
     if (window.history.length > 1) {
