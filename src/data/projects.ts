@@ -118,6 +118,28 @@ import larus127_1 from "@/assets/glezman/larus-127.jpg";
 import larus127_2 from "@/assets/glezman/larus-127-2.jpg";
 import larus127_3 from "@/assets/glezman/larus-127-3.png";
 
+// ГрадоДом
+import filip55_1 from "@/assets/gradodom/filip-55-1.jpg";
+import filip55_2 from "@/assets/gradodom/filip-55-2.jpg";
+import filip55_3 from "@/assets/gradodom/filip-55-3.jpg";
+import filip55_4 from "@/assets/gradodom/filip-55-4.jpg";
+import filip55_5 from "@/assets/gradodom/filip-55-5.jpg";
+import filip55_6 from "@/assets/gradodom/filip-55-6.jpg";
+import filip55_plan from "@/assets/gradodom/filip-55-plan.jpg";
+import arktur56_1 from "@/assets/gradodom/arktur-56-1.jpg";
+import arktur56_2 from "@/assets/gradodom/arktur-56-2.jpg";
+import arktur56_plan from "@/assets/gradodom/arktur-56-plan.jpg";
+import rinho60_1 from "@/assets/gradodom/rinho-60-1.jpg";
+import rinho60_2 from "@/assets/gradodom/rinho-60-2.jpg";
+import rinho60_plan from "@/assets/gradodom/rinho-60-plan.jpg";
+import almaks72_1 from "@/assets/gradodom/almaks-72-1.jpg";
+import almaks72_plan from "@/assets/gradodom/almaks-72-plan.jpg";
+import alester73_1 from "@/assets/gradodom/alester-73-1.jpg";
+import alester73_2 from "@/assets/gradodom/alester-73-2.jpg";
+import alester73_3 from "@/assets/gradodom/alester-73-3.jpg";
+import alester73_plan1 from "@/assets/gradodom/alester-73-plan1.jpg";
+import alester73_plan2 from "@/assets/gradodom/alester-73-plan2.jpg";
+
 // ============================================================================
 // ТИПЫ
 // ============================================================================
@@ -197,6 +219,12 @@ const DIVODOM: Maker = {
   initials: "ДД",
   id: "divodom",
   siteUrl: "https://www.divodom.net/",
+};
+const GRADODOM: Maker = {
+  name: "ГрадоДом",
+  initials: "ГД",
+  id: "gradodom",
+  siteUrl: "https://novostroy159.ru/",
 };
 
 // ============================================================================
@@ -659,6 +687,97 @@ export const projects: Project[] = [
     suitableFor: ["Для семьи", "Постоянное проживание"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
     features: ["Терраса"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  // ── ГрадоДом · Пермский край ────────────────────────────────────────────
+  {
+    id: 57, name: "Филип 55", badge: "Жилой дом", price: "4 669 500 ₽",
+    area: "55 м²", area_m2: 55, beds: 1, baths: 1, floors: 1, term: "90 д.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Пермский край", maker: GRADODOM,
+    description: "Каркасный дом 13 × 5 м площадью 55 м². Две комнаты, санузел, кухня-гостиная.",
+    descriptionLong: "Филип 55 — каркасный загородный дом площадью 55 м², размеры 13 × 5 м. Две комнаты, санузел, кухня-гостиная. Срок строительства — 3 месяца.",
+    gallery: [
+      { image: filip55_1, type: "photo" },
+      { image: filip55_2, type: "photo" },
+      { image: filip55_3, type: "photo" },
+      { image: filip55_4, type: "photo" },
+      { image: filip55_5, type: "photo" },
+      { image: filip55_6, type: "photo" },
+      { image: filip55_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 18, rating: 4.6,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: [], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 58, name: "Арктур 56", badge: "Жилой дом", price: "4 754 400 ₽",
+    area: "56 м²", area_m2: 56, beds: 2, baths: 1, floors: 1, term: "90 д.",
+    rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Пермский край", maker: GRADODOM,
+    description: "Каркасный дом 10 × 5 м площадью 56 м². Три комнаты, санузел, кухня-гостиная.",
+    descriptionLong: "Арктур 56 — каркасный загородный дом площадью 56 м², размеры 10 × 5 м. Три комнаты, санузел, кухня-гостиная. Срок строительства — 3 месяца.",
+    gallery: [
+      { image: arktur56_1, type: "photo" },
+      { image: arktur56_2, type: "photo" },
+      { image: arktur56_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 14, rating: 4.6,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: [], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 59, name: "Ринхо 60", badge: "Жилой дом", price: "5 094 000 ₽",
+    area: "60 м²", area_m2: 60, beds: 2, baths: 1, floors: 1, term: "90 д.",
+    rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Пермский край", maker: GRADODOM,
+    description: "Каркасный дом 7 × 10 м площадью 60 м². Три комнаты, санузел, кухня-гостиная.",
+    descriptionLong: "Ринхо 60 — каркасный загородный дом площадью 60 м², размеры 7 × 10 м. Три комнаты, санузел, кухня-гостиная. Срок строительства — 3 месяца.",
+    gallery: [
+      { image: rinho60_1, type: "photo" },
+      { image: rinho60_2, type: "photo" },
+      { image: rinho60_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 16, rating: 4.6,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: [], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 60, name: "Алмакс 72", badge: "Жилой дом", price: "5 400 000 ₽",
+    area: "72 м²", area_m2: 72, beds: 2, baths: 1, floors: 1, term: "90 д.",
+    rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Пермский край", maker: GRADODOM,
+    description: "Каркасный дом 10 × 8 м площадью 72 м². Три комнаты, санузел, кухня-гостиная.",
+    descriptionLong: "Алмакс 72 — каркасный загородный дом площадью 72 м², размеры 10 × 8 м. Три комнаты, санузел, кухня-гостиная. Срок строительства — 3 месяца.",
+    gallery: [
+      { image: almaks72_1, type: "photo" },
+      { image: almaks72_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 19, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: [], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 61, name: "Алестер 73", badge: "Жилой дом", price: "5 475 000 ₽",
+    area: "73 м²", area_m2: 73, beds: 3, baths: 1, floors: 1, term: "90 д.",
+    rooms: "4 комнаты", purpose: "ИЖС / СНТ", city: "Пермский край", maker: GRADODOM,
+    description: "Каркасный дом 10 × 4 м площадью 73 м². Четыре комнаты, санузел, кухня-гостиная.",
+    descriptionLong: "Алестер 73 — каркасный загородный дом площадью 73 м², размеры 10 × 4 м. Четыре комнаты, санузел, кухня-гостиная. Срок строительства — 3 месяца.",
+    gallery: [
+      { image: alester73_1, type: "photo" },
+      { image: alester73_2, type: "photo" },
+      { image: alester73_3, type: "photo" },
+      { image: alester73_plan1, type: "photo", fit: "contain" },
+      { image: alester73_plan2, type: "photo", fit: "contain" },
+    ],
+    likes: 22, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: [], style: "Современный", landSize: "6–10 соток",
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
 ];
