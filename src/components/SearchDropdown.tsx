@@ -385,7 +385,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
       if (filters.beds !== undefined) { parts.push(`${filters.beds} ${filters.beds === 1 ? 'спальня' : filters.beds < 5 ? 'спальни' : 'спален'}`); urlParams.beds = filters.beds; }
       if (filters.baths !== undefined) { parts.push(`${filters.baths} санузл.`); urlParams.baths = filters.baths; }
 
-      const matchCount = filterProjects(filters).length;
+      const matchCount = filterProjects(filters, cityProjects).length;
       const label = parts.join(", ");
 
       suggestions.push({
@@ -426,7 +426,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
 
     let filteredProjects;
     if (hasFilters) {
-      filteredProjects = filterProjects(filters).slice(0, 3);
+      filteredProjects = filterProjects(filters, cityProjects).slice(0, 3);
     } else {
       const words = nq.split(/\s+/).filter(w => w.length >= 1);
       const rawWords = rawQ.split(/\s+/).filter(w => w.length >= 1);
