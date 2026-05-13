@@ -21,7 +21,15 @@ import {
   projectBlurBackground,
   projectObjectPositions,
   projectEdgeBleed,
+  projects as allProjects,
 } from "@/data/projects";
+
+const likesById: Record<number, number> = Object.fromEntries(
+  allProjects.map((p) => [p.id, p.likes])
+);
+// +1 — пользователь сам лайкнул проект, раз он в избранном
+const getLikes = (id: number, fallback: number) =>
+  (likesById[id] ?? fallback ?? 0) + 1;
 
 function getProjectImages(mainImage: string, id: number): string[] {
   return projectGalleries[id] ?? [mainImage];
