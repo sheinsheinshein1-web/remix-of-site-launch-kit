@@ -9,6 +9,7 @@ import Header from "@/components/Header";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { useNavigate } from "react-router-dom";
 import SwipeableGallery from "@/components/SwipeableGallery";
+import ProjectCard from "@/components/ProjectCard";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import Seo from "@/components/Seo";
 
