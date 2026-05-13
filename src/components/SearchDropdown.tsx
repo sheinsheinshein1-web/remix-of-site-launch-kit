@@ -443,19 +443,15 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
       ? manufacturers.filter(m => allSearchWords.some(w => m.name.toLowerCase().includes(w) || m.location.toLowerCase().includes(w))).slice(0, 3)
       : [];
 
-    const matchedArticles = allSearchWords.length > 0
-      ? articlesList.filter(a => allSearchWords.some(w => a.title.toLowerCase().includes(w))).slice(0, 2)
-      : [];
-
     return {
       suggestions,
       projects: filteredProjects,
       categories: matchedCategories,
       manufacturers: matchedManufacturers,
-      articles: matchedArticles,
+      articles: [] as { title: string; tag: string }[],
       hasFilters,
     };
-  }, [query]);
+  }, [query, city]);
 
   const hasResults = results.suggestions.length + results.projects.length + results.categories.length + results.manufacturers.length + results.articles.length > 0;
 
