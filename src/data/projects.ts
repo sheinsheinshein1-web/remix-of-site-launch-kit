@@ -151,6 +151,28 @@ import alester73_3 from "@/assets/gradodom/alester-73-3.jpg";
 import alester73_plan1 from "@/assets/gradodom/alester-73-plan1.jpg";
 import alester73_plan2 from "@/assets/gradodom/alester-73-plan2.jpg";
 
+// Загородом
+import zg_soul1 from "@/assets/zagorodom/soul-1.jpg";
+import zg_soul2 from "@/assets/zagorodom/soul-2.jpg";
+import zg_soul3 from "@/assets/zagorodom/soul-3.jpg";
+import zg_soul_plan from "@/assets/zagorodom/soul-plan.jpg";
+import zg_strong1 from "@/assets/zagorodom/strong-1.jpg";
+import zg_strong2 from "@/assets/zagorodom/strong-2.jpg";
+import zg_strong3 from "@/assets/zagorodom/strong-3.jpg";
+import zg_strong_plan from "@/assets/zagorodom/strong-plan.jpg";
+import zg_lumo1 from "@/assets/zagorodom/lumo-1.jpg";
+import zg_lumo2 from "@/assets/zagorodom/lumo-2.jpg";
+import zg_lumo3 from "@/assets/zagorodom/lumo-3.jpg";
+import zg_lumo_plan from "@/assets/zagorodom/lumo-plan.jpg";
+import zg_happy1 from "@/assets/zagorodom/happy-1.jpg";
+import zg_happy2 from "@/assets/zagorodom/happy-2.jpg";
+import zg_happy3 from "@/assets/zagorodom/happy-3.jpg";
+import zg_happy_plan from "@/assets/zagorodom/happy-plan.jpg";
+import zg_favorite1 from "@/assets/zagorodom/favorite-1.jpg";
+import zg_favorite2 from "@/assets/zagorodom/favorite-2.jpg";
+import zg_favorite3 from "@/assets/zagorodom/favorite-3.jpg";
+import zg_favorite_plan from "@/assets/zagorodom/favorite-plan.jpg";
+
 // ============================================================================
 // ТИПЫ
 // ============================================================================
