@@ -687,7 +687,7 @@ export const projects: Project[] = [
       { image: "https://static.tildacdn.com/tild3666-6430-4635-a332-323132616261/img94.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3332-3666-4436-a639-323236646135/img128.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild6266-3835-4634-b735-643464666563/_68.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3531-3162-4231-b431-306537353331/106.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3531-3162-4231-b431-306537353331/106.jpg", type: "photo", fit: "contain" },
     ],
     likes: 16, rating: 4.6,
     suitableFor: ["Для семьи", "Постоянное проживание"],
