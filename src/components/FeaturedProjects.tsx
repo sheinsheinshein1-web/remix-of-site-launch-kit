@@ -112,6 +112,7 @@ const FeaturedProjects = () => {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [seed, setSeed] = useState(0);
   const sentinelRef = useRef<HTMLDivElement>(null);
+  const didMountRef = useRef(false);
   const items = getPagedProjects(page, seed, cityProjects);
   const MAX_PAGE = 50;
   const isEmpty = cityProjects.length === 0;
@@ -134,8 +135,14 @@ const FeaturedProjects = () => {
 
   const { pull, refreshing } = usePullToRefresh({ onRefresh: handleRefresh });
 
-  // При смене города — сбрасываем страницу
+  // При реальной смене города — сбрасываем страницу.
+  // На initial mount не трогаем page: при возврате назад он уже восстановлен из ?page=N,
+  // иначе лента схлопывается до 1 страницы и мобильный браузер временно показывает футер.
   useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      return;
+    }
     setPage(1);
   }, [city]);
 
