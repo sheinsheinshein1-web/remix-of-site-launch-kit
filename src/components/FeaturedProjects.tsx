@@ -1,62 +1,24 @@
-import { Heart, Loader2, Maximize, BedDouble, Bath } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useNavigate, useNavigationType } from "react-router-dom";
-import { useFavorites } from "@/contexts/FavoritesContext";
-import SwipeableGallery from "@/components/SwipeableGallery";
+import ProjectCard from "@/components/ProjectCard";
 import ProjectCardSkeleton from "@/components/ProjectCardSkeleton";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
 import { usePullToRefresh } from "@/hooks/usePullToRefresh";
-import house1 from "@/assets/house-1.jpg";
-import house2 from "@/assets/house-2.jpg";
-import house3 from "@/assets/house-3.jpg";
-import house4 from "@/assets/house-4.jpg";
-import house5 from "@/assets/house-5.jpg";
-import house6 from "@/assets/house-6.jpg";
-import house7 from "@/assets/house-7.jpg";
-import house8 from "@/assets/house-8.jpg";
-import house9 from "@/assets/house-9.jpg";
-import {
-  projects,
-  projectGalleries,
-  projectFits,
-  projectBlurBackground,
-  projectObjectPositions,
-  projectEdgeBleed,
-} from "@/data/projects";
+import { projects } from "@/data/projects";
+
 import { useCity } from "@/components/CitySelector";
 
-const houseImages = [house1, house2, house3, house4, house5, house6, house7, house8, house9];
-
-function getProjectImages(mainImage: string, id: number): string[] {
-  if (projectGalleries[id]) return projectGalleries[id];
-  const others = houseImages.filter(img => img !== mainImage);
-  const sorted = [...others].sort((a, b) => {
-    const ha = a.charCodeAt(a.length - 5) ^ id;
-    const hb = b.charCodeAt(b.length - 5) ^ id;
-    return ha - hb;
-  });
-  return [mainImage, ...sorted.slice(0, 3)];
-}
-
 // baseProjects берётся из единого источника правды (src/data/projects.ts).
+// Здесь храним только то, что нужно для пагинации/перемешивания. Сама карточка
+// читает все остальные поля сама из projects.ts по id (см. ProjectCard).
 const baseProjects = projects.map((p) => ({
   id: p.id,
-  name: p.name,
   maker: p.maker.name,
-  area: p.area,
-  beds: p.beds,
-  baths: p.baths,
-  term: p.term,
-  price: p.price,
-  image: p.gallery[0]?.image ?? "",
-  liked: false,
-  likes: p.likes,
-  hasRealPhotos: p.hasRealPhotos,
   city: p.city,
-  rating: String(p.rating),
+  name: p.name,
+  price: p.price,
 }));
-
-// Edge-bleed берётся автоматически из projectEdgeBleed в projects.ts
 
 const PAGE_SIZE = 8;
 const SCROLL_KEY = "home_feed_scroll";
@@ -134,7 +96,7 @@ function getPagedProjects(page: number, seed: number, source: typeof baseProject
 const FeaturedProjects = () => {
   const navigate = useNavigate();
   const navigationType = useNavigationType();
-  const { isFavorite, toggleFavorite } = useFavorites();
+  
 
   const initialPage = (() => {
     if (typeof window === "undefined") return 1;
@@ -282,80 +244,7 @@ const FeaturedProjects = () => {
         )}
         <div className={`grid grid-cols-2 md:grid-cols-4 gap-x-[2px] gap-y-[6px] md:gap-4 md:mt-0 ${isEmpty ? "hidden" : ""}`}>
           {items.map(({ project, key }) => (
-            <article key={key} className="overflow-hidden">
-              <a
-                href={`/project/${project.id}`}
-                onClick={(e) => handleCardClick(e, project.id)}
-                className="block cursor-pointer"
-                aria-label={`${project.name} — от ${project.price}`}
-              >
-                <SwipeableGallery
-                  images={getProjectImages(project.image, project.id)}
-                  fits={projectFits[project.id]}
-                  objectPositions={projectObjectPositions[project.id]}
-                  blurBackground={projectBlurBackground[project.id]}
-                  edgeBleed={projectEdgeBleed[project.id]}
-                  alt={project.name}
-                  height="aspect-[3/4] h-auto md:h-[240px] md:aspect-auto"
-                >
-                  <div className="absolute top-2 right-2 z-10">
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        toggleFavorite({
-                          id: project.id,
-                          badge: "",
-                          maker: project.maker,
-                          name: project.name,
-                          price: project.price,
-                          area: project.area,
-                          beds: project.beds,
-                          baths: project.baths,
-                          term: project.term,
-                          image: project.image,
-                          likes: project.likes,
-                          city: project.city,
-                        });
-                      }}
-                      className="flex items-center gap-1 bg-foreground/40 backdrop-blur-md rounded-full px-2 py-[4px]"
-                      aria-label="В избранное"
-                    >
-                      <Heart
-                        className={`w-3.5 h-3.5 ${isFavorite(project.id) ? "fill-red-500 text-red-500" : "text-white/70"}`}
-                        strokeWidth={1.5}
-                      />
-                      <span className="text-[11px] font-medium text-white">
-                        {project.likes +
-                          (isFavorite(project.id) && !project.liked
-                            ? 1
-                            : !isFavorite(project.id) && project.liked
-                            ? -1
-                            : 0)}
-                      </span>
-                    </button>
-                  </div>
-                </SwipeableGallery>
-                <div className="px-[10px] pt-1 pb-1">
-                  <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{project.name}</h2>
-                  <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">от {project.price}</div>
-                  <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[3px]">
-                    <span className="inline-flex items-center gap-[3px]">
-                      <Maximize className="w-3 h-3" strokeWidth={1.75} />
-                      {project.area}
-                    </span>
-                    <span className="inline-flex items-center gap-[3px]">
-                      <BedDouble className="w-3 h-3" strokeWidth={1.75} />
-                      {project.beds}
-                    </span>
-                    <span className="inline-flex items-center gap-[3px]">
-                      <Bath className="w-3 h-3" strokeWidth={1.75} />
-                      {project.baths}
-                    </span>
-                  </div>
-                </div>
-              </a>
-            </article>
+            <ProjectCard key={key} projectId={project.id} onCardClick={handleCardClick} />
           ))}
           {isLoadingMore &&
             Array.from({ length: 8 }).map((_, i) => (
