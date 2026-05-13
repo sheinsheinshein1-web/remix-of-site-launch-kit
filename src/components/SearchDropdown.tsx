@@ -1,26 +1,33 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import { Search, X, Home, Factory, FileText, LayoutGrid, ArrowRight, ChevronRight, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { manufacturers as dataManufacturers, projects as dataProjects } from "@/data/projects";
 
-// Searchable data — синхронизировано с FeaturedProjects/Catalog
-const projects = [
-  { id: 32, name: "Wide House", maker: "Платформа", price: "5 480 000 ₽", area: "46,4 м²", beds: 2, baths: 1, tags: "дом одноэтажный модульный для жизни барнхаус скандинавский с террасой панорамные окна" },
-  { id: 33, name: "Barn House", maker: "Платформа", price: "1 680 000 ₽", area: "42,9 м²", beds: 1, baths: 1, tags: "дом одноэтажный модульный барнхаус скандинавский недорогой бюджетный для дачи" },
-  { id: 34, name: "Bear House 45", maker: "Платформа", price: "2 207 000 ₽", area: "41 м²", beds: 1, baths: 1, tags: "дом одноэтажный модульный мини маленький компактный для дачи скандинавский" },
-  { id: 35, name: "Bear House 77", maker: "Платформа", price: "3 894 700 ₽", area: "61,32 м²", beds: 2, baths: 1, tags: "дом одноэтажный модульный для семьи скандинавский с террасой" },
-  { id: 36, name: "Bear House 86", maker: "Платформа", price: "4 349 000 ₽", area: "68,7 м²", beds: 2, baths: 2, tags: "дом одноэтажный модульный для семьи скандинавский с террасой два санузла" },
-  { id: 40, name: "ПАТИО", maker: "Bygge", price: "2 598 000 ₽", area: "45 м²", beds: 3, baths: 1, tags: "дом одноэтажный модульный для семьи современный тёплые полы санузел вентиляция bygge патио" },
-  { id: 47, name: "La Rus 45", maker: "Glezman Group", price: "4 114 800 ₽", area: "45,72 м²", beds: 1, baths: 1, tags: "дом одноэтажный каркасный пермь la rus larus глезман для дачи компактный" },
-  { id: 48, name: "La Rus 75", maker: "Glezman Group", price: "6 750 000 ₽", area: "75 м²", beds: 2, baths: 1, tags: "дом одноэтажный каркасный пермь la rus larus глезман с террасой для семьи" },
-  { id: 49, name: "La Rus 100", maker: "Glezman Group", price: "9 360 000 ₽", area: "104 м²", beds: 2, baths: 2, tags: "дом одноэтажный каркасный пермь la rus larus глезман для семьи два санузла" },
-  { id: 50, name: "La Rus 120", maker: "Glezman Group", price: "10 800 000 ₽", area: "120 м²", beds: 2, baths: 2, tags: "дом одноэтажный каркасный пермь la rus larus глезман с террасой для семьи" },
-  { id: 51, name: "La Rus 127", maker: "Glezman Group", price: "11 430 000 ₽", area: "127 м²", beds: 3, baths: 2, tags: "дом одноэтажный каркасный пермь la rus larus глезман с террасой большой для семьи" },
-  { id: 52, name: "ДИВО START", maker: "ДивоДом", price: "1 100 000 ₽", area: "30 м²", beds: 1, baths: 1, tags: "дом одноэтажный модульный пермь диво divodom дивадом для дачи компактный с террасой бюджетный недорогой" },
-  { id: 53, name: "ДИВО 34", maker: "ДивоДом", price: "1 632 000 ₽", area: "34 м²", beds: 1, baths: 1, tags: "дом одноэтажный модульный пермь диво divodom для дачи компактный с террасой" },
-  { id: 54, name: "ДИВО 51", maker: "ДивоДом", price: "2 645 000 ₽", area: "51 м²", beds: 2, baths: 1, tags: "дом одноэтажный модульный пермь диво divodom для семьи с террасой" },
-  { id: 55, name: "ДИВО 64", maker: "ДивоДом", price: "3 195 000 ₽", area: "64 м²", beds: 2, baths: 1, tags: "дом одноэтажный модульный пермь диво divodom для семьи с террасой" },
-  { id: 56, name: "ДИВО 88", maker: "ДивоДом", price: "4 179 000 ₽", area: "88 м²", beds: 2, baths: 1, tags: "дом одноэтажный модульный пермь диво divodom для семьи большой с террасой" },
-];
+// Поиск всегда строится из единого источника правды src/data/projects.ts.
+const projects = dataProjects.map((p) => ({
+  id: p.id,
+  name: p.name,
+  maker: p.maker.name,
+  price: p.price,
+  area: p.area,
+  beds: p.beds,
+  baths: p.baths,
+  tags: [
+    p.badge,
+    p.city,
+    p.rooms,
+    p.purpose,
+    p.technology,
+    p.completion,
+    p.insulation,
+    p.style,
+    p.landSize,
+    p.description,
+    p.descriptionLong,
+    ...p.suitableFor,
+    ...p.features,
+  ].join(" "),
+}));
 
 const categories = [
   { name: "Дома", slug: "houses" },
@@ -28,12 +35,7 @@ const categories = [
   { name: "Модульные дома", slug: "modular" },
 ];
 
-const manufacturers = [
-  { name: "Платформа", location: "Екатеринбург" },
-  { name: "Bygge", location: "Екатеринбург" },
-  { name: "Glezman Group", location: "Пермский край" },
-  { name: "ДивоДом", location: "Пермский край" },
-];
+const manufacturers = dataManufacturers.map((m) => ({ name: m.name, location: m.location }));
 
 const articlesList = [
   { title: "Как выбрать модульный дом", tag: "Гайд" },
