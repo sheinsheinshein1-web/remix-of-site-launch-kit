@@ -120,7 +120,7 @@ const dictWords = (() => {
     ...projects.flatMap(p => [p.name, p.maker]),
     ...categories.map(c => c.name),
     ...manufacturers.flatMap(m => [m.name, m.location]),
-    ...articlesList.flatMap(a => [a.title]),
+    
     "модульный", "модульные", "модульного", "дом", "дома", "дому",
     "спальня", "спальни", "спальнями", "спален",
     "комната", "комнаты", "комнатный", "комнатные",
