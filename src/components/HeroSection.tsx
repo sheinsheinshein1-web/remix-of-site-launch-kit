@@ -8,8 +8,7 @@ const HeroSection = () => {
   return (
     <section className="pt-[112px] md:pt-24 md:pb-6 pb-3">
       <Helmet>
-        <link rel="preload" as="image" href={catHouses} />
-        <meta name="theme-color" content="#3B5BFE" />
+        <link rel="preload" as="image" href={catHouses} {...{ fetchpriority: "high" } as any} />
       </Helmet>
       <div className="max-w-[1400px] mx-auto">
         <div
