@@ -2,12 +2,14 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import { Search, X, Home, Factory, FileText, LayoutGrid, ArrowRight, ChevronRight, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { manufacturers as dataManufacturers, projects as dataProjects } from "@/data/projects";
+import { useCity } from "@/components/CitySelector";
 
 // Поиск всегда строится из единого источника правды src/data/projects.ts.
-const projects = dataProjects.map((p) => ({
+const allProjects = dataProjects.map((p) => ({
   id: p.id,
   name: p.name,
   maker: p.maker.name,
+  city: p.city,
   price: p.price,
   area: p.area,
   beds: p.beds,
@@ -35,11 +37,7 @@ const categories = [
   { name: "Модульные дома", slug: "modular" },
 ];
 
-const manufacturers = dataManufacturers.map((m) => ({ name: m.name, location: m.location }));
-
-const articlesList = [
-  { title: "Как выбрать модульный дом", tag: "Гайд" },
-];
+const allManufacturers = dataManufacturers.map((m) => ({ name: m.name, location: m.location }));
 
 // Quick suggestion chips shown when query has text
 const quickSuggestions: Record<string, string[]> = {
