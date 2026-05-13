@@ -430,7 +430,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
     } else {
       const words = nq.split(/\s+/).filter(w => w.length >= 1);
       const rawWords = rawQ.split(/\s+/).filter(w => w.length >= 1);
-      filteredProjects = projects.filter(p => {
+      filteredProjects = cityProjects.filter(p => {
         const haystack = (p.name + " " + p.maker + " " + (p.tags || "")).toLowerCase();
         return words.some(w => haystack.includes(w)) || rawWords.some(w => haystack.includes(w));
       }).slice(0, 4);
