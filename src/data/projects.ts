@@ -892,6 +892,31 @@ export const projectsCountByMakerId: Record<string, number> = projects.reduce((a
   return acc;
 }, {} as Record<string, number>);
 
+// Сводная информация по производителю (id → name/initials/city/siteUrl/technology),
+// автоматически собирается из массива projects. Используется на странице /partner/:id,
+// чтобы добавление нового производителя через projects.ts сразу подтягивалось всюду.
+export type MakerSummary = {
+  id: string;
+  name: string;
+  initials: string;
+  city: string;
+  siteUrl?: string;
+  technology: string;
+};
+export const makersById: Record<string, MakerSummary> = projects.reduce((acc, p) => {
+  const id = p.maker.id;
+  if (!id || acc[id]) return acc;
+  acc[id] = {
+    id,
+    name: p.maker.name,
+    initials: p.maker.initials,
+    city: p.city,
+    siteUrl: p.maker.siteUrl,
+    technology: p.technology,
+  };
+  return acc;
+}, {} as Record<string, MakerSummary>);
+
 // ============================================================================
 // ПРОИЗВОДИТЕЛИ — count рассчитывается из projects автоматически
 // ============================================================================
