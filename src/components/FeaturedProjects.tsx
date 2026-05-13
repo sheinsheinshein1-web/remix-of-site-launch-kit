@@ -171,10 +171,9 @@ const FeaturedProjects = () => {
   }, [page]);
 
   // Восстановление позиции при возврате с детальной.
-  // Проблема: на момент mount часть картинок ещё не загружена, document короче
-  // сохранённой позиции — браузер «прижимает» скролл к низу страницы (футеру).
-  // Решение: повторяем scrollTo, пока высота документа не дорастёт до нужной,
-  // либо пока не истечёт таймаут.
+  // Важно: не скроллим в maxY, пока страница короче сохранённой позиции —
+  // на мобильном это выглядит как резкий прыжок в футер и возврат обратно.
+  // Вместо этого ждём, пока высота документа дорастёт, и только затем делаем scrollTo.
   useLayoutEffect(() => {
     if (navigationType !== "POP") return;
     const saved = sessionStorage.getItem(SCROLL_KEY);
@@ -190,9 +189,14 @@ const FeaturedProjects = () => {
     const tryScroll = () => {
       if (cancelled) return;
       const maxY = document.documentElement.scrollHeight - window.innerHeight;
-      window.scrollTo(0, Math.min(targetY, Math.max(0, maxY)));
-      if (Math.abs(window.scrollY - targetY) < 2) return;
-      if (performance.now() - start > TIMEOUT) return;
+      const hasEnoughHeight = maxY >= targetY - 2;
+      const timedOut = performance.now() - start > TIMEOUT;
+
+      if (hasEnoughHeight || timedOut) {
+        window.scrollTo(0, Math.min(targetY, Math.max(0, maxY)));
+        return;
+      }
+
       requestAnimationFrame(tryScroll);
     };
     tryScroll();
