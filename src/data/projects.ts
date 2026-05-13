@@ -118,6 +118,28 @@ import larus127_1 from "@/assets/glezman/larus-127.jpg";
 import larus127_2 from "@/assets/glezman/larus-127-2.jpg";
 import larus127_3 from "@/assets/glezman/larus-127-3.png";
 
+// ГрадоДом
+import filip55_1 from "@/assets/gradodom/filip-55-1.jpg";
+import filip55_2 from "@/assets/gradodom/filip-55-2.jpg";
+import filip55_3 from "@/assets/gradodom/filip-55-3.jpg";
+import filip55_4 from "@/assets/gradodom/filip-55-4.jpg";
+import filip55_5 from "@/assets/gradodom/filip-55-5.jpg";
+import filip55_6 from "@/assets/gradodom/filip-55-6.jpg";
+import filip55_plan from "@/assets/gradodom/filip-55-plan.jpg";
+import arktur56_1 from "@/assets/gradodom/arktur-56-1.jpg";
+import arktur56_2 from "@/assets/gradodom/arktur-56-2.jpg";
+import arktur56_plan from "@/assets/gradodom/arktur-56-plan.jpg";
+import rinho60_1 from "@/assets/gradodom/rinho-60-1.jpg";
+import rinho60_2 from "@/assets/gradodom/rinho-60-2.jpg";
+import rinho60_plan from "@/assets/gradodom/rinho-60-plan.jpg";
+import almaks72_1 from "@/assets/gradodom/almaks-72-1.jpg";
+import almaks72_plan from "@/assets/gradodom/almaks-72-plan.jpg";
+import alester73_1 from "@/assets/gradodom/alester-73-1.jpg";
+import alester73_2 from "@/assets/gradodom/alester-73-2.jpg";
+import alester73_3 from "@/assets/gradodom/alester-73-3.jpg";
+import alester73_plan1 from "@/assets/gradodom/alester-73-plan1.jpg";
+import alester73_plan2 from "@/assets/gradodom/alester-73-plan2.jpg";
+
 // ============================================================================
 // ТИПЫ
 // ============================================================================
@@ -197,6 +219,12 @@ const DIVODOM: Maker = {
   initials: "ДД",
   id: "divodom",
   siteUrl: "https://www.divodom.net/",
+};
+const GRADODOM: Maker = {
+  name: "ГрадоДом",
+  initials: "ГД",
+  id: "gradodom",
+  siteUrl: "https://novostroy159.ru/",
 };
 
 // ============================================================================
