@@ -1046,7 +1046,7 @@ export const projects: Project[] = [
     gallery: [
       { image: "https://static.tildacdn.com/tild3135-6231-4235-a163-363963396361/1.webp", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3738-3232-4265-a235-333366633337/1.webp", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3939-6339-4336-b331-653065333361/1_Photo_-_4.png", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3939-6339-4336-b331-653065333361/1_Photo_-_4.webp", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3836-3239-4236-b532-393130356661/1_Photo_-_8.png", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3938-3132-4330-b062-313963646439/__2024-02-28_192654.webp", type: "photo", fit: "contain" },
     ],
