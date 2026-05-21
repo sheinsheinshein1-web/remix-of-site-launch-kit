@@ -180,6 +180,34 @@ import zg_favorite2 from "@/assets/zagorodom/favorite-2.webp";
 import zg_favorite3 from "@/assets/zagorodom/favorite-3.webp";
 import zg_favorite_plan from "@/assets/zagorodom/favorite-plan.webp";
 
+// Прайм Модуль
+import pm_barn200_1 from "@/assets/prime-modul/barnhaus-200-2-etazha/1.webp";
+import pm_barn200_2 from "@/assets/prime-modul/barnhaus-200-2-etazha/2.webp";
+import pm_barn200_3 from "@/assets/prime-modul/barnhaus-200-2-etazha/3.webp";
+import pm_barn200_4 from "@/assets/prime-modul/barnhaus-200-2-etazha/4.webp";
+import pm_barn200_5 from "@/assets/prime-modul/barnhaus-200-2-etazha/5.webp";
+import pm_barn200_6 from "@/assets/prime-modul/barnhaus-200-2-etazha/6.webp";
+import pm_barn200_plan from "@/assets/prime-modul/barnhaus-200-2-etazha/plan-1.webp";
+import pm_skandi72_1 from "@/assets/prime-modul/skandinaviya-72/1.webp";
+import pm_skandi72_2 from "@/assets/prime-modul/skandinaviya-72/2.webp";
+import pm_skandi72_3 from "@/assets/prime-modul/skandinaviya-72/3.webp";
+import pm_skandi72_4 from "@/assets/prime-modul/skandinaviya-72/4.webp";
+import pm_skandi72_plan from "@/assets/prime-modul/skandinaviya-72/plan-1.webp";
+import pm_barn42_1 from "@/assets/prime-modul/barn-42/1.webp";
+import pm_barn42_2 from "@/assets/prime-modul/barn-42/2.webp";
+import pm_barn42_3 from "@/assets/prime-modul/barn-42/3.webp";
+import pm_barn42_plan from "@/assets/prime-modul/barn-42/plan-1.webp";
+import pm_modern72_1 from "@/assets/prime-modul/modern-72/1.webp";
+import pm_modern72_2 from "@/assets/prime-modul/modern-72/2.webp";
+import pm_modern72_3 from "@/assets/prime-modul/modern-72/3.webp";
+import pm_modern72_4 from "@/assets/prime-modul/modern-72/4.webp";
+import pm_modern72_plan from "@/assets/prime-modul/modern-72/plan-1.webp";
+import pm_kantri110_1 from "@/assets/prime-modul/kantri-110/1.webp";
+import pm_kantri110_2 from "@/assets/prime-modul/kantri-110/2.webp";
+import pm_kantri110_3 from "@/assets/prime-modul/kantri-110/3.webp";
+import pm_kantri110_4 from "@/assets/prime-modul/kantri-110/4.webp";
+import pm_kantri110_plan from "@/assets/prime-modul/kantri-110/plan-1.webp";
+
 // ============================================================================
 // ТИПЫ
 // ============================================================================
@@ -277,6 +305,12 @@ const APA: Maker = {
   initials: "АА",
   id: "apa",
   siteUrl: "https://apagrupp.ru/",
+};
+const PRIME_MODUL: Maker = {
+  name: "Прайм Модуль",
+  initials: "ПМ",
+  id: "prime-modul",
+  siteUrl: "https://prime-modul.ru/",
 };
 
 // ============================================================================
@@ -649,8 +683,8 @@ export const projects: Project[] = [
     description: "ДИВО START — модульный дом 30 м² с террасой 15 м². Базовое решение для дачи и круглогодичного отдыха.",
     descriptionLong: "ДИВО START — компактный модульный дом полной заводской готовности: одна спальня, санузел 3 м², кухня-гостиная и просторная терраса 15 м². Доставляется готовым, монтаж за 1 день.",
     gallery: [
-      { image: "https://static.tildacdn.com/tild3038-6130-4639-b335-356432333939/gVQD83y4tZ4_1.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3539-6662-4333-a536-316664306533/8_1.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3038-6130-4639-b335-356432333939/gVQD83y4tZ4_1.webp", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3539-6662-4333-a536-316664306533/8_1.webp", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild6635-6461-4264-a539-643331396536/7.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3737-3336-4138-b131-383565343035/4bpngqLiS-E.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3866-3464-4335-b462-323430396366/_1.png", type: "photo", fit: "contain" },
@@ -670,10 +704,10 @@ export const projects: Project[] = [
     descriptionLong: "ДИВО 34 — модульный дом полной заводской готовности: спальня, санузел, кухня-гостиная и терраса 10 м². Привозим уже собранным, подключаем к коммуникациям.",
     gallery: [
       { image: "https://static.tildacdn.com/tild3830-3566-4163-a536-303932323339/img60.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild6562-6438-4665-a131-383634363531/img94.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild6562-6438-4665-a131-383634363531/img94.webp", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3265-3565-4632-a330-653139346562/img128.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3237-3638-4562-a533-393732316435/_648.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3961-6632-4134-a135-643734346232/85.jpg", type: "photo", fit: "contain" },
+      { image: "https://static.tildacdn.com/tild3961-6632-4134-a135-643734346232/85.webp", type: "photo", fit: "contain" },
     ],
     likes: 14, rating: 4.6,
     suitableFor: ["Для одного / пары", "Выходные / дача"],
@@ -690,10 +724,10 @@ export const projects: Project[] = [
     descriptionLong: "ДИВО 51 — модульный дом полной заводской готовности: две спальни, санузел, кухня-гостиная и терраса 12 м². Утепление до −30°C, готов к круглогодичному проживанию.",
     gallery: [
       { image: "https://static.tildacdn.com/tild3034-6233-4436-b231-306461376131/img60.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3666-6430-4635-a332-323132616261/img94.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3666-6430-4635-a332-323132616261/img94.webp", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3332-3666-4436-a639-323236646135/img128.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild6266-3835-4634-b735-643464666563/_68.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3531-3162-4231-b431-306537353331/106.jpg", type: "photo", fit: "contain" },
+      { image: "https://static.tildacdn.com/tild3531-3162-4231-b431-306537353331/106.webp", type: "photo", fit: "contain" },
     ],
     likes: 16, rating: 4.6,
     suitableFor: ["Для семьи", "Постоянное проживание"],
@@ -711,9 +745,9 @@ export const projects: Project[] = [
     gallery: [
       { image: "https://static.tildacdn.com/tild3064-3734-4630-a661-393462666562/1_1-min.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3132-6631-4563-b935-656162376236/2-min.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3131-3035-4839-b435-396336366265/img94.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3131-3035-4839-b435-396336366265/img94.webp", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3334-6564-4062-b363-653161376234/_728.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3565-3535-4763-a639-623264633635/892.jpg", type: "photo", fit: "contain" },
+      { image: "https://static.tildacdn.com/tild3565-3535-4763-a639-623264633635/892.webp", type: "photo", fit: "contain" },
     ],
     likes: 18, rating: 4.7,
     suitableFor: ["Для семьи", "Постоянное проживание"],
@@ -732,7 +766,7 @@ export const projects: Project[] = [
       { image: "https://static.tildacdn.com/tild3261-3638-4564-a137-326666303230/1_2-min.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild6165-3365-4335-b534-373731333031/2_1-min.jpg", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild6130-3235-4164-a461-636133623232/4_1-min.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild6364-3266-4232-b534-336633613738/_7211.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild6364-3266-4232-b534-336633613738/_7211.webp", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild6162-6233-4830-b039-383632356165/119.png", type: "photo", fit: "contain" },
     ],
     likes: 20, rating: 4.7,
@@ -932,11 +966,11 @@ export const projects: Project[] = [
     description: "Одноэтажный каркасный дом 8,6 × 14 м с террасой. 4 комнаты, 2 санузла.",
     descriptionLong: "Небольшой одноэтажный каркасный дом площадью 68 м² (габариты 8,6 × 14 м) с террасой. Планировка на 4 комнаты и 2 санузла. Срок строительства — от 3 месяцев.",
     gallery: [
-      { image: "https://static.tildacdn.com/tild3365-6634-4439-a639-623133343865/1.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3464-6538-4832-a630-393062333462/1.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3266-3636-4434-b739-303235323264/2.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild6364-3830-4965-b831-303363306332/3.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3866-3435-4565-a666-326366313233/__2024-02-28_115521.jpg", type: "photo", fit: "contain" },
+      { image: "https://static.tildacdn.com/tild3365-6634-4439-a639-623133343865/1.webp", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3464-6538-4832-a630-393062333462/1.webp", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3266-3636-4434-b739-303235323264/2.webp", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild6364-3830-4965-b831-303363306332/3.webp", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3866-3435-4565-a666-326366313233/__2024-02-28_115521.webp", type: "photo", fit: "contain" },
     ],
     likes: 18, rating: 4.7,
     suitableFor: ["Постоянное проживание", "Для семьи"],
@@ -951,11 +985,11 @@ export const projects: Project[] = [
     description: "Одноэтажный каркасный дом 9,5 × 9,5 м. 4 комнаты, 2 санузла.",
     descriptionLong: "Одноэтажный каркасный дом площадью 82 м² (габариты 9,5 × 9,5 м) с планировкой на 4 комнаты и 2 санузла. Срок строительства — от 3 месяцев.",
     gallery: [
-      { image: "https://static.tildacdn.com/tild6438-3462-4539-b339-663030393834/1.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild6536-3634-4931-b235-396432646136/3.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild6233-6338-4562-a332-393761333934/1.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3530-6134-4364-b736-356266633866/4.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3636-3264-4532-b566-303264643239/2.jpg", type: "photo", fit: "contain" },
+      { image: "https://static.tildacdn.com/tild6438-3462-4539-b339-663030393834/1.webp", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild6536-3634-4931-b235-396432646136/3.webp", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild6233-6338-4562-a332-393761333934/1.webp", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3530-6134-4364-b736-356266633866/4.webp", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3636-3264-4532-b566-303264643239/2.webp", type: "photo", fit: "contain" },
     ],
     likes: 15, rating: 4.7,
     suitableFor: ["Постоянное проживание", "Для семьи"],
@@ -970,12 +1004,12 @@ export const projects: Project[] = [
     description: "Одноэтажный каркасный дом 13 × 8,8 м. 3 просторные комнаты.",
     descriptionLong: "Одноэтажный каркасный дом площадью 90 м² (габариты 13 × 8,8 м) с тремя просторными комнатами и санузлом. Срок строительства — от 3 месяцев.",
     gallery: [
-      { image: "https://static.tildacdn.com/tild6631-3731-4762-b562-303338333864/1.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild6139-3863-4839-b063-393564353935/4.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3934-3038-4238-a639-316336306436/1.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3163-3833-4335-b538-666465356663/2.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3962-6432-4431-b364-636364313338/3.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3463-3736-4635-a266-643565313633/__2023-09-19_124333.jpg", type: "photo", fit: "contain" },
+      { image: "https://static.tildacdn.com/tild6631-3731-4762-b562-303338333864/1.webp", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild6139-3863-4839-b063-393564353935/4.webp", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3934-3038-4238-a639-316336306436/1.webp", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3163-3833-4335-b538-666465356663/2.webp", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3962-6432-4431-b364-636364313338/3.webp", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3463-3736-4635-a266-643565313633/__2023-09-19_124333.webp", type: "photo", fit: "contain" },
     ],
     likes: 22, rating: 4.7,
     suitableFor: ["Постоянное проживание", "Для семьи"],
@@ -991,11 +1025,11 @@ export const projects: Project[] = [
     descriptionLong: "Двухэтажный каркасный дом площадью 94 м² (габариты 7,5 × 7,5 м) с балконом. Планировка на 5 комнат и 2 санузла. Срок строительства — от 3 месяцев.",
     gallery: [
       { image: "https://static.tildacdn.com/tild3031-6262-4139-b436-613738643163/__2023-08-29_172430.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3061-3432-4333-b432-366533346130/__2023-08-29_172416.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3061-3432-4333-b432-366533346130/__2023-08-29_172416.webp", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3935-6138-4862-a263-393863646166/__2023-08-29_172430.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3832-6534-4435-a239-326531326165/__2023-08-29_172403.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3132-3564-4236-b766-366261326562/__2023-08-29_171732.jpg", type: "photo", fit: "contain" },
-      { image: "https://static.tildacdn.com/tild6234-3135-4533-b433-613838316538/__2023-08-29_171743.jpg", type: "photo", fit: "contain" },
+      { image: "https://static.tildacdn.com/tild3832-6534-4435-a239-326531326165/__2023-08-29_172403.webp", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3132-3564-4236-b766-366261326562/__2023-08-29_171732.webp", type: "photo", fit: "contain" },
+      { image: "https://static.tildacdn.com/tild6234-3135-4533-b433-613838316538/__2023-08-29_171743.webp", type: "photo", fit: "contain" },
     ],
     likes: 27, rating: 4.8,
     suitableFor: ["Постоянное проживание", "Для семьи"],
@@ -1010,16 +1044,114 @@ export const projects: Project[] = [
     description: "Одноэтажный каркасный дом 8,6 × 14 м в стиле хай-тек. 4 комнаты, 2 санузла.",
     descriptionLong: "Современный одноэтажный каркасный дом площадью 106 м² (габариты 8,6 × 14 м) в стиле хай-тек. Планировка на 4 комнаты и 2 санузла. Срок строительства — от 3 месяцев.",
     gallery: [
-      { image: "https://static.tildacdn.com/tild3135-6231-4235-a163-363963396361/1.jpg", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3738-3232-4265-a235-333366633337/1.jpg", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3135-6231-4235-a163-363963396361/1.webp", type: "photo", fit: "contain", blur: true },
+      { image: "https://static.tildacdn.com/tild3738-3232-4265-a235-333366633337/1.webp", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3939-6339-4336-b331-653065333361/1_Photo_-_4.png", type: "photo", fit: "contain", blur: true },
       { image: "https://static.tildacdn.com/tild3836-3239-4236-b532-393130356661/1_Photo_-_8.png", type: "photo", fit: "contain", blur: true },
-      { image: "https://static.tildacdn.com/tild3938-3132-4330-b062-313963646439/__2024-02-28_192654.jpg", type: "photo", fit: "contain" },
+      { image: "https://static.tildacdn.com/tild3938-3132-4330-b062-313963646439/__2024-02-28_192654.webp", type: "photo", fit: "contain" },
     ],
     likes: 31, rating: 4.8,
     suitableFor: ["Постоянное проживание", "Для семьи"],
     technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
     features: ["Хай-тек"], style: "Хай-тек", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── Прайм Модуль · Пермский край ────────────────────────────────────────────
+  {
+    id: 72, name: "Барнхаус-200", badge: "Барнхаус", price: "от 6 699 000 ₽",
+    area: "200 м²", area_m2: 200, beds: 5, baths: 2, floors: 2, term: "от 1 мес.",
+    rooms: "5 спален", purpose: "ИЖС / СНТ", city: "Пермский край", maker: PRIME_MODUL,
+    description: "Двухэтажный барнхаус 200 м² с мастер-спальней, сауной и крытой террасой 127 м².",
+    descriptionLong: "Двухэтажный барнхаус площадью 200 м² на 5 спален и 2 санузла. Кухня-гостиная со вторым светом 34,8 м², мастер-спальня с собственным санузлом, сауна и просторная крытая терраса 127 м².",
+    gallery: [
+      { image: pm_barn200_1, type: "photo", fit: "contain", blur: true },
+      { image: pm_barn200_2, type: "photo", fit: "contain", blur: true },
+      { image: pm_barn200_3, type: "photo", fit: "contain", blur: true },
+      { image: pm_barn200_4, type: "photo", fit: "contain", blur: true },
+      { image: pm_barn200_5, type: "photo", fit: "contain", blur: true },
+      { image: pm_barn200_6, type: "photo", fit: "contain", blur: true },
+      { image: pm_barn200_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 32, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Сауна", "Второй свет"], style: "Барнхаус", landSize: "10+ соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 73, name: "Скандинавия-72", badge: "Жилой дом", price: "от 3 200 000 ₽",
+    area: "72 м²", area_m2: 72, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край", maker: PRIME_MODUL,
+    description: "Одноэтажный каркасный дом 72 м² в скандинавском стиле для семьи из 2–4 человек.",
+    descriptionLong: "Каркасный дом площадью 72 м² в скандинавском стиле. Планировка: кухня-гостиная 23,37 м², две просторные спальни по 9,8 м², санузел и терраса 12 м². Утепление базальтовой ватой, водяной тёплый пол, двухкамерные стеклопакеты.",
+    gallery: [
+      { image: pm_skandi72_1, type: "photo", fit: "contain", blur: true },
+      { image: pm_skandi72_2, type: "photo", fit: "contain", blur: true },
+      { image: pm_skandi72_3, type: "photo", fit: "contain", blur: true },
+      { image: pm_skandi72_4, type: "photo", fit: "contain", blur: true },
+      { image: pm_skandi72_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 24, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Тёплые полы"], style: "Скандинавский", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 74, name: "Барн-42", badge: "Барнхаус", price: "от 1 999 000 ₽",
+    area: "42 м²", area_m2: 42, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Пермский край", maker: PRIME_MODUL,
+    description: "Компактный каркасный барнхаус 42 м² для семьи из 2–3 человек.",
+    descriptionLong: "Каркасный барнхаус площадью 42 м² для семьи из 2–3 человек. Фундамент на винтовых сваях, утепление базальтовой ватой (пол/потолок 200 мм, стены 150 мм) с плёнками ONDUTISS, кровля из профнастила, двухкамерные стеклопакеты с немецкой фурнитурой, наружная отделка имитацией бруса с защитной пропиткой «Сканди».",
+    gallery: [
+      { image: pm_barn42_1, type: "photo", fit: "contain", blur: true },
+      { image: pm_barn42_2, type: "photo", fit: "contain", blur: true },
+      { image: pm_barn42_3, type: "photo", fit: "contain", blur: true },
+      { image: pm_barn42_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 18, rating: 4.6,
+    suitableFor: ["Для одного / пары", "Выходные / дача"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Тёплые полы"], style: "Барнхаус", landSize: "3–6 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 75, name: "Модерн-72", badge: "Жилой дом", price: "от 3 200 000 ₽",
+    area: "72 м²", area_m2: 72, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край", maker: PRIME_MODUL,
+    description: "Каркасный дом 72 м² в современном стиле для семьи из 2–5 человек.",
+    descriptionLong: "Каркасный дом площадью 72 м² в современном стиле. Планировка: кухня-гостиная 16,8 м², две спальни по 10 м², санузел и терраса 16 м². Винтовой фундамент, утепление до −30°C, водяной тёплый пол, двухкамерные стеклопакеты.",
+    gallery: [
+      { image: pm_modern72_1, type: "photo", fit: "contain", blur: true },
+      { image: pm_modern72_2, type: "photo", fit: "contain", blur: true },
+      { image: pm_modern72_3, type: "photo", fit: "contain", blur: true },
+      { image: pm_modern72_4, type: "photo", fit: "contain", blur: true },
+      { image: pm_modern72_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 22, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Тёплые полы"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 76, name: "Кантри-110", badge: "Жилой дом", price: "от 4 200 000 ₽",
+    area: "110 м²", area_m2: 110, beds: 3, baths: 2, floors: 1, term: "от 1 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Пермский край", maker: PRIME_MODUL,
+    description: "Каркасный дом 110 м² с мастер-спальней, гардеробной и террасой для семьи из 3–6 человек.",
+    descriptionLong: "Каркасный дом площадью 110 м² для семьи из 3–6 человек. Планировка: кухня-гостиная 22,29 м², мастер-спальня с собственным санузлом, две просторные комнаты, основной санузел, гардеробная, прихожая и большая терраса 2×7 м. Утепление базальтовой ватой с плёнками ONDUTISS, металлочерепица, водяной тёплый пол.",
+    gallery: [
+      { image: pm_kantri110_1, type: "photo", fit: "contain", blur: true },
+      { image: pm_kantri110_2, type: "photo", fit: "contain", blur: true },
+      { image: pm_kantri110_3, type: "photo", fit: "contain", blur: true },
+      { image: pm_kantri110_4, type: "photo", fit: "contain", blur: true },
+      { image: pm_kantri110_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 28, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Гардеробная", "Тёплые полы"], style: "Кантри", landSize: "6–10 соток",
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
 ];
