@@ -180,6 +180,34 @@ import zg_favorite2 from "@/assets/zagorodom/favorite-2.webp";
 import zg_favorite3 from "@/assets/zagorodom/favorite-3.webp";
 import zg_favorite_plan from "@/assets/zagorodom/favorite-plan.webp";
 
+// Прайм Модуль
+import pm_barn200_1 from "@/assets/prime-modul/barnhaus-200-2-etazha/1.webp";
+import pm_barn200_2 from "@/assets/prime-modul/barnhaus-200-2-etazha/2.webp";
+import pm_barn200_3 from "@/assets/prime-modul/barnhaus-200-2-etazha/3.webp";
+import pm_barn200_4 from "@/assets/prime-modul/barnhaus-200-2-etazha/4.webp";
+import pm_barn200_5 from "@/assets/prime-modul/barnhaus-200-2-etazha/5.webp";
+import pm_barn200_6 from "@/assets/prime-modul/barnhaus-200-2-etazha/6.webp";
+import pm_barn200_plan from "@/assets/prime-modul/barnhaus-200-2-etazha/plan-1.webp";
+import pm_skandi72_1 from "@/assets/prime-modul/skandinaviya-72/1.webp";
+import pm_skandi72_2 from "@/assets/prime-modul/skandinaviya-72/2.webp";
+import pm_skandi72_3 from "@/assets/prime-modul/skandinaviya-72/3.webp";
+import pm_skandi72_4 from "@/assets/prime-modul/skandinaviya-72/4.webp";
+import pm_skandi72_plan from "@/assets/prime-modul/skandinaviya-72/plan-1.webp";
+import pm_barn42_1 from "@/assets/prime-modul/barn-42/1.webp";
+import pm_barn42_2 from "@/assets/prime-modul/barn-42/2.webp";
+import pm_barn42_3 from "@/assets/prime-modul/barn-42/3.webp";
+import pm_barn42_plan from "@/assets/prime-modul/barn-42/plan-1.webp";
+import pm_modern72_1 from "@/assets/prime-modul/modern-72/1.webp";
+import pm_modern72_2 from "@/assets/prime-modul/modern-72/2.webp";
+import pm_modern72_3 from "@/assets/prime-modul/modern-72/3.webp";
+import pm_modern72_4 from "@/assets/prime-modul/modern-72/4.webp";
+import pm_modern72_plan from "@/assets/prime-modul/modern-72/plan-1.webp";
+import pm_kantri110_1 from "@/assets/prime-modul/kantri-110/1.webp";
+import pm_kantri110_2 from "@/assets/prime-modul/kantri-110/2.webp";
+import pm_kantri110_3 from "@/assets/prime-modul/kantri-110/3.webp";
+import pm_kantri110_4 from "@/assets/prime-modul/kantri-110/4.webp";
+import pm_kantri110_plan from "@/assets/prime-modul/kantri-110/plan-1.webp";
+
 // ============================================================================
 // ТИПЫ
 // ============================================================================
@@ -277,6 +305,12 @@ const APA: Maker = {
   initials: "АА",
   id: "apa",
   siteUrl: "https://apagrupp.ru/",
+};
+const PRIME_MODUL: Maker = {
+  name: "Прайм Модуль",
+  initials: "ПМ",
+  id: "prime-modul",
+  siteUrl: "https://prime-modul.ru/",
 };
 
 // ============================================================================
