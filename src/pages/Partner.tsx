@@ -271,9 +271,9 @@ const Partner = () => {
         {isPlatforma && makerProjects.length > 0 && (
           <div className="px-3 mt-3">
             <div
-              className="rounded-2xl pt-5 pb-5 border border-background/15"
+              className="rounded-2xl pt-5 pb-5"
               style={{
-                background: "transparent",
+                background: "hsl(0, 0%, 100% / 0.10)",
                 backdropFilter: "blur(28px) saturate(140%)",
                 WebkitBackdropFilter: "blur(28px) saturate(140%)",
               }}
