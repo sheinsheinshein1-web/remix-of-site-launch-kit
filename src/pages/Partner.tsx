@@ -208,11 +208,16 @@ const Partner = () => {
         <h1 className="text-background leading-[1.05] tracking-tight font-bold uppercase text-[clamp(32px,9vw,52px)]">
           {partner.name}
         </h1>
-        <div className="mt-3 inline-flex items-center gap-1.5 text-[14px] text-background/90">
+        <button
+          type="button"
+          onClick={() => navigate(`/partner/${id}/reviews`)}
+          className="mt-3 inline-flex items-center gap-1.5 text-[13px] text-background px-3 py-1.5 rounded-xl bg-white/15 backdrop-blur-md active:bg-white/25 transition-colors"
+          aria-label="Открыть отзывы"
+        >
           <span className="font-semibold">{rating.toFixed(1)}</span>
           <Star className="w-3.5 h-3.5 fill-background text-background" strokeWidth={0} />
-          <span className="text-background/70">({reviewsLabel})</span>
-        </div>
+          <span className="text-background/75">({reviewsLabel})</span>
+        </button>
         <div className="mt-1.5 text-[12px] text-background/70 inline-flex items-center justify-center gap-1.5 w-full">
           <MapPin className="w-3 h-3" strokeWidth={1.8} />
           {partner.city}
