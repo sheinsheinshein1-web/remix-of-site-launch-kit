@@ -127,10 +127,10 @@ const Partner = () => {
         )}
       </div>
 
-      {/* Затемнение снизу для читаемости текста без отдельной границы */}
+      {/* Затемнение снизу — у самого низа совпадает с тоном фона страницы, чтобы шва не было */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "linear-gradient(to top, hsl(var(--foreground) / 0.58) 0%, hsl(var(--foreground) / 0.30) 32%, transparent 62%)" }}
+        style={{ background: "linear-gradient(to top, hsl(var(--foreground) / 0.30) 0%, hsl(var(--foreground) / 0.30) 18%, hsl(var(--foreground) / 0.48) 38%, transparent 70%)" }}
       />
 
 
