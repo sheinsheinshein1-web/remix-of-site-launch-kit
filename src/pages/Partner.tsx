@@ -484,7 +484,7 @@ const Partner = () => {
           <div className="h-full overflow-y-auto pb-10">
             {/* Floating close button (right) */}
             <div className="sticky top-0 z-10 px-3 pt-3 pb-3 flex items-center justify-end"
-              style={{ background: "linear-gradient(to bottom, hsl(0 0% 8% / 0.95), hsl(0 0% 8% / 0))" }}>
+              style={{ background: "linear-gradient(to bottom, hsl(0 0% 8% / 0.55), hsl(0 0% 8% / 0))" }}>
               <button
                 onClick={() => setMenuOpen(false)}
                 className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center"
