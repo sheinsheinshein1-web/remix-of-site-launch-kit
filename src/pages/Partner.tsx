@@ -117,17 +117,31 @@ const Partner = () => {
         )}
       </div>
 
-      {/* Размытая плашка снизу 1/3 с брендом и рейтингом */}
+      {/* Плавный градиентный блюр снизу — стопка слоёв с маской */}
       {heroImage && (
-        <div
-          className="absolute inset-x-0 bottom-0 h-1/3 overflow-hidden"
-          style={{
-            backdropFilter: "blur(22px)",
-            WebkitBackdropFilter: "blur(22px)",
-            background: "linear-gradient(to bottom, hsl(var(--foreground) / 0.05), hsl(var(--foreground) / 0.35))",
-          }}
-        />
+        <div className="absolute inset-x-0 bottom-0 h-[45%] pointer-events-none">
+          {[2, 6, 14, 28].map((b, i) => {
+            const start = i * 25; // 0, 25, 50, 75
+            return (
+              <div
+                key={b}
+                className="absolute inset-0"
+                style={{
+                  backdropFilter: `blur(${b}px)`,
+                  WebkitBackdropFilter: `blur(${b}px)`,
+                  maskImage: `linear-gradient(to bottom, transparent 0%, black ${start}%, black 100%)`,
+                  WebkitMaskImage: `linear-gradient(to bottom, transparent 0%, black ${start}%, black 100%)`,
+                }}
+              />
+            );
+          })}
+          <div
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(to bottom, transparent 0%, hsl(var(--foreground) / 0.35) 100%)" }}
+          />
+        </div>
       )}
+
 
       {/* Top row: back + follow + share */}
       <div className="relative flex items-center justify-between px-3 md:px-8 pt-[max(env(safe-area-inset-top),12px)]">
