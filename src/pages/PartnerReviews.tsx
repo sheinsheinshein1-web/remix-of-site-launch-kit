@@ -76,8 +76,42 @@ const PartnerReviews = () => {
     return reviews.reduce((s, r) => s + r.stars, 0) / reviews.length;
   }, [reviews]);
 
-  const [sortLabel] = useState("Сначала новые");
-  const [ratingLabel] = useState("Все оценки");
+  const sortOptions = [
+    { value: "new", label: "Сначала новые" },
+    { value: "old", label: "Сначала старые" },
+    { value: "high", label: "С высоким рейтингом" },
+    { value: "low", label: "С низким рейтингом" },
+  ] as const;
+  const ratingOptions = [
+    { value: 0, label: "Все оценки" },
+    { value: 5, label: "Только 5 звёзд" },
+    { value: 4, label: "Только 4 звезды" },
+    { value: 3, label: "Только 3 звезды" },
+    { value: 2, label: "Только 2 звезды" },
+    { value: 1, label: "Только 1 звезда" },
+  ] as const;
+
+  const [sortKey, setSortKey] = useState<"new" | "old" | "high" | "low">("new");
+  const [ratingFilter, setRatingFilter] = useState<number>(0);
+  const [sortOpen, setSortOpen] = useState(false);
+  const [ratingOpen, setRatingOpen] = useState(false);
+
+  const sortLabel = sortOptions.find((o) => o.value === sortKey)?.label ?? "Сначала новые";
+  const ratingLabel = ratingOptions.find((o) => o.value === ratingFilter)?.label ?? "Все оценки";
+
+  const displayedReviews = useMemo(() => {
+    const withIndex = reviews.map((r, i) => ({ r, i }));
+    const filtered = ratingFilter === 0 ? withIndex : withIndex.filter(({ r }) => r.stars === ratingFilter);
+    const sorted = [...filtered].sort((a, b) => {
+      switch (sortKey) {
+        case "new": return a.i - b.i;
+        case "old": return b.i - a.i;
+        case "high": return b.r.stars - a.r.stars || a.i - b.i;
+        case "low": return a.r.stars - b.r.stars || a.i - b.i;
+      }
+    });
+    return sorted.map(({ r }) => r);
+  }, [reviews, sortKey, ratingFilter]);
 
   const handleBack = () => {
     if (window.history.length > 1) navigate(-1);
