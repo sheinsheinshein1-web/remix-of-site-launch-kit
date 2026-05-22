@@ -275,23 +275,26 @@ const Partner = () => {
         >
           <div className="px-3 pt-[max(env(safe-area-inset-top),10px)] pb-2">
             <div
-              className="flex items-center justify-between gap-3 rounded-2xl pl-2 pr-2 py-2 border border-white/40"
+              className="flex items-center justify-between gap-2 rounded-2xl pl-2 pr-2 py-2 border border-white/10"
               style={{
-                background: "hsl(0 0% 100% / 0.7)",
+                background: "hsl(0 0% 0% / 0.45)",
                 backdropFilter: "blur(18px) saturate(140%)",
                 WebkitBackdropFilter: "blur(18px) saturate(140%)",
-                boxShadow: "0 10px 30px -14px hsl(0 0% 0% / 0.25)",
+                boxShadow: "0 10px 30px -14px hsl(0 0% 0% / 0.35)",
               }}
             >
-              <button onClick={handleBack} className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center shrink-0">
-                <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
+              <button onClick={handleBack} className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center shrink-0" aria-label="Назад">
+                <ArrowLeft className="w-[18px] h-[18px] text-white" strokeWidth={1.8} />
               </button>
-              <div className="flex-1 min-w-0">
-                <div className="text-[15px] font-semibold text-foreground truncate leading-tight">{partner.name}</div>
-                <div className="text-[12px] text-muted-foreground truncate">{partner.category} · {partner.city}</div>
+              <div className="flex-1 min-w-0 px-1">
+                <div className="text-[15px] font-semibold text-white truncate leading-tight">{partner.name}</div>
+                <div className="text-[12px] text-white/70 truncate">{partner.category} · {partner.city}</div>
               </div>
-              <button onClick={onShare} className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center shrink-0" aria-label="Поделиться">
-                <img src={shareIcon} alt="" className="w-[18px] h-[18px]" loading="lazy" decoding="async" />
+              <button onClick={onShare} className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center shrink-0" aria-label="Поделиться">
+                <img src={shareIcon} alt="" className="w-[18px] h-[18px]" style={{ filter: "brightness(0) invert(1)" }} loading="lazy" decoding="async" />
+              </button>
+              <button className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center shrink-0" aria-label="Меню">
+                <Menu className="w-[18px] h-[18px] text-white" strokeWidth={1.8} />
               </button>
             </div>
           </div>
