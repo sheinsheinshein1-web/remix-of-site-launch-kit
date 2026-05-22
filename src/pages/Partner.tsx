@@ -400,16 +400,6 @@ const Partner = () => {
           </div>
         )}
 
-        {/* Бенто: "О компании" */}
-        <div className="px-3 mt-3">
-          <div className="bg-background rounded-2xl p-4">
-            <h2 className="text-[20px] font-bold text-foreground tracking-tight">О компании</h2>
-            <p className="mt-2 text-[14px] text-foreground/85 leading-relaxed">{partner.about}</p>
-            <p className="mt-3 text-[12px] text-muted-foreground/80 leading-relaxed">
-              Все проекты и торговые знаки принадлежат компании {partner.name}. Информация собрана из открытых источников и приведена в ознакомительных целях.
-            </p>
-          </div>
-        </div>
 
       </div>
 
