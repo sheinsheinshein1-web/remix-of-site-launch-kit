@@ -273,9 +273,20 @@ const PartnerReviews = () => {
               </p>
 
               <div className="mt-3 flex items-center justify-between">
-                <button className="flex items-center gap-1.5 text-[13px] text-white/70">
-                  <ThumbsUp className="w-4 h-4" strokeWidth={1.8} />
-                  Полезно
+                <button
+                  type="button"
+                  onClick={() => toggleHelpful(idx)}
+                  aria-pressed={!!helpful[idx]}
+                  className={`flex items-center gap-1.5 text-[13px] transition-colors ${
+                    helpful[idx] ? "text-white" : "text-white/70"
+                  }`}
+                >
+                  <ThumbsUp
+                    className="w-4 h-4"
+                    strokeWidth={1.8}
+                    fill={helpful[idx] ? "currentColor" : "none"}
+                  />
+                  Полезно{helpful[idx] ? " · 1" : ""}
                 </button>
                 <a
                   href={summary?.siteUrl ?? "#"}
