@@ -117,30 +117,33 @@ const Partner = () => {
         )}
       </div>
 
-      {/* Плавный градиентный блюр снизу — стопка слоёв с маской */}
+      {/* Плавный градиентный блюр снизу — стопка слоёв с плавными масками */}
       {heroImage && (
-        <div className="absolute inset-x-0 bottom-0 h-[45%] pointer-events-none">
-          {[2, 6, 14, 28].map((b, i) => {
-            const start = i * 25; // 0, 25, 50, 75
-            return (
-              <div
-                key={b}
-                className="absolute inset-0"
-                style={{
-                  backdropFilter: `blur(${b}px)`,
-                  WebkitBackdropFilter: `blur(${b}px)`,
-                  maskImage: `linear-gradient(to bottom, transparent 0%, black ${start}%, black 100%)`,
-                  WebkitMaskImage: `linear-gradient(to bottom, transparent 0%, black ${start}%, black 100%)`,
-                }}
-              />
-            );
-          })}
+        <div className="absolute inset-x-0 bottom-0 h-[55%] pointer-events-none">
+          {[
+            { b: 2, from: 0, to: 20 },
+            { b: 6, from: 15, to: 40 },
+            { b: 14, from: 35, to: 60 },
+            { b: 28, from: 55, to: 80 },
+          ].map(({ b, from, to }) => (
+            <div
+              key={b}
+              className="absolute inset-0"
+              style={{
+                backdropFilter: `blur(${b}px)`,
+                WebkitBackdropFilter: `blur(${b}px)`,
+                maskImage: `linear-gradient(to bottom, transparent ${from}%, black ${to}%)`,
+                WebkitMaskImage: `linear-gradient(to bottom, transparent ${from}%, black ${to}%)`,
+              }}
+            />
+          ))}
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to bottom, transparent 0%, hsl(var(--foreground) / 0.35) 100%)" }}
+            style={{ background: "linear-gradient(to bottom, transparent 30%, hsl(var(--foreground) / 0.4) 100%)" }}
           />
         </div>
       )}
+
 
 
       {/* Top row: back + follow + share */}
