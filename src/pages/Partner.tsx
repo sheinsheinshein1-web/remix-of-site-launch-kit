@@ -510,6 +510,57 @@ const Partner = () => {
                 </div>
               </div>
 
+              {/* Reviews */}
+              <section className="rounded-2xl p-5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-[22px] font-bold">Отзывы</h3>
+                  <button className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center" aria-label="Все отзывы">
+                    <ArrowUpRight className="w-4 h-4 text-white" strokeWidth={1.8} />
+                  </button>
+                </div>
+                <div className="flex items-end justify-between mb-3">
+                  <div>
+                    <div className="text-[36px] font-bold leading-none">{rating.toFixed(1)}</div>
+                    <div className="text-[12px] text-white/70 mt-1">{reviewsLabel}</div>
+                  </div>
+                  <div className="flex items-center gap-0.5">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <Star
+                        key={i}
+                        className={`w-4 h-4 ${i <= Math.round(rating) ? "fill-white text-white" : "fill-white/20 text-white/20"}`}
+                        strokeWidth={0}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div className="rounded-xl p-4" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
+                  <div className="text-[14px] font-semibold mb-1">Отличное качество</div>
+                  <div className="text-[13px] text-white/75 leading-snug line-clamp-3">
+                    Дом собрали быстро, всё аккуратно. Команда на связи, материалы качественные — рекомендую.
+                  </div>
+                  <div className="flex items-center gap-1 mt-2">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <Star key={i} className="w-3 h-3 fill-white text-white" strokeWidth={0} />
+                    ))}
+                  </div>
+                  <div className="text-[11px] text-white/55 mt-2">Алексей · 2 нед. назад</div>
+                </div>
+              </section>
+
+              {/* Locations */}
+              <section className="rounded-2xl p-5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
+                <h3 className="text-[22px] font-bold mb-3">Производство</h3>
+                <div className="rounded-xl p-4 flex items-center justify-between gap-3" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
+                  <div className="min-w-0">
+                    <div className="text-[14px] font-semibold truncate">{partner.name}</div>
+                    <div className="text-[13px] text-white/70 mt-1">{partner.city}</div>
+                  </div>
+                  <div className="w-14 h-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                    <MapPin className="w-5 h-5 text-white" strokeWidth={1.8} />
+                  </div>
+                </div>
+              </section>
+
               {/* Policies */}
               <section className="rounded-2xl p-5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
                 <h3 className="text-[22px] font-bold mb-2">Документы</h3>
