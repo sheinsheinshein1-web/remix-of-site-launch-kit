@@ -218,7 +218,7 @@ const Partner = () => {
         </h1>
         <button
           type="button"
-          onClick={() => navigate(`/partner/${id}/reviews`)}
+          onClick={() => navigate(`/partner/${id}/reviews`, { state: { returnToMenu: true } })}
           className="mt-3 inline-flex items-center gap-1.5 text-[13px] text-background px-3 py-1.5 rounded-xl bg-white/15 backdrop-blur-md active:bg-white/25 transition-colors"
           aria-label="Открыть отзывы"
         >
