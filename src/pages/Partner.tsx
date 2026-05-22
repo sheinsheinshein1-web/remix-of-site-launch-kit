@@ -164,7 +164,11 @@ const Partner = () => {
     }
   }, [location.pathname, location.state, navigate]);
 
-  const isPlatforma = makerId === "platforma";
+  // Платформа-специфичный вид (бенто «Популярные», «Хиты продаж» и т.д.)
+  // временно перенесён в /lab/partner/platforma (PartnerLab.tsx). На основном
+  // сайте Платформа отображается стандартным шаблоном, как остальные подрядчики.
+  const isPlatforma = false;
+
 
   const HeroPlatforma = () => (
     <div className="relative overflow-hidden md:rounded-2xl min-h-[62vh] md:min-h-[500px] flex flex-col">
