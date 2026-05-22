@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { formatSpecs } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { navigateWithTransition } from "@/lib/viewTransition";
-import { Heart, Check, MoreHorizontal, Grid2X2, List, Calculator, Search, ArrowUpDown, SlidersHorizontal, Camera, Truck, Maximize, BedDouble, Bath, ChevronDown } from "lucide-react";
+import { Heart, Check, MoreHorizontal, Grid2X2, List, Calculator, Search, ArrowUpDown, SlidersHorizontal, Camera, Truck, Maximize, BedDouble, Bath, ChevronDown, Layers } from "lucide-react";
 import SwipeableGallery from "@/components/SwipeableGallery";
 import MobileTabBar from "@/components/MobileTabBar";
 import Header from "@/components/Header";
@@ -336,6 +336,7 @@ const Favorites = () => {
                       <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{item.area}</span>
                       <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{item.beds}</span>
                       <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{item.baths}</span>
+                      <span className="inline-flex items-center gap-[3px]"><Layers className="w-3 h-3" strokeWidth={1.75} />{allProjects.find(p => p.id === item.id)?.floors ?? 1}</span>
                     </div>
                   </div>
                 </div>
@@ -364,6 +365,7 @@ const Favorites = () => {
                       <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{item.area}</span>
                       <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{item.beds}</span>
                       <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{item.baths}</span>
+                      <span className="inline-flex items-center gap-[3px]"><Layers className="w-3 h-3" strokeWidth={1.75} />{allProjects.find(p => p.id === item.id)?.floors ?? 1}</span>
                     </div>
                   </div>
                 </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { formatSpecs } from "@/lib/utils";
 import { useSearchParams } from "react-router-dom";
-import { Search, SlidersHorizontal, ChevronLeft, ChevronDown, X, ArrowUpDown, Ruler, BedDouble, Bath, Heart, Star, Camera, Columns2, Redo2, Truck, Maximize } from "lucide-react";
+import { Search, SlidersHorizontal, ChevronLeft, ChevronDown, X, ArrowUpDown, Ruler, BedDouble, Bath, Heart, Star, Camera, Columns2, Redo2, Truck, Maximize, Layers } from "lucide-react";
 import SearchDropdown from "@/components/SearchDropdown";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import MobileTabBar from "@/components/MobileTabBar";
@@ -845,6 +845,7 @@ const Catalog = () => {
                       <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{item.area}</span>
                       <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{item.beds}</span>
                       <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{item.baths}</span>
+                      <span className="inline-flex items-center gap-[3px]"><Layers className="w-3 h-3" strokeWidth={1.75} />{item.floors}</span>
                     </div>
                   </div>
                 </div>
@@ -869,6 +870,7 @@ const Catalog = () => {
                       <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{item.area}</span>
                       <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{item.beds}</span>
                       <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{item.baths}</span>
+                      <span className="inline-flex items-center gap-[3px]"><Layers className="w-3 h-3" strokeWidth={1.75} />{item.floors}</span>
                     </div>
                   </div>
                 </div>
