@@ -590,8 +590,6 @@ const Partner = () => {
                   { label: "Сайт", icon: Globe, href: partner.siteUrl },
                   { label: "info@company.ru", icon: Mail, href: undefined },
                   { label: "+7 (___) ___-__-__", icon: Phone, href: undefined },
-                  { label: "Instagram", icon: Instagram, href: undefined },
-                  { label: "Facebook", icon: Facebook, href: undefined },
                   { label: "Telegram", icon: Twitter, href: undefined },
                 ].map((item) => (
                   <a
