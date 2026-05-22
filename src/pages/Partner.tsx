@@ -107,7 +107,7 @@ const Partner = () => {
   const isPlatforma = makerId === "platforma";
 
   const HeroPlatforma = () => (
-    <div className="relative overflow-hidden md:rounded-2xl min-h-[78vh] md:min-h-[620px] flex flex-col">
+    <div className="relative overflow-hidden md:rounded-2xl min-h-[62vh] md:min-h-[500px] flex flex-col">
       {/* Резкое фото на весь hero, к низу маскируется (открывается фон страницы) */}
       <div className="absolute inset-0">
         {heroImage ? (
