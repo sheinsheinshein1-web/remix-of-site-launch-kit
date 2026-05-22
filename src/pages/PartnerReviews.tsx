@@ -260,6 +260,7 @@ const PartnerReviews = () => {
                       ))}
                     </div>
                     <button
+                      onClick={() => setReportFor(idx)}
                       className="w-7 h-7 -mt-1 -mr-1 flex items-center justify-center text-white/60"
                       aria-label="Действия"
                     >
