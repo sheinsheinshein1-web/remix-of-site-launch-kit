@@ -144,7 +144,7 @@ const Partner = () => {
         </button>
         <div className="flex items-center gap-2">
           <button onClick={onShare} className="w-10 h-10 rounded-xl bg-black/35 backdrop-blur-md flex items-center justify-center" aria-label="Поделиться">
-            <img src={shareIcon} alt="" className="w-[18px] h-[18px] invert brightness-200" loading="lazy" decoding="async" />
+            <img src={shareIcon} alt="" className="w-[18px] h-[18px]" style={{ filter: "brightness(0) invert(1)" }} loading="lazy" decoding="async" />
           </button>
           <button className="w-10 h-10 rounded-xl bg-black/35 backdrop-blur-md flex items-center justify-center" aria-label="Меню">
             <Menu className="w-[18px] h-[18px] text-white" strokeWidth={1.8} />
