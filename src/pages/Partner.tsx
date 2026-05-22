@@ -334,13 +334,13 @@ const Partner = () => {
                   <img src={bgImage} alt="" className="w-full h-full object-cover" aria-hidden loading="lazy" />
                   {/* Тёмный градиент-блюр у нижней половины */}
                   <div
-                    className="absolute inset-x-0 bottom-0 h-2/3 pointer-events-none"
+                    className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
                     style={{
-                      background: "linear-gradient(to bottom, transparent 0%, hsl(0 0% 0% / 0.55) 55%, hsl(0 0% 0% / 0.78) 100%)",
-                      backdropFilter: "blur(14px)",
-                      WebkitBackdropFilter: "blur(14px)",
-                      maskImage: "linear-gradient(to bottom, transparent 0%, black 35%)",
-                      WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 35%)",
+                      background: "linear-gradient(to bottom, transparent 0%, hsl(28, 12%, 18% / 0.55) 60%, hsl(28, 12%, 18% / 0.85) 100%)",
+                      backdropFilter: "blur(10px)",
+                      WebkitBackdropFilter: "blur(10px)",
+                      maskImage: "linear-gradient(to bottom, transparent 0%, black 40%)",
+                      WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 40%)",
                     }}
                   />
                 </div>
