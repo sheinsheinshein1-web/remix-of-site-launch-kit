@@ -539,17 +539,26 @@ const Partner = () => {
                     ))}
                   </div>
                 </div>
-                <div className="rounded-xl p-4" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
-                  <div className="text-[14px] font-semibold mb-1">Отличное качество</div>
-                  <div className="text-[13px] text-white/75 leading-snug line-clamp-3">
-                    Дом собрали быстро, всё аккуратно. Команда на связи, материалы качественные — рекомендую.
-                  </div>
-                  <div className="flex items-center gap-1 mt-2">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <Star key={i} className="w-3 h-3 fill-white text-white" strokeWidth={0} />
+                <div className="-mr-5 overflow-x-auto scrollbar-none snap-x snap-mandatory">
+                  <div className="flex gap-3 pr-5">
+                    {[
+                      { title: "Отличное качество", body: "Дом собрали быстро, всё аккуратно. Команда на связи, материалы качественные — рекомендую.", name: "Алексей", when: "2 нед. назад", stars: 5 },
+                      { title: "Тепло даже зимой", body: "Переехали в декабре, при −28°С внутри +23 без проблем. Утепление и окна на пятёрку.", name: "Мария", when: "1 мес. назад", stars: 5 },
+                      { title: "Рекомендую", body: "Прозрачная смета, никаких допов в процессе. Дом стоит уже полгода — всё ок.", name: "Елена", when: "2 мес. назад", stars: 5 },
+                      { title: "Качественная сборка", body: "Конструктив добротный, видно что работают на совесть. Узлы и стыки промазаны как надо.", name: "Дмитрий", when: "3 мес. назад", stars: 5 },
+                    ].map((r, idx) => (
+                      <div key={idx} className="shrink-0 w-[85%] snap-start rounded-xl p-4" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
+                        <div className="text-[14px] font-semibold mb-1">{r.title}</div>
+                        <div className="text-[13px] text-white/75 leading-snug line-clamp-3">{r.body}</div>
+                        <div className="flex items-center gap-1 mt-2">
+                          {[1, 2, 3, 4, 5].map((i) => (
+                            <Star key={i} className={`w-3 h-3 ${i <= r.stars ? "fill-white text-white" : "fill-white/20 text-white/20"}`} strokeWidth={0} />
+                          ))}
+                        </div>
+                        <div className="text-[11px] text-white/55 mt-2">{r.name} · {r.when}</div>
+                      </div>
                     ))}
                   </div>
-                  <div className="text-[11px] text-white/55 mt-2">Алексей · 2 нед. назад</div>
                 </div>
               </section>
 
