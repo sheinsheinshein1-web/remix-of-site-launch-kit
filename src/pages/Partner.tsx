@@ -414,18 +414,18 @@ const Partner = () => {
             <div className="flex items-center justify-between px-1">
               <h2 className="text-[24px] font-bold tracking-tight text-background">Все проекты</h2>
               <button
-                onClick={() => navigate(`/catalog?maker=${makerId}`)}
+                onClick={() => setSortOpen(true)}
                 className="w-10 h-10 rounded-xl backdrop-blur-md flex items-center justify-center bg-background/25"
-                aria-label="Фильтры"
+                aria-label="Сортировка"
               >
-                <SlidersHorizontal className="w-[18px] h-[18px] text-background" strokeWidth={1.8} />
+                <ArrowUpDown className="w-[18px] h-[18px] text-background" strokeWidth={2.2} />
               </button>
             </div>
             <div
               className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2.5"
               style={{ ["--foreground" as any]: "0 0% 100%" }}
             >
-              {makerProjects.map((p) => (
+              {sortedMakerProjects.map((p) => (
                 <ProjectCard key={p.id} projectId={p.id} />
               ))}
             </div>
