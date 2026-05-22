@@ -121,7 +121,7 @@ const Lab = () => {
             className="mt-3 text-white text-[26px] leading-[1.1] tracking-[-0.02em]"
             style={{ fontWeight: 600, maxWidth: "85%" }}
           >
-            Сотни быстровозводимых домов наСотни модульных домов на&nbsp;одном сайтеnbsp;одном сайте
+            Сотни быстровозводимых домов на&nbsp;одном сайте
           </h1>
           <p className="mt-2 text-[13px] text-white/75 leading-[1.4] max-w-[80%]">
             Проекты от&nbsp;проверенных производителей с&nbsp;доставкой
