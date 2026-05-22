@@ -410,7 +410,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
       const words = nq.split(/\s+/).filter(w => w.length >= 1);
       const matchingProjects = cityProjects.filter(p => {
         const haystack = (p.name + " " + p.maker + " " + (p.tags || "")).toLowerCase();
-        return words.some(w => haystack.includes(w));
+        return words.every(w => haystack.includes(w));
       });
       const catMatch = categories.find(c => words.some(w => c.name.toLowerCase().includes(w)));
       const label = catMatch ? catMatch.name : (nq.charAt(0).toUpperCase() + nq.slice(1));
