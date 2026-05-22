@@ -84,19 +84,30 @@ const PartnerReviews = () => {
   };
 
   return (
-    <div className="min-h-screen bg-secondary pb-[max(env(safe-area-inset-bottom),12px)]">
+    <div
+      className="min-h-screen pb-[max(env(safe-area-inset-bottom),12px)] text-white"
+      style={{ background: "hsl(0 0% 8%)" }}
+    >
       {/* Sticky header */}
-      <div className="sticky top-0 z-30 bg-secondary/85 backdrop-blur-xl">
+      <div
+        className="sticky top-0 z-30"
+        style={{
+          background: "hsl(0 0% 8% / 0.55)",
+          backdropFilter: "blur(32px) saturate(160%)",
+          WebkitBackdropFilter: "blur(32px) saturate(160%)",
+        }}
+      >
         <div className="px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 flex items-center gap-3">
           <button
             onClick={handleBack}
-            className="w-9 h-9 rounded-xl bg-background flex items-center justify-center shrink-0"
+            className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+            style={{ background: "hsl(0 0% 100% / 0.12)" }}
             aria-label="Назад"
           >
-            <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
+            <ArrowLeft className="w-[18px] h-[18px] text-white" strokeWidth={1.8} />
           </button>
           <div className="min-w-0">
-            <h1 className="text-[17px] font-semibold text-foreground leading-tight truncate">
+            <h1 className="text-[17px] font-semibold text-white leading-tight truncate">
               Отзывы о {summary?.name ?? "компании"}
             </h1>
           </div>
@@ -105,10 +116,10 @@ const PartnerReviews = () => {
 
       <div className="px-3 pt-2 space-y-3">
         {/* Summary card */}
-        <section className="bg-background rounded-2xl p-5">
+        <section className="rounded-2xl p-5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
           <div className="flex items-end justify-between gap-3">
             <div>
-              <div className="text-[34px] font-bold leading-none text-foreground">
+              <div className="text-[34px] font-bold leading-none text-white">
                 {ratingAvg.toFixed(1)}
               </div>
               <div className="flex items-center gap-0.5 mt-2">
@@ -117,14 +128,14 @@ const PartnerReviews = () => {
                     key={i}
                     className={`w-4 h-4 ${
                       i <= Math.round(ratingAvg)
-                        ? "fill-foreground text-foreground"
-                        : "fill-muted text-muted"
+                        ? "fill-white text-white"
+                        : "fill-white/20 text-white/20"
                     }`}
                     strokeWidth={0}
                   />
                 ))}
               </div>
-              <div className="text-[13px] text-muted-foreground mt-1.5">
+              <div className="text-[13px] text-white/70 mt-1.5">
                 {totalCount} {totalCount === 1 ? "отзыв" : totalCount < 5 ? "отзыва" : "отзывов"}
               </div>
             </div>
@@ -134,10 +145,10 @@ const PartnerReviews = () => {
                 const pct = totalCount ? (count / totalCount) * 100 : 0;
                 return (
                   <div key={star} className="flex items-center gap-2">
-                    <span className="text-[11px] text-muted-foreground w-2">{star}</span>
-                    <div className="flex-1 h-1.5 rounded-xl bg-muted overflow-hidden">
+                    <span className="text-[11px] text-white/70 w-2">{star}</span>
+                    <div className="flex-1 h-1.5 rounded-xl overflow-hidden" style={{ background: "hsl(0 0% 100% / 0.12)" }}>
                       <div
-                        className="h-full bg-foreground/80"
+                        className="h-full bg-white/80"
                         style={{ width: `${pct}%` }}
                       />
                     </div>
@@ -151,16 +162,23 @@ const PartnerReviews = () => {
         {/* Filter chips */}
         <div className="flex items-center gap-2 overflow-x-auto -mx-3 px-3 scrollbar-hide">
           <button
-            className="shrink-0 w-9 h-9 rounded-xl bg-background flex items-center justify-center"
+            className="shrink-0 w-9 h-9 rounded-xl flex items-center justify-center"
+            style={{ background: "hsl(0 0% 100% / 0.08)" }}
             aria-label="Фильтры"
           >
-            <SlidersHorizontal className="w-[16px] h-[16px] text-foreground" strokeWidth={1.8} />
+            <SlidersHorizontal className="w-[16px] h-[16px] text-white" strokeWidth={1.8} />
           </button>
-          <button className="shrink-0 h-9 px-3.5 rounded-xl bg-background flex items-center gap-1.5 text-[14px] text-foreground">
+          <button
+            className="shrink-0 h-9 px-3.5 rounded-xl flex items-center gap-1.5 text-[14px] text-white"
+            style={{ background: "hsl(0 0% 100% / 0.08)" }}
+          >
             {sortLabel}
             <ChevronDown className="w-4 h-4" strokeWidth={1.8} />
           </button>
-          <button className="shrink-0 h-9 px-3.5 rounded-xl bg-background flex items-center gap-1.5 text-[14px] text-foreground">
+          <button
+            className="shrink-0 h-9 px-3.5 rounded-xl flex items-center gap-1.5 text-[14px] text-white"
+            style={{ background: "hsl(0 0% 100% / 0.08)" }}
+          >
             {ratingLabel}
             <ChevronDown className="w-4 h-4" strokeWidth={1.8} />
           </button>
@@ -169,9 +187,9 @@ const PartnerReviews = () => {
         {/* Reviews list */}
         <div className="space-y-3">
           {reviews.map((r, idx) => (
-            <article key={idx} className="bg-background rounded-2xl p-4">
+            <article key={idx} className="rounded-2xl p-4" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
               <div className="flex items-start gap-3">
-                <div className="w-[72px] h-[72px] rounded-xl bg-muted overflow-hidden shrink-0">
+                <div className="w-[72px] h-[72px] rounded-xl overflow-hidden shrink-0" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
                   {r.project.gallery[0]?.image && (
                     <img
                       src={r.project.gallery[0].image}
@@ -190,38 +208,38 @@ const PartnerReviews = () => {
                           key={i}
                           className={`w-3.5 h-3.5 ${
                             i <= r.stars
-                              ? "fill-foreground text-foreground"
-                              : "fill-muted text-muted"
+                              ? "fill-white text-white"
+                              : "fill-white/20 text-white/20"
                           }`}
                           strokeWidth={0}
                         />
                       ))}
                     </div>
                     <button
-                      className="w-7 h-7 -mt-1 -mr-1 flex items-center justify-center text-muted-foreground"
+                      className="w-7 h-7 -mt-1 -mr-1 flex items-center justify-center text-white/60"
                       aria-label="Действия"
                     >
                       <MoreHorizontal className="w-4 h-4" />
                     </button>
                   </div>
-                  <div className="text-[13px] text-muted-foreground mt-1">
+                  <div className="text-[13px] text-white/70 mt-1">
                     {r.name} · {r.when}
                   </div>
-                  <div className="text-[14px] text-foreground/90 mt-0.5 truncate">
+                  <div className="text-[14px] text-white/90 mt-0.5 truncate">
                     {r.project.name}
                   </div>
                 </div>
               </div>
 
-              <div className="mt-3 text-[15px] font-semibold text-foreground">
+              <div className="mt-3 text-[15px] font-semibold text-white">
                 {r.title}
               </div>
-              <p className="mt-1 text-[14px] text-foreground/85 leading-snug">
+              <p className="mt-1 text-[14px] text-white/85 leading-snug">
                 {r.body}
               </p>
 
               <div className="mt-3 flex items-center justify-between">
-                <button className="flex items-center gap-1.5 text-[13px] text-muted-foreground">
+                <button className="flex items-center gap-1.5 text-[13px] text-white/70">
                   <ThumbsUp className="w-4 h-4" strokeWidth={1.8} />
                   Полезно
                 </button>
