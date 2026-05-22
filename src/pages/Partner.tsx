@@ -419,7 +419,7 @@ const Partner = () => {
                 <div className="relative mt-auto flex gap-3 overflow-x-auto px-4 pt-4 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                   {cards.map((p) => (
                     <div key={p.id} className="shrink-0 w-[200px]">
-                      <ProjectCard projectId={p.id} height="aspect-square h-auto" />
+                      <ProjectCard projectId={p.id} height="aspect-square h-auto" singleImage />
                     </div>
                   ))}
                 </div>
