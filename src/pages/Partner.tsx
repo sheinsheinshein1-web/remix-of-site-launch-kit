@@ -158,7 +158,7 @@ const Partner = () => {
       </div>
 
       {/* Текст на блюр-плашке (нижняя 1/3) */}
-      <div className="relative mt-auto h-1/3 flex flex-col items-center justify-center px-5 text-center">
+      <div className="relative mt-auto mb-[15%] h-1/3 flex flex-col items-center justify-center px-5 text-center">
         <h1 className="text-background leading-[1.05] tracking-tight font-bold uppercase text-[clamp(32px,9vw,52px)]">
           {partner.name}
         </h1>
