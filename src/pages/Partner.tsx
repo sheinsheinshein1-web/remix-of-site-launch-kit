@@ -249,7 +249,7 @@ const Partner = () => {
         <div
           className="fixed inset-0 -z-10 pointer-events-none"
           aria-hidden
-          style={{ background: "hsl(var(--foreground) / 0.18)" }}
+          style={{ background: "hsl(var(--foreground) / 0.30)" }}
         />
       )}
 
