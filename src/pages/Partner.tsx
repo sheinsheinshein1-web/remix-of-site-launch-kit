@@ -469,10 +469,10 @@ const Partner = () => {
       </Drawer>
 
 
-      {/* Bottom Bar — go to site CTA */}
+      {/* Bottom Bar — CTA + tabs */}
       <div className="fixed bottom-0 left-0 right-0 z-40">
         <div
-          className={`border-t p-3 pb-[calc(0.75rem+max(env(safe-area-inset-bottom),20px))] ${isPlatforma ? "border-white/10" : "border-border bg-background"}`}
+          className={`border-t ${isPlatforma ? "border-white/10" : "border-border bg-background"}`}
           style={
             isPlatforma
               ? {
@@ -483,15 +483,34 @@ const Partner = () => {
               : undefined
           }
         >
-          <div className="max-w-[1400px] mx-auto">
+          <div className="max-w-[1400px] mx-auto px-3 pt-2">
             <a
               href={partner.siteUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full h-[50px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center"
+              className="w-full h-10 bg-primary text-primary-foreground rounded-xl text-[14px] font-semibold flex items-center justify-center"
             >
               Перейти на сайт
             </a>
+          </div>
+          <div className="flex pb-[max(env(safe-area-inset-bottom),0px)]">
+            {[
+              { icon: Home, path: "/" },
+              { icon: LayoutGrid, path: "/categories" },
+              { icon: Heart, path: "/favorites" },
+              { icon: MessageCircle, path: "/messages" },
+            ].map((tab) => (
+              <button
+                key={tab.path}
+                onClick={() => navigate(tab.path)}
+                className="flex-1 flex items-center justify-center py-2.5 px-4"
+              >
+                <tab.icon
+                  className={`w-[26px] h-[26px] ${isPlatforma ? "text-white/70 fill-white/70" : "text-muted-foreground fill-muted-foreground"}`}
+                  strokeWidth={1.5}
+                />
+              </button>
+            ))}
           </div>
         </div>
       </div>
