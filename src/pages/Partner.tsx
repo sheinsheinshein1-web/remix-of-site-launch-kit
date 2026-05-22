@@ -235,7 +235,29 @@ const Partner = () => {
 
   /* ─── Layout ─── */
   return (
-    <div className="min-h-screen bg-secondary font-sans pb-[140px] md:pb-10">
+    <div className={`relative min-h-screen font-sans pb-[140px] md:pb-10 ${isPlatforma ? "" : "bg-secondary"}`}>
+      {/* Фон страницы — размытое hero-фото, тянется на всю высоту */}
+      {isPlatforma && heroImage && (
+        <div
+          className="fixed inset-0 -z-10 pointer-events-none"
+          aria-hidden
+          style={{
+            backgroundImage: `url(${heroImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            filter: "blur(60px) saturate(125%)",
+            transform: "scale(1.2)",
+          }}
+        />
+      )}
+      {isPlatforma && (
+        <div
+          className="fixed inset-0 -z-10 pointer-events-none"
+          aria-hidden
+          style={{ background: "hsl(var(--foreground) / 0.18)" }}
+        />
+      )}
+
       {/* Sticky compact header (mobile) */}
       {isMobile && (
         <div
