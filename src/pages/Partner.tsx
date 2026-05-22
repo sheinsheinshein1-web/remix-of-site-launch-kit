@@ -50,7 +50,6 @@ const Partner = () => {
   const isMobile = useIsMobile();
   const { id } = useParams();
   const [scrolled, setScrolled] = useState(false);
-  const [following, setFollowing] = useState(false);
 
   const makerId = (id && (partnerMakerIds[id] ?? (makersById[id] ? id : undefined))) || "platforma";
   const summary = makersById[makerId];
@@ -173,50 +172,51 @@ const Partner = () => {
   );
 
   const HeroDefault = () => (
-    <div className="relative overflow-hidden rounded-b-2xl md:rounded-2xl bg-background min-h-[420px] md:min-h-[480px] flex flex-col">
-      <div className="absolute inset-0">
-        {heroImage ? (
-          <>
-            <img src={heroImage} alt="" className="w-full h-full object-cover" aria-hidden loading="eager" />
-            <div className="absolute inset-0 bg-gradient-to-b from-foreground/30 via-transparent to-background/95" />
-          </>
-        ) : (
-          <div className="w-full h-full bg-secondary" />
-        )}
-      </div>
-
-      <div className="relative flex items-center justify-between px-3 md:px-8 pt-[max(env(safe-area-inset-top),12px)]">
-        <button onClick={handleBack} className="w-9 h-9 rounded-xl bg-background/90 backdrop-blur flex items-center justify-center">
+    <div className="bg-background rounded-b-2xl md:rounded-2xl overflow-hidden">
+      <div className="flex items-center justify-between px-4 md:px-6 pt-[max(env(safe-area-inset-top),12px)] md:pt-6">
+        <button onClick={handleBack} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
           <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
         </button>
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => setFollowing((v) => !v)}
-            className={`h-9 px-4 rounded-xl text-[13px] font-semibold transition-colors ${
-              following ? "bg-background/90 backdrop-blur text-foreground" : "bg-foreground text-background"
-            }`}
-          >
-            {following ? "В подписках" : "Подписаться"}
-          </button>
-          <button onClick={onShare} className="w-9 h-9 rounded-xl bg-background/90 backdrop-blur flex items-center justify-center">
-            <img src={shareIcon} alt="" className="w-[18px] h-[18px]" loading="lazy" decoding="async" />
-          </button>
+        <button onClick={onShare} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center" aria-label="Поделиться">
+          <img src={shareIcon} alt="" className="w-[18px] h-[18px]" loading="lazy" decoding="async" />
+        </button>
+      </div>
+
+      <div className="px-4 md:px-6 mt-4">
+        <div className="bg-secondary rounded-xl px-3.5 md:px-4 py-3 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <ShieldCheck className="w-[18px] h-[18px] text-muted-foreground shrink-0" strokeWidth={1.8} />
+            <span className="text-[13px] md:text-[14px] text-foreground/80 truncate">Это ваша компания?</span>
+          </div>
+          <Link to="/messages/support" className="text-[13px] md:text-[14px] font-medium text-primary inline-flex items-center gap-1 shrink-0">
+            Подтвердить <ChevronRight className="w-3.5 h-3.5 md:w-4 md:h-4" />
+          </Link>
         </div>
       </div>
 
-      <div className="relative mt-auto px-3 md:px-8 pb-7 md:pb-10 text-center">
-        <h1 className="text-foreground text-[34px] md:text-[44px] font-bold leading-[1.05] tracking-tight">{partner.name}</h1>
-        <p className="mt-2 text-[13px] md:text-[14px] text-foreground/70 inline-flex items-center justify-center gap-1.5 w-full">
-          <MapPin className="w-3.5 h-3.5" strokeWidth={1.8} />
-          {partner.city}
-          <span className="text-foreground/40">·</span>
-          {partner.category}
-        </p>
-        <div className="mt-3 inline-flex items-center gap-1.5 text-[13px] text-foreground/80">
-          <Star className="w-3.5 h-3.5 fill-foreground text-foreground" strokeWidth={0} />
-          <span className="font-semibold">{rating.toFixed(1)}</span>
-          <span className="text-foreground/60">({reviewsLabel})</span>
+      <div className="px-4 md:px-6 pt-4 md:pt-5 pb-5 md:pb-6 flex items-center gap-3 md:gap-4">
+        <div className="w-[68px] h-[68px] md:w-[80px] md:h-[80px] rounded-2xl bg-secondary text-foreground/30 flex items-center justify-center text-base md:text-lg font-bold shrink-0">{partner.initials}</div>
+        <div className="flex-1 min-w-0">
+          <h1 className="text-[19px] md:text-[22px] font-bold text-foreground leading-tight mb-0.5 md:mb-1 truncate">{partner.name}</h1>
+          <p className="text-[13px] md:text-[14px] text-muted-foreground truncate">{partner.category} · {partner.city}</p>
         </div>
+      </div>
+
+      <div className="border-t border-border grid grid-cols-3">
+        {[{ val: String(projectsCount), label: wordForm(projectsCount, ["Проект", "Проекта", "Проектов"]) }, { val: "—", label: "Отзывы" }, { val: "—", label: "Рейтинг" }].map((s, i) => (
+          <div key={s.label} className={`py-4 md:py-5 text-center ${i > 0 ? "border-l border-border" : ""}`}>
+            <div className="text-[20px] md:text-[22px] font-bold text-foreground leading-none mb-1.5">{s.val}</div>
+            <div className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground">{s.label}</div>
+          </div>
+        ))}
+      </div>
+
+      <div className="border-t border-border px-4 md:px-6 py-4 md:py-5">
+        <p className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground mb-2">О компании</p>
+        <p className="text-[14px] md:text-[15px] text-foreground/85 leading-relaxed">{partner.about}</p>
+        <p className="mt-3 text-[12px] text-muted-foreground/80 leading-relaxed">
+          Все проекты и торговые знаки принадлежат компании {partner.name}. Информация собрана из открытых источников и приведена в ознакомительных целях.
+        </p>
       </div>
     </div>
   );
