@@ -6,6 +6,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import shareIcon from "@/assets/share-icon.svg";
 import ProjectCard from "@/components/ProjectCard";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
+import { toast } from "sonner";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import {
   projects as allProjects,
