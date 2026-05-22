@@ -202,7 +202,138 @@ const Partner = () => {
           <Hero />
         </div>
 
-        {/* "Это ваша компания?" */}
+        {/* Бенто: "Популярные" — горизонтальный скролл крупных карточек */}
+        {makerProjects.length > 0 && (
+          <div className="px-3 mt-3">
+            <div className="bg-background rounded-2xl pt-5 pb-5">
+              <h2 className="px-4 text-[22px] font-bold text-foreground tracking-tight">Популярные</h2>
+              <div className="mt-3 flex gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                {makerProjects.map((p) => (
+                  <div key={p.id} className="shrink-0 w-[235px] md:w-[260px]">
+                    <ProjectCard projectId={p.id} height="aspect-square h-auto" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Бенто: "По категориям" — плитки с подписью под фото */}
+        {(() => {
+          const groups = new Map<string, { label: string; image: string; count: number }>();
+          makerProjects.forEach((p) => {
+            const label = p.badge || "—";
+            const existing = groups.get(label);
+            if (existing) existing.count += 1;
+            else groups.set(label, { label, image: p.gallery[0]?.image ?? "", count: 1 });
+          });
+          const arr = Array.from(groups.values());
+          if (arr.length < 2) return null;
+          return (
+            <div className="px-3 mt-3">
+              <div className="bg-background rounded-2xl pt-5 pb-5">
+                <h2 className="px-4 text-[22px] font-bold text-foreground tracking-tight">По категориям</h2>
+                <div className="mt-3 flex gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                  {arr.map((g) => (
+                    <button
+                      key={g.label}
+                      onClick={() => navigate(`/catalog?maker=${makerId}&badge=${encodeURIComponent(g.label)}`)}
+                      className="shrink-0 w-[200px] text-left"
+                    >
+                      <div className="aspect-square rounded-2xl overflow-hidden bg-secondary">
+                        {g.image && <img src={g.image} alt={g.label} className="w-full h-full object-cover" loading="lazy" decoding="async" />}
+                      </div>
+                      <div className="mt-2.5 text-center text-[15px] font-semibold text-foreground">{g.label}</div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* Бенто: "Хиты продаж" — большое фото-бенто с карточками внизу */}
+        {makerProjects.length >= 2 && (() => {
+          const bgImage = makerProjects[1]?.gallery[0]?.image ?? heroImage;
+          const cards = makerProjects.slice(0, 3);
+          return (
+            <div className="px-3 mt-3">
+              <div className="relative overflow-hidden rounded-2xl bg-background min-h-[460px] flex flex-col">
+                <div className="absolute inset-0">
+                  <img src={bgImage} alt="" className="w-full h-full object-cover" aria-hidden loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/40" />
+                </div>
+                <h2 className="relative px-5 pt-5 text-[22px] font-bold text-foreground tracking-tight drop-shadow-[0_1px_2px_rgba(255,255,255,0.6)]">
+                  Хиты продаж
+                </h2>
+                <div className="relative mt-auto flex gap-3 overflow-x-auto px-4 pt-4 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                  {cards.map((p) => (
+                    <div key={p.id} className="shrink-0 w-[200px]">
+                      <ProjectCard projectId={p.id} height="aspect-square h-auto" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* Бенто: "По технологии" — плитки с подписью под фото */}
+        {techGroups.length > 1 && (
+          <div className="px-3 mt-3">
+            <div className="bg-background rounded-2xl pt-5 pb-5">
+              <h2 className="px-4 text-[22px] font-bold text-foreground tracking-tight">По технологии</h2>
+              <div className="mt-3 flex gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                {techGroups.map((t) => (
+                  <div key={t.tech} className="shrink-0 w-[200px]">
+                    <div className="aspect-square rounded-2xl overflow-hidden bg-secondary">
+                      {t.image && (
+                        <img src={t.image} alt={t.tech} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                      )}
+                    </div>
+                    <div className="mt-2.5 text-center text-[15px] font-semibold text-foreground">{t.tech}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* "Все проекты" — заголовок + фильтр + 2-кол сетка (без бенто-обёртки, как в референсе) */}
+        {makerProjects.length > 0 && (
+          <div className="px-3 mt-5">
+            <div className="flex items-center justify-between px-1">
+              <h2 className="text-[24px] font-bold text-foreground tracking-tight">Все проекты</h2>
+              <button
+                onClick={() => navigate(`/catalog?maker=${makerId}`)}
+                className="w-10 h-10 rounded-xl bg-background flex items-center justify-center"
+                aria-label="Фильтры"
+              >
+                <SlidersHorizontal className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
+              </button>
+            </div>
+            <div className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2.5">
+              {makerProjects.map((p) => (
+                <div key={p.id} className="bg-background rounded-2xl p-2">
+                  <ProjectCard projectId={p.id} height="aspect-square h-auto" />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Бенто: "О компании" */}
+        <div className="px-3 mt-3">
+          <div className="bg-background rounded-2xl p-4">
+            <h2 className="text-[20px] font-bold text-foreground tracking-tight">О компании</h2>
+            <p className="mt-2 text-[14px] text-foreground/85 leading-relaxed">{partner.about}</p>
+            <p className="mt-3 text-[12px] text-muted-foreground/80 leading-relaxed">
+              Все проекты и торговые знаки принадлежат компании {partner.name}. Информация собрана из открытых источников и приведена в ознакомительных целях.
+            </p>
+          </div>
+        </div>
+
+        {/* "Это ваша компания?" — внизу, ближе к CTA */}
         <div className="px-3 mt-3">
           <div className="bg-background rounded-2xl px-3.5 py-3 flex items-center justify-between gap-3">
             <div className="flex items-center gap-2.5 min-w-0">
@@ -214,95 +345,6 @@ const Partner = () => {
             </Link>
           </div>
         </div>
-
-        {/* Бенто: "Проекты" — горизонтальный скролл */}
-        {makerProjects.length > 0 && (
-          <div className="px-3 mt-3">
-            <div className="bg-background rounded-2xl pt-4 pb-4">
-              <h2 className="px-4 text-[20px] font-bold text-foreground tracking-tight">Проекты</h2>
-              <div className="mt-3 flex gap-2.5 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                {makerProjects.map((p) => (
-                  <div key={p.id} className="shrink-0 w-[180px] md:w-[220px]">
-                    <ProjectCard projectId={p.id} height="aspect-[3/4] h-auto" />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Бенто: "По технологии" — горизонтальный скролл плиток */}
-        {techGroups.length > 1 && (
-          <div className="px-3 mt-3">
-            <div className="bg-background rounded-2xl pt-4 pb-4">
-              <h2 className="px-4 text-[20px] font-bold text-foreground tracking-tight">По технологии</h2>
-              <div className="mt-3 flex gap-2.5 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                {techGroups.map((t) => (
-                  <div key={t.tech} className="shrink-0 w-[160px]">
-                    <div className="aspect-square rounded-2xl overflow-hidden bg-secondary">
-                      {t.image && (
-                        <img src={t.image} alt={t.tech} className="w-full h-full object-cover" loading="lazy" decoding="async" />
-                      )}
-                    </div>
-                    <div className="mt-2 px-1 text-center text-[13px] font-medium text-foreground">{t.tech}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Бенто: "О компании" */}
-        <div className="px-3 mt-3">
-          <div className="bg-background rounded-2xl p-4">
-            <h2 className="text-[20px] font-bold text-foreground tracking-tight">О компании</h2>
-            <p className="mt-2 text-[14px] text-foreground/85 leading-relaxed">{partner.about}</p>
-
-            <div className="mt-4 grid grid-cols-3 gap-2">
-              <div className="bg-secondary rounded-xl py-3 text-center">
-                <div className="text-[18px] font-bold text-foreground leading-none">{projectsCount}</div>
-                <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">
-                  {wordForm(projectsCount, ["Проект", "Проекта", "Проектов"])}
-                </div>
-              </div>
-              <div className="bg-secondary rounded-xl py-3 text-center">
-                <div className="text-[18px] font-bold text-foreground leading-none">{rating.toFixed(1)}</div>
-                <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">Рейтинг</div>
-              </div>
-              <div className="bg-secondary rounded-xl py-3 text-center">
-                <div className="text-[18px] font-bold text-foreground leading-none">—</div>
-                <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">Отзывы</div>
-              </div>
-            </div>
-
-            <p className="mt-3 text-[12px] text-muted-foreground/80 leading-relaxed">
-              Все проекты и торговые знаки принадлежат компании {partner.name}. Информация собрана из открытых источников и приведена в ознакомительных целях.
-            </p>
-          </div>
-        </div>
-
-        {/* Бенто: "Все проекты" — сетка */}
-        {makerProjects.length > 0 && (
-          <div className="px-3 mt-3">
-            <div className="bg-background rounded-2xl p-4">
-              <div className="flex items-center justify-between">
-                <h2 className="text-[20px] font-bold text-foreground tracking-tight">Все проекты</h2>
-                <button
-                  onClick={() => navigate(`/catalog?maker=${makerId}`)}
-                  className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center"
-                  aria-label="Фильтры"
-                >
-                  <SlidersHorizontal className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
-                </button>
-              </div>
-              <div className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2.5">
-                {makerProjects.map((p) => (
-                  <ProjectCard key={p.id} projectId={p.id} height="aspect-[3/4] h-auto" />
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Bottom Bar — go to site CTA */}
