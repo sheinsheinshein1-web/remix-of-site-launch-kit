@@ -349,7 +349,8 @@ const Partner = () => {
               <div className="mt-3 flex gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {makerProjects.map((p) => (
                   <div key={p.id} className="shrink-0 w-[235px] md:w-[260px]">
-                    <ProjectCard projectId={p.id} height="aspect-square h-auto" />
+                    <ProjectCard projectId={p.id} height="aspect-square h-auto" singleImage />
+
                   </div>
                 ))}
               </div>
