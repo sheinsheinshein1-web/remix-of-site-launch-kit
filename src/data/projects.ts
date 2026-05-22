@@ -226,6 +226,32 @@ import utkino_svetlitsa72_floor1Plan from "@/assets/utkino/svetlitsa-prikamya-72
 import utkino_svetlitsa72_floor1Size from "@/assets/utkino/svetlitsa-prikamya-72-floor1-size.webp";
 import utkino_svetlitsa72_atticPlan from "@/assets/utkino/svetlitsa-prikamya-72-attic-plan.webp";
 import utkino_svetlitsa72_atticSize from "@/assets/utkino/svetlitsa-prikamya-72-attic-size.webp";
+
+// Теплодина
+import td_dk122_1 from "@/assets/teplodina/dk-122-1.webp";
+import td_dk122_2 from "@/assets/teplodina/dk-122-2.webp";
+import td_dk122_3 from "@/assets/teplodina/dk-122-3.webp";
+import td_dk122_4 from "@/assets/teplodina/dk-122-4.webp";
+import td_dk122_5 from "@/assets/teplodina/dk-122-5.webp";
+import td_dk55_1 from "@/assets/teplodina/dk-55-1.webp";
+import td_dk55_2 from "@/assets/teplodina/dk-55-2.webp";
+import td_dk55_3 from "@/assets/teplodina/dk-55-3.webp";
+import td_dk55_4 from "@/assets/teplodina/dk-55-4.webp";
+import td_dk55_5 from "@/assets/teplodina/dk-55-5.webp";
+import td_dk67_1 from "@/assets/teplodina/dk-67-1.webp";
+import td_dk67_2 from "@/assets/teplodina/dk-67-2.webp";
+import td_dk67_3 from "@/assets/teplodina/dk-67-3.webp";
+import td_dk67_4 from "@/assets/teplodina/dk-67-4.webp";
+import td_dk67_5 from "@/assets/teplodina/dk-67-5.webp";
+import td_dk72_1 from "@/assets/teplodina/dk-72-1.webp";
+import td_dk72_2 from "@/assets/teplodina/dk-72-2.webp";
+import td_dk72_3 from "@/assets/teplodina/dk-72-3.webp";
+import td_dk72_4 from "@/assets/teplodina/dk-72-4.webp";
+import td_dk72_5 from "@/assets/teplodina/dk-72-5.webp";
+import td_skandinaviya_1 from "@/assets/teplodina/skandinaviya-1.webp";
+import td_skandinaviya_2 from "@/assets/teplodina/skandinaviya-2.webp";
+import td_skandinaviya_3 from "@/assets/teplodina/skandinaviya-3.webp";
+import td_skandinaviya_4 from "@/assets/teplodina/skandinaviya-4.webp";
 import dd_start30_1 from "@/assets/divodom/start-30/1.webp";
 import dd_start30_2 from "@/assets/divodom/start-30/2.webp";
 import dd_start30_3 from "@/assets/divodom/start-30/3.webp";
@@ -390,6 +416,12 @@ const UTKINO: Maker = {
   initials: "УТ",
   id: "utkino",
   siteUrl: "https://sk-utkino.ru/catalog",
+};
+const TEPLODINA: Maker = {
+  name: "Теплодина",
+  initials: "ТД",
+  id: "teplodina",
+  siteUrl: "https://teplodina.ru/product-category/doma/karkasnye-doma/",
 };
 
 // ============================================================================
@@ -1320,6 +1352,107 @@ export const projects: Project[] = [
     suitableFor: ["Постоянное проживание", "Для семьи"],
     technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
     features: ["Терраса", "Мансарда"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── Теплодина · Екатеринбург ───────────────────────────────────────────
+  {
+    id: 82, name: "ДК-122", badge: "Жилой дом", price: "3 863 000 ₽",
+    area: "85,8 м²", area_m2: 85.8, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...TEPLODINA, siteUrl: "https://teplodina.ru/product/karkasnyj-dom-dk-122/" },
+    description: "Одноэтажный каркасный дом 85,8 м² с двумя спальнями и террасой.",
+    descriptionLong: "Каркасный дом площадью 85,8 м² (габариты 11,6 × 7,4 м) с двумя спальнями, санузлом и террасой. Подходит для постоянного проживания семьи за городом.",
+    gallery: [
+      { image: td_dk122_1, type: "photo", fit: "contain", blur: true },
+      { image: td_dk122_2, type: "photo", fit: "contain", blur: true },
+      { image: td_dk122_3, type: "photo", fit: "contain", blur: true },
+      { image: td_dk122_4, type: "photo", fit: "contain", blur: true },
+      { image: td_dk122_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 29, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 83, name: "ДК-55", badge: "Жилой дом", price: "2 835 000 ₽",
+    area: "55 м²", area_m2: 55, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
+    maker: { ...TEPLODINA, siteUrl: "https://teplodina.ru/product/karkasnyj-dom-dk-55/" },
+    description: "Компактный каркасный дом 55 м² с двумя спальнями и террасой.",
+    descriptionLong: "Одноэтажный каркасный дом площадью 55 м² (габариты 9 × 7 м). В проекте две спальни, общая зона, санузел и терраса.",
+    gallery: [
+      { image: td_dk55_1, type: "photo", fit: "contain", blur: true },
+      { image: td_dk55_2, type: "photo", fit: "contain", blur: true },
+      { image: td_dk55_3, type: "photo", fit: "contain", blur: true },
+      { image: td_dk55_4, type: "photo", fit: "contain", blur: true },
+      { image: td_dk55_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 23, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Выходные / дача"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 84, name: "ДК-67", badge: "Жилой дом", price: "2 835 000 ₽",
+    area: "63 м²", area_m2: 63, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...TEPLODINA, siteUrl: "https://teplodina.ru/product/karkasnyj-dom-dk-67/" },
+    description: "Одноэтажный каркасный дом 63 м² с двумя спальнями и террасой.",
+    descriptionLong: "Каркасный дом площадью 63 м² (габариты 9 × 7 м) с двумя спальнями, санузлом и террасой. Формат для постоянного проживания или просторной дачи.",
+    gallery: [
+      { image: td_dk67_1, type: "photo", fit: "contain", blur: true },
+      { image: td_dk67_2, type: "photo", fit: "contain", blur: true },
+      { image: td_dk67_3, type: "photo", fit: "contain", blur: true },
+      { image: td_dk67_4, type: "photo", fit: "contain", blur: true },
+      { image: td_dk67_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 24, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 85, name: "ДК-72", badge: "Жилой дом", price: "3 240 000 ₽",
+    area: "64,5 м²", area_m2: 64.5, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...TEPLODINA, siteUrl: "https://teplodina.ru/product/karkasnyj-dom-dk-72/" },
+    description: "Каркасный дом 64,5 м² с тремя спальнями и террасой.",
+    descriptionLong: "Одноэтажный каркасный дом площадью 64,5 м² (габариты 9 × 8 м). Планировка рассчитана на три спальни, санузел, общую зону и террасу.",
+    gallery: [
+      { image: td_dk72_1, type: "photo", fit: "contain", blur: true },
+      { image: td_dk72_2, type: "photo", fit: "contain", blur: true },
+      { image: td_dk72_3, type: "photo", fit: "contain", blur: true },
+      { image: td_dk72_4, type: "photo", fit: "contain", blur: true },
+      { image: td_dk72_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 26, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 86, name: "Скандинавия", badge: "Жилой дом", price: "2 304 000 ₽",
+    area: "48 м²", area_m2: 48, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
+    maker: { ...TEPLODINA, siteUrl: "https://teplodina.ru/product/dom-karkasnyj-skandinaviya/" },
+    description: "Компактный каркасный дом 48 м² в скандинавском стиле.",
+    descriptionLong: "Одноэтажный каркасный дом площадью 48 м² (габариты 8 × 6 м) с двумя спальнями, санузлом и террасой/крыльцом. Подходит для дачи и круглогодичного проживания.",
+    gallery: [
+      { image: td_skandinaviya_1, type: "photo", fit: "contain", blur: true },
+      { image: td_skandinaviya_2, type: "photo", fit: "contain", blur: true },
+      { image: td_skandinaviya_3, type: "photo", fit: "contain", blur: true },
+      { image: td_skandinaviya_4, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 22, rating: 4.7,
+    suitableFor: ["Для одного / пары", "Выходные / дача"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Скандинавский", landSize: "3–6 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
 ];
