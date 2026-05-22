@@ -128,8 +128,7 @@ const PartnerReviews = () => {
   ];
 
   const handleBack = () => {
-    if (window.history.length > 1) navigate(-1);
-    else navigate(`/partner/${id}`);
+    navigate(`/partner/${id}`);
   };
 
   return (
