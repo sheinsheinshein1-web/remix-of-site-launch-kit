@@ -331,7 +331,7 @@ const Partner = () => {
                   <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
-                      background: "linear-gradient(to bottom, transparent 0%, hsl(0, 0%, 0% / 0.25) 35%, hsl(0, 0%, 0% / 0.7) 65%, hsl(0, 0%, 0% / 0.92) 100%)",
+                      background: "linear-gradient(to bottom, hsl(0,0%,0%/0.15) 0%, hsl(0,0%,0%/0.55) 50%, hsl(0,0%,0%/0.95) 100%)",
                     }}
                   />
                 </div>
