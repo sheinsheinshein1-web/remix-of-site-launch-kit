@@ -216,7 +216,7 @@ const PartnerReviews = () => {
 
         {/* Reviews list */}
         <div className="space-y-3">
-          {reviews.map((r, idx) => (
+          {displayedReviews.map((r, idx) => (
             <article key={idx} className="rounded-2xl p-4" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
               <div className="flex items-start gap-3">
                 <div className="w-[72px] h-[72px] rounded-xl overflow-hidden shrink-0" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
