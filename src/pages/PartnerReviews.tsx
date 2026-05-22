@@ -374,6 +374,41 @@ const PartnerReviews = () => {
           </div>
         </DrawerContent>
       </Drawer>
+
+      {/* Report drawer */}
+      <Drawer open={reportFor !== null} onOpenChange={(o) => !o && setReportFor(null)}>
+        <DrawerContent
+          className="mx-0 rounded-t-[20px] p-0 border-0 text-white"
+          style={{
+            background: "hsl(0 0% 8% / 0.55)",
+            backdropFilter: "blur(32px) saturate(160%)",
+            WebkitBackdropFilter: "blur(32px) saturate(160%)",
+          }}
+        >
+          <div className="px-3 pt-5 pb-3">
+            <h3 className="text-[20px] font-semibold text-white px-1 flex items-center gap-2">
+              <Flag className="w-5 h-5" strokeWidth={1.8} />
+              Пожаловаться на отзыв
+            </h3>
+            <p className="text-[13px] text-white/60 px-1 mt-1">Выберите причину — мы проверим в течение 24 часов</p>
+          </div>
+          <div className="px-3 pb-6 flex flex-col gap-2">
+            {reportReasons.map((reason) => (
+              <button
+                key={reason}
+                onClick={() => {
+                  setReportFor(null);
+                  toast.success("Жалоба отправлена");
+                }}
+                className="w-full text-left px-4 py-4 rounded-2xl text-[16px] text-white"
+                style={{ background: "hsl(0 0% 100% / 0.08)" }}
+              >
+                {reason}
+              </button>
+            ))}
+          </div>
+        </DrawerContent>
+      </Drawer>
     </div>
   );
 };
