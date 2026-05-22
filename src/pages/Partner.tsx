@@ -117,21 +117,27 @@ const Partner = () => {
         )}
       </div>
 
-      {/* Виньеточный блюр: плотный снизу и плавно растворяется к середине */}
+      {/* Виньеточный блюр: дубликат фото без жёсткого края backdrop-filter */}
       {heroImage && (
-        <div className="absolute inset-x-0 bottom-0 h-[62%] pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div
             className="absolute inset-0"
             style={{
-              backdropFilter: "blur(30px)",
-              WebkitBackdropFilter: "blur(30px)",
-              maskImage: "linear-gradient(to top, black 0%, black 24%, rgb(0 0 0 / 0.86) 39%, rgb(0 0 0 / 0.48) 58%, rgb(0 0 0 / 0.16) 76%, transparent 100%)",
-              WebkitMaskImage: "linear-gradient(to top, black 0%, black 24%, rgb(0 0 0 / 0.86) 39%, rgb(0 0 0 / 0.48) 58%, rgb(0 0 0 / 0.16) 76%, transparent 100%)",
+              maskImage: "linear-gradient(to top, black 0%, black 30%, rgb(0 0 0 / 0.72) 49%, rgb(0 0 0 / 0.32) 66%, rgb(0 0 0 / 0.08) 82%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to top, black 0%, black 30%, rgb(0 0 0 / 0.72) 49%, rgb(0 0 0 / 0.32) 66%, rgb(0 0 0 / 0.08) 82%, transparent 100%)",
             }}
-          />
+          >
+            <img
+              src={heroImage}
+              alt=""
+              className="w-full h-full object-cover scale-110 blur-2xl"
+              aria-hidden
+              loading="eager"
+            />
+          </div>
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to top, hsl(var(--foreground) / 0.46) 0%, hsl(var(--foreground) / 0.34) 28%, hsl(var(--foreground) / 0.14) 56%, transparent 100%)" }}
+            style={{ background: "linear-gradient(to top, hsl(var(--foreground) / 0.5) 0%, hsl(var(--foreground) / 0.34) 32%, hsl(var(--foreground) / 0.16) 58%, transparent 88%)" }}
           />
         </div>
       )}
