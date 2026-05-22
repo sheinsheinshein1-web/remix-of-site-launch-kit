@@ -327,11 +327,11 @@ const Partner = () => {
               >
                 <div className="absolute inset-0">
                   <img src={bgImage} alt="" className="w-full h-full object-cover" aria-hidden loading="lazy" />
-                  {/* Тёмный градиент-блюр у нижней половины */}
+                  {/* Тёмный градиент от середины плашки */}
                   <div
-                    className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
+                    className="absolute inset-0 pointer-events-none"
                     style={{
-                      background: "linear-gradient(to bottom, transparent 0%, hsl(28, 12%, 24% / 0.55) 60%, hsl(28, 12%, 24%) 100%)",
+                      background: "linear-gradient(to bottom, transparent 0%, transparent 50%, hsl(0, 0%, 0% / 0.55) 75%, hsl(0, 0%, 0% / 0.85) 100%)",
                     }}
                   />
                 </div>
