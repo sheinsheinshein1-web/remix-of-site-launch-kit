@@ -107,14 +107,14 @@ const Header = () => {
         {/* Static header - visible when not scrolled */}
         <div className={`relative z-10 ${enableTransitions ? 'transition-all duration-300' : ''} ${mobileScrolled ? 'opacity-0 pointer-events-none scale-95 -translate-y-full' : 'opacity-100 scale-100 translate-y-0'}`}>
           <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),6px)] pb-1.5">
-            <div className="flex items-center justify-between">
-              <Link to="/" className="flex items-center gap-1 text-[24px] font-bold text-foreground tracking-[-0.04em]">
+            <div className="flex items-center justify-between gap-2">
+              <Link to="/" className="flex items-center gap-1 text-[24px] font-bold text-foreground tracking-[-0.04em] whitespace-nowrap flex-shrink-0">
                 <img src={logoMark} alt="" className="h-[23px] w-[23px]" aria-hidden loading="lazy" decoding="async" />
                 Много места
               </Link>
-              <button onClick={() => setCityOpen(true)} className="flex items-center gap-1 text-[13px] font-medium text-primary bg-secondary rounded-xl h-9 px-3">
-                {city}
-                <ChevronDown className="w-3.5 h-3.5 text-primary" strokeWidth={2} />
+              <button onClick={() => setCityOpen(true)} className="flex items-center gap-1 text-[13px] font-medium text-primary bg-secondary rounded-xl h-9 px-3 max-w-[160px] min-w-0">
+                <span className="truncate">{city}</span>
+                <ChevronDown className="w-3.5 h-3.5 text-primary flex-shrink-0" strokeWidth={2} />
               </button>
             </div>
           </div>
