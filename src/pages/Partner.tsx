@@ -273,16 +273,24 @@ const Partner = () => {
             scrolled ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
         >
-          <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 rounded-b-2xl shadow-sm">
-            <div className="flex items-center justify-between">
-              <button onClick={handleBack} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
+          <div className="px-3 pt-[max(env(safe-area-inset-top),10px)] pb-2">
+            <div
+              className="flex items-center justify-between gap-3 rounded-2xl pl-2 pr-2 py-2 border border-white/40"
+              style={{
+                background: "hsl(0 0% 100% / 0.7)",
+                backdropFilter: "blur(18px) saturate(140%)",
+                WebkitBackdropFilter: "blur(18px) saturate(140%)",
+                boxShadow: "0 10px 30px -14px hsl(0 0% 0% / 0.25)",
+              }}
+            >
+              <button onClick={handleBack} className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center shrink-0">
                 <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
               </button>
-              <div className="flex-1 min-w-0 ml-3">
-                <div className="text-[14px] font-semibold text-foreground truncate">{partner.name}</div>
+              <div className="flex-1 min-w-0">
+                <div className="text-[15px] font-semibold text-foreground truncate leading-tight">{partner.name}</div>
                 <div className="text-[12px] text-muted-foreground truncate">{partner.category} · {partner.city}</div>
               </div>
-              <button onClick={onShare} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
+              <button onClick={onShare} className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center shrink-0" aria-label="Поделиться">
                 <img src={shareIcon} alt="" className="w-[18px] h-[18px]" loading="lazy" decoding="async" />
               </button>
             </div>
