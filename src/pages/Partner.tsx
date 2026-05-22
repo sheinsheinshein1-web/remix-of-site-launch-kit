@@ -139,15 +139,15 @@ const Partner = () => {
 
       {/* Top row: back + share + menu */}
       <div className="relative flex items-center justify-between px-3 md:px-8 pt-[max(env(safe-area-inset-top),12px)]">
-        <button onClick={handleBack} className="w-10 h-10 rounded-xl bg-background/25 backdrop-blur-md flex items-center justify-center" aria-label="Назад">
-          <ArrowLeft className="w-[18px] h-[18px] text-background" strokeWidth={1.8} />
+        <button onClick={handleBack} className="w-10 h-10 rounded-xl bg-black/35 backdrop-blur-md flex items-center justify-center" aria-label="Назад">
+          <ArrowLeft className="w-[18px] h-[18px] text-white" strokeWidth={1.8} />
         </button>
         <div className="flex items-center gap-2">
-          <button onClick={onShare} className="w-10 h-10 rounded-xl bg-background/25 backdrop-blur-md flex items-center justify-center" aria-label="Поделиться">
-            <img src={shareIcon} alt="" className="w-[18px] h-[18px] invert" loading="lazy" decoding="async" />
+          <button onClick={onShare} className="w-10 h-10 rounded-xl bg-black/35 backdrop-blur-md flex items-center justify-center" aria-label="Поделиться">
+            <img src={shareIcon} alt="" className="w-[18px] h-[18px] invert brightness-200" loading="lazy" decoding="async" />
           </button>
-          <button className="w-10 h-10 rounded-xl bg-background/25 backdrop-blur-md flex items-center justify-center" aria-label="Меню">
-            <Menu className="w-[18px] h-[18px] text-background" strokeWidth={1.8} />
+          <button className="w-10 h-10 rounded-xl bg-black/35 backdrop-blur-md flex items-center justify-center" aria-label="Меню">
+            <Menu className="w-[18px] h-[18px] text-white" strokeWidth={1.8} />
           </button>
         </div>
       </div>
