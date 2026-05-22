@@ -113,6 +113,10 @@ const PartnerReviews = () => {
     return sorted.map(({ r }) => r);
   }, [reviews, sortKey, ratingFilter]);
 
+  const [helpful, setHelpful] = useState<Record<number, boolean>>({});
+  const toggleHelpful = (i: number) =>
+    setHelpful((h) => ({ ...h, [i]: !h[i] }));
+
   const handleBack = () => {
     if (window.history.length > 1) navigate(-1);
     else navigate(`/partner/${id}`);
