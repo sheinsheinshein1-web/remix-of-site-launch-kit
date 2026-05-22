@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, Star, ChevronDown, SlidersHorizontal, ThumbsUp, MoreHorizontal, Flag } from "lucide-react";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { toast } from "sonner";
@@ -54,6 +54,7 @@ const REVIEW_TEMPLATES: { title: string; body: string; name: string; when: strin
 
 const PartnerReviews = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { id } = useParams();
   const makerId = (id && (partnerMakerIds[id] ?? (makersById[id] ? id : undefined))) || "platforma";
   const summary = makersById[makerId];
@@ -128,7 +129,10 @@ const PartnerReviews = () => {
   ];
 
   const handleBack = () => {
-    if (window.history.length > 1) navigate(-1);
+    if ((location.state as { returnToMenu?: boolean } | null)?.returnToMenu) {
+      navigate(`/partner/${id}`, { state: { openMenu: true } });
+    }
+    else if (window.history.length > 1) navigate(-1);
     else navigate(`/partner/${id}`);
   };
 
