@@ -371,35 +371,6 @@ const Partner = () => {
           </div>
         )}
 
-        {/* "Все проекты" — заголовок + фильтр + 2-кол сетка (без бенто-обёртки, как в референсе) */}
-        {makerProjects.length > 0 && (
-          <div className="px-3 mt-5">
-            <div className="flex items-center justify-between px-1">
-              <h2 className={`text-[24px] font-bold tracking-tight ${isPlatforma ? "text-background" : "text-foreground"}`}>Все проекты</h2>
-              <button
-                onClick={() => navigate(`/catalog?maker=${makerId}`)}
-                className={`w-10 h-10 rounded-xl backdrop-blur-md flex items-center justify-center ${isPlatforma ? "bg-background/25" : "bg-background"}`}
-                aria-label="Фильтры"
-              >
-                <SlidersHorizontal className={`w-[18px] h-[18px] ${isPlatforma ? "text-background" : "text-foreground"}`} strokeWidth={1.8} />
-              </button>
-            </div>
-            <div
-              className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2.5"
-              style={isPlatforma ? { ["--foreground" as any]: "0 0% 100%" } : undefined}
-            >
-              {makerProjects.map((p) => (
-                isPlatforma ? (
-                  <ProjectCard key={p.id} projectId={p.id} />
-                ) : (
-                  <div key={p.id} className="bg-background rounded-2xl p-2">
-                    <ProjectCard projectId={p.id} height="aspect-square h-auto" />
-                  </div>
-                )
-              ))}
-            </div>
-          </div>
-        )}
 
 
       </div>
