@@ -40,7 +40,7 @@ const Footer = () => {
     <footer className="bg-secondary border-t border-border mt-4">
       {/* Main grid */}
       <div className="max-w-[1400px] mx-auto px-5 md:px-8 pt-12 pb-10">
-        <div className="grid md:grid-cols-4 gap-x-8 gap-y-10">
+        <div className="grid md:grid-cols-2 gap-x-8 gap-y-10">
           {/* Brand */}
           <div>
             <img src={logoWhite} alt="многоместа.рф" className="h-6 mb-4" loading="lazy" decoding="async" />
@@ -52,27 +52,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Catalog SEO links */}
-          <div>
-            <h4 className="font-semibold text-[13px] mb-4 text-foreground">Модульные дома</h4>
-            <div className="flex flex-col gap-2 text-[13px] text-muted-foreground">
-              {catalogLinks.map((l) => (
-                <a key={l.label} href={l.path} onClick={go(l.path)} className="hover:text-foreground transition-colors">{l.label}</a>
-              ))}
-            </div>
-          </div>
-
-          {/* Categories SEO links */}
-          <div>
-            <h4 className="font-semibold text-[13px] mb-4 text-foreground">Категории</h4>
-            <div className="flex flex-col gap-2 text-[13px] text-muted-foreground">
-              {categoryLinks.map((l) => (
-                <a key={l.label} href={l.path} onClick={go(l.path)} className="hover:text-foreground transition-colors">{l.label}</a>
-              ))}
-            </div>
-          </div>
-
-          {/* Company + Partner */}
+          {/* Company */}
           <div>
             <h4 className="font-semibold text-[13px] mb-4 text-foreground">Компания</h4>
             <div className="flex flex-col gap-2 text-[13px] text-muted-foreground mb-6">
@@ -80,8 +60,6 @@ const Footer = () => {
               <a href="/favorites" onClick={go("/favorites")} className="hover:text-foreground transition-colors">Избранное</a>
               <a href="/messages/support" onClick={go("/messages/support")} className="hover:text-foreground transition-colors">Поддержка</a>
             </div>
-
-            {/* Блок "Производителям" временно скрыт */}
           </div>
         </div>
 
