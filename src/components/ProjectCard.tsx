@@ -27,21 +27,25 @@ interface ProjectCardProps {
   height?: string;
   /** Обработчик клика по карточке (например, чтобы сохранить scroll position). */
   onCardClick?: (e: React.MouseEvent<HTMLAnchorElement>, projectId: number) => void;
+  /** Отключить листание галереи — показывать только первое фото без точек/свайпа. */
+  singleImage?: boolean;
 }
 
 const DEFAULT_HEIGHT = "aspect-[3/4] h-auto md:h-[240px] md:aspect-auto";
 
-const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick }: ProjectCardProps) => {
+const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleImage = false }: ProjectCardProps) => {
   const navigate = useNavigate();
   const { isFavorite, toggleFavorite } = useFavorites();
 
   const project = allProjects.find((p) => p.id === projectId);
   if (!project) return null;
 
-  const images = project.gallery.map((g) => g.image);
-  const firstImage = images[0] ?? "";
+  const allImages = project.gallery.map((g) => g.image);
+  const images = singleImage ? allImages.slice(0, 1) : allImages;
+  const firstImage = allImages[0] ?? "";
   const liked = isFavorite(project.id);
   const likesCount = project.likes + (liked ? 1 : 0);
+
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (onCardClick) onCardClick(e, project.id);
