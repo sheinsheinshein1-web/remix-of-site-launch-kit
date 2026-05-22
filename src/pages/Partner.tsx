@@ -1,10 +1,11 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { ArrowLeft, ChevronRight, ShieldCheck, Star, SlidersHorizontal, MapPin, Menu } from "lucide-react";
+import { ArrowLeft, ChevronRight, ShieldCheck, Star, ArrowUpDown, MapPin, Menu } from "lucide-react";
 import Header from "@/components/Header";
 import { useIsMobile } from "@/hooks/use-mobile";
 import shareIcon from "@/assets/share-icon.svg";
 import ProjectCard from "@/components/ProjectCard";
+import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import {
   projects as allProjects,
   projectsCountByMakerId,
@@ -50,6 +51,23 @@ const Partner = () => {
   const isMobile = useIsMobile();
   const { id } = useParams();
   const [scrolled, setScrolled] = useState(false);
+  const [sortOpen, setSortOpen] = useState(false);
+  const [sortBy, setSortBy] = useState("rating");
+
+  const sortOptions = [
+    { value: "rating", label: "С высоким рейтингом" },
+    { value: "popular", label: "Популярные" },
+    { value: "new", label: "Новинки" },
+    { value: "cheap", label: "Дешевле" },
+    { value: "expensive", label: "Дороже" },
+    { value: "area_asc", label: "По площади м², от меньшего" },
+    { value: "area_desc", label: "По площади м², от большего" },
+    { value: "fast", label: "Быстрый монтаж" },
+  ];
+
+  const priceNum = (s: string) => parseInt(String(s).replace(/\D/g, ""), 10) || 0;
+  const areaNum = (s: string) => parseFloat(String(s).replace(/[^\d.]/g, "")) || 0;
+  const termNum = (s: string) => parseInt(String(s).replace(/\D/g, ""), 10) || 0;
 
   const makerId = (id && (partnerMakerIds[id] ?? (makersById[id] ? id : undefined))) || "platforma";
   const summary = makersById[makerId];
@@ -73,6 +91,24 @@ const Partner = () => {
     });
     return Array.from(map.values());
   }, [makerProjects]);
+
+  const sortedMakerProjects = useMemo(() => {
+    const arr = [...makerProjects];
+    arr.sort((a: any, b: any) => {
+      switch (sortBy) {
+        case "cheap": return priceNum(a.price) - priceNum(b.price);
+        case "expensive": return priceNum(b.price) - priceNum(a.price);
+        case "area_asc": return areaNum(a.area) - areaNum(b.area);
+        case "area_desc": return areaNum(b.area) - areaNum(a.area);
+        case "fast": return termNum(a.term) - termNum(b.term);
+        case "popular": return (b.likes ?? 0) - (a.likes ?? 0);
+        case "new": return (b.id ?? 0) - (a.id ?? 0);
+        case "rating": return (b.rating ?? 0) - (a.rating ?? 0);
+        default: return 0;
+      }
+    });
+    return arr;
+  }, [makerProjects, sortBy]);
 
   const partner = {
     name: summary?.name ?? "Партнёр",
@@ -378,18 +414,18 @@ const Partner = () => {
             <div className="flex items-center justify-between px-1">
               <h2 className="text-[24px] font-bold tracking-tight text-background">Все проекты</h2>
               <button
-                onClick={() => navigate(`/catalog?maker=${makerId}`)}
+                onClick={() => setSortOpen(true)}
                 className="w-10 h-10 rounded-xl backdrop-blur-md flex items-center justify-center bg-background/25"
-                aria-label="Фильтры"
+                aria-label="Сортировка"
               >
-                <SlidersHorizontal className="w-[18px] h-[18px] text-background" strokeWidth={1.8} />
+                <ArrowUpDown className="w-[18px] h-[18px] text-background" strokeWidth={2.2} />
               </button>
             </div>
             <div
               className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2.5"
               style={{ ["--foreground" as any]: "0 0% 100%" }}
             >
-              {makerProjects.map((p) => (
+              {sortedMakerProjects.map((p) => (
                 <ProjectCard key={p.id} projectId={p.id} />
               ))}
             </div>
@@ -398,6 +434,30 @@ const Partner = () => {
 
 
       </div>
+
+      {/* Sort Drawer — как в каталоге */}
+      <Drawer open={sortOpen} onOpenChange={setSortOpen}>
+        <DrawerContent className="mx-0 rounded-t-[20px] p-0">
+          <div className="px-5 pt-5 pb-2">
+            <h3 className="text-[20px] font-semibold text-foreground">Показать сначала</h3>
+          </div>
+          <div className="bg-secondary rounded-xl mx-4 mb-6 divide-y divide-border/50">
+            {sortOptions.map((option) => (
+              <button
+                key={option.value}
+                onClick={() => { setSortBy(option.value); setSortOpen(false); }}
+                className="w-full flex items-center gap-3 px-4 py-4 text-left"
+              >
+                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${sortBy === option.value ? "border-primary" : "border-muted-foreground/30"}`}>
+                  {sortBy === option.value && <div className="w-3 h-3 rounded-full bg-primary" />}
+                </div>
+                <span className="text-[16px] text-foreground">{option.label}</span>
+              </button>
+            ))}
+          </div>
+        </DrawerContent>
+      </Drawer>
+
 
       {/* Bottom Bar — go to site CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-40">
