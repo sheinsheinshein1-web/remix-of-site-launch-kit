@@ -278,7 +278,7 @@ const Partner = () => {
                 WebkitBackdropFilter: "blur(28px) saturate(140%)",
               }}
             >
-              <h2 className="px-4 text-[22px] font-bold text-foreground tracking-tight">Популярные</h2>
+              <h2 className="px-4 text-[22px] font-bold text-background tracking-tight">Популярные</h2>
               <div className="mt-3 flex gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {makerProjects.map((p) => (
                   <div key={p.id} className="shrink-0 w-[235px] md:w-[260px]">
