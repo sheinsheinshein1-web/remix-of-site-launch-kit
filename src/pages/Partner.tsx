@@ -255,7 +255,14 @@ const Partner = () => {
         {/* Бенто: "Популярные" — горизонтальный скролл крупных карточек */}
         {isPlatforma && makerProjects.length > 0 && (
           <div className="px-3 mt-3">
-            <div className="bg-background rounded-2xl pt-5 pb-5">
+            <div
+              className="rounded-2xl pt-5 pb-5 border border-background/40 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.15)]"
+              style={{
+                background: "hsl(var(--background) / 0.55)",
+                backdropFilter: "blur(24px) saturate(160%)",
+                WebkitBackdropFilter: "blur(24px) saturate(160%)",
+              }}
+            >
               <h2 className="px-4 text-[22px] font-bold text-foreground tracking-tight">Популярные</h2>
               <div className="mt-3 flex gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {makerProjects.map((p) => (
