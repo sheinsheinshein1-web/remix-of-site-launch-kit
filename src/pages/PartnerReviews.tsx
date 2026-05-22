@@ -162,13 +162,6 @@ const PartnerReviews = () => {
         {/* Filter chips */}
         <div className="flex items-center gap-2 overflow-x-auto -mx-3 px-3 scrollbar-hide">
           <button
-            className="shrink-0 w-9 h-9 rounded-xl flex items-center justify-center"
-            style={{ background: "hsl(0 0% 100% / 0.08)" }}
-            aria-label="Фильтры"
-          >
-            <SlidersHorizontal className="w-[16px] h-[16px] text-white" strokeWidth={1.8} />
-          </button>
-          <button
             className="shrink-0 h-9 px-3.5 rounded-xl flex items-center gap-1.5 text-[14px] text-white"
             style={{ background: "hsl(0 0% 100% / 0.08)" }}
           >
