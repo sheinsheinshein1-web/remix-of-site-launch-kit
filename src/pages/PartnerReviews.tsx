@@ -197,6 +197,7 @@ const PartnerReviews = () => {
         {/* Filter chips */}
         <div className="flex items-center gap-2 overflow-x-auto -mx-3 px-3 scrollbar-hide">
           <button
+            onClick={() => setSortOpen(true)}
             className="shrink-0 h-9 px-3.5 rounded-xl flex items-center gap-1.5 text-[14px] text-white"
             style={{ background: "hsl(0 0% 100% / 0.08)" }}
           >
@@ -204,6 +205,7 @@ const PartnerReviews = () => {
             <ChevronDown className="w-4 h-4" strokeWidth={1.8} />
           </button>
           <button
+            onClick={() => setRatingOpen(true)}
             className="shrink-0 h-9 px-3.5 rounded-xl flex items-center gap-1.5 text-[14px] text-white"
             style={{ background: "hsl(0 0% 100% / 0.08)" }}
           >
