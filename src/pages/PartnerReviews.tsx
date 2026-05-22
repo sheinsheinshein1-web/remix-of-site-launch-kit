@@ -149,7 +149,7 @@ const PartnerReviews = () => {
         </section>
 
         {/* Filter chips */}
-        <div className="flex items-center gap-2 overflow-x-auto -mx-3 px-3 scrollbar-none">
+        <div className="flex items-center gap-2 overflow-x-auto -mx-3 px-3 scrollbar-hide">
           <button
             className="shrink-0 w-9 h-9 rounded-xl bg-background flex items-center justify-center"
             aria-label="Фильтры"
