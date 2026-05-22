@@ -364,7 +364,7 @@ const PRIME_MODUL: Maker = {
   name: "Прайм Модуль",
   initials: "ПМ",
   id: "prime-modul",
-  siteUrl: "https://prime-modul.ru/",
+  siteUrl: "https://prime-module.ru/",
 };
 
 // ============================================================================
