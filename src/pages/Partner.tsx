@@ -107,35 +107,30 @@ const Partner = () => {
   const isPlatforma = makerId === "platforma";
 
   const HeroPlatforma = () => (
-    <div className="relative overflow-hidden md:rounded-2xl bg-background min-h-[78vh] md:min-h-[620px] flex flex-col">
+    <div className="relative overflow-hidden md:rounded-2xl min-h-[78vh] md:min-h-[620px] flex flex-col">
       {/* Резкое фото на весь hero */}
       <div className="absolute inset-0">
         {heroImage ? (
-          <img src={heroImage} alt="" className="w-full h-full object-cover" aria-hidden loading="eager" />
+          <img
+            src={heroImage}
+            alt=""
+            className="w-full h-full object-cover"
+            aria-hidden
+            loading="eager"
+            style={{
+              WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 54%, transparent 100%)",
+              maskImage: "linear-gradient(to bottom, black 0%, black 54%, transparent 100%)",
+            }}
+          />
         ) : (
           <div className="w-full h-full bg-secondary" />
         )}
       </div>
 
-      {/* Затемнение снизу для читаемости текста */}
+      {/* Затемнение снизу для читаемости текста без отдельной границы */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "linear-gradient(to top, hsl(var(--foreground) / 0.55) 0%, hsl(var(--foreground) / 0.28) 28%, transparent 55%)" }}
-      />
-
-      {/* Нижняя 1/3 — плавный переход в фон страницы (блюр-фото) */}
-      <div
-        className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          filter: "blur(40px) saturate(120%)",
-          transform: "scale(1.15)",
-          transformOrigin: "bottom center",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 55%, black 100%)",
-          maskImage: "linear-gradient(to bottom, transparent 0%, black 55%, black 100%)",
-        }}
+        style={{ background: "linear-gradient(to top, hsl(var(--foreground) / 0.58) 0%, hsl(var(--foreground) / 0.30) 32%, transparent 62%)" }}
       />
 
 
