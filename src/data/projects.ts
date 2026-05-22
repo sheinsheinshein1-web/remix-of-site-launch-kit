@@ -252,6 +252,58 @@ import td_skandinaviya_1 from "@/assets/teplodina/skandinaviya-1.webp";
 import td_skandinaviya_2 from "@/assets/teplodina/skandinaviya-2.webp";
 import td_skandinaviya_3 from "@/assets/teplodina/skandinaviya-3.webp";
 import td_skandinaviya_4 from "@/assets/teplodina/skandinaviya-4.webp";
+
+// Karkas.haus
+import kh2205_1 from "@/assets/karkas-haus/kh-22-05/1.webp";
+import kh2205_2 from "@/assets/karkas-haus/kh-22-05/2.webp";
+import kh2205_3 from "@/assets/karkas-haus/kh-22-05/3.webp";
+import kh2205_4 from "@/assets/karkas-haus/kh-22-05/4.webp";
+import kh2205_5 from "@/assets/karkas-haus/kh-22-05/5.webp";
+import kh2205_6 from "@/assets/karkas-haus/kh-22-05/6.webp";
+import kh2310_1 from "@/assets/karkas-haus/kh-23-10-barnhaus/1.webp";
+import kh2310_2 from "@/assets/karkas-haus/kh-23-10-barnhaus/2.webp";
+import kh2310_3 from "@/assets/karkas-haus/kh-23-10-barnhaus/3.webp";
+import kh2310_4 from "@/assets/karkas-haus/kh-23-10-barnhaus/4.webp";
+import kh2310_5 from "@/assets/karkas-haus/kh-23-10-barnhaus/5.webp";
+import kh2310_6 from "@/assets/karkas-haus/kh-23-10-barnhaus/6.webp";
+import kh23151_1 from "@/assets/karkas-haus/kh-23-15-1/1.webp";
+import kh23151_2 from "@/assets/karkas-haus/kh-23-15-1/2.webp";
+import kh23151_3 from "@/assets/karkas-haus/kh-23-15-1/3.webp";
+import kh23151_4 from "@/assets/karkas-haus/kh-23-15-1/4.webp";
+import kh23151_5 from "@/assets/karkas-haus/kh-23-15-1/5.webp";
+import kh23151_6 from "@/assets/karkas-haus/kh-23-15-1/6.webp";
+import kh23152_1 from "@/assets/karkas-haus/kh-23-15-2/1.webp";
+import kh23152_2 from "@/assets/karkas-haus/kh-23-15-2/2.webp";
+import kh23152_3 from "@/assets/karkas-haus/kh-23-15-2/3.webp";
+import kh23152_4 from "@/assets/karkas-haus/kh-23-15-2/4.webp";
+import kh23152_5 from "@/assets/karkas-haus/kh-23-15-2/5.webp";
+import kh23152_6 from "@/assets/karkas-haus/kh-23-15-2/6.webp";
+import kh23222_1 from "@/assets/karkas-haus/kh-23-22-2/1.webp";
+import kh23222_2 from "@/assets/karkas-haus/kh-23-22-2/2.webp";
+import kh23222_3 from "@/assets/karkas-haus/kh-23-22-2/3.webp";
+import kh23222_4 from "@/assets/karkas-haus/kh-23-22-2/4.webp";
+import kh23222_5 from "@/assets/karkas-haus/kh-23-22-2/5.webp";
+import kh23222_6 from "@/assets/karkas-haus/kh-23-22-2/6.webp";
+
+// Урал Хаус
+import uhSkandi120_1 from "@/assets/ural-house/uh-skandi-120/1.webp";
+import uhSkandi120_2 from "@/assets/ural-house/uh-skandi-120/2.webp";
+import uhSkandi120_3 from "@/assets/ural-house/uh-skandi-120/3.webp";
+import uhSkandi120_4 from "@/assets/ural-house/uh-skandi-120/4.webp";
+import uhSkandi120_5 from "@/assets/ural-house/uh-skandi-120/5.webp";
+import uhSkandi120_6 from "@/assets/ural-house/uh-skandi-120/6.webp";
+import uhBarn92_1 from "@/assets/ural-house/uh-barn-92/1.webp";
+import uhBarn92_2 from "@/assets/ural-house/uh-barn-92/2.webp";
+import uhKlassik170_1 from "@/assets/ural-house/uh-klassik-170/1.webp";
+import uhKlassik170_2 from "@/assets/ural-house/uh-klassik-170/2.webp";
+import uhFahverk190_1 from "@/assets/ural-house/uh-fahverk-190/1.webp";
+import uhFahverk190_2 from "@/assets/ural-house/uh-fahverk-190/2.webp";
+import uhFahverk190_3 from "@/assets/ural-house/uh-fahverk-190/3.webp";
+import uhFahverk190_4 from "@/assets/ural-house/uh-fahverk-190/4.webp";
+import uhFahverk190_5 from "@/assets/ural-house/uh-fahverk-190/5.webp";
+import uhKlassik76_1 from "@/assets/ural-house/uh-klassik-76/1.webp";
+import uhKlassik76_2 from "@/assets/ural-house/uh-klassik-76/2.webp";
+
 import dd_start30_1 from "@/assets/divodom/start-30/1.webp";
 import dd_start30_2 from "@/assets/divodom/start-30/2.webp";
 import dd_start30_3 from "@/assets/divodom/start-30/3.webp";
@@ -422,6 +474,18 @@ const TEPLODINA: Maker = {
   initials: "ТД",
   id: "teplodina",
   siteUrl: "https://teplodina.ru/product-category/doma/karkasnye-doma/",
+};
+const KARKAS_HAUS: Maker = {
+  name: "Karkas.haus",
+  initials: "KH",
+  id: "karkas-haus",
+  siteUrl: "https://karkas.haus/doma",
+};
+const URAL_HOUSE: Maker = {
+  name: "Урал Хаус",
+  initials: "УХ",
+  id: "ural-house",
+  siteUrl: "https://ural-house.ru/",
 };
 
 // ============================================================================
@@ -1453,6 +1517,207 @@ export const projects: Project[] = [
     suitableFor: ["Для одного / пары", "Выходные / дача"],
     technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
     features: ["Терраса"], style: "Скандинавский", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── Karkas.haus · Екатеринбург ─────────────────────────────────────────
+  {
+    id: 87, name: "22-05", badge: "Жилой дом", price: "2 979 200 ₽",
+    area: "93,1 м²", area_m2: 93.1, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...KARKAS_HAUS, siteUrl: "https://karkas.haus/doma/proekt-doma-22-05" },
+    description: "Каркасный дом 93,1 м² с двумя спальнями, террасой и крыльцом.",
+    descriptionLong: "Проект 22-05 от Karkas.haus: каркасный дом камерной сушки площадью 93,1 м². Габариты 12,5 × 7,5 м, тёплый контур 75 м², жилая площадь 65 м², терраса 18,1 м² и крыльцо 1,79 м².",
+    gallery: [
+      { image: kh2205_1, type: "photo", fit: "contain", blur: true },
+      { image: kh2205_2, type: "photo", fit: "contain" },
+      { image: kh2205_3, type: "photo", fit: "contain" },
+      { image: kh2205_4, type: "photo", fit: "contain" },
+      { image: kh2205_5, type: "photo", fit: "contain" },
+      { image: kh2205_6, type: "photo", fit: "contain" },
+    ],
+    likes: 31, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса", "Крыльцо"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 88, name: "23-10 БарнХаус", badge: "Жилой дом", price: "4 192 000 ₽",
+    area: "131 м²", area_m2: 131, beds: 3, baths: 1, floors: 2, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...KARKAS_HAUS, siteUrl: "https://karkas.haus/doma/proekt-doma-23-10-barnhaus" },
+    description: "Двухэтажный барнхаус 131 м² с тремя спальнями и террасой.",
+    descriptionLong: "Проект 23-10 БарнХаус от Karkas.haus: каркасный дом камерной сушки площадью 131 м². Габариты 12 × 6 м, тёплый контур 120 м², жилая площадь 110 м², терраса 11 м² и крыльцо 4 м².",
+    gallery: [
+      { image: kh2310_1, type: "photo", fit: "contain", blur: true },
+      { image: kh2310_2, type: "photo", fit: "contain" },
+      { image: kh2310_3, type: "photo", fit: "contain" },
+      { image: kh2310_4, type: "photo", fit: "contain" },
+      { image: kh2310_5, type: "photo", fit: "contain" },
+      { image: kh2310_6, type: "photo", fit: "contain" },
+    ],
+    likes: 34, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса", "Второй свет"], style: "Барнхаус", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 89, name: "23-15-1", badge: "Жилой дом", price: "4 499 200 ₽",
+    area: "140,6 м²", area_m2: 140.6, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...KARKAS_HAUS, siteUrl: "https://karkas.haus/doma/proekt-doma-23-15-1" },
+    description: "Одноэтажный каркасный дом 140,6 м² с большой террасой.",
+    descriptionLong: "Проект 23-15-1 от Karkas.haus: каркасный дом камерной сушки площадью 140,6 м². Габариты 16,6 × 8,5 м, тёплый контур 115 м², жилая площадь 98 м², терраса 25,6 м² и крыльцо 2,21 м².",
+    gallery: [
+      { image: kh23151_1, type: "photo", fit: "contain", blur: true },
+      { image: kh23151_2, type: "photo", fit: "contain" },
+      { image: kh23151_3, type: "photo", fit: "contain" },
+      { image: kh23151_4, type: "photo", fit: "contain" },
+      { image: kh23151_5, type: "photo", fit: "contain" },
+      { image: kh23151_6, type: "photo", fit: "contain" },
+    ],
+    likes: 33, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса", "Крыльцо"], style: "Современный", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 90, name: "23-15-2", badge: "Жилой дом", price: "3 692 800 ₽",
+    area: "115,4 м²", area_m2: 115.4, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...KARKAS_HAUS, siteUrl: "https://karkas.haus/doma/proekt-doma-23-15-2" },
+    description: "Одноэтажный каркасный дом 115,4 м² с просторной террасой.",
+    descriptionLong: "Проект 23-15-2 от Karkas.haus: каркасный дом камерной сушки площадью 115,4 м². Габариты 13 × 8,9 м, тёплый контур 89 м², жилая площадь 80 м², терраса 26,4 м² и крыльцо 3 м².",
+    gallery: [
+      { image: kh23152_1, type: "photo", fit: "contain", blur: true },
+      { image: kh23152_2, type: "photo", fit: "contain" },
+      { image: kh23152_3, type: "photo", fit: "contain" },
+      { image: kh23152_4, type: "photo", fit: "contain" },
+      { image: kh23152_5, type: "photo", fit: "contain" },
+      { image: kh23152_6, type: "photo", fit: "contain" },
+    ],
+    likes: 30, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса", "Крыльцо"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 91, name: "23-22-2", badge: "Жилой дом", price: "3 043 200 ₽",
+    area: "95,1 м²", area_m2: 95.1, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...KARKAS_HAUS, siteUrl: "https://karkas.haus/doma/proekt-doma-23-22-2" },
+    description: "Одноэтажный каркасный дом 95,1 м² с двумя спальнями и террасой.",
+    descriptionLong: "Проект 23-22-2 от Karkas.haus: каркасный дом камерной сушки площадью 95,1 м². Габариты 9,7 × 11 м, тёплый контур 88 м², жилая площадь 80 м², терраса 7,1 м² и крыльцо 3,67 м².",
+    gallery: [
+      { image: kh23222_1, type: "photo", fit: "contain", blur: true },
+      { image: kh23222_2, type: "photo", fit: "contain" },
+      { image: kh23222_3, type: "photo", fit: "contain" },
+      { image: kh23222_4, type: "photo", fit: "contain" },
+      { image: kh23222_5, type: "photo", fit: "contain" },
+      { image: kh23222_6, type: "photo", fit: "contain" },
+    ],
+    likes: 29, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса", "Крыльцо"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── Урал Хаус · Екатеринбург ───────────────────────────────────────────
+  {
+    id: 92, name: "Сканди 120", badge: "Жилой дом", price: "5 200 000 ₽",
+    area: "88 м²", area_m2: 88, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...URAL_HOUSE, siteUrl: "https://ural-house.ru/tproduct/523330126-504825492462-skandi-120" },
+    description: "Каркасный дом в скандинавском стиле с двумя спальнями и террасой.",
+    descriptionLong: "Сканди 120 от Урал Хаус: тёплый контур 8 × 11 м, площадь 88 м², жилая площадь 78 м², терраса и крыльцо 37 м². В комплектации тёплого контура используется строганая доска камерной сушки и утепление минеральной ватой.",
+    gallery: [
+      { image: uhSkandi120_1, type: "photo", fit: "contain", blur: true },
+      { image: uhSkandi120_2, type: "photo", fit: "contain" },
+      { image: uhSkandi120_3, type: "photo", fit: "contain", blur: true },
+      { image: uhSkandi120_4, type: "photo", fit: "contain", blur: true },
+      { image: uhSkandi120_5, type: "photo", fit: "contain", blur: true },
+      { image: uhSkandi120_6, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 35, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса", "Крыльцо"], style: "Скандинавский", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 93, name: "Барн 92", badge: "Жилой дом", price: "3 800 000 ₽",
+    area: "60 м²", area_m2: 60, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...URAL_HOUSE, siteUrl: "https://ural-house.ru/tproduct/523330126-495445897382-barn-92" },
+    description: "Каркасный барнхаус 60 м² с двумя спальнями и террасами.",
+    descriptionLong: "Барн 92 от Урал Хаус: тёплый контур 6 × 10 м, площадь 60 м², жилая площадь 52 м², террасы 31,3 м². Проект в стиле барнхаус для загородного проживания.",
+    gallery: [
+      { image: uhBarn92_1, type: "photo", fit: "contain", blur: true },
+      { image: uhBarn92_2, type: "photo", fit: "contain" },
+    ],
+    likes: 28, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Выходные / дача"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса"], style: "Барнхаус", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 94, name: "Классик 170", badge: "Жилой дом", price: "7 700 000 ₽",
+    area: "128 м²", area_m2: 128, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...URAL_HOUSE, siteUrl: "https://ural-house.ru/tproduct/523330126-628459603402-klassik-170" },
+    description: "Каркасный дом 128 м² с тремя спальнями, парной и террасой.",
+    descriptionLong: "Классик 170 от Урал Хаус: тёплый контур 8,9 × 14,5 м, площадь 128 м², жилая площадь 111 м², террасы и крыльцо 40,6 м². В проекте три спальни и парная.",
+    gallery: [
+      { image: uhKlassik170_1, type: "photo", fit: "contain", blur: true },
+      { image: uhKlassik170_2, type: "photo", fit: "contain" },
+    ],
+    likes: 32, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса", "Сауна"], style: "Классический", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 95, name: "Фахверк 190", badge: "Жилой дом", price: "8 700 000 ₽",
+    area: "146 м²", area_m2: 146, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...URAL_HOUSE, siteUrl: "https://ural-house.ru/tproduct/523330126-748317956082-fahverk-190" },
+    description: "Каркасный дом с элементами фахверка, тремя спальнями и террасами.",
+    descriptionLong: "Фахверк 190 от Урал Хаус: тёплый контур 11 × 14,9 м, площадь 146 м², жилая площадь 128 м², террасы и крыльцо 46 м². Просторный дом с элементами фахверка для постоянного проживания.",
+    gallery: [
+      { image: uhFahverk190_1, type: "photo", fit: "contain", blur: true },
+      { image: uhFahverk190_2, type: "photo", fit: "contain" },
+      { image: uhFahverk190_3, type: "photo", fit: "contain", blur: true },
+      { image: uhFahverk190_4, type: "photo", fit: "contain", blur: true },
+      { image: uhFahverk190_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 36, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна"], style: "Фахверк", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 96, name: "Классик 76", badge: "Жилой дом", price: "3 250 000 ₽",
+    area: "48 м²", area_m2: 48, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
+    maker: { ...URAL_HOUSE, siteUrl: "https://ural-house.ru/tproduct/523330126-696804063452-klassik-76" },
+    description: "Компактный каркасный дом 48 м² с тремя спальнями и террасой.",
+    descriptionLong: "Классик 76 от Урал Хаус: тёплый контур 6 × 8 м, площадь 48 м², жилая площадь 42 м², террасы и крыльцо 28,3 м². Компактный вариант для дачи или постоянного проживания.",
+    gallery: [
+      { image: uhKlassik76_1, type: "photo", fit: "contain", blur: true },
+      { image: uhKlassik76_2, type: "photo", fit: "contain" },
+    ],
+    likes: 27, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Выходные / дача"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса", "Крыльцо"], style: "Классический", landSize: "3–6 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
 ];
