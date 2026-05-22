@@ -324,6 +324,7 @@ const PLATFORMA: Maker = {
   initials: "ПЛ",
   id: "platforma",
   siteUrl: "https://platforma-modul.ru/",
+  productionAddress: "г. Березовский, Южная промзона, д. 21",
 };
 const BYGGE: Maker = {
   name: "Bygge",
