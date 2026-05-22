@@ -410,18 +410,6 @@ const Partner = () => {
           </div>
         </div>
 
-        {/* "Это ваша компания?" — внизу, ближе к CTA */}
-        <div className="px-3 mt-3">
-          <div className="bg-background rounded-2xl px-3.5 py-3 flex items-center justify-between gap-3">
-            <div className="flex items-center gap-2.5 min-w-0">
-              <ShieldCheck className="w-[18px] h-[18px] text-muted-foreground shrink-0" strokeWidth={1.8} />
-              <span className="text-[13px] text-foreground/80 truncate">Это ваша компания?</span>
-            </div>
-            <Link to="/messages/support" className="text-[13px] font-medium text-primary inline-flex items-center gap-1 shrink-0">
-              Подтвердить <ChevronRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-        </div>
       </div>
 
       {/* Bottom Bar — go to site CTA */}
