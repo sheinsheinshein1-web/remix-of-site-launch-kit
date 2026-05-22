@@ -469,6 +469,114 @@ const Partner = () => {
         </DrawerContent>
       </Drawer>
 
+      {/* Menu Drawer (бургер) — App Store-style */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-[70]" role="dialog" aria-modal="true">
+          <div
+            className="absolute inset-0"
+            style={{
+              background: "hsl(0 0% 0% / 0.55)",
+              backdropFilter: "blur(22px) saturate(140%)",
+              WebkitBackdropFilter: "blur(22px) saturate(140%)",
+            }}
+            onClick={() => setMenuOpen(false)}
+          />
+          <div className="relative h-full overflow-y-auto pb-10 text-white">
+            {/* top bar */}
+            <div className="sticky top-0 z-10 px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 flex items-center justify-between"
+              style={{ background: "hsl(0 0% 0% / 0.25)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)" }}>
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center"
+                aria-label="Закрыть"
+              >
+                <X className="w-5 h-5 text-white" strokeWidth={2} />
+              </button>
+              <div className="flex items-center gap-2">
+                <button className="h-10 px-5 rounded-xl bg-white/15 text-[14px] font-medium">Подписаться</button>
+                <button onClick={onShare} className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center" aria-label="Поделиться">
+                  <img src={shareIcon} alt="" className="w-[18px] h-[18px]" style={{ filter: "brightness(0) invert(1)" }} />
+                </button>
+              </div>
+            </div>
+
+            <div className="px-3 space-y-3">
+              {/* Header card */}
+              <div className="flex items-start gap-3 px-1">
+                <div className="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center text-[15px] font-bold shrink-0">{partner.initials}</div>
+                <div className="min-w-0 pt-1">
+                  <div className="text-[18px] font-semibold leading-tight">{partner.name}</div>
+                  <div className="text-[13px] text-white/70 mt-0.5">{rating.toFixed(1)} ★ ({reviewsLabel})</div>
+                </div>
+              </div>
+
+              {/* Policies */}
+              <section className="rounded-2xl p-5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
+                <h3 className="text-[22px] font-bold mb-2">Документы</h3>
+                {[
+                  { label: "Политика возврата", icon: RotateCcw },
+                  { label: "Доставка", icon: Package },
+                  { label: "Конфиденциальность", icon: ShieldCheck },
+                  { label: "Условия использования", icon: Info },
+                ].map((item) => (
+                  <button key={item.label} className="w-full flex items-center justify-between py-3 text-left">
+                    <span className="text-[15px] text-white/90">{item.label}</span>
+                    <item.icon className="w-[18px] h-[18px] text-white/70" strokeWidth={1.6} />
+                  </button>
+                ))}
+              </section>
+
+              {/* Contact */}
+              <section className="rounded-2xl p-5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
+                <h3 className="text-[22px] font-bold mb-2">Контакты</h3>
+                {[
+                  { label: "Сайт", icon: Globe, href: partner.siteUrl },
+                  { label: "info@" + (partner.id || "company") + ".ru", icon: Mail, href: undefined },
+                  { label: "+7 (___) ___-__-__", icon: Phone, href: undefined },
+                  { label: "Instagram", icon: Instagram, href: undefined },
+                  { label: "Facebook", icon: Facebook, href: undefined },
+                  { label: "Telegram", icon: Twitter, href: undefined },
+                ].map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target={item.href ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-between py-3"
+                  >
+                    <span className="text-[15px] text-white/90 truncate">{item.label}</span>
+                    <item.icon className="w-[18px] h-[18px] text-white/70 shrink-0" strokeWidth={1.6} />
+                  </a>
+                ))}
+              </section>
+
+              {/* Visit site */}
+              {partner.siteUrl && (
+                <a
+                  href={partner.siteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-between px-5 py-4 rounded-2xl"
+                  style={{ background: "hsl(0 0% 100% / 0.08)" }}
+                >
+                  <span className="text-[15px] font-medium text-white">Перейти на сайт</span>
+                  <ArrowUpRight className="w-5 h-5 text-white/80" strokeWidth={1.8} />
+                </a>
+              )}
+
+              {/* Report */}
+              <button
+                className="w-full flex items-center justify-between px-5 py-4 rounded-2xl"
+                style={{ background: "hsl(0 0% 100% / 0.08)" }}
+              >
+                <span className="text-[15px] font-medium text-white">Пожаловаться</span>
+                <AlertCircle className="w-5 h-5 text-white/80" strokeWidth={1.6} />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
 
       {/* Bottom Bar — CTA + tabs */}
       <div className="fixed bottom-0 left-0 right-0 z-40">
