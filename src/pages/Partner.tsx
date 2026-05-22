@@ -623,8 +623,10 @@ const Partner = () => {
               </button>
             </div>
           </div>
-        </SheetContent>
-      </Sheet>
+          </DialogPrimitive.Content>
+        </DialogPrimitive.Portal>
+      </DialogPrimitive.Root>
+
 
 
 
