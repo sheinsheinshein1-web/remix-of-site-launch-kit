@@ -336,11 +336,7 @@ const Partner = () => {
                   <div
                     className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none"
                     style={{
-                      background: "linear-gradient(to bottom, transparent 0%, hsl(28, 12%, 28% / 0.35) 60%, hsl(28, 12%, 26% / 0.55) 100%)",
-                      backdropFilter: "blur(8px)",
-                      WebkitBackdropFilter: "blur(8px)",
-                      maskImage: "linear-gradient(to bottom, transparent 0%, black 45%)",
-                      WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 45%)",
+                      background: "linear-gradient(to bottom, transparent 0%, hsl(28, 12%, 24% / 0.55) 60%, hsl(28, 12%, 24%) 100%)",
                     }}
                   />
                 </div>
