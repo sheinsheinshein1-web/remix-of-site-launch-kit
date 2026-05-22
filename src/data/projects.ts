@@ -207,6 +207,25 @@ import pm_kantri110_2 from "@/assets/prime-modul/kantri-110/2.webp";
 import pm_kantri110_3 from "@/assets/prime-modul/kantri-110/3.webp";
 import pm_kantri110_4 from "@/assets/prime-modul/kantri-110/4.webp";
 import pm_kantri110_plan from "@/assets/prime-modul/kantri-110/plan-1.webp";
+
+// СК Уткино
+import utkino_lesnoy32_1 from "@/assets/utkino/lesnoy-32-1.webp";
+import utkino_lesnoy32_plan from "@/assets/utkino/lesnoy-32-plan.webp";
+import utkino_lesnoy32_size from "@/assets/utkino/lesnoy-32-size.webp";
+import utkino_tikhiy43_1 from "@/assets/utkino/tikhiy-bereg-43-1.webp";
+import utkino_tikhiy43_planFurnished from "@/assets/utkino/tikhiy-bereg-43-plan-furnished.webp";
+import utkino_tikhiy43_plan from "@/assets/utkino/tikhiy-bereg-43-plan.webp";
+import utkino_bereginya50_1 from "@/assets/utkino/bereginya-50-1.webp";
+import utkino_bereginya50_planFurnished from "@/assets/utkino/bereginya-50-plan-furnished.webp";
+import utkino_bereginya50_plan from "@/assets/utkino/bereginya-50-plan.webp";
+import utkino_berendey63_1 from "@/assets/utkino/berendey-63-1.webp";
+import utkino_berendey63_planFurnished from "@/assets/utkino/berendey-63-plan-furnished.webp";
+import utkino_berendey63_plan from "@/assets/utkino/berendey-63-plan.webp";
+import utkino_svetlitsa72_1 from "@/assets/utkino/svetlitsa-prikamya-72-1.webp";
+import utkino_svetlitsa72_floor1Plan from "@/assets/utkino/svetlitsa-prikamya-72-floor1-plan.webp";
+import utkino_svetlitsa72_floor1Size from "@/assets/utkino/svetlitsa-prikamya-72-floor1-size.webp";
+import utkino_svetlitsa72_atticPlan from "@/assets/utkino/svetlitsa-prikamya-72-attic-plan.webp";
+import utkino_svetlitsa72_atticSize from "@/assets/utkino/svetlitsa-prikamya-72-attic-size.webp";
 import dd_start30_1 from "@/assets/divodom/start-30/1.webp";
 import dd_start30_2 from "@/assets/divodom/start-30/2.webp";
 import dd_start30_3 from "@/assets/divodom/start-30/3.webp";
@@ -365,6 +384,12 @@ const PRIME_MODUL: Maker = {
   initials: "ПМ",
   id: "prime-modul",
   siteUrl: "https://prime-module.ru/",
+};
+const UTKINO: Maker = {
+  name: "СК Уткино",
+  initials: "УТ",
+  id: "utkino",
+  siteUrl: "https://sk-utkino.ru/catalog",
 };
 
 // ============================================================================
@@ -1207,6 +1232,95 @@ export const projects: Project[] = [
     technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
     features: ["Терраса", "Гардеробная", "Тёплые полы"], style: "Кантри", landSize: "6–10 соток",
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── СК Уткино · Пермский край ─────────────────────────────────────────
+  {
+    id: 77, name: "Лесной", badge: "Жилой дом", price: "1 418 752 ₽",
+    area: "32,6 м²", area_m2: 32.6, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Пермский край", maker: UTKINO,
+    description: "Компактный каркасный дом 32,6 м² в комплектации тёплый контур.",
+    descriptionLong: "Каркасный дом площадью 32,6 м² (габариты 6 × 6 м) для дачи или компактного загородного проживания. Планировка включает кухню-гостиную, спальню, санузел и террасу.",
+    gallery: [
+      { image: utkino_lesnoy32_1, type: "photo", fit: "contain", blur: true },
+      { image: utkino_lesnoy32_plan, type: "photo", fit: "contain" },
+      { image: utkino_lesnoy32_size, type: "photo", fit: "contain" },
+    ],
+    likes: 16, rating: 4.6,
+    suitableFor: ["Для одного / пары", "Выходные / дача"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 78, name: "Тихий берег", badge: "Жилой дом", price: "1 893 120 ₽",
+    area: "43,5 м²", area_m2: 43.5, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ / Дача", city: "Пермский край", maker: UTKINO,
+    description: "Одноэтажный каркасный дом 43,5 м² с двумя спальнями и террасой.",
+    descriptionLong: "Каркасный дом площадью 43,5 м² (габариты 7 × 7 м) в комплектации тёплый контур. В планировке две спальни, кухня-гостиная, санузел, прихожая и терраса.",
+    gallery: [
+      { image: utkino_tikhiy43_1, type: "photo", fit: "contain", blur: true },
+      { image: utkino_tikhiy43_planFurnished, type: "photo", fit: "contain" },
+      { image: utkino_tikhiy43_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 19, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 79, name: "Берегиня", badge: "Жилой дом", price: "2 189 056 ₽",
+    area: "50,38 м²", area_m2: 50.38, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край", maker: UTKINO,
+    description: "Каркасный дом 50,38 м² с двумя спальнями и удобной общей зоной.",
+    descriptionLong: "Одноэтажный каркасный дом площадью 50,38 м² (габариты 6 × 9 м) в комплектации тёплый контур. Планировка подходит для семьи: две спальни, кухня-гостиная, санузел, котельная и входная зона.",
+    gallery: [
+      { image: utkino_bereginya50_1, type: "photo", fit: "contain", blur: true },
+      { image: utkino_bereginya50_planFurnished, type: "photo", fit: "contain" },
+      { image: utkino_bereginya50_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 21, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Котельная"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 80, name: "Берендей", badge: "Жилой дом", price: "2 763 520 ₽",
+    area: "63,5 м²", area_m2: 63.5, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край", maker: UTKINO,
+    description: "Каркасный дом 63,5 м² с двумя спальнями и просторной кухней-гостиной.",
+    descriptionLong: "Одноэтажный каркасный дом площадью 63,5 м² (габариты 7,2 × 10 м) в комплектации тёплый контур. Внутри две спальни, кухня-гостиная, санузел, котельная и прихожая.",
+    gallery: [
+      { image: utkino_berendey63_1, type: "photo", fit: "contain", blur: true },
+      { image: utkino_berendey63_planFurnished, type: "photo", fit: "contain" },
+      { image: utkino_berendey63_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 24, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Котельная"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 81, name: "Светлица Прикамья", badge: "Жилой дом", price: "3 138 227 ₽",
+    area: "72,11 м²", area_m2: 72.11, beds: 3, baths: 1, floors: 2, term: "от 1 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Пермский край", maker: UTKINO,
+    description: "Каркасный дом 72,11 м² с мансардой, тремя спальнями и террасой.",
+    descriptionLong: "Каркасный дом площадью 72,11 м² (габариты 6 × 8 м) в комплектации тёплый контур. На первом этаже кухня-гостиная, спальня, санузел и терраса; на мансарде — две дополнительные комнаты.",
+    gallery: [
+      { image: utkino_svetlitsa72_1, type: "photo", fit: "contain", blur: true },
+      { image: utkino_svetlitsa72_floor1Plan, type: "photo", fit: "contain" },
+      { image: utkino_svetlitsa72_floor1Size, type: "photo", fit: "contain" },
+      { image: utkino_svetlitsa72_atticPlan, type: "photo", fit: "contain" },
+      { image: utkino_svetlitsa72_atticSize, type: "photo", fit: "contain" },
+    ],
+    likes: 26, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса", "Мансарда"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
 ];
 
