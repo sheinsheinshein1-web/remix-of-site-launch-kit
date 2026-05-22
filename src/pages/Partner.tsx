@@ -51,6 +51,23 @@ const Partner = () => {
   const isMobile = useIsMobile();
   const { id } = useParams();
   const [scrolled, setScrolled] = useState(false);
+  const [sortOpen, setSortOpen] = useState(false);
+  const [sortBy, setSortBy] = useState("rating");
+
+  const sortOptions = [
+    { value: "rating", label: "С высоким рейтингом" },
+    { value: "popular", label: "Популярные" },
+    { value: "new", label: "Новинки" },
+    { value: "cheap", label: "Дешевле" },
+    { value: "expensive", label: "Дороже" },
+    { value: "area_asc", label: "По площади м², от меньшего" },
+    { value: "area_desc", label: "По площади м², от большего" },
+    { value: "fast", label: "Быстрый монтаж" },
+  ];
+
+  const priceNum = (s: string) => parseInt(String(s).replace(/\D/g, ""), 10) || 0;
+  const areaNum = (s: string) => parseFloat(String(s).replace(/[^\d.]/g, "")) || 0;
+  const termNum = (s: string) => parseInt(String(s).replace(/\D/g, ""), 10) || 0;
 
   const makerId = (id && (partnerMakerIds[id] ?? (makersById[id] ? id : undefined))) || "platforma";
   const summary = makersById[makerId];
