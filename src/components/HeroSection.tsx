@@ -32,7 +32,7 @@ const HeroSection = () => {
             </p>
 
             <h1 className="text-[22px] md:text-[2.75rem] font-bold leading-[1.15] md:leading-[1.18] tracking-tight mb-1 md:mb-4 max-w-[65%] md:max-w-[620px] text-white">
-              Сотни быстровозводимых домов наСотни модульных домов на&nbsp;одном сайтеnbsp;одном сайте
+              Сотни быстровозводимых домов на&nbsp;одном сайте
             </h1>
 
             <p className="text-[12px] md:text-[17px] font-light leading-[1.4] mt-1 mb-2.5 md:mb-5 max-w-[55%] md:max-w-[520px] text-white/70">
