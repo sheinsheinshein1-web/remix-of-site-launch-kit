@@ -279,6 +279,7 @@ export type Maker = {
   id?: string;
   logo?: string;
   siteUrl?: string;
+  productionAddress?: string;
 };
 
 export type Project = {
