@@ -104,75 +104,64 @@ const Partner = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* ─── Hero бенто-карточка (общая для mobile/desktop) ─── */
-  const Hero = ({ compact = false }: { compact?: boolean }) => (
-    <div className="relative overflow-hidden rounded-b-2xl md:rounded-2xl bg-background">
-      {/* Размытый фон из первого фото проекта */}
+  const Hero = () => (
+    <div className="relative overflow-hidden rounded-b-2xl md:rounded-2xl bg-background min-h-[460px] md:min-h-[520px] flex flex-col">
+      {/* Резкое фирменное фото на весь hero */}
       <div className="absolute inset-0">
         {heroImage ? (
           <>
             <img
               src={heroImage}
               alt=""
-              className="w-full h-full object-cover scale-110 blur-2xl opacity-70"
+              className="w-full h-full object-cover"
               aria-hidden
+              loading="eager"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-foreground/10 via-foreground/20 to-background" />
+            {/* Тонкое затемнение сверху для читаемости кнопок и снизу для перехода */}
+            <div className="absolute inset-0 bg-gradient-to-b from-foreground/30 via-transparent to-background/95" />
           </>
         ) : (
           <div className="w-full h-full bg-secondary" />
         )}
       </div>
 
-      <div className="relative pt-[max(env(safe-area-inset-top),12px)] pb-7 md:pb-10 px-3 md:px-8">
-        {/* Top row: back / share */}
-        <div className="flex items-center justify-between">
-          <button onClick={handleBack} className="w-9 h-9 rounded-xl bg-background/85 backdrop-blur flex items-center justify-center">
-            <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
-          </button>
+      {/* Top row: back / share */}
+      <div className="relative flex items-center justify-between px-3 md:px-8 pt-[max(env(safe-area-inset-top),12px)]">
+        <button onClick={handleBack} className="w-9 h-9 rounded-xl bg-background/90 backdrop-blur flex items-center justify-center">
+          <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
+        </button>
+        <div className="flex items-center gap-2">
           <button
-            onClick={onShare}
-            className="w-9 h-9 rounded-xl bg-background/85 backdrop-blur flex items-center justify-center"
+            onClick={() => setFollowing((v) => !v)}
+            className={`h-9 px-4 rounded-xl text-[13px] font-semibold transition-colors ${
+              following
+                ? "bg-background/90 backdrop-blur text-foreground"
+                : "bg-foreground text-background"
+            }`}
           >
+            {following ? "В подписках" : "Подписаться"}
+          </button>
+          <button onClick={onShare} className="w-9 h-9 rounded-xl bg-background/90 backdrop-blur flex items-center justify-center">
             <img src={shareIcon} alt="" className="w-[18px] h-[18px]" loading="lazy" decoding="async" />
           </button>
         </div>
+      </div>
 
-        {/* Логотип / инициалы */}
-        <div className={`mx-auto ${compact ? "mt-5" : "mt-8"} md:mt-10 w-[88px] h-[88px] md:w-[104px] md:h-[104px] rounded-2xl bg-background/90 backdrop-blur flex items-center justify-center text-2xl md:text-3xl font-bold text-foreground/80 shadow-[0_8px_30px_-12px_hsl(var(--foreground)/0.25)]`}>
-          {partner.initials}
-        </div>
-
-        {/* Название */}
-        <h1 className="mt-5 text-center text-foreground text-[26px] md:text-[34px] font-bold leading-tight tracking-tight">
+      {/* Низ hero: бренд + рейтинг */}
+      <div className="relative mt-auto px-3 md:px-8 pb-7 md:pb-10 text-center">
+        <h1 className="text-foreground text-[34px] md:text-[44px] font-bold leading-[1.05] tracking-tight">
           {partner.name}
         </h1>
-
-        {/* Город · технология */}
-        <p className="mt-1.5 text-center text-[13px] md:text-[14px] text-foreground/70 inline-flex items-center justify-center gap-1.5 w-full">
+        <p className="mt-2 text-[13px] md:text-[14px] text-foreground/70 inline-flex items-center justify-center gap-1.5 w-full">
           <MapPin className="w-3.5 h-3.5" strokeWidth={1.8} />
           {partner.city}
           <span className="text-foreground/40">·</span>
           {partner.category}
         </p>
-
-        {/* Рейтинг + Follow */}
-        <div className="mt-4 flex items-center justify-center gap-3">
-          <div className="inline-flex items-center gap-1.5 bg-background/85 backdrop-blur rounded-xl px-3 py-1.5">
-            <Star className="w-3.5 h-3.5 fill-foreground text-foreground" strokeWidth={0} />
-            <span className="text-[13px] font-semibold text-foreground">{rating.toFixed(1)}</span>
-            <span className="text-[12px] text-foreground/60">({reviewsLabel})</span>
-          </div>
-          <button
-            onClick={() => setFollowing((v) => !v)}
-            className={`h-9 px-5 rounded-xl text-[13px] font-semibold transition-colors ${
-              following
-                ? "bg-background/85 backdrop-blur text-foreground"
-                : "bg-primary text-primary-foreground"
-            }`}
-          >
-            {following ? "В подписках" : "Подписаться"}
-          </button>
+        <div className="mt-3 inline-flex items-center gap-1.5 text-[13px] text-foreground/80">
+          <Star className="w-3.5 h-3.5 fill-foreground text-foreground" strokeWidth={0} />
+          <span className="font-semibold">{rating.toFixed(1)}</span>
+          <span className="text-foreground/60">({reviewsLabel})</span>
         </div>
       </div>
     </div>
