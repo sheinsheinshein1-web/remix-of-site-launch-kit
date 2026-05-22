@@ -449,21 +449,29 @@ const Partner = () => {
 
       {/* Sort Drawer — как в каталоге */}
       <Drawer open={sortOpen} onOpenChange={setSortOpen}>
-        <DrawerContent className="mx-0 rounded-t-[20px] p-0 bg-secondary border-0">
+        <DrawerContent
+          className="mx-0 rounded-t-[20px] p-0 border-0 text-white"
+          style={{
+            background: "hsl(0 0% 8% / 0.55)",
+            backdropFilter: "blur(32px) saturate(160%)",
+            WebkitBackdropFilter: "blur(32px) saturate(160%)",
+          }}
+        >
           <div className="px-3 pt-5 pb-3">
-            <h3 className="text-[20px] font-semibold text-foreground px-1">Показать сначала</h3>
+            <h3 className="text-[20px] font-semibold text-white px-1">Показать сначала</h3>
           </div>
           <div className="px-3 pb-6 flex flex-col gap-2">
             {sortOptions.map((option) => (
               <button
                 key={option.value}
                 onClick={() => { setSortBy(option.value); setSortOpen(false); }}
-                className="w-full flex items-center gap-3 px-4 py-4 text-left bg-background rounded-2xl"
+                className="w-full flex items-center gap-3 px-4 py-4 text-left rounded-2xl"
+                style={{ background: "hsl(0 0% 100% / 0.08)" }}
               >
-                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${sortBy === option.value ? "border-primary" : "border-muted-foreground/30"}`}>
+                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${sortBy === option.value ? "border-primary" : "border-white/30"}`}>
                   {sortBy === option.value && <div className="w-3 h-3 rounded-full bg-primary" />}
                 </div>
-                <span className="text-[16px] text-foreground">{option.label}</span>
+                <span className="text-[16px] text-white">{option.label}</span>
               </button>
             ))}
           </div>
