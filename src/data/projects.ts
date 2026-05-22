@@ -922,7 +922,7 @@ export const projects: Project[] = [
   },
   // ── СК «Загородом» · Пермский край ──────────────────────────────────────
   {
-    id: 62, name: "Дом SOUL Душевный", badge: "Жилой дом", price: "от 3 500 000 ₽",
+    id: 62, name: "Дом SOUL Душевный", badge: "Жилой дом", price: "3 500 000 ₽",
     area: "63 м²", area_m2: 63, beds: 1, baths: 1, floors: 1, term: "90 д.",
     rooms: "Дом 42 м² + терраса 21 м²", purpose: "ИЖС / СНТ", city: "Пермский край", maker: ZAGORODOM,
     description: "Каркасный дом 7 × 9 м: дом 42 м² и терраса 21 м². Современная архитектура с панорамным остеклением.",
@@ -940,7 +940,7 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 63, name: "Барнхаус STRONG Крепкий", badge: "Барнхаус", price: "от 3 700 000 ₽",
+    id: 63, name: "Барнхаус STRONG Крепкий", badge: "Барнхаус", price: "3 700 000 ₽",
     area: "60 м²", area_m2: 60, beds: 2, baths: 1, floors: 1, term: "90 д.",
     rooms: "Дом 45 м² + терраса 15 м²", purpose: "ИЖС / СНТ", city: "Пермский край", maker: ZAGORODOM,
     description: "Каркасный барнхаус 7,5 × 8 м: дом 45 м² и терраса 15 м². Лаконичный силуэт двускатной крыши.",
@@ -958,7 +958,7 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 64, name: "Дом LUMO Очаровательный", badge: "Жилой дом", price: "от 5 850 000 ₽",
+    id: 64, name: "Дом LUMO Очаровательный", badge: "Жилой дом", price: "5 850 000 ₽",
     area: "97 м²", area_m2: 97, beds: 3, baths: 1, floors: 1, term: "120 д.",
     rooms: "Дом 78 м² + терраса 19 м²", purpose: "ИЖС / СНТ", city: "Пермский край", maker: ZAGORODOM,
     description: "Каркасный дом 10,5 × 11 м: дом 78 м² и терраса 19 м². Просторная планировка для семьи.",
@@ -976,7 +976,7 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 65, name: "Дом HAPPY Счастливый", badge: "Жилой дом", price: "от 5 900 000 ₽",
+    id: 65, name: "Дом HAPPY Счастливый", badge: "Жилой дом", price: "5 900 000 ₽",
     area: "100 м²", area_m2: 100, beds: 3, baths: 1, floors: 1, term: "120 д.",
     rooms: "Дом 77 м² + терраса 23 м²", purpose: "ИЖС / СНТ", city: "Пермский край", maker: ZAGORODOM,
     description: "Каркасный дом 8,3 × 11,8 м: дом 77 м² и терраса 23 м². Светлый фасад и большая терраса.",
@@ -994,7 +994,7 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 66, name: "Дом FAVORITE Любимый", badge: "Жилой дом", price: "от 5 490 000 ₽",
+    id: 66, name: "Дом FAVORITE Любимый", badge: "Жилой дом", price: "5 490 000 ₽",
     area: "89 м²", area_m2: 89, beds: 3, baths: 1, floors: 1, term: "120 д.",
     rooms: "Дом 71 м² + терраса 18 м²", purpose: "ИЖС / СНТ", city: "Пермский край", maker: ZAGORODOM,
     description: "Каркасный дом 7,8 × 10,9 м: дом 71 м² и терраса 18 м². Уютный современный коттедж.",
@@ -1014,7 +1014,7 @@ export const projects: Project[] = [
 
   // ── Апа Групп · Пермский край ─────────────────────────────────────────
   {
-    id: 67, name: "АА-1. Каркасный дом 68 м²", badge: "Жилой дом", price: "от 3 160 000 ₽",
+    id: 67, name: "АА-1. Каркасный дом 68 м²", badge: "Жилой дом", price: "3 160 000 ₽",
     area: "68 м²", area_m2: 68, beds: 2, baths: 2, floors: 1, term: "от 3 мес.",
     rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край", maker: APA,
     description: "Одноэтажный каркасный дом 8,6 × 14 м с террасой. 4 комнаты, 2 санузла.",
@@ -1033,7 +1033,7 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 68, name: "АА-2. Каркасный дом 82 м²", badge: "Жилой дом", price: "от 2 770 000 ₽",
+    id: 68, name: "АА-2. Каркасный дом 82 м²", badge: "Жилой дом", price: "2 770 000 ₽",
     area: "82 м²", area_m2: 82, beds: 2, baths: 2, floors: 1, term: "от 3 мес.",
     rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край", maker: APA,
     description: "Одноэтажный каркасный дом 9,5 × 9,5 м. 4 комнаты, 2 санузла.",
@@ -1052,7 +1052,7 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 69, name: "АА-3. Каркасный дом 90 м²", badge: "Жилой дом", price: "от 3 280 000 ₽",
+    id: 69, name: "АА-3. Каркасный дом 90 м²", badge: "Жилой дом", price: "3 280 000 ₽",
     area: "90 м²", area_m2: 90, beds: 2, baths: 1, floors: 1, term: "от 3 мес.",
     rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Пермский край", maker: APA,
     description: "Одноэтажный каркасный дом 13 × 8,8 м. 3 просторные комнаты.",
@@ -1072,7 +1072,7 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 70, name: "АА-4. Каркасный дом 94 м² с террасой", badge: "Жилой дом", price: "от 3 666 000 ₽",
+    id: 70, name: "АА-4. Каркасный дом 94 м² с террасой", badge: "Жилой дом", price: "3 666 000 ₽",
     area: "94 м²", area_m2: 94, beds: 3, baths: 2, floors: 2, term: "от 3 мес.",
     rooms: "5 комнат", purpose: "ИЖС / СНТ", city: "Пермский край", maker: APA,
     description: "Двухэтажный каркасный дом 7,5 × 7,5 м с балконом. 5 комнат, 2 санузла.",
@@ -1092,7 +1092,7 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 71, name: "АА-5. Каркасный дом 106 м²", badge: "Жилой дом", price: "от 3 844 000 ₽",
+    id: 71, name: "АА-5. Каркасный дом 106 м²", badge: "Жилой дом", price: "3 844 000 ₽",
     area: "106 м²", area_m2: 106, beds: 3, baths: 2, floors: 1, term: "от 3 мес.",
     rooms: "4 комнаты", purpose: "ИЖС / СНТ", city: "Пермский край", maker: APA,
     description: "Одноэтажный каркасный дом 8,6 × 14 м в стиле хай-тек. 4 комнаты, 2 санузла.",
@@ -1113,7 +1113,7 @@ export const projects: Project[] = [
 
   // ── Прайм Модуль · Пермский край ────────────────────────────────────────────
   {
-    id: 72, name: "Барнхаус-200", badge: "Барнхаус", price: "от 6 699 000 ₽",
+    id: 72, name: "Барнхаус-200", badge: "Барнхаус", price: "6 699 000 ₽",
     area: "200 м²", area_m2: 200, beds: 5, baths: 2, floors: 2, term: "от 1 мес.",
     rooms: "5 спален", purpose: "ИЖС / СНТ", city: "Пермский край", maker: PRIME_MODUL,
     description: "Двухэтажный барнхаус 200 м² с мастер-спальней, сауной и крытой террасой 127 м².",
@@ -1134,7 +1134,7 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 73, name: "Скандинавия-72", badge: "Жилой дом", price: "от 3 200 000 ₽",
+    id: 73, name: "Скандинавия-72", badge: "Жилой дом", price: "3 200 000 ₽",
     area: "72 м²", area_m2: 72, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
     rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край", maker: PRIME_MODUL,
     description: "Одноэтажный каркасный дом 72 м² в скандинавском стиле для семьи из 2–4 человек.",
@@ -1153,7 +1153,7 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 74, name: "Барн-42", badge: "Барнхаус", price: "от 1 999 000 ₽",
+    id: 74, name: "Барн-42", badge: "Барнхаус", price: "1 999 000 ₽",
     area: "42 м²", area_m2: 42, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
     rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Пермский край", maker: PRIME_MODUL,
     description: "Компактный каркасный барнхаус 42 м² для семьи из 2–3 человек.",
@@ -1171,7 +1171,7 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 75, name: "Модерн-72", badge: "Жилой дом", price: "от 3 200 000 ₽",
+    id: 75, name: "Модерн-72", badge: "Жилой дом", price: "3 200 000 ₽",
     area: "72 м²", area_m2: 72, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
     rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край", maker: PRIME_MODUL,
     description: "Каркасный дом 72 м² в современном стиле для семьи из 2–5 человек.",
@@ -1190,7 +1190,7 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 76, name: "Кантри-110", badge: "Жилой дом", price: "от 4 200 000 ₽",
+    id: 76, name: "Кантри-110", badge: "Жилой дом", price: "4 200 000 ₽",
     area: "110 м²", area_m2: 110, beds: 3, baths: 2, floors: 1, term: "от 1 мес.",
     rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Пермский край", maker: PRIME_MODUL,
     description: "Каркасный дом 110 м² с мастер-спальней, гардеробной и террасой для семьи из 3–6 человек.",
