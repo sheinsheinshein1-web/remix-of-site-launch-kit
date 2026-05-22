@@ -130,9 +130,22 @@ const Partner = () => {
     else navigate("/catalog");
   };
 
-  const onShare = () => {
-    if (navigator.share) navigator.share({ title: partner.name, url: window.location.href });
-    else navigator.clipboard.writeText(window.location.href);
+  const onShare = async () => {
+    const url = window.location.href;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: partner.name, url });
+        return;
+      }
+    } catch (_) {
+      // user cancelled or share unavailable — fall through to clipboard
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      toast.success("Ссылка скопирована");
+    } catch {
+      toast.error("Не удалось скопировать ссылку");
+    }
   };
 
   useEffect(() => {
