@@ -471,7 +471,18 @@ const Partner = () => {
 
       {/* Bottom Bar — go to site CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-40">
-        <div className="bg-background border-t border-border p-3 pb-[calc(0.75rem+max(env(safe-area-inset-bottom),20px))]">
+        <div
+          className={`border-t p-3 pb-[calc(0.75rem+max(env(safe-area-inset-bottom),20px))] ${isPlatforma ? "border-white/10" : "border-border bg-background"}`}
+          style={
+            isPlatforma
+              ? {
+                  background: "hsl(0 0% 0% / 0.45)",
+                  backdropFilter: "blur(18px) saturate(140%)",
+                  WebkitBackdropFilter: "blur(18px) saturate(140%)",
+                }
+              : undefined
+          }
+        >
           <div className="max-w-[1400px] mx-auto">
             <a
               href={partner.siteUrl}
