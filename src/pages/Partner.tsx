@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { ArrowLeft, ChevronRight, ShieldCheck, Star, SlidersHorizontal, MapPin } from "lucide-react";
+import { ArrowLeft, ChevronRight, ShieldCheck, Star, SlidersHorizontal, MapPin, Menu } from "lucide-react";
 import Header from "@/components/Header";
 import { useIsMobile } from "@/hooks/use-mobile";
 import shareIcon from "@/assets/share-icon.svg";
