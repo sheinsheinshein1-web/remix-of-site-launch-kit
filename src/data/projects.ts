@@ -304,6 +304,35 @@ import uhFahverk190_5 from "@/assets/ural-house/uh-fahverk-190/5.webp";
 import uhKlassik76_1 from "@/assets/ural-house/uh-klassik-76/1.webp";
 import uhKlassik76_2 from "@/assets/ural-house/uh-klassik-76/2.webp";
 
+// Хочу Дом
+import hdDk443_1 from "@/assets/hochu-dom/dk-443-130/1.webp";
+import hdDk443_2 from "@/assets/hochu-dom/dk-443-130/2.webp";
+import hdDk443_3 from "@/assets/hochu-dom/dk-443-130/3.webp";
+import hdDk443Plan1 from "@/assets/hochu-dom/dk-443-130/4.webp";
+import hdDk443Plan2 from "@/assets/hochu-dom/dk-443-130/5.webp";
+import hdDk387_1 from "@/assets/hochu-dom/dk-387-115/1.webp";
+import hdDk387_2 from "@/assets/hochu-dom/dk-387-115/2.webp";
+import hdDk387_3 from "@/assets/hochu-dom/dk-387-115/3.webp";
+import hdDk387_4 from "@/assets/hochu-dom/dk-387-115/4.webp";
+import hdDk387_5 from "@/assets/hochu-dom/dk-387-115/5.webp";
+import hdDk387Plan1 from "@/assets/hochu-dom/dk-387-115/6.webp";
+import hdDk387Plan2 from "@/assets/hochu-dom/dk-387-115/7.webp";
+import hdDk384_1 from "@/assets/hochu-dom/dk-384-91/1.webp";
+import hdDk384_2 from "@/assets/hochu-dom/dk-384-91/2.webp";
+import hdDk384_3 from "@/assets/hochu-dom/dk-384-91/3.webp";
+import hdDk384_4 from "@/assets/hochu-dom/dk-384-91/4.webp";
+import hdDk384Plan from "@/assets/hochu-dom/dk-384-91/5.webp";
+import hdDk428_1 from "@/assets/hochu-dom/dk-428-127/1.webp";
+import hdDk428_2 from "@/assets/hochu-dom/dk-428-127/2.webp";
+import hdDk428_3 from "@/assets/hochu-dom/dk-428-127/3.webp";
+import hdDk428_4 from "@/assets/hochu-dom/dk-428-127/4.webp";
+import hdDk428_5 from "@/assets/hochu-dom/dk-428-127/5.webp";
+import hdDk428_6 from "@/assets/hochu-dom/dk-428-127/6.webp";
+import hdDk428Plan from "@/assets/hochu-dom/dk-428-127/7.webp";
+import hdDk390_1 from "@/assets/hochu-dom/dk-390-96/1.webp";
+import hdDk390_2 from "@/assets/hochu-dom/dk-390-96/2.webp";
+import hdDk390Plan from "@/assets/hochu-dom/dk-390-96/3.webp";
+
 import dd_start30_1 from "@/assets/divodom/start-30/1.webp";
 import dd_start30_2 from "@/assets/divodom/start-30/2.webp";
 import dd_start30_3 from "@/assets/divodom/start-30/3.webp";
@@ -486,6 +515,12 @@ const URAL_HOUSE: Maker = {
   initials: "УХ",
   id: "ural-house",
   siteUrl: "https://ural-house.ru/",
+};
+const HOCHU_DOM: Maker = {
+  name: "Хочу Дом",
+  initials: "ХД",
+  id: "hochu-dom",
+  siteUrl: "https://hochu-dom.ru/catalog/",
 };
 
 // ============================================================================
@@ -1718,6 +1753,110 @@ export const projects: Project[] = [
     suitableFor: ["Постоянное проживание", "Выходные / дача"],
     technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
     features: ["Терраса", "Крыльцо"], style: "Классический", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── Хочу Дом · Москва и МО ─────────────────────────────────────────────
+  {
+    id: 97, name: "ДК-443", badge: "Жилой дом", price: "2 126 250 ₽",
+    area: "130 м²", area_m2: 130, beds: 3, baths: 1, floors: 2, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...HOCHU_DOM, siteUrl: "https://hochu-dom.ru/catalog/dk-443-11-5-x-7-130m/" },
+    description: "Двухэтажный каркасный дом 130 м² размером 7 × 11,5 м с просторной гостиной и террасой.",
+    descriptionLong: "Проект ДК-443 от «Хочу Дом»: каркасный дом площадью 130 м², габариты 7 × 11,5 м, два этажа. На сайте застройщика указаны комплектации «Каркас под крышу», «Тёплый контур» и «Дом для ПМЖ», а также возможность изменить планировку.",
+    gallery: [
+      { image: hdDk443_1, type: "photo", fit: "contain", blur: true },
+      { image: hdDk443_2, type: "photo", fit: "contain", blur: true },
+      { image: hdDk443_3, type: "photo", fit: "contain", blur: true },
+      { image: hdDk443Plan1, type: "photo", fit: "contain" },
+      { image: hdDk443Plan2, type: "photo", fit: "contain" },
+    ],
+    likes: 33, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна"], style: "Скандинавский", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 98, name: "ДК-387", badge: "Жилой дом", price: "2 023 875 ₽",
+    area: "115 м²", area_m2: 115, beds: 3, baths: 1, floors: 2, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...HOCHU_DOM, siteUrl: "https://hochu-dom.ru/catalog/dk-387-8-5-x-8-115m/" },
+    description: "Двухэтажный каркасный дом 115 м² размером 8 × 8,5 м для постоянного проживания семьи.",
+    descriptionLong: "Проект ДК-387 от «Хочу Дом»: каркасный дом площадью 115 м², габариты 8 × 8,5 м, два этажа. В каталоге застройщика есть комплектации от каркаса под крышу до дома для ПМЖ и возможность адаптировать планировку.",
+    gallery: [
+      { image: hdDk387_1, type: "photo", fit: "contain", blur: true },
+      { image: hdDk387_2, type: "photo", fit: "contain", blur: true },
+      { image: hdDk387_3, type: "photo", fit: "contain", blur: true },
+      { image: hdDk387_4, type: "photo", fit: "contain", blur: true },
+      { image: hdDk387_5, type: "photo", fit: "contain", blur: true },
+      { image: hdDk387Plan1, type: "photo", fit: "contain" },
+      { image: hdDk387Plan2, type: "photo", fit: "contain" },
+    ],
+    likes: 31, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 99, name: "ДК-384", badge: "Жилой дом", price: "1 990 800 ₽",
+    area: "91 м²", area_m2: 91, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...HOCHU_DOM, siteUrl: "https://hochu-dom.ru/catalog/dk-384-9-4x7-5-91m-/" },
+    description: "Одноэтажный каркасный дом 91 м² размером 7,5 × 9,5 м с террасой и панорамным остеклением.",
+    descriptionLong: "Проект ДК-384 от «Хочу Дом»: одноэтажный каркасный дом площадью 91 м², габариты 7,5 × 9,5 м. Компактная планировка для семьи, с вариантами комплектации «Каркас под крышу», «Тёплый контур» и «Дом для ПМЖ».",
+    gallery: [
+      { image: hdDk384_1, type: "photo", fit: "contain", blur: true },
+      { image: hdDk384_2, type: "photo", fit: "contain", blur: true },
+      { image: hdDk384_3, type: "photo", fit: "contain", blur: true },
+      { image: hdDk384_4, type: "photo", fit: "contain", blur: true },
+      { image: hdDk384Plan, type: "photo", fit: "contain" },
+    ],
+    likes: 30, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 100, name: "ДК-428", badge: "Жилой дом", price: "2 590 875 ₽",
+    area: "127 м²", area_m2: 127, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...HOCHU_DOM, siteUrl: "https://hochu-dom.ru/catalog/dk-428-12-2-x-12-127m/" },
+    description: "Одноэтажный каркасный дом 127 м² размером 12 × 12,2 м с широкой семейной планировкой.",
+    descriptionLong: "Проект ДК-428 от «Хочу Дом»: одноэтажный каркасный дом площадью 127 м², габариты 12 × 12,2 м. Проект рассчитан на постоянное проживание, на сайте представлены комплектации от каркаса под крышу до дома для ПМЖ.",
+    gallery: [
+      { image: hdDk428_1, type: "photo", fit: "contain", blur: true },
+      { image: hdDk428_2, type: "photo", fit: "contain", blur: true },
+      { image: hdDk428_3, type: "photo", fit: "contain", blur: true },
+      { image: hdDk428_4, type: "photo", fit: "contain", blur: true },
+      { image: hdDk428_5, type: "photo", fit: "contain", blur: true },
+      { image: hdDk428_6, type: "photo", fit: "contain", blur: true },
+      { image: hdDk428Plan, type: "photo", fit: "contain" },
+    ],
+    likes: 34, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса"], style: "Классический", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 101, name: "ДК-390", badge: "Жилой дом", price: "2 055 375 ₽",
+    area: "96 м²", area_m2: 96, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...HOCHU_DOM, siteUrl: "https://hochu-dom.ru/catalog/dk-390-12-x-8-96m/" },
+    description: "Одноэтажный каркасный дом 96 м² размером 8 × 12 м с лаконичной классической архитектурой.",
+    descriptionLong: "Проект ДК-390 от «Хочу Дом»: одноэтажный каркасный дом площадью 96 м², габариты 8 × 12 м. В каталоге застройщика указаны комплектации «Каркас под крышу», «Тёплый контур» и «Дом для ПМЖ».",
+    gallery: [
+      { image: hdDk390_1, type: "photo", fit: "contain", blur: true },
+      { image: hdDk390_2, type: "photo", fit: "contain", blur: true },
+      { image: hdDk390Plan, type: "photo", fit: "contain" },
+    ],
+    likes: 29, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Крыльцо"], style: "Классический", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
 ];
