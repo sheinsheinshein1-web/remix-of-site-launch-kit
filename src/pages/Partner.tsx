@@ -272,11 +272,7 @@ const Partner = () => {
           <div className="px-3 mt-3">
             <div
               className="rounded-2xl pt-5 pb-5"
-              style={{
-                background: "hsl(0, 0%, 100% / 0.10)",
-                backdropFilter: "blur(28px) saturate(140%)",
-                WebkitBackdropFilter: "blur(28px) saturate(140%)",
-              }}
+              style={{ background: "hsl(28, 12%, 24%)" }}
             >
               <h2 className="px-4 text-[22px] font-bold text-background tracking-tight">Популярные</h2>
               <div className="mt-3 flex gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
