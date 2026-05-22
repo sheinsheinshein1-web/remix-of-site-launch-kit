@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { formatSpecs } from "@/lib/utils";
 import { useSearchParams } from "react-router-dom";
-import { Search, SlidersHorizontal, ChevronLeft, ChevronDown, X, ArrowUpDown, Ruler, BedDouble, Bath, Heart, Star, Camera, Columns2, Redo2, Truck, Maximize } from "lucide-react";
+import { Search, SlidersHorizontal, ChevronLeft, ChevronDown, X, ArrowUpDown, Ruler, BedDouble, Bath, Heart, Star, Camera, Columns2, Redo2, Truck, Maximize, Layers } from "lucide-react";
 import SearchDropdown from "@/components/SearchDropdown";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import MobileTabBar from "@/components/MobileTabBar";
