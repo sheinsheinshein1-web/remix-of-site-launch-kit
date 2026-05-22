@@ -496,7 +496,7 @@ const Partner = () => {
                 className="flex-1 flex items-center justify-center py-2.5 px-4"
               >
                 <tab.icon
-                  className={`w-[26px] h-[26px] ${isPlatforma ? "text-white/70 fill-white/70" : "text-muted-foreground fill-muted-foreground"}`}
+                  className={`w-[26px] h-[26px] ${isPlatforma ? "text-white fill-white" : "text-muted-foreground fill-muted-foreground"}`}
                   strokeWidth={1.5}
                 />
               </button>
