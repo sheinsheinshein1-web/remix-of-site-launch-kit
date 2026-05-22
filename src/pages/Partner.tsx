@@ -281,6 +281,39 @@ const Partner = () => {
           </div>
         )}
 
+        {/* Бенто: "По категориям" — только Платформа */}
+        {isPlatforma && (() => {
+          const groups = new Map<string, { label: string; image: string; count: number }>();
+          makerProjects.forEach((p) => {
+            const label = p.badge || "—";
+            const existing = groups.get(label);
+            if (existing) existing.count += 1;
+            else groups.set(label, { label, image: p.gallery[0]?.image ?? "", count: 1 });
+          });
+          const arr = Array.from(groups.values());
+          if (arr.length < 2) return null;
+          return (
+            <div className="px-3 mt-3">
+              <div className="bg-background rounded-2xl pt-5 pb-5">
+                <h2 className="px-4 text-[22px] font-bold text-foreground tracking-tight">По категориям</h2>
+                <div className="mt-3 flex gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                  {arr.map((g) => (
+                    <button
+                      key={g.label}
+                      onClick={() => navigate(`/catalog?maker=${makerId}&badge=${encodeURIComponent(g.label)}`)}
+                      className="shrink-0 w-[200px] text-left"
+                    >
+                      <div className="aspect-square rounded-2xl overflow-hidden bg-secondary">
+                        {g.image && <img src={g.image} alt={g.label} className="w-full h-full object-cover" loading="lazy" decoding="async" />}
+                      </div>
+                      <div className="mt-2.5 text-center text-[15px] font-semibold text-foreground">{g.label}</div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        })()}
 
         {/* Бенто: "Хиты продаж" — большое фото-бенто с карточками внизу */}
         {isPlatforma && makerProjects.length >= 2 && (() => {
@@ -338,6 +371,29 @@ const Partner = () => {
           </div>
         )}
 
+        {/* "Все проекты" — только Платформа */}
+        {isPlatforma && makerProjects.length > 0 && (
+          <div className="px-3 mt-5">
+            <div className="flex items-center justify-between px-1">
+              <h2 className="text-[24px] font-bold tracking-tight text-background">Все проекты</h2>
+              <button
+                onClick={() => navigate(`/catalog?maker=${makerId}`)}
+                className="w-10 h-10 rounded-xl backdrop-blur-md flex items-center justify-center bg-background/25"
+                aria-label="Фильтры"
+              >
+                <SlidersHorizontal className="w-[18px] h-[18px] text-background" strokeWidth={1.8} />
+              </button>
+            </div>
+            <div
+              className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2.5"
+              style={{ ["--foreground" as any]: "0 0% 100%" }}
+            >
+              {makerProjects.map((p) => (
+                <ProjectCard key={p.id} projectId={p.id} />
+              ))}
+            </div>
+          </div>
+        )}
 
 
       </div>
