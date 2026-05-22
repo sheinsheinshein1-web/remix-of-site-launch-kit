@@ -469,22 +469,20 @@ const Partner = () => {
         </DrawerContent>
       </Drawer>
 
-      {/* Menu Drawer (бургер) — App Store-style */}
-      {menuOpen && (
-        <div className="fixed inset-0 z-[70]" role="dialog" aria-modal="true">
-          <div
-            className="absolute inset-0"
-            style={{
-              background: "hsl(0 0% 0% / 0.55)",
-              backdropFilter: "blur(22px) saturate(140%)",
-              WebkitBackdropFilter: "blur(22px) saturate(140%)",
-            }}
-            onClick={() => setMenuOpen(false)}
-          />
-          <div className="relative h-full overflow-y-auto pb-10 text-white">
-            {/* top bar */}
-            <div className="sticky top-0 z-10 px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 flex items-center justify-between"
-              style={{ background: "hsl(0 0% 0% / 0.25)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)" }}>
+      {/* Menu Drawer (бургер) — slide up from bottom */}
+      <Drawer open={menuOpen} onOpenChange={setMenuOpen}>
+        <DrawerContent
+          className="mx-0 rounded-t-[24px] p-0 border-none h-[92vh] text-white"
+          style={{
+            background: "hsl(0 0% 8% / 0.85)",
+            backdropFilter: "blur(22px) saturate(140%)",
+            WebkitBackdropFilter: "blur(22px) saturate(140%)",
+          }}
+        >
+          <div className="flex-1 overflow-y-auto pb-10">
+            {/* Floating actions: close + subscribe */}
+            <div className="sticky top-0 z-10 px-3 pt-3 pb-3 flex items-center justify-between gap-2"
+              style={{ background: "linear-gradient(to bottom, hsl(0 0% 8% / 0.95), hsl(0 0% 8% / 0))" }}>
               <button
                 onClick={() => setMenuOpen(false)}
                 className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center"
@@ -492,12 +490,7 @@ const Partner = () => {
               >
                 <X className="w-5 h-5 text-white" strokeWidth={2} />
               </button>
-              <div className="flex items-center gap-2">
-                <button className="h-10 px-5 rounded-xl bg-white/15 text-[14px] font-medium">Подписаться</button>
-                <button onClick={onShare} className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center" aria-label="Поделиться">
-                  <img src={shareIcon} alt="" className="w-[18px] h-[18px]" style={{ filter: "brightness(0) invert(1)" }} />
-                </button>
-              </div>
+              <button className="h-10 px-6 rounded-xl bg-white/15 text-[14px] font-medium">Подписаться</button>
             </div>
 
             <div className="px-3 space-y-3">
@@ -625,8 +618,9 @@ const Partner = () => {
               </button>
             </div>
           </div>
-        </div>
-      )}
+        </DrawerContent>
+      </Drawer>
+
 
 
       {/* Bottom Bar — CTA + tabs */}
