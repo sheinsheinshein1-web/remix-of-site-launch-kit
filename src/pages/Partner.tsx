@@ -520,7 +520,7 @@ const Partner = () => {
               <section className="rounded-2xl p-5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-[22px] font-bold">Отзывы</h3>
-                  <button className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center" aria-label="Все отзывы">
+                  <button onClick={() => navigate(`/partner/${id}/reviews`)} className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center" aria-label="Все отзывы">
                     <ArrowUpRight className="w-4 h-4 text-white" strokeWidth={1.8} />
                   </button>
                 </div>

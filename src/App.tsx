@@ -21,6 +21,7 @@ const CompanyChat = lazy(() => import("./pages/CompanyChat.tsx"));
 const Profile = lazy(() => import("./pages/Profile.tsx"));
 const Requests = lazy(() => import("./pages/Requests.tsx"));
 const Partner = lazy(() => import("./pages/Partner.tsx"));
+const PartnerReviews = lazy(() => import("./pages/PartnerReviews.tsx"));
 const PartnerLanding = lazy(() => import("./pages/PartnerLanding.tsx"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.tsx"));
 const MessagesLayout = lazy(() => import("./pages/MessagesLayout.tsx"));
@@ -168,6 +169,7 @@ const AppRoutes = () => (
         <Route path="/requests" element={<Requests />} />
         <Route path="/partner" element={<PartnerLanding />} />
         <Route path="/partner/:id" element={<Partner />} />
+        <Route path="/partner/:id/reviews" element={<PartnerReviews />} />
         <Route path="/operator" element={<OperatorChat />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/lab" element={<Lab />} />
