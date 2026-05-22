@@ -248,7 +248,7 @@ const Partner = () => {
         </div>
 
         {/* Бенто: "Популярные" — горизонтальный скролл крупных карточек */}
-        {makerProjects.length > 0 && (
+        {isPlatforma && makerProjects.length > 0 && (
           <div className="px-3 mt-3">
             <div className="bg-background rounded-2xl pt-5 pb-5">
               <h2 className="px-4 text-[22px] font-bold text-foreground tracking-tight">Популярные</h2>
