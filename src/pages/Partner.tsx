@@ -104,19 +104,14 @@ const Partner = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const Hero = () => (
+  const isPlatforma = makerId === "platforma";
+
+  const HeroPlatforma = () => (
     <div className="relative overflow-hidden rounded-b-2xl md:rounded-2xl bg-background min-h-[78vh] md:min-h-[620px] flex flex-col">
-      {/* Размытое фирменное фото на весь hero */}
       <div className="absolute inset-0">
         {heroImage ? (
           <>
-            <img
-              src={heroImage}
-              alt=""
-              className="w-full h-full object-cover scale-110 blur-xl"
-              aria-hidden
-              loading="eager"
-            />
+            <img src={heroImage} alt="" className="w-full h-full object-cover scale-110 blur-xl" aria-hidden loading="eager" />
             <div className="absolute inset-0 bg-foreground/25" />
             <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background/30" />
           </>
@@ -125,37 +120,25 @@ const Partner = () => {
         )}
       </div>
 
-      {/* Top row: back + follow + share */}
       <div className="relative flex items-center justify-between px-3 md:px-8 pt-[max(env(safe-area-inset-top),12px)]">
-        <button
-          onClick={handleBack}
-          className="w-10 h-10 rounded-xl bg-background/25 backdrop-blur-md flex items-center justify-center"
-          aria-label="Назад"
-        >
+        <button onClick={handleBack} className="w-10 h-10 rounded-xl bg-background/25 backdrop-blur-md flex items-center justify-center" aria-label="Назад">
           <ArrowLeft className="w-[18px] h-[18px] text-background" strokeWidth={1.8} />
         </button>
         <div className="flex items-center gap-2">
           <button
             onClick={() => setFollowing((v) => !v)}
             className={`h-10 px-5 rounded-xl text-[14px] font-semibold transition-colors backdrop-blur-md ${
-              following
-                ? "bg-background text-foreground"
-                : "bg-background/25 text-background"
+              following ? "bg-background text-foreground" : "bg-background/25 text-background"
             }`}
           >
             {following ? "В подписках" : "Подписаться"}
           </button>
-          <button
-            onClick={onShare}
-            className="w-10 h-10 rounded-xl bg-background/25 backdrop-blur-md flex items-center justify-center"
-            aria-label="Поделиться"
-          >
+          <button onClick={onShare} className="w-10 h-10 rounded-xl bg-background/25 backdrop-blur-md flex items-center justify-center" aria-label="Поделиться">
             <img src={shareIcon} alt="" className="w-[18px] h-[18px] invert" loading="lazy" decoding="async" />
           </button>
         </div>
       </div>
 
-      {/* Центр: крупный бренд + рейтинг */}
       <div className="relative my-auto px-5 text-center">
         <h1
           className="text-background leading-[1.02] tracking-[0.01em] font-normal uppercase"
@@ -177,6 +160,57 @@ const Partner = () => {
       </div>
     </div>
   );
+
+  const HeroDefault = () => (
+    <div className="relative overflow-hidden rounded-b-2xl md:rounded-2xl bg-background min-h-[420px] md:min-h-[480px] flex flex-col">
+      <div className="absolute inset-0">
+        {heroImage ? (
+          <>
+            <img src={heroImage} alt="" className="w-full h-full object-cover" aria-hidden loading="eager" />
+            <div className="absolute inset-0 bg-gradient-to-b from-foreground/30 via-transparent to-background/95" />
+          </>
+        ) : (
+          <div className="w-full h-full bg-secondary" />
+        )}
+      </div>
+
+      <div className="relative flex items-center justify-between px-3 md:px-8 pt-[max(env(safe-area-inset-top),12px)]">
+        <button onClick={handleBack} className="w-9 h-9 rounded-xl bg-background/90 backdrop-blur flex items-center justify-center">
+          <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
+        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setFollowing((v) => !v)}
+            className={`h-9 px-4 rounded-xl text-[13px] font-semibold transition-colors ${
+              following ? "bg-background/90 backdrop-blur text-foreground" : "bg-foreground text-background"
+            }`}
+          >
+            {following ? "В подписках" : "Подписаться"}
+          </button>
+          <button onClick={onShare} className="w-9 h-9 rounded-xl bg-background/90 backdrop-blur flex items-center justify-center">
+            <img src={shareIcon} alt="" className="w-[18px] h-[18px]" loading="lazy" decoding="async" />
+          </button>
+        </div>
+      </div>
+
+      <div className="relative mt-auto px-3 md:px-8 pb-7 md:pb-10 text-center">
+        <h1 className="text-foreground text-[34px] md:text-[44px] font-bold leading-[1.05] tracking-tight">{partner.name}</h1>
+        <p className="mt-2 text-[13px] md:text-[14px] text-foreground/70 inline-flex items-center justify-center gap-1.5 w-full">
+          <MapPin className="w-3.5 h-3.5" strokeWidth={1.8} />
+          {partner.city}
+          <span className="text-foreground/40">·</span>
+          {partner.category}
+        </p>
+        <div className="mt-3 inline-flex items-center gap-1.5 text-[13px] text-foreground/80">
+          <Star className="w-3.5 h-3.5 fill-foreground text-foreground" strokeWidth={0} />
+          <span className="font-semibold">{rating.toFixed(1)}</span>
+          <span className="text-foreground/60">({reviewsLabel})</span>
+        </div>
+      </div>
+    </div>
+  );
+
+  const Hero = isPlatforma ? HeroPlatforma : HeroDefault;
 
   /* ─── Layout ─── */
   return (
@@ -214,7 +248,7 @@ const Partner = () => {
         </div>
 
         {/* Бенто: "Популярные" — горизонтальный скролл крупных карточек */}
-        {makerProjects.length > 0 && (
+        {isPlatforma && makerProjects.length > 0 && (
           <div className="px-3 mt-3">
             <div className="bg-background rounded-2xl pt-5 pb-5">
               <h2 className="px-4 text-[22px] font-bold text-foreground tracking-tight">Популярные</h2>
@@ -264,7 +298,7 @@ const Partner = () => {
         })()}
 
         {/* Бенто: "Хиты продаж" — большое фото-бенто с карточками внизу */}
-        {makerProjects.length >= 2 && (() => {
+        {isPlatforma && makerProjects.length >= 2 && (() => {
           const bgImage = makerProjects[1]?.gallery[0]?.image ?? heroImage;
           const cards = makerProjects.slice(0, 3);
           return (
