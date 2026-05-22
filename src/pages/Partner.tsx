@@ -298,7 +298,7 @@ const Partner = () => {
         })()}
 
         {/* Бенто: "Хиты продаж" — большое фото-бенто с карточками внизу */}
-        {makerProjects.length >= 2 && (() => {
+        {isPlatforma && makerProjects.length >= 2 && (() => {
           const bgImage = makerProjects[1]?.gallery[0]?.image ?? heroImage;
           const cards = makerProjects.slice(0, 3);
           return (
