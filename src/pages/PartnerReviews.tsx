@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Star, ChevronDown, SlidersHorizontal, ThumbsUp, MoreHorizontal } from "lucide-react";
+import { ArrowLeft, Star, ChevronDown, SlidersHorizontal, ThumbsUp, MoreHorizontal, Flag } from "lucide-react";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
+import { toast } from "sonner";
 import { projects as allProjects, makersById } from "@/data/projects";
 
 const partnerMakerIds: Record<string, string> = { "1": "platforma" };
@@ -116,6 +117,15 @@ const PartnerReviews = () => {
   const [helpful, setHelpful] = useState<Record<number, boolean>>({});
   const toggleHelpful = (i: number) =>
     setHelpful((h) => ({ ...h, [i]: !h[i] }));
+
+  const [reportFor, setReportFor] = useState<number | null>(null);
+  const reportReasons = [
+    "Спам или реклама",
+    "Оскорбления или язык вражды",
+    "Недостоверная информация",
+    "Личные данные",
+    "Другое",
+  ];
 
   const handleBack = () => {
     if (window.history.length > 1) navigate(-1);
@@ -250,6 +260,7 @@ const PartnerReviews = () => {
                       ))}
                     </div>
                     <button
+                      onClick={() => setReportFor(idx)}
                       className="w-7 h-7 -mt-1 -mr-1 flex items-center justify-center text-white/60"
                       aria-label="Действия"
                     >
@@ -358,6 +369,41 @@ const PartnerReviews = () => {
                   {ratingFilter === option.value && <div className="w-3 h-3 rounded-full bg-primary" />}
                 </div>
                 <span className="text-[16px] text-white">{option.label}</span>
+              </button>
+            ))}
+          </div>
+        </DrawerContent>
+      </Drawer>
+
+      {/* Report drawer */}
+      <Drawer open={reportFor !== null} onOpenChange={(o) => !o && setReportFor(null)}>
+        <DrawerContent
+          className="mx-0 rounded-t-[20px] p-0 border-0 text-white"
+          style={{
+            background: "hsl(0 0% 8% / 0.55)",
+            backdropFilter: "blur(32px) saturate(160%)",
+            WebkitBackdropFilter: "blur(32px) saturate(160%)",
+          }}
+        >
+          <div className="px-3 pt-5 pb-3">
+            <h3 className="text-[20px] font-semibold text-white px-1 flex items-center gap-2">
+              <Flag className="w-5 h-5" strokeWidth={1.8} />
+              Пожаловаться на отзыв
+            </h3>
+            <p className="text-[13px] text-white/60 px-1 mt-1">Выберите причину — мы проверим в течение 24 часов</p>
+          </div>
+          <div className="px-3 pb-6 flex flex-col gap-2">
+            {reportReasons.map((reason) => (
+              <button
+                key={reason}
+                onClick={() => {
+                  setReportFor(null);
+                  toast.success("Жалоба отправлена");
+                }}
+                className="w-full text-left px-4 py-4 rounded-2xl text-[16px] text-white"
+                style={{ background: "hsl(0 0% 100% / 0.08)" }}
+              >
+                {reason}
               </button>
             ))}
           </div>
