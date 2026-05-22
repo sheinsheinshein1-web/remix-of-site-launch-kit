@@ -539,7 +539,7 @@ const Partner = () => {
                     ))}
                   </div>
                 </div>
-                <div className="-mr-5 overflow-x-auto scrollbar-none snap-x snap-mandatory">
+                <div className="-mr-5 overflow-x-auto scrollbar-hide snap-x snap-mandatory">
                   <div className="flex gap-3 pr-5">
                     {[
                       { title: "Отличное качество", body: "Дом собрали быстро, всё аккуратно. Команда на связи, материалы качественные — рекомендую.", name: "Алексей", when: "2 нед. назад", stars: 5 },
