@@ -169,6 +169,7 @@ const AppRoutes = () => (
         <Route path="/requests" element={<Requests />} />
         <Route path="/partner" element={<PartnerLanding />} />
         <Route path="/partner/:id" element={<Partner />} />
+        <Route path="/partner/:id/reviews" element={<PartnerReviews />} />
         <Route path="/operator" element={<OperatorChat />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/lab" element={<Lab />} />
