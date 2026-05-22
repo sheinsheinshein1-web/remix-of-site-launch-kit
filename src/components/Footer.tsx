@@ -87,7 +87,7 @@ const Footer = () => {
 
         {/* Regions SEO row */}
         <div className="mt-10 pt-6 border-t border-border">
-          <h4 className="font-semibold text-[13px] mb-3 text-foreground">Модульные дома по регионам</h4>
+          <h4 className="font-semibold text-[13px] mb-3 text-foreground">Быстровозводимые дома по регионам</h4>
           <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-[13px] text-muted-foreground">
             {regionLinks.map((r) => (
               <a key={r} href="/catalog" onClick={go("/catalog")} className="hover:text-foreground transition-colors">{r}</a>
