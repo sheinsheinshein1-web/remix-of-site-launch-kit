@@ -1330,6 +1330,7 @@ export type MakerSummary = {
   city: string;
   siteUrl?: string;
   technology: string;
+  productionAddress?: string;
 };
 export const makersById: Record<string, MakerSummary> = projects.reduce((acc, p) => {
   const id = p.maker.id;
@@ -1341,6 +1342,7 @@ export const makersById: Record<string, MakerSummary> = projects.reduce((acc, p)
     city: p.city,
     siteUrl: p.maker.siteUrl,
     technology: p.technology,
+    productionAddress: p.maker.productionAddress,
   };
   return acc;
 }, {} as Record<string, MakerSummary>);
