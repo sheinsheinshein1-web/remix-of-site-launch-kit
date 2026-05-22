@@ -120,8 +120,24 @@ const Partner = () => {
       {/* Затемнение снизу для читаемости текста */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "linear-gradient(to top, hsl(var(--foreground) / 0.7) 0%, hsl(var(--foreground) / 0.35) 30%, transparent 60%)" }}
+        style={{ background: "linear-gradient(to top, hsl(var(--foreground) / 0.55) 0%, hsl(var(--foreground) / 0.28) 28%, transparent 55%)" }}
       />
+
+      {/* Нижняя 1/3 — плавный переход в фон страницы (блюр-фото) */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
+        style={{
+          backgroundImage: `url(${heroImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          filter: "blur(40px) saturate(120%)",
+          transform: "scale(1.15)",
+          transformOrigin: "bottom center",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 55%, black 100%)",
+          maskImage: "linear-gradient(to bottom, transparent 0%, black 55%, black 100%)",
+        }}
+      />
+
 
 
 
@@ -219,7 +235,29 @@ const Partner = () => {
 
   /* ─── Layout ─── */
   return (
-    <div className="min-h-screen bg-secondary font-sans pb-[140px] md:pb-10">
+    <div className={`relative min-h-screen font-sans pb-[140px] md:pb-10 ${isPlatforma ? "" : "bg-secondary"}`}>
+      {/* Фон страницы — размытое hero-фото, тянется на всю высоту */}
+      {isPlatforma && heroImage && (
+        <div
+          className="fixed inset-0 -z-10 pointer-events-none"
+          aria-hidden
+          style={{
+            backgroundImage: `url(${heroImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            filter: "blur(60px) saturate(125%)",
+            transform: "scale(1.2)",
+          }}
+        />
+      )}
+      {isPlatforma && (
+        <div
+          className="fixed inset-0 -z-10 pointer-events-none"
+          aria-hidden
+          style={{ background: "hsl(var(--foreground) / 0.18)" }}
+        />
+      )}
+
       {/* Sticky compact header (mobile) */}
       {isMobile && (
         <div
