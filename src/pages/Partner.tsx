@@ -108,18 +108,28 @@ const Partner = () => {
 
   const HeroPlatforma = () => (
     <div className="relative overflow-hidden rounded-b-2xl md:rounded-2xl bg-background min-h-[78vh] md:min-h-[620px] flex flex-col">
+      {/* Резкое фото на весь hero */}
       <div className="absolute inset-0">
         {heroImage ? (
-          <>
-            <img src={heroImage} alt="" className="w-full h-full object-cover scale-110 blur-xl" aria-hidden loading="eager" />
-            <div className="absolute inset-0 bg-foreground/25" />
-            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background/30" />
-          </>
+          <img src={heroImage} alt="" className="w-full h-full object-cover" aria-hidden loading="eager" />
         ) : (
           <div className="w-full h-full bg-secondary" />
         )}
       </div>
 
+      {/* Размытая плашка снизу 1/3 с брендом и рейтингом */}
+      {heroImage && (
+        <div
+          className="absolute inset-x-0 bottom-0 h-1/3 overflow-hidden"
+          style={{
+            backdropFilter: "blur(22px)",
+            WebkitBackdropFilter: "blur(22px)",
+            background: "linear-gradient(to bottom, hsl(var(--foreground) / 0.05), hsl(var(--foreground) / 0.35))",
+          }}
+        />
+      )}
+
+      {/* Top row: back + follow + share */}
       <div className="relative flex items-center justify-between px-3 md:px-8 pt-[max(env(safe-area-inset-top),12px)]">
         <button onClick={handleBack} className="w-10 h-10 rounded-xl bg-background/25 backdrop-blur-md flex items-center justify-center" aria-label="Назад">
           <ArrowLeft className="w-[18px] h-[18px] text-background" strokeWidth={1.8} />
@@ -139,19 +149,17 @@ const Partner = () => {
         </div>
       </div>
 
-      <div className="relative my-auto px-5 text-center">
-        <h1
-          className="text-background leading-[1.02] tracking-[0.01em] font-normal uppercase"
-          style={{ fontFamily: '"Cormorant Garamond", "Times New Roman", serif', fontSize: "clamp(38px, 11vw, 64px)" }}
-        >
+      {/* Текст на блюр-плашке (нижняя 1/3) */}
+      <div className="relative mt-auto h-1/3 flex flex-col items-center justify-center px-5 text-center">
+        <h1 className="text-background leading-[1.05] tracking-tight font-bold uppercase text-[clamp(32px,9vw,52px)]">
           {partner.name}
         </h1>
-        <div className="mt-5 inline-flex items-center gap-1.5 text-[14px] text-background/85">
-          <span className="font-medium">{rating.toFixed(1)}</span>
+        <div className="mt-3 inline-flex items-center gap-1.5 text-[14px] text-background/90">
+          <span className="font-semibold">{rating.toFixed(1)}</span>
           <Star className="w-3.5 h-3.5 fill-background text-background" strokeWidth={0} />
           <span className="text-background/70">({reviewsLabel})</span>
         </div>
-        <div className="mt-2 text-[12px] text-background/60 inline-flex items-center justify-center gap-1.5 w-full">
+        <div className="mt-1.5 text-[12px] text-background/70 inline-flex items-center justify-center gap-1.5 w-full">
           <MapPin className="w-3 h-3" strokeWidth={1.8} />
           {partner.city}
           <span className="text-background/40">·</span>
