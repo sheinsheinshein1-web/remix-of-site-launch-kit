@@ -470,17 +470,18 @@ const Partner = () => {
         </DrawerContent>
       </Drawer>
 
-      {/* Menu Drawer (бургер) — slide up from bottom */}
-      <Drawer open={menuOpen} onOpenChange={setMenuOpen}>
-        <DrawerContent
-          className="mx-0 rounded-t-[24px] p-0 border-none h-[92vh] text-white"
+      {/* Menu Sheet (бургер) — slide in from right */}
+      <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
+        <SheetContent
+          side="right"
+          className="w-full sm:max-w-md p-0 border-none text-white [&>button]:hidden"
           style={{
             background: "hsl(0 0% 8% / 0.85)",
             backdropFilter: "blur(22px) saturate(140%)",
             WebkitBackdropFilter: "blur(22px) saturate(140%)",
           }}
         >
-          <div className="flex-1 overflow-y-auto pb-10">
+          <div className="h-full overflow-y-auto pb-10">
             {/* Floating close button (right) */}
             <div className="sticky top-0 z-10 px-3 pt-3 pb-3 flex items-center justify-end"
               style={{ background: "linear-gradient(to bottom, hsl(0 0% 8% / 0.95), hsl(0 0% 8% / 0))" }}>
