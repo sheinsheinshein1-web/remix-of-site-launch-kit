@@ -117,29 +117,21 @@ const Partner = () => {
         )}
       </div>
 
-      {/* Плавный градиентный блюр снизу — стопка слоёв с плавными масками */}
+      {/* Виньеточный блюр: плотный снизу и плавно растворяется к середине */}
       {heroImage && (
-        <div className="absolute inset-x-0 bottom-0 h-[55%] pointer-events-none">
-          {[
-            { b: 2, from: 0, to: 20 },
-            { b: 6, from: 15, to: 40 },
-            { b: 14, from: 35, to: 60 },
-            { b: 28, from: 55, to: 80 },
-          ].map(({ b, from, to }) => (
-            <div
-              key={b}
-              className="absolute inset-0"
-              style={{
-                backdropFilter: `blur(${b}px)`,
-                WebkitBackdropFilter: `blur(${b}px)`,
-                maskImage: `linear-gradient(to bottom, transparent ${from}%, black ${to}%)`,
-                WebkitMaskImage: `linear-gradient(to bottom, transparent ${from}%, black ${to}%)`,
-              }}
-            />
-          ))}
+        <div className="absolute inset-x-0 bottom-0 h-[62%] pointer-events-none">
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to bottom, transparent 30%, hsl(var(--foreground) / 0.4) 100%)" }}
+            style={{
+              backdropFilter: "blur(30px)",
+              WebkitBackdropFilter: "blur(30px)",
+              maskImage: "linear-gradient(to top, black 0%, black 24%, rgb(0 0 0 / 0.86) 39%, rgb(0 0 0 / 0.48) 58%, rgb(0 0 0 / 0.16) 76%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to top, black 0%, black 24%, rgb(0 0 0 / 0.86) 39%, rgb(0 0 0 / 0.48) 58%, rgb(0 0 0 / 0.16) 76%, transparent 100%)",
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(to top, hsl(var(--foreground) / 0.46) 0%, hsl(var(--foreground) / 0.34) 28%, hsl(var(--foreground) / 0.14) 56%, transparent 100%)" }}
           />
         </div>
       )}
