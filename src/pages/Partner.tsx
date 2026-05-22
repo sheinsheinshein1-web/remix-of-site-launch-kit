@@ -273,16 +273,15 @@ const Partner = () => {
             scrolled ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
         >
-          <div className="px-3 pt-[max(env(safe-area-inset-top),10px)] pb-2">
-            <div
-              className="flex items-center justify-between gap-2 rounded-2xl pl-2 pr-2 py-2 border border-white/10"
-              style={{
-                background: "hsl(0 0% 0% / 0.45)",
-                backdropFilter: "blur(18px) saturate(140%)",
-                WebkitBackdropFilter: "blur(18px) saturate(140%)",
-                boxShadow: "0 10px 30px -14px hsl(0 0% 0% / 0.35)",
-              }}
-            >
+          <div
+            className="px-3 pt-[max(env(safe-area-inset-top),10px)] pb-2 border-b border-white/10"
+            style={{
+              background: "hsl(0 0% 0% / 0.45)",
+              backdropFilter: "blur(18px) saturate(140%)",
+              WebkitBackdropFilter: "blur(18px) saturate(140%)",
+            }}
+          >
+            <div className="flex items-center justify-between gap-2">
               <button onClick={handleBack} className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center shrink-0" aria-label="Назад">
                 <ArrowLeft className="w-[18px] h-[18px] text-white" strokeWidth={1.8} />
               </button>
