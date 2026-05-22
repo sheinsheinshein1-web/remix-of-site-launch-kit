@@ -483,16 +483,6 @@ const Partner = () => {
               : undefined
           }
         >
-          <div className="max-w-[1400px] mx-auto px-3 pt-2">
-            <a
-              href={partner.siteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full h-10 bg-primary text-primary-foreground rounded-xl text-[14px] font-semibold flex items-center justify-center"
-            >
-              Перейти на сайт
-            </a>
-          </div>
           <div className="flex pb-[max(env(safe-area-inset-bottom),0px)]">
             {[
               { icon: Home, path: "/" },
