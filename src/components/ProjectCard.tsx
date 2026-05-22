@@ -30,6 +30,7 @@ interface ProjectCardProps {
 }
 
 const DEFAULT_HEIGHT = "aspect-[3/4] h-auto md:h-[240px] md:aspect-auto";
+const formatPriceFrom = (price: string) => (price.trim().toLowerCase().startsWith("от ") ? price : `от ${price}`);
 
 const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick }: ProjectCardProps) => {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick }: Projec
 
   const images = project.gallery.map((g) => g.image);
   const firstImage = images[0] ?? "";
+  const priceLabel = formatPriceFrom(project.price);
   const liked = isFavorite(project.id);
   const likesCount = project.likes + (liked ? 1 : 0);
 
@@ -73,7 +75,7 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick }: Projec
         href={`/project/${project.id}`}
         onClick={handleClick}
         className="block cursor-pointer"
-        aria-label={`${project.name} — от ${project.price}`}
+        aria-label={`${project.name} — ${priceLabel}`}
       >
         <SwipeableGallery
           images={images}
@@ -100,7 +102,7 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick }: Projec
         </SwipeableGallery>
         <div className="px-[10px] pt-1 pb-1">
           <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{project.name}</h2>
-          <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">от {project.price}</div>
+          <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">{priceLabel}</div>
           <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[3px]">
             <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{project.area}</span>
             <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{project.beds}</span>

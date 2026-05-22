@@ -180,6 +180,58 @@ import zg_favorite2 from "@/assets/zagorodom/favorite-2.webp";
 import zg_favorite3 from "@/assets/zagorodom/favorite-3.webp";
 import zg_favorite_plan from "@/assets/zagorodom/favorite-plan.webp";
 
+// Прайм Модуль
+import pm_barnhaus200_1 from "@/assets/prime-module/barnhaus-200-1.webp";
+import pm_barnhaus200_2 from "@/assets/prime-module/barnhaus-200-2.webp";
+import pm_barnhaus200_3 from "@/assets/prime-module/barnhaus-200-3.webp";
+import pm_barnhaus200_4 from "@/assets/prime-module/barnhaus-200-4.webp";
+import pm_barnhaus200_5 from "@/assets/prime-module/barnhaus-200-5.webp";
+import pm_barnhaus200_6 from "@/assets/prime-module/barnhaus-200-6.webp";
+import pm_barnhaus200_7 from "@/assets/prime-module/barnhaus-200-7.webp";
+import pm_barnhaus200_plan from "@/assets/prime-module/barnhaus-200-8.webp";
+import pm_skandi72_1 from "@/assets/prime-module/skandinaviya-72-1.webp";
+import pm_skandi72_2 from "@/assets/prime-module/skandinaviya-72-2.webp";
+import pm_skandi72_3 from "@/assets/prime-module/skandinaviya-72-3.webp";
+import pm_skandi72_4 from "@/assets/prime-module/skandinaviya-72-4.webp";
+import pm_skandi72_5 from "@/assets/prime-module/skandinaviya-72-5.webp";
+import pm_skandi72_plan from "@/assets/prime-module/skandinaviya-72-6.webp";
+import pm_barn42_1 from "@/assets/prime-module/barn-42-1.webp";
+import pm_barn42_2 from "@/assets/prime-module/barn-42-2.webp";
+import pm_barn42_3 from "@/assets/prime-module/barn-42-3.webp";
+import pm_barn42_4 from "@/assets/prime-module/barn-42-4.webp";
+import pm_barn42_plan from "@/assets/prime-module/barn-42-5.webp";
+import pm_modern72_1 from "@/assets/prime-module/modern-72-1.webp";
+import pm_modern72_2 from "@/assets/prime-module/modern-72-2.webp";
+import pm_modern72_3 from "@/assets/prime-module/modern-72-3.webp";
+import pm_modern72_4 from "@/assets/prime-module/modern-72-4.webp";
+import pm_modern72_5 from "@/assets/prime-module/modern-72-5.webp";
+import pm_modern72_plan from "@/assets/prime-module/modern-72-6.webp";
+import pm_kantri110_1 from "@/assets/prime-module/kantri-110-1.webp";
+import pm_kantri110_2 from "@/assets/prime-module/kantri-110-2.webp";
+import pm_kantri110_3 from "@/assets/prime-module/kantri-110-3.webp";
+import pm_kantri110_4 from "@/assets/prime-module/kantri-110-4.webp";
+import pm_kantri110_5 from "@/assets/prime-module/kantri-110-5.webp";
+import pm_kantri110_plan from "@/assets/prime-module/kantri-110-6.webp";
+
+// СК Уткино
+import utkino_lesnoy32_1 from "@/assets/utkino/lesnoy-32-1.webp";
+import utkino_lesnoy32_plan from "@/assets/utkino/lesnoy-32-plan.webp";
+import utkino_lesnoy32_size from "@/assets/utkino/lesnoy-32-size.webp";
+import utkino_tikhiy43_1 from "@/assets/utkino/tikhiy-bereg-43-1.webp";
+import utkino_tikhiy43_planFurnished from "@/assets/utkino/tikhiy-bereg-43-plan-furnished.webp";
+import utkino_tikhiy43_plan from "@/assets/utkino/tikhiy-bereg-43-plan.webp";
+import utkino_bereginya50_1 from "@/assets/utkino/bereginya-50-1.webp";
+import utkino_bereginya50_planFurnished from "@/assets/utkino/bereginya-50-plan-furnished.webp";
+import utkino_bereginya50_plan from "@/assets/utkino/bereginya-50-plan.webp";
+import utkino_berendey63_1 from "@/assets/utkino/berendey-63-1.webp";
+import utkino_berendey63_planFurnished from "@/assets/utkino/berendey-63-plan-furnished.webp";
+import utkino_berendey63_plan from "@/assets/utkino/berendey-63-plan.webp";
+import utkino_svetlitsa72_1 from "@/assets/utkino/svetlitsa-prikamya-72-1.webp";
+import utkino_svetlitsa72_floor1Plan from "@/assets/utkino/svetlitsa-prikamya-72-floor1-plan.webp";
+import utkino_svetlitsa72_floor1Size from "@/assets/utkino/svetlitsa-prikamya-72-floor1-size.webp";
+import utkino_svetlitsa72_atticPlan from "@/assets/utkino/svetlitsa-prikamya-72-attic-plan.webp";
+import utkino_svetlitsa72_atticSize from "@/assets/utkino/svetlitsa-prikamya-72-attic-size.webp";
+
 // ============================================================================
 // ТИПЫ
 // ============================================================================
@@ -277,6 +329,18 @@ const APA: Maker = {
   initials: "АА",
   id: "apa",
   siteUrl: "https://apagrupp.ru/",
+};
+const PRIME_MODULE: Maker = {
+  name: "Прайм Модуль",
+  initials: "ПМ",
+  id: "prime-modul",
+  siteUrl: "https://prime-module.ru/",
+};
+const UTKINO: Maker = {
+  name: "СК Уткино",
+  initials: "УТ",
+  id: "utkino",
+  siteUrl: "https://sk-utkino.ru/catalog",
 };
 
 // ============================================================================
@@ -1021,6 +1085,208 @@ export const projects: Project[] = [
     technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
     features: ["Хай-тек"], style: "Хай-тек", landSize: "6–10 соток",
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── Прайм Модуль · Пермский край ─────────────────────────────────────
+  {
+    id: 72, name: "Барнхаус-200", badge: "Барнхаус", price: "от 6 699 000 ₽",
+    area: "200 м²", area_m2: 200, beds: 4, baths: 2, floors: 2, term: "от 1 мес.",
+    rooms: "4 комнаты", purpose: "ИЖС / СНТ", city: "Пермский край",
+    maker: { ...PRIME_MODULE, siteUrl: "https://prime-module.ru/page2#n-b1b6a256-3b9f-43ea-b098-0e5d54fc145d" },
+    description: "Двухэтажный каркасный барнхаус с кухней-гостиной со вторым светом, сауной и крытой террасой 127 м².",
+    descriptionLong: "Барнхаус-200 — двухэтажный каркасный дом для семьи из 3–6 человек. В проекте предусмотрены кухня-гостиная со вторым светом 34,8 м², мастер-спальня с собственным санузлом, 4 комнаты, сауна, 2 санузла и большая крытая терраса 127 м².",
+    gallery: [
+      { image: pm_barnhaus200_1, type: "photo", fit: "contain", blur: true },
+      { image: pm_barnhaus200_2, type: "photo", fit: "contain", blur: true },
+      { image: pm_barnhaus200_3, type: "photo", fit: "contain", blur: true },
+      { image: pm_barnhaus200_4, type: "photo", fit: "contain", blur: true },
+      { image: pm_barnhaus200_5, type: "photo", fit: "contain", blur: true },
+      { image: pm_barnhaus200_6, type: "photo", fit: "contain", blur: true },
+      { image: pm_barnhaus200_7, type: "photo", fit: "contain", blur: true },
+      { image: pm_barnhaus200_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 34, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Сауна", "Второй свет", "Панорамные окна"], style: "Барнхаус", landSize: "10+ соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 73, name: "Скандинавия-72", badge: "Жилой дом", price: "от 3 200 000 ₽",
+    area: "72 м²", area_m2: 72, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край",
+    maker: { ...PRIME_MODULE, siteUrl: "https://prime-module.ru/page2#n-bd090621-f438-4eba-80eb-fb4753458411" },
+    description: "Каркасный дом для семьи из 2–4 человек с кухней-гостиной со вторым светом, двумя спальнями и террасой.",
+    descriptionLong: "Скандинавия-72 — каркасный дом для семьи из 2–4 человек. Планировка включает кухню-гостиную со вторым светом 23,37 м², две просторные комнаты, санузел, холл, прихожую и крытую террасу 12 м².",
+    gallery: [
+      { image: pm_skandi72_1, type: "photo", fit: "contain", blur: true },
+      { image: pm_skandi72_2, type: "photo", fit: "contain", blur: true },
+      { image: pm_skandi72_3, type: "photo", fit: "contain", blur: true },
+      { image: pm_skandi72_4, type: "photo", fit: "contain", blur: true },
+      { image: pm_skandi72_5, type: "photo", fit: "contain", blur: true },
+      { image: pm_skandi72_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 29, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Второй свет"], style: "Скандинавский", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 74, name: "Барн-42", badge: "Барнхаус", price: "от 1 999 000 ₽",
+    area: "42 м²", area_m2: 42, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Пермский край",
+    maker: { ...PRIME_MODULE, siteUrl: "https://prime-module.ru/page2#n-09dedcbc-ede7-4a61-9d21-c7c5cd36e951" },
+    description: "Компактный каркасный дом в стиле барнхаус с кухней-гостиной, спальней, санузлом и котельной.",
+    descriptionLong: "Барн-42 — компактный каркасный дом для семьи из 2–3 человек. В планировке предусмотрены кухня-гостиная 13,9 м², спальня, санузел и котельная. Подходит для загородного отдыха и небольшого дома для постоянного проживания.",
+    gallery: [
+      { image: pm_barn42_1, type: "photo", fit: "contain", blur: true },
+      { image: pm_barn42_2, type: "photo", fit: "contain", blur: true },
+      { image: pm_barn42_3, type: "photo", fit: "contain", blur: true },
+      { image: pm_barn42_4, type: "photo", fit: "contain", blur: true },
+      { image: pm_barn42_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 24, rating: 4.7,
+    suitableFor: ["Дача", "Для пары"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна"], style: "Барнхаус", landSize: "до 6 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 75, name: "Модерн-72", badge: "Жилой дом", price: "от 3 200 000 ₽",
+    area: "72 м²", area_m2: 72, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край",
+    maker: { ...PRIME_MODULE, siteUrl: "https://prime-module.ru/page2#n-220cc4ab-4a13-4347-8a45-94286f248042" },
+    description: "Каркасный дом для семьи из 2–5 человек с двумя спальнями, кладовой и большой террасой 16 м².",
+    descriptionLong: "Модерн-72 — каркасный дом для семьи из 2–5 человек. Планировка включает кухню-гостиную 16,8 м², две спальни, холл, прихожую, кладовую и большую террасу 16 м².",
+    gallery: [
+      { image: pm_modern72_1, type: "photo", fit: "contain", blur: true },
+      { image: pm_modern72_2, type: "photo", fit: "contain", blur: true },
+      { image: pm_modern72_3, type: "photo", fit: "contain", blur: true },
+      { image: pm_modern72_4, type: "photo", fit: "contain", blur: true },
+      { image: pm_modern72_5, type: "photo", fit: "contain", blur: true },
+      { image: pm_modern72_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 28, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 76, name: "Кантри-110", badge: "Жилой дом", price: "от 4 200 000 ₽",
+    area: "110 м²", area_m2: 110, beds: 3, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Пермский край",
+    maker: { ...PRIME_MODULE, siteUrl: "https://prime-module.ru/page2#n-fa58e952-f04c-4115-9c30-4dbb7a0214ae" },
+    description: "Каркасный дом для семьи из 3–6 человек с мастер-спальней, двумя комнатами и террасой 14 м².",
+    descriptionLong: "Кантри-110 — каркасный дом для проживания семьи из 3–6 человек. В проекте есть кухня-гостиная 22,29 м², мастер-спальня с санузлом, две просторные комнаты, основной санузел, гардеробная, прихожая и большая терраса 14 м².",
+    gallery: [
+      { image: pm_kantri110_1, type: "photo", fit: "contain", blur: true },
+      { image: pm_kantri110_2, type: "photo", fit: "contain", blur: true },
+      { image: pm_kantri110_3, type: "photo", fit: "contain", blur: true },
+      { image: pm_kantri110_4, type: "photo", fit: "contain", blur: true },
+      { image: pm_kantri110_5, type: "photo", fit: "contain", blur: true },
+      { image: pm_kantri110_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 31, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Мастер-спальня"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── СК Уткино · Пермский край ─────────────────────────────────────────
+  {
+    id: 77, name: "Лесной", badge: "Жилой дом", price: "от 1 418 752 ₽",
+    area: "32,6 м²", area_m2: 32.6, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Пермский край",
+    maker: UTKINO,
+    description: "Компактный каркасный дом 6 × 6 м с одной спальней, кухней, гостиной, санузлом и террасой.",
+    descriptionLong: "Лесной — одноэтажный каркасный дом площадью 32,6 м² в комплектации тёплый контур. Планировка включает комнату 7,2 м², кухню 6,2 м², гостиную 13,7 м², тамбур, санузел и террасу 11,9 м².",
+    gallery: [
+      { image: utkino_lesnoy32_1, type: "photo", fit: "contain", blur: true },
+      { image: utkino_lesnoy32_plan, type: "photo", fit: "contain" },
+      { image: utkino_lesnoy32_size, type: "photo", fit: "contain" },
+    ],
+    likes: 19, rating: 4.7,
+    suitableFor: ["Дача", "Для пары"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса"], style: "Современный", landSize: "до 6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 78, name: "Тихий берег", badge: "Жилой дом", price: "от 1 893 120 ₽",
+    area: "43,5 м²", area_m2: 43.5, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ / Дача", city: "Пермский край",
+    maker: UTKINO,
+    description: "Одноэтажный каркасный дом 7 × 7 м с двумя комнатами, кухней-гостиной, санузлом и террасой.",
+    descriptionLong: "Тихий берег — каркасный дом площадью 43,5 м² в комплектации тёплый контур. В проекте две комнаты 8,3 и 11,4 м², кухня-гостиная 14,2 м², санузел 3,1 м², тамбур и терраса 11,2 м².",
+    gallery: [
+      { image: utkino_tikhiy43_1, type: "photo", fit: "contain", blur: true },
+      { image: utkino_tikhiy43_planFurnished, type: "photo", fit: "contain" },
+      { image: utkino_tikhiy43_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 22, rating: 4.8,
+    suitableFor: ["Дача", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса"], style: "Современный", landSize: "до 6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 79, name: "Берегиня", badge: "Жилой дом", price: "от 2 189 056 ₽",
+    area: "50,38 м²", area_m2: 50.38, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край",
+    maker: UTKINO,
+    description: "Каркасный дом 6 × 9 м с двумя спальнями, кухней-гостиной, холлом, санузлом и крыльцом.",
+    descriptionLong: "Берегиня — одноэтажный каркасный дом площадью 50,38 м² в комплектации тёплый контур. Планировка включает две комнаты по 8,9 м², кухню-гостиную 18,9 м², холл 4,6 м², санузел, тамбур и крыльцо.",
+    gallery: [
+      { image: utkino_bereginya50_1, type: "photo", fit: "contain", blur: true },
+      { image: utkino_bereginya50_planFurnished, type: "photo", fit: "contain" },
+      { image: utkino_bereginya50_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 24, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Крыльцо"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 80, name: "Берендей", badge: "Жилой дом", price: "от 2 763 520 ₽",
+    area: "63,5 м²", area_m2: 63.5, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Пермский край",
+    maker: UTKINO,
+    description: "Одноэтажный каркасный дом 7,2 × 10 м с двумя комнатами, кухней, гостиной, санузлом и крыльцом.",
+    descriptionLong: "Берендей — каркасный дом площадью 63,5 м² в комплектации тёплый контур. В планировке предусмотрены две комнаты 10,7 и 8,6 м², кухня 10 м², гостиная 17,3 м², холл, санузел, тамбур и крыльцо 5,3 м².",
+    gallery: [
+      { image: utkino_berendey63_1, type: "photo", fit: "contain", blur: true },
+      { image: utkino_berendey63_planFurnished, type: "photo", fit: "contain" },
+      { image: utkino_berendey63_plan, type: "photo", fit: "contain" },
+    ],
+    likes: 27, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Крыльцо"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 81, name: "Светлица Прикамья", badge: "Жилой дом", price: "от 3 138 227 ₽",
+    area: "72,11 м²", area_m2: 72.11, beds: 3, baths: 1, floors: 2, term: "от 1 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Пермский край",
+    maker: UTKINO,
+    description: "Каркасный дом 6 × 8 м с мансардой, тремя комнатами, кухней-гостиной, санузлом и террасой.",
+    descriptionLong: "Светлица Прикамья — каркасный дом площадью 72,11 м² в комплектации тёплый контур. На первом этаже расположены комната 9,9 м², кухня-гостиная 20,9 м², санузел, холл и терраса 19,9 м². В мансарде предусмотрены две комнаты 13,2 и 15 м².",
+    gallery: [
+      { image: utkino_svetlitsa72_1, type: "photo", fit: "contain", blur: true },
+      { image: utkino_svetlitsa72_floor1Plan, type: "photo", fit: "contain" },
+      { image: utkino_svetlitsa72_floor1Size, type: "photo", fit: "contain" },
+      { image: utkino_svetlitsa72_atticPlan, type: "photo", fit: "contain" },
+      { image: utkino_svetlitsa72_atticSize, type: "photo", fit: "contain" },
+    ],
+    likes: 31, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
+    features: ["Терраса", "Мансарда"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
 ];
 

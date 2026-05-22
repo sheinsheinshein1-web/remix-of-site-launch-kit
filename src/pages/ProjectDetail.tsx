@@ -160,6 +160,8 @@ const ProjectCard = ({ project }: { project: { name: string; price: string; meta
   </div>
 );
 
+const formatPriceFrom = (price: string) => (price.trim().toLowerCase().startsWith("от ") ? price : `от ${price}`);
+
 const ProjectDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -188,13 +190,14 @@ const ProjectDetail = () => {
     descriptionLong: override?.descriptionLong ?? "Шервуд 72.1 — ваш дом за 6 недель. Компактный одноэтажный дом с продуманной планировкой для комфортной жизни за городом. Две изолированные спальни, просторная кухня-гостиная с панорамным остеклением и уютная веранда — всё, что нужно для семьи.",
   };
   const galleryImages = override?.gallery ?? defaultGallery;
+  const priceLabel = formatPriceFrom(project.price);
 
   const projectFavItem = {
     id: project.id,
     badge: "Хит",
     maker: project.maker,
     name: project.name,
-    price: `от ${project.price}`,
+    price: priceLabel,
     area: project.area,
     beds: project.beds,
     baths: project.baths,
