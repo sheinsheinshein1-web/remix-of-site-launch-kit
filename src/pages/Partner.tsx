@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { ArrowLeft, ChevronRight, ShieldCheck, Star, SlidersHorizontal, MapPin } from "lucide-react";
 import Header from "@/components/Header";
@@ -139,7 +139,7 @@ const Partner = () => {
         </div>
 
         {/* Логотип / инициалы */}
-        <div className={`mx-auto mt-${compact ? "5" : "8"} md:mt-10 w-[88px] h-[88px] md:w-[104px] md:h-[104px] rounded-2xl bg-background/90 backdrop-blur flex items-center justify-center text-2xl md:text-3xl font-bold text-foreground/80 shadow-[0_8px_30px_-12px_hsl(var(--foreground)/0.25)]`}>
+        <div className={`mx-auto ${compact ? "mt-5" : "mt-8"} md:mt-10 w-[88px] h-[88px] md:w-[104px] md:h-[104px] rounded-2xl bg-background/90 backdrop-blur flex items-center justify-center text-2xl md:text-3xl font-bold text-foreground/80 shadow-[0_8px_30px_-12px_hsl(var(--foreground)/0.25)]`}>
           {partner.initials}
         </div>
 
