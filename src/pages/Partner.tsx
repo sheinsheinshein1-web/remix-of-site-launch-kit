@@ -331,10 +331,11 @@ const Partner = () => {
                   <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
-                      background: "linear-gradient(to bottom, transparent 0%, transparent 50%, hsl(0, 0%, 0% / 0.55) 75%, hsl(0, 0%, 0% / 0.85) 100%)",
+                      background: "linear-gradient(to bottom, transparent 0%, hsl(0, 0%, 0% / 0.25) 35%, hsl(0, 0%, 0% / 0.7) 65%, hsl(0, 0%, 0% / 0.92) 100%)",
                     }}
                   />
                 </div>
+
                 <h2 className="relative px-5 pt-5 text-[22px] font-bold text-background tracking-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
                   Хиты продаж
                 </h2>
