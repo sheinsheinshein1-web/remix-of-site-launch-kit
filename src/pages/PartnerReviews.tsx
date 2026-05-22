@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, Star, ChevronDown, SlidersHorizontal, ThumbsUp, MoreHorizontal } from "lucide-react";
+import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { projects as allProjects, makersById } from "@/data/projects";
 
 const partnerMakerIds: Record<string, string> = { "1": "platforma" };
@@ -75,8 +76,42 @@ const PartnerReviews = () => {
     return reviews.reduce((s, r) => s + r.stars, 0) / reviews.length;
   }, [reviews]);
 
-  const [sortLabel] = useState("Сначала новые");
-  const [ratingLabel] = useState("Все оценки");
+  const sortOptions = [
+    { value: "new", label: "Сначала новые" },
+    { value: "old", label: "Сначала старые" },
+    { value: "high", label: "С высоким рейтингом" },
+    { value: "low", label: "С низким рейтингом" },
+  ] as const;
+  const ratingOptions = [
+    { value: 0, label: "Все оценки" },
+    { value: 5, label: "Только 5 звёзд" },
+    { value: 4, label: "Только 4 звезды" },
+    { value: 3, label: "Только 3 звезды" },
+    { value: 2, label: "Только 2 звезды" },
+    { value: 1, label: "Только 1 звезда" },
+  ] as const;
+
+  const [sortKey, setSortKey] = useState<"new" | "old" | "high" | "low">("new");
+  const [ratingFilter, setRatingFilter] = useState<number>(0);
+  const [sortOpen, setSortOpen] = useState(false);
+  const [ratingOpen, setRatingOpen] = useState(false);
+
+  const sortLabel = sortOptions.find((o) => o.value === sortKey)?.label ?? "Сначала новые";
+  const ratingLabel = ratingOptions.find((o) => o.value === ratingFilter)?.label ?? "Все оценки";
+
+  const displayedReviews = useMemo(() => {
+    const withIndex = reviews.map((r, i) => ({ r, i }));
+    const filtered = ratingFilter === 0 ? withIndex : withIndex.filter(({ r }) => r.stars === ratingFilter);
+    const sorted = [...filtered].sort((a, b) => {
+      switch (sortKey) {
+        case "new": return a.i - b.i;
+        case "old": return b.i - a.i;
+        case "high": return b.r.stars - a.r.stars || a.i - b.i;
+        case "low": return a.r.stars - b.r.stars || a.i - b.i;
+      }
+    });
+    return sorted.map(({ r }) => r);
+  }, [reviews, sortKey, ratingFilter]);
 
   const handleBack = () => {
     if (window.history.length > 1) navigate(-1);
@@ -162,6 +197,7 @@ const PartnerReviews = () => {
         {/* Filter chips */}
         <div className="flex items-center gap-2 overflow-x-auto -mx-3 px-3 scrollbar-hide">
           <button
+            onClick={() => setSortOpen(true)}
             className="shrink-0 h-9 px-3.5 rounded-xl flex items-center gap-1.5 text-[14px] text-white"
             style={{ background: "hsl(0 0% 100% / 0.08)" }}
           >
@@ -169,6 +205,7 @@ const PartnerReviews = () => {
             <ChevronDown className="w-4 h-4" strokeWidth={1.8} />
           </button>
           <button
+            onClick={() => setRatingOpen(true)}
             className="shrink-0 h-9 px-3.5 rounded-xl flex items-center gap-1.5 text-[14px] text-white"
             style={{ background: "hsl(0 0% 100% / 0.08)" }}
           >
@@ -179,7 +216,7 @@ const PartnerReviews = () => {
 
         {/* Reviews list */}
         <div className="space-y-3">
-          {reviews.map((r, idx) => (
+          {displayedReviews.map((r, idx) => (
             <article key={idx} className="rounded-2xl p-4" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
               <div className="flex items-start gap-3">
                 <div className="w-[72px] h-[72px] rounded-xl overflow-hidden shrink-0" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
@@ -249,6 +286,68 @@ const PartnerReviews = () => {
           ))}
         </div>
       </div>
+
+      {/* Sort drawer */}
+      <Drawer open={sortOpen} onOpenChange={setSortOpen}>
+        <DrawerContent
+          className="mx-0 rounded-t-[20px] p-0 border-0 text-white"
+          style={{
+            background: "hsl(0 0% 8% / 0.55)",
+            backdropFilter: "blur(32px) saturate(160%)",
+            WebkitBackdropFilter: "blur(32px) saturate(160%)",
+          }}
+        >
+          <div className="px-3 pt-5 pb-3">
+            <h3 className="text-[20px] font-semibold text-white px-1">Сортировка</h3>
+          </div>
+          <div className="px-3 pb-6 flex flex-col gap-2">
+            {sortOptions.map((option) => (
+              <button
+                key={option.value}
+                onClick={() => { setSortKey(option.value); setSortOpen(false); }}
+                className="w-full flex items-center gap-3 px-4 py-4 text-left rounded-2xl"
+                style={{ background: "hsl(0 0% 100% / 0.08)" }}
+              >
+                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${sortKey === option.value ? "border-primary" : "border-white/30"}`}>
+                  {sortKey === option.value && <div className="w-3 h-3 rounded-full bg-primary" />}
+                </div>
+                <span className="text-[16px] text-white">{option.label}</span>
+              </button>
+            ))}
+          </div>
+        </DrawerContent>
+      </Drawer>
+
+      {/* Rating filter drawer */}
+      <Drawer open={ratingOpen} onOpenChange={setRatingOpen}>
+        <DrawerContent
+          className="mx-0 rounded-t-[20px] p-0 border-0 text-white"
+          style={{
+            background: "hsl(0 0% 8% / 0.55)",
+            backdropFilter: "blur(32px) saturate(160%)",
+            WebkitBackdropFilter: "blur(32px) saturate(160%)",
+          }}
+        >
+          <div className="px-3 pt-5 pb-3">
+            <h3 className="text-[20px] font-semibold text-white px-1">Оценка</h3>
+          </div>
+          <div className="px-3 pb-6 flex flex-col gap-2">
+            {ratingOptions.map((option) => (
+              <button
+                key={option.value}
+                onClick={() => { setRatingFilter(option.value); setRatingOpen(false); }}
+                className="w-full flex items-center gap-3 px-4 py-4 text-left rounded-2xl"
+                style={{ background: "hsl(0 0% 100% / 0.08)" }}
+              >
+                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${ratingFilter === option.value ? "border-primary" : "border-white/30"}`}>
+                  {ratingFilter === option.value && <div className="w-3 h-3 rounded-full bg-primary" />}
+                </div>
+                <span className="text-[16px] text-white">{option.label}</span>
+              </button>
+            ))}
+          </div>
+        </DrawerContent>
+      </Drawer>
     </div>
   );
 };
