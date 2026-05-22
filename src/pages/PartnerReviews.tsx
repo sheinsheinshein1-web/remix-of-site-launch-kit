@@ -118,6 +118,15 @@ const PartnerReviews = () => {
   const toggleHelpful = (i: number) =>
     setHelpful((h) => ({ ...h, [i]: !h[i] }));
 
+  const [reportFor, setReportFor] = useState<number | null>(null);
+  const reportReasons = [
+    "Спам или реклама",
+    "Оскорбления или язык вражды",
+    "Недостоверная информация",
+    "Личные данные",
+    "Другое",
+  ];
+
   const handleBack = () => {
     if (window.history.length > 1) navigate(-1);
     else navigate(`/partner/${id}`);
