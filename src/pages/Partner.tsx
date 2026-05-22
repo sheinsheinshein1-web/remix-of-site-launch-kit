@@ -326,12 +326,25 @@ const Partner = () => {
           const cards = makerProjects.slice(0, 3);
           return (
             <div className="px-3 mt-3">
-              <div className="relative overflow-hidden rounded-2xl bg-background min-h-[460px] flex flex-col">
+              <div
+                className="relative overflow-hidden rounded-2xl bg-background min-h-[460px] flex flex-col"
+                style={{ ["--foreground" as any]: "0 0% 100%" }}
+              >
                 <div className="absolute inset-0">
                   <img src={bgImage} alt="" className="w-full h-full object-cover" aria-hidden loading="lazy" />
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/40" />
+                  {/* Тёмный градиент-блюр у нижней половины */}
+                  <div
+                    className="absolute inset-x-0 bottom-0 h-2/3 pointer-events-none"
+                    style={{
+                      background: "linear-gradient(to bottom, transparent 0%, hsl(0 0% 0% / 0.55) 55%, hsl(0 0% 0% / 0.78) 100%)",
+                      backdropFilter: "blur(14px)",
+                      WebkitBackdropFilter: "blur(14px)",
+                      maskImage: "linear-gradient(to bottom, transparent 0%, black 35%)",
+                      WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 35%)",
+                    }}
+                  />
                 </div>
-                <h2 className="relative px-5 pt-5 text-[22px] font-bold text-foreground tracking-tight drop-shadow-[0_1px_2px_rgba(255,255,255,0.6)]">
+                <h2 className="relative px-5 pt-5 text-[22px] font-bold text-background tracking-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
                   Хиты продаж
                 </h2>
                 <div className="relative mt-auto flex gap-3 overflow-x-auto px-4 pt-4 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
