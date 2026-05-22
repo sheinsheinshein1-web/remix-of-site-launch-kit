@@ -92,6 +92,24 @@ const Partner = () => {
     return Array.from(map.values());
   }, [makerProjects]);
 
+  const sortedMakerProjects = useMemo(() => {
+    const arr = [...makerProjects];
+    arr.sort((a: any, b: any) => {
+      switch (sortBy) {
+        case "cheap": return priceNum(a.price) - priceNum(b.price);
+        case "expensive": return priceNum(b.price) - priceNum(a.price);
+        case "area_asc": return areaNum(a.area) - areaNum(b.area);
+        case "area_desc": return areaNum(b.area) - areaNum(a.area);
+        case "fast": return termNum(a.term) - termNum(b.term);
+        case "popular": return (b.likes ?? 0) - (a.likes ?? 0);
+        case "new": return (b.id ?? 0) - (a.id ?? 0);
+        case "rating": return (b.rating ?? 0) - (a.rating ?? 0);
+        default: return 0;
+      }
+    });
+    return arr;
+  }, [makerProjects, sortBy]);
+
   const partner = {
     name: summary?.name ?? "Партнёр",
     initials: summary?.initials ?? "—",
