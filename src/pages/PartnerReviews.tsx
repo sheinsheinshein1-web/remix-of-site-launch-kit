@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Star, ChevronDown, SlidersHorizontal, ThumbsUp, MoreHorizontal } from "lucide-react";
+import { ArrowLeft, Star, ChevronDown, SlidersHorizontal, ThumbsUp, MoreHorizontal, Flag } from "lucide-react";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
+import { toast } from "sonner";
 import { projects as allProjects, makersById } from "@/data/projects";
 
 const partnerMakerIds: Record<string, string> = { "1": "platforma" };
