@@ -1,0 +1,245 @@
+import { useMemo, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { ArrowLeft, Star, ChevronDown, SlidersHorizontal, ThumbsUp, MoreHorizontal } from "lucide-react";
+import { projects as allProjects, makersById } from "@/data/projects";
+
+const partnerMakerIds: Record<string, string> = { "1": "platforma" };
+
+const REVIEW_TEMPLATES: { title: string; body: string; name: string; when: string; stars: number }[] = [
+  {
+    title: "Отличное качество",
+    body: "Дом собрали быстро, всё аккуратно. Команда на связи, материалы качественные — за месяц подняли коробку, ещё неделя ушла на отделку. Очень довольны результатом, всё как на рендерах.",
+    name: "Алексей",
+    when: "2 нед. назад",
+    stars: 5,
+  },
+  {
+    title: "Тепло даже зимой",
+    body: "Переехали в декабре, при −28°С внутри +23 без проблем. Утепление и окна на пятёрку, счета за отопление приятно удивили. Спасибо за честную работу.",
+    name: "Мария",
+    when: "1 мес. назад",
+    stars: 5,
+  },
+  {
+    title: "Сроки сдвинули, но финал хороший",
+    body: "Сдача задержалась на 2 недели из-за погоды, но менеджер всегда был на связи и предупреждал. По итогу дом отличный, мелкие замечания устранили в течение недели.",
+    name: "Иван",
+    when: "1 мес. назад",
+    stars: 4,
+  },
+  {
+    title: "Рекомендую",
+    body: "Долго выбирали подрядчика, в итоге выбрали по отзывам и не пожалели. Прозрачная смета, никаких допов в процессе. Дом стоит уже полгода — всё ок.",
+    name: "Елена",
+    when: "2 мес. назад",
+    stars: 5,
+  },
+  {
+    title: "Качественная сборка",
+    body: "Конструктив добротный, видно что работают на совесть. Узлы и стыки промазаны как надо, кровля идеально ровная. Внутрянку доверили им же — тоже без нареканий.",
+    name: "Дмитрий",
+    when: "3 мес. назад",
+    stars: 5,
+  },
+  {
+    title: "Хороший дом за свои деньги",
+    body: "Соотношение цены и качества на уровне. Сравнивали с другими — у конкурентов или дороже, или сроки больше. Тут попали в бюджет и в сроки.",
+    name: "Светлана",
+    when: "4 мес. назад",
+    stars: 4,
+  },
+];
+
+const PartnerReviews = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const makerId = (id && (partnerMakerIds[id] ?? (makersById[id] ? id : undefined))) || "platforma";
+  const summary = makersById[makerId];
+
+  const makerProjects = useMemo(
+    () => allProjects.filter((p) => p.maker.id === makerId),
+    [makerId]
+  );
+
+  const reviews = useMemo(() => {
+    if (makerProjects.length === 0) return [];
+    return REVIEW_TEMPLATES.map((tpl, i) => {
+      const project = makerProjects[i % makerProjects.length];
+      return { ...tpl, project };
+    });
+  }, [makerProjects]);
+
+  const totalCount = reviews.length;
+  const ratingAvg = useMemo(() => {
+    if (reviews.length === 0) return 0;
+    return reviews.reduce((s, r) => s + r.stars, 0) / reviews.length;
+  }, [reviews]);
+
+  const [sortLabel] = useState("Сначала новые");
+  const [ratingLabel] = useState("Все оценки");
+
+  const handleBack = () => {
+    if (window.history.length > 1) navigate(-1);
+    else navigate(`/partner/${id}`);
+  };
+
+  return (
+    <div className="min-h-screen bg-secondary pb-[max(env(safe-area-inset-bottom),12px)]">
+      {/* Sticky header */}
+      <div className="sticky top-0 z-30 bg-secondary/85 backdrop-blur-xl">
+        <div className="px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 flex items-center gap-3">
+          <button
+            onClick={handleBack}
+            className="w-9 h-9 rounded-xl bg-background flex items-center justify-center shrink-0"
+            aria-label="Назад"
+          >
+            <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
+          </button>
+          <div className="min-w-0">
+            <h1 className="text-[17px] font-semibold text-foreground leading-tight truncate">
+              Отзывы о {summary?.name ?? "компании"}
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      <div className="px-3 pt-2 space-y-3">
+        {/* Summary card */}
+        <section className="bg-background rounded-2xl p-5">
+          <div className="flex items-end justify-between gap-3">
+            <div>
+              <div className="text-[34px] font-bold leading-none text-foreground">
+                {ratingAvg.toFixed(1)}
+              </div>
+              <div className="flex items-center gap-0.5 mt-2">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <Star
+                    key={i}
+                    className={`w-4 h-4 ${
+                      i <= Math.round(ratingAvg)
+                        ? "fill-foreground text-foreground"
+                        : "fill-muted text-muted"
+                    }`}
+                    strokeWidth={0}
+                  />
+                ))}
+              </div>
+              <div className="text-[13px] text-muted-foreground mt-1.5">
+                {totalCount} {totalCount === 1 ? "отзыв" : totalCount < 5 ? "отзыва" : "отзывов"}
+              </div>
+            </div>
+            <div className="flex-1 max-w-[200px] space-y-1">
+              {[5, 4, 3, 2, 1].map((star) => {
+                const count = reviews.filter((r) => r.stars === star).length;
+                const pct = totalCount ? (count / totalCount) * 100 : 0;
+                return (
+                  <div key={star} className="flex items-center gap-2">
+                    <span className="text-[11px] text-muted-foreground w-2">{star}</span>
+                    <div className="flex-1 h-1.5 rounded-xl bg-muted overflow-hidden">
+                      <div
+                        className="h-full bg-foreground/80"
+                        style={{ width: `${pct}%` }}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Filter chips */}
+        <div className="flex items-center gap-2 overflow-x-auto -mx-3 px-3 scrollbar-none">
+          <button
+            className="shrink-0 w-9 h-9 rounded-xl bg-background flex items-center justify-center"
+            aria-label="Фильтры"
+          >
+            <SlidersHorizontal className="w-[16px] h-[16px] text-foreground" strokeWidth={1.8} />
+          </button>
+          <button className="shrink-0 h-9 px-3.5 rounded-xl bg-background flex items-center gap-1.5 text-[14px] text-foreground">
+            {sortLabel}
+            <ChevronDown className="w-4 h-4" strokeWidth={1.8} />
+          </button>
+          <button className="shrink-0 h-9 px-3.5 rounded-xl bg-background flex items-center gap-1.5 text-[14px] text-foreground">
+            {ratingLabel}
+            <ChevronDown className="w-4 h-4" strokeWidth={1.8} />
+          </button>
+        </div>
+
+        {/* Reviews list */}
+        <div className="space-y-3">
+          {reviews.map((r, idx) => (
+            <article key={idx} className="bg-background rounded-2xl p-4">
+              <div className="flex items-start gap-3">
+                <div className="w-[72px] h-[72px] rounded-xl bg-muted overflow-hidden shrink-0">
+                  {r.project.gallery[0]?.image && (
+                    <img
+                      src={r.project.gallery[0].image}
+                      alt=""
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex items-center gap-0.5">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <Star
+                          key={i}
+                          className={`w-3.5 h-3.5 ${
+                            i <= r.stars
+                              ? "fill-foreground text-foreground"
+                              : "fill-muted text-muted"
+                          }`}
+                          strokeWidth={0}
+                        />
+                      ))}
+                    </div>
+                    <button
+                      className="w-7 h-7 -mt-1 -mr-1 flex items-center justify-center text-muted-foreground"
+                      aria-label="Действия"
+                    >
+                      <MoreHorizontal className="w-4 h-4" />
+                    </button>
+                  </div>
+                  <div className="text-[13px] text-muted-foreground mt-1">
+                    {r.name} · {r.when}
+                  </div>
+                  <div className="text-[14px] text-foreground/90 mt-0.5 truncate">
+                    {r.project.name}
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-3 text-[15px] font-semibold text-foreground">
+                {r.title}
+              </div>
+              <p className="mt-1 text-[14px] text-foreground/85 leading-snug">
+                {r.body}
+              </p>
+
+              <div className="mt-3 flex items-center justify-between">
+                <button className="flex items-center gap-1.5 text-[13px] text-muted-foreground">
+                  <ThumbsUp className="w-4 h-4" strokeWidth={1.8} />
+                  Полезно
+                </button>
+                <a
+                  href={summary?.siteUrl ?? "#"}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="text-[12px] text-muted-foreground"
+                >
+                  {summary?.siteUrl ? new URL(summary.siteUrl).hostname.replace(/^www\./, "") : ""}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default PartnerReviews;
