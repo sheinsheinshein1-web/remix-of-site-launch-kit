@@ -389,11 +389,12 @@ const Partner = () => {
                 <SlidersHorizontal className="w-[18px] h-[18px] text-background" strokeWidth={1.8} />
               </button>
             </div>
-            <div className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2.5">
+            <div
+              className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2.5"
+              style={{ ["--foreground" as any]: "0 0% 100%" }}
+            >
               {makerProjects.map((p) => (
-                <div key={p.id} className="bg-background rounded-2xl p-2">
-                  <ProjectCard projectId={p.id} height="aspect-square h-auto" />
-                </div>
+                <ProjectCard key={p.id} projectId={p.id} />
               ))}
             </div>
           </div>
