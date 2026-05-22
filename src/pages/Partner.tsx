@@ -293,7 +293,7 @@ const Partner = () => {
               <button onClick={onShare} className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center shrink-0" aria-label="Поделиться">
                 <img src={shareIcon} alt="" className="w-[18px] h-[18px]" style={{ filter: "brightness(0) invert(1)" }} loading="lazy" decoding="async" />
               </button>
-              <button className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center shrink-0" aria-label="Меню">
+              <button onClick={() => setMenuOpen(true)} className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center shrink-0" aria-label="Меню">
                 <Menu className="w-[18px] h-[18px] text-white" strokeWidth={1.8} />
               </button>
             </div>
