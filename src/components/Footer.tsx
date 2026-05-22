@@ -80,9 +80,9 @@ const Footer = () => {
           <p className="text-[11px] text-muted-foreground text-center leading-relaxed mb-3">
             Сайт носит информационный характер и не является публичной офертой, определяемой положениями п. 2 статьи 437 ГК РФ.
           </p>
-          <div className="flex items-center justify-between text-[12px] text-muted-foreground">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4 text-[12px] text-muted-foreground text-center md:text-left">
             <span>© многоместа.рф, {new Date().getFullYear()}</span>
-            <div className="flex gap-4">
+            <div className="flex flex-col md:flex-row gap-2 md:gap-4">
               <a href="/privacy" onClick={go("/privacy")} className="hover:text-foreground transition-colors">Политика конфиденциальности</a>
               <a href="#" className="hover:text-foreground transition-colors">Пользовательское соглашение</a>
             </div>
