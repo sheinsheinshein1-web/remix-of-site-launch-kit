@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useLocation, useNavigate, useParams, Link } from "react-router-dom";
 import { ArrowLeft, ChevronRight, ShieldCheck, Star, ArrowUpDown, MapPin, Menu, Home, Heart, MessageCircle, LayoutGrid, X, RotateCcw, Package, Info, Globe, Mail, Phone, Instagram, Facebook, Twitter, ArrowUpRight, AlertCircle } from "lucide-react";
 import Header from "@/components/Header";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -50,6 +50,7 @@ const manualCounts: Record<string, number> = { bygge: 5 };
 
 const Partner = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const isMobile = useIsMobile();
   const { id } = useParams();
   const [scrolled, setScrolled] = useState(false);
@@ -155,6 +156,13 @@ const Partner = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if ((location.state as { openMenu?: boolean } | null)?.openMenu) {
+      setMenuOpen(true);
+      navigate(location.pathname, { replace: true, state: null });
+    }
+  }, [location.pathname, location.state, navigate]);
+
   const isPlatforma = makerId === "platforma";
 
   const HeroPlatforma = () => (
@@ -210,7 +218,7 @@ const Partner = () => {
         </h1>
         <button
           type="button"
-          onClick={() => navigate(`/partner/${id}/reviews`)}
+          onClick={() => navigate(`/partner/${id}/reviews`, { state: { returnToMenu: true } })}
           className="mt-3 inline-flex items-center gap-1.5 text-[13px] text-background px-3 py-1.5 rounded-xl bg-white/15 backdrop-blur-md active:bg-white/25 transition-colors"
           aria-label="Открыть отзывы"
         >
@@ -539,7 +547,7 @@ const Partner = () => {
               <section className="rounded-2xl p-5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-[22px] font-bold">Отзывы</h3>
-                  <button onClick={() => navigate(`/partner/${id}/reviews`)} className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center" aria-label="Все отзывы">
+                  <button onClick={() => navigate(`/partner/${id}/reviews`, { state: { returnToMenu: true } })} className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center" aria-label="Все отзывы">
                     <ArrowUpRight className="w-4 h-4 text-white" strokeWidth={1.8} />
                   </button>
                 </div>
