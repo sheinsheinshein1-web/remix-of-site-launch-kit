@@ -380,13 +380,13 @@ const Partner = () => {
         {makerProjects.length > 0 && (
           <div className="px-3 mt-5">
             <div className="flex items-center justify-between px-1">
-              <h2 className="text-[24px] font-bold text-foreground tracking-tight">Все проекты</h2>
+              <h2 className="text-[24px] font-bold text-background tracking-tight">Все проекты</h2>
               <button
                 onClick={() => navigate(`/catalog?maker=${makerId}`)}
-                className="w-10 h-10 rounded-xl bg-background flex items-center justify-center"
+                className="w-10 h-10 rounded-xl bg-background/25 backdrop-blur-md flex items-center justify-center"
                 aria-label="Фильтры"
               >
-                <SlidersHorizontal className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
+                <SlidersHorizontal className="w-[18px] h-[18px] text-background" strokeWidth={1.8} />
               </button>
             </div>
             <div className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2.5">
