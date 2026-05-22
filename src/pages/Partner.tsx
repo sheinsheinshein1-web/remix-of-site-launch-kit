@@ -172,8 +172,8 @@ const Partner = () => {
     }
   }, [location.pathname, location.state, navigate]);
 
-  // Платформа-специфичный вид (бенто «Популярные», «Хиты продаж» и т.д.)
-  const isPlatforma = makerId === "platforma";
+  // Платформа-специфичный вид доступен только в /lab
+  const isPlatforma = false;
 
 
   const HeroPlatforma = () => (
