@@ -638,7 +638,10 @@ const Partner = () => {
               : undefined
           }
         >
-          <div className="flex pb-[max(env(safe-area-inset-bottom),0px)]">
+          <div
+            className="flex"
+            style={{ paddingBottom: (window.navigator as any).standalone ? 'calc(env(safe-area-inset-bottom, 0px) + 16px)' : '0px' }}
+          >
             {[
               { icon: Home, path: "/" },
               { icon: LayoutGrid, path: "/categories" },
