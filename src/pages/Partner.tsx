@@ -595,7 +595,7 @@ const Partner = () => {
                 <div className="rounded-xl p-4 flex items-center justify-between gap-3" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
                   <div className="min-w-0">
                     <div className="text-[14px] font-semibold truncate">{partner.name}</div>
-                    <div className="text-[13px] text-white/70 mt-1">{partner.city}</div>
+                    <div className="text-[13px] text-white/70 mt-1">{partner.productionAddress || partner.city}</div>
                   </div>
                   <div className="w-14 h-14 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
                     <MapPin className="w-5 h-5 text-white" strokeWidth={1.8} />
