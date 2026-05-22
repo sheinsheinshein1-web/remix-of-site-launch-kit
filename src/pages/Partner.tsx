@@ -117,27 +117,28 @@ const Partner = () => {
         )}
       </div>
 
-      {/* Виньеточный блюр: дубликат фото без жёсткого края backdrop-filter */}
+      {/* Виньеточный блюр: плавный переход снизу */}
       {heroImage && (
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div
             className="absolute inset-0"
             style={{
-              maskImage: "linear-gradient(to top, black 0%, black 30%, rgb(0 0 0 / 0.72) 49%, rgb(0 0 0 / 0.32) 66%, rgb(0 0 0 / 0.08) 82%, transparent 100%)",
-              WebkitMaskImage: "linear-gradient(to top, black 0%, black 30%, rgb(0 0 0 / 0.72) 49%, rgb(0 0 0 / 0.32) 66%, rgb(0 0 0 / 0.08) 82%, transparent 100%)",
+              maskImage: "linear-gradient(to top, black 0%, black 22%, transparent 72%)",
+              WebkitMaskImage: "linear-gradient(to top, black 0%, black 22%, transparent 72%)",
             }}
           >
             <img
               src={heroImage}
               alt=""
-              className="w-full h-full object-cover scale-110 blur-2xl"
+              className="w-full h-full object-cover scale-125"
               aria-hidden
               loading="eager"
+              style={{ filter: "blur(56px)" }}
             />
           </div>
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to top, hsl(var(--foreground) / 0.5) 0%, hsl(var(--foreground) / 0.34) 32%, hsl(var(--foreground) / 0.16) 58%, transparent 88%)" }}
+            style={{ background: "linear-gradient(to top, hsl(var(--foreground) / 0.55) 0%, hsl(var(--foreground) / 0.28) 38%, transparent 72%)" }}
           />
         </div>
       )}
