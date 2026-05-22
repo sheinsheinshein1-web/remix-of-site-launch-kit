@@ -108,7 +108,7 @@ const Partner = () => {
 
   const HeroPlatforma = () => (
     <div className="relative overflow-hidden md:rounded-2xl min-h-[78vh] md:min-h-[620px] flex flex-col">
-      {/* Резкое фото на весь hero */}
+      {/* Резкое фото на весь hero, к низу маскируется (открывается фон страницы) */}
       <div className="absolute inset-0">
         {heroImage ? (
           <img
@@ -118,19 +118,19 @@ const Partner = () => {
             aria-hidden
             loading="eager"
             style={{
-              WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 54%, transparent 100%)",
-              maskImage: "linear-gradient(to bottom, black 0%, black 54%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 50%, transparent 92%)",
+              maskImage: "linear-gradient(to bottom, black 0%, black 50%, transparent 92%)",
             }}
           />
         ) : (
-          <div className="w-full h-full bg-secondary" />
+          <div className="w-full h-full" />
         )}
       </div>
 
-      {/* Затемнение снизу — у самого низа совпадает с тоном фона страницы, чтобы шва не было */}
+      {/* Плавный градиент к цвету фона страницы — для читаемости и бесшовного перехода */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "linear-gradient(to top, hsl(var(--foreground) / 0.30) 0%, hsl(var(--foreground) / 0.30) 18%, hsl(var(--foreground) / 0.48) 38%, transparent 70%)" }}
+        style={{ background: "linear-gradient(to bottom, transparent 35%, hsl(25, 14%, 16% / 0.55) 65%, hsl(25, 14%, 16%) 100%)" }}
       />
 
 
