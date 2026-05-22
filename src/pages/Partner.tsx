@@ -435,6 +435,30 @@ const Partner = () => {
 
       </div>
 
+      {/* Sort Drawer — как в каталоге */}
+      <Drawer open={sortOpen} onOpenChange={setSortOpen}>
+        <DrawerContent className="mx-0 rounded-t-[20px] p-0">
+          <div className="px-5 pt-5 pb-2">
+            <h3 className="text-[20px] font-semibold text-foreground">Показать сначала</h3>
+          </div>
+          <div className="bg-secondary rounded-xl mx-4 mb-6 divide-y divide-border/50">
+            {sortOptions.map((option) => (
+              <button
+                key={option.value}
+                onClick={() => { setSortBy(option.value); setSortOpen(false); }}
+                className="w-full flex items-center gap-3 px-4 py-4 text-left"
+              >
+                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${sortBy === option.value ? "border-primary" : "border-muted-foreground/30"}`}>
+                  {sortBy === option.value && <div className="w-3 h-3 rounded-full bg-primary" />}
+                </div>
+                <span className="text-[16px] text-foreground">{option.label}</span>
+              </button>
+            ))}
+          </div>
+        </DrawerContent>
+      </Drawer>
+
+
       {/* Bottom Bar — go to site CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-40">
         <div className="bg-background border-t border-border p-3 pb-[calc(0.75rem+max(env(safe-area-inset-bottom),20px))]">
