@@ -476,9 +476,9 @@ const Partner = () => {
           side="right"
           className="w-full sm:max-w-md p-0 border-none text-white [&>button]:hidden"
           style={{
-            background: "hsl(0 0% 8% / 0.85)",
-            backdropFilter: "blur(22px) saturate(140%)",
-            WebkitBackdropFilter: "blur(22px) saturate(140%)",
+            background: "hsl(0 0% 8% / 0.55)",
+            backdropFilter: "blur(32px) saturate(160%)",
+            WebkitBackdropFilter: "blur(32px) saturate(160%)",
           }}
         >
           <div className="h-full overflow-y-auto pb-10">
