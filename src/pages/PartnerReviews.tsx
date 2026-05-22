@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, Star, ChevronDown, SlidersHorizontal, ThumbsUp, MoreHorizontal } from "lucide-react";
+import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { projects as allProjects, makersById } from "@/data/projects";
 
 const partnerMakerIds: Record<string, string> = { "1": "platforma" };
