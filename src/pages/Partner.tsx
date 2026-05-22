@@ -480,8 +480,8 @@ const Partner = () => {
           }}
         >
           <div className="flex-1 overflow-y-auto pb-10">
-            {/* Floating actions: close + subscribe */}
-            <div className="sticky top-0 z-10 px-3 pt-3 pb-3 flex items-center justify-between gap-2"
+            {/* Floating close button (right) */}
+            <div className="sticky top-0 z-10 px-3 pt-3 pb-3 flex items-center justify-end"
               style={{ background: "linear-gradient(to bottom, hsl(0 0% 8% / 0.95), hsl(0 0% 8% / 0))" }}>
               <button
                 onClick={() => setMenuOpen(false)}
@@ -490,7 +490,6 @@ const Partner = () => {
               >
                 <X className="w-5 h-5 text-white" strokeWidth={2} />
               </button>
-              <button className="h-10 px-6 rounded-xl bg-white/15 text-[14px] font-medium">Подписаться</button>
             </div>
 
             <div className="px-3 space-y-3">
