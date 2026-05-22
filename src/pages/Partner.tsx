@@ -476,15 +476,15 @@ const Partner = () => {
           side="right"
           className="w-full sm:max-w-md p-0 border-none text-white [&>button]:hidden"
           style={{
-            background: "hsl(0 0% 8% / 0.85)",
-            backdropFilter: "blur(22px) saturate(140%)",
-            WebkitBackdropFilter: "blur(22px) saturate(140%)",
+            background: "hsl(0 0% 8% / 0.55)",
+            backdropFilter: "blur(32px) saturate(160%)",
+            WebkitBackdropFilter: "blur(32px) saturate(160%)",
           }}
         >
           <div className="h-full overflow-y-auto pb-10">
             {/* Floating close button (right) */}
             <div className="sticky top-0 z-10 px-3 pt-3 pb-3 flex items-center justify-end"
-              style={{ background: "linear-gradient(to bottom, hsl(0 0% 8% / 0.95), hsl(0 0% 8% / 0))" }}>
+              style={{ background: "linear-gradient(to bottom, hsl(0 0% 8% / 0.55), hsl(0 0% 8% / 0))" }}>
               <button
                 onClick={() => setMenuOpen(false)}
                 className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center"
