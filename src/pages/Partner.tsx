@@ -619,8 +619,8 @@ const Partner = () => {
               </button>
             </div>
           </div>
-        </DrawerContent>
-      </Drawer>
+        </SheetContent>
+      </Sheet>
 
 
 
