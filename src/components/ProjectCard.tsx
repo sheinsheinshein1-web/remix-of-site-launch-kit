@@ -8,7 +8,7 @@
  *
  * Если нужно показать карточку проекта — используй ТОЛЬКО этот компонент.
  */
-import { Heart, Maximize, BedDouble, Bath } from "lucide-react";
+import { Heart, Maximize, BedDouble, Bath, Layers } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import SwipeableGallery from "@/components/SwipeableGallery";
