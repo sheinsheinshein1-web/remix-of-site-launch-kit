@@ -470,17 +470,21 @@ const Partner = () => {
         </DrawerContent>
       </Drawer>
 
-      {/* Menu Sheet (бургер) — slide in from right */}
-      <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
-        <SheetContent
-          side="right"
-          className="w-full sm:max-w-md p-0 border-none text-white [&>button]:hidden"
-          style={{
-            background: "hsl(0 0% 8% / 0.55)",
-            backdropFilter: "blur(32px) saturate(160%)",
-            WebkitBackdropFilter: "blur(32px) saturate(160%)",
-          }}
-        >
+      {/* Menu Sheet (бургер) — slide in from right, transparent + blur */}
+      <DialogPrimitive.Root open={menuOpen} onOpenChange={setMenuOpen}>
+        <DialogPrimitive.Portal>
+          <DialogPrimitive.Overlay
+            className="fixed inset-0 z-50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
+            style={{ background: "hsl(0 0% 0% / 0.25)" }}
+          />
+          <DialogPrimitive.Content
+            className="fixed inset-y-0 right-0 z-50 h-full w-full sm:max-w-md text-white shadow-xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right data-[state=closed]:duration-300 data-[state=open]:duration-500"
+            style={{
+              background: "hsl(0 0% 8% / 0.55)",
+              backdropFilter: "blur(32px) saturate(160%)",
+              WebkitBackdropFilter: "blur(32px) saturate(160%)",
+            }}
+          >
           <div className="h-full overflow-y-auto pb-10">
             {/* Floating close button (right) */}
             <div className="sticky top-0 z-10 px-3 pt-3 pb-3 flex items-center justify-end"
