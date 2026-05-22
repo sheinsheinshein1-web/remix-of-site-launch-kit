@@ -286,6 +286,68 @@ const PartnerReviews = () => {
           ))}
         </div>
       </div>
+
+      {/* Sort drawer */}
+      <Drawer open={sortOpen} onOpenChange={setSortOpen}>
+        <DrawerContent
+          className="mx-0 rounded-t-[20px] p-0 border-0 text-white"
+          style={{
+            background: "hsl(0 0% 8% / 0.55)",
+            backdropFilter: "blur(32px) saturate(160%)",
+            WebkitBackdropFilter: "blur(32px) saturate(160%)",
+          }}
+        >
+          <div className="px-3 pt-5 pb-3">
+            <h3 className="text-[20px] font-semibold text-white px-1">Сортировка</h3>
+          </div>
+          <div className="px-3 pb-6 flex flex-col gap-2">
+            {sortOptions.map((option) => (
+              <button
+                key={option.value}
+                onClick={() => { setSortKey(option.value); setSortOpen(false); }}
+                className="w-full flex items-center gap-3 px-4 py-4 text-left rounded-2xl"
+                style={{ background: "hsl(0 0% 100% / 0.08)" }}
+              >
+                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${sortKey === option.value ? "border-primary" : "border-white/30"}`}>
+                  {sortKey === option.value && <div className="w-3 h-3 rounded-full bg-primary" />}
+                </div>
+                <span className="text-[16px] text-white">{option.label}</span>
+              </button>
+            ))}
+          </div>
+        </DrawerContent>
+      </Drawer>
+
+      {/* Rating filter drawer */}
+      <Drawer open={ratingOpen} onOpenChange={setRatingOpen}>
+        <DrawerContent
+          className="mx-0 rounded-t-[20px] p-0 border-0 text-white"
+          style={{
+            background: "hsl(0 0% 8% / 0.55)",
+            backdropFilter: "blur(32px) saturate(160%)",
+            WebkitBackdropFilter: "blur(32px) saturate(160%)",
+          }}
+        >
+          <div className="px-3 pt-5 pb-3">
+            <h3 className="text-[20px] font-semibold text-white px-1">Оценка</h3>
+          </div>
+          <div className="px-3 pb-6 flex flex-col gap-2">
+            {ratingOptions.map((option) => (
+              <button
+                key={option.value}
+                onClick={() => { setRatingFilter(option.value); setRatingOpen(false); }}
+                className="w-full flex items-center gap-3 px-4 py-4 text-left rounded-2xl"
+                style={{ background: "hsl(0 0% 100% / 0.08)" }}
+              >
+                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${ratingFilter === option.value ? "border-primary" : "border-white/30"}`}>
+                  {ratingFilter === option.value && <div className="w-3 h-3 rounded-full bg-primary" />}
+                </div>
+                <span className="text-[16px] text-white">{option.label}</span>
+              </button>
+            ))}
+          </div>
+        </DrawerContent>
+      </Drawer>
     </div>
   );
 };
