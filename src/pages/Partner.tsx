@@ -1,10 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { ArrowLeft, ChevronRight, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ChevronRight, ShieldCheck, Star, SlidersHorizontal, MapPin } from "lucide-react";
 import Header from "@/components/Header";
 import { useIsMobile } from "@/hooks/use-mobile";
 import shareIcon from "@/assets/share-icon.svg";
-import { projectsCountByMakerId, makersById } from "@/data/projects";
+import ProjectCard from "@/components/ProjectCard";
+import {
+  projects as allProjects,
+  projectsCountByMakerId,
+  makersById,
+} from "@/data/projects";
 
 const wordForm = (n: number, forms: [string, string, string]) => {
   const m = Math.abs(n) % 100;
@@ -16,9 +21,7 @@ const wordForm = (n: number, forms: [string, string, string]) => {
 };
 
 // Маппинг id из URL → makerId. Поддерживаем легаси "1" → platforma.
-const partnerMakerIds: Record<string, string> = {
-  "1": "platforma",
-};
+const partnerMakerIds: Record<string, string> = { "1": "platforma" };
 
 // Тексты «о компании» — единственное, что не выводится автоматически из projects.ts.
 const aboutByMakerId: Record<string, string> = {
@@ -40,238 +43,292 @@ const aboutByMakerId: Record<string, string> = {
     "Прайм Модуль — производитель каркасных домов из Пермского края. Дома и барнхаусы площадью от 42 до 200 м² на винтовом фундаменте с утеплением базальтовой ватой, водяным тёплым полом и сроком строительства от 1 месяца.",
 };
 
-// На случай, если каталог временно не отражает реальное число проектов производителя.
 const manualCounts: Record<string, number> = { bygge: 5 };
-
-type PartnerData = {
-  name: string;
-  initials: string;
-  city: string;
-  category: string;
-  about: string;
-  siteUrl: string;
-};
 
 const Partner = () => {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
   const { id } = useParams();
   const [scrolled, setScrolled] = useState(false);
+  const [following, setFollowing] = useState(false);
 
-  // Резолвим makerId: либо легаси-маппинг, либо id уже совпадает с makerId.
   const makerId = (id && (partnerMakerIds[id] ?? (makersById[id] ? id : undefined))) || "platforma";
   const summary = makersById[makerId];
   const projectsCount = manualCounts[makerId] ?? projectsCountByMakerId[makerId] ?? 0;
 
-  const partner: PartnerData = {
+  // Проекты этой компании — берём из единого источника правды.
+  const makerProjects = useMemo(
+    () => allProjects.filter((p) => p.maker.id === makerId),
+    [makerId]
+  );
+  const heroImage = makerProjects[0]?.gallery[0]?.image ?? "";
+
+  // Соберём уникальные технологии/материалы — для секции "По технологии".
+  const techGroups = useMemo(() => {
+    const map = new Map<string, { tech: string; image: string; count: number }>();
+    makerProjects.forEach((p) => {
+      const t = p.technology || "—";
+      const existing = map.get(t);
+      if (existing) existing.count += 1;
+      else map.set(t, { tech: t, image: p.gallery[0]?.image ?? "", count: 1 });
+    });
+    return Array.from(map.values());
+  }, [makerProjects]);
+
+  const partner = {
     name: summary?.name ?? "Партнёр",
     initials: summary?.initials ?? "—",
     city: summary?.city ?? "",
     category: summary?.technology ?? "Производитель домов",
-    about: aboutByMakerId[makerId] ?? `${summary?.name ?? "Партнёр"} — производитель домов из города ${summary?.city ?? ""}.`,
+    about: aboutByMakerId[makerId] ?? `${summary?.name ?? "Партнёр"} — производитель домов.`,
     siteUrl: summary?.siteUrl ?? "#",
   };
-  const stats = [
-    { val: String(projectsCount), label: wordForm(projectsCount, ["Проект", "Проекта", "Проектов"]) },
-    { val: "—", label: "Отзывы" },
-    { val: "—", label: "Рейтинг" },
-  ];
+
+  // Плейсхолдер до подключения реальных отзывов.
+  const rating = 4.9;
+  const reviewsLabel = "новый";
 
   const handleBack = () => {
-    if (window.history.length > 1) {
-      navigate(-1);
-    } else {
-      navigate("/catalog");
-    }
+    if (window.history.length > 1) navigate(-1);
+    else navigate("/catalog");
+  };
+
+  const onShare = () => {
+    if (navigator.share) navigator.share({ title: partner.name, url: window.location.href });
+    else navigator.clipboard.writeText(window.location.href);
   };
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 200);
+    const onScroll = () => setScrolled(window.scrollY > 280);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* ─── Desktop ─── */
-  if (!isMobile) {
-    return (
-      <div className="min-h-screen bg-secondary font-sans">
-        <Header />
-        <div className="pt-[152px] pb-6">
-          <div className="max-w-[1400px] mx-auto bg-background rounded-2xl overflow-hidden">
-            <div className="bg-background">
-              {/* Header row: back / share */}
-              <div className="flex items-center justify-between px-6 pt-6">
-                <button onClick={handleBack} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center hover:bg-secondary/80 transition-colors">
-                  <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
-                </button>
-                <button
-                  className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center hover:bg-secondary/80 transition-colors"
-                  onClick={() => { if (navigator.share) { navigator.share({ title: partner.name, url: window.location.href }); } else { navigator.clipboard.writeText(window.location.href); } }}
-                >
-                  <img src={shareIcon} alt="" className="w-[18px] h-[18px]" loading="lazy" decoding="async" />
-                </button>
-              </div>
+  /* ─── Hero бенто-карточка (общая для mobile/desktop) ─── */
+  const Hero = ({ compact = false }: { compact?: boolean }) => (
+    <div className="relative overflow-hidden rounded-b-2xl md:rounded-2xl bg-background">
+      {/* Размытый фон из первого фото проекта */}
+      <div className="absolute inset-0">
+        {heroImage ? (
+          <>
+            <img
+              src={heroImage}
+              alt=""
+              className="w-full h-full object-cover scale-110 blur-2xl opacity-70"
+              aria-hidden
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-foreground/10 via-foreground/20 to-background" />
+          </>
+        ) : (
+          <div className="w-full h-full bg-secondary" />
+        )}
+      </div>
 
-              {/* "Your company?" banner */}
-              <div className="px-6 mt-4">
-                <div className="bg-secondary rounded-xl px-4 py-3 flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <ShieldCheck className="w-[18px] h-[18px] text-muted-foreground shrink-0" strokeWidth={1.8} />
-                    <span className="text-[14px] text-foreground/80 truncate">Это ваша компания?</span>
-                  </div>
-                  <Link to="/messages/support" className="text-[14px] font-medium text-primary inline-flex items-center gap-1 shrink-0 hover:underline">
-                    Подтвердить <ChevronRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
+      <div className="relative pt-[max(env(safe-area-inset-top),12px)] pb-7 md:pb-10 px-3 md:px-8">
+        {/* Top row: back / share */}
+        <div className="flex items-center justify-between">
+          <button onClick={handleBack} className="w-9 h-9 rounded-xl bg-background/85 backdrop-blur flex items-center justify-center">
+            <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
+          </button>
+          <button
+            onClick={onShare}
+            className="w-9 h-9 rounded-xl bg-background/85 backdrop-blur flex items-center justify-center"
+          >
+            <img src={shareIcon} alt="" className="w-[18px] h-[18px]" loading="lazy" decoding="async" />
+          </button>
+        </div>
 
-              {/* Profile */}
-              <div className="px-6 pt-5 pb-6 flex items-center gap-4">
-                <div className="w-[80px] h-[80px] rounded-2xl bg-secondary text-foreground/30 flex items-center justify-center text-lg font-bold shrink-0">{partner.initials}</div>
-                <div className="flex-1 min-w-0">
-                  <h1 className="text-[22px] font-bold text-foreground leading-tight mb-1 truncate">{partner.name}</h1>
-                  <p className="text-[14px] text-muted-foreground truncate">{partner.category} · {partner.city}</p>
-                </div>
-              </div>
+        {/* Логотип / инициалы */}
+        <div className={`mx-auto ${compact ? "mt-5" : "mt-8"} md:mt-10 w-[88px] h-[88px] md:w-[104px] md:h-[104px] rounded-2xl bg-background/90 backdrop-blur flex items-center justify-center text-2xl md:text-3xl font-bold text-foreground/80 shadow-[0_8px_30px_-12px_hsl(var(--foreground)/0.25)]`}>
+          {partner.initials}
+        </div>
 
-              {/* Stats row */}
-              <div className="border-t border-border grid grid-cols-3">
-                {stats.map((s, i) => (
-                  <div key={i} className={`py-5 text-center ${i > 0 ? 'border-l border-border' : ''}`}>
-                    <div className="text-[22px] font-bold text-foreground leading-none mb-1.5">{s.val}</div>
-                    <div className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground">{s.label}</div>
+        {/* Название */}
+        <h1 className="mt-5 text-center text-foreground text-[26px] md:text-[34px] font-bold leading-tight tracking-tight">
+          {partner.name}
+        </h1>
+
+        {/* Город · технология */}
+        <p className="mt-1.5 text-center text-[13px] md:text-[14px] text-foreground/70 inline-flex items-center justify-center gap-1.5 w-full">
+          <MapPin className="w-3.5 h-3.5" strokeWidth={1.8} />
+          {partner.city}
+          <span className="text-foreground/40">·</span>
+          {partner.category}
+        </p>
+
+        {/* Рейтинг + Follow */}
+        <div className="mt-4 flex items-center justify-center gap-3">
+          <div className="inline-flex items-center gap-1.5 bg-background/85 backdrop-blur rounded-xl px-3 py-1.5">
+            <Star className="w-3.5 h-3.5 fill-foreground text-foreground" strokeWidth={0} />
+            <span className="text-[13px] font-semibold text-foreground">{rating.toFixed(1)}</span>
+            <span className="text-[12px] text-foreground/60">({reviewsLabel})</span>
+          </div>
+          <button
+            onClick={() => setFollowing((v) => !v)}
+            className={`h-9 px-5 rounded-xl text-[13px] font-semibold transition-colors ${
+              following
+                ? "bg-background/85 backdrop-blur text-foreground"
+                : "bg-primary text-primary-foreground"
+            }`}
+          >
+            {following ? "В подписках" : "Подписаться"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
+  /* ─── Layout ─── */
+  return (
+    <div className="min-h-screen bg-secondary font-sans pb-[140px] md:pb-10">
+      {/* Sticky compact header (mobile) */}
+      {isMobile && (
+        <div
+          className={`fixed top-0 left-0 right-0 z-50 transition-opacity duration-300 ${
+            scrolled ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+        >
+          <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 rounded-b-2xl shadow-sm">
+            <div className="flex items-center justify-between">
+              <button onClick={handleBack} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
+                <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
+              </button>
+              <div className="flex-1 min-w-0 ml-3">
+                <div className="text-[14px] font-semibold text-foreground truncate">{partner.name}</div>
+                <div className="text-[12px] text-muted-foreground truncate">{partner.category} · {partner.city}</div>
+              </div>
+              <button onClick={onShare} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
+                <img src={shareIcon} alt="" className="w-[18px] h-[18px]" loading="lazy" decoding="async" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {!isMobile && <Header />}
+
+      <div className={`max-w-[1400px] mx-auto ${!isMobile ? "pt-[100px]" : ""}`}>
+        {/* Hero */}
+        <div className={!isMobile ? "px-3 md:px-3" : ""}>
+          <Hero />
+        </div>
+
+        {/* "Это ваша компания?" */}
+        <div className="px-3 mt-3">
+          <div className="bg-background rounded-2xl px-3.5 py-3 flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <ShieldCheck className="w-[18px] h-[18px] text-muted-foreground shrink-0" strokeWidth={1.8} />
+              <span className="text-[13px] text-foreground/80 truncate">Это ваша компания?</span>
+            </div>
+            <Link to="/messages/support" className="text-[13px] font-medium text-primary inline-flex items-center gap-1 shrink-0">
+              Подтвердить <ChevronRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Бенто: "Проекты" — горизонтальный скролл */}
+        {makerProjects.length > 0 && (
+          <div className="px-3 mt-3">
+            <div className="bg-background rounded-2xl pt-4 pb-4">
+              <h2 className="px-4 text-[20px] font-bold text-foreground tracking-tight">Проекты</h2>
+              <div className="mt-3 flex gap-2.5 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                {makerProjects.map((p) => (
+                  <div key={p.id} className="shrink-0 w-[180px] md:w-[220px]">
+                    <ProjectCard projectId={p.id} height="aspect-[3/4] h-auto" />
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        )}
 
-              {/* About */}
-              <div className="border-t border-border px-6 py-5">
-                <p className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground mb-2">О компании</p>
-                <p className="text-[15px] text-foreground/85 leading-relaxed">
-                  {partner.about}
-                </p>
-                <p className="mt-3 text-[12px] text-muted-foreground/80 leading-relaxed">
-                  Все проекты и торговые знаки принадлежат компании {partner.name}. Информация собрана из открытых источников и приведена в ознакомительных целях.
-                </p>
-              </div>
-
-              {/* Go to site CTA */}
-              <div className="border-t border-border p-5">
-                <a
-                  href={partner.siteUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full h-[52px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center hover:opacity-90 transition-opacity"
-                >
-                  Перейти на сайт
-                </a>
+        {/* Бенто: "По технологии" — горизонтальный скролл плиток */}
+        {techGroups.length > 1 && (
+          <div className="px-3 mt-3">
+            <div className="bg-background rounded-2xl pt-4 pb-4">
+              <h2 className="px-4 text-[20px] font-bold text-foreground tracking-tight">По технологии</h2>
+              <div className="mt-3 flex gap-2.5 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                {techGroups.map((t) => (
+                  <div key={t.tech} className="shrink-0 w-[160px]">
+                    <div className="aspect-square rounded-2xl overflow-hidden bg-secondary">
+                      {t.image && (
+                        <img src={t.image} alt={t.tech} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                      )}
+                    </div>
+                    <div className="mt-2 px-1 text-center text-[13px] font-medium text-foreground">{t.tech}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    );
-  }
+        )}
 
-  /* ─── Mobile ─── */
-  return (
-    <div className="min-h-screen bg-secondary">
-      {/* Sticky compact header on scroll */}
-      <div className={`fixed top-0 left-0 right-0 z-50 transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-        <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 rounded-b-2xl shadow-sm">
-          <div className="flex items-center justify-between">
-            <button onClick={handleBack} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
-              <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
-            </button>
-            <div className="flex-1 min-w-0 ml-3">
-              <div className="text-[14px] font-semibold text-foreground truncate">{partner.name}</div>
-              <div className="text-[12px] text-muted-foreground truncate">{partner.category} · {partner.city}</div>
-            </div>
-            <button
-              className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center"
-              onClick={() => { if (navigator.share) { navigator.share({ title: partner.name, url: window.location.href }); } else { navigator.clipboard.writeText(window.location.href); } }}
-            >
-              <img src={shareIcon} alt="" className="w-[18px] h-[18px]" loading="lazy" decoding="async" />
-            </button>
-          </div>
-        </div>
-      </div>
+        {/* Бенто: "О компании" */}
+        <div className="px-3 mt-3">
+          <div className="bg-background rounded-2xl p-4">
+            <h2 className="text-[20px] font-bold text-foreground tracking-tight">О компании</h2>
+            <p className="mt-2 text-[14px] text-foreground/85 leading-relaxed">{partner.about}</p>
 
-      {/* Main bento card — full width, edge-to-edge top */}
-      <div className="bg-background rounded-b-2xl overflow-hidden">
-        <div>
-          {/* Header row: back / share */}
-          <div className="flex items-center justify-between px-4 pt-[max(env(safe-area-inset-top),12px)]">
-            <button onClick={handleBack} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
-              <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
-            </button>
-            <button
-              className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center"
-              onClick={() => { if (navigator.share) { navigator.share({ title: partner.name, url: window.location.href }); } else { navigator.clipboard.writeText(window.location.href); } }}
-            >
-              <img src={shareIcon} alt="" className="w-[18px] h-[18px]" loading="lazy" decoding="async" />
-            </button>
-          </div>
-
-          {/* "Your company?" banner */}
-          <div className="px-4 mt-4">
-            <div className="bg-secondary rounded-xl px-3.5 py-3 flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2.5 min-w-0">
-                <ShieldCheck className="w-[18px] h-[18px] text-muted-foreground shrink-0" strokeWidth={1.8} />
-                <span className="text-[13px] text-foreground/80 truncate">Это ваша компания?</span>
+            <div className="mt-4 grid grid-cols-3 gap-2">
+              <div className="bg-secondary rounded-xl py-3 text-center">
+                <div className="text-[18px] font-bold text-foreground leading-none">{projectsCount}</div>
+                <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">
+                  {wordForm(projectsCount, ["Проект", "Проекта", "Проектов"])}
+                </div>
               </div>
-              <Link to="/messages/support" className="text-[13px] font-medium text-primary inline-flex items-center gap-1 shrink-0">
-                Подтвердить <ChevronRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Profile */}
-          <div className="px-4 pt-4 pb-5 flex items-center gap-3">
-            <div className="w-[68px] h-[68px] rounded-2xl bg-secondary text-foreground/30 flex items-center justify-center text-base font-bold shrink-0">{partner.initials}</div>
-            <div className="flex-1 min-w-0">
-              <h1 className="text-[19px] font-bold text-foreground leading-tight mb-0.5 truncate">{partner.name}</h1>
-              <p className="text-[13px] text-muted-foreground truncate">{partner.category} · {partner.city}</p>
-            </div>
-          </div>
-
-          {/* Stats row */}
-          <div className="border-t border-border grid grid-cols-3">
-            {stats.map((s, i) => (
-              <div key={i} className={`py-4 text-center ${i > 0 ? 'border-l border-border' : ''}`}>
-                <div className="text-[20px] font-bold text-foreground leading-none mb-1.5">{s.val}</div>
-                <div className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground">{s.label}</div>
+              <div className="bg-secondary rounded-xl py-3 text-center">
+                <div className="text-[18px] font-bold text-foreground leading-none">{rating.toFixed(1)}</div>
+                <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">Рейтинг</div>
               </div>
-            ))}
-          </div>
+              <div className="bg-secondary rounded-xl py-3 text-center">
+                <div className="text-[18px] font-bold text-foreground leading-none">—</div>
+                <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">Отзывы</div>
+              </div>
+            </div>
 
-          {/* About */}
-          <div className="border-t border-border px-4 py-4">
-            <p className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground mb-2">О компании</p>
-            <p className="text-[14px] text-foreground/85 leading-relaxed">
-              {partner.about}
-            </p>
             <p className="mt-3 text-[12px] text-muted-foreground/80 leading-relaxed">
               Все проекты и торговые знаки принадлежат компании {partner.name}. Информация собрана из открытых источников и приведена в ознакомительных целях.
             </p>
           </div>
-
         </div>
+
+        {/* Бенто: "Все проекты" — сетка */}
+        {makerProjects.length > 0 && (
+          <div className="px-3 mt-3">
+            <div className="bg-background rounded-2xl p-4">
+              <div className="flex items-center justify-between">
+                <h2 className="text-[20px] font-bold text-foreground tracking-tight">Все проекты</h2>
+                <button
+                  onClick={() => navigate(`/catalog?maker=${makerId}`)}
+                  className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center"
+                  aria-label="Фильтры"
+                >
+                  <SlidersHorizontal className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
+                </button>
+              </div>
+              <div className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2.5">
+                {makerProjects.map((p) => (
+                  <ProjectCard key={p.id} projectId={p.id} height="aspect-[3/4] h-auto" />
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
-      <div className="h-28" />
-
       {/* Bottom Bar — go to site CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-50">
+      <div className="fixed bottom-0 left-0 right-0 z-40">
         <div className="bg-background border-t border-border p-3 pb-[calc(0.75rem+max(env(safe-area-inset-bottom),20px))]">
-          <a
-            href={partner.siteUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full h-[50px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center"
-          >
-            Перейти на сайт
-          </a>
+          <div className="max-w-[1400px] mx-auto">
+            <a
+              href={partner.siteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full h-[50px] bg-primary text-primary-foreground rounded-xl text-[15px] font-semibold flex items-center justify-center"
+            >
+              Перейти на сайт
+            </a>
+          </div>
         </div>
       </div>
     </div>
