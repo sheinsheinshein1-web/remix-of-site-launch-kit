@@ -247,7 +247,7 @@ const PartnerReviews = () => {
                   href={summary?.siteUrl ?? "#"}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="text-[12px] text-muted-foreground"
+                  className="text-[12px] text-white/55"
                 >
                   {summary?.siteUrl ? new URL(summary.siteUrl).hostname.replace(/^www\./, "") : ""}
                 </a>
