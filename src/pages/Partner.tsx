@@ -52,6 +52,7 @@ const Partner = () => {
   const { id } = useParams();
   const [scrolled, setScrolled] = useState(false);
   const [sortOpen, setSortOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [sortBy, setSortBy] = useState("rating");
 
   const sortOptions = [
