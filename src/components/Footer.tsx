@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import logoColor from "@/assets/logo-color.svg";
+import logoColor from "@/assets/logo-mnogo-mesta.png";
 
 const catalogLinks = [
   { label: "Все модульные дома", path: "/catalog" },
