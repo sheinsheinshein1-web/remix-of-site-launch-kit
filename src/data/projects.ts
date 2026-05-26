@@ -354,6 +354,30 @@ import seKd1560_1 from "@/assets/scandiecodom/kd-1560/1.webp";
 import seKd1560_2 from "@/assets/scandiecodom/kd-1560/2.webp";
 import seKd1560_3 from "@/assets/scandiecodom/kd-1560/3.webp";
 import seKd1560Plan from "@/assets/scandiecodom/kd-1560/4.webp";
+import kpMadrid3_1 from "@/assets/karkas-povolzhya/madrid-3/1.webp";
+import kpMadrid3_2 from "@/assets/karkas-povolzhya/madrid-3/2.webp";
+import kpMadrid3_3 from "@/assets/karkas-povolzhya/madrid-3/3.webp";
+import kpMadrid3Plan1 from "@/assets/karkas-povolzhya/madrid-3/4.webp";
+import kpMadrid3Plan2 from "@/assets/karkas-povolzhya/madrid-3/5.webp";
+import kpManchester_1 from "@/assets/karkas-povolzhya/manchester/1.webp";
+import kpManchester_2 from "@/assets/karkas-povolzhya/manchester/2.webp";
+import kpManchester_3 from "@/assets/karkas-povolzhya/manchester/3.webp";
+import kpManchesterPlan from "@/assets/karkas-povolzhya/manchester/4.webp";
+import kpStokgolm_1 from "@/assets/karkas-povolzhya/stokgolm/1.webp";
+import kpStokgolm_2 from "@/assets/karkas-povolzhya/stokgolm/2.webp";
+import kpStokgolm_3 from "@/assets/karkas-povolzhya/stokgolm/3.webp";
+import kpStokgolmPlan1 from "@/assets/karkas-povolzhya/stokgolm/4.webp";
+import kpStokgolmPlan2 from "@/assets/karkas-povolzhya/stokgolm/5.webp";
+import kpBerlin_1 from "@/assets/karkas-povolzhya/berlin/1.webp";
+import kpBerlin_2 from "@/assets/karkas-povolzhya/berlin/2.webp";
+import kpBerlin_3 from "@/assets/karkas-povolzhya/berlin/3.webp";
+import kpBerlinPlan1 from "@/assets/karkas-povolzhya/berlin/4.webp";
+import kpBerlinPlan2 from "@/assets/karkas-povolzhya/berlin/5.webp";
+import kpLondon1_1 from "@/assets/karkas-povolzhya/london-1/1.webp";
+import kpLondon1_2 from "@/assets/karkas-povolzhya/london-1/2.webp";
+import kpLondon1_3 from "@/assets/karkas-povolzhya/london-1/3.webp";
+import kpLondon1Plan1 from "@/assets/karkas-povolzhya/london-1/4.webp";
+import kpLondon1Plan2 from "@/assets/karkas-povolzhya/london-1/5.webp";
 
 import dd_start30_1 from "@/assets/divodom/start-30/1.webp";
 import dd_start30_2 from "@/assets/divodom/start-30/2.webp";
@@ -549,6 +573,12 @@ const SCANDI_ECODOM: Maker = {
   initials: "СЭ",
   id: "scandiecodom",
   siteUrl: "https://scandiecodom.ru/houses/",
+};
+const KARKAS_POVOLZHYA: Maker = {
+  name: "Каркас Поволжья",
+  initials: "КП",
+  id: "karkas-povolzhya",
+  siteUrl: "https://karkasdoma.pro/projects/frame/",
 };
 
 // ============================================================================
@@ -1984,6 +2014,107 @@ export const projects: Project[] = [
     suitableFor: ["Постоянное проживание", "Для семьи"],
     technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
     features: ["Сауна", "Терраса"], style: "Классический", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── Каркас Поволжья · Казань ───────────────────────────────────────────
+  {
+    id: 107, name: "Мадрид 3 с террасой", badge: "Жилой дом", price: "4 510 000 ₽",
+    area: "100 м²", area_m2: 100, beds: 3, baths: 1, floors: 2, term: "до 3 мес.",
+    rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Казань",
+    maker: { ...KARKAS_POVOLZHYA, siteUrl: "https://karkasdoma.pro/projects/frame/madrid-3-s-terrasoj/" },
+    description: "Каркасный дом 100 м² размером 6 × 8 м с террасой и жилым вторым этажом.",
+    descriptionLong: "Проект «Мадрид 3 с террасой» от «Каркас Поволжья»: каркасный дом площадью 100 м², габариты 6 × 8 м. На втором этаже расположены три спальни, проект можно адаптировать и дополнить террасой, верандой или балконом.",
+    gallery: [
+      { image: kpMadrid3_1, type: "photo", fit: "contain", blur: true },
+      { image: kpMadrid3_2, type: "photo", fit: "contain", blur: true },
+      { image: kpMadrid3_3, type: "photo", fit: "contain", blur: true },
+      { image: kpMadrid3Plan1, type: "photo", fit: "contain" },
+      { image: kpMadrid3Plan2, type: "photo", fit: "contain" },
+    ],
+    likes: 34, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 108, name: "Манчестер", badge: "Жилой дом", price: "3 906 000 ₽",
+    area: "62 м²", area_m2: 62, beds: 2, baths: 1, floors: 1, term: "до 3 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Казань",
+    maker: { ...KARKAS_POVOLZHYA, siteUrl: "https://karkasdoma.pro/projects/frame/manchester/" },
+    description: "Одноэтажный каркасный дом 62 м² размером 9,5 × 7 м с двумя комнатами.",
+    descriptionLong: "Проект «Манчестер» от «Каркас Поволжья»: одноэтажный каркасный дом площадью 62 м², габариты 9,5 × 7 м. Компактная планировка для постоянного проживания или загородного отдыха, с возможностью бесплатной адаптации проекта.",
+    gallery: [
+      { image: kpManchester_1, type: "photo", fit: "contain", blur: true },
+      { image: kpManchester_2, type: "photo", fit: "contain", blur: true },
+      { image: kpManchester_3, type: "photo", fit: "contain", blur: true },
+      { image: kpManchesterPlan, type: "photo", fit: "contain" },
+    ],
+    likes: 31, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для одного / пары"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 109, name: "Стокгольм", badge: "Жилой дом", price: "4 459 000 ₽",
+    area: "91 м²", area_m2: 91, beds: 3, baths: 2, floors: 1, term: "до 3 мес.",
+    rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Казань",
+    maker: { ...KARKAS_POVOLZHYA, siteUrl: "https://karkasdoma.pro/projects/stokgolm/" },
+    description: "Одноэтажный каркасный дом 91 м² размером 8 × 12,2 м с тремя комнатами и верандой.",
+    descriptionLong: "Проект «Стокгольм» от «Каркас Поволжья»: одноэтажный каркасный дом площадью 91 м², габариты 8 × 12,2 м. В описании проекта выделены кухня-гостиная, три спальни, мастер-спальня с санузлом и гардеробной, а также просторная веранда.",
+    gallery: [
+      { image: kpStokgolm_1, type: "photo", fit: "contain", blur: true },
+      { image: kpStokgolm_2, type: "photo", fit: "contain", blur: true },
+      { image: kpStokgolm_3, type: "photo", fit: "contain", blur: true },
+      { image: kpStokgolmPlan1, type: "photo", fit: "contain" },
+      { image: kpStokgolmPlan2, type: "photo", fit: "contain" },
+    ],
+    likes: 33, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Скандинавский", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 110, name: "Берлин", badge: "Жилой дом", price: "5 000 000 ₽",
+    area: "100 м²", area_m2: 100, beds: 4, baths: 2, floors: 2, term: "до 3 мес.",
+    rooms: "4 комнаты", purpose: "ИЖС / СНТ", city: "Казань",
+    maker: { ...KARKAS_POVOLZHYA, siteUrl: "https://karkasdoma.pro/projects/berlin/" },
+    description: "Двухэтажный каркасный дом 100 м² размером 7 × 7,5 м с четырьмя комнатами.",
+    descriptionLong: "Проект «Берлин» от «Каркас Поволжья»: двухэтажный каркасный дом площадью 100 м², габариты 7 × 7,5 м. В проекте четыре комнаты и два этажа, планировку можно изменить под сценарий постоянного проживания семьи.",
+    gallery: [
+      { image: kpBerlin_1, type: "photo", fit: "contain", blur: true },
+      { image: kpBerlin_2, type: "photo", fit: "contain", blur: true },
+      { image: kpBerlin_3, type: "photo", fit: "contain", blur: true },
+      { image: kpBerlinPlan1, type: "photo", fit: "contain" },
+      { image: kpBerlinPlan2, type: "photo", fit: "contain" },
+    ],
+    likes: 32, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 111, name: "Лондон-1", badge: "Жилой дом", price: "4 692 000 ₽",
+    area: "120 м²", area_m2: 120, beds: 5, baths: 2, floors: 2, term: "до 3 мес.",
+    rooms: "5 комнат", purpose: "ИЖС / СНТ", city: "Казань",
+    maker: { ...KARKAS_POVOLZHYA, siteUrl: "https://karkasdoma.pro/projects/frame/london-1/" },
+    description: "Двухэтажный каркасный дом 120 м² размером 7,5 × 10 м с панорамными окнами и террасой.",
+    descriptionLong: "Проект «Лондон-1» от «Каркас Поволжья»: двухэтажный каркасный дом площадью 120 м², габариты 7,5 × 10 м. В описании проекта отмечены гостиная с большими панорамными окнами, три спальни на втором этаже, отдельный санузел и летняя терраса.",
+    gallery: [
+      { image: kpLondon1_1, type: "photo", fit: "contain", blur: true },
+      { image: kpLondon1_2, type: "photo", fit: "contain", blur: true },
+      { image: kpLondon1_3, type: "photo", fit: "contain", blur: true },
+      { image: kpLondon1Plan1, type: "photo", fit: "contain" },
+      { image: kpLondon1Plan2, type: "photo", fit: "contain" },
+    ],
+    likes: 35, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна"], style: "Классический", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
 ];
