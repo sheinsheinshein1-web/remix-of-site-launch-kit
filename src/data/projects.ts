@@ -332,6 +332,28 @@ import hdDk428Plan from "@/assets/hochu-dom/dk-428-127/7.webp";
 import hdDk390_1 from "@/assets/hochu-dom/dk-390-96/1.webp";
 import hdDk390_2 from "@/assets/hochu-dom/dk-390-96/2.webp";
 import hdDk390Plan from "@/assets/hochu-dom/dk-390-96/3.webp";
+import seKd1600_1 from "@/assets/scandiecodom/kd-1600/1.webp";
+import seKd1600_2 from "@/assets/scandiecodom/kd-1600/2.webp";
+import seKd1600_3 from "@/assets/scandiecodom/kd-1600/3.webp";
+import seKd1600Plan from "@/assets/scandiecodom/kd-1600/4.webp";
+import seKd1590_1 from "@/assets/scandiecodom/kd-1590/1.webp";
+import seKd1590_2 from "@/assets/scandiecodom/kd-1590/2.webp";
+import seKd1590_3 from "@/assets/scandiecodom/kd-1590/3.webp";
+import seKd1590Plan from "@/assets/scandiecodom/kd-1590/4.webp";
+import seKd1580_1 from "@/assets/scandiecodom/kd-1580/1.webp";
+import seKd1580_2 from "@/assets/scandiecodom/kd-1580/2.webp";
+import seKd1580_3 from "@/assets/scandiecodom/kd-1580/3.webp";
+import seKd1580Plan1 from "@/assets/scandiecodom/kd-1580/4.webp";
+import seKd1580Plan2 from "@/assets/scandiecodom/kd-1580/5.webp";
+import seKd1570_1 from "@/assets/scandiecodom/kd-1570/1.webp";
+import seKd1570_2 from "@/assets/scandiecodom/kd-1570/2.webp";
+import seKd1570_3 from "@/assets/scandiecodom/kd-1570/3.webp";
+import seKd1570Plan1 from "@/assets/scandiecodom/kd-1570/4.webp";
+import seKd1570Plan2 from "@/assets/scandiecodom/kd-1570/5.webp";
+import seKd1560_1 from "@/assets/scandiecodom/kd-1560/1.webp";
+import seKd1560_2 from "@/assets/scandiecodom/kd-1560/2.webp";
+import seKd1560_3 from "@/assets/scandiecodom/kd-1560/3.webp";
+import seKd1560Plan from "@/assets/scandiecodom/kd-1560/4.webp";
 
 import dd_start30_1 from "@/assets/divodom/start-30/1.webp";
 import dd_start30_2 from "@/assets/divodom/start-30/2.webp";
@@ -521,6 +543,12 @@ const HOCHU_DOM: Maker = {
   initials: "ХД",
   id: "hochu-dom",
   siteUrl: "https://hochu-dom.ru/catalog/",
+};
+const SCANDI_ECODOM: Maker = {
+  name: "Сканди ЭкоДом",
+  initials: "СЭ",
+  id: "scandiecodom",
+  siteUrl: "https://scandiecodom.ru/houses/",
 };
 
 // ============================================================================
@@ -1857,6 +1885,105 @@ export const projects: Project[] = [
     suitableFor: ["Постоянное проживание", "Для семьи"],
     technology: "Каркасный", completion: "Без отделки", insulation: "до −30°C",
     features: ["Крыльцо"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── Сканди ЭкоДом · Санкт-Петербург и ЛО ───────────────────────────────
+  {
+    id: 102, name: "КД-1600", badge: "Жилой дом", price: "6 780 000 ₽",
+    area: "139,9 м²", area_m2: 139.9, beds: 2, baths: 2, floors: 1, term: "4–5 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...SCANDI_ECODOM, siteUrl: "https://scandiecodom.ru/houses/kd-1600-13-3h12-8/" },
+    description: "Одноэтажный каркасный барнхаус 139,9 м² размером 13,3 × 12,8 м с двумя спальнями, сауной и лофтом.",
+    descriptionLong: "Проект КД-1600 от «Сканди ЭкоДом»: одноэтажный каркасный дом площадью 139,9 м², габариты 13,3 × 12,8 м. В планировке две спальни, два санузла, сауна и лофт, стоимость на сайте застройщика указана для комплектации под ключ.",
+    gallery: [
+      { image: seKd1600_1, type: "photo", fit: "contain", blur: true },
+      { image: seKd1600_2, type: "photo", fit: "contain", blur: true },
+      { image: seKd1600_3, type: "photo", fit: "contain", blur: true },
+      { image: seKd1600Plan, type: "photo", fit: "contain" },
+    ],
+    likes: 37, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Сауна", "Панорамные окна"], style: "Барнхаус", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 103, name: "КД-1590", badge: "Жилой дом", price: "13 400 000 ₽",
+    area: "276,7 м²", area_m2: 276.7, beds: 2, baths: 3, floors: 1, term: "4–5 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...SCANDI_ECODOM, siteUrl: "https://scandiecodom.ru/houses/kd-1590-23-4h15-35/" },
+    description: "Одноэтажный премиальный каркасный дом 276,7 м² размером 23,4 × 15,35 м со СПА-зоной.",
+    descriptionLong: "Проект КД-1590 от «Сканди ЭкоДом»: просторный одноэтажный каркасный дом площадью 276,7 м², габариты 23,4 × 15,35 м. В проекте две спальни, три санузла и СПА-зона, стоимость на сайте указана для комплектации под ключ.",
+    gallery: [
+      { image: seKd1590_1, type: "photo", fit: "contain", blur: true },
+      { image: seKd1590_2, type: "photo", fit: "contain", blur: true },
+      { image: seKd1590_3, type: "photo", fit: "contain", blur: true },
+      { image: seKd1590Plan, type: "photo", fit: "contain" },
+    ],
+    likes: 39, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Сауна", "Панорамные окна"], style: "Современный", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 104, name: "КД-1580", badge: "Жилой дом", price: "11 730 000 ₽",
+    area: "242,1 м²", area_m2: 242.1, beds: 3, baths: 2, floors: 2, term: "4–5 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...SCANDI_ECODOM, siteUrl: "https://scandiecodom.ru/houses/kd-1580-9-5h12-5/" },
+    description: "Двухэтажный каркасный барнхаус 242,1 м² размером 9,5 × 12,5 м с панорамным фронтоном и антресолью.",
+    descriptionLong: "Проект КД-1580 от «Сканди ЭкоДом»: двухэтажный каркасный дом площадью 242,1 м², габариты 9,5 × 12,5 м. В планировке три спальни, два санузла, панорамный фронтон и антресоль, стоимость указана для комплектации под ключ.",
+    gallery: [
+      { image: seKd1580_1, type: "photo", fit: "contain", blur: true },
+      { image: seKd1580_2, type: "photo", fit: "contain", blur: true },
+      { image: seKd1580_3, type: "photo", fit: "contain", blur: true },
+      { image: seKd1580Plan1, type: "photo", fit: "contain" },
+      { image: seKd1580Plan2, type: "photo", fit: "contain" },
+    ],
+    likes: 38, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна", "Антресоль"], style: "Барнхаус", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 105, name: "КД-1570", badge: "Жилой дом", price: "9 100 000 ₽",
+    area: "187,8 м²", area_m2: 187.8, beds: 4, baths: 2, floors: 2, term: "4–5 мес.",
+    rooms: "4 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...SCANDI_ECODOM, siteUrl: "https://scandiecodom.ru/houses/kd-1570-11-5h12/" },
+    description: "Каркасный дом с мансардой 187,8 м² размером 11,5 × 12 м с четырьмя спальнями.",
+    descriptionLong: "Проект КД-1570 от «Сканди ЭкоДом»: каркасный дом с мансардой площадью 187,8 м², габариты 11,5 × 12 м. Проект рассчитан на семью: четыре спальни, два санузла и современная архитектура в стиле барнхаус.",
+    gallery: [
+      { image: seKd1570_1, type: "photo", fit: "contain", blur: true },
+      { image: seKd1570_2, type: "photo", fit: "contain", blur: true },
+      { image: seKd1570_3, type: "photo", fit: "contain", blur: true },
+      { image: seKd1570Plan1, type: "photo", fit: "contain" },
+      { image: seKd1570Plan2, type: "photo", fit: "contain" },
+    ],
+    likes: 36, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна"], style: "Барнхаус", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 106, name: "КД-1560", badge: "Жилой дом", price: "6 310 000 ₽",
+    area: "130,2 м²", area_m2: 130.2, beds: 3, baths: 2, floors: 1, term: "4–5 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...SCANDI_ECODOM, siteUrl: "https://scandiecodom.ru/houses/kd-1560-8h18/" },
+    description: "Одноэтажный каркасный дом 130,2 м² размером 8 × 18 м с тремя спальнями, сауной и кабинетом.",
+    descriptionLong: "Проект КД-1560 от «Сканди ЭкоДом»: одноэтажный каркасный дом площадью 130,2 м², габариты 8 × 18 м. В планировке три спальни, кухня-столовая, сауна, кабинет и крыльцо, стоимость на сайте указана для комплектации под ключ.",
+    gallery: [
+      { image: seKd1560_1, type: "photo", fit: "contain", blur: true },
+      { image: seKd1560_2, type: "photo", fit: "contain", blur: true },
+      { image: seKd1560_3, type: "photo", fit: "contain", blur: true },
+      { image: seKd1560Plan, type: "photo", fit: "contain" },
+    ],
+    likes: 35, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Сауна", "Терраса"], style: "Классический", landSize: "10+ соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
 ];
