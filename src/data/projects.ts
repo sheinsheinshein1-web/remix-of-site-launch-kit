@@ -378,6 +378,31 @@ import kpLondon1_2 from "@/assets/karkas-povolzhya/london-1/2.webp";
 import kpLondon1_3 from "@/assets/karkas-povolzhya/london-1/3.webp";
 import kpLondon1Plan1 from "@/assets/karkas-povolzhya/london-1/4.webp";
 import kpLondon1Plan2 from "@/assets/karkas-povolzhya/london-1/5.webp";
+import dtGlempingBarnhaus_1 from "@/assets/domoteka/glemping-barnhaus-6x7/1.webp";
+import dtGlempingBarnhaus_2 from "@/assets/domoteka/glemping-barnhaus-6x7/2.webp";
+import dtGlempingBarnhaus_3 from "@/assets/domoteka/glemping-barnhaus-6x7/3.webp";
+import dtGlempingBarnhaus_4 from "@/assets/domoteka/glemping-barnhaus-6x7/4.webp";
+import dtGlempingBarnhaus_5 from "@/assets/domoteka/glemping-barnhaus-6x7/5.webp";
+import dtParizh_1 from "@/assets/domoteka/parizh/1.webp";
+import dtParizh_2 from "@/assets/domoteka/parizh/2.webp";
+import dtParizh_3 from "@/assets/domoteka/parizh/3.webp";
+import dtParizh_4 from "@/assets/domoteka/parizh/4.webp";
+import dtParizh_5 from "@/assets/domoteka/parizh/5.webp";
+import dtElbrus_1 from "@/assets/domoteka/elbrus/1.webp";
+import dtElbrus_2 from "@/assets/domoteka/elbrus/2.webp";
+import dtElbrus_3 from "@/assets/domoteka/elbrus/3.webp";
+import dtElbrus_4 from "@/assets/domoteka/elbrus/4.webp";
+import dtElbrus_5 from "@/assets/domoteka/elbrus/5.webp";
+import dtAFrame_1 from "@/assets/domoteka/glemping-a-frame-6x6/1.webp";
+import dtAFrame_2 from "@/assets/domoteka/glemping-a-frame-6x6/2.webp";
+import dtAFrame_3 from "@/assets/domoteka/glemping-a-frame-6x6/3.webp";
+import dtAFrame_4 from "@/assets/domoteka/glemping-a-frame-6x6/4.webp";
+import dtAFrame_5 from "@/assets/domoteka/glemping-a-frame-6x6/5.webp";
+import dtFisht_1 from "@/assets/domoteka/fisht/1.webp";
+import dtFisht_2 from "@/assets/domoteka/fisht/2.webp";
+import dtFisht_3 from "@/assets/domoteka/fisht/3.webp";
+import dtFisht_4 from "@/assets/domoteka/fisht/4.webp";
+import dtFisht_5 from "@/assets/domoteka/fisht/5.webp";
 
 import dd_start30_1 from "@/assets/divodom/start-30/1.webp";
 import dd_start30_2 from "@/assets/divodom/start-30/2.webp";
@@ -579,6 +604,12 @@ const KARKAS_POVOLZHYA: Maker = {
   initials: "КП",
   id: "karkas-povolzhya",
   siteUrl: "https://karkasdoma.pro/projects/frame/",
+};
+const DOMOTEKA: Maker = {
+  name: "Домотека",
+  initials: "ДМ",
+  id: "domoteka",
+  siteUrl: "https://domoteka-krd.ru/karkasnye-doma/",
 };
 
 // ============================================================================
@@ -2115,6 +2146,108 @@ export const projects: Project[] = [
     suitableFor: ["Постоянное проживание", "Для семьи"],
     technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
     features: ["Терраса", "Панорамные окна"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── Домотека · Краснодарский край ─────────────────────────────────────
+  {
+    id: 112, name: "Глэмпинг барнхаус 6×7", badge: "Глэмпинг", price: "11 520 000 ₽",
+    area: "42 м²", area_m2: 42, beds: 3, baths: 1, floors: 1, term: "от 10 д.",
+    rooms: "3 комнаты", purpose: "ИЖС / СНТ / Бизнес", city: "Краснодарский край",
+    maker: { ...DOMOTEKA, siteUrl: "https://domoteka-krd.ru/karkasnye-doma/glemping/glemping-barnhaus-6x7/" },
+    description: "Каркасный глэмпинг-барнхаус 42 м² размером 6 × 7 м с тремя комнатами.",
+    descriptionLong: "Проект «Глэмпинг барнхаус 6×7» от «Домотеки»: одноэтажный каркасный дом площадью 42 м², габариты 6 × 7 м. Компактный формат для загородного отдыха или коммерческого размещения, на сайте производителя указана стоимость комплектации под ключ.",
+    gallery: [
+      { image: dtGlempingBarnhaus_1, type: "photo", fit: "contain", blur: true },
+      { image: dtGlempingBarnhaus_2, type: "photo", fit: "contain", blur: true },
+      { image: dtGlempingBarnhaus_3, type: "photo", fit: "contain", blur: true },
+      { image: dtGlempingBarnhaus_4, type: "photo", fit: "contain", blur: true },
+      { image: dtGlempingBarnhaus_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 36, rating: 4.8,
+    suitableFor: ["Сдача в аренду", "Выходные / дача"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна"], style: "Барнхаус", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 113, name: "Париж", badge: "Жилой дом", price: "6 542 570 ₽",
+    area: "229 м²", area_m2: 229, beds: 9, baths: 2, floors: 2, term: "от 10 д.",
+    rooms: "9 комнат", purpose: "ИЖС", city: "Краснодарский край",
+    maker: { ...DOMOTEKA, siteUrl: "https://domoteka-krd.ru/karkasnye-doma/elitnye/parizh/" },
+    description: "Двухэтажный элитный каркасный дом 229 м² размером 10 × 12 м.",
+    descriptionLong: "Проект «Париж» от «Домотеки»: двухэтажный каркасный дом площадью 229 м², габариты 10 × 12 м. Просторный проект для постоянного проживания большой семьи, в карточке производителя указаны девять комнат и цена комплектации под ключ.",
+    gallery: [
+      { image: dtParizh_1, type: "photo", fit: "contain", blur: true },
+      { image: dtParizh_2, type: "photo", fit: "contain", blur: true },
+      { image: dtParizh_3, type: "photo", fit: "contain", blur: true },
+      { image: dtParizh_4, type: "photo", fit: "contain", blur: true },
+      { image: dtParizh_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 34, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна"], style: "Классический", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 114, name: "Эльбрус", badge: "Барнхаус", price: "6 447 089 ₽",
+    area: "144 м²", area_m2: 144, beds: 5, baths: 2, floors: 2, term: "от 10 д.",
+    rooms: "5 комнат", purpose: "ИЖС / СНТ", city: "Краснодарский край",
+    maker: { ...DOMOTEKA, siteUrl: "https://domoteka-krd.ru/karkasnye-doma/barnhaus/barn-haus-6h12/" },
+    description: "Двухэтажный каркасный барнхаус 144 м² размером 6 × 12 м с пятью комнатами.",
+    descriptionLong: "Проект «Эльбрус» от «Домотеки»: двухэтажный каркасный барнхаус площадью 144 м², габариты 6 × 12 м. В проекте пять комнат, выразительное панорамное остекление и стоимость комплектации под ключ по данным сайта производителя.",
+    gallery: [
+      { image: dtElbrus_1, type: "photo", fit: "contain", blur: true },
+      { image: dtElbrus_2, type: "photo", fit: "contain", blur: true },
+      { image: dtElbrus_3, type: "photo", fit: "contain", blur: true },
+      { image: dtElbrus_4, type: "photo", fit: "contain", blur: true },
+      { image: dtElbrus_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 35, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна"], style: "Барнхаус", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 115, name: "Глэмпинг, А-Фрейм 6×6", badge: "A-Frame", price: "5 950 000 ₽",
+    area: "48 м²", area_m2: 48, beds: 2, baths: 1, floors: 2, term: "от 10 д.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ / Бизнес", city: "Краснодарский край",
+    maker: { ...DOMOTEKA, siteUrl: "https://domoteka-krd.ru/karkasnye-doma/glemping/glemping-a-frejm-6x6/" },
+    description: "Двухэтажный каркасный A-Frame 48 м² размером 6 × 6 м для глэмпинга и отдыха.",
+    descriptionLong: "Проект «Глэмпинг, А-Фрейм 6×6» от «Домотеки»: двухэтажный каркасный A-Frame площадью 48 м², габариты 6 × 6 м. Проект рассчитан на загородный отдых или коммерческий глэмпинг, с панорамным остеклением и ценой под ключ на сайте производителя.",
+    gallery: [
+      { image: dtAFrame_1, type: "photo", fit: "contain", blur: true },
+      { image: dtAFrame_2, type: "photo", fit: "contain", blur: true },
+      { image: dtAFrame_3, type: "photo", fit: "contain", blur: true },
+      { image: dtAFrame_4, type: "photo", fit: "contain", blur: true },
+      { image: dtAFrame_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 33, rating: 4.8,
+    suitableFor: ["Сдача в аренду", "Выходные / дача"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна"], style: "A-Frame", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 116, name: "Фишт", badge: "Барнхаус", price: "5 317 231 ₽",
+    area: "108 м²", area_m2: 108, beds: 4, baths: 2, floors: 2, term: "от 10 д.",
+    rooms: "4 комнаты", purpose: "ИЖС / СНТ", city: "Краснодарский край",
+    maker: { ...DOMOTEKA, siteUrl: "https://domoteka-krd.ru/karkasnye-doma/barnhaus/barn-haus-6h9-2/" },
+    description: "Двухэтажный каркасный барнхаус 108 м² размером 6 × 9 м с четырьмя комнатами.",
+    descriptionLong: "Проект «Фишт» от «Домотеки»: двухэтажный каркасный барнхаус площадью 108 м², габариты 6 × 9 м. В карточке производителя указаны четыре комнаты, современная архитектура с панорамным остеклением и стоимость комплектации под ключ.",
+    gallery: [
+      { image: dtFisht_1, type: "photo", fit: "contain", blur: true },
+      { image: dtFisht_2, type: "photo", fit: "contain", blur: true },
+      { image: dtFisht_3, type: "photo", fit: "contain", blur: true },
+      { image: dtFisht_4, type: "photo", fit: "contain", blur: true },
+      { image: dtFisht_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 34, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна"], style: "Барнхаус", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
 ];
