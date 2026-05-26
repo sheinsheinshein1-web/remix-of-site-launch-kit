@@ -403,6 +403,91 @@ import dtFisht_2 from "@/assets/domoteka/fisht/2.webp";
 import dtFisht_3 from "@/assets/domoteka/fisht/3.webp";
 import dtFisht_4 from "@/assets/domoteka/fisht/4.webp";
 import dtFisht_5 from "@/assets/domoteka/fisht/5.webp";
+import shSvoy199_1 from "@/assets/svoi-house/svoy-199/1.webp";
+import shSvoy199_2 from "@/assets/svoi-house/svoy-199/2.webp";
+import shSvoyLayt001_1 from "@/assets/svoi-house/svoy-layt-001/1.webp";
+import shSvoyLayt001_2 from "@/assets/svoi-house/svoy-layt-001/2.webp";
+import shSvoy100_1 from "@/assets/svoi-house/svoy-100/1.webp";
+import shSvoy100_2 from "@/assets/svoi-house/svoy-100/2.webp";
+import shSvoyLayt004_1 from "@/assets/svoi-house/svoy-layt-004/1.webp";
+import shSvoyLayt004_2 from "@/assets/svoi-house/svoy-layt-004/2.webp";
+import shSvoy102M_1 from "@/assets/svoi-house/svoy-102-m/1.webp";
+import shSvoy102M_2 from "@/assets/svoi-house/svoy-102-m/2.webp";
+import bs9h15Dionis_1 from "@/assets/bagrovstroy/9h15-dionis/1.webp";
+import bs9h15Dionis_2 from "@/assets/bagrovstroy/9h15-dionis/2.webp";
+import bs9h15Dionis_3 from "@/assets/bagrovstroy/9h15-dionis/3.webp";
+import bs9h15Dionis_4 from "@/assets/bagrovstroy/9h15-dionis/4.webp";
+import bs9h15Dionis_5 from "@/assets/bagrovstroy/9h15-dionis/5.webp";
+import bs9h15Sadko_1 from "@/assets/bagrovstroy/9h15-sadko/1.webp";
+import bs9h15Sadko_2 from "@/assets/bagrovstroy/9h15-sadko/2.webp";
+import bs9h15Sadko_3 from "@/assets/bagrovstroy/9h15-sadko/3.webp";
+import bs9h15Sadko_4 from "@/assets/bagrovstroy/9h15-sadko/4.webp";
+import bs9h15Sadko_5 from "@/assets/bagrovstroy/9h15-sadko/5.webp";
+import bs105h11Avgust_1 from "@/assets/bagrovstroy/10-5h11-avgust/1.webp";
+import bs105h11Avgust_2 from "@/assets/bagrovstroy/10-5h11-avgust/2.webp";
+import bs105h11Avgust_3 from "@/assets/bagrovstroy/10-5h11-avgust/3.webp";
+import bs105h11Avgust_4 from "@/assets/bagrovstroy/10-5h11-avgust/4.webp";
+import bs105h11Avgust_5 from "@/assets/bagrovstroy/10-5h11-avgust/5.webp";
+import bs6h8Saveliy_1 from "@/assets/bagrovstroy/6h8-saveliy/1.webp";
+import bs6h8Saveliy_2 from "@/assets/bagrovstroy/6h8-saveliy/2.webp";
+import bs6h8Saveliy_3 from "@/assets/bagrovstroy/6h8-saveliy/3.webp";
+import bs6h8Saveliy_4 from "@/assets/bagrovstroy/6h8-saveliy/4.webp";
+import bs6h8Saveliy_5 from "@/assets/bagrovstroy/6h8-saveliy/5.webp";
+import bs7h9Gostimir_1 from "@/assets/bagrovstroy/7h9-gostimir/1.webp";
+import bs7h9Gostimir_2 from "@/assets/bagrovstroy/7h9-gostimir/2.webp";
+import bs7h9Gostimir_3 from "@/assets/bagrovstroy/7h9-gostimir/3.webp";
+import bs7h9Gostimir_4 from "@/assets/bagrovstroy/7h9-gostimir/4.webp";
+import bs7h9Gostimir_5 from "@/assets/bagrovstroy/7h9-gostimir/5.webp";
+import dkKd120_1 from "@/assets/domakarkas/kd-120/1.webp";
+import dkKd120_2 from "@/assets/domakarkas/kd-120/2.webp";
+import dkKd120_3 from "@/assets/domakarkas/kd-120/3.webp";
+import dkKd120_4 from "@/assets/domakarkas/kd-120/4.webp";
+import dkKd120_5 from "@/assets/domakarkas/kd-120/5.webp";
+import dkKd119_1 from "@/assets/domakarkas/kd-119/1.webp";
+import dkKd119_2 from "@/assets/domakarkas/kd-119/2.webp";
+import dkKd119_3 from "@/assets/domakarkas/kd-119/3.webp";
+import dkKd119_4 from "@/assets/domakarkas/kd-119/4.webp";
+import dkKd119_5 from "@/assets/domakarkas/kd-119/5.webp";
+import dkKd118_1 from "@/assets/domakarkas/kd-118/1.webp";
+import dkKd118_2 from "@/assets/domakarkas/kd-118/2.webp";
+import dkKd118_3 from "@/assets/domakarkas/kd-118/3.webp";
+import dkKd118_4 from "@/assets/domakarkas/kd-118/4.webp";
+import dkKd118_5 from "@/assets/domakarkas/kd-118/5.webp";
+import dkKd117_1 from "@/assets/domakarkas/kd-117/1.webp";
+import dkKd117_2 from "@/assets/domakarkas/kd-117/2.webp";
+import dkKd117_3 from "@/assets/domakarkas/kd-117/3.webp";
+import dkKd117_4 from "@/assets/domakarkas/kd-117/4.webp";
+import dkKd117_5 from "@/assets/domakarkas/kd-117/5.webp";
+import dkKd116_1 from "@/assets/domakarkas/kd-116/1.webp";
+import dkKd116_2 from "@/assets/domakarkas/kd-116/2.webp";
+import dkKd116_3 from "@/assets/domakarkas/kd-116/3.webp";
+import dkKd116_4 from "@/assets/domakarkas/kd-116/4.webp";
+import dkKd116_5 from "@/assets/domakarkas/kd-116/5.webp";
+import sgVyazma_1 from "@/assets/sk-garmoniya/vyazma/1.webp";
+import sgVyazma_2 from "@/assets/sk-garmoniya/vyazma/2.webp";
+import sgVyazma_3 from "@/assets/sk-garmoniya/vyazma/3.webp";
+import sgVyazma_4 from "@/assets/sk-garmoniya/vyazma/4.webp";
+import sgVyazma_5 from "@/assets/sk-garmoniya/vyazma/5.webp";
+import sgSosnovyyBor_1 from "@/assets/sk-garmoniya/sosnovyy-bor/1.webp";
+import sgSosnovyyBor_2 from "@/assets/sk-garmoniya/sosnovyy-bor/2.webp";
+import sgSosnovyyBor_3 from "@/assets/sk-garmoniya/sosnovyy-bor/3.webp";
+import sgSosnovyyBor_4 from "@/assets/sk-garmoniya/sosnovyy-bor/4.webp";
+import sgSosnovyyBor_5 from "@/assets/sk-garmoniya/sosnovyy-bor/5.webp";
+import sgTroitsk_1 from "@/assets/sk-garmoniya/troitsk/1.webp";
+import sgTroitsk_2 from "@/assets/sk-garmoniya/troitsk/2.webp";
+import sgTroitsk_3 from "@/assets/sk-garmoniya/troitsk/3.webp";
+import sgTroitsk_4 from "@/assets/sk-garmoniya/troitsk/4.webp";
+import sgTroitsk_5 from "@/assets/sk-garmoniya/troitsk/5.webp";
+import sgVyborg_1 from "@/assets/sk-garmoniya/vyborg/1.webp";
+import sgVyborg_2 from "@/assets/sk-garmoniya/vyborg/2.webp";
+import sgVyborg_3 from "@/assets/sk-garmoniya/vyborg/3.webp";
+import sgVyborg_4 from "@/assets/sk-garmoniya/vyborg/4.webp";
+import sgVyborg_5 from "@/assets/sk-garmoniya/vyborg/5.webp";
+import sgSamara_1 from "@/assets/sk-garmoniya/samara/1.webp";
+import sgSamara_2 from "@/assets/sk-garmoniya/samara/2.webp";
+import sgSamara_3 from "@/assets/sk-garmoniya/samara/3.webp";
+import sgSamara_4 from "@/assets/sk-garmoniya/samara/4.webp";
+import sgSamara_5 from "@/assets/sk-garmoniya/samara/5.webp";
 
 import dd_start30_1 from "@/assets/divodom/start-30/1.webp";
 import dd_start30_2 from "@/assets/divodom/start-30/2.webp";
@@ -610,6 +695,30 @@ const DOMOTEKA: Maker = {
   initials: "ДМ",
   id: "domoteka",
   siteUrl: "https://domoteka-krd.ru/karkasnye-doma/",
+};
+const SVOI_HOUSE: Maker = {
+  name: "СК «Свой»",
+  initials: "СВ",
+  id: "svoi-house",
+  siteUrl: "https://svoi.house/karkas",
+};
+const BAGROVSTROY: Maker = {
+  name: "Багров Строй",
+  initials: "БС",
+  id: "bagrovstroy",
+  siteUrl: "https://bagrovstroy.ru/karkasnye-doma",
+};
+const DOMAKARKAS: Maker = {
+  name: "ДомаКаркас",
+  initials: "ДК",
+  id: "domakarkas",
+  siteUrl: "https://domakarkas.ru/proekty-karkasnyh-domov/",
+};
+const SK_GARMONIYA: Maker = {
+  name: "СК Гармония",
+  initials: "ГР",
+  id: "sk-garmoniya",
+  siteUrl: "https://skgarmoniya.ru/catalog/doma-karkas/",
 };
 
 // ============================================================================
@@ -2249,6 +2358,398 @@ export const projects: Project[] = [
     technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
     features: ["Панорамные окна"], style: "Барнхаус", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  // ── СК «Свой» · Санкт-Петербург и ЛО ───────────────────────────────────
+  {
+    id: 117, name: "СВОЙ 199", badge: "Хит", price: "4 761 449 ₽",
+    area: "90 м²", area_m2: 90, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...SVOI_HOUSE, siteUrl: "https://svoi.house/catalog/svoi-199" },
+    description: "Каркасный дом СВОЙ 199 90 м² размером 9×9 от производителя СК «Свой». В проекте отмечены: терраса, панорамные окна.",
+    descriptionLong: "Каркасный дом СВОЙ 199 90 м² размером 9×9 от производителя СК «Свой». В проекте отмечены: терраса, панорамные окна. Площадь проекта 90 м², габариты 9×9, 2 спальни, 1 санузел. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: shSvoy199_1, type: "photo", fit: "contain", blur: true },
+      { image: shSvoy199_2, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 30, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 118, name: "СВОЙ ЛАЙТ 001", badge: "Жилой дом", price: "1 992 154 ₽",
+    area: "41 м²", area_m2: 41, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...SVOI_HOUSE, siteUrl: "https://svoi.house/catalog/svoi-light-001" },
+    description: "Каркасный дом СВОЙ ЛАЙТ 001 41 м² размером 6×6 от производителя СК «Свой». В проекте отмечены: компактный формат.",
+    descriptionLong: "Каркасный дом СВОЙ ЛАЙТ 001 41 м² размером 6×6 от производителя СК «Свой». В проекте отмечены: компактный формат. Площадь проекта 41 м², габариты 6×6, 1 спальня, 1 санузел. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: shSvoyLayt001_1, type: "photo", fit: "contain", blur: true },
+      { image: shSvoyLayt001_2, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 31, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Для пары"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Компактный формат"], style: "Скандинавский", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 119, name: "СВОЙ 100", badge: "Хит", price: "4 192 040 ₽",
+    area: "86 м²", area_m2: 86, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...SVOI_HOUSE, siteUrl: "https://svoi.house/catalog/svoi-100" },
+    description: "Каркасный дом СВОЙ 100 86 м² размером 10×7 от производителя СК «Свой». В проекте отмечены: терраса, панорамные окна.",
+    descriptionLong: "Каркасный дом СВОЙ 100 86 м² размером 10×7 от производителя СК «Свой». В проекте отмечены: терраса, панорамные окна. Площадь проекта 86 м², габариты 10×7, 2 спальни, 1 санузел. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: shSvoy100_1, type: "photo", fit: "contain", blur: true },
+      { image: shSvoy100_2, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 32, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 120, name: "СВОЙ ЛАЙТ 004", badge: "Жилой дом", price: "2 944 795 ₽",
+    area: "67 м²", area_m2: 67, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...SVOI_HOUSE, siteUrl: "https://svoi.house/catalog/svoi-light-004" },
+    description: "Каркасный дом СВОЙ ЛАЙТ 004 67 м² размером 9×6 от производителя СК «Свой». В проекте отмечены: терраса.",
+    descriptionLong: "Каркасный дом СВОЙ ЛАЙТ 004 67 м² размером 9×6 от производителя СК «Свой». В проекте отмечены: терраса. Площадь проекта 67 м², габариты 9×6, 2 спальни, 1 санузел. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: shSvoyLayt004_1, type: "photo", fit: "contain", blur: true },
+      { image: shSvoyLayt004_2, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 33, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Скандинавский", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 121, name: "СВОЙ 102 M", badge: "Хит", price: "6 237 084 ₽",
+    area: "123 м²", area_m2: 123, beds: 3, baths: 2, floors: 1, term: "от 1 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...SVOI_HOUSE, siteUrl: "https://svoi.house/catalog/svoi-102" },
+    description: "Каркасный дом СВОЙ 102 M 123 м² размером 12×8 от производителя СК «Свой». В проекте отмечены: терраса, панорамные окна.",
+    descriptionLong: "Каркасный дом СВОЙ 102 M 123 м² размером 12×8 от производителя СК «Свой». В проекте отмечены: терраса, панорамные окна. Площадь проекта 123 м², габариты 12×8, 3 спальни, 2 санузла. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: shSvoy102M_1, type: "photo", fit: "contain", blur: true },
+      { image: shSvoy102M_2, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 34, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для большой семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна"], style: "Современный", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── Багров Строй · Санкт-Петербург и ЛО ────────────────────────────────
+  {
+    id: 122, name: "9х15 Дионис", badge: "Жилой дом", price: "1 670 000 ₽",
+    area: "141 м²", area_m2: 141, beds: 4, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "4 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...BAGROVSTROY, siteUrl: "https://bagrovstroy.ru/karkasnye-doma/kd-dionis" },
+    description: "Каркасный дом 9х15 Дионис 141 м² размером 9×15 от производителя «Багров Строй». В проекте отмечены: терраса.",
+    descriptionLong: "Каркасный дом 9х15 Дионис 141 м² размером 9×15 от производителя «Багров Строй». В проекте отмечены: терраса. Площадь проекта 141 м², габариты 9×15, 4 спальни, 1 санузел. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: bs9h15Dionis_1, type: "photo", fit: "contain", blur: true },
+      { image: bs9h15Dionis_2, type: "photo", fit: "contain", blur: true },
+      { image: bs9h15Dionis_3, type: "photo", fit: "contain", blur: true },
+      { image: bs9h15Dionis_4, type: "photo", fit: "contain", blur: true },
+      { image: bs9h15Dionis_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 35, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для большой семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Классический", landSize: "10+ соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 123, name: "9х15 Садко", badge: "Жилой дом", price: "1 450 800 ₽",
+    area: "141 м²", area_m2: 141, beds: 4, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "4 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...BAGROVSTROY, siteUrl: "https://bagrovstroy.ru/karkasnye-doma/kd-sadko" },
+    description: "Каркасный дом 9х15 Садко 141 м² размером 9×15 от производителя «Багров Строй». В проекте отмечены: терраса.",
+    descriptionLong: "Каркасный дом 9х15 Садко 141 м² размером 9×15 от производителя «Багров Строй». В проекте отмечены: терраса. Площадь проекта 141 м², габариты 9×15, 4 спальни, 1 санузел. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: bs9h15Sadko_1, type: "photo", fit: "contain", blur: true },
+      { image: bs9h15Sadko_2, type: "photo", fit: "contain", blur: true },
+      { image: bs9h15Sadko_3, type: "photo", fit: "contain", blur: true },
+      { image: bs9h15Sadko_4, type: "photo", fit: "contain", blur: true },
+      { image: bs9h15Sadko_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 36, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для большой семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Классический", landSize: "10+ соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 124, name: "10.5х11 Август", badge: "Жилой дом", price: "1 321 100 ₽",
+    area: "132 м²", area_m2: 132, beds: 4, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "4 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...BAGROVSTROY, siteUrl: "https://bagrovstroy.ru/karkasnye-doma/kd-avgust" },
+    description: "Каркасный дом 10.5х11 Август 132 м² размером 10.5×11 от производителя «Багров Строй». В проекте отмечены: терраса.",
+    descriptionLong: "Каркасный дом 10.5х11 Август 132 м² размером 10.5×11 от производителя «Багров Строй». В проекте отмечены: терраса. Площадь проекта 132 м², габариты 10.5×11, 4 спальни, 1 санузел. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: bs105h11Avgust_1, type: "photo", fit: "contain", blur: true },
+      { image: bs105h11Avgust_2, type: "photo", fit: "contain", blur: true },
+      { image: bs105h11Avgust_3, type: "photo", fit: "contain", blur: true },
+      { image: bs105h11Avgust_4, type: "photo", fit: "contain", blur: true },
+      { image: bs105h11Avgust_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 37, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для большой семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Классический", landSize: "10+ соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 125, name: "6х8 Савелий", badge: "Жилой дом", price: "886 000 ₽",
+    area: "82 м²", area_m2: 82, beds: 4, baths: 2, floors: 2, term: "от 1 мес.",
+    rooms: "4 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...BAGROVSTROY, siteUrl: "https://bagrovstroy.ru/karkasnye-doma/kd-savelij" },
+    description: "Каркасный дом 6х8 Савелий 82 м² размером 6×8 от производителя «Багров Строй». В проекте отмечены: терраса.",
+    descriptionLong: "Каркасный дом 6х8 Савелий 82 м² размером 6×8 от производителя «Багров Строй». В проекте отмечены: терраса. Площадь проекта 82 м², габариты 6×8, 4 спальни, 2 санузла. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: bs6h8Saveliy_1, type: "photo", fit: "contain", blur: true },
+      { image: bs6h8Saveliy_2, type: "photo", fit: "contain", blur: true },
+      { image: bs6h8Saveliy_3, type: "photo", fit: "contain", blur: true },
+      { image: bs6h8Saveliy_4, type: "photo", fit: "contain", blur: true },
+      { image: bs6h8Saveliy_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 38, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 126, name: "7х9 Гостимир", badge: "Жилой дом", price: "1 204 500 ₽",
+    area: "118 м²", area_m2: 118, beds: 3, baths: 2, floors: 2, term: "от 1 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...BAGROVSTROY, siteUrl: "https://bagrovstroy.ru/karkasnye-doma/kd-gostimir" },
+    description: "Каркасный дом 7х9 Гостимир 118 м² размером 7×9 от производителя «Багров Строй». В проекте отмечены: терраса.",
+    descriptionLong: "Каркасный дом 7х9 Гостимир 118 м² размером 7×9 от производителя «Багров Строй». В проекте отмечены: терраса. Площадь проекта 118 м², габариты 7×9, 3 спальни, 2 санузла. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: bs7h9Gostimir_1, type: "photo", fit: "contain", blur: true },
+      { image: bs7h9Gostimir_2, type: "photo", fit: "contain", blur: true },
+      { image: bs7h9Gostimir_3, type: "photo", fit: "contain", blur: true },
+      { image: bs7h9Gostimir_4, type: "photo", fit: "contain", blur: true },
+      { image: bs7h9Gostimir_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 39, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── ДомаКаркас · Санкт-Петербург и ЛО ──────────────────────────────────
+  {
+    id: 127, name: "КД-120", badge: "Жилой дом", price: "3 063 000 ₽",
+    area: "130 м²", area_m2: 130, beds: 3, baths: 2, floors: 1, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...DOMAKARKAS, siteUrl: "https://domakarkas.ru/proekty-karkasnyh-domov/kd-120/" },
+    description: "Каркасный дом КД-120 130 м² размером 14.5×9 от производителя «ДомаКаркас». В проекте отмечены: терраса, панорамные окна, сауна.",
+    descriptionLong: "Каркасный дом КД-120 130 м² размером 14.5×9 от производителя «ДомаКаркас». В проекте отмечены: терраса, панорамные окна, сауна. Площадь проекта 130 м², габариты 14.5×9, 3 спальни, 2 санузла. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: dkKd120_1, type: "photo", fit: "contain", blur: true },
+      { image: dkKd120_2, type: "photo", fit: "contain", blur: true },
+      { image: dkKd120_3, type: "photo", fit: "contain", blur: true },
+      { image: dkKd120_4, type: "photo", fit: "contain", blur: true },
+      { image: dkKd120_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 40, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для большой семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна", "Сауна"], style: "Современный", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 128, name: "КД-119", badge: "Жилой дом", price: "3 560 000 ₽",
+    area: "126 м²", area_m2: 126, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...DOMAKARKAS, siteUrl: "https://domakarkas.ru/proekty-karkasnyh-domov/kd-119/" },
+    description: "Каркасный дом КД-119 126 м² размером 14×9 от производителя «ДомаКаркас». В проекте отмечены: терраса.",
+    descriptionLong: "Каркасный дом КД-119 126 м² размером 14×9 от производителя «ДомаКаркас». В проекте отмечены: терраса. Площадь проекта 126 м², габариты 14×9, 3 спальни, 1 санузел. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: dkKd119_1, type: "photo", fit: "contain", blur: true },
+      { image: dkKd119_2, type: "photo", fit: "contain", blur: true },
+      { image: dkKd119_3, type: "photo", fit: "contain", blur: true },
+      { image: dkKd119_4, type: "photo", fit: "contain", blur: true },
+      { image: dkKd119_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 41, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для большой семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Современный", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 129, name: "КД-118", badge: "Жилой дом", price: "3 329 000 ₽",
+    area: "117 м²", area_m2: 117, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...DOMAKARKAS, siteUrl: "https://domakarkas.ru/proekty-karkasnyh-domov/kd-118/" },
+    description: "Каркасный дом КД-118 117 м² размером 13×9 от производителя «ДомаКаркас». В проекте отмечены: терраса.",
+    descriptionLong: "Каркасный дом КД-118 117 м² размером 13×9 от производителя «ДомаКаркас». В проекте отмечены: терраса. Площадь проекта 117 м², габариты 13×9, 3 спальни, 1 санузел. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: dkKd118_1, type: "photo", fit: "contain", blur: true },
+      { image: dkKd118_2, type: "photo", fit: "contain", blur: true },
+      { image: dkKd118_3, type: "photo", fit: "contain", blur: true },
+      { image: dkKd118_4, type: "photo", fit: "contain", blur: true },
+      { image: dkKd118_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 42, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 130, name: "КД-117", badge: "Новинка", price: "2 912 000 ₽",
+    area: "126 м²", area_m2: 126, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...DOMAKARKAS, siteUrl: "https://domakarkas.ru/proekty-karkasnyh-domov/kd-117/" },
+    description: "Каркасный дом КД-117 126 м² размером 14×9 от производителя «ДомаКаркас». В проекте отмечены: терраса, панорамные окна, второй свет.",
+    descriptionLong: "Каркасный дом КД-117 126 м² размером 14×9 от производителя «ДомаКаркас». В проекте отмечены: терраса, панорамные окна, второй свет. Площадь проекта 126 м², габариты 14×9, 3 спальни, 1 санузел. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: dkKd117_1, type: "photo", fit: "contain", blur: true },
+      { image: dkKd117_2, type: "photo", fit: "contain", blur: true },
+      { image: dkKd117_3, type: "photo", fit: "contain", blur: true },
+      { image: dkKd117_4, type: "photo", fit: "contain", blur: true },
+      { image: dkKd117_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 30, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для большой семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна", "Второй свет"], style: "Современный", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 131, name: "КД-116", badge: "Новинка", price: "2 739 000 ₽",
+    area: "108 м²", area_m2: 108, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...DOMAKARKAS, siteUrl: "https://domakarkas.ru/proekty-karkasnyh-domov/kd-116/" },
+    description: "Каркасный дом КД-116 108 м² размером 13.5×8 от производителя «ДомаКаркас». В проекте отмечены: терраса, второй свет.",
+    descriptionLong: "Каркасный дом КД-116 108 м² размером 13.5×8 от производителя «ДомаКаркас». В проекте отмечены: терраса, второй свет. Площадь проекта 108 м², габариты 13.5×8, 3 спальни, 1 санузел. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: dkKd116_1, type: "photo", fit: "contain", blur: true },
+      { image: dkKd116_2, type: "photo", fit: "contain", blur: true },
+      { image: dkKd116_3, type: "photo", fit: "contain", blur: true },
+      { image: dkKd116_4, type: "photo", fit: "contain", blur: true },
+      { image: dkKd116_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 31, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Второй свет"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── СК Гармония · Санкт-Петербург и ЛО ─────────────────────────────────
+  {
+    id: 132, name: "Вязьма", badge: "Хит", price: "3 732 000 ₽",
+    area: "120 м²", area_m2: 120, beds: 3, baths: 2, floors: 2, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...SK_GARMONIYA, siteUrl: "https://skgarmoniya.ru/catalog/doma-karkas/vyazma/" },
+    description: "Каркасный дом Вязьма 120 м² размером 7.5×9 от производителя СК «Гармония». В проекте отмечены: панорамные окна.",
+    descriptionLong: "Каркасный дом Вязьма 120 м² размером 7.5×9 от производителя СК «Гармония». В проекте отмечены: панорамные окна. Площадь проекта 120 м², габариты 7.5×9, 3 спальни, 2 санузла. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: sgVyazma_1, type: "photo", fit: "contain", blur: true },
+      { image: sgVyazma_2, type: "photo", fit: "contain", blur: true },
+      { image: sgVyazma_3, type: "photo", fit: "contain", blur: true },
+      { image: sgVyazma_4, type: "photo", fit: "contain", blur: true },
+      { image: sgVyazma_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 32, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для большой семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна"], style: "Скандинавский", landSize: "10+ соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 133, name: "Сосновый бор", badge: "Хит", price: "по запросу",
+    area: "99 м²", area_m2: 99, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...SK_GARMONIYA, siteUrl: "https://skgarmoniya.ru/catalog/doma-karkas/sosnovyy-bor/" },
+    description: "Каркасный дом Сосновый бор 99 м² размером 8×14 от производителя СК «Гармония». В проекте отмечены: второй свет.",
+    descriptionLong: "Каркасный дом Сосновый бор 99 м² размером 8×14 от производителя СК «Гармония». В проекте отмечены: второй свет. Площадь проекта 99 м², габариты 8×14, 3 спальни, 1 санузел. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: sgSosnovyyBor_1, type: "photo", fit: "contain", blur: true },
+      { image: sgSosnovyyBor_2, type: "photo", fit: "contain", blur: true },
+      { image: sgSosnovyyBor_3, type: "photo", fit: "contain", blur: true },
+      { image: sgSosnovyyBor_4, type: "photo", fit: "contain", blur: true },
+      { image: sgSosnovyyBor_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 33, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Второй свет"], style: "Скандинавский", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 134, name: "Троицк", badge: "Хит", price: "2 288 000 ₽",
+    area: "54 м²", area_m2: 54, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...SK_GARMONIYA, siteUrl: "https://skgarmoniya.ru/catalog/doma-karkas/troiczk/" },
+    description: "Каркасный дом Троицк 54 м² размером 6×9 от производителя СК «Гармония». В проекте отмечены: терраса.",
+    descriptionLong: "Каркасный дом Троицк 54 м² размером 6×9 от производителя СК «Гармония». В проекте отмечены: терраса. Площадь проекта 54 м², габариты 6×9, 2 спальни, 1 санузел. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: sgTroitsk_1, type: "photo", fit: "contain", blur: true },
+      { image: sgTroitsk_2, type: "photo", fit: "contain", blur: true },
+      { image: sgTroitsk_3, type: "photo", fit: "contain", blur: true },
+      { image: sgTroitsk_4, type: "photo", fit: "contain", blur: true },
+      { image: sgTroitsk_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 34, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Для пары"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Скандинавский", landSize: "3–6 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 135, name: "Выборг", badge: "Новинка", price: "по запросу",
+    area: "105 м²", area_m2: 105, beds: 3, baths: 2, floors: 1, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...SK_GARMONIYA, siteUrl: "https://skgarmoniya.ru/catalog/doma-karkas/vyborg/" },
+    description: "Каркасный дом Выборг 105 м² размером 13×9 от производителя СК «Гармония». В проекте отмечены: панорамные окна.",
+    descriptionLong: "Каркасный дом Выборг 105 м² размером 13×9 от производителя СК «Гармония». В проекте отмечены: панорамные окна. Площадь проекта 105 м², габариты 13×9, 3 спальни, 2 санузла. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: sgVyborg_1, type: "photo", fit: "contain", blur: true },
+      { image: sgVyborg_2, type: "photo", fit: "contain", blur: true },
+      { image: sgVyborg_3, type: "photo", fit: "contain", blur: true },
+      { image: sgVyborg_4, type: "photo", fit: "contain", blur: true },
+      { image: sgVyborg_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 35, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна"], style: "Скандинавский", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 136, name: "Самара", badge: "Жилой дом", price: "3 920 000 ₽",
+    area: "152 м²", area_m2: 152, beds: 4, baths: 2, floors: 2, term: "от 2 мес.",
+    rooms: "4 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...SK_GARMONIYA, siteUrl: "https://skgarmoniya.ru/catalog/doma-karkas/samara/" },
+    description: "Каркасный дом Самара 152 м² размером 8×9.5 от производителя СК «Гармония». В проекте отмечены: терраса.",
+    descriptionLong: "Каркасный дом Самара 152 м² размером 8×9.5 от производителя СК «Гармония». В проекте отмечены: терраса. Площадь проекта 152 м², габариты 8×9.5, 4 спальни, 2 санузла. Кнопка перехода ведёт на страницу проекта на сайте производителя.",
+    gallery: [
+      { image: sgSamara_1, type: "photo", fit: "contain", blur: true },
+      { image: sgSamara_2, type: "photo", fit: "contain", blur: true },
+      { image: sgSamara_3, type: "photo", fit: "contain", blur: true },
+      { image: sgSamara_4, type: "photo", fit: "contain", blur: true },
+      { image: sgSamara_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 36, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для большой семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Скандинавский", landSize: "10+ соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
 ];
 
