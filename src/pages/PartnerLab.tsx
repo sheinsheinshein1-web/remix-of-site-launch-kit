@@ -631,10 +631,10 @@ const Partner = () => {
                 <h3 className="text-[22px] font-bold mb-2">Контакты</h3>
                 {[
                   { label: "Сайт", icon: Globe, href: partner.siteUrl },
-                  { label: "info@company.ru", icon: Mail, href: undefined },
-                  { label: "+7 (___) ___-__-__", icon: Phone, href: undefined },
+                  partner.email ? { label: partner.email, icon: Mail, href: `mailto:${partner.email}` } : null,
+                  partner.phone ? { label: partner.phone, icon: Phone, href: `tel:${partner.phone.replace(/[^+\d]/g, "")}` } : null,
                   { label: "Telegram", icon: Send, href: undefined },
-                ].map((item) => (
+                ].filter(Boolean).map((item: any) => (
                   <a
                     key={item.label}
                     href={item.href}
