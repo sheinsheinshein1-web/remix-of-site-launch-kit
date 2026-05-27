@@ -626,7 +626,10 @@ export type Maker = {
   logo?: string;
   siteUrl?: string;
   productionAddress?: string;
+  phone?: string;
+  email?: string;
 };
+
 
 export type Project = {
   id: number;
@@ -671,7 +674,10 @@ const PLATFORMA: Maker = {
   id: "platforma",
   siteUrl: "https://platforma-modul.ru/",
   productionAddress: "г. Березовский, Южная промзона, д. 21",
+  phone: "+7 (343) 226-11-40",
+  email: "sales@platforma-modul.ru",
 };
+
 const BYGGE: Maker = {
   name: "Bygge",
   initials: "BG",
@@ -3251,6 +3257,8 @@ export type MakerSummary = {
   siteUrl?: string;
   technology: string;
   productionAddress?: string;
+  phone?: string;
+  email?: string;
 };
 export const makersById: Record<string, MakerSummary> = projects.reduce((acc, p) => {
   const id = p.maker.id;
@@ -3263,9 +3271,12 @@ export const makersById: Record<string, MakerSummary> = projects.reduce((acc, p)
     siteUrl: p.maker.siteUrl,
     technology: p.technology,
     productionAddress: p.maker.productionAddress,
+    phone: p.maker.phone,
+    email: p.maker.email,
   };
   return acc;
 }, {} as Record<string, MakerSummary>);
+
 
 // ============================================================================
 // ПРОИЗВОДИТЕЛИ — count рассчитывается из projects автоматически
