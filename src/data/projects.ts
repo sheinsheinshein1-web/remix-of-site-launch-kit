@@ -674,7 +674,10 @@ const PLATFORMA: Maker = {
   id: "platforma",
   siteUrl: "https://platforma-modul.ru/",
   productionAddress: "г. Березовский, Южная промзона, д. 21",
+  phone: "+7 (343) 226-11-40",
+  email: "sales@platforma-modul.ru",
 };
+
 const BYGGE: Maker = {
   name: "Bygge",
   initials: "BG",
