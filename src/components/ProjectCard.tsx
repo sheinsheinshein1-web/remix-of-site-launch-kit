@@ -103,7 +103,12 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
           </div>
         </SwipeableGallery>
         <div className="px-[10px] pt-1 pb-1">
-          <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{project.name}</h2>
+          <div className="flex items-center gap-1.5 min-w-0">
+            <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{project.name}</h2>
+            {project.maker.id === "platforma" && (
+              <span className="shrink-0 text-[9px] font-semibold uppercase tracking-wide bg-primary text-primary-foreground px-1.5 py-[2px] rounded-md">Проверено</span>
+            )}
+          </div>
           <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">{/по запросу/i.test(project.price) ? project.price : `от ${project.price}`}</div>
           <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[3px]">
             <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{project.area}</span>
