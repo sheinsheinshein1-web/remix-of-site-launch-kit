@@ -288,7 +288,7 @@ const FeaturedProjects = () => {
             <div className="text-[13px] font-light text-muted-foreground">Выберите другой город в шапке, чтобы увидеть подборку</div>
           </div>
         )}
-        <div className={`grid grid-cols-2 md:grid-cols-4 gap-x-[2px] gap-y-[6px] md:gap-4 md:mt-0 ${isEmpty ? "hidden" : ""}`}>
+        <div className={`grid grid-flow-row-dense grid-cols-2 md:grid-cols-4 gap-x-[2px] gap-y-[6px] md:gap-4 md:mt-0 ${isEmpty ? "hidden" : ""}`}>
           {items.map(({ project, key }) => (
             <div key={key} className={project.id === 32 ? "col-span-2 md:col-span-2" : undefined}>
               <ProjectCard projectId={project.id} onCardClick={handleCardClick} />
