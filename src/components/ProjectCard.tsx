@@ -47,9 +47,10 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
   const likesCount = project.likes + (liked ? 1 : 0);
 
 
+  const partnerHref = `/partner/${project.maker.id}`;
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (onCardClick) onCardClick(e, project.id);
-    else navigateWithTransition(e, navigate, `/project/${project.id}`);
+    else navigateWithTransition(e, navigate, partnerHref);
   };
 
   const handleFavToggle = (e: React.MouseEvent) => {
