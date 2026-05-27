@@ -104,7 +104,7 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
         </SwipeableGallery>
         <div className="px-[10px] pt-1 pb-1">
           <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{project.name}</h2>
-          <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">от {project.price}</div>
+          <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">{/по запросу/i.test(project.price) ? project.price : `от ${project.price}`}</div>
           <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[3px]">
             <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{project.area}</span>
             <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{project.beds}</span>
