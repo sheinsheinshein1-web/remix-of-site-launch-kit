@@ -576,7 +576,7 @@ const ProjectDetail = () => {
             >
               <div className="w-9 h-9 bg-background rounded-lg flex items-center justify-center text-foreground text-[10px] font-bold flex-shrink-0 overflow-hidden">
                 {project.makerLogo ? (
-                  <img src={project.makerLogo} alt={project.maker} className="w-full h-full object-contain" loading="lazy" decoding="async" />
+                  <img src={project.makerLogo} alt={project.maker} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                 ) : (
                   project.makerInitials
                 )}
