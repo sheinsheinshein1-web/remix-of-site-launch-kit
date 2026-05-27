@@ -55,6 +55,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
   // вертикальный скролл во время горизонтального свайпа (без дёрганья страницы).
   useEffect(() => {
     if (!isMobile) return;
+    if (count <= 1) return;
     const el = containerRef.current;
     if (!el) return;
 
