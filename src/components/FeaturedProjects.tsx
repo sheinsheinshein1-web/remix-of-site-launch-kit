@@ -262,7 +262,11 @@ const FeaturedProjects = () => {
       // Сохраняем позицию для восстановления
       sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
       const proj = projects.find((p) => p.id === projectId);
-      const href = proj ? `/partner/${proj.maker.id}` : `/project/${projectId}`;
+      // Широкие карточки Платформы — ведут в "магазин" производителя.
+      // Обычные карточки — открывают карточку проекта.
+      const href = proj && proj.maker.name === "Платформа"
+        ? `/partner/${proj.maker.id}`
+        : `/project/${projectId}`;
       navigateWithTransition(e, navigate, href);
     },
     [navigate]
