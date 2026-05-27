@@ -582,7 +582,12 @@ const ProjectDetail = () => {
                 )}
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-[13px] font-semibold text-foreground leading-tight truncate">{project.maker}</div>
+                <div className="flex items-center gap-1.5 min-w-0">
+                  <div className="text-[13px] font-semibold text-foreground leading-tight truncate">{project.maker}</div>
+                  {project.makerId === "platforma" && (
+                    <span className="shrink-0 text-[9px] font-medium uppercase tracking-wide bg-primary/15 text-primary px-1.5 py-[2px] rounded-lg">Проверено</span>
+                  )}
+                </div>
                 {project.makerId === "platforma" ? (
                   <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-0.5">
                     <Star className="w-3 h-3 fill-primary text-primary" strokeWidth={1.5} />
