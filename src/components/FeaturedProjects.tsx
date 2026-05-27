@@ -92,7 +92,7 @@ function getPagedProjects(page: number, seed: number, source: typeof baseProject
   let pIdx = 0;
   let oIdx = 0;
   const FIRST_AT = 2;
-  const STEP = 4;
+  const STEP = 5;
   let i = 0;
   while (pIdx < platformaItems.length || oIdx < otherItems.length) {
     const shouldPlacePlatforma =
