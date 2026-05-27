@@ -30,6 +30,7 @@
 
 
 // Платформа
+import makerPlatformaLogo from "@/assets/maker-platforma.webp";
 import wideHouse1 from "@/assets/wide-house-1.webp";
 import wideHouse2 from "@/assets/wide-house-2.webp";
 import wideHousePlan3d from "@/assets/wide-house-plan-3d.webp";
