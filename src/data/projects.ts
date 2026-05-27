@@ -3257,6 +3257,8 @@ export type MakerSummary = {
   siteUrl?: string;
   technology: string;
   productionAddress?: string;
+  phone?: string;
+  email?: string;
 };
 export const makersById: Record<string, MakerSummary> = projects.reduce((acc, p) => {
   const id = p.maker.id;
@@ -3269,9 +3271,12 @@ export const makersById: Record<string, MakerSummary> = projects.reduce((acc, p)
     siteUrl: p.maker.siteUrl,
     technology: p.technology,
     productionAddress: p.maker.productionAddress,
+    phone: p.maker.phone,
+    email: p.maker.email,
   };
   return acc;
 }, {} as Record<string, MakerSummary>);
+
 
 // ============================================================================
 // ПРОИЗВОДИТЕЛИ — count рассчитывается из projects автоматически
