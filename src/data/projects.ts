@@ -626,7 +626,10 @@ export type Maker = {
   logo?: string;
   siteUrl?: string;
   productionAddress?: string;
+  phone?: string;
+  email?: string;
 };
+
 
 export type Project = {
   id: number;
