@@ -81,15 +81,38 @@ function getPagedProjects(page: number, seed: number, source: typeof baseProject
     }
     return a;
   };
-  const ordered = seed === 0
+  const baseOrder = seed === 0
     ? shuffleWithSeed(interleaveByMaker(source), 1337)
     : shuffleWithSeed(source, seed);
+  // Поднимаем карточки Платформы повыше: первая идёт после первых двух,
+  // затем равномерно с шагом 4. Остальные проекты остаются в исходном порядке.
+  const platformaItems = baseOrder.filter((p) => p.maker === "Платформа");
+  const otherItems = baseOrder.filter((p) => p.maker !== "Платформа");
+  const ordered: typeof baseProjects = [];
+  let pIdx = 0;
+  let oIdx = 0;
+  const FIRST_AT = 2;
+  const STEP = 4;
+  let i = 0;
+  while (pIdx < platformaItems.length || oIdx < otherItems.length) {
+    const shouldPlacePlatforma =
+      pIdx < platformaItems.length && i >= FIRST_AT && (i - FIRST_AT) % STEP === 0;
+    if (shouldPlacePlatforma) {
+      ordered.push(platformaItems[pIdx++]);
+    } else if (oIdx < otherItems.length) {
+      ordered.push(otherItems[oIdx++]);
+    } else {
+      ordered.push(platformaItems[pIdx++]);
+    }
+    i++;
+  }
   const total = page * PAGE_SIZE;
   const items: { project: typeof baseProjects[number]; key: string }[] = [];
-  for (let i = 0; i < total; i++) {
-    const project = ordered[i % ordered.length];
-    items.push({ project, key: `${seed}-${project.id}-${i}` });
+  for (let k = 0; k < total; k++) {
+    const project = ordered[k % ordered.length];
+    items.push({ project, key: `${seed}-${project.id}-${k}` });
   }
+
   return items;
 }
 
