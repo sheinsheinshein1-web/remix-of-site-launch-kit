@@ -673,6 +673,7 @@ const PLATFORMA: Maker = {
   name: "Платформа",
   initials: "ПЛ",
   id: "platforma",
+  logo: makerPlatformaLogo,
   siteUrl: "https://platforma-modul.ru/",
   productionAddress: "г. Березовский, Южная промзона, д. 21",
   phone: "+7 (343) 226-11-40",
