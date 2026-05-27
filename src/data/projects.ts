@@ -488,6 +488,31 @@ import sgSamara_2 from "@/assets/sk-garmoniya/samara/2.webp";
 import sgSamara_3 from "@/assets/sk-garmoniya/samara/3.webp";
 import sgSamara_4 from "@/assets/sk-garmoniya/samara/4.webp";
 import sgSamara_5 from "@/assets/sk-garmoniya/samara/5.webp";
+import bdBogatyrLk7h9_1 from "@/assets/berest-dom/bogatyr-lk-7h9/1.webp";
+import bdBogatyrLk7h9_2 from "@/assets/berest-dom/bogatyr-lk-7h9/2.webp";
+import bdBogatyrLk7h9_3 from "@/assets/berest-dom/bogatyr-lk-7h9/3.webp";
+import bdBogatyrLk7h9_4 from "@/assets/berest-dom/bogatyr-lk-7h9/4.webp";
+import bdBogatyrLk7h9_5 from "@/assets/berest-dom/bogatyr-lk-7h9/5.webp";
+import bdKareliya27h9_1 from "@/assets/berest-dom/kareliya-2-7h9/1.webp";
+import bdKareliya27h9_2 from "@/assets/berest-dom/kareliya-2-7h9/2.webp";
+import bdKareliya27h9_3 from "@/assets/berest-dom/kareliya-2-7h9/3.webp";
+import bdKareliya27h9_4 from "@/assets/berest-dom/kareliya-2-7h9/4.webp";
+import bdKareliya27h9_5 from "@/assets/berest-dom/kareliya-2-7h9/5.webp";
+import bdSenator75h9_1 from "@/assets/berest-dom/senator-7-5h9/1.webp";
+import bdSenator75h9_2 from "@/assets/berest-dom/senator-7-5h9/2.webp";
+import bdSenator75h9_3 from "@/assets/berest-dom/senator-7-5h9/3.webp";
+import bdSenator75h9_4 from "@/assets/berest-dom/senator-7-5h9/4.webp";
+import bdSenator75h9_5 from "@/assets/berest-dom/senator-7-5h9/5.webp";
+import bdKareliya17h8_1 from "@/assets/berest-dom/kareliya-1-7h8/1.webp";
+import bdKareliya17h8_2 from "@/assets/berest-dom/kareliya-1-7h8/2.webp";
+import bdKareliya17h8_3 from "@/assets/berest-dom/kareliya-1-7h8/3.webp";
+import bdKareliya17h8_4 from "@/assets/berest-dom/kareliya-1-7h8/4.webp";
+import bdKareliya17h8_5 from "@/assets/berest-dom/kareliya-1-7h8/5.webp";
+import bdSenator285h105_1 from "@/assets/berest-dom/senator-2-8-5h10-5/1.webp";
+import bdSenator285h105_2 from "@/assets/berest-dom/senator-2-8-5h10-5/2.webp";
+import bdSenator285h105_3 from "@/assets/berest-dom/senator-2-8-5h10-5/3.webp";
+import bdSenator285h105_4 from "@/assets/berest-dom/senator-2-8-5h10-5/4.webp";
+import bdSenator285h105_5 from "@/assets/berest-dom/senator-2-8-5h10-5/5.webp";
 
 import dd_start30_1 from "@/assets/divodom/start-30/1.webp";
 import dd_start30_2 from "@/assets/divodom/start-30/2.webp";
@@ -677,6 +702,12 @@ const HOCHU_DOM: Maker = {
   initials: "ХД",
   id: "hochu-dom",
   siteUrl: "https://hochu-dom.ru/catalog/",
+};
+const BEREST_DOM: Maker = {
+  name: "Берест",
+  initials: "БР",
+  id: "berest-dom",
+  siteUrl: "https://berest-dom.ru/product/",
 };
 const SCANDI_ECODOM: Maker = {
   name: "Сканди ЭкоДом",
@@ -2750,6 +2781,108 @@ export const projects: Project[] = [
     technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
     features: ["Терраса"], style: "Скандинавский", landSize: "10+ соток",
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── Берест · Москва и МО ───────────────────────────────────────────────
+  {
+    id: 137, name: "Богатырь ЛК 7×9", badge: "Хит", price: "3 511 000 ₽",
+    area: "102,33 м²", area_m2: 102.33, beds: 3, baths: 1, floors: 2, term: "от 2 мес.",
+    rooms: "5 комнат", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...BEREST_DOM, siteUrl: "https://berest-dom.ru/product/nedorogie-doma/proekt-karkasnogo-doma-bogatyr-lk-7kh9/" },
+    description: "Каркасный дом «Богатырь ЛК» 102,33 м² размером 7 × 9 м с мансардой.",
+    descriptionLong: "Проект «Богатырь ЛК» от компании «Берест»: каркасный дом площадью 102,33 м², габариты 7 × 9 м. В карточке производителя указаны пять комнат, один санузел и стоимость комплектации под ключ.",
+    gallery: [
+      { image: bdBogatyrLk7h9_1, type: "photo", fit: "contain", blur: true },
+      { image: bdBogatyrLk7h9_2, type: "photo", fit: "contain", blur: true },
+      { image: bdBogatyrLk7h9_3, type: "photo", fit: "contain", blur: true },
+      { image: bdBogatyrLk7h9_4, type: "photo", fit: "contain", blur: true },
+      { image: bdBogatyrLk7h9_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 37, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Мансарда"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 138, name: "Карелия-2 7×9", badge: "Просмотр на площадке", price: "4 323 000 ₽",
+    area: "110,5 м²", area_m2: 110.5, beds: 3, baths: 2, floors: 2, term: "от 2 мес.",
+    rooms: "5 комнат", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...BEREST_DOM, siteUrl: "https://berest-dom.ru/product/dlya-PMZH/proekt-kareliya-2/" },
+    description: "Полутораэтажный каркасный дом «Карелия-2» 110,5 м² размером 7 × 9 м.",
+    descriptionLong: "Проект «Карелия-2» от компании «Берест»: полутораэтажный каркасный дом площадью 110,5 м², габариты 7 × 9 м. В карточке производителя указаны пять комнат, два санузла и возможность просмотра проекта на площадке.",
+    gallery: [
+      { image: bdKareliya27h9_1, type: "photo", fit: "contain", blur: true },
+      { image: bdKareliya27h9_2, type: "photo", fit: "contain", blur: true },
+      { image: bdKareliya27h9_3, type: "photo", fit: "contain" },
+      { image: bdKareliya27h9_4, type: "photo", fit: "contain" },
+      { image: bdKareliya27h9_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 38, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Мансарда"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 139, name: "Сенатор 7,5×9", badge: "Новинка", price: "4 695 000 ₽",
+    area: "120 м²", area_m2: 120, beds: 2, baths: 1, floors: 2, term: "от 2 мес.",
+    rooms: "4 комнаты", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...BEREST_DOM, siteUrl: "https://berest-dom.ru/product/dlya-PMZH/proekt-karkasnogo-doma-senator-7-5kh9/" },
+    description: "Полутораэтажный каркасный дом «Сенатор» 120 м² размером 7,5 × 9 м.",
+    descriptionLong: "Проект «Сенатор» от компании «Берест»: полутораэтажный каркасный дом площадью 120 м², габариты 7,5 × 9 м. В карточке производителя указаны четыре комнаты и стоимость комплектации под ключ.",
+    gallery: [
+      { image: bdSenator75h9_1, type: "photo", fit: "contain", blur: true },
+      { image: bdSenator75h9_2, type: "photo", fit: "contain", blur: true },
+      { image: bdSenator75h9_3, type: "photo", fit: "contain", blur: true },
+      { image: bdSenator75h9_4, type: "photo", fit: "contain", blur: true },
+      { image: bdSenator75h9_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 39, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Мансарда"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 140, name: "Карелия-1 7×8", badge: "Рекомендуем", price: "3 933 000 ₽",
+    area: "100,15 м²", area_m2: 100.15, beds: 4, baths: 2, floors: 2, term: "от 2 мес.",
+    rooms: "6 комнат", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...BEREST_DOM, siteUrl: "https://berest-dom.ru/product/nebolshie-kottedzhi/proekt-kareliya-1/" },
+    description: "Полутораэтажный каркасный дом «Карелия-1» 100,15 м² размером 7 × 8 м.",
+    descriptionLong: "Проект «Карелия-1» от компании «Берест»: полутораэтажный каркасный дом площадью 100,15 м², габариты 7 × 8 м. В карточке производителя указаны шесть комнат, два санузла и стоимость комплектации под ключ.",
+    gallery: [
+      { image: bdKareliya17h8_1, type: "photo", fit: "contain", blur: true },
+      { image: bdKareliya17h8_2, type: "photo", fit: "contain" },
+      { image: bdKareliya17h8_3, type: "photo", fit: "contain" },
+      { image: bdKareliya17h8_4, type: "photo", fit: "contain", blur: true },
+      { image: bdKareliya17h8_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 40, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Мансарда"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 141, name: "Сенатор — 2 8,5×10,5", badge: "Новинка", price: "6 288 000 ₽",
+    area: "174,5 м²", area_m2: 174.5, beds: 4, baths: 2, floors: 2, term: "от 2 мес.",
+    rooms: "6 комнат", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...BEREST_DOM, siteUrl: "https://berest-dom.ru/product/dlya-PMZH/proekt-karkasnogo-doma-senator-2-8-5kh10-5/" },
+    description: "Полутораэтажный каркасный дом «Сенатор — 2» 174,5 м² размером 8,5 × 10,5 м.",
+    descriptionLong: "Проект «Сенатор — 2» от компании «Берест»: полутораэтажный каркасный дом площадью 174,5 м², габариты 8,5 × 10,5 м. В карточке производителя указаны шесть комнат, два санузла и стоимость комплектации под ключ.",
+    gallery: [
+      { image: bdSenator285h105_1, type: "photo", fit: "contain", blur: true },
+      { image: bdSenator285h105_2, type: "photo", fit: "contain", blur: true },
+      { image: bdSenator285h105_3, type: "photo", fit: "contain" },
+      { image: bdSenator285h105_4, type: "photo", fit: "contain" },
+      { image: bdSenator285h105_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 41, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для большой семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Мансарда"], style: "Классический", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
 ];
 
