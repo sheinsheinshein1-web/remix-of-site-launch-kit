@@ -296,7 +296,13 @@ const Partner = () => {
       </div>
 
       <div className="px-4 md:px-6 pt-4 md:pt-5 pb-5 md:pb-6 flex items-center gap-3 md:gap-4">
-        <div className="w-[68px] h-[68px] md:w-[80px] md:h-[80px] rounded-2xl bg-secondary text-foreground/30 flex items-center justify-center text-base md:text-lg font-bold shrink-0">{partner.initials}</div>
+        <div className="w-[68px] h-[68px] md:w-[80px] md:h-[80px] rounded-2xl bg-secondary text-foreground/30 flex items-center justify-center text-base md:text-lg font-bold shrink-0 overflow-hidden">
+          {partner.logo ? (
+            <img src={partner.logo} alt={partner.name} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+          ) : (
+            partner.initials
+          )}
+        </div>
         <div className="flex-1 min-w-0">
           <h1 className="text-[19px] md:text-[22px] font-bold text-foreground leading-tight mb-0.5 md:mb-1 truncate">{partner.name}</h1>
           <p className="text-[13px] md:text-[14px] text-muted-foreground truncate">{partner.category} · {partner.city}</p>
