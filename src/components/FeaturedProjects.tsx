@@ -245,7 +245,9 @@ const FeaturedProjects = () => {
     (e: React.MouseEvent<HTMLAnchorElement>, projectId: number) => {
       // Сохраняем позицию для восстановления
       sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
-      navigateWithTransition(e, navigate, `/project/${projectId}`);
+      const proj = projects.find((p) => p.id === projectId);
+      const href = proj ? `/partner/${proj.maker.id}` : `/project/${projectId}`;
+      navigateWithTransition(e, navigate, href);
     },
     [navigate]
   );
