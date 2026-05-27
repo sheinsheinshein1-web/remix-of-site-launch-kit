@@ -147,6 +147,7 @@ const Partner = () => {
   const partner = {
     name: summary?.name ?? "Партнёр",
     initials: summary?.initials ?? "—",
+    logo: summary?.logo,
     city: summary?.city ?? "",
     category: (summary?.technology === "Модульный дом" ? "Модульные дома" : summary?.technology) ?? "Производитель домов",
     about: aboutByMakerId[makerId] ?? `${summary?.name ?? "Партнёр"} — производитель домов.`,
