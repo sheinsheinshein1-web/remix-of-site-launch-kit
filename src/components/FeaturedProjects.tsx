@@ -114,16 +114,9 @@ const FeaturedProjects = () => {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const didMountRef = useRef(false);
   const rawItems = getPagedProjects(page, seed, cityProjects);
-  // Поднимаем карточку Wide House (id 32) на позицию после первых двух
-  const items = (() => {
-    const arr = [...rawItems];
-    const idx = arr.findIndex((it) => it.project.id === 32);
-    if (idx > 2) {
-      const [wide] = arr.splice(idx, 1);
-      arr.splice(2, 0, wide);
-    }
-    return arr;
-  })();
+  // Все проекты Платформы выводим крупными (на 2 колонки).
+  const isWide = (maker: string) => maker === "Платформа";
+  const items = rawItems;
   const MAX_PAGE = 50;
   const isEmpty = cityProjects.length === 0;
   const [restoreMinHeight, setRestoreMinHeight] = useState<number | undefined>(() => {
