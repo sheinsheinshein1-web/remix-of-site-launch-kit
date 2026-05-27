@@ -30,6 +30,7 @@
 
 
 // Платформа
+import makerPlatformaLogo from "@/assets/maker-platforma.webp";
 import wideHouse1 from "@/assets/wide-house-1.webp";
 import wideHouse2 from "@/assets/wide-house-2.webp";
 import wideHousePlan3d from "@/assets/wide-house-plan-3d.webp";
@@ -673,6 +674,7 @@ const PLATFORMA: Maker = {
   name: "Платформа",
   initials: "ПЛ",
   id: "platforma",
+  logo: makerPlatformaLogo,
   siteUrl: "https://platforma-modul.ru/",
   productionAddress: "г. Березовский, Южная промзона, д. 21",
   phone: "+7 (343) 226-11-40",
