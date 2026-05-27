@@ -76,9 +76,7 @@ const OtherProjectsFeed = ({ currentId }: Props) => {
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, projectId: number) => {
       sessionStorage.setItem(scrollKey, String(window.scrollY));
-      const proj = allProjects.find((p) => p.id === projectId);
-      const href = proj ? `/partner/${proj.maker.id}` : `/project/${projectId}`;
-      navigateWithTransition(e, navigate, href);
+      navigateWithTransition(e, navigate, `/project/${projectId}`);
     },
     [navigate, scrollKey]
   );
