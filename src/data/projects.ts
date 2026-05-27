@@ -513,6 +513,45 @@ import bdSenator285h105_2 from "@/assets/berest-dom/senator-2-8-5h10-5/2.webp";
 import bdSenator285h105_3 from "@/assets/berest-dom/senator-2-8-5h10-5/3.webp";
 import bdSenator285h105_4 from "@/assets/berest-dom/senator-2-8-5h10-5/4.webp";
 import bdSenator285h105_5 from "@/assets/berest-dom/senator-2-8-5h10-5/5.webp";
+import riftDg51_1 from "@/assets/rift/dg51/1.webp";
+import riftDg51_2 from "@/assets/rift/dg51/2.webp";
+import riftDg51_3 from "@/assets/rift/dg51/3.webp";
+import riftDg50_1 from "@/assets/rift/dg50/1.webp";
+import riftDg50_2 from "@/assets/rift/dg50/2.webp";
+import riftDg50_3 from "@/assets/rift/dg50/3.webp";
+import riftXx27_1 from "@/assets/rift/xx27/1.webp";
+import riftXx27_2 from "@/assets/rift/xx27/2.webp";
+import riftXx27_3 from "@/assets/rift/xx27/3.webp";
+import riftXx27_4 from "@/assets/rift/xx27/4.webp";
+import riftDg49_1 from "@/assets/rift/dg49/1.webp";
+import riftDg49_2 from "@/assets/rift/dg49/2.webp";
+import riftDg49_3 from "@/assets/rift/dg49/3.webp";
+import riftDg49_4 from "@/assets/rift/dg49/4.webp";
+import riftDg49_5 from "@/assets/rift/dg49/5.webp";
+import riftXx05_1 from "@/assets/rift/xx05/1.webp";
+import riftXx05_2 from "@/assets/rift/xx05/2.webp";
+import riftXx05_3 from "@/assets/rift/xx05/3.webp";
+import riftXx05_4 from "@/assets/rift/xx05/4.webp";
+import riftXx05_5 from "@/assets/rift/xx05/5.webp";
+import ibKd38_1 from "@/assets/izbrusa/kd-38/1.webp";
+import ibKd38_2 from "@/assets/izbrusa/kd-38/2.webp";
+import ibKd29_1 from "@/assets/izbrusa/kd-29/1.webp";
+import ibKd29_2 from "@/assets/izbrusa/kd-29/2.webp";
+import ibKd29_3 from "@/assets/izbrusa/kd-29/3.webp";
+import ibKd29_4 from "@/assets/izbrusa/kd-29/4.webp";
+import ibKd29_5 from "@/assets/izbrusa/kd-29/5.webp";
+import ibKd41_1 from "@/assets/izbrusa/kd-41/1.webp";
+import ibKd41_2 from "@/assets/izbrusa/kd-41/2.webp";
+import ibKd12_1 from "@/assets/izbrusa/kd-12/1.webp";
+import ibKd12_2 from "@/assets/izbrusa/kd-12/2.webp";
+import ibKd12_3 from "@/assets/izbrusa/kd-12/3.webp";
+import ibKd12_4 from "@/assets/izbrusa/kd-12/4.webp";
+import ibKd12_5 from "@/assets/izbrusa/kd-12/5.webp";
+import ibKd36_1 from "@/assets/izbrusa/kd-36/1.webp";
+import ibKd36_2 from "@/assets/izbrusa/kd-36/2.webp";
+import ibKd36_3 from "@/assets/izbrusa/kd-36/3.webp";
+import ibKd36_4 from "@/assets/izbrusa/kd-36/4.webp";
+import ibKd36_5 from "@/assets/izbrusa/kd-36/5.webp";
 
 import dd_start30_1 from "@/assets/divodom/start-30/1.webp";
 import dd_start30_2 from "@/assets/divodom/start-30/2.webp";
@@ -708,6 +747,18 @@ const BEREST_DOM: Maker = {
   initials: "БР",
   id: "berest-dom",
   siteUrl: "https://berest-dom.ru/product/",
+};
+const RIFT: Maker = {
+  name: "РИФТ",
+  initials: "РФ",
+  id: "rift",
+  siteUrl: "https://www.rift.ru/projects/doma-i-kottedzhi/karkasnye-doma/",
+};
+const IZBRUSA: Maker = {
+  name: "Из Бруса",
+  initials: "ИБ",
+  id: "izbrusa",
+  siteUrl: "https://izbrusa.com/category/karkasnye-doma/",
 };
 const SCANDI_ECODOM: Maker = {
   name: "Сканди ЭкоДом",
@@ -2882,6 +2933,199 @@ export const projects: Project[] = [
     suitableFor: ["Постоянное проживание", "Для большой семьи"],
     technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
     features: ["Мансарда"], style: "Классический", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── РИФТ · Москва и МО ────────────────────────────────────────────────────
+  {
+    id: 142, name: "DG51 15×8", badge: "Хит", price: "5 600 000 ₽",
+    area: "129 м²", area_m2: 129, beds: 4, baths: 1, floors: 1, term: "от 45 д.",
+    rooms: "4 комнаты", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...RIFT, siteUrl: "https://www.rift.ru/project/karkasnyj-dom-dg51/" },
+    description: "Одноэтажный каркасный дом DG51 площадью 129 м² размером 15 × 8 м.",
+    descriptionLong: "Проект DG51 от компании «РИФТ»: одноэтажный каркасный дом площадью 129 м², габариты 15 × 8 м. В карточке производителя указаны комплектации без отделки и с отделкой.",
+    gallery: [
+      { image: riftDg51_1, type: "photo", fit: "contain", blur: true },
+      { image: riftDg51_2, type: "photo", fit: "contain", blur: true },
+      { image: riftDg51_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 42, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна"], style: "Современный", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 143, name: "DG50 12×8", badge: "Хит", price: "4 150 000 ₽",
+    area: "111 м²", area_m2: 111, beds: 3, baths: 1, floors: 1, term: "от 45 д.",
+    rooms: "4 комнаты", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...RIFT, siteUrl: "https://www.rift.ru/project/karkasnyj-dom-dg50/" },
+    description: "Одноэтажный каркасный дом DG50 площадью 111 м² размером 12 × 8 м.",
+    descriptionLong: "Проект DG50 от компании «РИФТ»: одноэтажный каркасный дом площадью 111 м², габариты 12 × 8 м. В карточке производителя указана комплектация с отделкой стоимостью 4 150 000 ₽.",
+    gallery: [
+      { image: riftDg50_1, type: "photo", fit: "contain", blur: true },
+      { image: riftDg50_2, type: "photo", fit: "contain", blur: true },
+      { image: riftDg50_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 43, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 144, name: "XX27 10×8", badge: "Два этажа", price: "5 846 000 ₽",
+    area: "158 м²", area_m2: 158, beds: 4, baths: 2, floors: 2, term: "от 45 д.",
+    rooms: "6 комнат", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...RIFT, siteUrl: "https://www.rift.ru/project/karkasnyj-dom-xx27/" },
+    description: "Двухэтажный каркасный дом XX27 площадью 158 м² размером 10 × 8 м.",
+    descriptionLong: "Проект XX27 от компании «РИФТ»: двухэтажный каркасный дом площадью 158 м², габариты 10 × 8 м. В планировке производителя указаны шесть комнат и два санузла.",
+    gallery: [
+      { image: riftXx27_1, type: "photo", fit: "contain", blur: true },
+      { image: riftXx27_2, type: "photo", fit: "contain", blur: true },
+      { image: riftXx27_3, type: "photo", fit: "contain", blur: true },
+      { image: riftXx27_4, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 44, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для большой семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна"], style: "Современный", landSize: "10+ соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 145, name: "DG49 11×7", badge: "Компактный", price: "3 760 000 ₽",
+    area: "79 м²", area_m2: 79, beds: 2, baths: 1, floors: 1, term: "от 45 д.",
+    rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...RIFT, siteUrl: "https://www.rift.ru/project/karkasnyj-dom-dg49/" },
+    description: "Одноэтажный каркасный дом DG49 площадью 79 м² размером 11 × 7 м.",
+    descriptionLong: "Проект DG49 от компании «РИФТ»: одноэтажный каркасный дом площадью 79 м², габариты 11 × 7 м. В планировке производителя указаны три комнаты, кухня, санузел и терраса.",
+    gallery: [
+      { image: riftDg49_1, type: "photo", fit: "contain", blur: true },
+      { image: riftDg49_2, type: "photo", fit: "contain", blur: true },
+      { image: riftDg49_3, type: "photo", fit: "contain", blur: true },
+      { image: riftDg49_4, type: "photo", fit: "contain", blur: true },
+      { image: riftDg49_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 45, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 146, name: "XX05 10×9", badge: "Два этажа", price: "5 907 050 ₽",
+    area: "155 м²", area_m2: 155, beds: 4, baths: 2, floors: 2, term: "от 45 д.",
+    rooms: "5 комнат", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...RIFT, siteUrl: "https://www.rift.ru/project/karkasnyj-dom-xx05/" },
+    description: "Двухэтажный каркасный дом XX05 площадью 155 м² размером 10 × 9 м.",
+    descriptionLong: "Проект XX05 от компании «РИФТ»: двухэтажный каркасный дом площадью 155 м², габариты 10 × 9 м. В карточке производителя указаны комплектации без отделки и с отделкой.",
+    gallery: [
+      { image: riftXx05_1, type: "photo", fit: "contain", blur: true },
+      { image: riftXx05_2, type: "photo", fit: "contain", blur: true },
+      { image: riftXx05_3, type: "photo", fit: "contain", blur: true },
+      { image: riftXx05_4, type: "photo", fit: "contain", blur: true },
+      { image: riftXx05_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 46, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для большой семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Классический", landSize: "10+ соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── Из Бруса · Москва и МО ────────────────────────────────────────────────
+  {
+    id: 147, name: "КД-38 9×10,5", badge: "Жилой дом", price: "3 286 000 ₽",
+    area: "105,1 м²", area_m2: 105.1, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "4 комнаты", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...IZBRUSA, siteUrl: "https://izbrusa.com/product/karkasnyy-dom-kd-38/" },
+    description: "Одноэтажный каркасный дом КД-38 площадью 105,1 м² размером 9 × 10,5 м.",
+    descriptionLong: "Проект КД-38 от компании «Из Бруса»: одноэтажный каркасный дом площадью 105,1 м², габариты 9 × 10,5 м. В карточке производителя указана терраса площадью 31,5 м².",
+    gallery: [
+      { image: ibKd38_1, type: "photo", fit: "contain", blur: true },
+      { image: ibKd38_2, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 47, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 148, name: "КД-29 8,5×12", badge: "Жилой дом", price: "3 162 000 ₽",
+    area: "102 м²", area_m2: 102, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "4 комнаты", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...IZBRUSA, siteUrl: "https://izbrusa.com/product/karkasnyj-dom-kd-29/" },
+    description: "Одноэтажный каркасный дом КД-29 площадью 102 м² размером 8,5 × 12 м.",
+    descriptionLong: "Проект КД-29 от компании «Из Бруса»: одноэтажный каркасный дом площадью 102 м², габариты 8,5 × 12 м. В карточке производителя указана терраса площадью 21,25 м².",
+    gallery: [
+      { image: ibKd29_1, type: "photo", fit: "contain", blur: true },
+      { image: ibKd29_2, type: "photo", fit: "contain", blur: true },
+      { image: ibKd29_3, type: "photo", fit: "contain", blur: true },
+      { image: ibKd29_4, type: "photo", fit: "contain", blur: true },
+      { image: ibKd29_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 48, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 149, name: "КД-41 7,5×9", badge: "Компактный", price: "1 953 000 ₽",
+    area: "62,4 м²", area_m2: 62.4, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...IZBRUSA, siteUrl: "https://izbrusa.com/product/karkasnyy-dom-kd-41/" },
+    description: "Одноэтажный каркасный дом КД-41 площадью 62,4 м² размером 7,5 × 9 м.",
+    descriptionLong: "Проект КД-41 от компании «Из Бруса»: одноэтажный каркасный дом площадью 62,4 м², габариты 7,5 × 9 м. В карточке производителя указана терраса площадью 29 м².",
+    gallery: [
+      { image: ibKd41_1, type: "photo", fit: "contain", blur: true },
+      { image: ibKd41_2, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 49, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Классический", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 150, name: "КД-12 7×6", badge: "С мансардой", price: "1 610 000 ₽",
+    area: "70 м²", area_m2: 70, beds: 2, baths: 1, floors: 2, term: "от 2 мес.",
+    rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...IZBRUSA, siteUrl: "https://izbrusa.com/product/karkasnyj-dom-kd-12/" },
+    description: "Каркасный дом КД-12 с мансардой площадью 70 м² размером 7 × 6 м.",
+    descriptionLong: "Проект КД-12 от компании «Из Бруса»: каркасный дом с мансардой площадью 70 м², габариты 7 × 6 м. В карточке производителя указана терраса площадью 19 м².",
+    gallery: [
+      { image: ibKd12_1, type: "photo", fit: "contain", blur: true },
+      { image: ibKd12_2, type: "photo", fit: "contain", blur: true },
+      { image: ibKd12_3, type: "photo", fit: "contain", blur: true },
+      { image: ibKd12_4, type: "photo", fit: "contain", blur: true },
+      { image: ibKd12_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 50, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Мансарда", "Терраса"], style: "Классический", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 151, name: "КД-36 15×8,5", badge: "Жилой дом", price: "3 968 000 ₽",
+    area: "127,5 м²", area_m2: 127.5, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "4 комнаты", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...IZBRUSA, siteUrl: "https://izbrusa.com/product/karkasnyy-dom-kd-36/" },
+    description: "Одноэтажный каркасный дом КД-36 площадью 127,5 м² размером 15 × 8,5 м.",
+    descriptionLong: "Проект КД-36 от компании «Из Бруса»: одноэтажный каркасный дом площадью 127,5 м², габариты 15 × 8,5 м. В карточке производителя указаны кухня, гостиная и терраса площадью 25,92 м².",
+    gallery: [
+      { image: ibKd36_1, type: "photo", fit: "contain", blur: true },
+      { image: ibKd36_2, type: "photo", fit: "contain", blur: true },
+      { image: ibKd36_3, type: "photo", fit: "contain", blur: true },
+      { image: ibKd36_4, type: "photo", fit: "contain", blur: true },
+      { image: ibKd36_5, type: "photo", fit: "contain" },
+    ],
+    likes: 51, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Классический", landSize: "10+ соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
 ];
