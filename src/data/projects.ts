@@ -628,6 +628,7 @@ export type Maker = {
   productionAddress?: string;
   phone?: string;
   email?: string;
+  telegram?: string;
 };
 
 
