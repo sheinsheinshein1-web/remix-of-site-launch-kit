@@ -673,6 +673,10 @@ const Partner = () => {
                 <span className="text-[15px] font-medium text-white">Пожаловаться</span>
                 <AlertCircle className="w-5 h-5 text-white/80" strokeWidth={1.6} />
               </button>
+
+              <p className="text-[11px] leading-snug text-white/50 px-1 pt-1">
+                Все проекты и торговые знаки принадлежат компании Платформа. Информация собрана из открытых источников и приведена в ознакомительных целях.
+              </p>
             </div>
           </div>
           </DialogPrimitive.Content>
