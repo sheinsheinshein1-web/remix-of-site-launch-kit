@@ -197,8 +197,7 @@ const Partner = () => {
     }
   }, [location.pathname, location.state, navigate]);
 
-  // Платформа-специфичный вид доступен только в /lab
-  const isPlatforma = false;
+  const isPlatforma = makerId === "platforma";
 
 
   const HeroPlatforma = () => (
