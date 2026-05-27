@@ -676,7 +676,9 @@ const PLATFORMA: Maker = {
   productionAddress: "г. Березовский, Южная промзона, д. 21",
   phone: "+7 (343) 226-11-40",
   email: "sales@platforma-modul.ru",
+  telegram: "PlatformaModul",
 };
+
 
 const BYGGE: Maker = {
   name: "Bygge",
