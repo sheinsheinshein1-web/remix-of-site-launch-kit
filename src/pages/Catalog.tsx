@@ -885,7 +885,7 @@ const Catalog = () => {
         <div className="mt-2 py-3 bg-background rounded-2xl px-2">
           <div className={viewMode === "list" ? "grid grid-cols-1 gap-y-[6px]" : "grid grid-cols-2 gap-x-[2px] gap-y-[6px]"}>
             {sortedItems.map((item) => (
-              <ProjectCard key={item.id} projectId={item.id} height="aspect-[3/4] h-auto" />
+              <ProjectCard key={item.id} projectId={item.id} height="aspect-[3/4] h-auto" onCardClick={(e, id) => navigateWithTransition(e, navigate, `/project/${id}`)} />
             ))}
           </div>
         </div>
