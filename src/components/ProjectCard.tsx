@@ -75,7 +75,7 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
   return (
     <article className="overflow-hidden">
       <a
-        href={`/project/${project.id}`}
+        href={partnerHref}
         onClick={handleClick}
         className="block cursor-pointer"
         aria-label={`${project.name} — от ${project.price}`}
