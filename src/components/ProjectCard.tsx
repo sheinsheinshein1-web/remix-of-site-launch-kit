@@ -106,7 +106,7 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
           <div className="flex items-center gap-1.5 min-w-0">
             <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{project.name}</h2>
             {project.maker.id === "platforma" && (
-              <span className="shrink-0 text-[9px] font-medium uppercase tracking-wide bg-primary/12 text-primary px-1.5 py-[2px] rounded-lg">Проверено</span>
+              <span className="ml-auto shrink-0 text-[9px] font-medium uppercase tracking-wide bg-primary/12 text-primary px-1.5 py-[2px] rounded-lg">Проверено</span>
             )}
           </div>
           <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">{/по запросу/i.test(project.price) ? project.price : `от ${project.price}`}</div>
