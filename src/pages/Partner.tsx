@@ -167,8 +167,7 @@ const Partner = () => {
   const reviewsLabel = "новый";
 
   const handleBack = () => {
-    if (window.history.length > 1) navigate(-1);
-    else navigate("/catalog");
+    navigate("/");
   };
 
   const onShare = async () => {
