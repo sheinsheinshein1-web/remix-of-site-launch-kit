@@ -152,6 +152,8 @@ const Partner = () => {
     about: aboutByMakerId[makerId] ?? `${summary?.name ?? "Партнёр"} — производитель домов.`,
     siteUrl: summary?.siteUrl ?? "#",
     productionAddress: summary?.productionAddress,
+    phone: summary?.phone,
+    email: summary?.email,
   };
 
   // Плейсхолдер до подключения реальных отзывов.
