@@ -579,7 +579,13 @@ const Partner = () => {
             <div className="px-3 space-y-3">
               {/* Header card */}
               <div className="flex items-start gap-3 px-1">
-                <div className="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center text-[15px] font-bold shrink-0">{partner.initials}</div>
+                <div className="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center text-[15px] font-bold shrink-0 overflow-hidden">
+                  {partner.logo ? (
+                    <img src={partner.logo} alt={partner.name} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                  ) : (
+                    partner.initials
+                  )}
+                </div>
                 <div className="min-w-0 pt-1">
                   <div className="text-[18px] font-semibold leading-tight">{partner.name}</div>
                   <div className="text-[13px] text-white/70 mt-0.5">{rating.toFixed(1)} ★ ({reviewsLabel})</div>
