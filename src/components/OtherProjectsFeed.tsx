@@ -87,7 +87,9 @@ const OtherProjectsFeed = ({ currentId }: Props) => {
     <>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-x-[2px] gap-y-[6px] md:gap-4">
         {items.map(({ project, key }) => (
-          <ProjectCard key={key} projectId={project.id} onCardClick={handleClick} />
+          <div key={key} className={project.id === 32 ? "col-span-2 md:col-span-2" : undefined}>
+            <ProjectCard projectId={project.id} onCardClick={handleClick} />
+          </div>
         ))}
         {isLoadingMore &&
           Array.from({ length: PAGE_SIZE }).map((_, i) => (
