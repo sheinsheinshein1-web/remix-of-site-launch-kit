@@ -81,6 +81,9 @@ const manualCounts: Record<string, number> = { bygge: 5 };
 
 const Partner = () => {
   const navigate = useNavigate();
+  const handleProjectClick = (e: React.MouseEvent<HTMLAnchorElement>, projectId: number) => {
+    navigateWithTransition(e, navigate, `/project/${projectId}`);
+  };
   const location = useLocation();
   const isMobile = useIsMobile();
   const { id } = useParams();
