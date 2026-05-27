@@ -512,7 +512,7 @@ const Partner = () => {
               style={{ ["--foreground" as any]: "0 0% 100%" }}
             >
               {sortedMakerProjects.map((p) => (
-                <ProjectCard key={p.id} projectId={p.id} />
+                <ProjectCard key={p.id} projectId={p.id} onCardClick={handleProjectClick} />
               ))}
             </div>
           </div>
