@@ -144,6 +144,7 @@ const Partner = () => {
     productionAddress: summary?.productionAddress,
     phone: summary?.phone,
     email: summary?.email,
+    telegram: summary?.telegram,
   };
 
   // Плейсхолдер до подключения реальных отзывов.
@@ -635,7 +636,7 @@ const Partner = () => {
                   { label: "Сайт", icon: Globe, href: partner.siteUrl },
                   partner.email ? { label: partner.email, icon: Mail, href: `mailto:${partner.email}` } : null,
                   partner.phone ? { label: partner.phone, icon: Phone, href: `tel:${partner.phone.replace(/[^+\d]/g, "")}` } : null,
-                  { label: "Telegram", icon: Send, href: undefined },
+                  partner.telegram ? { label: `@${partner.telegram}`, icon: Send, href: `https://t.me/${partner.telegram}` } : null,
                 ].filter(Boolean).map((item: any) => (
                   <a
                     key={item.label}

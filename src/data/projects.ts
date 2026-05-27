@@ -628,6 +628,7 @@ export type Maker = {
   productionAddress?: string;
   phone?: string;
   email?: string;
+  telegram?: string;
 };
 
 
@@ -676,7 +677,9 @@ const PLATFORMA: Maker = {
   productionAddress: "г. Березовский, Южная промзона, д. 21",
   phone: "+7 (343) 226-11-40",
   email: "sales@platforma-modul.ru",
+  telegram: "PlatformaModul",
 };
+
 
 const BYGGE: Maker = {
   name: "Bygge",
@@ -3259,6 +3262,7 @@ export type MakerSummary = {
   productionAddress?: string;
   phone?: string;
   email?: string;
+  telegram?: string;
 };
 export const makersById: Record<string, MakerSummary> = projects.reduce((acc, p) => {
   const id = p.maker.id;
@@ -3273,6 +3277,7 @@ export const makersById: Record<string, MakerSummary> = projects.reduce((acc, p)
     productionAddress: p.maker.productionAddress,
     phone: p.maker.phone,
     email: p.maker.email,
+    telegram: p.maker.telegram,
   };
   return acc;
 }, {} as Record<string, MakerSummary>);
