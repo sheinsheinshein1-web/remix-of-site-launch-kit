@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import { useIsMobile } from "@/hooks/use-mobile";
 import shareIcon from "@/assets/share-icon.svg";
 import ProjectCard from "@/components/ProjectCard";
+import { navigateWithTransition } from "@/lib/viewTransition";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { toast } from "sonner";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
@@ -80,6 +81,9 @@ const manualCounts: Record<string, number> = { bygge: 5 };
 
 const Partner = () => {
   const navigate = useNavigate();
+  const handleProjectClick = (e: React.MouseEvent<HTMLAnchorElement>, projectId: number) => {
+    navigateWithTransition(e, navigate, `/project/${projectId}`);
+  };
   const location = useLocation();
   const isMobile = useIsMobile();
   const { id } = useParams();
@@ -390,7 +394,7 @@ const Partner = () => {
               <div className="mt-3 flex gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {makerProjects.map((p) => (
                   <div key={p.id} className="shrink-0 w-[235px] md:w-[260px]">
-                    <ProjectCard projectId={p.id} height="aspect-square h-auto" singleImage />
+                    <ProjectCard projectId={p.id} height="aspect-square h-auto" singleImage onCardClick={handleProjectClick} />
 
                   </div>
                 ))}
@@ -460,7 +464,7 @@ const Partner = () => {
                 <div className="relative mt-auto flex gap-3 overflow-x-auto px-4 pt-4 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                   {cards.map((p) => (
                     <div key={p.id} className="shrink-0 w-[200px]">
-                      <ProjectCard projectId={p.id} height="aspect-square h-auto" singleImage />
+                      <ProjectCard projectId={p.id} height="aspect-square h-auto" singleImage onCardClick={handleProjectClick} />
                     </div>
                   ))}
                 </div>
@@ -508,7 +512,7 @@ const Partner = () => {
               style={{ ["--foreground" as any]: "0 0% 100%" }}
             >
               {sortedMakerProjects.map((p) => (
-                <ProjectCard key={p.id} projectId={p.id} />
+                <ProjectCard key={p.id} projectId={p.id} onCardClick={handleProjectClick} />
               ))}
             </div>
           </div>
