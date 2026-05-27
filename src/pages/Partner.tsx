@@ -637,21 +637,6 @@ const Partner = () => {
                 </div>
               </section>
 
-              {/* Policies */}
-              <section className="rounded-2xl p-5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
-                <h3 className="text-[22px] font-bold mb-2">Документы</h3>
-                {[
-                  { label: "Политика возврата", icon: RotateCcw },
-                  { label: "Доставка", icon: Package },
-                  { label: "Конфиденциальность", icon: ShieldCheck },
-                  { label: "Условия использования", icon: Info },
-                ].map((item) => (
-                  <button key={item.label} className="w-full flex items-center justify-between py-3 text-left">
-                    <span className="text-[15px] text-white/90">{item.label}</span>
-                    <item.icon className="w-[18px] h-[18px] text-white/70" strokeWidth={1.6} />
-                  </button>
-                ))}
-              </section>
 
               {/* Contact */}
               <section className="rounded-2xl p-5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
