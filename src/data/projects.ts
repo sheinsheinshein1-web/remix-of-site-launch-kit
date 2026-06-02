@@ -407,6 +407,83 @@ import ksIzabella_2 from "@/assets/kazanstroy16/izabella/2.webp";
 import ksIzabella_3 from "@/assets/kazanstroy16/izabella/3.webp";
 import ksIzabellaPlan1 from "@/assets/kazanstroy16/izabella/4.webp";
 import ksIzabellaPlan2 from "@/assets/kazanstroy16/izabella/5.webp";
+import ahNovaPrime_1 from "@/assets/askhome/nova-prime/1.webp";
+import ahNovaPrime_2 from "@/assets/askhome/nova-prime/2.webp";
+import ahNovaPrime_3 from "@/assets/askhome/nova-prime/3.webp";
+import ahNovaPrime_4 from "@/assets/askhome/nova-prime/4.webp";
+import ahNovaPrime_5 from "@/assets/askhome/nova-prime/5.webp";
+import ahNova_1 from "@/assets/askhome/nova/1.webp";
+import ahNova_2 from "@/assets/askhome/nova/2.webp";
+import ahNova_3 from "@/assets/askhome/nova/3.webp";
+import ahNova_4 from "@/assets/askhome/nova/4.webp";
+import ahNova_5 from "@/assets/askhome/nova/5.webp";
+import ahModeraPrime_1 from "@/assets/askhome/modera-prime/1.webp";
+import ahModeraPrimePlan from "@/assets/askhome/modera-prime/2.webp";
+import ahModeraPrime_2 from "@/assets/askhome/modera-prime/3.webp";
+import ahModeraPrime_3 from "@/assets/askhome/modera-prime/4.webp";
+import ahModeraPrime_4 from "@/assets/askhome/modera-prime/5.webp";
+import ahModera_1 from "@/assets/askhome/modera/1.webp";
+import ahModeraPlan from "@/assets/askhome/modera/2.webp";
+import ahModera_2 from "@/assets/askhome/modera/3.webp";
+import ahModera_3 from "@/assets/askhome/modera/4.webp";
+import ahModera_4 from "@/assets/askhome/modera/5.webp";
+import ahAstraPrime_1 from "@/assets/askhome/astra-prime/1.webp";
+import ahAstraPrimePlan from "@/assets/askhome/astra-prime/2.webp";
+import ahAstraPrime_2 from "@/assets/askhome/astra-prime/3.webp";
+import ahAstraPrime_3 from "@/assets/askhome/astra-prime/4.webp";
+import ahAstraPrime_4 from "@/assets/askhome/astra-prime/5.webp";
+import kdyShale67_1 from "@/assets/karkas-dom-yug/shale-67/1.webp";
+import kdyShale69_1 from "@/assets/karkas-dom-yug/shale-69/1.webp";
+import kdyShale65_1 from "@/assets/karkas-dom-yug/shale-65/1.webp";
+import kdyShale82_1 from "@/assets/karkas-dom-yug/shale-82/1.webp";
+import kdyShale90_1 from "@/assets/karkas-dom-yug/shale-90/1.webp";
+import sbBarn28_1 from "@/assets/sibiryak/barn-28/1.webp";
+import sbBarn28_2 from "@/assets/sibiryak/barn-28/2.webp";
+import sbBarn28_3 from "@/assets/sibiryak/barn-28/3.webp";
+import sbBarn28Plan1 from "@/assets/sibiryak/barn-28/4.webp";
+import sbBarn28Plan2 from "@/assets/sibiryak/barn-28/5.webp";
+import sbBarn41_1 from "@/assets/sibiryak/barn-41/1.webp";
+import sbBarn41_2 from "@/assets/sibiryak/barn-41/2.webp";
+import sbBarn41_3 from "@/assets/sibiryak/barn-41/3.webp";
+import sbBarn41_4 from "@/assets/sibiryak/barn-41/4.webp";
+import sbBarn41_5 from "@/assets/sibiryak/barn-41/5.webp";
+import sbBarn47_1 from "@/assets/sibiryak/barn-47/1.webp";
+import sbBarn47_2 from "@/assets/sibiryak/barn-47/2.webp";
+import sbBarn47_3 from "@/assets/sibiryak/barn-47/3.webp";
+import sbBarn47_4 from "@/assets/sibiryak/barn-47/4.webp";
+import sbBarn47_5 from "@/assets/sibiryak/barn-47/5.webp";
+import sbBarn95_1 from "@/assets/sibiryak/barn-95/1.webp";
+import sbBarn95_2 from "@/assets/sibiryak/barn-95/2.webp";
+import sbBarn95_3 from "@/assets/sibiryak/barn-95/3.webp";
+import sbBarn95_4 from "@/assets/sibiryak/barn-95/4.webp";
+import sbBarn95Plan from "@/assets/sibiryak/barn-95/5.webp";
+import sbBarn120_1 from "@/assets/sibiryak/barn-120/1.webp";
+import sbBarn120_2 from "@/assets/sibiryak/barn-120/2.webp";
+import sbBarn120_3 from "@/assets/sibiryak/barn-120/3.webp";
+import sbBarn120_4 from "@/assets/sibiryak/barn-120/4.webp";
+import sbBarn120_5 from "@/assets/sibiryak/barn-120/5.webp";
+import mihKulibin_1 from "@/assets/doma-ot-mihalycha/kulibin/1.webp";
+import mihKulibin_2 from "@/assets/doma-ot-mihalycha/kulibin/2.webp";
+import mihKulibin_3 from "@/assets/doma-ot-mihalycha/kulibin/3.webp";
+import mihKulibinPlan from "@/assets/doma-ot-mihalycha/kulibin/4.webp";
+import mihLomonosov_1 from "@/assets/doma-ot-mihalycha/lomonosov/1.webp";
+import mihLomonosov_2 from "@/assets/doma-ot-mihalycha/lomonosov/2.webp";
+import mihLomonosov_3 from "@/assets/doma-ot-mihalycha/lomonosov/3.webp";
+import mihLomonosovPlan1 from "@/assets/doma-ot-mihalycha/lomonosov/4.webp";
+import mihLomonosovPlan2 from "@/assets/doma-ot-mihalycha/lomonosov/5.webp";
+import mihRakhmaninov_1 from "@/assets/doma-ot-mihalycha/rakhmaninov/1.webp";
+import mihRakhmaninov_2 from "@/assets/doma-ot-mihalycha/rakhmaninov/2.webp";
+import mihRakhmaninov_3 from "@/assets/doma-ot-mihalycha/rakhmaninov/3.webp";
+import mihRakhmaninovPlan from "@/assets/doma-ot-mihalycha/rakhmaninov/4.webp";
+import mihDerzhavin_1 from "@/assets/doma-ot-mihalycha/derzhavin/1.webp";
+import mihDerzhavin_2 from "@/assets/doma-ot-mihalycha/derzhavin/2.webp";
+import mihDerzhavin_3 from "@/assets/doma-ot-mihalycha/derzhavin/3.webp";
+import mihDerzhavinPlan1 from "@/assets/doma-ot-mihalycha/derzhavin/4.webp";
+import mihDerzhavinPlan2 from "@/assets/doma-ot-mihalycha/derzhavin/5.webp";
+import mihVinogradov_1 from "@/assets/doma-ot-mihalycha/vinogradov/1.webp";
+import mihVinogradov_2 from "@/assets/doma-ot-mihalycha/vinogradov/2.webp";
+import mihVinogradov_3 from "@/assets/doma-ot-mihalycha/vinogradov/3.webp";
+import mihVinogradovPlan from "@/assets/doma-ot-mihalycha/vinogradov/4.webp";
 import dtGlempingBarnhaus_1 from "@/assets/domoteka/glemping-barnhaus-6x7/1.webp";
 import dtGlempingBarnhaus_2 from "@/assets/domoteka/glemping-barnhaus-6x7/2.webp";
 import dtGlempingBarnhaus_3 from "@/assets/domoteka/glemping-barnhaus-6x7/3.webp";
@@ -817,11 +894,29 @@ const KAZANSTROY16: Maker = {
   id: "kazanstroy16",
   siteUrl: "https://kazanstroy16.ru/building/karkassnye-doma/",
 };
+const ASKHOME: Maker = {
+  name: "AskHome",
+  initials: "AH",
+  id: "askhome",
+  siteUrl: "https://askhome.me/projects/",
+};
 const DOMOTEKA: Maker = {
   name: "Домотека",
   initials: "ДМ",
   id: "domoteka",
   siteUrl: "https://domoteka-krd.ru/karkasnye-doma/",
+};
+const KARKAS_DOM_YUG: Maker = {
+  name: "Каркасный Дом Юг",
+  initials: "КЮ",
+  id: "karkas-dom-yug",
+  siteUrl: "https://xn-----6kcare7afbyhptq5m4b.xn--p1ai/",
+};
+const SIBIRYAK: Maker = {
+  name: "Сибиряк",
+  initials: "СБ",
+  id: "sibiryak",
+  siteUrl: "https://sibiryak23.ru/dom-barn/",
 };
 const SVOI_HOUSE: Maker = {
   name: "СК «Свой»",
@@ -846,6 +941,12 @@ const SK_GARMONIYA: Maker = {
   initials: "ГР",
   id: "sk-garmoniya",
   siteUrl: "https://skgarmoniya.ru/catalog/doma-karkas/",
+};
+const DOMA_OT_MIHALYCHA: Maker = {
+  name: "Дома от Михалыча",
+  initials: "ДМ",
+  id: "doma-ot-mihalycha",
+  siteUrl: "https://xn-----6kccat5azaddrd6c4b6a4d.xn--p1ai/proekty/karkasniye-doma/",
 };
 
 // ============================================================================
@@ -2490,6 +2591,108 @@ export const projects: Project[] = [
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
 
+  // ── AskHome · Казань ──────────────────────────────────────────────────
+  {
+    id: 157, name: "Nova Prime", badge: "Жилой дом", price: "4 520 000 ₽",
+    area: "80 м²", area_m2: 80, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Казань",
+    maker: { ...ASKHOME, siteUrl: "https://askhome.me/item/karkasnyj-dom-pod-klyuch-nova-prime/" },
+    description: "Каркасный дом 80 м² с двумя спальнями, кухней-столовой и двусветной гостиной.",
+    descriptionLong: "Проект Nova Prime от AskHome: каркасный дом площадью 80 м² с двумя спальнями, просторным санузлом, прихожей с нишей под шкаф, кухней-столовой и гостиной с высоким потолком. На сайте производителя указана стоимость от 4 520 000 ₽ и срок реализации от 2 месяцев.",
+    gallery: [
+      { image: ahNovaPrime_1, type: "photo", fit: "contain", blur: true },
+      { image: ahNovaPrime_2, type: "photo", fit: "contain", blur: true },
+      { image: ahNovaPrime_3, type: "photo", fit: "contain", blur: true },
+      { image: ahNovaPrime_4, type: "photo", fit: "contain", blur: true },
+      { image: ahNovaPrime_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 36, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна", "Второй свет"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 158, name: "Nova", badge: "Жилой дом", price: "3 650 000 ₽",
+    area: "80 м²", area_m2: 80, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Казань",
+    maker: { ...ASKHOME, siteUrl: "https://askhome.me/item/karkasnyj-dom-pod-klyuch-nova/" },
+    description: "Компактный каркасный дом 80 м² для небольшой семьи с кухней-гостиной.",
+    descriptionLong: "Проект Nova от AskHome: одноэтажный каркасный дом площадью 80 м² для небольшой семьи. В планировке две спальни, кухня-столовая, гостиная, прихожая и санузел, строительство заявлено от 2 месяцев.",
+    gallery: [
+      { image: ahNova_1, type: "photo", fit: "contain", blur: true },
+      { image: ahNova_2, type: "photo", fit: "contain", blur: true },
+      { image: ahNova_3, type: "photo", fit: "contain", blur: true },
+      { image: ahNova_4, type: "photo", fit: "contain", blur: true },
+      { image: ahNova_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 34, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 159, name: "Modera Prime", badge: "Жилой дом", price: "7 180 000 ₽",
+    area: "130 м²", area_m2: 130, beds: 3, baths: 2, floors: 1, term: "от 2 мес.",
+    rooms: "3 комнаты", purpose: "ИЖС", city: "Казань",
+    maker: { ...ASKHOME, siteUrl: "https://askhome.me/item/karkasnyj-dom-pod-klyuch-modera-prime/" },
+    description: "Современный каркасный дом 130 м² с мастер-спальней, двумя санузлами и террасой.",
+    descriptionLong: "Проект Modera Prime от AskHome: каркасный дом площадью 130 м² с тремя изолированными спальнями, включая мастер-спальню, светлой гостиной около 30 м², двумя санузлами и отдельным помещением под котельную. На сайте указана стоимость от 7 180 000 ₽.",
+    gallery: [
+      { image: ahModeraPrime_1, type: "photo", fit: "contain", blur: true },
+      { image: ahModeraPrimePlan, type: "photo", fit: "contain" },
+      { image: ahModeraPrime_2, type: "photo", fit: "contain", blur: true },
+      { image: ahModeraPrime_3, type: "photo", fit: "contain", blur: true },
+      { image: ahModeraPrime_4, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 38, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна", "Мастер-спальня"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 160, name: "Modera", badge: "Жилой дом", price: "6 200 000 ₽",
+    area: "130 м²", area_m2: 130, beds: 3, baths: 2, floors: 1, term: "от 2 мес.",
+    rooms: "3 комнаты", purpose: "ИЖС", city: "Казань",
+    maker: { ...ASKHOME, siteUrl: "https://askhome.me/item/karkasnyj-dom-pod-klyuch-modera/" },
+    description: "Каркасный дом 130 м² с тремя спальнями, двумя санузлами и просторной гостиной.",
+    descriptionLong: "Проект Modera от AskHome: современный каркасный дом площадью 130 м² с тремя спальнями, гостиной, двумя санузлами и отдельной котельной. Планировка рассчитана на постоянное проживание семьи и срок строительства от 2 месяцев.",
+    gallery: [
+      { image: ahModera_1, type: "photo", fit: "contain", blur: true },
+      { image: ahModeraPlan, type: "photo", fit: "contain" },
+      { image: ahModera_2, type: "photo", fit: "contain", blur: true },
+      { image: ahModera_3, type: "photo", fit: "contain", blur: true },
+      { image: ahModera_4, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 36, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна", "Котельная"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 161, name: "Astra Prime", badge: "Жилой дом", price: "6 580 000 ₽",
+    area: "114 м²", area_m2: 114, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Казань",
+    maker: { ...ASKHOME, siteUrl: "https://askhome.me/item/karkasnyj-dom-pod-klyuch-astra-prime/" },
+    description: "Каркасный дом 114 м² для семьи с современной планировкой и панорамным остеклением.",
+    descriptionLong: "Проект Astra Prime от AskHome: каркасный дом площадью 114 м² с современной планировкой, энергоэффективным теплым контуром и отделкой под ключ. На странице проекта указана стоимость от 6 580 000 ₽ и срок реализации от 2 месяцев.",
+    gallery: [
+      { image: ahAstraPrime_1, type: "photo", fit: "contain", blur: true },
+      { image: ahAstraPrimePlan, type: "photo", fit: "contain" },
+      { image: ahAstraPrime_2, type: "photo", fit: "contain", blur: true },
+      { image: ahAstraPrime_3, type: "photo", fit: "contain", blur: true },
+      { image: ahAstraPrime_4, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 37, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+
   // ── Домотека · Краснодарский край ─────────────────────────────────────
   {
     id: 112, name: "Глэмпинг барнхаус 6×7", badge: "Глэмпинг", price: "11 520 000 ₽",
@@ -2589,6 +2792,190 @@ export const projects: Project[] = [
     suitableFor: ["Постоянное проживание", "Для семьи"],
     technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
     features: ["Панорамные окна"], style: "Барнхаус", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── Каркасный Дом Юг · Краснодарский край ─────────────────────────────
+  {
+    id: 162, name: "Шале 67", badge: "Жилой дом", price: "3 350 000 ₽",
+    area: "65 м²", area_m2: 65, beds: 2, baths: 1, floors: 1, term: "31 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Краснодарский край",
+    maker: { ...KARKAS_DOM_YUG, siteUrl: "https://xn-----6kcare7afbyhptq5m4b.xn--p1ai/planirovka_shale_67/" },
+    description: "Каркасный дом 65 м² размером 10 × 6,9 м для постоянного проживания.",
+    descriptionLong: "Проект «Шале 67» от «Каркасный Дом Юг»: каркасный дом площадью 65 м², габариты 10 × 6,9 м. В планировке две спальни, кухня-гостиная и прихожая, срок строительства на сайте указан 31 день.",
+    gallery: [
+      { image: kdyShale67_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 31, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для одного / пары"],
+    technology: "Каркасный", completion: "Теплый контур", insulation: "до −30°C",
+    features: ["Кухня-гостиная"], style: "Шале", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 163, name: "Шале 69", badge: "Жилой дом", price: "3 450 000 ₽",
+    area: "67 м²", area_m2: 67, beds: 2, baths: 1, floors: 1, term: "31 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Краснодарский край",
+    maker: { ...KARKAS_DOM_YUG, siteUrl: "https://xn-----6kcare7afbyhptq5m4b.xn--p1ai/planirovka_shale_69/" },
+    description: "Каркасный дом 67 м² размером 9 × 7,5 м с террасой 13 м² и кладовой.",
+    descriptionLong: "Проект «Шале 69» от «Каркасный Дом Юг»: каркасный дом площадью 67 м², габариты 9 × 7,5 м. В проекте две спальни, кухня-гостиная, прихожая, кладовая и терраса 13,02 м².",
+    gallery: [
+      { image: kdyShale69_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 32, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Выходные / дача"],
+    technology: "Каркасный", completion: "Теплый контур", insulation: "до −30°C",
+    features: ["Терраса", "Кладовая"], style: "Шале", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 164, name: "Шале 65", badge: "Жилой дом", price: "3 250 000 ₽",
+    area: "69 м²", area_m2: 69, beds: 2, baths: 1, floors: 1, term: "31 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Краснодарский край",
+    maker: { ...KARKAS_DOM_YUG, siteUrl: "https://xn-----6kcare7afbyhptq5m4b.xn--p1ai/planirovka_shale_65/" },
+    description: "Одноэтажный каркасный дом 69 м² размером 9,4 × 6,9 м с рациональной планировкой.",
+    descriptionLong: "Проект «Шале 65» от «Каркасный Дом Юг»: каркасный дом площадью 69 м², габариты 9,4 × 6,9 м. На странице проекта отмечены две спальни, кухня-гостиная и дополнительная кладовая.",
+    gallery: [
+      { image: kdyShale65_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 31, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для одного / пары"],
+    technology: "Каркасный", completion: "Теплый контур", insulation: "до −30°C",
+    features: ["Кладовая", "Кухня-гостиная"], style: "Шале", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 165, name: "Шале 82", badge: "Жилой дом", price: "3 690 000 ₽",
+    area: "82 м²", area_m2: 82, beds: 3, baths: 1, floors: 2, term: "31 д.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Краснодарский край",
+    maker: { ...KARKAS_DOM_YUG, siteUrl: "https://xn-----6kcare7afbyhptq5m4b.xn--p1ai/planirovka_shale_82/" },
+    description: "Каркасный дом 82 м² с мансардой, тремя спальнями и компактным пятном застройки.",
+    descriptionLong: "Проект «Шале 82» от «Каркасный Дом Юг»: каркасный дом площадью 82 м², габариты 6,15 × 8,15 м. Дом с мансардой дает дополнительное пространство без увеличения пятна застройки.",
+    gallery: [
+      { image: kdyShale82_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 33, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Теплый контур", insulation: "до −30°C",
+    features: ["Мансарда"], style: "Шале", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 166, name: "Шале 90", badge: "Жилой дом", price: "4 100 000 ₽",
+    area: "90 м²", area_m2: 90, beds: 3, baths: 2, floors: 1, term: "31 д.",
+    rooms: "3 спальни", purpose: "ИЖС", city: "Краснодарский край",
+    maker: { ...KARKAS_DOM_YUG, siteUrl: "https://xn-----6kcare7afbyhptq5m4b.xn--p1ai/planirovka_shale_90/" },
+    description: "Просторный каркасный дом 90 м² размером 12 × 7,5 м с тремя спальнями.",
+    descriptionLong: "Проект «Шале 90» от «Каркасный Дом Юг»: каркасный дом площадью 90 м², габариты 12 × 7,5 м. В планировке три спальни, два санузла, холл и кухня-гостиная.",
+    gallery: [
+      { image: kdyShale90_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 34, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Теплый контур", insulation: "до −30°C",
+    features: ["Кухня-гостиная"], style: "Шале", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+
+  // ── Сибиряк · Краснодарский край ──────────────────────────────────────
+  {
+    id: 167, name: "БАРН 28", badge: "Барнхаус", price: "1 855 000 ₽",
+    area: "28 м²", area_m2: 28, beds: 1, baths: 1, floors: 2, term: "от 1 мес.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Бизнес", city: "Краснодарский край",
+    maker: { ...SIBIRYAK, siteUrl: "https://sibiryak23.ru/barn-28m2/" },
+    description: "Компактный каркасный барн-дом 28 м² размером 5 × 4 м с открытой террасой.",
+    descriptionLong: "Проект «БАРН 28» от «Сибиряк»: каркасный барн-дом площадью 28 м², габариты 5 × 4 м и открытая терраса 10 м². Формат подходит для загородного отдыха, глэмпинга или компактного проживания.",
+    gallery: [
+      { image: sbBarn28_1, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn28_2, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn28_3, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn28Plan1, type: "photo", fit: "contain" },
+      { image: sbBarn28Plan2, type: "photo", fit: "contain" },
+    ],
+    likes: 33, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Сдача в аренду"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Барнхаус", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 168, name: "БАРН 41", badge: "Барнхаус", price: "2 380 000 ₽",
+    area: "41 м²", area_m2: 41, beds: 1, baths: 1, floors: 2, term: "от 1 мес.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Бизнес", city: "Краснодарский край",
+    maker: { ...SIBIRYAK, siteUrl: "https://sibiryak23.ru/barn-41m2/" },
+    description: "Каркасный барн-дом 41 м² размером 4,5 × 7 м для отдыха или компактного проживания.",
+    descriptionLong: "Проект «БАРН 41» от «Сибиряк»: каркасный барн-дом площадью 41 м², габариты 4,5 × 7 м. В базовой комплектации указаны утепленный каркас, наружная и внутренняя отделка, коммуникации и санузел.",
+    gallery: [
+      { image: sbBarn41_1, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn41_2, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn41_3, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn41_4, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn41_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 34, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Сдача в аренду"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна"], style: "Барнхаус", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 169, name: "БАРН 47", badge: "Барнхаус", price: "3 050 000 ₽",
+    area: "47 м²", area_m2: 47, beds: 2, baths: 1, floors: 2, term: "от 1 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ / Бизнес", city: "Краснодарский край",
+    maker: { ...SIBIRYAK, siteUrl: "https://sibiryak23.ru/barn-47m2/" },
+    description: "Каркасный барн-дом 47 м² размером 5 × 9,5 м с крытой террасой 12,5 м².",
+    descriptionLong: "Проект «БАРН 47» от «Сибиряк»: каркасный барн-дом площадью 47 м², габариты 5 × 9,5 м. В проекте предусмотрена крытая терраса 12,5 м² и двухуровневый формат с компактной планировкой.",
+    gallery: [
+      { image: sbBarn47_1, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn47_2, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn47_3, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn47_4, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn47_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 35, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Сдача в аренду"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Барнхаус", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 170, name: "БАРН 95", badge: "Барнхаус", price: "6 370 000 ₽",
+    area: "95 м²", area_m2: 95, beds: 3, baths: 1, floors: 2, term: "от 1 мес.",
+    rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Краснодарский край",
+    maker: { ...SIBIRYAK, siteUrl: "https://sibiryak23.ru/barn-95m2/" },
+    description: "Просторный каркасный барн-дом 95 м² размером 8,5 × 8,5 м.",
+    descriptionLong: "Проект «БАРН 95» от «Сибиряк»: каркасный барн-дом площадью 95 м², габариты 8,5 × 8,5 м. Проект рассчитан на семейный загородный сценарий и включает утепленный каркас, отделку и инженерные выводы в базовой комплектации.",
+    gallery: [
+      { image: sbBarn95_1, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn95_2, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn95_3, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn95_4, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn95Plan, type: "photo", fit: "contain" },
+    ],
+    likes: 36, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна"], style: "Барнхаус", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 171, name: "БАРН 120", badge: "Барнхаус", price: "5 470 000 ₽",
+    area: "120 м²", area_m2: 120, beds: 4, baths: 1, floors: 2, term: "от 1 мес.",
+    rooms: "4 комнаты", purpose: "ИЖС / СНТ", city: "Краснодарский край",
+    maker: { ...SIBIRYAK, siteUrl: "https://sibiryak23.ru/barn-120m2/" },
+    description: "Двухэтажный каркасный барн-дом 120 м² размером 6,4 × 10,5 м с террасой.",
+    descriptionLong: "Проект «БАРН 120» от «Сибиряк»: каркасный барн-дом площадью 120 м², габариты 6,4 × 10,5 м. На странице проекта указана открытая терраса 6,5 м², базовая комплектация с утеплением и отделкой.",
+    gallery: [
+      { image: sbBarn120_1, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn120_2, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn120_3, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn120_4, type: "photo", fit: "contain", blur: true },
+      { image: sbBarn120_5, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 37, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна"], style: "Барнхаус", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
   // ── СК «Свой» · Санкт-Петербург и ЛО ───────────────────────────────────
@@ -3278,6 +3665,105 @@ export const projects: Project[] = [
     features: ["Терраса"], style: "Классический", landSize: "10+ соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
+
+  // ── Дома от Михалыча · Нижний Новгород ────────────────────────────────
+  {
+    id: 172, name: "Кулибин", badge: "Жилой дом", price: "2 730 000 ₽",
+    area: "86 м²", area_m2: 86, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Нижний Новгород",
+    maker: { ...DOMA_OT_MIHALYCHA, siteUrl: "https://xn-----6kccat5azaddrd6c4b6a4d.xn--p1ai/proekty/karkasniye-doma/karkasnyy-dom-kulibin/" },
+    description: "Каркасный дом 86 м² размером 9,5 × 11 м для постоянного проживания.",
+    descriptionLong: "Проект «Кулибин» от «Дома от Михалыча»: каркасный дом площадью 86 м², габариты 9,5 × 11 м. В карточке производителя указана цена строительства от 2 730 000 ₽ и готовая планировка.",
+    gallery: [
+      { image: mihKulibin_1, type: "photo", fit: "contain", blur: true },
+      { image: mihKulibin_2, type: "photo", fit: "contain", blur: true },
+      { image: mihKulibin_3, type: "photo", fit: "contain", blur: true },
+      { image: mihKulibinPlan, type: "photo", fit: "contain" },
+    ],
+    likes: 34, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Планировка"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 173, name: "Ломоносов", badge: "Жилой дом", price: "2 060 000 ₽",
+    area: "55 м²", area_m2: 55, beds: 2, baths: 1, floors: 2, term: "от 2 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Нижний Новгород",
+    maker: { ...DOMA_OT_MIHALYCHA, siteUrl: "https://xn-----6kccat5azaddrd6c4b6a4d.xn--p1ai/proekty/karkasniye-doma/karkasnyy-dom-lomonosov/" },
+    description: "Компактный каркасный дом 55 м² размером 6 × 6 м с двумя этажами.",
+    descriptionLong: "Проект «Ломоносов» от «Дома от Михалыча»: каркасный дом площадью 55 м², габариты 6 × 6 м. В карточке производителя указана цена от 2 060 000 ₽, фото фасадов и планировки.",
+    gallery: [
+      { image: mihLomonosov_1, type: "photo", fit: "contain", blur: true },
+      { image: mihLomonosov_2, type: "photo", fit: "contain", blur: true },
+      { image: mihLomonosov_3, type: "photo", fit: "contain", blur: true },
+      { image: mihLomonosovPlan1, type: "photo", fit: "contain" },
+      { image: mihLomonosovPlan2, type: "photo", fit: "contain" },
+    ],
+    likes: 33, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Выходные / дача"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Мансарда", "Планировка"], style: "Классический", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 174, name: "Рахманинов", badge: "Жилой дом", price: "3 050 000 ₽",
+    area: "86 м²", area_m2: 86, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Нижний Новгород",
+    maker: { ...DOMA_OT_MIHALYCHA, siteUrl: "https://xn-----6kccat5azaddrd6c4b6a4d.xn--p1ai/proekty/karkasniye-doma/karkasnyy-dom-rakhmaninov/" },
+    description: "Одноэтажный каркасный дом 86 м² размером 14 × 8 м с готовой планировкой.",
+    descriptionLong: "Проект «Рахманинов» от «Дома от Михалыча»: каркасный дом площадью 86 м², габариты 14 × 8 м. На сайте производителя указана цена от 3 050 000 ₽ и комплект фото с планом.",
+    gallery: [
+      { image: mihRakhmaninov_1, type: "photo", fit: "contain", blur: true },
+      { image: mihRakhmaninov_2, type: "photo", fit: "contain", blur: true },
+      { image: mihRakhmaninov_3, type: "photo", fit: "contain", blur: true },
+      { image: mihRakhmaninovPlan, type: "photo", fit: "contain" },
+    ],
+    likes: 35, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Планировка"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 175, name: "Державин", badge: "Жилой дом", price: "4 430 000 ₽",
+    area: "158 м²", area_m2: 158, beds: 4, baths: 2, floors: 2, term: "от 2 мес.",
+    rooms: "4 комнаты", purpose: "ИЖС", city: "Нижний Новгород",
+    maker: { ...DOMA_OT_MIHALYCHA, siteUrl: "https://xn-----6kccat5azaddrd6c4b6a4d.xn--p1ai/proekty/karkasniye-doma/karkasnyy-dom-derzhavin/" },
+    description: "Просторный каркасный дом 158 м² размером 10 × 12 м для большой семьи.",
+    descriptionLong: "Проект «Державин» от «Дома от Михалыча»: каркасный дом площадью 158 м², габариты 10 × 12 м. В карточке производителя указана цена от 4 430 000 ₽ и несколько вариантов фасадов с планировками.",
+    gallery: [
+      { image: mihDerzhavin_1, type: "photo", fit: "contain", blur: true },
+      { image: mihDerzhavin_2, type: "photo", fit: "contain", blur: true },
+      { image: mihDerzhavin_3, type: "photo", fit: "contain", blur: true },
+      { image: mihDerzhavinPlan1, type: "photo", fit: "contain" },
+      { image: mihDerzhavinPlan2, type: "photo", fit: "contain" },
+    ],
+    likes: 37, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для большой семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Планировка"], style: "Классический", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 176, name: "Виноградов", badge: "Жилой дом", price: "3 640 000 ₽",
+    area: "109,5 м²", area_m2: 109.5, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Нижний Новгород",
+    maker: { ...DOMA_OT_MIHALYCHA, siteUrl: "https://xn-----6kccat5azaddrd6c4b6a4d.xn--p1ai/proekty/karkasniye-doma/karkasnyy-dom-vinogradov/" },
+    description: "Одноэтажный каркасный дом 109,5 м² размером 12 × 12,5 м.",
+    descriptionLong: "Проект «Виноградов» от «Дома от Михалыча»: каркасный дом площадью 109,5 м², габариты 12 × 12,5 м. В карточке производителя указана цена от 3 640 000 ₽, фото фасадов и план.",
+    gallery: [
+      { image: mihVinogradov_1, type: "photo", fit: "contain", blur: true },
+      { image: mihVinogradov_2, type: "photo", fit: "contain", blur: true },
+      { image: mihVinogradov_3, type: "photo", fit: "contain", blur: true },
+      { image: mihVinogradovPlan, type: "photo", fit: "contain" },
+    ],
+    likes: 36, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Планировка"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
 ];
 
 // ============================================================================
@@ -3461,4 +3947,4 @@ export const manufacturers = realManufacturers;
 // ГОРОДА
 // ============================================================================
 
-export const cities = ["Москва и МО", "Санкт-Петербург и ЛО", "Краснодарский край", "Казань", "Екатеринбург", "Пермский край"];
+export const cities = ["Москва и МО", "Санкт-Петербург и ЛО", "Краснодарский край", "Казань", "Екатеринбург", "Пермский край", "Нижний Новгород"];
