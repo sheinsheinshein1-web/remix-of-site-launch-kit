@@ -379,6 +379,34 @@ import kpLondon1_2 from "@/assets/karkas-povolzhya/london-1/2.webp";
 import kpLondon1_3 from "@/assets/karkas-povolzhya/london-1/3.webp";
 import kpLondon1Plan1 from "@/assets/karkas-povolzhya/london-1/4.webp";
 import kpLondon1Plan2 from "@/assets/karkas-povolzhya/london-1/5.webp";
+import ksBigl_1 from "@/assets/kazanstroy16/bigl/1.webp";
+import ksBigl_2 from "@/assets/kazanstroy16/bigl/2.webp";
+import ksBigl_3 from "@/assets/kazanstroy16/bigl/3.webp";
+import ksBigl_4 from "@/assets/kazanstroy16/bigl/4.webp";
+import ksBigl_5 from "@/assets/kazanstroy16/bigl/5.webp";
+import ksBiglPlan1 from "@/assets/kazanstroy16/bigl/6.webp";
+import ksBiglPlan2 from "@/assets/kazanstroy16/bigl/7.webp";
+import ksDiotima_1 from "@/assets/kazanstroy16/diotima/1.webp";
+import ksDiotima_2 from "@/assets/kazanstroy16/diotima/2.webp";
+import ksDiotimaPlan1 from "@/assets/kazanstroy16/diotima/3.webp";
+import ksDiotimaPlan2 from "@/assets/kazanstroy16/diotima/4.webp";
+import ksGlenapp_1 from "@/assets/kazanstroy16/glenapp/1.webp";
+import ksGlenapp_2 from "@/assets/kazanstroy16/glenapp/2.webp";
+import ksGlenappPlan1 from "@/assets/kazanstroy16/glenapp/3.webp";
+import ksGlenappPlan2 from "@/assets/kazanstroy16/glenapp/4.webp";
+import ksGlenappPlan3 from "@/assets/kazanstroy16/glenapp/5.webp";
+import ksStrakeya_1 from "@/assets/kazanstroy16/strakeya/1.webp";
+import ksStrakeya_2 from "@/assets/kazanstroy16/strakeya/2.webp";
+import ksStrakeyaPlan1 from "@/assets/kazanstroy16/strakeya/3.webp";
+import ksStrakeya_3 from "@/assets/kazanstroy16/strakeya/4.webp";
+import ksStrakeya_4 from "@/assets/kazanstroy16/strakeya/5.webp";
+import ksStrakeya_5 from "@/assets/kazanstroy16/strakeya/6.webp";
+import ksStrakeyaPlan2 from "@/assets/kazanstroy16/strakeya/7.webp";
+import ksIzabella_1 from "@/assets/kazanstroy16/izabella/1.webp";
+import ksIzabella_2 from "@/assets/kazanstroy16/izabella/2.webp";
+import ksIzabella_3 from "@/assets/kazanstroy16/izabella/3.webp";
+import ksIzabellaPlan1 from "@/assets/kazanstroy16/izabella/4.webp";
+import ksIzabellaPlan2 from "@/assets/kazanstroy16/izabella/5.webp";
 import dtGlempingBarnhaus_1 from "@/assets/domoteka/glemping-barnhaus-6x7/1.webp";
 import dtGlempingBarnhaus_2 from "@/assets/domoteka/glemping-barnhaus-6x7/2.webp";
 import dtGlempingBarnhaus_3 from "@/assets/domoteka/glemping-barnhaus-6x7/3.webp";
@@ -782,6 +810,12 @@ const KARKAS_POVOLZHYA: Maker = {
   initials: "КП",
   id: "karkas-povolzhya",
   siteUrl: "https://karkasdoma.pro/projects/frame/",
+};
+const KAZANSTROY16: Maker = {
+  name: "Строй Дом",
+  initials: "СД",
+  id: "kazanstroy16",
+  siteUrl: "https://kazanstroy16.ru/building/karkassnye-doma/",
 };
 const DOMOTEKA: Maker = {
   name: "Домотека",
@@ -2348,6 +2382,111 @@ export const projects: Project[] = [
     suitableFor: ["Постоянное проживание", "Для семьи"],
     technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
     features: ["Терраса", "Панорамные окна"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── Строй Дом · Казань ─────────────────────────────────────────────────
+  {
+    id: 152, name: "Бигль", badge: "Жилой дом", price: "1 798 580 ₽",
+    area: "62,02 м²", area_m2: 62.02, beds: 2, baths: 1, floors: 1, term: "до 3 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Казань",
+    maker: { ...KAZANSTROY16, siteUrl: "https://kazanstroy16.ru/building/1623/" },
+    description: "Одноэтажный каркасный дом 62,02 м² размером 9 × 6 м с мансардой и крыльцом.",
+    descriptionLong: "Проект «Бигль» от «Строй Дом»: одноэтажный каркасный дом площадью 62,02 м², габариты 9 × 6 м. В проекте две комнаты, санузел, кухня, холл и крыльцо, на сайте производителя указана цена строительства от 1 798 580 ₽.",
+    gallery: [
+      { image: ksBigl_1, type: "photo", fit: "contain", blur: true },
+      { image: ksBigl_2, type: "photo", fit: "contain", blur: true },
+      { image: ksBigl_3, type: "photo", fit: "contain", blur: true },
+      { image: ksBigl_4, type: "photo", fit: "contain", blur: true },
+      { image: ksBigl_5, type: "photo", fit: "contain", blur: true },
+      { image: ksBiglPlan1, type: "photo", fit: "contain" },
+      { image: ksBiglPlan2, type: "photo", fit: "contain" },
+    ],
+    likes: 31, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для одного / пары"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Мансарда", "Крыльцо"], style: "Классический", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 153, name: "Диотима", badge: "Жилой дом", price: "1 803 800 ₽",
+    area: "62,2 м²", area_m2: 62.2, beds: 2, baths: 1, floors: 1, term: "до 3 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Казань",
+    maker: { ...KAZANSTROY16, siteUrl: "https://kazanstroy16.ru/building/1515/" },
+    description: "Одноэтажный каркасный дом 62,2 м² размером 9 × 8 м для постоянного проживания.",
+    descriptionLong: "Проект «Диотима» от «Строй Дом»: одноэтажный каркасный дом площадью 62,2 м², габариты 9 × 8 м. Компактный проект для постоянного проживания с двумя комнатами и базовой планировкой без мансарды.",
+    gallery: [
+      { image: ksDiotima_1, type: "photo", fit: "contain", blur: true },
+      { image: ksDiotima_2, type: "photo", fit: "contain", blur: true },
+      { image: ksDiotimaPlan1, type: "photo", fit: "contain" },
+      { image: ksDiotimaPlan2, type: "photo", fit: "contain" },
+    ],
+    likes: 30, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для одного / пары"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Крыльцо"], style: "Классический", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 154, name: "Гленапп", badge: "Жилой дом", price: "1 803 800 ₽",
+    area: "62,2 м²", area_m2: 62.2, beds: 2, baths: 1, floors: 1, term: "до 3 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Казань",
+    maker: { ...KAZANSTROY16, siteUrl: "https://kazanstroy16.ru/building/1526/" },
+    description: "Одноэтажный каркасный дом 62,2 м² размером 8 × 9 м с террасой.",
+    descriptionLong: "Проект «Гленапп» от «Строй Дом»: одноэтажный каркасный дом площадью 62,2 м², габариты 8 × 9 м. В проекте предусмотрена терраса, а в каталоге производителя указана цена строительства от 1 803 800 ₽.",
+    gallery: [
+      { image: ksGlenapp_1, type: "photo", fit: "contain", blur: true },
+      { image: ksGlenapp_2, type: "photo", fit: "contain", blur: true },
+      { image: ksGlenappPlan1, type: "photo", fit: "contain" },
+      { image: ksGlenappPlan2, type: "photo", fit: "contain" },
+      { image: ksGlenappPlan3, type: "photo", fit: "contain" },
+    ],
+    likes: 32, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Выходные / дача"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Классический", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 155, name: "Стракея", badge: "Жилой дом", price: "1 891 090 ₽",
+    area: "65,21 м²", area_m2: 65.21, beds: 2, baths: 1, floors: 2, term: "до 3 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Казань",
+    maker: { ...KAZANSTROY16, siteUrl: "https://kazanstroy16.ru/building/1616/" },
+    description: "Двухэтажный каркасный дом 65,21 м² размером 8 × 6 м с мансардой и террасой.",
+    descriptionLong: "Проект «Стракея» от «Строй Дом»: двухэтажный каркасный дом площадью 65,21 м², габариты 8 × 6 м. В карточке производителя отмечены мансарда и терраса, проект подходит для дачного или постоянного проживания.",
+    gallery: [
+      { image: ksStrakeya_1, type: "photo", fit: "contain", blur: true },
+      { image: ksStrakeya_2, type: "photo", fit: "contain", blur: true },
+      { image: ksStrakeyaPlan1, type: "photo", fit: "contain" },
+      { image: ksStrakeya_3, type: "photo", fit: "contain", blur: true },
+      { image: ksStrakeya_4, type: "photo", fit: "contain", blur: true },
+      { image: ksStrakeya_5, type: "photo", fit: "contain", blur: true },
+      { image: ksStrakeyaPlan2, type: "photo", fit: "contain" },
+    ],
+    likes: 31, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Выходные / дача"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Мансарда", "Терраса"], style: "Классический", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 156, name: "Изабелла", badge: "Жилой дом", price: "1 977 800 ₽",
+    area: "68,2 м²", area_m2: 68.2, beds: 3, baths: 1, floors: 2, term: "до 3 мес.",
+    rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Казань",
+    maker: { ...KAZANSTROY16, siteUrl: "https://kazanstroy16.ru/building/75/" },
+    description: "Двухэтажный каркасный дом 68,2 м² размером 7 × 11 м с мансардой и эркером.",
+    descriptionLong: "Проект «Изабелла» от «Строй Дом»: двухэтажный каркасный дом площадью 68,2 м², габариты 7 × 11 м. В проекте есть мансарда, эркер и компактная планировка для постоянного проживания.",
+    gallery: [
+      { image: ksIzabella_1, type: "photo", fit: "contain", blur: true },
+      { image: ksIzabella_2, type: "photo", fit: "contain", blur: true },
+      { image: ksIzabella_3, type: "photo", fit: "contain", blur: true },
+      { image: ksIzabellaPlan1, type: "photo", fit: "contain" },
+      { image: ksIzabellaPlan2, type: "photo", fit: "contain" },
+    ],
+    likes: 33, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Мансарда", "Эркер"], style: "Классический", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
 
