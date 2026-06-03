@@ -484,6 +484,41 @@ import mihVinogradov_1 from "@/assets/doma-ot-mihalycha/vinogradov/1.webp";
 import mihVinogradov_2 from "@/assets/doma-ot-mihalycha/vinogradov/2.webp";
 import mihVinogradov_3 from "@/assets/doma-ot-mihalycha/vinogradov/3.webp";
 import mihVinogradovPlan from "@/assets/doma-ot-mihalycha/vinogradov/4.webp";
+import bsOpti_1 from "@/assets/barnstudio/opti/1.webp";
+import bsOpti_2 from "@/assets/barnstudio/opti/2.webp";
+import bsOpti_3 from "@/assets/barnstudio/opti/3.webp";
+import bsOpti_4 from "@/assets/barnstudio/opti/4.webp";
+import bsOpti_5 from "@/assets/barnstudio/opti/5.webp";
+import bsOpti_6 from "@/assets/barnstudio/opti/6.webp";
+import bsOptiPlan from "@/assets/barnstudio/opti/7.webp";
+import bsAdel_1 from "@/assets/barnstudio/adel/1.webp";
+import bsAdel_2 from "@/assets/barnstudio/adel/2.webp";
+import bsAdel_3 from "@/assets/barnstudio/adel/3.webp";
+import bsAdel_4 from "@/assets/barnstudio/adel/4.webp";
+import bsAdel_5 from "@/assets/barnstudio/adel/5.webp";
+import bsAdel_6 from "@/assets/barnstudio/adel/6.webp";
+import bsAdelPlan from "@/assets/barnstudio/adel/7.webp";
+import bsAlpina_1 from "@/assets/barnstudio/alpina/1.webp";
+import bsAlpina_2 from "@/assets/barnstudio/alpina/2.webp";
+import bsAlpina_3 from "@/assets/barnstudio/alpina/3.webp";
+import bsAlpina_4 from "@/assets/barnstudio/alpina/4.webp";
+import bsAlpina_5 from "@/assets/barnstudio/alpina/5.webp";
+import bsAlpina_6 from "@/assets/barnstudio/alpina/6.webp";
+import bsAlpinaPlan from "@/assets/barnstudio/alpina/7.webp";
+import bsAntresol_1 from "@/assets/barnstudio/antresol/1.webp";
+import bsAntresol_2 from "@/assets/barnstudio/antresol/2.webp";
+import bsAntresol_3 from "@/assets/barnstudio/antresol/3.webp";
+import bsAntresol_4 from "@/assets/barnstudio/antresol/4.webp";
+import bsAntresol_5 from "@/assets/barnstudio/antresol/5.webp";
+import bsAntresol_6 from "@/assets/barnstudio/antresol/6.webp";
+import bsAntresolPlan from "@/assets/barnstudio/antresol/7.webp";
+import bsVizhn_1 from "@/assets/barnstudio/vizhn/1.webp";
+import bsVizhn_2 from "@/assets/barnstudio/vizhn/2.webp";
+import bsVizhn_3 from "@/assets/barnstudio/vizhn/3.webp";
+import bsVizhn_4 from "@/assets/barnstudio/vizhn/4.webp";
+import bsVizhn_5 from "@/assets/barnstudio/vizhn/5.webp";
+import bsVizhn_6 from "@/assets/barnstudio/vizhn/6.webp";
+import bsVizhnPlan from "@/assets/barnstudio/vizhn/7.webp";
 import dtGlempingBarnhaus_1 from "@/assets/domoteka/glemping-barnhaus-6x7/1.webp";
 import dtGlempingBarnhaus_2 from "@/assets/domoteka/glemping-barnhaus-6x7/2.webp";
 import dtGlempingBarnhaus_3 from "@/assets/domoteka/glemping-barnhaus-6x7/3.webp";
@@ -947,6 +982,12 @@ const DOMA_OT_MIHALYCHA: Maker = {
   initials: "ДМ",
   id: "doma-ot-mihalycha",
   siteUrl: "https://xn-----6kccat5azaddrd6c4b6a4d.xn--p1ai/proekty/karkasniye-doma/",
+};
+const BARNSTUDIO: Maker = {
+  name: "Barn Studio",
+  initials: "BS",
+  id: "barnstudio",
+  siteUrl: "https://barnstudio.ru/barnhouse",
 };
 
 // ============================================================================
@@ -3763,6 +3804,118 @@ export const projects: Project[] = [
     technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
     features: ["Планировка"], style: "Классический", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── Barn Studio · Нижний Новгород ──────────────────────────────────────
+  {
+    id: 177, name: "Опти", badge: "Барнхаус", price: "4 000 000 ₽",
+    area: "120 м²", area_m2: 120, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Нижний Новгород",
+    maker: { ...BARNSTUDIO, siteUrl: "https://barnstudio.ru/barnhouse/opti" },
+    description: "Одноэтажный барнхаус 120 м² с панорамными окнами, террасой и утеплением до −40°C.",
+    descriptionLong: "Проект «Опти» от Barn Studio: теплый каркасный дом в стиле барнхаус для круглогодичного проживания. Базовый вариант — 120 м², 2 спальни, 1 санузел и терраса; на сайте производителя также представлены варианты планировки до 164 м².",
+    gallery: [
+      { image: bsOpti_1, type: "photo", fit: "contain", blur: true },
+      { image: bsOpti_2, type: "photo", fit: "contain", blur: true },
+      { image: bsOpti_3, type: "photo", fit: "contain", blur: true },
+      { image: bsOpti_4, type: "photo", fit: "contain", blur: true },
+      { image: bsOpti_5, type: "photo", fit: "contain", blur: true },
+      { image: bsOpti_6, type: "photo", fit: "contain", blur: true },
+      { image: bsOptiPlan, type: "photo", fit: "contain" },
+    ],
+    likes: 38, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −40°C",
+    features: ["Терраса", "Панорамные окна", "Планировка"], style: "Барнхаус", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 178, name: "Адель", badge: "Барнхаус", price: "4 650 000 ₽",
+    area: "94 м²", area_m2: 94, beds: 3, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Нижний Новгород",
+    maker: { ...BARNSTUDIO, siteUrl: "https://barnstudio.ru/barnhouse/adel" },
+    description: "Одноэтажный барнхаус 94 м² с тремя спальнями, гостиной, кухней и санузлом.",
+    descriptionLong: "Проект «Адель» от Barn Studio: современный одноэтажный каркасный дом по технологии Prefab площадью 94 м² для круглогодичного проживания. В планировке три спальни, гостиная, кухня и санузел, а панорамные окна наполняют дом светом.",
+    gallery: [
+      { image: bsAdel_1, type: "photo", fit: "contain", blur: true },
+      { image: bsAdel_2, type: "photo", fit: "contain", blur: true },
+      { image: bsAdel_3, type: "photo", fit: "contain", blur: true },
+      { image: bsAdel_4, type: "photo", fit: "contain", blur: true },
+      { image: bsAdel_5, type: "photo", fit: "contain", blur: true },
+      { image: bsAdel_6, type: "photo", fit: "contain", blur: true },
+      { image: bsAdelPlan, type: "photo", fit: "contain" },
+    ],
+    likes: 36, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −40°C",
+    features: ["Панорамные окна", "Планировка"], style: "Барнхаус", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 179, name: "Альпина", badge: "Барнхаус", price: "7 700 000 ₽",
+    area: "220 м²", area_m2: 220, beds: 4, baths: 3, floors: 2, term: "от 2 мес.",
+    rooms: "4 спальни", purpose: "ИЖС", city: "Нижний Новгород",
+    maker: { ...BARNSTUDIO, siteUrl: "https://barnstudio.ru/barnhouse/alpina" },
+    description: "Двухэтажный барнхаус 220 м² с четырьмя спальнями, тремя санузлами и панорамным остеклением.",
+    descriptionLong: "Проект «Альпина» от Barn Studio: просторный двухэтажный каркасный дом по технологии Prefab для круглогодичного проживания. В планировке четыре спальни, гостиная, кухня и три санузла, жилая площадь на сайте производителя указана 220 м².",
+    gallery: [
+      { image: bsAlpina_1, type: "photo", fit: "contain", blur: true },
+      { image: bsAlpina_2, type: "photo", fit: "contain", blur: true },
+      { image: bsAlpina_3, type: "photo", fit: "contain", blur: true },
+      { image: bsAlpina_4, type: "photo", fit: "contain", blur: true },
+      { image: bsAlpina_5, type: "photo", fit: "contain", blur: true },
+      { image: bsAlpina_6, type: "photo", fit: "contain", blur: true },
+      { image: bsAlpinaPlan, type: "photo", fit: "contain" },
+    ],
+    likes: 41, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для большой семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −40°C",
+    features: ["Панорамные окна", "Планировка"], style: "Барнхаус", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 180, name: "Антресоль", badge: "Барнхаус", price: "3 200 000 ₽",
+    area: "84 м²", area_m2: 84, beds: 2, baths: 1, floors: 2, term: "от 2 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Нижний Новгород",
+    maker: { ...BARNSTUDIO, siteUrl: "https://barnstudio.ru/barnhouse/antresol" },
+    description: "Компактный барнхаус 84 м² с антресолью, двумя спальнями и панорамным остеклением.",
+    descriptionLong: "Проект «Антресоль» от Barn Studio: уютный каркасный дом 1,5 этажа для круглогодичного проживания. Жилая площадь 84 м², в планировке две спальни, гостиная, кухня и санузел; формат с антресолью подходит для небольшой семьи.",
+    gallery: [
+      { image: bsAntresol_1, type: "photo", fit: "contain", blur: true },
+      { image: bsAntresol_2, type: "photo", fit: "contain", blur: true },
+      { image: bsAntresol_3, type: "photo", fit: "contain", blur: true },
+      { image: bsAntresol_4, type: "photo", fit: "contain", blur: true },
+      { image: bsAntresol_5, type: "photo", fit: "contain", blur: true },
+      { image: bsAntresol_6, type: "photo", fit: "contain", blur: true },
+      { image: bsAntresolPlan, type: "photo", fit: "contain" },
+    ],
+    likes: 35, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Выходные / дача"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −40°C",
+    features: ["Антресоль", "Панорамные окна", "Планировка"], style: "Барнхаус", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 181, name: "Вижн", badge: "Барнхаус", price: "7 400 000 ₽",
+    area: "165 м²", area_m2: 165, beds: 1, baths: 2, floors: 2, term: "от 2 мес.",
+    rooms: "1 спальня", purpose: "ИЖС", city: "Нижний Новгород",
+    maker: { ...BARNSTUDIO, siteUrl: "https://barnstudio.ru/barnhouse/vizhn" },
+    description: "Двухэтажный барнхаус 165 м² со свободной светлой планировкой и двумя санузлами.",
+    descriptionLong: "Проект «Вижн» от Barn Studio: просторный двухэтажный каркасный дом для круглогодичного проживания. Жилая площадь 165 м², в планировке спальня, гостиная, кухня и два санузла; проект рассчитан на светлое открытое пространство.",
+    gallery: [
+      { image: bsVizhn_1, type: "photo", fit: "contain", blur: true },
+      { image: bsVizhn_2, type: "photo", fit: "contain", blur: true },
+      { image: bsVizhn_3, type: "photo", fit: "contain", blur: true },
+      { image: bsVizhn_4, type: "photo", fit: "contain", blur: true },
+      { image: bsVizhn_5, type: "photo", fit: "contain", blur: true },
+      { image: bsVizhn_6, type: "photo", fit: "contain", blur: true },
+      { image: bsVizhnPlan, type: "photo", fit: "contain" },
+    ],
+    likes: 39, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −40°C",
+    features: ["Панорамные окна", "Планировка"], style: "Барнхаус", landSize: "10+ соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
   },
 ];
 
