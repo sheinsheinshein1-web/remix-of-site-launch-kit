@@ -519,6 +519,38 @@ import bsVizhn_4 from "@/assets/barnstudio/vizhn/4.webp";
 import bsVizhn_5 from "@/assets/barnstudio/vizhn/5.webp";
 import bsVizhn_6 from "@/assets/barnstudio/vizhn/6.webp";
 import bsVizhnPlan from "@/assets/barnstudio/vizhn/7.webp";
+import bdValdaj_1 from "@/assets/beli-dom/valdaj/1.webp";
+import bdValdaj_2 from "@/assets/beli-dom/valdaj/2.webp";
+import bdValdaj_3 from "@/assets/beli-dom/valdaj/3.webp";
+import bdValdaj_4 from "@/assets/beli-dom/valdaj/4.webp";
+import bdValdaj_5 from "@/assets/beli-dom/valdaj/5.webp";
+import bdValdaj_6 from "@/assets/beli-dom/valdaj/6.webp";
+import bdValdajPlan from "@/assets/beli-dom/valdaj/plan-1.webp";
+import bdSemejnyj_1 from "@/assets/beli-dom/semejnyj/1.webp";
+import bdSemejnyj_2 from "@/assets/beli-dom/semejnyj/2.webp";
+import bdSemejnyj_3 from "@/assets/beli-dom/semejnyj/3.webp";
+import bdSemejnyj_4 from "@/assets/beli-dom/semejnyj/4.webp";
+import bdSemejnyj_5 from "@/assets/beli-dom/semejnyj/5.webp";
+import bdSemejnyj_6 from "@/assets/beli-dom/semejnyj/6.webp";
+import bdSemejnyjPlan1 from "@/assets/beli-dom/semejnyj/plan-1.webp";
+import bdSemejnyjPlan2 from "@/assets/beli-dom/semejnyj/plan-2.webp";
+import bdTradicziya_1 from "@/assets/beli-dom/tradicziya/1.webp";
+import bdTradicziya_2 from "@/assets/beli-dom/tradicziya/2.webp";
+import bdTradicziya_3 from "@/assets/beli-dom/tradicziya/3.webp";
+import bdTradicziya_4 from "@/assets/beli-dom/tradicziya/4.webp";
+import bdTradicziya_5 from "@/assets/beli-dom/tradicziya/5.webp";
+import bdTradicziyaPlan1 from "@/assets/beli-dom/tradicziya/plan-1.webp";
+import bdTradicziyaPlan2 from "@/assets/beli-dom/tradicziya/plan-2.webp";
+import bdKarolina_1 from "@/assets/beli-dom/karolina/1.webp";
+import bdKarolina_2 from "@/assets/beli-dom/karolina/2.webp";
+import bdKarolina_3 from "@/assets/beli-dom/karolina/3.webp";
+import bdKarolina_4 from "@/assets/beli-dom/karolina/4.webp";
+import bdKarolina_5 from "@/assets/beli-dom/karolina/5.webp";
+import bdKarolinaPlan1 from "@/assets/beli-dom/karolina/plan-1.webp";
+import bdKarolinaPlan2 from "@/assets/beli-dom/karolina/plan-2.webp";
+import bdTriumf_1 from "@/assets/beli-dom/triumf/1.webp";
+import bdTriumf_2 from "@/assets/beli-dom/triumf/2.webp";
+import bdTriumfPlan from "@/assets/beli-dom/triumf/plan-1.webp";
 import dtGlempingBarnhaus_1 from "@/assets/domoteka/glemping-barnhaus-6x7/1.webp";
 import dtGlempingBarnhaus_2 from "@/assets/domoteka/glemping-barnhaus-6x7/2.webp";
 import dtGlempingBarnhaus_3 from "@/assets/domoteka/glemping-barnhaus-6x7/3.webp";
@@ -988,6 +1020,12 @@ const BARNSTUDIO: Maker = {
   initials: "BS",
   id: "barnstudio",
   siteUrl: "https://barnstudio.ru/barnhouse",
+};
+const BELI_DOM: Maker = {
+  name: "Белый дом",
+  initials: "БД",
+  id: "beli-dom",
+  siteUrl: "https://beli-dom.ru/catalog/?technology=karkasnye-doma",
 };
 
 // ============================================================================
@@ -3916,6 +3954,115 @@ export const projects: Project[] = [
     technology: "Каркасный", completion: "Под ключ", insulation: "до −40°C",
     features: ["Панорамные окна", "Планировка"], style: "Барнхаус", landSize: "10+ соток",
     hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+
+  // ── Белый дом · Нижний Новгород ───────────────────────────────────────
+  {
+    id: 182, name: "Валдай", badge: "Загородный дом", price: "3 535 315 ₽",
+    area: "100,1 м²", area_m2: 100.1, beds: 3, baths: 1, floors: 1, term: "30–45 д.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Нижний Новгород",
+    maker: { ...BELI_DOM, siteUrl: "https://beli-dom.ru/catalog/valdaj_zhiloy_dom/" },
+    description: "Одноэтажный каркасный дом 100,1 м² с тремя спальнями, кухней-гостиной и готовой планировкой.",
+    descriptionLong: "Проект «Валдай» от СК «Белый дом»: одноэтажный каркасный загородный дом 100,1 м² для постоянного проживания. В планировке три спальни, кухня-гостиная, санузел и компактные хозяйственные зоны; строительство на сайте производителя указано 30–45 дней.",
+    gallery: [
+      { image: bdValdaj_1, type: "photo", fit: "contain", blur: true },
+      { image: bdValdaj_2, type: "photo", fit: "contain", blur: true },
+      { image: bdValdaj_3, type: "photo", fit: "contain", blur: true },
+      { image: bdValdaj_4, type: "photo", fit: "contain", blur: true },
+      { image: bdValdaj_5, type: "photo", fit: "contain", blur: true },
+      { image: bdValdaj_6, type: "photo", fit: "contain", blur: true },
+      { image: bdValdajPlan, type: "photo", fit: "contain" },
+    ],
+    likes: 37, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна", "Планировка"], style: "Барнхаус", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 183, name: "Семейный", badge: "Загородный дом", price: "3 212 028 ₽",
+    area: "126 м²", area_m2: 126, beds: 4, baths: 2, floors: 2, term: "30–45 д.",
+    rooms: "4 спальни", purpose: "ИЖС", city: "Нижний Новгород",
+    maker: { ...BELI_DOM, siteUrl: "https://beli-dom.ru/catalog/semejnyj_zhiloy_dom/" },
+    description: "Двухэтажный каркасный дом 126 м² с четырьмя спальнями, двумя санузлами и балконом.",
+    descriptionLong: "Проект «Семейный» от СК «Белый дом»: двухэтажный каркасный дом 126 м² для большой семьи. В планировке четыре спальни, два санузла, кухня-гостиная, хозяйственные помещения и балкон; проект представлен с фотографиями построенного дома и планами двух этажей.",
+    gallery: [
+      { image: bdSemejnyj_1, type: "photo", fit: "contain", blur: true },
+      { image: bdSemejnyj_2, type: "photo", fit: "contain", blur: true },
+      { image: bdSemejnyj_3, type: "photo", fit: "contain", blur: true },
+      { image: bdSemejnyj_4, type: "photo", fit: "contain", blur: true },
+      { image: bdSemejnyj_5, type: "photo", fit: "contain", blur: true },
+      { image: bdSemejnyj_6, type: "photo", fit: "contain", blur: true },
+      { image: bdSemejnyjPlan1, type: "photo", fit: "contain" },
+      { image: bdSemejnyjPlan2, type: "photo", fit: "contain" },
+    ],
+    likes: 42, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для большой семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Балкон", "Планировка"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 184, name: "Традиция", badge: "Загородный дом", price: "2 205 216 ₽",
+    area: "72,75 м²", area_m2: 72.75, beds: 2, baths: 1, floors: 2, term: "30–45 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Нижний Новгород",
+    maker: { ...BELI_DOM, siteUrl: "https://beli-dom.ru/catalog/tradicziya/" },
+    description: "Компактный двухэтажный каркасный дом 72,75 м² с террасой, балконом и двумя спальнями.",
+    descriptionLong: "Проект «Традиция» от СК «Белый дом»: компактный каркасный загородный дом 72,75 м² с линейными размерами 6,0 × 8,5 м. Планировка рассчитана на две спальни, санузел, террасу и балкон, поэтому дом подходит для постоянного проживания или дачного формата.",
+    gallery: [
+      { image: bdTradicziya_1, type: "photo", fit: "contain", blur: true },
+      { image: bdTradicziya_2, type: "photo", fit: "contain", blur: true },
+      { image: bdTradicziya_3, type: "photo", fit: "contain", blur: true },
+      { image: bdTradicziya_4, type: "photo", fit: "contain", blur: true },
+      { image: bdTradicziya_5, type: "photo", fit: "contain", blur: true },
+      { image: bdTradicziyaPlan1, type: "photo", fit: "contain" },
+      { image: bdTradicziyaPlan2, type: "photo", fit: "contain" },
+    ],
+    likes: 35, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Выходные / дача"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Балкон", "Планировка"], style: "Классический", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 185, name: "Каролина", badge: "Загородный дом", price: "2 920 000 ₽",
+    area: "113 м²", area_m2: 113, beds: 3, baths: 1, floors: 2, term: "30–45 д.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Нижний Новгород",
+    maker: { ...BELI_DOM, siteUrl: "https://beli-dom.ru/catalog/karolina_zhiloy_dom/" },
+    description: "Двухэтажный каркасный дом 113 м² с тремя спальнями, санузлом и балконом.",
+    descriptionLong: "Проект «Каролина» от СК «Белый дом»: двухэтажный каркасный загородный дом 113 м² с линейными размерами 6,0 × 9,0 м. Планировка включает три спальни, санузел, кухню-гостиную и балкон, а сезонные визуализации показывают дом в разных вариантах окружения.",
+    gallery: [
+      { image: bdKarolina_1, type: "photo", fit: "contain", blur: true },
+      { image: bdKarolina_2, type: "photo", fit: "contain", blur: true },
+      { image: bdKarolina_3, type: "photo", fit: "contain", blur: true },
+      { image: bdKarolina_4, type: "photo", fit: "contain", blur: true },
+      { image: bdKarolina_5, type: "photo", fit: "contain", blur: true },
+      { image: bdKarolinaPlan1, type: "photo", fit: "contain" },
+      { image: bdKarolinaPlan2, type: "photo", fit: "contain" },
+    ],
+    likes: 36, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Балкон", "Планировка"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 186, name: "Триумф", badge: "Загородный дом", price: "3 298 464 ₽",
+    area: "86 м²", area_m2: 86, beds: 2, baths: 1, floors: 1, term: "30–45 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Нижний Новгород",
+    maker: { ...BELI_DOM, siteUrl: "https://beli-dom.ru/catalog/triumf_zhiloy_dom/" },
+    description: "Одноэтажный каркасный дом 86 м² с двумя спальнями, террасой и удобной планировкой без лестниц.",
+    descriptionLong: "Проект «Триумф» от СК «Белый дом»: современный одноэтажный каркасный загородный дом 86 м² с линейными размерами 9,5 × 10,0 м. В доме две спальни, санузел, кухня-гостиная и терраса; формат без лестниц удобен для семей с детьми и старшего поколения.",
+    gallery: [
+      { image: bdTriumf_1, type: "photo", fit: "contain", blur: true },
+      { image: bdTriumf_2, type: "photo", fit: "contain", blur: true },
+      { image: bdTriumfPlan, type: "photo", fit: "contain" },
+    ],
+    likes: 34, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Планировка"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
   },
 ];
 
