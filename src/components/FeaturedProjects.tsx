@@ -261,13 +261,8 @@ const FeaturedProjects = () => {
     (e: React.MouseEvent<HTMLAnchorElement>, projectId: number) => {
       // Сохраняем позицию для восстановления
       sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
-      const proj = projects.find((p) => p.id === projectId);
-      // Широкие карточки Платформы — ведут в "магазин" производителя.
-      // Обычные карточки — открывают карточку проекта.
-      const href = proj && proj.maker.name === "Платформа"
-        ? `/partner/${proj.maker.id}`
-        : `/project/${projectId}`;
-      navigateWithTransition(e, navigate, href);
+      // Любая карточка проекта на главной открывает карточку проекта.
+      navigateWithTransition(e, navigate, `/project/${projectId}`);
     },
     [navigate]
   );
