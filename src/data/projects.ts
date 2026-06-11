@@ -551,6 +551,36 @@ import bdKarolinaPlan2 from "@/assets/beli-dom/karolina/plan-2.webp";
 import bdTriumf_1 from "@/assets/beli-dom/triumf/1.webp";
 import bdTriumf_2 from "@/assets/beli-dom/triumf/2.webp";
 import bdTriumfPlan from "@/assets/beli-dom/triumf/plan-1.webp";
+
+// МастерГруппБарнаул
+import mgbAngliya_1 from "@/assets/mastergrupp-barnaul/angliya/01.webp";
+import mgbAngliya_2 from "@/assets/mastergrupp-barnaul/angliya/02.webp";
+import mgbAngliya_3 from "@/assets/mastergrupp-barnaul/angliya/03.webp";
+import mgbAngliya_4 from "@/assets/mastergrupp-barnaul/angliya/04.webp";
+import mgbAngliya_5 from "@/assets/mastergrupp-barnaul/angliya/05.webp";
+import mgbAngliyaPlan1 from "@/assets/mastergrupp-barnaul/angliya/06.webp";
+import mgbAngliyaPlan2 from "@/assets/mastergrupp-barnaul/angliya/07.webp";
+import mgbKlavdiya_1 from "@/assets/mastergrupp-barnaul/klavdiya/01.webp";
+import mgbKlavdiyaFoundation from "@/assets/mastergrupp-barnaul/klavdiya/02.webp";
+import mgbKlavdiyaPlan from "@/assets/mastergrupp-barnaul/klavdiya/03.webp";
+import mgbKlavdiyaSection from "@/assets/mastergrupp-barnaul/klavdiya/04.webp";
+import mgbVud_1 from "@/assets/mastergrupp-barnaul/vud/01.webp";
+import mgbVud_2 from "@/assets/mastergrupp-barnaul/vud/02.webp";
+import mgbVudFoundation from "@/assets/mastergrupp-barnaul/vud/03.webp";
+import mgbVudPlan from "@/assets/mastergrupp-barnaul/vud/04.webp";
+import mgbVudSection from "@/assets/mastergrupp-barnaul/vud/05.webp";
+import mgbBriksiya_1 from "@/assets/mastergrupp-barnaul/briksiya/01.webp";
+import mgbBriksiya_2 from "@/assets/mastergrupp-barnaul/briksiya/02.webp";
+import mgbBriksiyaPlan2 from "@/assets/mastergrupp-barnaul/briksiya/03.webp";
+import mgbBriksiya_3 from "@/assets/mastergrupp-barnaul/briksiya/04.webp";
+import mgbBriksiya_4 from "@/assets/mastergrupp-barnaul/briksiya/05.webp";
+import mgbBriksiya_5 from "@/assets/mastergrupp-barnaul/briksiya/06.webp";
+import mgbBriksiyaPlan1 from "@/assets/mastergrupp-barnaul/briksiya/07.webp";
+import mgbBurlakov_1 from "@/assets/mastergrupp-barnaul/burlakov/01.webp";
+import mgbBurlakov_2 from "@/assets/mastergrupp-barnaul/burlakov/02.webp";
+import mgbBurlakov_3 from "@/assets/mastergrupp-barnaul/burlakov/03.webp";
+import mgbBurlakovPlan1 from "@/assets/mastergrupp-barnaul/burlakov/04.webp";
+import mgbBurlakovPlan2 from "@/assets/mastergrupp-barnaul/burlakov/05.webp";
 import dtGlempingBarnhaus_1 from "@/assets/domoteka/glemping-barnhaus-6x7/1.webp";
 import dtGlempingBarnhaus_2 from "@/assets/domoteka/glemping-barnhaus-6x7/2.webp";
 import dtGlempingBarnhaus_3 from "@/assets/domoteka/glemping-barnhaus-6x7/3.webp";
@@ -1026,6 +1056,15 @@ const BELI_DOM: Maker = {
   initials: "БД",
   id: "beli-dom",
   siteUrl: "https://beli-dom.ru/catalog/?technology=karkasnye-doma",
+};
+const MASTERGRUPP_BARNAUL: Maker = {
+  name: "МастерГруппБарнаул",
+  initials: "МГ",
+  id: "mastergrupp-barnaul",
+  siteUrl: "https://stroy-dom-barnaul.ru/building/karkassnye-doma/",
+  productionAddress: "г. Барнаул, проезд Южный, 9",
+  phone: "+7 (3852) 22-24-13",
+  email: "info@stroy-dom-barnaul.ru",
 };
 
 // ============================================================================
@@ -4063,6 +4102,111 @@ export const projects: Project[] = [
     technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
     features: ["Терраса", "Планировка"], style: "Современный", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+
+  // ── МастерГруппБарнаул · Алтайский край ───────────────────────────────
+  {
+    id: 192, name: "Англия", badge: "Спецпредложение", price: "2 604 841 ₽",
+    area: "62,02 м²", area_m2: 62.02, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Алтайский край",
+    maker: { ...MASTERGRUPP_BARNAUL, siteUrl: "https://stroy-dom-barnaul.ru/building/1623/" },
+    description: "Каркасный дом 62,02 м² размером 9 × 6 м с мансардой и крыльцом.",
+    descriptionLong: "Проект «Англия» от компании «МастерГруппБарнаул»: каркасный дом площадью 62,02 м², габариты 9 × 6 м. В планировке две комнаты, кухня, санузел и жилая мансарда; на сайте производителя указана специальная цена строительства.",
+    gallery: [
+      { image: mgbAngliya_1, type: "photo", fit: "contain", blur: true },
+      { image: mgbAngliya_2, type: "photo", fit: "contain", blur: true },
+      { image: mgbAngliya_3, type: "photo", fit: "contain", blur: true },
+      { image: mgbAngliya_4, type: "photo", fit: "contain", blur: true },
+      { image: mgbAngliya_5, type: "photo", fit: "contain", blur: true },
+      { image: mgbAngliyaPlan1, type: "photo", fit: "contain" },
+      { image: mgbAngliyaPlan2, type: "photo", fit: "contain" },
+    ],
+    likes: 32, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Выходные / дача"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Мансарда", "Крыльцо"], style: "Классический", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 193, name: "Клавдия", badge: "Спецпредложение", price: "2 612 401 ₽",
+    area: "62,2 м²", area_m2: 62.2, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Алтайский край",
+    maker: { ...MASTERGRUPP_BARNAUL, siteUrl: "https://stroy-dom-barnaul.ru/building/1515/" },
+    description: "Одноэтажный каркасный дом 62,2 м² размером 9 × 8 м с двумя спальнями.",
+    descriptionLong: "Проект «Клавдия» от компании «МастерГруппБарнаул»: одноэтажный каркасный дом площадью 62,2 м², габариты 9 × 8 м. Планировка включает две спальни, гостиную, кухню, санузел и прихожую, а галерея содержит план фундамента и разрез дома.",
+    gallery: [
+      { image: mgbKlavdiya_1, type: "photo", fit: "contain", blur: true },
+      { image: mgbKlavdiyaFoundation, type: "photo", fit: "contain" },
+      { image: mgbKlavdiyaPlan, type: "photo", fit: "contain" },
+      { image: mgbKlavdiyaSection, type: "photo", fit: "contain" },
+    ],
+    likes: 31, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Планировка"], style: "Классический", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 194, name: "Вуд", badge: "Хит", price: "2 612 401 ₽",
+    area: "62,2 м²", area_m2: 62.2, beds: 2, baths: 1, floors: 1, term: "от 2 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Алтайский край",
+    maker: { ...MASTERGRUPP_BARNAUL, siteUrl: "https://stroy-dom-barnaul.ru/building/1526/" },
+    description: "Одноэтажный каркасный дом 62,2 м² размером 8 × 9 м с навесом и двумя спальнями.",
+    descriptionLong: "Проект «Вуд» от компании «МастерГруппБарнаул»: одноэтажный каркасный дом площадью 62,2 м², габариты 8 × 9 м. В доме предусмотрены две спальни, кухня, гостиная, санузел и прихожая, а к фасаду примыкает просторный навес.",
+    gallery: [
+      { image: mgbVud_1, type: "photo", fit: "contain", blur: true },
+      { image: mgbVud_2, type: "photo", fit: "contain", blur: true },
+      { image: mgbVudFoundation, type: "photo", fit: "contain" },
+      { image: mgbVudPlan, type: "photo", fit: "contain" },
+      { image: mgbVudSection, type: "photo", fit: "contain" },
+    ],
+    likes: 34, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Навес", "Планировка"], style: "Классический", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 195, name: "Бриксия", badge: "Спецпредложение", price: "2 738 820 ₽",
+    area: "65,21 м²", area_m2: 65.21, beds: 2, baths: 1, floors: 2, term: "от 2 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Алтайский край",
+    maker: { ...MASTERGRUPP_BARNAUL, siteUrl: "https://stroy-dom-barnaul.ru/building/1616/" },
+    description: "Двухэтажный каркасный дом 65,21 м² размером 8 × 6 м с мансардой и террасой.",
+    descriptionLong: "Проект «Бриксия» от компании «МастерГруппБарнаул»: двухэтажный каркасный дом площадью 65,21 м², габариты 8 × 6 м. На первом этаже расположены кухня-гостиная и санузел, на мансардном этаже — спальня и дополнительная комната.",
+    gallery: [
+      { image: mgbBriksiya_1, type: "photo", fit: "contain", blur: true },
+      { image: mgbBriksiya_2, type: "photo", fit: "contain", blur: true },
+      { image: mgbBriksiyaPlan2, type: "photo", fit: "contain" },
+      { image: mgbBriksiya_3, type: "photo", fit: "contain", blur: true },
+      { image: mgbBriksiya_4, type: "photo", fit: "contain", blur: true },
+      { image: mgbBriksiya_5, type: "photo", fit: "contain", blur: true },
+      { image: mgbBriksiyaPlan1, type: "photo", fit: "contain" },
+    ],
+    likes: 33, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Выходные / дача"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Мансарда", "Терраса"], style: "Классический", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 196, name: "Бурлаков", badge: "Жилой дом", price: "2 864 400 ₽",
+    area: "68,2 м²", area_m2: 68.2, beds: 3, baths: 1, floors: 2, term: "от 2 мес.",
+    rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Алтайский край",
+    maker: { ...MASTERGRUPP_BARNAUL, siteUrl: "https://stroy-dom-barnaul.ru/building/75/" },
+    description: "Двухэтажный каркасный дом 68,2 м² размером 7 × 11 м с мансардой и эркером.",
+    descriptionLong: "Проект «Бурлаков» от компании «МастерГруппБарнаул»: двухэтажный каркасный дом площадью 68,2 м², габариты 7 × 11 м. Планировка включает кухню, гостиную с эркером, санузел и две спальни на мансардном этаже.",
+    gallery: [
+      { image: mgbBurlakov_1, type: "photo", fit: "contain", blur: true },
+      { image: mgbBurlakov_2, type: "photo", fit: "contain", blur: true },
+      { image: mgbBurlakov_3, type: "photo", fit: "contain", blur: true },
+      { image: mgbBurlakovPlan1, type: "photo", fit: "contain" },
+      { image: mgbBurlakovPlan2, type: "photo", fit: "contain" },
+    ],
+    likes: 35, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Мансарда", "Эркер"], style: "Классический", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
 ];
 
