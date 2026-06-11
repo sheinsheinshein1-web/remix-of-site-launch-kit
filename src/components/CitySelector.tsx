@@ -39,6 +39,10 @@ const IP_CITY_MAP: Record<string, string> = {
   "murmansk": "Мурманск",
   "petrozavodsk": "Петрозаводск",
   "barnaul": "Барнаул",
+  "altai": "Алтайский край",
+  "altay": "Алтайский край",
+  "алтай": "Алтайский край",
+  "алтайский край": "Алтайский край",
   "khabarovsk": "Хабаровск",
   "tomsk": "Томск",
 };
