@@ -194,6 +194,10 @@ const Partner = () => {
     telegram: summary?.telegram,
   };
 
+  const currentUrl = typeof window !== "undefined" ? window.location.href : `https://многоместа.рф/partner/${makerId}`;
+  const cleanSiteUrl = partner.siteUrl.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+  const violationMailto = `mailto:inadvert@yandex.ru?subject=${encodeURIComponent("Сообщение о нарушении прав")}&body=${encodeURIComponent(`URL карточки: ${currentUrl}\nВаша компания: \nКомментарий: `)}`;
+
   // Плейсхолдер до подключения реальных отзывов.
   const rating = 4.9;
   const reviewsLabel = "новый";
