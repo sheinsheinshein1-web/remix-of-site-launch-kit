@@ -138,7 +138,7 @@ console.log(`[prerender] done. ok=${ok} fail=${fail}`);
 // ---------- 4. Regenerate sitemap.xml ----------
 const lastmod = new Date().toISOString().slice(0, 10);
 const sitemapEntries = ROUTES.map((p) => {
-  const priority = p === "/" ? "1.0" : p.startsWith("/project/") ? "0.8" : p.startsWith("/partner/") ? "0.7" : "0.6";
+  const priority = p === "/" ? "1.0" : p.startsWith("/project/") ? "0.8" : p.startsWith("/region/") ? "0.8" : p.startsWith("/partner/") ? "0.7" : "0.6";
   const changefreq = p === "/" || p === "/catalog" ? "weekly" : "monthly";
   return `  <url>\n    <loc>${SITE_URL}${p}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
 }).join("\n");
