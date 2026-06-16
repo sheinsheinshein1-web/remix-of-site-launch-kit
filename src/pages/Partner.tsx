@@ -194,6 +194,10 @@ const Partner = () => {
     telegram: summary?.telegram,
   };
 
+  const currentUrl = typeof window !== "undefined" ? window.location.href : `https://многоместа.рф/partner/${makerId}`;
+  const cleanSiteUrl = partner.siteUrl.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+  const violationMailto = `mailto:inadvert@yandex.ru?subject=${encodeURIComponent("Сообщение о нарушении прав")}&body=${encodeURIComponent(`URL карточки: ${currentUrl}\nВаша компания: \nКомментарий: `)}`;
+
   // Плейсхолдер до подключения реальных отзывов.
   const rating = 4.9;
   const reviewsLabel = "новый";
@@ -356,9 +360,33 @@ const Partner = () => {
       <div className="border-t border-border px-4 md:px-6 py-4 md:py-5">
         <p className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground mb-2">О компании</p>
         <p className="text-[14px] md:text-[15px] text-foreground/85 leading-relaxed">{partner.about}</p>
-        <p className="mt-3 text-[12px] text-muted-foreground/80 leading-relaxed">
-          Все проекты и торговые знаки принадлежат компании {partner.name}. Информация собрана из открытых источников и приведена в ознакомительных целях.
-        </p>
+        {makerId === "hochu-dom" ? (
+          <p className="mt-3 text-[12px] text-muted-foreground/80 leading-relaxed">
+            Все права на проект, изображения и название принадлежат компании{" "}
+            <span className="font-medium text-foreground">{partner.name}</span>
+            {" ("}
+            <a
+              href={partner.siteUrl}
+              target="_blank"
+              rel="noopener noreferrer nofollow sponsored"
+              className="text-foreground underline underline-offset-2 hover:no-underline"
+            >
+              {cleanSiteUrl}
+            </a>
+            {"). Карточка собрана из открытых источников и размещена в информационных целях — для прямой связи покупателя с производителем. Если вы правообладатель и хотите удалить материал — сообщить о нарушении по почте "}
+            <a
+              href={violationMailto}
+              className="text-foreground underline underline-offset-2 hover:no-underline"
+            >
+              inadvert@yandex.ru
+            </a>
+            {". Мы рассмотрим обращение в течение 24 часов."}
+          </p>
+        ) : (
+          <p className="mt-3 text-[12px] text-muted-foreground/80 leading-relaxed">
+            Все проекты и торговые знаки принадлежат компании {partner.name}. Информация собрана из открытых источников и приведена в ознакомительных целях.
+          </p>
+        )}
       </div>
     </div>
   );
