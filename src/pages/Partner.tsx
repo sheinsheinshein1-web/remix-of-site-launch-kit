@@ -369,7 +369,7 @@ const Partner = () => {
             <a
               href={partner.siteUrl}
               target="_blank"
-              rel="noopener noreferrer nofollow sponsored"
+              rel="noopener noreferrer nofollow"
               className="text-muted-foreground underline underline-offset-2 hover:text-foreground hover:no-underline break-all transition-colors"
             >
               {cleanSiteUrl}
