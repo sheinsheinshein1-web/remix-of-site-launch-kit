@@ -954,7 +954,7 @@ const HOCHU_DOM: Maker = {
   name: "Хочу Дом",
   initials: "ХД",
   id: "hochu-dom",
-  siteUrl: "https://hochu-dom.ru/catalog/",
+  siteUrl: "https://hochu-dom.ru/",
 };
 const BEREST_DOM: Maker = {
   name: "Берест",
