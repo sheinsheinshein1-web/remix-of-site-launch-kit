@@ -808,7 +808,7 @@ import apa_aa5_2 from "@/assets/apa/aa-5/2.webp";
 import apa_aa5_3 from "@/assets/apa/aa-5/3.webp";
 import apa_aa5_4 from "@/assets/apa/aa-5/4.webp";
 import apa_aa5_5 from "@/assets/apa/aa-5/5.webp";
-import { regionalBatchProjects } from "@/data/regionalBatchProjects";
+import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
 // ТИПЫ
