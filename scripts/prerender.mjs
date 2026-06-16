@@ -139,4 +139,4 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://w
 await writeFileP(join(DIST, "sitemap.xml"), sitemap);
 console.log(`[prerender] sitemap.xml: ${ROUTES.length} urls`);
 
-process.exit(fail > 0 && ok === 0 ? 1 : 0);
+process.exit(fail > 0 ? 1 : 0);
