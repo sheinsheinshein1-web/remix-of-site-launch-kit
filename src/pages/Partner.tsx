@@ -363,28 +363,38 @@ const Partner = () => {
         {makerId === "hochu-dom" ? (
           <div className="mt-8 pt-4 border-t border-border/40 space-y-4">
             {/* Видимая часть */}
-            <div className="space-y-1.5">
-              <p className="text-[13px] leading-[1.5] text-muted-foreground">
-                Все права на проекты, изображения и название принадлежат компании{" "}
-                <span className="font-semibold text-foreground">{partner.name}</span>
-              </p>
+            <p className="text-[11px] leading-[1.6] text-muted-foreground">
+              Все права на проекты, изображения и название принадлежат компании{" "}
+              <span className="font-semibold text-foreground">{partner.name}</span>
+              {" ("}
               <a
                 href={partner.siteUrl}
                 target="_blank"
                 rel="noopener noreferrer nofollow sponsored"
-                className="inline-block text-[12px] text-muted-foreground/70 border-b border-border hover:text-muted-foreground hover:border-border/80 transition-all truncate max-w-full"
+                className="inline-block text-primary hover:text-primary/80 transition-colors underline decoration-primary/30 underline-offset-2 break-all"
               >
                 {cleanSiteUrl}
               </a>
-            </div>
+              {")."}
+            </p>
 
             {/* Скрытая часть — аккордеон */}
             <Accordion type="single" collapsible defaultValue={undefined}>
               <AccordionItem value="rights" className="border-none">
-                <AccordionTrigger className="text-[13px] font-semibold text-foreground/90 tracking-tight py-3.5 px-4 bg-secondary rounded-2xl border border-transparent hover:border-border hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-muted-foreground/70">
+                <AccordionTrigger className="w-full flex items-center justify-between group active:scale-[0.99] transition-transform duration-100 text-[13px] font-semibold text-foreground/90 hover:text-foreground/70 hover:no-underline py-0 [&[data-state=open]>svg]:rotate-180">
                   Правообладателям
+                  <div className="w-6 h-6 rounded-lg bg-secondary flex items-center justify-center group-hover:bg-muted transition-colors">
+                    <svg
+                      className="w-3.5 h-3.5 text-muted-foreground/70 group-hover:text-muted-foreground transition-colors"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
                 </AccordionTrigger>
-                <AccordionContent className="text-[12px] leading-relaxed text-muted-foreground px-4 pt-3 pb-1">
+                <AccordionContent className="text-[11px] text-muted-foreground/80 leading-relaxed">
                   Информация собрана из открытых источников и размещена для прямой связи покупателя с производителем. Если вы правообладатель и хотите удалить материал — сообщить о нарушении по почте{" "}
                   <a
                     href={violationMailto}
