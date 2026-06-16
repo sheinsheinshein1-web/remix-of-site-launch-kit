@@ -327,6 +327,8 @@ const ProjectDetail = () => {
       { "@type": "ListItem", position: 2, name: "Каталог", item: "https://многоместа.рф/catalog" },
       { "@type": "ListItem", position: 3, name: project.name, item: `https://многоместа.рф/project/${project.id}` },
     ],
+  };
+
   const currentUrl = typeof window !== "undefined" ? window.location.href : `https://многоместа.рф/project/${project.id}`;
   const cleanSiteUrl = project.siteUrl.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
   const violationMailto = `mailto:inadvert@yandex.ru?subject=${encodeURIComponent("Сообщение о нарушении прав")}&body=${encodeURIComponent(`URL карточки: ${currentUrl}\nВаша компания: \nКомментарий: `)}`;
