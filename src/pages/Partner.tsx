@@ -361,27 +361,30 @@ const Partner = () => {
         <p className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground mb-2">О компании</p>
         <p className="text-[14px] md:text-[15px] text-foreground/85 leading-relaxed">{partner.about}</p>
         {makerId === "hochu-dom" ? (
-          <>
-            <p className="text-[11px] text-muted-foreground/80 leading-relaxed mt-8 pt-4 border-t border-border/40">
-              Все права на проекты, изображения и название принадлежат компании{" "}
-              <span className="font-medium text-foreground">{partner.name}</span>
-              {" ("}
+          <div className="mt-8 pt-4 border-t border-border/40 space-y-4">
+            {/* Видимая часть */}
+            <div className="space-y-1.5">
+              <p className="text-[13px] leading-[1.5] text-muted-foreground">
+                Все права на проекты, изображения и название принадлежат компании{" "}
+                <span className="font-semibold text-foreground">{partner.name}</span>
+              </p>
               <a
                 href={partner.siteUrl}
                 target="_blank"
                 rel="noopener noreferrer nofollow sponsored"
-                className="text-foreground underline underline-offset-2 hover:no-underline"
+                className="inline-block text-[12px] text-muted-foreground/70 border-b border-border hover:text-muted-foreground hover:border-border/80 transition-all truncate max-w-full"
               >
                 {cleanSiteUrl}
               </a>
-              {")."}
-            </p>
-            <Accordion type="single" collapsible defaultValue={undefined} className="mt-1">
+            </div>
+
+            {/* Скрытая часть — аккордеон */}
+            <Accordion type="single" collapsible defaultValue={undefined}>
               <AccordionItem value="rights" className="border-none">
-                <AccordionTrigger className="text-[11px] text-muted-foreground/80 py-0 hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                <AccordionTrigger className="text-[13px] font-semibold text-foreground/90 tracking-tight py-3.5 px-4 bg-secondary rounded-2xl border border-transparent hover:border-border hover:no-underline [&[data-state=open]>svg]:rotate-180 [&>svg]:text-muted-foreground/70">
                   Правообладателям
                 </AccordionTrigger>
-                <AccordionContent className="text-[11px] text-muted-foreground/80 leading-relaxed">
+                <AccordionContent className="text-[12px] leading-relaxed text-muted-foreground px-4 pt-3 pb-1">
                   Информация собрана из открытых источников и размещена для прямой связи покупателя с производителем. Если вы правообладатель и хотите удалить материал — сообщить о нарушении по почте{" "}
                   <a
                     href={violationMailto}
@@ -393,7 +396,7 @@ const Partner = () => {
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-          </>
+          </div>
         ) : (
           <p className="mt-3 text-[12px] text-muted-foreground/80 leading-relaxed">
             Все проекты и торговые знаки принадлежат компании {partner.name}. Информация собрана из открытых источников и приведена в ознакомительных целях.
