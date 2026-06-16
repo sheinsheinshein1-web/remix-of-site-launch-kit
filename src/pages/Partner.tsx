@@ -381,18 +381,8 @@ const Partner = () => {
             {/* Скрытая часть — аккордеон */}
             <Accordion type="single" collapsible defaultValue={undefined}>
               <AccordionItem value="rights" className="border-none">
-                <AccordionTrigger className="w-full flex items-center justify-between group active:scale-[0.99] transition-transform duration-100 text-[13px] font-semibold text-foreground/90 hover:text-foreground/70 hover:no-underline py-0 [&[data-state=open]>svg]:rotate-180">
+                <AccordionTrigger className="text-[13px] font-semibold text-foreground/90 hover:text-foreground/70 hover:no-underline active:scale-[0.99] transition-transform duration-100 py-0 [&[data-state=open]>svg]:rotate-180 [&>svg]:w-3.5 [&>svg]:h-3.5 [&>svg]:text-muted-foreground/70">
                   Правообладателям
-                  <div className="w-6 h-6 rounded-lg bg-secondary flex items-center justify-center group-hover:bg-muted transition-colors">
-                    <svg
-                      className="w-3.5 h-3.5 text-muted-foreground/70 group-hover:text-muted-foreground transition-colors"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </div>
                 </AccordionTrigger>
                 <AccordionContent className="text-[11px] text-muted-foreground/80 leading-relaxed">
                   Информация собрана из открытых источников и размещена для прямой связи покупателя с производителем. Если вы правообладатель и хотите удалить материал — сообщить о нарушении по почте{" "}
