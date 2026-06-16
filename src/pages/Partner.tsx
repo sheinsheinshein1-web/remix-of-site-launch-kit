@@ -701,7 +701,7 @@ const Partner = () => {
                     key={item.label}
                     href={item.href}
                     target={item.href ? "_blank" : undefined}
-                    rel="noopener noreferrer"
+                    rel={item.href && (item.href.startsWith("http:") || item.href.startsWith("https:")) ? "noopener noreferrer nofollow sponsored" : "noopener noreferrer"}
                     className="w-full flex items-center justify-between py-3"
                   >
                     <span className="text-[15px] text-white/90 truncate">{item.label}</span>
@@ -715,7 +715,7 @@ const Partner = () => {
                 <a
                   href={partner.siteUrl}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow sponsored"
                   className="w-full flex items-center justify-between px-5 py-4 rounded-2xl"
                   style={{ background: "hsl(0 0% 100% / 0.08)" }}
                 >
