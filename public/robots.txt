@@ -13,4 +13,6 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://многоместа.рф/sitemap.xml
+Sitemap: https://xn--80afg0abehb3ak.xn--p1ai/sitemap.xml
+
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&fbclid&ref

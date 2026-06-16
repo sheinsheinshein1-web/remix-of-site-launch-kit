@@ -20,15 +20,18 @@ const mkdirP = promisify(mkdir);
 
 const DIST = resolve("dist");
 const SRC_PROJECTS = resolve("src/data/projects.ts");
+const SRC_REGIONAL = resolve("src/data/regionalBatchProjects.ts");
 const SITE_URL = "https://многоместа.рф";
 const PORT = 4173;
 
 // ---------- 1. Build URL list ----------
 const projectsSrc = readSync(SRC_PROJECTS, "utf8");
-const projectIds = [...projectsSrc.matchAll(/^\s+id:\s*(\d+),/gm)].map((m) => Number(m[1]));
-const makerIds = [...projectsSrc.matchAll(/^\s+id:\s*["']([^"']+)["'],/gm)].map((m) => m[1]);
+const regionalSrc = existsSync(SRC_REGIONAL) ? readSync(SRC_REGIONAL, "utf8") : "";
+const combinedSrc = projectsSrc + "\n" + regionalSrc;
+const projectIds = [...new Set([...combinedSrc.matchAll(/^\s+id:\s*(\d+),/gm)].map((m) => Number(m[1])))];
+const makerIds = [...new Set([...combinedSrc.matchAll(/^\s+id:\s*["']([^"']+)["'],/gm)].map((m) => m[1]))];
 
-const staticRoutes = ["/", "/catalog", "/categories", "/partner", "/privacy", "/favorites"];
+const staticRoutes = ["/", "/catalog", "/categories", "/partner", "/privacy"];
 const projectRoutes = projectIds.map((id) => `/project/${id}`);
 const partnerRoutes = makerIds.map((id) => `/partner/${id}`);
 
