@@ -47,10 +47,10 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
   const likesCount = project.likes + (liked ? 1 : 0);
 
 
-  const partnerHref = `/partner/${project.maker.id}`;
+  const projectHref = `/project/${project.id}`;
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (onCardClick) onCardClick(e, project.id);
-    else navigateWithTransition(e, navigate, partnerHref);
+    else navigateWithTransition(e, navigate, projectHref);
   };
 
   const handleFavToggle = (e: React.MouseEvent) => {
@@ -75,7 +75,7 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
   return (
     <article className="overflow-hidden">
       <a
-        href={partnerHref}
+        href={projectHref}
         onClick={handleClick}
         className="block cursor-pointer"
         aria-label={`${project.name} — от ${project.price}`}
