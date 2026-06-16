@@ -5,7 +5,7 @@ import sharp from "sharp";
 import { mkdir } from "node:fs/promises";
 import { dirname } from "node:path";
 
-const SRC = "src/assets/wide-house-1.webp";
+const SRC = "scripts/og-assets/og-source.jpg";
 const OUT = "public/og/default.jpg";
 const W = 1200;
 const H = 630;
