@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 
 const SITE_URL = "https://многоместа.рф";
-const DEFAULT_OG = "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3549bc00-a8fc-4925-a318-04b3736efd56/id-preview-2590390d--4f1f63b9-3e1f-4ede-8df6-5d7432d04c7a.lovable.app-1775667597166.png";
+const DEFAULT_OG = `${SITE_URL}/og/default.jpg`;
 
 interface SeoProps {
   title: string;
