@@ -48,7 +48,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-secondary font-sans pb-16 md:pb-0">
       <Seo
-        title="многоместа.рф — модульные и префаб дома с доставкой по России"
+        title="многоместа.рф — модульные и префаб дома с доставкой по РФ"
         description="Маркетплейс модульных и префаб домов. Сотни проектов от проверенных производителей с доставкой и сборкой по России."
         canonicalPath="/"
         jsonLd={homeJsonLd}
