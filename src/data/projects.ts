@@ -4338,6 +4338,14 @@ export type MakerSummary = {
   email?: string;
   telegram?: string;
 };
+const canonicalMakerSiteUrls: Record<string, string> = [
+  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL,
+  ...regionalMakers,
+].reduce((acc, m) => {
+  if (m.id && m.siteUrl) acc[m.id] = m.siteUrl;
+  return acc;
+}, {} as Record<string, string>);
+
 export const makersById: Record<string, MakerSummary> = projects.reduce((acc, p) => {
   const id = p.maker.id;
   if (!id || acc[id]) return acc;
@@ -4347,7 +4355,7 @@ export const makersById: Record<string, MakerSummary> = projects.reduce((acc, p)
     initials: p.maker.initials,
     logo: p.maker.logo,
     city: p.city,
-    siteUrl: p.maker.siteUrl,
+    siteUrl: canonicalMakerSiteUrls[id] ?? p.maker.siteUrl,
     technology: p.technology,
     productionAddress: p.maker.productionAddress,
     phone: p.maker.phone,
