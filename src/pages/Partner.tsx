@@ -371,7 +371,7 @@ const Partner = () => {
                 href={partner.siteUrl}
                 target="_blank"
                 rel="noopener noreferrer nofollow sponsored"
-                className="inline-block text-primary hover:text-primary/80 transition-colors underline decoration-primary/30 underline-offset-2 break-all"
+                className="text-foreground underline underline-offset-2 hover:no-underline break-all"
               >
                 {cleanSiteUrl}
               </a>
