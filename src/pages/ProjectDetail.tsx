@@ -329,10 +329,6 @@ const ProjectDetail = () => {
     ],
   };
 
-  const currentUrl = typeof window !== "undefined" ? window.location.href : `https://многоместа.рф/project/${project.id}`;
-  const cleanSiteUrl = project.siteUrl.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
-  const violationMailto = `mailto:inadvert@yandex.ru?subject=${encodeURIComponent("Сообщение о нарушении прав")}&body=${encodeURIComponent(`URL карточки: ${currentUrl}\nВаша компания: \nКомментарий: `)}`;
-
   return (
     <div className="min-h-screen bg-muted pb-24 md:pb-0">
       <Seo
