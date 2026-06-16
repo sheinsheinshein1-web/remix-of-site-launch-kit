@@ -329,6 +329,10 @@ const ProjectDetail = () => {
     ],
   };
 
+  const currentUrl = typeof window !== "undefined" ? window.location.href : `https://многоместа.рф/project/${project.id}`;
+  const cleanSiteUrl = project.siteUrl.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+  const violationMailto = `mailto:inadvert@yandex.ru?subject=${encodeURIComponent("Сообщение о нарушении прав")}&body=${encodeURIComponent(`URL карточки: ${currentUrl}\nВаша компания: \nКомментарий: `)}`;
+
   return (
     <div className="min-h-screen bg-muted pb-24 md:pb-0">
       <Seo
@@ -669,6 +673,31 @@ const ProjectDetail = () => {
           </div>
 
         </div>
+
+        {/* Дисклеймер для Хочу Дом */}
+        {project.makerId === "hochu-dom" && (
+          <div className="mt-6 px-4 py-3 text-xs text-muted-foreground leading-relaxed max-w-3xl">
+            Все права на проект, изображения и название принадлежат компании{" "}
+            <span className="font-medium text-foreground">{project.maker}</span>
+            {" ("}
+            <a
+              href={project.siteUrl}
+              target="_blank"
+              rel="noopener noreferrer nofollow sponsored"
+              className="text-foreground underline underline-offset-2 hover:no-underline"
+            >
+              {cleanSiteUrl}
+            </a>
+            {"). Карточка собрана из открытых источников и размещена в информационных целях — для прямой связи покупателя с производителем. Если вы правообладатель и хотите удалить материал — сообщить о нарушении по почте "}
+            <a
+              href={violationMailto}
+              className="text-foreground underline underline-offset-2 hover:no-underline"
+            >
+              inadvert@yandex.ru
+            </a>
+            {". Мы рассмотрим обращение в течение 24 часов."}
+          </div>
+        )}
 
         <div className="h-[100px]" />
       </main>
