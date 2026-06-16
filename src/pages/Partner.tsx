@@ -715,7 +715,7 @@ const Partner = () => {
                 <a
                   href={partner.siteUrl}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow sponsored"
                   className="w-full flex items-center justify-between px-5 py-4 rounded-2xl"
                   style={{ background: "hsl(0 0% 100% / 0.08)" }}
                 >
