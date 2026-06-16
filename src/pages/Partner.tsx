@@ -7,6 +7,7 @@ import shareIcon from "@/assets/share-icon.svg";
 import ProjectCard from "@/components/ProjectCard";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { toast } from "sonner";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import {
