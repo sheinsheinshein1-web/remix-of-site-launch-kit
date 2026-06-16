@@ -361,27 +361,39 @@ const Partner = () => {
         <p className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground mb-2">О компании</p>
         <p className="text-[14px] md:text-[15px] text-foreground/85 leading-relaxed">{partner.about}</p>
         {makerId === "hochu-dom" ? (
-          <p className="mt-3 text-[12px] text-muted-foreground/80 leading-relaxed">
-            Все права на проекты, изображения и название принадлежат компании{" "}
-            <span className="font-medium text-foreground">{partner.name}</span>
-            {" ("}
-            <a
-              href={partner.siteUrl}
-              target="_blank"
-              rel="noopener noreferrer nofollow sponsored"
-              className="text-foreground underline underline-offset-2 hover:no-underline"
-            >
-              {cleanSiteUrl}
-            </a>
-            {"). Информация собрана из открытых источников и размещена для прямой связи покупателя с производителем. Если вы правообладатель и хотите удалить материал — сообщить о нарушении по почте "}
-            <a
-              href={violationMailto}
-              className="text-foreground underline underline-offset-2 hover:no-underline"
-            >
-              inadvert@yandex.ru
-            </a>
-            {". Мы рассмотрим обращение в течение 24 часов."}
-          </p>
+          <>
+            <p className="text-[11px] text-muted-foreground/80 leading-relaxed mt-8 pt-4 border-t border-border/40">
+              Все права на проекты, изображения и название принадлежат компании{" "}
+              <span className="font-medium text-foreground">{partner.name}</span>
+              {" ("}
+              <a
+                href={partner.siteUrl}
+                target="_blank"
+                rel="noopener noreferrer nofollow sponsored"
+                className="text-foreground underline underline-offset-2 hover:no-underline"
+              >
+                {cleanSiteUrl}
+              </a>
+              {")."}
+            </p>
+            <Accordion type="single" collapsible defaultValue={undefined} className="mt-1">
+              <AccordionItem value="rights" className="border-none">
+                <AccordionTrigger className="text-[11px] text-muted-foreground/80 py-0 hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                  Правообладателям
+                </AccordionTrigger>
+                <AccordionContent className="text-[11px] text-muted-foreground/80 leading-relaxed">
+                  Информация собрана из открытых источников и размещена для прямой связи покупателя с производителем. Если вы правообладатель и хотите удалить материал — сообщить о нарушении по почте{" "}
+                  <a
+                    href={violationMailto}
+                    className="text-foreground underline underline-offset-2 hover:no-underline"
+                  >
+                    inadvert@yandex.ru
+                  </a>
+                  {". Мы рассмотрим обращение в течение 24 часов."}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </>
         ) : (
           <p className="mt-3 text-[12px] text-muted-foreground/80 leading-relaxed">
             Все проекты и торговые знаки принадлежат компании {partner.name}. Информация собрана из открытых источников и приведена в ознакомительных целях.
