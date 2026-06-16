@@ -23,9 +23,15 @@ const categoryLinks = [
   { label: "Хозблоки", path: "/catalog" },
 ];
 
-const regionLinks = [
-  "Москва и МО", "Санкт-Петербург и ЛО", "Краснодарский край",
-  "Казань", "Екатеринбург", "Пермский край",
+const regionLinks: { label: string; slug: string }[] = [
+  { label: "Москва и МО", slug: "moskva" },
+  { label: "Санкт-Петербург и ЛО", slug: "sankt-peterburg" },
+  { label: "Краснодарский край", slug: "krasnodar" },
+  { label: "Казань", slug: "kazan" },
+  { label: "Екатеринбург", slug: "ekaterinburg" },
+  { label: "Пермский край", slug: "perm" },
+  { label: "Нижний Новгород", slug: "nizhniy-novgorod" },
+  { label: "Алтайский край", slug: "altayskiy-kray" },
 ];
 
 const Footer = () => {
