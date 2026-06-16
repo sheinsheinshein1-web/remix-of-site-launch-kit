@@ -27,6 +27,12 @@ const buildCanonical = (path?: string) => {
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 };
 
+const buildAbsoluteImage = (img: string) => {
+  if (!img) return DEFAULT_OG;
+  if (img.startsWith("http")) return img;
+  return `${SITE_URL}${img.startsWith("/") ? img : `/${img}`}`;
+};
+
 const Seo = ({
   title,
   description,
