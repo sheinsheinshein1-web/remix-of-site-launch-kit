@@ -31,12 +31,17 @@ const combinedSrc = projectsSrc + "\n" + regionalSrc;
 const projectIds = [...new Set([...combinedSrc.matchAll(/^\s+id:\s*(\d+),/gm)].map((m) => Number(m[1])))];
 const makerIds = [...new Set([...combinedSrc.matchAll(/^\s+id:\s*["']([^"']+)["'],/gm)].map((m) => m[1]))];
 
+const SRC_REGIONS = resolve("src/data/regions.ts");
+const regionsSrc = existsSync(SRC_REGIONS) ? readSync(SRC_REGIONS, "utf8") : "";
+const regionSlugs = [...new Set([...regionsSrc.matchAll(/slug:\s*["']([^"']+)["']/g)].map((m) => m[1]))];
+
 const staticRoutes = ["/", "/catalog", "/categories", "/partner", "/privacy"];
 const projectRoutes = projectIds.map((id) => `/project/${id}`);
 const partnerRoutes = makerIds.map((id) => `/partner/${id}`);
+const regionRoutes = regionSlugs.map((s) => `/region/${s}`);
 
-const ROUTES = [...new Set([...staticRoutes, ...projectRoutes, ...partnerRoutes])];
-console.log(`[prerender] ${ROUTES.length} routes (${staticRoutes.length} static, ${projectRoutes.length} projects, ${partnerRoutes.length} partners)`);
+const ROUTES = [...new Set([...staticRoutes, ...projectRoutes, ...partnerRoutes, ...regionRoutes])];
+console.log(`[prerender] ${ROUTES.length} routes (${staticRoutes.length} static, ${projectRoutes.length} projects, ${partnerRoutes.length} partners, ${regionRoutes.length} regions)`);
 
 // ---------- 2. Tiny static server with SPA fallback ----------
 const MIME = {
@@ -133,7 +138,7 @@ console.log(`[prerender] done. ok=${ok} fail=${fail}`);
 // ---------- 4. Regenerate sitemap.xml ----------
 const lastmod = new Date().toISOString().slice(0, 10);
 const sitemapEntries = ROUTES.map((p) => {
-  const priority = p === "/" ? "1.0" : p.startsWith("/project/") ? "0.8" : p.startsWith("/partner/") ? "0.7" : "0.6";
+  const priority = p === "/" ? "1.0" : p.startsWith("/project/") ? "0.8" : p.startsWith("/region/") ? "0.8" : p.startsWith("/partner/") ? "0.7" : "0.6";
   const changefreq = p === "/" || p === "/catalog" ? "weekly" : "monthly";
   return `  <url>\n    <loc>${SITE_URL}${p}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
 }).join("\n");

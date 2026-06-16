@@ -28,6 +28,7 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.tsx"));
 const MessagesLayout = lazy(() => import("./pages/MessagesLayout.tsx"));
 const Lab = lazy(() => import("./pages/Lab.tsx"));
 const OperatorChat = lazy(() => import("./pages/OperatorChat.tsx"));
+const RegionPage = lazy(() => import("./pages/RegionPage.tsx"));
 
 import avatar3d from "@/assets/avatar-3d.webp";
 import heart3d from "@/assets/heart-3d.webp";
@@ -174,6 +175,7 @@ const AppRoutes = () => (
         <Route path="/partner/:id/reviews" element={<PartnerReviews />} />
         <Route path="/operator" element={<OperatorChat />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/region/:slug" element={<RegionPage />} />
         <Route path="/lab" element={<Lab />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

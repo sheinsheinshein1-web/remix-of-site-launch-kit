@@ -63,6 +63,29 @@ const Index = () => {
         <div className="px-2 md:px-8 pt-2 md:pt-3 pb-2">
           <FeaturedProjects />
         </div>
+        <div className="px-3 md:px-8 pt-2 pb-4">
+          <h2 className="text-base md:text-lg font-semibold text-foreground mb-3">Дома по регионам</h2>
+          <div className="flex flex-wrap gap-2">
+            {[
+              { label: "Москва и МО", slug: "moskva" },
+              { label: "Санкт-Петербург и ЛО", slug: "sankt-peterburg" },
+              { label: "Краснодарский край", slug: "krasnodar" },
+              { label: "Казань", slug: "kazan" },
+              { label: "Екатеринбург", slug: "ekaterinburg" },
+              { label: "Пермский край", slug: "perm" },
+              { label: "Нижний Новгород", slug: "nizhniy-novgorod" },
+              { label: "Алтайский край", slug: "altayskiy-kray" },
+            ].map((r) => (
+              <a
+                key={r.slug}
+                href={`/region/${r.slug}`}
+                className="px-3 py-1.5 rounded-xl bg-secondary text-[13px] text-foreground hover:bg-muted transition-colors"
+              >
+                {r.label}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
 
       <Footer />

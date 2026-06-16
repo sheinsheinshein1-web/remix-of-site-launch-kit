@@ -23,9 +23,15 @@ const categoryLinks = [
   { label: "Хозблоки", path: "/catalog" },
 ];
 
-const regionLinks = [
-  "Москва и МО", "Санкт-Петербург и ЛО", "Краснодарский край",
-  "Казань", "Екатеринбург", "Пермский край",
+const regionLinks: { label: string; slug: string }[] = [
+  { label: "Москва и МО", slug: "moskva" },
+  { label: "Санкт-Петербург и ЛО", slug: "sankt-peterburg" },
+  { label: "Краснодарский край", slug: "krasnodar" },
+  { label: "Казань", slug: "kazan" },
+  { label: "Екатеринбург", slug: "ekaterinburg" },
+  { label: "Пермский край", slug: "perm" },
+  { label: "Нижний Новгород", slug: "nizhniy-novgorod" },
+  { label: "Алтайский край", slug: "altayskiy-kray" },
 ];
 
 const Footer = () => {
@@ -68,7 +74,7 @@ const Footer = () => {
           <h4 className="font-semibold text-[13px] mb-3 text-foreground">Быстровозводимые дома по регионам</h4>
           <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-[13px] text-muted-foreground">
             {regionLinks.map((r) => (
-              <a key={r} href="/catalog" onClick={go("/catalog")} className="hover:text-foreground transition-colors">{r}</a>
+              <a key={r.slug} href={`/region/${r.slug}`} onClick={go(`/region/${r.slug}`)} className="hover:text-foreground transition-colors">{r.label}</a>
             ))}
           </div>
         </div>
