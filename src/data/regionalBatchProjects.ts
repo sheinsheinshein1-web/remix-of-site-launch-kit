@@ -81,6 +81,8 @@ const ALTAI_MDA: Maker = {
   siteUrl: "https://altai-mda.ru/modul-house",
 };
 
+export const regionalMakers = [AZBUKA, YUZHNY_DOM, KLYUCH_ST, DOORHAN, AVGST, STROYLIDER, POSTROIDOM, ALTAI_MDA];
+
 type ProjectInput = {
   id: number;
   name: string;

@@ -360,48 +360,42 @@ const Partner = () => {
       <div className="border-t border-border px-4 md:px-6 py-4 md:py-5">
         <p className="text-[11px] font-medium tracking-wider uppercase text-muted-foreground mb-2">О компании</p>
         <p className="text-[14px] md:text-[15px] text-foreground/85 leading-relaxed">{partner.about}</p>
-        {makerId === "hochu-dom" ? (
-          <div className="mt-8 pt-4 border-t border-border/40 space-y-4">
-            {/* Видимая часть */}
-            <p className="text-[11px] leading-[1.6] text-muted-foreground">
-              Все права на проекты, изображения и название принадлежат компании{" "}
-              <span className="font-semibold text-foreground">{partner.name}</span>
-              {" ("}
-              <a
-                href={partner.siteUrl}
-                target="_blank"
-                rel="noopener noreferrer nofollow sponsored"
-                className="text-muted-foreground underline underline-offset-2 hover:text-foreground hover:no-underline break-all transition-colors"
-              >
-                {cleanSiteUrl}
-              </a>
-              {")."}
-            </p>
-
-            {/* Скрытая часть — аккордеон */}
-            <Accordion type="single" collapsible defaultValue={undefined}>
-              <AccordionItem value="rights" className="border-none">
-                <AccordionTrigger className="text-[13px] font-semibold text-foreground/90 hover:text-foreground/70 hover:no-underline active:scale-[0.99] transition-transform duration-100 py-0 [&[data-state=open]>svg]:rotate-180 [&>svg]:w-3.5 [&>svg]:h-3.5 [&>svg]:text-muted-foreground/70">
-                  Правообладателям
-                </AccordionTrigger>
-                <AccordionContent className="text-[11px] text-muted-foreground/80 leading-relaxed">
-                  Информация собрана из открытых источников и размещена для прямой связи покупателя с производителем. Если вы правообладатель и хотите удалить материал — сообщить о нарушении по почте{" "}
-                  <a
-                    href={violationMailto}
-                    className="text-foreground underline underline-offset-2 hover:no-underline"
-                  >
-                    inadvert@yandex.ru
-                  </a>
-                  {". Мы рассмотрим обращение в течение 24 часов."}
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
-        ) : (
-          <p className="mt-3 text-[12px] text-muted-foreground/80 leading-relaxed">
-            Все проекты и торговые знаки принадлежат компании {partner.name}. Информация собрана из открытых источников и приведена в ознакомительных целях.
+        <div className="mt-8 pt-4 border-t border-border/40 space-y-4">
+          {/* Видимая часть */}
+          <p className="text-[11px] leading-[1.6] text-muted-foreground">
+            Все права на проекты, изображения и название принадлежат компании{" "}
+            <span className="font-semibold text-foreground">{partner.name}</span>
+            {" ("}
+            <a
+              href={partner.siteUrl}
+              target="_blank"
+              rel="noopener noreferrer nofollow sponsored"
+              className="text-muted-foreground underline underline-offset-2 hover:text-foreground hover:no-underline break-all transition-colors"
+            >
+              {cleanSiteUrl}
+            </a>
+            {")."}
           </p>
-        )}
+
+          {/* Скрытая часть — аккордеон */}
+          <Accordion type="single" collapsible defaultValue={undefined}>
+            <AccordionItem value="rights" className="border-none">
+              <AccordionTrigger className="text-[13px] font-semibold text-foreground/90 hover:text-foreground/70 hover:no-underline active:scale-[0.99] transition-transform duration-100 py-0 [&[data-state=open]>svg]:rotate-180 [&>svg]:w-3.5 [&>svg]:h-3.5 [&>svg]:text-muted-foreground/70">
+                Правообладателям
+              </AccordionTrigger>
+              <AccordionContent className="text-[11px] text-muted-foreground/80 leading-relaxed">
+                Информация собрана из открытых источников и размещена для прямой связи покупателя с производителем. Если вы правообладатель и хотите удалить материал — сообщить о нарушении по почте{" "}
+                <a
+                  href={violationMailto}
+                  className="text-foreground underline underline-offset-2 hover:no-underline"
+                >
+                  inadvert@yandex.ru
+                </a>
+                {". Мы рассмотрим обращение в течение 24 часов."}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
       </div>
     </div>
   );
