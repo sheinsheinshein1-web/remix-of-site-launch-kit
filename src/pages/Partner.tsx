@@ -362,7 +362,7 @@ const Partner = () => {
         <p className="text-[14px] md:text-[15px] text-foreground/85 leading-relaxed">{partner.about}</p>
         {makerId === "hochu-dom" ? (
           <p className="mt-3 text-[12px] text-muted-foreground/80 leading-relaxed">
-            Все права на проект, изображения и название принадлежат компании{" "}
+            Все права на проекты, изображения и название принадлежат компании{" "}
             <span className="font-medium text-foreground">{partner.name}</span>
             {" ("}
             <a
@@ -373,7 +373,7 @@ const Partner = () => {
             >
               {cleanSiteUrl}
             </a>
-            {"). Карточка собрана из открытых источников и размещена в информационных целях — для прямой связи покупателя с производителем. Если вы правообладатель и хотите удалить материал — сообщить о нарушении по почте "}
+            {"). Информация собрана из открытых источников и размещена для прямой связи покупателя с производителем. Если вы правообладатель и хотите удалить материал — сообщить о нарушении по почте "}
             <a
               href={violationMailto}
               className="text-foreground underline underline-offset-2 hover:no-underline"
