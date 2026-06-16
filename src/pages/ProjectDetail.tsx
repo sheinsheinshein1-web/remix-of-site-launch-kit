@@ -319,6 +319,16 @@ const ProjectDetail = () => {
       : undefined,
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Главная", item: "https://многоместа.рф/" },
+      { "@type": "ListItem", position: 2, name: "Каталог", item: "https://многоместа.рф/catalog" },
+      { "@type": "ListItem", position: 3, name: project.name, item: `https://многоместа.рф/project/${project.id}` },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-muted pb-24 md:pb-0">
       <Seo
@@ -327,7 +337,7 @@ const ProjectDetail = () => {
         canonicalPath={`/project/${project.id}`}
         type="product"
         image={galleryImages[0]?.image}
-        jsonLd={productJsonLd}
+        jsonLd={[productJsonLd, breadcrumbJsonLd]}
       />
       {/* Desktop header */}
       <div className="hidden md:block"><Header /></div>
