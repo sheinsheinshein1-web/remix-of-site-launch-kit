@@ -93,12 +93,11 @@ for (const route of ROUTES) {
   const url = `http://127.0.0.1:${PORT}${route}`;
   try {
     await page.goto(url, { waitUntil: "networkidle", timeout: 30_000 });
-    // Wait until Helmet has injected a real <title> different from the static fallback,
-    // OR a short delay if title was already set.
+    // Wait until Helmet has injected JSON-LD — a real signal that meta tags are flushed.
     await page.waitForFunction(
-      () => document.title && document.title.length > 0,
+      () => !!document.querySelector('script[type="application/ld+json"]'),
       null,
-      { timeout: 5_000 }
+      { timeout: 10_000 }
     ).catch(() => {});
     // small buffer for trailing helmet writes
     await page.waitForTimeout(150);
