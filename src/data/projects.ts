@@ -808,6 +808,58 @@ import apa_aa5_2 from "@/assets/apa/aa-5/2.webp";
 import apa_aa5_3 from "@/assets/apa/aa-5/3.webp";
 import apa_aa5_4 from "@/assets/apa/aa-5/4.webp";
 import apa_aa5_5 from "@/assets/apa/aa-5/5.webp";
+
+// Санкт-Петербург и ЛО · модульные дома
+import psPraktik21_1 from "@/assets/praktika-stroy/ps-praktik-21-1.webp";
+import psPraktik21_2 from "@/assets/praktika-stroy/ps-praktik-21-2.webp";
+import psPraktik21_3 from "@/assets/praktika-stroy/ps-praktik-21-3.webp";
+import psPraktik22_1 from "@/assets/praktika-stroy/ps-praktik-22-1.webp";
+import psPraktik22_2 from "@/assets/praktika-stroy/ps-praktik-22-2.webp";
+import psPraktik23_1 from "@/assets/praktika-stroy/ps-praktik-23-1.webp";
+import psPraktik23_2 from "@/assets/praktika-stroy/ps-praktik-23-2.webp";
+import psPraktik31_1 from "@/assets/praktika-stroy/ps-praktik-31-1.webp";
+import psPraktik31_2 from "@/assets/praktika-stroy/ps-praktik-31-2.webp";
+import psPraktik31_3 from "@/assets/praktika-stroy/ps-praktik-31-3.webp";
+import psPraktik32_1 from "@/assets/praktika-stroy/ps-praktik-32-1.webp";
+import psPraktik32_2 from "@/assets/praktika-stroy/ps-praktik-32-2.webp";
+import ecMga1 from "@/assets/eco-city/ec-mga-1.webp";
+import ecMga2 from "@/assets/eco-city/ec-mga-2.webp";
+import ecMga3 from "@/assets/eco-city/ec-mga-3.webp";
+import ecDunay1 from "@/assets/eco-city/ec-dunay-1.webp";
+import ecDunay2 from "@/assets/eco-city/ec-dunay-2.webp";
+import ecDunay3 from "@/assets/eco-city/ec-dunay-3.webp";
+import ecLammi1 from "@/assets/eco-city/ec-lammi-1.webp";
+import ecLammi2 from "@/assets/eco-city/ec-lammi-2.webp";
+import ecLammi3 from "@/assets/eco-city/ec-lammi-3.webp";
+import ecImatra1 from "@/assets/eco-city/ec-imatra-1.webp";
+import ecImatra2 from "@/assets/eco-city/ec-imatra-2.webp";
+import ecImatra3 from "@/assets/eco-city/ec-imatra-3.webp";
+import ecLahti1 from "@/assets/eco-city/ec-lahti-1.webp";
+import ecLahti2 from "@/assets/eco-city/ec-lahti-2.webp";
+import ecLahti3 from "@/assets/eco-city/ec-lahti-3.webp";
+import moUno1 from "@/assets/modom/mo-uno-1.webp";
+import moUnoPlan3d from "@/assets/modom/mo-uno-plan3d.webp";
+import moUnoPlan from "@/assets/modom/mo-uno-plan.webp";
+import moO2S1 from "@/assets/modom/mo-o2-s-1.webp";
+import moO2SPlan3d from "@/assets/modom/mo-o2-s-plan3d.webp";
+import moO2SPlan from "@/assets/modom/mo-o2-s-plan.webp";
+import moO2M1 from "@/assets/modom/mo-o2-m-1.webp";
+import moO2MPlan3d from "@/assets/modom/mo-o2-m-plan3d.webp";
+import moO2MPlan from "@/assets/modom/mo-o2-m-plan.webp";
+import moO2L1 from "@/assets/modom/mo-o2-l-1.webp";
+import moO2LPlan3d from "@/assets/modom/mo-o2-l-plan3d.webp";
+import moO2LPlan from "@/assets/modom/mo-o2-l-plan.webp";
+import moO2Mini30_1 from "@/assets/modom/mo-o2-mini30-1.webp";
+import moO2Mini30Plan3d from "@/assets/modom/mo-o2-mini30-plan3d.webp";
+import moO2Mini30Plan from "@/assets/modom/mo-o2-mini30-plan.webp";
+import hbStandart14_1 from "@/assets/housebox/hb-standart14-1.webp";
+import hbStandart14_2 from "@/assets/housebox/hb-standart14-2.webp";
+import hbStandart14_3 from "@/assets/housebox/hb-standart14-3.webp";
+import hbStandart14m_1 from "@/assets/housebox/hb-standart14m-1.webp";
+import hbStandart14m_2 from "@/assets/housebox/hb-standart14m-2.webp";
+import hbStandart19_1 from "@/assets/housebox/hb-standart19-1.webp";
+import hbStandart19_2 from "@/assets/housebox/hb-standart19-2.webp";
+import hbStandart19_3 from "@/assets/housebox/hb-standart19-3.webp";
 import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
@@ -1066,6 +1118,35 @@ const MASTERGRUPP_BARNAUL: Maker = {
   productionAddress: "г. Барнаул, проезд Южный, 9",
   phone: "+7 (3852) 22-24-13",
   email: "info@stroy-dom-barnaul.ru",
+};
+const PRAKTIKA_STROY: Maker = {
+  name: "Практика Строй",
+  initials: "ПС",
+  id: "praktika-stroy",
+  siteUrl: "https://praktika-stroy.ru/modulnye-doma/kruglogodichnoe-prozhivanie",
+  productionAddress: "Санкт-Петербург и Ленинградская область",
+  phone: "+7 (901) 132-76-76",
+};
+const ECO_CITY: Maker = {
+  name: "Eco-City",
+  initials: "EC",
+  id: "eco-city",
+  siteUrl: "https://eco-city.spb.ru/product-category/modulnye-doma/",
+  productionAddress: "Санкт-Петербург и Ленинградская область",
+};
+const MODOM: Maker = {
+  name: "Modom",
+  initials: "MO",
+  id: "modom",
+  siteUrl: "https://modom.pro/proekty-modulnyh-domov/",
+  productionAddress: "Санкт-Петербург и Ленинградская область",
+};
+const HOUSEBOX: Maker = {
+  name: "HouseBox",
+  initials: "HB",
+  id: "housebox",
+  siteUrl: "https://housebox-spb.ru/",
+  productionAddress: "Санкт-Петербург и Ленинградская область",
 };
 
 // ============================================================================
@@ -4209,6 +4290,337 @@ export const projects: Project[] = [
     features: ["Мансарда", "Эркер"], style: "Классический", landSize: "3–6 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
+  // ── Практика Строй · Санкт-Петербург и ЛО ──────────────────────────────
+  {
+    id: 237, name: "Практик 2.1", badge: "Модульный дом", price: "3 390 000 ₽",
+    area: "40,9 м²", area_m2: 40.9, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...PRAKTIKA_STROY, siteUrl: "https://praktika-stroy.ru/modulnye-doma/modulniy-dom-praktik-2-0" },
+    description: "Компактный модульный дом серии «Практик 2.0» площадью 40,9 м² с террасой 11 м².",
+    descriptionLong: "Проект «Практик 2.1» от компании «Практика Строй»: модульный дом для круглогодичного проживания площадью 40,9 м². На странице производителя указаны жилая площадь 23,8 м² и терраса 11 м²; дом строится на собственном производстве и поставляется с отделкой и инженерными системами.",
+    gallery: [
+      { image: psPraktik21_1, type: "photo", fit: "contain", blur: true },
+      { image: psPraktik21_2, type: "photo", fit: "contain", blur: true },
+      { image: psPraktik21_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 39, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для одного / пары", "Выходные / дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Готовый санузел"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 238, name: "Практик 2.2", badge: "Модульный дом", price: "3 390 000 ₽",
+    area: "44,5 м²", area_m2: 44.5, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...PRAKTIKA_STROY, siteUrl: "https://praktika-stroy.ru/modulnye-doma/modulniy-dom-praktik-2-0" },
+    description: "Одноэтажный модульный дом 44,5 м² серии «Практик 2.0» с террасой и увеличенной жилой зоной.",
+    descriptionLong: "Проект «Практик 2.2» от «Практика Строй»: модульный дом площадью 44,5 м² для круглогодичного проживания. В карточке серии указаны жилая площадь 27,4 м² и терраса 11 м²; формат подходит для дачи, гостевого дома или компактного постоянного проживания.",
+    gallery: [
+      { image: psPraktik22_1, type: "photo", fit: "contain", blur: true },
+      { image: psPraktik22_2, type: "photo", fit: "contain", blur: true },
+      { image: psPraktik21_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 40, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для одного / пары", "Выходные / дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Готовый санузел"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 239, name: "Практик 2.3", badge: "Модульный дом", price: "3 390 000 ₽",
+    area: "48,2 м²", area_m2: 48.2, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...PRAKTIKA_STROY, siteUrl: "https://praktika-stroy.ru/modulnye-doma/modulniy-dom-praktik-2-0" },
+    description: "Модульный дом 48,2 м² с террасой 11 м² и жилой площадью 30 м².",
+    descriptionLong: "Проект «Практик 2.3» от «Практика Строй»: одноэтажный модульный дом серии «Практик 2.0» площадью 48,2 м². На сайте производителя указаны жилая площадь 30 м² и терраса 11 м²; дом рассчитан на быстрый монтаж и эксплуатацию круглый год.",
+    gallery: [
+      { image: psPraktik23_1, type: "photo", fit: "contain", blur: true },
+      { image: psPraktik23_2, type: "photo", fit: "contain", blur: true },
+      { image: psPraktik21_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 41, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для одного / пары", "Выходные / дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Готовый санузел"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 240, name: "Практик 3.1", badge: "Модульный дом", price: "4 330 000 ₽",
+    area: "59,1 м²", area_m2: 59.1, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...PRAKTIKA_STROY, siteUrl: "https://praktika-stroy.ru/modulnye-doma/modulniy-dom-praktik-3-0" },
+    description: "Модульный дом серии «Практик 3.0» площадью 59,1 м² с террасой 14,64 м².",
+    descriptionLong: "Проект «Практик 3.1» от «Практика Строй»: модульный дом для круглогодичного проживания площадью 59,1 м². В серии указаны жилая площадь 36,7 м² и терраса 14,64 м²; дом подходит для семьи и поставляется с отделкой и инженерными системами.",
+    gallery: [
+      { image: psPraktik31_1, type: "photo", fit: "contain", blur: true },
+      { image: psPraktik31_2, type: "photo", fit: "contain", blur: true },
+      { image: psPraktik31_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 42, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Готовый санузел"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 241, name: "Практик 3.2", badge: "Модульный дом", price: "4 330 000 ₽",
+    area: "66,4 м²", area_m2: 66.4, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...PRAKTIKA_STROY, siteUrl: "https://praktika-stroy.ru/modulnye-doma/modulniy-dom-praktik-3-0" },
+    description: "Модульный дом 66,4 м² с жилой площадью 42,3 м² и террасой 14,64 м².",
+    descriptionLong: "Проект «Практик 3.2» от «Практика Строй»: дом серии «Практик 3.0» площадью 66,4 м² для круглогодичного проживания. В карточке серии указаны жилая площадь 42,3 м² и терраса 14,64 м²; решение рассчитано на семью и быстрое размещение на участке.",
+    gallery: [
+      { image: psPraktik32_1, type: "photo", fit: "contain", blur: true },
+      { image: psPraktik32_2, type: "photo", fit: "contain", blur: true },
+      { image: psPraktik31_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 43, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Готовый санузел"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+  },
+
+  // ── Eco-City · Санкт-Петербург и ЛО ────────────────────────────────────
+  {
+    id: 242, name: "Мга", badge: "СИП-Префаб", price: "761 970 ₽",
+    area: "37,5 м²", area_m2: 37.5, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...ECO_CITY, siteUrl: "https://eco-city.spb.ru/products/mga/" },
+    description: "Небольшой одноэтажный дом из СИП-панелей 37,5 м² с одной спальней и кухней.",
+    descriptionLong: "Проект «Мга» от Eco-City: дом из СИП-панелей площадью 37,5 м², габариты 7,5 × 5 м. На сайте производителя указаны жилая площадь 31,68 м², один санузел и несколько вариантов комплектации домокомплекта.",
+    gallery: [
+      { image: ecMga1, type: "photo", fit: "contain", blur: true },
+      { image: ecMga2, type: "photo", fit: "contain", blur: true },
+      { image: ecMga3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 34, rating: 4.7,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "СИП-Префаб", completion: "Только корпус", insulation: "до −30°C",
+    features: ["Компактный дом"], style: "Классический", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 243, name: "Дунай", badge: "СИП-Префаб", price: "983 780 ₽",
+    area: "53,12 м²", area_m2: 53.12, beds: 2, baths: 1, floors: 2, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...ECO_CITY, siteUrl: "https://eco-city.spb.ru/products/dunay/" },
+    description: "Двухэтажный дом из СИП-панелей 53,12 м² для небольшого участка.",
+    descriptionLong: "Проект «Дунай» от Eco-City: дом из СИП-панелей площадью 53,12 м², габариты 5 × 5 м. В планировке две спальни на втором этаже, кухня-гостиная на первом этаже и один санузел.",
+    gallery: [
+      { image: ecDunay1, type: "photo", fit: "contain", blur: true },
+      { image: ecDunay2, type: "photo", fit: "contain", blur: true },
+      { image: ecDunay3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 35, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "СИП-Префаб", completion: "Только корпус", insulation: "до −30°C",
+    features: ["Два этажа"], style: "Классический", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 244, name: "Ламми", badge: "СИП-Префаб", price: "1 218 720 ₽",
+    area: "86,4 м²", area_m2: 86.4, beds: 3, baths: 1, floors: 2, term: "от 1 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...ECO_CITY, siteUrl: "https://eco-city.spb.ru/products/lammi/" },
+    description: "Двухэтажный дом из СИП-панелей 86,4 м² с кровлей клик-фальц.",
+    descriptionLong: "Проект «Ламми» от Eco-City: дом из СИП-панелей площадью 86,4 м², габариты 9,5 × 5 м. На сайте указаны жилая площадь 47,01 м², два этажа и один санузел.",
+    gallery: [
+      { image: ecLammi1, type: "photo", fit: "contain", blur: true },
+      { image: ecLammi2, type: "photo", fit: "contain", blur: true },
+      { image: ecLammi3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 36, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "СИП-Префаб", completion: "Только корпус", insulation: "до −30°C",
+    features: ["Два этажа"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 245, name: "Иматра", badge: "СИП-Префаб", price: "1 190 275 ₽",
+    area: "59,62 м²", area_m2: 59.62, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...ECO_CITY, siteUrl: "https://eco-city.spb.ru/products/imatra/" },
+    description: "Популярный одноэтажный СИП-дом 59,62 м² для дачи и загородного проживания.",
+    descriptionLong: "Проект «Иматра» от Eco-City: одноэтажный дом из СИП-панелей площадью 59,62 м², габариты 8,75 × 8,55 м. Производитель отмечает лаконичную планировку и набор помещений для небольшого загородного дома.",
+    gallery: [
+      { image: ecImatra1, type: "photo", fit: "contain", blur: true },
+      { image: ecImatra2, type: "photo", fit: "contain", blur: true },
+      { image: ecImatra3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 37, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Выходные / дача", "Для семьи"],
+    technology: "СИП-Префаб", completion: "Только корпус", insulation: "до −30°C",
+    features: ["Компактный дом"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 246, name: "Лахти", badge: "СИП-Префаб", price: "1 383 150 ₽",
+    area: "95 м²", area_m2: 95, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...ECO_CITY, siteUrl: "https://eco-city.spb.ru/products/lahti/" },
+    description: "Одноэтажный СИП-дом 95 м² с сауной, которую можно заменить котельной.",
+    descriptionLong: "Проект «Лахти» от Eco-City: одноэтажный дом из СИП-панелей площадью 95 м², габариты 10 × 9,5 м. На сайте производителя указаны жилая площадь 62,96 м², один санузел и помещение сауны.",
+    gallery: [
+      { image: ecLahti1, type: "photo", fit: "contain", blur: true },
+      { image: ecLahti2, type: "photo", fit: "contain", blur: true },
+      { image: ecLahti3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 38, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "СИП-Префаб", completion: "Только корпус", insulation: "до −30°C",
+    features: ["Сауна"], style: "Классический", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── Modom · Санкт-Петербург и ЛО ───────────────────────────────────────
+  {
+    id: 247, name: "UNO", badge: "Модульный дом", price: "2 700 000 ₽",
+    area: "36 м²", area_m2: 36, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...MODOM, siteUrl: "https://modom.pro/proekty/modulnyj-dom-uno/" },
+    description: "Модульный дом UNO площадью 36 м² с жилой площадью 32 м² и террасой.",
+    descriptionLong: "Проект UNO от Modom: готовый модульный дом площадью 36 м². В стоимость на странице производителя входят готовый санузел, инженерные системы и терраса; проект рассчитан на компактное круглогодичное проживание.",
+    gallery: [
+      { image: moUno1, type: "photo", fit: "contain", blur: true },
+      { image: moUnoPlan3d, type: "photo", fit: "contain" },
+      { image: moUnoPlan, type: "photo", fit: "contain" },
+    ],
+    likes: 44, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Готовый санузел"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 248, name: "О2 Модель S", badge: "Модульный дом", price: "3 130 000 ₽",
+    area: "25,4 м²", area_m2: 25.4, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...MODOM, siteUrl: "https://modom.pro/proekty/modulnyj-dom-serija-o2-model-s/" },
+    description: "Компактный модульный дом серии О2 площадью 25,4 м² с готовым санузлом.",
+    descriptionLong: "Проект «О2 Модель S» от Modom: модульный дом площадью 25,4 м², жилая площадь 12,1 м². В карточке производителя указана комплектация с сантехникой, мебелью в санузле и террасой.",
+    gallery: [
+      { image: moO2S1, type: "photo", fit: "contain", blur: true },
+      { image: moO2SPlan3d, type: "photo", fit: "contain" },
+      { image: moO2SPlan, type: "photo", fit: "contain" },
+    ],
+    likes: 40, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Готовый санузел"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 249, name: "О2 Модель M", badge: "Модульный дом", price: "3 570 000 ₽",
+    area: "38,3 м²", area_m2: 38.3, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...MODOM, siteUrl: "https://modom.pro/proekty/modulnyj-dom-serija-o2-model-m/" },
+    description: "Модульный дом серии О2 площадью 38,3 м² с жилой площадью 25 м².",
+    descriptionLong: "Проект «О2 Модель M» от Modom: модульный дом площадью 38,3 м², жилая площадь 25 м². Дом поставляется с готовым санузлом, инженерной подготовкой и террасой по комплектации производителя.",
+    gallery: [
+      { image: moO2M1, type: "photo", fit: "contain", blur: true },
+      { image: moO2MPlan3d, type: "photo", fit: "contain" },
+      { image: moO2MPlan, type: "photo", fit: "contain" },
+    ],
+    likes: 41, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Готовый санузел"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 250, name: "О2 Модель L", badge: "Модульный дом", price: "4 795 000 ₽",
+    area: "50,8 м²", area_m2: 50.8, beds: 2, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...MODOM, siteUrl: "https://modom.pro/proekty/modulnyj-dom-serija-o2-model-l/" },
+    description: "Модульный дом О2 L площадью 50,8 м² с жилой площадью 37,5 м².",
+    descriptionLong: "Проект «О2 Модель L» от Modom: модульный дом площадью 50,8 м², жилая площадь 37,5 м². В комплектации производителя указаны готовый санузел, инженерные системы и терраса.",
+    gallery: [
+      { image: moO2L1, type: "photo", fit: "contain", blur: true },
+      { image: moO2LPlan3d, type: "photo", fit: "contain" },
+      { image: moO2LPlan, type: "photo", fit: "contain" },
+    ],
+    likes: 42, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Готовый санузел"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 251, name: "О2 Мини 30", badge: "Модульный дом", price: "3 395 000 ₽",
+    area: "30,75 м²", area_m2: 30.75, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...MODOM, siteUrl: "https://modom.pro/proekty/modulnyj-dom-o2-mini-30-m2/" },
+    description: "Компактный модульный дом О2 Мини 30 площадью 30,75 м².",
+    descriptionLong: "Проект «О2 Мини 30» от Modom: модульный дом площадью 30,75 м², жилая площадь 19,7 м². Производитель указывает готовый санузел с мебелью и техникой, а также террасу в составе решения.",
+    gallery: [
+      { image: moO2Mini30_1, type: "photo", fit: "contain", blur: true },
+      { image: moO2Mini30Plan3d, type: "photo", fit: "contain" },
+      { image: moO2Mini30Plan, type: "photo", fit: "contain" },
+    ],
+    likes: 43, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Готовый санузел"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+
+  // ── HouseBox · Санкт-Петербург и ЛО ────────────────────────────────────
+  {
+    id: 252, name: "Стандарт 14", badge: "Модульный дом", price: "690 000 ₽",
+    area: "14 м²", area_m2: 14, beds: 1, baths: 0, floors: 1, term: "30 д.",
+    rooms: "1 комната", purpose: "Гостевой дом / Дача", city: "Санкт-Петербург и ЛО",
+    maker: { ...HOUSEBOX, siteUrl: "https://housebox-spb.ru/" },
+    description: "Компактный модульный дом 14 м² на базе стандартного решения HouseBox.",
+    descriptionLong: "Проект «Стандарт 14» от HouseBox: компактный модульный дом площадью 14 м². На сайте производителя указано, что дом можно использовать как дачный или гостевой, а срок изготовления готового модуля — около 30 дней.",
+    gallery: [
+      { image: hbStandart14_1, type: "photo", fit: "contain", blur: true },
+      { image: hbStandart14_2, type: "photo", fit: "contain", blur: true },
+      { image: hbStandart14_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 31, rating: 4.7,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −20°C",
+    features: ["Компактный дом"], style: "Минимализм", landSize: "до 3 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 253, name: "Стандарт 14 с мебелью", badge: "Модульный дом", price: "890 000 ₽",
+    area: "14 м²", area_m2: 14, beds: 1, baths: 0, floors: 1, term: "30 д.",
+    rooms: "1 комната", purpose: "Гостевой дом / Дача", city: "Санкт-Петербург и ЛО",
+    maker: { ...HOUSEBOX, siteUrl: "https://housebox-spb.ru/" },
+    description: "Модульный дом 14 м² с базовой мебелью: шкафом и спальным местом.",
+    descriptionLong: "Проект «Стандарт 14 с мебелью» от HouseBox: компактный модульный дом площадью 14 м². На сайте производителя указана комплектация с мебелью — шкафом и спальным местом; дом подходит для гостевого формата и сезонного отдыха.",
+    gallery: [
+      { image: hbStandart14m_1, type: "photo", fit: "contain", blur: true },
+      { image: hbStandart14m_2, type: "photo", fit: "contain", blur: true },
+      { image: hbStandart14_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 32, rating: 4.7,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −20°C",
+    features: ["Мебель в комплекте", "Компактный дом"], style: "Минимализм", landSize: "до 3 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 254, name: "Стандарт 19 с санузлом", badge: "Модульный дом", price: "1 250 000 ₽",
+    area: "19 м²", area_m2: 19, beds: 1, baths: 1, floors: 1, term: "30 д.",
+    rooms: "1 комната", purpose: "Гостевой дом / Дача", city: "Санкт-Петербург и ЛО",
+    maker: { ...HOUSEBOX, siteUrl: "https://housebox-spb.ru/" },
+    description: "Модульный дом 19 м² с мебелью и санузлом для дачи или гостевого размещения.",
+    descriptionLong: "Проект «Стандарт 19 с санузлом» от HouseBox: модульный дом площадью 19 м². В карточке производителя указаны мебель, спальное место и санузел; решение рассчитано на быстрый монтаж и использование как гостевой или дачный дом.",
+    gallery: [
+      { image: hbStandart19_1, type: "photo", fit: "contain", blur: true },
+      { image: hbStandart19_2, type: "photo", fit: "contain", blur: true },
+      { image: hbStandart19_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 33, rating: 4.7,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −20°C",
+    features: ["Готовый санузел", "Мебель в комплекте"], style: "Минимализм", landSize: "до 3 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
   ...regionalBatchProjects,
 ];
 
@@ -4339,7 +4751,7 @@ export type MakerSummary = {
   telegram?: string;
 };
 const canonicalMakerSiteUrls: Record<string, string> = [
-  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL,
+  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX,
   ...regionalMakers,
 ].reduce((acc, m) => {
   if (m.id && m.siteUrl) acc[m.id] = m.siteUrl;
