@@ -865,18 +865,33 @@ import hbStandart19_3 from "@/assets/housebox/hb-standart19-3.webp";
 import gl835_1 from "@/assets/glavles/gl-8-35/01.webp";
 import gl835_2 from "@/assets/glavles/gl-8-35/02.webp";
 import gl835_3 from "@/assets/glavles/gl-8-35/03.webp";
+import gl835Plan1 from "@/assets/glavles/gl-8-35/04.webp";
+import gl835Plan2 from "@/assets/glavles/gl-8-35/05.webp";
+import gl835Plan3 from "@/assets/glavles/gl-8-35/06.webp";
 import gl827_1 from "@/assets/glavles/gl-8-27/01.webp";
 import gl827_2 from "@/assets/glavles/gl-8-27/02.webp";
 import gl827_3 from "@/assets/glavles/gl-8-27/03.webp";
+import gl827Plan1 from "@/assets/glavles/gl-8-27/04.webp";
+import gl827Plan2 from "@/assets/glavles/gl-8-27/05.webp";
+import gl827Plan3 from "@/assets/glavles/gl-8-27/06.webp";
 import gl825_1 from "@/assets/glavles/gl-8-25/01.webp";
 import gl825_2 from "@/assets/glavles/gl-8-25/02.webp";
 import gl825_3 from "@/assets/glavles/gl-8-25/03.webp";
+import gl825Plan1 from "@/assets/glavles/gl-8-25/04.webp";
+import gl825Plan2 from "@/assets/glavles/gl-8-25/05.webp";
+import gl825Plan3 from "@/assets/glavles/gl-8-25/06.webp";
 import gl868_1 from "@/assets/glavles/gl-8-68/01.webp";
 import gl868_2 from "@/assets/glavles/gl-8-68/02.webp";
 import gl868_3 from "@/assets/glavles/gl-8-68/03.webp";
+import gl868Plan1 from "@/assets/glavles/gl-8-68/04.webp";
+import gl868Plan2 from "@/assets/glavles/gl-8-68/05.webp";
+import gl868Plan3 from "@/assets/glavles/gl-8-68/06.webp";
 import gl887_1 from "@/assets/glavles/gl-8-87/01.webp";
 import gl887_2 from "@/assets/glavles/gl-8-87/02.webp";
 import gl887_3 from "@/assets/glavles/gl-8-87/03.webp";
+import gl887Plan1 from "@/assets/glavles/gl-8-87/04.webp";
+import gl887Plan2 from "@/assets/glavles/gl-8-87/05.webp";
+import gl887Plan3 from "@/assets/glavles/gl-8-87/06.webp";
 import fpsAh281_1 from "@/assets/fps-modul/ah-281/01.webp";
 import fpsAh281Plan1 from "@/assets/fps-modul/ah-281/02.webp";
 import fpsAh281Plan2 from "@/assets/fps-modul/ah-281/03.webp";
@@ -4729,6 +4744,9 @@ export const projects: Project[] = [
       { image: gl835_1, type: "photo", fit: "contain", blur: true },
       { image: gl835_2, type: "photo", fit: "contain", blur: true },
       { image: gl835_3, type: "photo", fit: "contain", blur: true },
+      { image: gl835Plan1, type: "plan", fit: "contain" },
+      { image: gl835Plan2, type: "plan", fit: "contain" },
+      { image: gl835Plan3, type: "plan", fit: "contain" },
     ],
     likes: 34, rating: 4.8,
     suitableFor: ["Выходные / дача", "Для одного / пары"],
@@ -4747,6 +4765,9 @@ export const projects: Project[] = [
       { image: gl827_1, type: "photo", fit: "contain", blur: true },
       { image: gl827_2, type: "photo", fit: "contain", blur: true },
       { image: gl827_3, type: "photo", fit: "contain", blur: true },
+      { image: gl827Plan1, type: "plan", fit: "contain" },
+      { image: gl827Plan2, type: "plan", fit: "contain" },
+      { image: gl827Plan3, type: "plan", fit: "contain" },
     ],
     likes: 35, rating: 4.8,
     suitableFor: ["Выходные / дача", "Для одного / пары"],
@@ -4765,6 +4786,9 @@ export const projects: Project[] = [
       { image: gl825_1, type: "photo", fit: "contain", blur: true },
       { image: gl825_2, type: "photo", fit: "contain", blur: true },
       { image: gl825_3, type: "photo", fit: "contain", blur: true },
+      { image: gl825Plan1, type: "plan", fit: "contain" },
+      { image: gl825Plan2, type: "plan", fit: "contain" },
+      { image: gl825Plan3, type: "plan", fit: "contain" },
     ],
     likes: 32, rating: 4.7,
     suitableFor: ["Выходные / дача", "Для одного / пары"],
@@ -4783,6 +4807,9 @@ export const projects: Project[] = [
       { image: gl868_1, type: "photo", fit: "contain", blur: true },
       { image: gl868_2, type: "photo", fit: "contain", blur: true },
       { image: gl868_3, type: "photo", fit: "contain", blur: true },
+      { image: gl868Plan1, type: "plan", fit: "contain" },
+      { image: gl868Plan2, type: "plan", fit: "contain" },
+      { image: gl868Plan3, type: "plan", fit: "contain" },
     ],
     likes: 41, rating: 4.8,
     suitableFor: ["Постоянное проживание", "Для семьи"],
@@ -4801,6 +4828,9 @@ export const projects: Project[] = [
       { image: gl887_1, type: "photo", fit: "contain", blur: true },
       { image: gl887_2, type: "photo", fit: "contain", blur: true },
       { image: gl887_3, type: "photo", fit: "contain", blur: true },
+      { image: gl887Plan1, type: "plan", fit: "contain" },
+      { image: gl887Plan2, type: "plan", fit: "contain" },
+      { image: gl887Plan3, type: "plan", fit: "contain" },
     ],
     likes: 45, rating: 4.8,
     suitableFor: ["Постоянное проживание", "Для семьи"],
