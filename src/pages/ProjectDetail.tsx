@@ -8,6 +8,8 @@ import { useFavorites } from "@/contexts/FavoritesContext";
 import CitySelector, { useCity } from "@/components/CitySelector";
 import OtherProjectsFeed from "@/components/OtherProjectsFeed";
 import Seo from "@/components/Seo";
+import NotFound from "@/pages/NotFound";
+import { buildAssetUrl, buildSiteUrl } from "@/lib/seo";
 import house1 from "@/assets/house-1.webp";
 import house2 from "@/assets/house-2.webp";
 import house3 from "@/assets/house-3.webp";
@@ -169,6 +171,7 @@ const ProjectDetail = () => {
 
   // Данные проекта (с override по id)
   const override = id ? projectOverrides[id] : undefined;
+  const isUnknownProject = !id || !override;
   const project = {
     id: id ? Number(id) : 1,
     name: override?.name ?? "Шервуд 72.1",
@@ -300,6 +303,10 @@ const ProjectDetail = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  if (isUnknownProject) {
+    return <NotFound />;
+  }
+
   const priceDigits = (project.price.match(/\d+/g) ?? []).join("");
   const productJsonLd = {
     "@context": "https://schema.org",
@@ -307,14 +314,14 @@ const ProjectDetail = () => {
     name: project.name,
     description: project.descriptionLong || project.description,
     brand: { "@type": "Brand", name: project.maker },
-    image: galleryImages[0]?.image ? `https://многоместа.рф${galleryImages[0].image}` : undefined,
+    image: galleryImages[0]?.image ? buildAssetUrl(galleryImages[0].image) : undefined,
     offers: priceDigits
       ? {
           "@type": "Offer",
           priceCurrency: "RUB",
           price: priceDigits,
           availability: "https://schema.org/InStock",
-          url: typeof window !== "undefined" ? window.location.href : `https://многоместа.рф/project/${project.id}`,
+          url: buildSiteUrl(`/project/${project.id}`),
         }
       : undefined,
   };
@@ -323,9 +330,9 @@ const ProjectDetail = () => {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Главная", item: "https://многоместа.рф/" },
-      { "@type": "ListItem", position: 2, name: "Каталог", item: "https://многоместа.рф/catalog" },
-      { "@type": "ListItem", position: 3, name: project.name, item: `https://многоместа.рф/project/${project.id}` },
+      { "@type": "ListItem", position: 1, name: "Главная", item: buildSiteUrl("/") },
+      { "@type": "ListItem", position: 2, name: "Каталог", item: buildSiteUrl("/catalog") },
+      { "@type": "ListItem", position: 3, name: project.name, item: buildSiteUrl(`/project/${project.id}`) },
     ],
   };
 

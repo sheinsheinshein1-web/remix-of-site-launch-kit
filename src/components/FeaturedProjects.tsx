@@ -6,6 +6,7 @@ import { navigateWithTransition } from "@/lib/viewTransition";
 import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
 import { usePullToRefresh } from "@/hooks/usePullToRefresh";
 import { projects } from "@/data/projects";
+import { buildSiteUrl } from "@/lib/seo";
 
 import { useCity } from "@/components/CitySelector";
 
@@ -274,7 +275,7 @@ const FeaturedProjects = () => {
     itemListElement: baseProjects.slice(0, 20).map((p, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      url: `${typeof window !== "undefined" ? window.location.origin : ""}/project/${p.id}`,
+      url: buildSiteUrl(`/project/${p.id}`),
       name: p.name,
     })),
   };

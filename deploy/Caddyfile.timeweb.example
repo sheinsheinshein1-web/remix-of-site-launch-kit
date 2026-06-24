@@ -1,0 +1,53 @@
+# Example Caddy config for Timeweb.
+# Replace the root path with the real directory where the built dist/ files live.
+
+www.многоместа.рф, www.xn--80afg0abehb3ak.xn--p1ai {
+	redir https://многоместа.рф{uri} permanent
+}
+
+многоместа.рф, xn--80afg0abehb3ak.xn--p1ai {
+	root * /var/www/mnogomesta/dist
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "SAMEORIGIN"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "camera=(), microphone=(), geolocation=(self)"
+		-Server
+	}
+
+	header /assets/* Cache-Control "public, max-age=31536000, immutable"
+	header /icons/* Cache-Control "public, max-age=86400"
+	header /og/* Cache-Control "public, max-age=86400"
+	header /robots.txt Cache-Control "public, max-age=3600"
+	header /sitemap.xml Cache-Control "public, max-age=3600"
+	header /manifest.webmanifest Cache-Control "public, max-age=86400"
+
+	@static path /assets/* /icons/* /og/* /favicon.ico /robots.txt /sitemap.xml /manifest.webmanifest /placeholder.svg
+	handle @static {
+		file_server
+	}
+
+	# Private or client-only app screens still need SPA fallback on direct open.
+	@app_routes path /favorites* /messages* /profile* /requests* /operator* /lab*
+	handle @app_routes {
+		header Cache-Control "no-cache"
+		try_files {path} {path}/ /index.html
+		file_server
+	}
+
+	# Public SEO routes are prerendered into dist/<route>/index.html.
+	# Unknown public URLs must stay 404 instead of falling back to the home page.
+	handle {
+		header Cache-Control "no-cache"
+		try_files {path} {path}/ =404
+		file_server
+	}
+
+	handle_errors {
+		rewrite * /404.html
+		file_server
+	}
+}

@@ -6,6 +6,7 @@ import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 import Seo from "@/components/Seo";
+import { buildSiteUrl } from "@/lib/seo";
 import catHouses from "@/assets/cat-houses.webp";
 import catBaths from "@/assets/cat-baths.webp";
 import catGlamping from "@/assets/cat-glamping.webp";
@@ -102,11 +103,12 @@ const AllCategoriesPage = () => {
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Главная", item: "https://многоместа.рф/" },
-            { "@type": "ListItem", position: 2, name: "Категории", item: "https://многоместа.рф/categories" },
+            { "@type": "ListItem", position: 1, name: "Главная", item: buildSiteUrl("/") },
+            { "@type": "ListItem", position: 2, name: "Категории", item: buildSiteUrl("/categories") },
           ],
         }}
       />
+      <h1 className="sr-only">Категории модульных домов и построек</h1>
       {/* Desktop header */}
       {!isMobile && <Header />}
 

@@ -11,16 +11,15 @@ import ArticlesSection from "@/components/ArticlesSection";
 import MobileTabBar from "@/components/MobileTabBar";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
-
-const SITE_URL = "https://многоместа.рф";
+import { buildAssetUrl, buildSiteUrl, SITE_URL } from "@/lib/seo";
 
 const homeJsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "многоместа.рф",
-    url: SITE_URL,
-    logo: `${SITE_URL}/icons/icon-512.png`,
+    url: buildSiteUrl("/"),
+    logo: buildAssetUrl("/icons/icon-512.png"),
     description: "Маркетплейс модульных и префаб домов с доставкой по России.",
     areaServed: "RU",
   },
@@ -28,11 +27,11 @@ const homeJsonLd = [
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "многоместа.рф",
-    url: SITE_URL,
+    url: buildSiteUrl("/"),
     inLanguage: "ru-RU",
     potentialAction: {
       "@type": "SearchAction",
-      target: `${SITE_URL}/catalog?q={search_term_string}`,
+      target: `${SITE_URL}/catalog/?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
   },

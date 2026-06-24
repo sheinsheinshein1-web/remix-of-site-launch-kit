@@ -6,6 +6,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import shareIcon from "@/assets/share-icon.svg";
 import ProjectCard from "@/components/ProjectCard";
 import Seo from "@/components/Seo";
+import NotFound from "@/pages/NotFound";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
@@ -157,7 +158,9 @@ const Partner = () => {
   const areaNum = (s: string) => parseFloat(String(s).replace(/[^\d.]/g, "")) || 0;
   const termNum = (s: string) => parseInt(String(s).replace(/\D/g, ""), 10) || 0;
 
-  const makerId = (id && (partnerMakerIds[id] ?? (makersById[id] ? id : undefined))) || "platforma";
+  const requestedMakerId = id ? partnerMakerIds[id] ?? (makersById[id] ? id : undefined) : "platforma";
+  const isUnknownPartner = !requestedMakerId;
+  const makerId = requestedMakerId ?? "platforma";
   const summary = makersById[makerId];
   const projectsCount = manualCounts[makerId] ?? projectsCountByMakerId[makerId] ?? 0;
 
@@ -253,6 +256,10 @@ const Partner = () => {
       navigate(location.pathname, { replace: true, state: null });
     }
   }, [location.pathname, location.state, navigate]);
+
+  if (isUnknownPartner) {
+    return <NotFound />;
+  }
 
   const isPlatforma = makerId === "platforma";
 

@@ -1,7 +1,5 @@
 import { Helmet } from "react-helmet-async";
-
-const SITE_URL = "https://многоместа.рф";
-const DEFAULT_OG = `${SITE_URL}/og/default.jpg`;
+import { buildAssetUrl, buildCanonicalUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 interface SeoProps {
   title: string;
@@ -16,34 +14,17 @@ interface SeoProps {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const buildCanonical = (path?: string) => {
-  if (!path) {
-    if (typeof window !== "undefined") {
-      return `${SITE_URL}${window.location.pathname}`;
-    }
-    return SITE_URL;
-  }
-  if (path.startsWith("http")) return path;
-  return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
-};
-
-const buildAbsoluteImage = (img: string) => {
-  if (!img) return DEFAULT_OG;
-  if (img.startsWith("http")) return img;
-  return `${SITE_URL}${img.startsWith("/") ? img : `/${img}`}`;
-};
-
 const Seo = ({
   title,
   description,
   canonicalPath,
-  image = DEFAULT_OG,
+  image = DEFAULT_OG_IMAGE,
   type = "website",
   noIndex = false,
   jsonLd,
 }: SeoProps) => {
-  const canonical = buildCanonical(canonicalPath);
-  const absoluteImage = buildAbsoluteImage(image);
+  const canonical = buildCanonicalUrl(canonicalPath);
+  const absoluteImage = buildAssetUrl(image);
   const fullTitle = title.length > 60 ? title.slice(0, 57) + "…" : title;
   const fullDescription = description.length > 160 ? description.slice(0, 157) + "…" : description;
   const ldArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];

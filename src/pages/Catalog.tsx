@@ -12,6 +12,7 @@ import SwipeableGallery from "@/components/SwipeableGallery";
 import ProjectCard from "@/components/ProjectCard";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import Seo from "@/components/Seo";
+import { buildSiteUrl } from "@/lib/seo";
 import { projectThumbs } from "@/data/projectThumbs";
 
 import {
@@ -529,11 +530,12 @@ const Catalog = () => {
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Главная", item: "https://многоместа.рф/" },
-            { "@type": "ListItem", position: 2, name: "Каталог", item: "https://многоместа.рф/catalog" },
+            { "@type": "ListItem", position: 1, name: "Главная", item: buildSiteUrl("/") },
+            { "@type": "ListItem", position: 2, name: "Каталог", item: buildSiteUrl("/catalog") },
           ],
         }}
       />
+      <h1 className="sr-only">Каталог модульных и префаб домов</h1>
       {/* Desktop: reuse site header */}
       <div className="hidden md:block">
         <Header />

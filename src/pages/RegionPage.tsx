@@ -12,8 +12,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-const SITE_URL = "https://многоместа.рф";
+import { buildSiteUrl } from "@/lib/seo";
 
 const RegionPage = () => {
   const { slug = "" } = useParams<{ slug: string }>();
@@ -35,9 +34,9 @@ const RegionPage = () => {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Главная", item: SITE_URL + "/" },
-      { "@type": "ListItem", position: 2, name: "Каталог", item: SITE_URL + "/catalog" },
-      { "@type": "ListItem", position: 3, name: region.name, item: SITE_URL + canonicalPath },
+      { "@type": "ListItem", position: 1, name: "Главная", item: buildSiteUrl("/") },
+      { "@type": "ListItem", position: 2, name: "Каталог", item: buildSiteUrl("/catalog") },
+      { "@type": "ListItem", position: 3, name: region.name, item: buildSiteUrl(canonicalPath) },
     ],
   };
 
@@ -57,7 +56,7 @@ const RegionPage = () => {
     itemListElement: regionProjects.slice(0, 20).map((p, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      url: `${SITE_URL}/project/${p.id}`,
+      url: buildSiteUrl(`/project/${p.id}`),
       name: p.name,
     })),
   };

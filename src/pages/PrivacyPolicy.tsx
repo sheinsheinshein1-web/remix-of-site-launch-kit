@@ -1,11 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import Seo from "@/components/Seo";
 
 const PrivacyPolicy = () => {
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-secondary font-sans pb-16 md:pb-0">
+      <Seo
+        title="Политика конфиденциальности — многоместа.рф"
+        description="Политика обработки персональных данных на сайте многоместа.рф."
+        canonicalPath="/privacy"
+      />
       {/* Mobile Header */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-primary h-[50px] flex items-center justify-center px-3">
         <button 
@@ -14,7 +20,7 @@ const PrivacyPolicy = () => {
         >
           <ArrowLeft className="w-5 h-5 text-white" />
         </button>
-        <h1 className="text-[15px] font-semibold text-white">Политика конфиденциальности</h1>
+        <div className="text-[15px] font-semibold text-white">Политика конфиденциальности</div>
       </div>
 
       <div className="max-w-[1400px] mx-auto bg-background md:rounded-b-2xl min-h-screen">
@@ -27,14 +33,14 @@ const PrivacyPolicy = () => {
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
-            <h1 className="text-[19px] font-semibold">Политика конфиденциальности</h1>
+            <div className="text-[19px] font-semibold">Политика конфиденциальности</div>
           </div>
         </div>
 
         <div className="pt-[66px] md:pt-8 pb-10 px-4 md:px-8">
           <div className="max-w-3xl mx-auto">
             <div className="bg-card rounded-2xl border border-border p-6 md:p-8 space-y-6 text-[14px] leading-[1.7]">
-              <h2 className="text-[20px] font-semibold mb-6">Политика в отношении обработки персональных данных</h2>
+              <h1 className="text-[20px] font-semibold mb-6">Политика в отношении обработки персональных данных</h1>
 
               <section>
                 <h3 className="font-semibold text-[16px] mb-3">1. Общие положения</h3>
