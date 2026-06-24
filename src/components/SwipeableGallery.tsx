@@ -5,6 +5,8 @@ interface SwipeableGalleryProps {
   images: string[];
   alt: string;
   height?: string;
+  /** Загружать активный слайд с высоким приоритетом. Для карточек по умолчанию false. */
+  priority?: boolean;
   /** Per-image fit. "contain" — фото показывается целиком. По умолчанию "cover". */
   fits?: ("cover" | "contain")[];
   /** Per-image object-position (CSS), например "left center" — для широких фото. По умолчанию "center". */
@@ -19,7 +21,7 @@ interface SwipeableGalleryProps {
 const SWIPE_THRESHOLD_RATIO = 0.18; // 18% ширины — чтобы засчитать смену слайда
 const SWIPE_VELOCITY = 0.45; // px/ms — быстрый флик тоже листает
 
-const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPositions, blurBackground = false, edgeBleed = false, children }: SwipeableGalleryProps) => {
+const SwipeableGallery = ({ images, alt, height = "h-[200px]", priority = false, fits, objectPositions, blurBackground = false, edgeBleed = false, children }: SwipeableGalleryProps) => {
   const blurAt = (i: number) => Array.isArray(blurBackground) ? !!blurBackground[i] : !!blurBackground;
   const edgeAt = (i: number) => Array.isArray(edgeBleed) ? !!edgeBleed[i] : !!edgeBleed;
   const [current, setCurrent] = useState(0);
@@ -262,8 +264,8 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                     alt={`${alt} ${i + 1}`}
                     className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} pointer-events-none`}
                     style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
-                    loading={i === current ? "eager" : "lazy"}
-                    decoding={i === current ? "sync" : "async"}
+                    loading={priority && i === current ? "eager" : "lazy"}
+                    decoding={priority && i === current ? "sync" : "async"}
                     draggable={false}
                   />
                 ) : (
@@ -359,8 +361,8 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                   alt={`${alt} ${i + 1}`}
                   className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
                   style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
-                  loading={isActive ? "eager" : "lazy"}
-                  decoding={isActive ? "sync" : "async"}
+                  loading={priority && isActive ? "eager" : "lazy"}
+                  decoding={priority && isActive ? "sync" : "async"}
                   draggable={false}
                 />
               ) : (
