@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import { useIsMobile } from "@/hooks/use-mobile";
 import shareIcon from "@/assets/share-icon.svg";
 import ProjectCard from "@/components/ProjectCard";
+import Seo from "@/components/Seo";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
@@ -417,6 +418,19 @@ const Partner = () => {
   );
 
   const Hero = isPlatforma ? HeroPlatforma : HeroDefault;
+  const seoTitle = `${partner.name} — проекты домов | многоместа.рф`;
+  const seoDescription =
+    `${partner.name}: ${projectsCount} ${wordForm(projectsCount, ["проект", "проекта", "проектов"])} в каталоге многоместа.рф. ${partner.about}`;
+  const partnerJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: partner.name,
+    url: partner.siteUrl,
+    address: partner.productionAddress,
+    telephone: partner.phone,
+    email: partner.email,
+    sameAs: [partner.siteUrl, partner.telegram].filter(Boolean),
+  };
 
   /* ─── Layout ─── */
   return (
@@ -424,6 +438,13 @@ const Partner = () => {
       className={`relative min-h-screen font-sans pb-[140px] md:pb-10 ${isPlatforma ? "" : "bg-secondary"}`}
       style={isPlatforma ? { backgroundColor: "hsl(25, 14%, 16%)" } : undefined}
     >
+      <Seo
+        title={seoTitle}
+        description={seoDescription}
+        canonicalPath={`/partner/${makerId}`}
+        image={heroImage}
+        jsonLd={partnerJsonLd}
+      />
 
       {/* Sticky compact header (mobile) */}
       {isMobile && (
