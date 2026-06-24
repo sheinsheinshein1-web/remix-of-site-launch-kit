@@ -23,6 +23,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
   const blurAt = (i: number) => Array.isArray(blurBackground) ? !!blurBackground[i] : !!blurBackground;
   const edgeAt = (i: number) => Array.isArray(edgeBleed) ? !!edgeBleed[i] : !!edgeBleed;
   const [current, setCurrent] = useState(0);
+  const [loadedSlides, setLoadedSlides] = useState<Set<number>>(() => new Set([0]));
   const [dragX, setDragX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const startX = useRef(0);
@@ -34,6 +35,26 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
   const count = images.length;
 
   const width = containerRef.current?.clientWidth ?? 1;
+  const imagesKey = images.join("|");
+
+  const loadSlide = useCallback((index: number) => {
+    if (index < 0 || index >= count) return;
+    setLoadedSlides((prev) => {
+      if (prev.has(index)) return prev;
+      const next = new Set(prev);
+      next.add(index);
+      return next;
+    });
+  }, [count]);
+
+  useEffect(() => {
+    setCurrent(0);
+    setLoadedSlides(new Set([0]));
+  }, [imagesKey]);
+
+  useEffect(() => {
+    loadSlide(current);
+  }, [current, loadSlide]);
 
   const settle = useCallback((deltaX: number, elapsed: number) => {
     const w = containerRef.current?.clientWidth ?? 1;
@@ -64,6 +85,9 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
       startY.current = e.touches[0].clientY;
       startTime.current = performance.now();
       lockedAxis.current = null;
+      loadSlide(current);
+      loadSlide(current + 1);
+      loadSlide(current - 1);
       setIsDragging(true);
     };
 
@@ -121,6 +145,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
     if (!rect) return;
     const x = e.clientX - rect.left;
     const idx = Math.min(Math.floor((x / rect.width) * count), count - 1);
+    loadSlide(idx);
     setCurrent(idx);
   };
 
@@ -155,6 +180,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
         >
           {images.map((src, i) => {
             const fit = fits?.[i] ?? "cover";
+            const shouldLoad = loadedSlides.has(i);
             const showEdge = edgeAt(i) && fit === "contain";
             const showBlur = !showEdge && blurAt(i) && fit === "contain";
             return (
@@ -163,7 +189,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                 className="relative h-full flex-shrink-0 overflow-hidden bg-muted"
                 style={{ width: `${100 / count}%` }}
               >
-                {showBlur && (
+                {shouldLoad && showBlur && (
                   <>
                     <img
                       src={src}
@@ -178,7 +204,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                     <div className="absolute inset-0 bg-black/10 pointer-events-none" />
                   </>
                 )}
-                {showEdge && (
+                {shouldLoad && showEdge && (
                   <>
                     <div
                       className="absolute overflow-hidden pointer-events-none z-10"
@@ -230,15 +256,19 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                     </div>
                   </>
                 )}
-                <img
-                  src={src}
-                  alt={`${alt} ${i + 1}`}
-                  className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} pointer-events-none`}
-                  style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
-                  loading={i === current ? "eager" : "lazy"}
-                  decoding={i === current ? "sync" : "async"}
-                  draggable={false}
-                />
+                {shouldLoad ? (
+                  <img
+                    src={src}
+                    alt={`${alt} ${i + 1}`}
+                    className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} pointer-events-none`}
+                    style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
+                    loading={i === current ? "eager" : "lazy"}
+                    decoding={i === current ? "sync" : "async"}
+                    draggable={false}
+                  />
+                ) : (
+                  <div className="relative w-full h-full bg-muted" aria-hidden="true" />
+                )}
               </div>
             );
           })}
@@ -247,8 +277,9 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
         images.map((src, i) => {
           const fit = fits?.[i] ?? "cover";
           const isActive = i === current;
-          const showEdge = edgeAt(i) && fit === "contain" && isActive;
-          const showBlur = !showEdge && blurAt(i) && fit === "contain" && isActive;
+          const shouldLoad = loadedSlides.has(i);
+          const showEdge = shouldLoad && edgeAt(i) && fit === "contain" && isActive;
+          const showBlur = shouldLoad && !showEdge && blurAt(i) && fit === "contain" && isActive;
           return (
             <div
               key={i}
@@ -322,15 +353,19 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", fits, objectPosit
                   </div>
                 </>
               )}
-              <img
-                src={src}
-                alt={`${alt} ${i + 1}`}
-                className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
-                style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
-                loading={isActive ? "eager" : "lazy"}
-                decoding={isActive ? "sync" : "async"}
-                draggable={false}
-              />
+              {shouldLoad ? (
+                <img
+                  src={src}
+                  alt={`${alt} ${i + 1}`}
+                  className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
+                  style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
+                  loading={isActive ? "eager" : "lazy"}
+                  decoding={isActive ? "sync" : "async"}
+                  draggable={false}
+                />
+              ) : (
+                <div className="relative w-full h-full bg-muted" aria-hidden="true" />
+              )}
             </div>
           );
         })

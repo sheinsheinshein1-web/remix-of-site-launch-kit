@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import SwipeableGallery from "@/components/SwipeableGallery";
 import { useFavorites } from "@/contexts/FavoritesContext";
+import { projectThumbs } from "@/data/projectThumbs";
 import {
   projects as allProjects,
   projectFits,
@@ -41,8 +42,11 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
   if (!project) return null;
 
   const allImages = project.gallery.map((g) => g.image);
-  const images = singleImage ? allImages.slice(0, 1) : allImages;
   const firstImage = allImages[0] ?? "";
+  const cardImages = firstImage
+    ? [projectThumbs[project.id] ?? firstImage, ...allImages.slice(1)]
+    : [];
+  const images = singleImage ? cardImages.slice(0, 1) : cardImages;
   const liked = isFavorite(project.id);
   const likesCount = project.likes + (liked ? 1 : 0);
 
