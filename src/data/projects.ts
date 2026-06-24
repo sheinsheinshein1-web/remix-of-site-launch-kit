@@ -860,6 +860,65 @@ import hbStandart14m_2 from "@/assets/housebox/hb-standart14m-2.webp";
 import hbStandart19_1 from "@/assets/housebox/hb-standart19-1.webp";
 import hbStandart19_2 from "@/assets/housebox/hb-standart19-2.webp";
 import hbStandart19_3 from "@/assets/housebox/hb-standart19-3.webp";
+
+// Екатеринбург · модульные дома
+import gl835_1 from "@/assets/glavles/gl-8-35/01.webp";
+import gl835_2 from "@/assets/glavles/gl-8-35/02.webp";
+import gl835_3 from "@/assets/glavles/gl-8-35/03.webp";
+import gl827_1 from "@/assets/glavles/gl-8-27/01.webp";
+import gl827_2 from "@/assets/glavles/gl-8-27/02.webp";
+import gl827_3 from "@/assets/glavles/gl-8-27/03.webp";
+import gl825_1 from "@/assets/glavles/gl-8-25/01.webp";
+import gl825_2 from "@/assets/glavles/gl-8-25/02.webp";
+import gl825_3 from "@/assets/glavles/gl-8-25/03.webp";
+import gl868_1 from "@/assets/glavles/gl-8-68/01.webp";
+import gl868_2 from "@/assets/glavles/gl-8-68/02.webp";
+import gl868_3 from "@/assets/glavles/gl-8-68/03.webp";
+import gl887_1 from "@/assets/glavles/gl-8-87/01.webp";
+import gl887_2 from "@/assets/glavles/gl-8-87/02.webp";
+import gl887_3 from "@/assets/glavles/gl-8-87/03.webp";
+import fpsAh281_1 from "@/assets/fps-modul/ah-281/01.webp";
+import fpsAh281Plan1 from "@/assets/fps-modul/ah-281/02.webp";
+import fpsAh281Plan2 from "@/assets/fps-modul/ah-281/03.webp";
+import fpsAh313_1 from "@/assets/fps-modul/ah-313/01.webp";
+import fpsAh313Plan from "@/assets/fps-modul/ah-313/02.webp";
+import fpsAh313_2 from "@/assets/fps-modul/ah-313/03.webp";
+import fpsBh411_1 from "@/assets/fps-modul/bh-411/01.webp";
+import fpsBh411Plan1 from "@/assets/fps-modul/bh-411/02.webp";
+import fpsBh411Plan2 from "@/assets/fps-modul/bh-411/03.webp";
+import fpsBh412_1 from "@/assets/fps-modul/bh-412/01.webp";
+import fpsBh412Plan1 from "@/assets/fps-modul/bh-412/02.webp";
+import fpsBh412Plan2 from "@/assets/fps-modul/bh-412/03.webp";
+import fpsBh403_1 from "@/assets/fps-modul/bh-403/01.webp";
+import fpsBh403Plan1 from "@/assets/fps-modul/bh-403/02.webp";
+import fpsBh403Plan2 from "@/assets/fps-modul/bh-403/03.webp";
+import vtM98_1 from "@/assets/vek-trad/m-98/01.webp";
+import vtM98_2 from "@/assets/vek-trad/m-98/02.webp";
+import vtM98_3 from "@/assets/vek-trad/m-98/03.webp";
+import vtM85_1 from "@/assets/vek-trad/m-85/01.webp";
+import vtM85_2 from "@/assets/vek-trad/m-85/02.webp";
+import vtM85_3 from "@/assets/vek-trad/m-85/03.webp";
+import vtM73_1 from "@/assets/vek-trad/m-73/01.webp";
+import vtM73_2 from "@/assets/vek-trad/m-73/02.webp";
+import vtM73_3 from "@/assets/vek-trad/m-73/03.webp";
+import vtM60_1 from "@/assets/vek-trad/m-60/01.webp";
+import vtM60_2 from "@/assets/vek-trad/m-60/02.webp";
+import vtM60_3 from "@/assets/vek-trad/m-60/03.webp";
+import bdHitech45_1 from "@/assets/budushiy-dom/hitech-45/01.webp";
+import bdHitech45_2 from "@/assets/budushiy-dom/hitech-45/02.webp";
+import bdHitech45_3 from "@/assets/budushiy-dom/hitech-45/03.webp";
+import bdHitech36_1 from "@/assets/budushiy-dom/hitech-36/01.webp";
+import bdHitech36_2 from "@/assets/budushiy-dom/hitech-36/02.webp";
+import bdHitech36_3 from "@/assets/budushiy-dom/hitech-36/03.webp";
+import bdBarn60f_1 from "@/assets/budushiy-dom/barn-60f/01.webp";
+import bdBarn60f_2 from "@/assets/budushiy-dom/barn-60f/02.webp";
+import bdBarn60f_3 from "@/assets/budushiy-dom/barn-60f/03.webp";
+import bdDom8_1 from "@/assets/budushiy-dom/dom-8/01.webp";
+import bdDom8_2 from "@/assets/budushiy-dom/dom-8/02.webp";
+import bdDom8_3 from "@/assets/budushiy-dom/dom-8/03.webp";
+import bdModual75_1 from "@/assets/budushiy-dom/modual-75/01.webp";
+import bdModual75_2 from "@/assets/budushiy-dom/modual-75/02.webp";
+import bdModual75_3 from "@/assets/budushiy-dom/modual-75/03.webp";
 import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
@@ -1147,6 +1206,42 @@ const HOUSEBOX: Maker = {
   id: "housebox",
   siteUrl: "https://housebox-spb.ru/",
   productionAddress: "Санкт-Петербург и Ленинградская область",
+};
+const GLAVLES: Maker = {
+  name: "Главлес",
+  initials: "ГЛ",
+  id: "glavles",
+  siteUrl: "https://promo.glavles.com/",
+  productionAddress: "г. Екатеринбург, ул. Сулимова, 50, офис 3.11",
+  phone: "+7 (343) 206-50-88",
+  email: "info@glavles.com",
+};
+const FPS_MODUL: Maker = {
+  name: "ФПС Модуль",
+  initials: "ФП",
+  id: "fps-modul",
+  siteUrl: "https://fps-modul.ru/",
+  productionAddress: "г. Екатеринбург, Берёзовский тракт, 6Б",
+  phone: "+7 (966) 705-96-96",
+  telegram: "https://t.me/fps_modul",
+};
+const VEK_TRAD: Maker = {
+  name: "Вековые Традиции",
+  initials: "ВТ",
+  id: "vek-trad",
+  siteUrl: "https://vek-trad.ru/katalog-proektov-domov/modulnye/",
+  productionAddress: "г. Екатеринбург, ул. Ирбитская, 13",
+  phone: "+7 (343) 271-51-92",
+  email: "info@vek-trad.ru",
+};
+const BUDUSHIY_DOM: Maker = {
+  name: "Будущий Дом",
+  initials: "БД",
+  id: "budushiy-dom",
+  siteUrl: "https://budushiy-dom.ru/product-category/doma/",
+  productionAddress: "Екатеринбург и Свердловская область",
+  phone: "+7 (922) 124-42-52",
+  email: "budushiy.dom@yandex.ru",
 };
 
 // ============================================================================
@@ -4621,6 +4716,356 @@ export const projects: Project[] = [
     features: ["Готовый санузел", "Мебель в комплекте"], style: "Минимализм", landSize: "до 3 соток",
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
+
+  // ── Главлес · Екатеринбург ─────────────────────────────────────────────
+  {
+    id: 255, name: "Проект 8-35-м", badge: "Модульный дом", price: "1 712 000 ₽",
+    area: "35 м²", area_m2: 35, beds: 1, baths: 1, floors: 1, term: "от 2 нед.",
+    rooms: "Свободная планировка", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
+    maker: { ...GLAVLES, siteUrl: "https://promo.glavles.com/project/8-35-m" },
+    description: "Модульный дом 5,8 × 5,9 м с плоской кровлей и теплой площадью 35 м².",
+    descriptionLong: "Проект 8-35-м от «Главлес» — компактный модульный дом с теплой площадью 35 м². Производитель предлагает свободную планировку, круглогодичную комплектацию и варианты с террасой или банным модулем.",
+    gallery: [
+      { image: gl835_1, type: "photo", fit: "contain", blur: true },
+      { image: gl835_2, type: "photo", fit: "contain", blur: true },
+      { image: gl835_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 34, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Свободная планировка", "Вариант с террасой"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 256, name: "Проект 8-27-м", badge: "Модульный дом", price: "1 718 000 ₽",
+    area: "27 м²", area_m2: 27, beds: 1, baths: 1, floors: 1, term: "от 2 нед.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
+    maker: { ...GLAVLES, siteUrl: "https://promo.glavles.com/project/8-27-m" },
+    description: "Просторный модульный дом 5,7 × 6,4 м с отдельной спальней и санузлом.",
+    descriptionLong: "Проект 8-27-м от «Главлес» рассчитан на комфортное проживание до четырех человек. Варианты планировок включают отдельную спальню, большой санузел и исполнение с увеличенной террасой.",
+    gallery: [
+      { image: gl827_1, type: "photo", fit: "contain", blur: true },
+      { image: gl827_2, type: "photo", fit: "contain", blur: true },
+      { image: gl827_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 35, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Готовый санузел"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 257, name: "Проект 8-25-м", badge: "Модульный дом", price: "1 487 000 ₽",
+    area: "25 м²", area_m2: 25, beds: 1, baths: 1, floors: 1, term: "от 2 нед.",
+    rooms: "1 комната", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
+    maker: { ...GLAVLES, siteUrl: "https://promo.glavles.com/project/8-25" },
+    description: "Модульный дом 4,15 × 6,4 м с теплой площадью 25 м² и вариантами планировки.",
+    descriptionLong: "Проект 8-25-м от «Главлес» — модуль увеличенной площади, который можно адаптировать под проживание или баню. В карточке производителя есть варианты свободной планировки, стандартной планировки и решения с террасой.",
+    gallery: [
+      { image: gl825_1, type: "photo", fit: "contain", blur: true },
+      { image: gl825_2, type: "photo", fit: "contain", blur: true },
+      { image: gl825_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 32, rating: 4.7,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Вариант с террасой", "Можно адаптировать под баню"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 258, name: "Проект 8-68-м", badge: "Модульный дом", price: "2 935 000 ₽",
+    area: "68 м²", area_m2: 68, beds: 2, baths: 1, floors: 1, term: "от 2 нед.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...GLAVLES, siteUrl: "https://promo.glavles.com/8-68-m" },
+    description: "Просторный одноэтажный модульный дом 11,86 × 7,96 м с двумя спальнями.",
+    descriptionLong: "Проект 8-68-м от «Главлес» — светлый модульный дом площадью 68 м² с двумя спальнями. Производитель указывает сезонную и круглогодичную комплектации, стандартную планировку и опцию открытой террасы.",
+    gallery: [
+      { image: gl868_1, type: "photo", fit: "contain", blur: true },
+      { image: gl868_2, type: "photo", fit: "contain", blur: true },
+      { image: gl868_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 41, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Две спальни"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 259, name: "Проект 8-87-м", badge: "Модульный дом", price: "3 534 000 ₽",
+    area: "87 м²", area_m2: 87, beds: 3, baths: 1, floors: 2, term: "от 2 нед.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...GLAVLES, siteUrl: "https://promo.glavles.com/8-87-m" },
+    description: "Двухэтажный модульный дом 11,86 × 7,96 м с тремя спальнями.",
+    descriptionLong: "Проект 8-87-м от «Главлес» — двухэтажный модульный дом с теплой площадью 87 м² и тремя спальнями. На странице производителя указаны сезонная и круглогодичная комплектации, а также планировки первого и второго этажа.",
+    gallery: [
+      { image: gl887_1, type: "photo", fit: "contain", blur: true },
+      { image: gl887_2, type: "photo", fit: "contain", blur: true },
+      { image: gl887_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 45, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Два этажа", "Три спальни"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── ФПС Модуль · Екатеринбург ──────────────────────────────────────────
+  {
+    id: 260, name: "АртХаус AH 281", badge: "Модульный дом", price: "2 160 000 ₽",
+    area: "54 м²", area_m2: 54, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...FPS_MODUL, siteUrl: "https://fps-modul.ru/modulnyj-dom-ah281" },
+    description: "Модульный дом АртХаус 54 м², габариты 6 × 9 м, жилая площадь 45,2 м².",
+    descriptionLong: "АртХаус AH 281 от «ФПС Модуль» — одноэтажный модульный дом площадью 54 м². На сайте производителя указаны жилая площадь 45,2 м², габариты 6 × 9 м и базовая стоимость без учета террасы, фундамента и доставки.",
+    gallery: [
+      { image: fpsAh281_1, type: "photo", fit: "contain", blur: true },
+      { image: fpsAh281Plan1, type: "photo", fit: "contain" },
+      { image: fpsAh281Plan2, type: "photo", fit: "contain" },
+    ],
+    likes: 37, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Готовый санузел", "Вентфасад"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 261, name: "АртХаус AH 313", badge: "Модульный дом", price: "1 800 000 ₽",
+    area: "45 м²", area_m2: 45, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...FPS_MODUL, siteUrl: "https://fps-modul.ru/modulnyj-dom-ah313" },
+    description: "Модульный дом АртХаус 45 м², габариты 7,5 × 6 м, жилая площадь 36,2 м².",
+    descriptionLong: "АртХаус AH 313 от «ФПС Модуль» — компактный одноэтажный дом площадью 45 м². Производитель указывает жилую площадь 36,2 м², внутреннюю высоту потолков 2,4 м и несколько вариантов планировок.",
+    gallery: [
+      { image: fpsAh313_1, type: "photo", fit: "contain", blur: true },
+      { image: fpsAh313_2, type: "photo", fit: "contain", blur: true },
+      { image: fpsAh313Plan, type: "photo", fit: "contain" },
+    ],
+    likes: 35, rating: 4.7,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Готовый санузел", "Вентфасад"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 262, name: "Барнхаус Викинг BH 411", badge: "Модульный дом", price: "1 500 000 ₽",
+    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 2, term: "от 1 мес.",
+    rooms: "2 комнаты", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
+    maker: { ...FPS_MODUL, siteUrl: "https://fps-modul.ru/barnhaus-viking-bh-411" },
+    description: "Барнхаус Викинг 30 м² с высокой кровлей и вторым уровнем.",
+    descriptionLong: "Барнхаус Викинг BH 411 от «ФПС Модуль» — компактный модульный дом с внешними размерами 5 × 6 м и высокой кровлей. Производитель указывает варианты жилой площади 33,7–36,25 м² за счет второго уровня.",
+    gallery: [
+      { image: fpsBh411_1, type: "photo", fit: "contain", blur: true },
+      { image: fpsBh411Plan1, type: "photo", fit: "contain" },
+      { image: fpsBh411Plan2, type: "photo", fit: "contain" },
+    ],
+    likes: 38, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Антресоль", "Барнхаус"], style: "Барнхаус", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 263, name: "Барнхаус Викинг BH 412", badge: "Модульный дом", price: "2 100 000 ₽",
+    area: "49 м²", area_m2: 49, beds: 2, baths: 1, floors: 2, term: "от 1 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...FPS_MODUL, siteUrl: "https://fps-modul.ru/barnhaus-viking-bh-412" },
+    description: "Модульный барнхаус с габаритами 6 × 7 м и вторым уровнем.",
+    descriptionLong: "Барнхаус Викинг BH 412 от «ФПС Модуль» — увеличенная версия линейки Викинг. На сайте производителя указана площадь до 49 м², внешние размеры 6 × 7 м и варианты планировок для постоянного или дачного проживания.",
+    gallery: [
+      { image: fpsBh412_1, type: "photo", fit: "contain", blur: true },
+      { image: fpsBh412Plan1, type: "photo", fit: "contain" },
+      { image: fpsBh412Plan2, type: "photo", fit: "contain" },
+    ],
+    likes: 40, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Антресоль", "Барнхаус"], style: "Барнхаус", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 264, name: "Барнхаус BH 403", badge: "Модульный дом", price: "1 200 000 ₽",
+    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
+    maker: { ...FPS_MODUL, siteUrl: "https://fps-modul.ru/barnhaus-bh-403" },
+    description: "Компактный барнхаус 30 м², габариты 5 × 6 м, базовая комплектация под ключ.",
+    descriptionLong: "Барнхаус BH 403 от «ФПС Модуль» — одноэтажный модульный дом площадью 30 м². В комплектацию входят деревянный каркас, утепление, наружная и внутренняя отделка, окна, двери, электрика и вентиляция.",
+    gallery: [
+      { image: fpsBh403_1, type: "photo", fit: "contain", blur: true },
+      { image: fpsBh403Plan1, type: "photo", fit: "contain" },
+      { image: fpsBh403Plan2, type: "photo", fit: "contain" },
+    ],
+    likes: 34, rating: 4.7,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Барнхаус", "Готовый санузел"], style: "Барнхаус", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+
+  // ── Вековые Традиции · Екатеринбург ────────────────────────────────────
+  {
+    id: 265, name: "М-98-1-3", badge: "Модульный дом", price: "3 920 000 ₽",
+    area: "98 м²", area_m2: 98, beds: 3, baths: 2, floors: 1, term: "3–6 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...VEK_TRAD, siteUrl: "https://vek-trad.ru/katalog-proektov-domov/modulnye/m-98-1-3/" },
+    description: "Одноэтажный модульный дом 98 м² с тремя спальнями, двумя санузлами и террасой.",
+    descriptionLong: "М-98-1-3 от «Вековые Традиции» — модульный дом площадью 98 м², размер 11 × 12 м. В проекте предусмотрены три спальни, два санузла и терраса; производитель указывает базовую, тепловой контур и комплектацию под ключ.",
+    gallery: [
+      { image: vtM98_1, type: "photo", fit: "contain", blur: true },
+      { image: vtM98_2, type: "photo", fit: "contain", blur: true },
+      { image: vtM98_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 42, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Два санузла"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 266, name: "М-85-1-2", badge: "Модульный дом", price: "3 400 000 ₽",
+    area: "85 м²", area_m2: 85, beds: 2, baths: 2, floors: 1, term: "3–6 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...VEK_TRAD, siteUrl: "https://vek-trad.ru/katalog-proektov-domov/modulnye/m-85-1-2/" },
+    description: "Модульный дом 85 м² с двумя спальнями, двумя санузлами и террасой.",
+    descriptionLong: "М-85-1-2 от «Вековые Традиции» — одноэтажный модульный дом площадью 85 м², размер 11 × 12 м. Проект рассчитан на семью: две спальни, два санузла и терраса.",
+    gallery: [
+      { image: vtM85_1, type: "photo", fit: "contain", blur: true },
+      { image: vtM85_2, type: "photo", fit: "contain", blur: true },
+      { image: vtM85_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 40, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Два санузла"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 267, name: "М-73-1-2", badge: "Модульный дом", price: "2 920 000 ₽",
+    area: "73 м²", area_m2: 73, beds: 2, baths: 1, floors: 1, term: "3–6 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...VEK_TRAD, siteUrl: "https://vek-trad.ru/katalog-proektov-domov/modulnye/m-73-1-2/" },
+    description: "Одноэтажный модульный дом 73 м² с двумя спальнями и террасой.",
+    descriptionLong: "М-73-1-2 от «Вековые Традиции» — модульный дом площадью 73 м², размер 8 × 12 м. В планировке две спальни, один санузел и терраса; дом предлагается в нескольких комплектациях.",
+    gallery: [
+      { image: vtM73_1, type: "photo", fit: "contain", blur: true },
+      { image: vtM73_2, type: "photo", fit: "contain", blur: true },
+      { image: vtM73_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 38, rating: 4.7,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 268, name: "М-60-1-1", badge: "Модульный дом", price: "2 400 000 ₽",
+    area: "60 м²", area_m2: 60, beds: 1, baths: 1, floors: 1, term: "3–6 мес.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
+    maker: { ...VEK_TRAD, siteUrl: "https://vek-trad.ru/katalog-proektov-domov/modulnye/m-60-1-1/" },
+    description: "Компактный модульный дом 60 м² с одной спальней, санузлом и террасой.",
+    descriptionLong: "М-60-1-1 от «Вековые Традиции» — модульный дом площадью 60 м², размер 8 × 12 м. Проект подходит для круглогодичного проживания или дачного сценария: спальня, санузел, гостиная зона и терраса.",
+    gallery: [
+      { image: vtM60_1, type: "photo", fit: "contain", blur: true },
+      { image: vtM60_2, type: "photo", fit: "contain", blur: true },
+      { image: vtM60_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 36, rating: 4.7,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+
+  // ── Будущий Дом · Екатеринбург ─────────────────────────────────────────
+  {
+    id: 269, name: "Хайтек 45", badge: "Модульный дом", price: "2 730 000 ₽",
+    area: "45 м²", area_m2: 45, beds: 1, baths: 1, floors: 1, term: "от 10 д.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...BUDUSHIY_DOM, siteUrl: "https://budushiy-dom.ru/product/modulnyj-dom-hajtek-45/" },
+    description: "Модульный дом в стиле хай-тек 45 м² с одной спальней и санузлом.",
+    descriptionLong: "Хайтек 45 от СК «Будущий Дом» — модульный дом площадью 45 м². Производитель указывает внутреннюю и внешнюю отделку, разводку электрики, сантехники и воды; фундамент и терраса считаются отдельно.",
+    gallery: [
+      { image: bdHitech45_1, type: "photo", fit: "contain", blur: true },
+      { image: bdHitech45_2, type: "photo", fit: "contain", blur: true },
+      { image: bdHitech45_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 39, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Готовый санузел", "Хай-тек"], style: "Хай-тек", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 270, name: "Хайтек 36", badge: "Модульный дом", price: "2 120 000 ₽",
+    area: "36 м²", area_m2: 36, beds: 1, baths: 1, floors: 1, term: "от 10 д.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
+    maker: { ...BUDUSHIY_DOM, siteUrl: "https://budushiy-dom.ru/product/modulnyj-dom-hajtek-36-m-kv/" },
+    description: "Компактный модульный дом хай-тек 36 м² с одной спальней и санузлом.",
+    descriptionLong: "Хайтек 36 от СК «Будущий Дом» — компактный модульный дом площадью 36 м². В описании проекта указаны стены 100 мм, потолок и пол 150 мм, внутренняя и внешняя отделка, разведенная электрика, сантехника и вода.",
+    gallery: [
+      { image: bdHitech36_1, type: "photo", fit: "contain", blur: true },
+      { image: bdHitech36_2, type: "photo", fit: "contain", blur: true },
+      { image: bdHitech36_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 37, rating: 4.7,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Готовый санузел", "Хай-тек"], style: "Хай-тек", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 271, name: "Барн 60F-1", badge: "Модульный дом", price: "3 640 000 ₽",
+    area: "60 м²", area_m2: 60, beds: 3, baths: 1, floors: 1, term: "от 10 д.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...BUDUSHIY_DOM, siteUrl: "https://budushiy-dom.ru/product/modulnyj-dom-barn-60f-1/" },
+    description: "Модульный дом в стиле барн 60 м² с тремя спальнями и санузлом.",
+    descriptionLong: "Барн 60F-1 от СК «Будущий Дом» — модульный дом площадью 60 м² с тремя спальнями. В базовом описании указаны внутренняя и внешняя отделка, электрика, сантехника и водоснабжение.",
+    gallery: [
+      { image: bdBarn60f_1, type: "photo", fit: "contain", blur: true },
+      { image: bdBarn60f_2, type: "photo", fit: "contain", blur: true },
+      { image: bdBarn60f_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 43, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Барнхаус", "Три спальни"], style: "Барнхаус", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 272, name: "Дом №8", badge: "Модульный дом", price: "2 087 020 ₽",
+    area: "32,5 м²", area_m2: 32.5, beds: 2, baths: 1, floors: 1, term: "от 10 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
+    maker: { ...BUDUSHIY_DOM, siteUrl: "https://budushiy-dom.ru/product/dom-8/" },
+    description: "Компактный модульный дом 32,5 м² с двумя спальнями и санузлом.",
+    descriptionLong: "Дом №8 от СК «Будущий Дом» — модульный дом площадью 32,5 м². В карточке производителя указаны две спальни, один санузел, внутренняя и внешняя отделка, разведенная электрика, сантехника и вода.",
+    gallery: [
+      { image: bdDom8_1, type: "photo", fit: "contain", blur: true },
+      { image: bdDom8_2, type: "photo", fit: "contain", blur: true },
+      { image: bdDom8_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 36, rating: 4.7,
+    suitableFor: ["Выходные / дача", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Две спальни", "Готовый санузел"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 273, name: "Модуал 75 с террасой", badge: "Модульный дом", price: "3 524 000 ₽",
+    area: "75 м²", area_m2: 75, beds: 2, baths: 1, floors: 1, term: "от 10 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    maker: { ...BUDUSHIY_DOM, siteUrl: "https://budushiy-dom.ru/product/modual-75-m2-s-terrasoj/" },
+    description: "Модульный дом 75 м² с двумя спальнями, санузлом и террасой.",
+    descriptionLong: "Модуал 75 с террасой от СК «Будущий Дом» — одноэтажный модульный дом площадью 75 м². Производитель указывает усиленный деревянный каркас, утепление, вентилируемый фасад, подготовку санузла и комплект окон и дверей.",
+    gallery: [
+      { image: bdModual75_1, type: "photo", fit: "contain", blur: true },
+      { image: bdModual75_2, type: "photo", fit: "contain", blur: true },
+      { image: bdModual75_3, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 44, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Две спальни"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
   ...regionalBatchProjects,
 ];
 
@@ -4751,7 +5196,7 @@ export type MakerSummary = {
   telegram?: string;
 };
 const canonicalMakerSiteUrls: Record<string, string> = [
-  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX,
+  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM,
   ...regionalMakers,
 ].reduce((acc, m) => {
   if (m.id && m.siteUrl) acc[m.id] = m.siteUrl;
