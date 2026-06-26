@@ -235,6 +235,11 @@ import thumb270 from "@/assets/budushiy-dom/hitech-36/01__thumb.webp";
 import thumb271 from "@/assets/budushiy-dom/barn-60f/01__thumb.webp";
 import thumb272 from "@/assets/budushiy-dom/dom-8/01__thumb.webp";
 import thumb273 from "@/assets/budushiy-dom/modual-75/01__thumb.webp";
+import thumb274 from "@/assets/qubdom/q/01__thumb.webp";
+import thumb275 from "@/assets/qubdom/q-plus/01__thumb.webp";
+import thumb276 from "@/assets/qubdom/q-family-mini/01__thumb.webp";
+import thumb277 from "@/assets/qubdom/q-family-max/01__thumb.webp";
+import thumb278 from "@/assets/qubdom/q-s-tamburom/01__thumb.webp";
 
 export const projectThumbs: Record<number, string> = {
   32: thumb32,
@@ -471,4 +476,9 @@ export const projectThumbs: Record<number, string> = {
   271: thumb271,
   272: thumb272,
   273: thumb273,
+  274: thumb274,
+  275: thumb275,
+  276: thumb276,
+  277: thumb277,
+  278: thumb278,
 };

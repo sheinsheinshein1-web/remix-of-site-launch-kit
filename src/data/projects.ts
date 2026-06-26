@@ -934,6 +934,28 @@ import bdDom8_3 from "@/assets/budushiy-dom/dom-8/03.webp";
 import bdModual75_1 from "@/assets/budushiy-dom/modual-75/01.webp";
 import bdModual75_2 from "@/assets/budushiy-dom/modual-75/02.webp";
 import bdModual75_3 from "@/assets/budushiy-dom/modual-75/03.webp";
+import qubQ_1 from "@/assets/qubdom/q/01.webp";
+import qubQ_2 from "@/assets/qubdom/q/02.webp";
+import qubQ_3 from "@/assets/qubdom/q/03.webp";
+import qubQPlan from "@/assets/qubdom/q/04.webp";
+import qubQPlus_1 from "@/assets/qubdom/q-plus/01.webp";
+import qubQPlus_2 from "@/assets/qubdom/q-plus/02.webp";
+import qubQPlus_3 from "@/assets/qubdom/q-plus/03.webp";
+import qubQPlusPlan1 from "@/assets/qubdom/q-plus/04.webp";
+import qubQPlusPlan2 from "@/assets/qubdom/q-plus/05.webp";
+import qubQFamilyMini_1 from "@/assets/qubdom/q-family-mini/01.webp";
+import qubQFamilyMini_2 from "@/assets/qubdom/q-family-mini/02.webp";
+import qubQFamilyMini_3 from "@/assets/qubdom/q-family-mini/03.webp";
+import qubQFamilyMiniPlan1 from "@/assets/qubdom/q-family-mini/04.webp";
+import qubQFamilyMiniPlan2 from "@/assets/qubdom/q-family-mini/05.webp";
+import qubQFamilyMax_1 from "@/assets/qubdom/q-family-max/01.webp";
+import qubQFamilyMax_2 from "@/assets/qubdom/q-family-max/02.webp";
+import qubQFamilyMax_3 from "@/assets/qubdom/q-family-max/03.webp";
+import qubQFamilyMaxPlan from "@/assets/qubdom/q-family-max/04.webp";
+import qubQTambour_1 from "@/assets/qubdom/q-s-tamburom/01.webp";
+import qubQTambour_2 from "@/assets/qubdom/q-s-tamburom/02.webp";
+import qubQTambour_3 from "@/assets/qubdom/q-s-tamburom/03.webp";
+import qubQTambourPlan from "@/assets/qubdom/q-s-tamburom/04.webp";
 import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
@@ -1257,6 +1279,15 @@ const BUDUSHIY_DOM: Maker = {
   productionAddress: "Екатеринбург и Свердловская область",
   phone: "+7 (922) 124-42-52",
   email: "budushiy.dom@yandex.ru",
+};
+const QUBDOM: Maker = {
+  name: "Qubdom",
+  initials: "QD",
+  id: "qubdom",
+  siteUrl: "https://qubdom.ru/",
+  productionAddress: "Санкт-Петербург и Ленинградская область",
+  phone: "+7 (999) 945-30-05",
+  email: "info@qubdom.ru",
 };
 
 // ============================================================================
@@ -5095,6 +5126,105 @@ export const projects: Project[] = [
     technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
     features: ["Терраса", "Две спальни"], style: "Современный", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+
+  // ── Qubdom · Санкт-Петербург и ЛО ────────────────────────────────────────
+  {
+    id: 274, name: "Q", badge: "Модульный дом", price: "1 600 000 ₽",
+    area: "31,5 м²", area_m2: 31.5, beds: 1, baths: 1, floors: 1, term: "от 30 д.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Санкт-Петербург и ЛО",
+    maker: { ...QUBDOM, siteUrl: "https://qubdom.ru/q/" },
+    description: "Компактный модульный дом 31,5 м² с жилой зоной, санузлом и террасой.",
+    descriptionLong: "Q от Qubdom — компактный одноэтажный модульный дом площадью 31,5 м² для дачи, гостевого размещения или проживания пары. Проект включает жилую зону, санузел и открытую террасу; производитель указывает быстрый срок изготовления и возможность комплектации мебелью.",
+    gallery: [
+      { image: qubQ_1, type: "photo" },
+      { image: qubQ_2, type: "photo" },
+      { image: qubQ_3, type: "photo" },
+      { image: qubQPlan, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 41, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Готовый санузел"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 275, name: "Q+", badge: "Модульный дом", price: "2 150 000 ₽",
+    area: "45,6 м²", area_m2: 45.6, beds: 1, baths: 1, floors: 1, term: "от 30 д.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Санкт-Петербург и ЛО",
+    maker: { ...QUBDOM, siteUrl: "https://qubdom.ru/q-2/" },
+    description: "Модульный дом 45,6 м² с увеличенной жилой зоной, санузлом и террасой.",
+    descriptionLong: "Q+ от Qubdom — расширенная версия компактного модульного дома площадью 45,6 м². Планировка рассчитана на комфортное проживание одного-двух человек: выделенная спальная зона, кухня-гостиная, санузел и терраса.",
+    gallery: [
+      { image: qubQPlus_1, type: "photo" },
+      { image: qubQPlus_2, type: "photo" },
+      { image: qubQPlus_3, type: "photo" },
+      { image: qubQPlusPlan1, type: "photo", fit: "contain", blur: true },
+      { image: qubQPlusPlan2, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 44, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Готовый санузел"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 276, name: "Q Family mini", badge: "Модульный дом", price: "2 700 000 ₽",
+    area: "49,5 м²", area_m2: 49.5, beds: 2, baths: 1, floors: 1, term: "от 40 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...QUBDOM, siteUrl: "https://qubdom.ru/q-family-mini/" },
+    description: "Семейный модульный дом 49,5 м² с двумя приватными зонами и санузлом.",
+    descriptionLong: "Q Family mini от Qubdom — компактный семейный модульный дом площадью 49,5 м² для круглогодичного проживания или загородного отдыха. Планировка подходит для небольшой семьи: есть общая зона, санузел и две приватные комнаты.",
+    gallery: [
+      { image: qubQFamilyMini_1, type: "photo" },
+      { image: qubQFamilyMini_2, type: "photo" },
+      { image: qubQFamilyMini_3, type: "photo" },
+      { image: qubQFamilyMiniPlan1, type: "photo", fit: "contain", blur: true },
+      { image: qubQFamilyMiniPlan2, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 47, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Семейная планировка", "Готовый санузел"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 277, name: "Q Family MAX", badge: "Модульный дом", price: "4 900 000 ₽",
+    area: "100,8 м²", area_m2: 100.8, beds: 3, baths: 1, floors: 1, term: "от 70 д.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...QUBDOM, siteUrl: "https://qubdom.ru/q-family-max/" },
+    description: "Большой модульный дом 100,8 м² для постоянного проживания семьи.",
+    descriptionLong: "Q Family MAX от Qubdom — просторный одноэтажный модульный дом площадью 100,8 м². Проект рассчитан на семью и постоянное проживание: несколько спален, общая зона, санузел и увеличенная полезная площадь.",
+    gallery: [
+      { image: qubQFamilyMax_1, type: "photo" },
+      { image: qubQFamilyMax_2, type: "photo" },
+      { image: qubQFamilyMax_3, type: "photo" },
+      { image: qubQFamilyMaxPlan, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 52, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Большая площадь", "Семейная планировка"], style: "Современный", landSize: "8–12 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 278, name: "Q с тамбуром", badge: "Модульный дом", price: "1 800 000 ₽",
+    area: "36 м²", area_m2: 36, beds: 1, baths: 1, floors: 1, term: "от 35 д.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Санкт-Петербург и ЛО",
+    maker: { ...QUBDOM, siteUrl: "https://qubdom.ru/q-s-tamburom/" },
+    description: "Компактный модульный дом 36 м² с тёплым тамбуром, санузлом и террасой.",
+    descriptionLong: "Q с тамбуром от Qubdom — компактный модульный дом площадью 36 м² для проживания двух человек или использования как гостевой дом. Тамбур добавляет удобство в холодный сезон и может работать как входная зона для хранения.",
+    gallery: [
+      { image: qubQTambour_1, type: "photo" },
+      { image: qubQTambour_2, type: "photo" },
+      { image: qubQTambour_3, type: "photo" },
+      { image: qubQTambourPlan, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 40, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Тамбур", "Терраса"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
   },
   ...regionalBatchProjects,
 ];
