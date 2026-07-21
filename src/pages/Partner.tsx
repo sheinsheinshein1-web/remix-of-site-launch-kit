@@ -219,10 +219,11 @@ const Partner = () => {
   const violationMailto = `mailto:inadvert@yandex.ru?subject=${encodeURIComponent("Сообщение о нарушении прав")}&body=${encodeURIComponent(`Карточка производителя: https://многоместа.рф/partner/${makerId}\nВаша компания: \nКомментарий: `)}`;
 
   // Рейтинг: для компаний с публичным профилем в Яндекс.Картах — реальные значения.
-  const makerRatings: Record<string, { rating: number; label: string }> = {
-    bygge: { rating: 4.4, label: "18 отзывов" },
+  const makerRatings: Record<string, { rating: number; reviewsLabel: string }> = {
+    bygge: { rating: 4.4, reviewsLabel: "18 отзывов" },
   };
-  const { rating, reviewsLabel } = makerRatings[makerId] ?? { rating: 4.9, label: "новый" } as { rating: number; label: string };
+  const { rating, reviewsLabel } = makerRatings[makerId] ?? { rating: 4.9, reviewsLabel: "новый" };
+
 
 
   const handleBack = () => {
