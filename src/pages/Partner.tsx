@@ -261,7 +261,7 @@ const Partner = () => {
     return <NotFound />;
   }
 
-  const isPlatforma = makerId === "platforma";
+  const isPlatforma = makerId === "platforma" || makerId === "bygge";
 
 
   const HeroPlatforma = () => (
