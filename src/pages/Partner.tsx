@@ -515,39 +515,6 @@ const Partner = () => {
           </div>
         )}
 
-        {/* Бенто: "По категориям" — только Платформа */}
-        {isPlatforma && (() => {
-          const groups = new Map<string, { label: string; image: string; count: number }>();
-          makerProjects.forEach((p) => {
-            const label = p.badge || "—";
-            const existing = groups.get(label);
-            if (existing) existing.count += 1;
-            else groups.set(label, { label, image: p.gallery[0]?.image ?? "", count: 1 });
-          });
-          const arr = Array.from(groups.values());
-          if (arr.length < 2) return null;
-          return (
-            <div className="px-3 mt-3">
-              <div className="bg-background rounded-2xl pt-5 pb-5">
-                <h2 className="px-4 text-[22px] font-bold text-foreground tracking-tight">По категориям</h2>
-                <div className="mt-3 flex gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                  {arr.map((g) => (
-                    <button
-                      key={g.label}
-                      onClick={() => navigate(`/catalog?maker=${makerId}&badge=${encodeURIComponent(g.label)}`)}
-                      className="shrink-0 w-[200px] text-left"
-                    >
-                      <div className="aspect-square rounded-2xl overflow-hidden bg-secondary">
-                        {g.image && <img src={g.image} alt={g.label} className="w-full h-full object-cover" loading="lazy" decoding="async" />}
-                      </div>
-                      <div className="mt-2.5 text-center text-[15px] font-semibold text-foreground">{g.label}</div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          );
-        })()}
 
         {/* Бенто: "Хиты продаж" — большое фото-бенто с карточками внизу */}
         {isPlatforma && makerProjects.length >= 2 && (() => {
