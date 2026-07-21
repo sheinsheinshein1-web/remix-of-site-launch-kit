@@ -1038,6 +1038,11 @@ const BYGGE: Maker = {
   name: "Bygge",
   initials: "BG",
   id: "bygge",
+  siteUrl: "https://bygge.ru/",
+  productionAddress: "г. Екатеринбург, ул. Хлебная, 17",
+  phone: "+7 (982) 693-70-39",
+  email: "bygge_ural@mail.ru",
+  telegram: "bygge_rus",
 };
 const GLEZMAN: Maker = {
   name: "Glezman Group",
