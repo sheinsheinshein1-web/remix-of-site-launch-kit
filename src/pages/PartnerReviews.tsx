@@ -204,8 +204,9 @@ const PartnerReviews = () => {
           <div className="flex items-end justify-between gap-3">
             <div>
               <div className="text-[34px] font-bold leading-none text-white">
-                4,9
+                {(ratingAvg || 0).toFixed(1).replace(".", ",")}
               </div>
+
               <div className="flex items-center gap-0.5 mt-2">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <Star
