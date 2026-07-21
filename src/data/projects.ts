@@ -964,7 +964,7 @@ import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProje
 
 export type GalleryItem = {
   image: string;
-  type?: "photo" | "video";
+  type?: "photo" | "video" | "plan";
   fit?: "cover" | "contain";
   blur?: boolean; // blur-фон в каталоге для фото с прозрачным/неровным фоном
   edgeBleed?: boolean; // бесшовное продолжение краёв вместо blur
