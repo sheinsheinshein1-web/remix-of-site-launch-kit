@@ -218,9 +218,12 @@ const Partner = () => {
   const cleanSiteUrl = partner.siteUrl.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
   const violationMailto = `mailto:inadvert@yandex.ru?subject=${encodeURIComponent("Сообщение о нарушении прав")}&body=${encodeURIComponent(`Карточка производителя: https://многоместа.рф/partner/${makerId}\nВаша компания: \nКомментарий: `)}`;
 
-  // Плейсхолдер до подключения реальных отзывов.
-  const rating = 4.9;
-  const reviewsLabel = "новый";
+  // Рейтинг: для компаний с публичным профилем в Яндекс.Картах — реальные значения.
+  const makerRatings: Record<string, { rating: number; label: string }> = {
+    bygge: { rating: 4.4, label: "18 отзывов" },
+  };
+  const { rating, reviewsLabel } = makerRatings[makerId] ?? { rating: 4.9, label: "новый" } as { rating: number; label: string };
+
 
   const handleBack = () => {
     navigate("/");
