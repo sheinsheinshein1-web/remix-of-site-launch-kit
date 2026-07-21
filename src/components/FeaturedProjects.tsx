@@ -317,7 +317,7 @@ const FeaturedProjects = () => {
         )}
         <div className={`grid grid-flow-row-dense grid-cols-2 md:grid-cols-4 gap-x-[2px] gap-y-[6px] md:gap-4 md:mt-0 ${isEmpty ? "hidden" : ""}`}>
           {items.map(({ project, key }) => (
-            <div key={key} className={isWide(project.maker) ? "col-span-2 md:col-span-2" : undefined}>
+            <div key={key}>
               <ProjectCard projectId={project.id} onCardClick={handleCardClick} />
             </div>
           ))}
