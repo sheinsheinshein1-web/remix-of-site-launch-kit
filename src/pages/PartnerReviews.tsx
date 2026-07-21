@@ -81,6 +81,10 @@ const MAKER_REVIEW_OVERRIDES: Record<string, ReviewTemplate[]> = {
   ],
 };
 
+const MAKER_REVIEW_TOTAL_OVERRIDES: Record<string, number> = {
+  bygge: 18,
+};
+
 const PartnerReviews = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -103,7 +107,7 @@ const PartnerReviews = () => {
   }, [makerProjects, makerId]);
 
 
-  const totalCount = reviews.length;
+  const totalCount = MAKER_REVIEW_TOTAL_OVERRIDES[makerId] ?? reviews.length;
   const ratingAvg = useMemo(() => {
     if (reviews.length === 0) return 0;
     return reviews.reduce((s, r) => s + r.stars, 0) / reviews.length;
