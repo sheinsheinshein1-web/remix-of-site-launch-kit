@@ -964,7 +964,7 @@ import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProje
 
 export type GalleryItem = {
   image: string;
-  type?: "photo" | "video";
+  type?: "photo" | "video" | "plan";
   fit?: "cover" | "contain";
   blur?: boolean; // blur-фон в каталоге для фото с прозрачным/неровным фоном
   edgeBleed?: boolean; // бесшовное продолжение краёв вместо blur
@@ -1038,6 +1038,11 @@ const BYGGE: Maker = {
   name: "Bygge",
   initials: "BG",
   id: "bygge",
+  siteUrl: "https://bygge.ru/",
+  productionAddress: "г. Екатеринбург, ул. Хлебная, 17",
+  phone: "+7 (982) 693-70-39",
+  email: "bygge_ural@mail.ru",
+  telegram: "bygge_rus",
 };
 const GLEZMAN: Maker = {
   name: "Glezman Group",
