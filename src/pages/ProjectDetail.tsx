@@ -601,21 +601,28 @@ const ProjectDetail = () => {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-1.5 min-w-0">
                   <div className="text-[13px] font-semibold text-foreground leading-tight truncate">{project.maker}</div>
-                  {project.makerId === "platforma" && (
+                  {(project.makerId === "platforma" || project.makerId === "bygge") && (
                     <span className="shrink-0 text-[9px] font-medium uppercase tracking-wide bg-primary/15 text-primary px-1.5 py-[2px] rounded-lg">Проверено</span>
                   )}
                 </div>
-                {project.makerId === "platforma" ? (
-                  <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-0.5">
-                    <Star className="w-3 h-3 fill-primary text-primary" strokeWidth={1.5} />
-                    <span>4,9 · 6 отзывов</span>
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-0.5">
-                    <Star className="w-3 h-3 text-muted-foreground" strokeWidth={1.5} />
-                    <span>0,0 · Недостаточно данных</span>
-                  </div>
-                )}
+                {(() => {
+                  const makerRatings: Record<string, { score: string; label: string }> = {
+                    platforma: { score: "4,9", label: "6 отзывов" },
+                    bygge: { score: "4,4", label: "18 отзывов" },
+                  };
+                  const r = makerRatings[project.makerId];
+                  return r ? (
+                    <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-0.5">
+                      <Star className="w-3 h-3 fill-primary text-primary" strokeWidth={1.5} />
+                      <span>{r.score} · {r.label}</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-0.5">
+                      <Star className="w-3 h-3 text-muted-foreground" strokeWidth={1.5} />
+                      <span>0,0 · Недостаточно данных</span>
+                    </div>
+                  );
+                })()}
               </div>
               <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
             </div>
