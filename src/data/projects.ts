@@ -956,6 +956,28 @@ import qubQTambour_1 from "@/assets/qubdom/q-s-tamburom/01.webp";
 import qubQTambour_2 from "@/assets/qubdom/q-s-tamburom/02.webp";
 import qubQTambour_3 from "@/assets/qubdom/q-s-tamburom/03.webp";
 import qubQTambourPlan from "@/assets/qubdom/q-s-tamburom/04.webp";
+import durovLogo from "@/assets/durov-house/logo.webp";
+import durovBarn21_1 from "@/assets/durov-house/barn-dh21/01.webp";
+import durovBarn21Plan1 from "@/assets/durov-house/barn-dh21/02-plan.webp";
+import durovBarn21Plan2 from "@/assets/durov-house/barn-dh21/03-plan.webp";
+import durovBarn21Plan3 from "@/assets/durov-house/barn-dh21/04-plan.webp";
+import durovBarn21Plan4 from "@/assets/durov-house/barn-dh21/05-plan.webp";
+import durovBarn57_1 from "@/assets/durov-house/barn-dh57/01.webp";
+import durovBarn57_2 from "@/assets/durov-house/barn-dh57/02.webp";
+import durovBarn57_3 from "@/assets/durov-house/barn-dh57/03.webp";
+import durovBarn57Plan from "@/assets/durov-house/barn-dh57/04-plan.webp";
+import durovBarn64_1 from "@/assets/durov-house/barn-dh64/01.webp";
+import durovBarn64_2 from "@/assets/durov-house/barn-dh64/02.webp";
+import durovBarn64_3 from "@/assets/durov-house/barn-dh64/03.webp";
+import durovBarn64Plan from "@/assets/durov-house/barn-dh64/04-plan.webp";
+import durovFlat67_1 from "@/assets/durov-house/flat-dh67/01.webp";
+import durovFlat67_2 from "@/assets/durov-house/flat-dh67/02.webp";
+import durovFlat67_3 from "@/assets/durov-house/flat-dh67/03.webp";
+import durovFlat67Plan from "@/assets/durov-house/flat-dh67/04-plan.webp";
+import durovFlat124_1 from "@/assets/durov-house/flat-dh124/01.webp";
+import durovFlat124_2 from "@/assets/durov-house/flat-dh124/02.webp";
+import durovFlat124_3 from "@/assets/durov-house/flat-dh124/03.webp";
+import durovFlat124Plan from "@/assets/durov-house/flat-dh124/04-plan.webp";
 import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
@@ -1293,6 +1315,16 @@ const QUBDOM: Maker = {
   productionAddress: "Санкт-Петербург и Ленинградская область",
   phone: "+7 (999) 945-30-05",
   email: "info@qubdom.ru",
+};
+const DUROV_HOUSE: Maker = {
+  name: "DUROV.HOUSE",
+  initials: "DH",
+  id: "durov-house",
+  logo: durovLogo,
+  siteUrl: "https://durov.house/",
+  productionAddress: "Воронежская область, Новоусманский район, село Бабяково, 1-й Парковый проезд, строение 11",
+  phone: "+7 (906) 677-35-55",
+  email: "sales@durov.house",
 };
 
 // ============================================================================
@@ -5231,6 +5263,104 @@ export const projects: Project[] = [
     features: ["Тамбур", "Терраса"], style: "Современный", landSize: "3–6 соток",
     hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
   },
+
+  // ── DUROV.HOUSE · Воронеж ───────────────────────────────────────────────
+  {
+    id: 279, name: "Барн DH 21", badge: "Модульный дом", price: "1 985 500 ₽",
+    area: "21,42 м²", area_m2: 21.42, beds: 1, baths: 1, floors: 1, term: "от 30 д.",
+    rooms: "студия", purpose: "Глэмпинг / Дача / Аренда", city: "Воронеж",
+    maker: { ...DUROV_HOUSE, siteUrl: "https://durov.house/barn_dh21" },
+    description: "Компактный одномодульный дом формата мини для глэмпинга, аренды или дачного отдыха.",
+    descriptionLong: "Барн DH 21 от DUROV.HOUSE — компактный одномодульный дом площадью 21,42 м². Производитель позиционирует проект как мини-формат для глэмпингов, аренды и загородного отдыха: внутри предусмотрены жилая зона, санузел и несколько вариантов планировки.",
+    gallery: [
+      { image: durovBarn21_1, type: "photo", fit: "contain", blur: true },
+      { image: durovBarn21Plan1, type: "plan", fit: "contain" },
+      { image: durovBarn21Plan2, type: "plan", fit: "contain" },
+      { image: durovBarn21Plan3, type: "plan", fit: "contain" },
+      { image: durovBarn21Plan4, type: "plan", fit: "contain" },
+    ],
+    likes: 42, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Глэмпинг / аренда", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Мини-формат", "Готовый санузел", "Терраса"], style: "Барнхаус", landSize: "до 3 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 280, name: "Барн DH 57", badge: "Модульный дом", price: "4 275 000 ₽",
+    area: "56,7 м²", area_m2: 56.7, beds: 1, baths: 1, floors: 1, term: "от 30 д.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Воронеж",
+    maker: { ...DUROV_HOUSE, siteUrl: "https://durov.house/house_dh57" },
+    description: "Одноэтажный барнхаус с отдельной спальней, кухней-гостиной и террасой.",
+    descriptionLong: "Барн DH 57 от DUROV.HOUSE — модульный дом площадью 56,7 м² с совмещенной кухней-гостиной и отдельной спальней. Формат подходит для дачи, гостевого дома или компактного постоянного проживания; на сайте производителя указана общая площадь с террасой 48,3 м².",
+    gallery: [
+      { image: durovBarn57_1, type: "photo", fit: "contain", blur: true },
+      { image: durovBarn57_2, type: "photo", fit: "contain", blur: true },
+      { image: durovBarn57_3, type: "photo", fit: "contain", blur: true },
+      { image: durovBarn57Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 45, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Спальня", "Кухня-гостиная", "Терраса"], style: "Барнхаус", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 281, name: "Барн DH 64", badge: "Модульный дом", price: "4 800 000 ₽",
+    area: "64,57 м²", area_m2: 64.57, beds: 2, baths: 1, floors: 1, term: "от 30 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Воронеж",
+    maker: { ...DUROV_HOUSE, siteUrl: "https://durov.house/house_dh64" },
+    description: "Модульный барнхаус с двумя спальнями, кухней-гостиной, террасой и крыльцом.",
+    descriptionLong: "Барн DH 64 от DUROV.HOUSE — одноэтажный модульный дом площадью 64,57 м². В планировке две спальни, кухня-гостиная и санузел; производитель указывает общую площадь с террасой и крыльцом 56,33 м².",
+    gallery: [
+      { image: durovBarn64_1, type: "photo", fit: "contain", blur: true },
+      { image: durovBarn64_2, type: "photo", fit: "contain", blur: true },
+      { image: durovBarn64_3, type: "photo", fit: "contain", blur: true },
+      { image: durovBarn64Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 48, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Две спальни", "Кухня-гостиная", "Терраса"], style: "Барнхаус", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 282, name: "Флэт DH 67", badge: "Модульный дом", price: "5 025 000 ₽",
+    area: "66,7 м²", area_m2: 66.7, beds: 1, baths: 1, floors: 1, term: "от 30 д.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Воронеж",
+    maker: { ...DUROV_HOUSE, siteUrl: "https://durov.house/flat_dh67" },
+    description: "Современный модульный дом с отдельной спальней, кухней-гостиной и террасой.",
+    descriptionLong: "Флэт DH 67 от DUROV.HOUSE — модульный дом площадью 66,7 м² с отдельной спальней и кухней-гостиной. На странице производителя указана полезная площадь 57,16 м², высота потолков 2,6 м, а также включенные в стоимость терраса и монтаж.",
+    gallery: [
+      { image: durovFlat67_1, type: "photo", fit: "contain", blur: true },
+      { image: durovFlat67_2, type: "photo", fit: "contain", blur: true },
+      { image: durovFlat67_3, type: "photo", fit: "contain", blur: true },
+      { image: durovFlat67Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 47, rating: 4.8,
+    suitableFor: ["Постоянное проживание", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Спальня", "Кухня-гостиная", "Терраса"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 283, name: "Флэт DH 124", badge: "Модульный дом", price: "9 300 000 ₽",
+    area: "124 м²", area_m2: 124, beds: 3, baths: 1, floors: 1, term: "от 30 д.",
+    rooms: "3 спальни", purpose: "ИЖС", city: "Воронеж",
+    maker: { ...DUROV_HOUSE, siteUrl: "https://durov.house/flat_dh124" },
+    description: "Просторный модульный дом с тремя спальнями, кухней-гостиной и большой террасой.",
+    descriptionLong: "Флэт DH 124 от DUROV.HOUSE — большой одноэтажный модульный дом площадью 124 м². Проект рассчитан на семейное проживание: три спальни, общая кухня-гостиная, санузел и терраса; на сайте производителя указана общая площадь с террасой 108,2 м².",
+    gallery: [
+      { image: durovFlat124_1, type: "photo", fit: "contain", blur: true },
+      { image: durovFlat124_2, type: "photo", fit: "contain", blur: true },
+      { image: durovFlat124_3, type: "photo", fit: "contain", blur: true },
+      { image: durovFlat124Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 54, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Три спальни", "Большая терраса", "Кухня-гостиная"], style: "Современный", landSize: "8–12 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
   ...regionalBatchProjects,
 ];
 
@@ -5361,7 +5491,7 @@ export type MakerSummary = {
   telegram?: string;
 };
 const canonicalMakerSiteUrls: Record<string, string> = [
-  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM,
+  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, DUROV_HOUSE,
   ...regionalMakers,
 ].reduce((acc, m) => {
   if (m.id && m.siteUrl) acc[m.id] = m.siteUrl;
@@ -5423,4 +5553,4 @@ export const manufacturers = realManufacturers;
 // ГОРОДА
 // ============================================================================
 
-export const cities = ["Москва и МО", "Санкт-Петербург и ЛО", "Краснодарский край", "Казань", "Екатеринбург", "Пермский край", "Нижний Новгород", "Алтайский край", "Красноярск", "Самара"];
+export const cities = ["Москва и МО", "Санкт-Петербург и ЛО", "Краснодарский край", "Казань", "Екатеринбург", "Пермский край", "Нижний Новгород", "Алтайский край", "Красноярск", "Самара", "Воронеж"];

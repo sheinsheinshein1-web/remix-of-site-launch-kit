@@ -240,6 +240,11 @@ import thumb275 from "@/assets/qubdom/q-plus/01__thumb.webp";
 import thumb276 from "@/assets/qubdom/q-family-mini/01__thumb.webp";
 import thumb277 from "@/assets/qubdom/q-family-max/01__thumb.webp";
 import thumb278 from "@/assets/qubdom/q-s-tamburom/01__thumb.webp";
+import thumb279 from "@/assets/durov-house/barn-dh21/01__thumb.webp";
+import thumb280 from "@/assets/durov-house/barn-dh57/01__thumb.webp";
+import thumb281 from "@/assets/durov-house/barn-dh64/01__thumb.webp";
+import thumb282 from "@/assets/durov-house/flat-dh67/01__thumb.webp";
+import thumb283 from "@/assets/durov-house/flat-dh124/01__thumb.webp";
 
 export const projectThumbs: Record<number, string> = {
   32: thumb32,
@@ -481,4 +486,9 @@ export const projectThumbs: Record<number, string> = {
   276: thumb276,
   277: thumb277,
   278: thumb278,
+  279: thumb279,
+  280: thumb280,
+  281: thumb281,
+  282: thumb282,
+  283: thumb283,
 };
