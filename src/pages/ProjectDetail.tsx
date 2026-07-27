@@ -601,7 +601,7 @@ const ProjectDetail = () => {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-1.5 min-w-0">
                   <div className="text-[13px] font-semibold text-foreground leading-tight truncate">{project.maker}</div>
-                  {(project.makerId === "platforma" || project.makerId === "bygge") && (
+                  {(project.makerId === "platforma" || project.makerId === "bygge" || project.makerId === "durov-house") && (
                     <span className="shrink-0 text-[9px] font-medium uppercase tracking-wide bg-primary/15 text-primary px-1.5 py-[2px] rounded-lg">Проверено</span>
                   )}
                 </div>
@@ -610,7 +610,7 @@ const ProjectDetail = () => {
                     platforma: { score: "4,9", label: "6 отзывов" },
                     bygge: { score: "4,4", label: "18 отзывов" },
                   };
-                  const r = makerRatings[project.makerId];
+                  const r = makerRatings[project.makerId] ?? (project.id >= 279 ? { score: "4,9", label: "новый" } : undefined);
                   return r ? (
                     <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-0.5">
                       <Star className="w-3 h-3 fill-primary text-primary" strokeWidth={1.5} />
