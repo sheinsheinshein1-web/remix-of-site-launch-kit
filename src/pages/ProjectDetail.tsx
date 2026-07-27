@@ -601,7 +601,7 @@ const ProjectDetail = () => {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-1.5 min-w-0">
                   <div className="text-[13px] font-semibold text-foreground leading-tight truncate">{project.maker}</div>
-                  {(project.makerId === "platforma" || project.makerId === "bygge" || project.makerId === "durov-house" || project.makerId === "histhut" || project.makerId === "tanhouse" || project.makerId === "countryhouse" || project.makerId === "cuba-dom" || project.makerId === "idolhouse" || project.makerId === "woodalp" || project.makerId === "boxmate" || project.makerId === "uvhouse") && (
+                  {(project.makerId === "platforma" || project.makerId === "bygge" || project.makerId === "durov-house" || project.makerId === "histhut" || project.makerId === "countryhouse" || project.makerId === "cuba-dom" || project.makerId === "idolhouse" || project.makerId === "woodalp" || project.makerId === "boxmate" || project.makerId === "uvhouse") && (
                     <span className="shrink-0 text-[9px] font-medium uppercase tracking-wide bg-primary/15 text-primary px-1.5 py-[2px] rounded-lg">Проверено</span>
                   )}
                 </div>

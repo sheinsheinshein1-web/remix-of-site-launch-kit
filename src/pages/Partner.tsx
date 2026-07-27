@@ -40,8 +40,6 @@ const aboutByMakerId: Record<string, string> = {
     "DUROV.HOUSE — производитель модульных домов из Воронежа. Компания выпускает одноэтажные дома серий Barn и Flat для дачи, аренды, глэмпинга и круглогодичного проживания с доставкой по России.",
   histhut:
     "HISTHUT — производитель модульных домов из Пермского края. Компания выпускает компактные модульные дома серии «Хижина» для дачи, глэмпинга, аренды и круглогодичного отдыха с доставкой по России.",
-  tanhouse:
-    "TAN HOUSE — строительная компания из Свердловской области. Компания строит современные дома под ключ для постоянного загородного проживания, работает с типовыми проектами, ипотечными программами и эскроу.",
   countryhouse:
     "CountryHouse — производитель модульных домов и бань из Санкт-Петербурга. Компания строит модульные дома под ключ по всей России: от компактных одномодульных решений до просторных пятимодульных домов для загородного проживания.",
   "cuba-dom":
@@ -283,7 +281,7 @@ const Partner = () => {
     return <NotFound />;
   }
 
-  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "tanhouse" || makerId === "countryhouse" || makerId === "cuba-dom" || makerId === "idolhouse" || makerId === "woodalp" || makerId === "boxmate" || makerId === "uvhouse";
+  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "countryhouse" || makerId === "cuba-dom" || makerId === "idolhouse" || makerId === "woodalp" || makerId === "boxmate" || makerId === "uvhouse";
 
 
   const HeroPlatforma = () => (

@@ -999,26 +999,6 @@ import histhutHizhina25_1 from "@/assets/histhut/hizhina-25/01.webp";
 import histhutHizhina25_2 from "@/assets/histhut/hizhina-25/02.webp";
 import histhutHizhina25_3 from "@/assets/histhut/hizhina-25/03.webp";
 import histhutHizhina25Plan from "@/assets/histhut/hizhina-25/04-plan.webp";
-import tanhouseLogo from "@/assets/tanhouse/logo.webp";
-import tanhouseDelmar1 from "@/assets/tanhouse/delmar/01.webp";
-import tanhouseDelmar2 from "@/assets/tanhouse/delmar/02.webp";
-import tanhouseDelmar3 from "@/assets/tanhouse/delmar/03.webp";
-import tanhouseDelmarPlan from "@/assets/tanhouse/delmar/04-plan.webp";
-import tanhouseLotus1 from "@/assets/tanhouse/lotus/01.webp";
-import tanhouseLotus2 from "@/assets/tanhouse/lotus/02.webp";
-import tanhouseLotus3 from "@/assets/tanhouse/lotus/03.webp";
-import tanhouseLotusPlan from "@/assets/tanhouse/lotus/04-plan.webp";
-import tanhouseOlivia1 from "@/assets/tanhouse/olivia/01.webp";
-import tanhouseOlivia2 from "@/assets/tanhouse/olivia/02.webp";
-import tanhouseOlivia3 from "@/assets/tanhouse/olivia/03.webp";
-import tanhouseOliviaPlan from "@/assets/tanhouse/olivia/04-plan.webp";
-import tanhouseGrade1_1 from "@/assets/tanhouse/grade-1/01.webp";
-import tanhouseGrade1_2 from "@/assets/tanhouse/grade-1/02.webp";
-import tanhouseGrade1_3 from "@/assets/tanhouse/grade-1/03.webp";
-import tanhouseGrade1Plan from "@/assets/tanhouse/grade-1/04-plan.webp";
-import tanhouseAmiana1 from "@/assets/tanhouse/amiana/01.webp";
-import tanhouseAmiana2 from "@/assets/tanhouse/amiana/02.webp";
-import tanhouseAmianaPlan from "@/assets/tanhouse/amiana/03-plan.webp";
 import countryhouseLogo from "@/assets/countryhouse/logo.webp";
 import countryhouseHitechM1_1 from "@/assets/countryhouse/hitech-m1/01.webp";
 import countryhouseHitechM1_2 from "@/assets/countryhouse/hitech-m1/02.webp";
@@ -1457,16 +1437,6 @@ const HISTHUT: Maker = {
   productionAddress: "г. Пермь, ул. Героев Хасана, 105 к70",
   phone: "+7 (982) 496-77-77",
   email: "info@histhut.ru",
-};
-const TANHOUSE: Maker = {
-  name: "TAN HOUSE",
-  initials: "TH",
-  id: "tanhouse",
-  logo: tanhouseLogo,
-  siteUrl: "https://tanhouse.ru/",
-  productionAddress: "Свердловская область, п. Рассоха, КП Зеленые кварталы, ул. Фруктовая, 9",
-  phone: "+7 (922) 209-80-55",
-  email: "tanhouse@bk.ru",
 };
 const COUNTRYHOUSE: Maker = {
   name: "CountryHouse",
@@ -5657,102 +5627,6 @@ export const projects: Project[] = [
     technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
     features: ["Две спальни", "Техническое помещение", "Большая терраса"], style: "Современный", landSize: "6–10 соток",
     hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
-  },
-
-  // ── TAN HOUSE · Екатеринбург ────────────────────────────────────────────
-  {
-    id: 289, name: "Дельмар", badge: "Каркасный дом", price: "9 340 000 ₽",
-    area: "147 м²", area_m2: 147, beds: 3, baths: 2, floors: 1, term: "8 мес.",
-    rooms: "3 спальни", purpose: "ИЖС / Загородный дом", city: "Екатеринбург",
-    maker: { ...TANHOUSE, siteUrl: "https://tanhouse.ru/delmar" },
-    description: "Современный одноэтажный дом для семьи с мастер-спальней, постирочной и выходом на открытую террасу.",
-    descriptionLong: "Дельмар от TAN HOUSE — одноэтажный загородный дом площадью 147 м² для постоянного проживания семьи. В планировке предусмотрены три спальни, мастер-спальня с собственным санузлом и гардеробной, постирочная и просторная кухня-гостиная с выходом на открытую террасу.",
-    gallery: [
-      { image: tanhouseDelmar1, type: "photo", fit: "contain", blur: true },
-      { image: tanhouseDelmar2, type: "photo", fit: "contain", blur: true },
-      { image: tanhouseDelmar3, type: "photo", fit: "contain", blur: true },
-      { image: tanhouseDelmarPlan, type: "plan", fit: "contain" },
-    ],
-    likes: 63, rating: 4.9,
-    suitableFor: ["Постоянное проживание", "Для семьи", "Загородный участок"],
-    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
-    features: ["Мастер-спальня", "Постирочная", "Открытая терраса"], style: "Современный", landSize: "8–12 соток",
-    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
-  },
-  {
-    id: 290, name: "Лотос", badge: "Каркасный дом", price: "7 460 000 ₽",
-    area: "134 м²", area_m2: 134, beds: 3, baths: 2, floors: 1, term: "8 мес.",
-    rooms: "3 спальни", purpose: "ИЖС / Загородный дом", city: "Екатеринбург",
-    maker: { ...TANHOUSE, siteUrl: "https://tanhouse.ru/lotus" },
-    description: "Одноэтажный дом для семьи 4–5 человек с тремя спальнями и просторной кухней-гостиной.",
-    descriptionLong: "Лотос от TAN HOUSE — современный одноэтажный дом площадью 134 м² для семьи из 4–5 человек. В проекте три спальни, мастер-спальня с собственным санузлом и гардеробной, постирочная и просторная кухня-гостиная с выходом на открытую террасу.",
-    gallery: [
-      { image: tanhouseLotus1, type: "photo", fit: "contain", blur: true },
-      { image: tanhouseLotus2, type: "photo", fit: "contain", blur: true },
-      { image: tanhouseLotus3, type: "photo", fit: "contain", blur: true },
-      { image: tanhouseLotusPlan, type: "plan", fit: "contain" },
-    ],
-    likes: 58, rating: 4.9,
-    suitableFor: ["Постоянное проживание", "Для семьи", "Загородный участок"],
-    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
-    features: ["Три спальни", "Мастер-спальня", "Терраса"], style: "Современный", landSize: "8–12 соток",
-    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
-  },
-  {
-    id: 291, name: "Оливия", badge: "Каркасный дом", price: "6 170 000 ₽",
-    area: "98 м²", area_m2: 98, beds: 3, baths: 1, floors: 1, term: "8 мес.",
-    rooms: "3 спальни", purpose: "ИЖС / Дача", city: "Екатеринбург",
-    maker: { ...TANHOUSE, siteUrl: "https://tanhouse.ru/olivia" },
-    description: "Минималистичный одноэтажный коттедж с тремя спальнями, кухней-гостиной, котельной и крытой террасой.",
-    descriptionLong: "Оливия от TAN HOUSE — одноэтажный коттедж площадью 98 м² в минималистичном стиле для семьи из 2–4 человек. Внутри расположены гостиная-столовая, объединенная с кухней, три спальни, санузел и котельная; с задней стороны дома предусмотрена крытая терраса для отдыха.",
-    gallery: [
-      { image: tanhouseOlivia1, type: "photo", fit: "contain", blur: true },
-      { image: tanhouseOlivia2, type: "photo", fit: "contain", blur: true },
-      { image: tanhouseOlivia3, type: "photo", fit: "contain", blur: true },
-      { image: tanhouseOliviaPlan, type: "plan", fit: "contain" },
-    ],
-    likes: 54, rating: 4.8,
-    suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"],
-    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
-    features: ["Три спальни", "Крытая терраса", "Котельная"], style: "Минимализм", landSize: "6–10 соток",
-    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
-  },
-  {
-    id: 292, name: "Грейд-1", badge: "Каркасный дом", price: "6 925 000 ₽",
-    area: "122 м²", area_m2: 122, beds: 3, baths: 2, floors: 1, term: "8 мес.",
-    rooms: "3 спальни", purpose: "ИЖС / Загородный дом", city: "Екатеринбург",
-    maker: { ...TANHOUSE, siteUrl: "https://tanhouse.ru/grade-1" },
-    description: "Одноэтажный семейный дом с тремя спальнями, мастер-блоком, постирочной и открытой террасой.",
-    descriptionLong: "Грейд-1 от TAN HOUSE — современный одноэтажный дом площадью 122 м². Планировка рассчитана на семейное проживание: три спальни, мастер-спальня с собственным санузлом и гардеробной, постирочная, кухня-гостиная и выход на открытую террасу.",
-    gallery: [
-      { image: tanhouseGrade1_1, type: "photo", fit: "contain", blur: true },
-      { image: tanhouseGrade1_2, type: "photo", fit: "contain", blur: true },
-      { image: tanhouseGrade1_3, type: "photo", fit: "contain", blur: true },
-      { image: tanhouseGrade1Plan, type: "plan", fit: "contain" },
-    ],
-    likes: 56, rating: 4.8,
-    suitableFor: ["Постоянное проживание", "Для семьи", "Загородный участок"],
-    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
-    features: ["Мастер-спальня", "Постирочная", "Открытая терраса"], style: "Современный", landSize: "8–12 соток",
-    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
-  },
-  {
-    id: 293, name: "Амиана", badge: "Каркасный дом", price: "6 960 000 ₽",
-    area: "125 м²", area_m2: 125, beds: 3, baths: 2, floors: 1, term: "8 мес.",
-    rooms: "3 спальни", purpose: "ИЖС / Загородный дом", city: "Екатеринбург",
-    maker: { ...TANHOUSE, siteUrl: "https://tanhouse.ru/amiana" },
-    description: "Минималистичный дом для семьи 4–5 человек с мастер-комнатой, вторым светом и просторной террасой.",
-    descriptionLong: "Амиана от TAN HOUSE — одноэтажный дом площадью 125 м² в минималистическом стиле для семьи из 4–5 человек. В проекте предусмотрены мастер-комната с гардеробной и санузлом, панорамные окна, просторная кухня-гостиная со вторым светом, холл, три спальни, два санузла, котельная и терраса.",
-    gallery: [
-      { image: tanhouseAmiana1, type: "photo", fit: "contain", blur: true },
-      { image: tanhouseAmiana2, type: "photo", fit: "contain", blur: true },
-      { image: tanhouseAmianaPlan, type: "plan", fit: "contain" },
-    ],
-    likes: 59, rating: 4.9,
-    suitableFor: ["Постоянное проживание", "Для семьи", "Загородный участок"],
-    technology: "Каркасный", completion: "Под ключ", insulation: "до −30°C",
-    features: ["Второй свет", "Мастер-комната", "Терраса"], style: "Минимализм", landSize: "8–12 соток",
-    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
   },
 
   // ── CountryHouse · Санкт-Петербург ─────────────────────────────────────
