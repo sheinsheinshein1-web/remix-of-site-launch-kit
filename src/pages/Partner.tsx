@@ -52,6 +52,8 @@ const aboutByMakerId: Record<string, string> = {
     "Boxmate — бренд модульных домов из Санкт-Петербурга. В каталоге представлены дома серий Flat и Red с современными планировками, террасами и комплектациями для круглогодичного загородного проживания.",
   uvhouse:
     "UV House — производитель модульных домов и бань из Уфы. Компания делает компактные модульные дома для дачи, проживания и отдыха: от небольших одноэтажных модулей до проектов с террасами и несколькими спальнями.",
+  "asterius-house":
+    "Asterius House — производитель каркасно-модульных домов с собственным производством в Чебоксарах и работой по Московской области. Компания выпускает дома заводской готовности для дачи, глэмпинга, аренды и круглогодичного проживания с доставкой и монтажом на участке.",
   glezman:
     "Glezman Group — производитель каркасных домов из Перми. Линейка La Rus: компактные и просторные дома площадью от 45 до 127 м² с панорамным остеклением и продуманной планировкой.",
   divodom:
@@ -281,7 +283,7 @@ const Partner = () => {
     return <NotFound />;
   }
 
-  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "countryhouse" || makerId === "cuba-dom" || makerId === "idolhouse" || makerId === "woodalp" || makerId === "boxmate" || makerId === "uvhouse";
+  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "countryhouse" || makerId === "cuba-dom" || makerId === "idolhouse" || makerId === "woodalp" || makerId === "boxmate" || makerId === "uvhouse" || makerId === "asterius-house";
 
 
   const HeroPlatforma = () => (

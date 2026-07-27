@@ -278,6 +278,11 @@ import thumb318 from "@/assets/uvhouse/skandi-32/01__thumb.webp";
 import thumb319 from "@/assets/uvhouse/nord-40/01__thumb.webp";
 import thumb320 from "@/assets/uvhouse/shale-24/01__thumb.webp";
 import thumb321 from "@/assets/uvhouse/skandi-40/01__thumb.webp";
+import thumb322 from "@/assets/asterius/altair-20/01__thumb.webp";
+import thumb323 from "@/assets/asterius/altair-30/01__thumb.webp";
+import thumb324 from "@/assets/asterius/antares-40/01__thumb.webp";
+import thumb325 from "@/assets/asterius/antares-60/01__thumb.webp";
+import thumb326 from "@/assets/asterius/antares-80/01__thumb.webp";
 
 export const projectThumbs: Record<number, string> = {
   32: thumb32,
@@ -557,4 +562,9 @@ export const projectThumbs: Record<number, string> = {
   319: thumb319,
   320: thumb320,
   321: thumb321,
+  322: thumb322,
+  323: thumb323,
+  324: thumb324,
+  325: thumb325,
+  326: thumb326,
 };

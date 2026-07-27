@@ -1080,6 +1080,22 @@ import uvhouseShale24Plan from "@/assets/uvhouse/shale-24/03.webp";
 import uvhouseScandi40_1 from "@/assets/uvhouse/skandi-40/01.webp";
 import uvhouseScandi40_2 from "@/assets/uvhouse/skandi-40/02.webp";
 import uvhouseScandi40Plan from "@/assets/uvhouse/skandi-40/03.webp";
+import asteriusLogo from "@/assets/asterius/logo.webp";
+import asteriusAltair20_1 from "@/assets/asterius/altair-20/01.webp";
+import asteriusAltair20_2 from "@/assets/asterius/altair-20/02.webp";
+import asteriusAltair20Plan from "@/assets/asterius/altair-20/03-plan.webp";
+import asteriusAltair30_1 from "@/assets/asterius/altair-30/01.webp";
+import asteriusAltair30_2 from "@/assets/asterius/altair-30/02.webp";
+import asteriusAltair30Plan from "@/assets/asterius/altair-30/03-plan.webp";
+import asteriusAntares40_1 from "@/assets/asterius/antares-40/01.webp";
+import asteriusAntares40_2 from "@/assets/asterius/antares-40/02.webp";
+import asteriusAntares40Plan from "@/assets/asterius/antares-40/03-plan.webp";
+import asteriusAntares60_1 from "@/assets/asterius/antares-60/01.webp";
+import asteriusAntares60_2 from "@/assets/asterius/antares-60/02.webp";
+import asteriusAntares60Plan from "@/assets/asterius/antares-60/03-plan.webp";
+import asteriusAntares80_1 from "@/assets/asterius/antares-80/01.webp";
+import asteriusAntares80_2 from "@/assets/asterius/antares-80/02.webp";
+import asteriusAntares80Plan from "@/assets/asterius/antares-80/03-plan.webp";
 import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
@@ -1495,6 +1511,15 @@ const UVHOUSE: Maker = {
   productionAddress: "Уфа",
   phone: "+7 (917) 048-79-84",
   email: "info@ufa-vagon.ru",
+};
+const ASTERIUS: Maker = {
+  name: "Asterius House",
+  initials: "AH",
+  id: "asterius-house",
+  logo: asteriusLogo,
+  siteUrl: "https://asterius-house.ru/",
+  productionAddress: "Чебоксары, Кабельный проезд, 4",
+  phone: "+7 (931) 105-80-90",
 };
 
 // ============================================================================
@@ -6135,6 +6160,96 @@ export const projects: Project[] = [
     features: ["2 террасы", "Панорамные окна", "Кухня-гостиная"], style: "Скандинавский", landSize: "4–8 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
+  {
+    id: 322, name: "Альтаир 20", badge: "Модульный дом", price: "1 250 000 ₽",
+    area: "20 м²", area_m2: 20, beds: 1, baths: 1, floors: 1, term: "45 дней",
+    rooms: "студия", purpose: "Дача / Глэмпинг", city: "Москва и МО",
+    maker: { ...ASTERIUS, siteUrl: "https://asterius-house.ru/altair20" },
+    description: "Компактный модульный дом 20 м² для дачи, глэмпинга или аренды с полной заводской готовностью.",
+    descriptionLong: "Альтаир 20 от Asterius House — компактный модульный дом площадью 20 м² для дачи, глэмпинга или арендного сценария. В проекте предусмотрены тёплый контур, внутренняя отделка, инженерные решения и санузел; дом доставляется на участок и монтируется за 1 день.",
+    gallery: [
+      { image: asteriusAltair20_1, type: "photo", fit: "contain", blur: true },
+      { image: asteriusAltair20_2, type: "photo", fit: "contain", blur: true },
+      { image: asteriusAltair20Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 46, rating: 4.8,
+    suitableFor: ["Дача", "Глэмпинг", "Аренда"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Монтаж за 1 день", "Санузел", "Заводская готовность"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 323, name: "Альтаир 30", badge: "Модульный дом", price: "1 750 000 ₽",
+    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 1, term: "45 дней",
+    rooms: "1 спальня", purpose: "Дача / Глэмпинг", city: "Москва и МО",
+    maker: { ...ASTERIUS, siteUrl: "https://asterius-house.ru/altair30" },
+    description: "Модульный дом 30 м² для дачи и глэмпинга с отдельной спальней, кухней-гостиной и санузлом.",
+    descriptionLong: "Альтаир 30 от Asterius House — модульный дом площадью 30 м² для загородного отдыха, глэмпинга или компактного проживания. Планировка включает спальню, кухню-гостиную и санузел; проект поставляется под ключ с заводской подготовкой и быстрым монтажом на участке.",
+    gallery: [
+      { image: asteriusAltair30_1, type: "photo", fit: "contain", blur: true },
+      { image: asteriusAltair30_2, type: "photo", fit: "contain", blur: true },
+      { image: asteriusAltair30Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 52, rating: 4.8,
+    suitableFor: ["Дача", "Глэмпинг", "Для пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Отдельная спальня", "Санузел", "Монтаж за 1 день"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 324, name: "Антарес 40", badge: "Модульный дом", price: "2 300 000 ₽",
+    area: "40 м²", area_m2: 40, beds: 1, baths: 1, floors: 1, term: "60 дней",
+    rooms: "1 спальня", purpose: "ИЖС / Дача", city: "Москва и МО",
+    maker: { ...ASTERIUS, siteUrl: "https://asterius-house.ru/antares40" },
+    description: "Однокомнатный модульный дом 40 м² для постоянного проживания под ключ.",
+    descriptionLong: "Антарес 40 от Asterius House — одноэтажный модульный дом площадью 40 м² для круглогодичного проживания. Проект рассчитан на компактный семейный или дачный сценарий: кухня-гостиная, спальня и санузел в готовом заводском модуле с доставкой и монтажом.",
+    gallery: [
+      { image: asteriusAntares40_1, type: "photo", fit: "contain", blur: true },
+      { image: asteriusAntares40_2, type: "photo", fit: "contain", blur: true },
+      { image: asteriusAntares40Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 58, rating: 4.9,
+    suitableFor: ["Круглогодичное проживание", "Дача", "Для пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Панорамные окна", "Санузел", "Кухня-гостиная"], style: "Современный", landSize: "4–8 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 325, name: "Антарес 60", badge: "Модульный дом", price: "3 150 000 ₽",
+    area: "60 м²", area_m2: 60, beds: 2, baths: 1, floors: 1, term: "60 дней",
+    rooms: "2 спальни", purpose: "ИЖС / ПМЖ", city: "Москва и МО",
+    maker: { ...ASTERIUS, siteUrl: "https://asterius-house.ru/antares60" },
+    description: "Модульный дом 60 м² с двумя спальнями и террасой для круглогодичного проживания.",
+    descriptionLong: "Антарес 60 от Asterius House — модульный дом площадью 60 м² с двумя спальнями, кухней-гостиной, санузлом и террасой. Проект подходит для постоянного проживания и семейного загородного сценария, поставляется под ключ с заводской готовностью и быстрым монтажом.",
+    gallery: [
+      { image: asteriusAntares60_1, type: "photo", fit: "contain", blur: true },
+      { image: asteriusAntares60_2, type: "photo", fit: "contain", blur: true },
+      { image: asteriusAntares60Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 63, rating: 4.9,
+    suitableFor: ["Круглогодичное проживание", "Для семьи", "Ипотека"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["2 спальни", "Терраса", "Кухня-гостиная"], style: "Современный", landSize: "5–9 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 326, name: "Антарес 80", badge: "Модульный дом", price: "4 060 000 ₽",
+    area: "80 м²", area_m2: 80, beds: 3, baths: 1, floors: 1, term: "70 дней",
+    rooms: "2–3 спальни", purpose: "ИЖС / ПМЖ", city: "Москва и МО",
+    maker: { ...ASTERIUS, siteUrl: "https://asterius-house.ru/antares80" },
+    description: "Просторный модульный дом 80 м² с двумя-тремя спальнями для семьи.",
+    descriptionLong: "Антарес 80 от Asterius House — модульный дом площадью 80 м² для семьи и круглогодичного проживания. В проекте предусмотрены две-три спальни, общая зона кухни-гостиной, санузел и продуманная планировка для постоянной жизни за городом.",
+    gallery: [
+      { image: asteriusAntares80_1, type: "photo", fit: "contain", blur: true },
+      { image: asteriusAntares80_2, type: "photo", fit: "contain", blur: true },
+      { image: asteriusAntares80Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 71, rating: 4.9,
+    suitableFor: ["Круглогодичное проживание", "Для семьи", "Ипотека"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["2–3 спальни", "Панорамные окна", "Кухня-гостиная"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
   ...regionalBatchProjects,
 ];
 
@@ -6265,7 +6380,7 @@ export type MakerSummary = {
   telegram?: string;
 };
 const canonicalMakerSiteUrls: Record<string, string> = [
-  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, TANHOUSE, COUNTRYHOUSE, CUBADOM, IDOLHOUSE, WOODALP, BOXMATE, UVHOUSE,
+  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, COUNTRYHOUSE, CUBADOM, IDOLHOUSE, WOODALP, BOXMATE, UVHOUSE, ASTERIUS,
   ...regionalMakers,
 ].reduce((acc, m) => {
   if (m.id && m.siteUrl) acc[m.id] = m.siteUrl;
