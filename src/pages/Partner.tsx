@@ -42,6 +42,8 @@ const aboutByMakerId: Record<string, string> = {
     "HISTHUT — производитель модульных домов из Пермского края. Компания выпускает компактные модульные дома серии «Хижина» для дачи, глэмпинга, аренды и круглогодичного отдыха с доставкой по России.",
   tanhouse:
     "TAN HOUSE — строительная компания из Свердловской области. Компания строит современные дома под ключ для постоянного загородного проживания, работает с типовыми проектами, ипотечными программами и эскроу.",
+  countryhouse:
+    "CountryHouse — производитель модульных домов и бань из Санкт-Петербурга. Компания строит модульные дома под ключ по всей России: от компактных одномодульных решений до просторных пятимодульных домов для загородного проживания.",
   glezman:
     "Glezman Group — производитель каркасных домов из Перми. Линейка La Rus: компактные и просторные дома площадью от 45 до 127 м² с панорамным остеклением и продуманной планировкой.",
   divodom:
@@ -271,7 +273,7 @@ const Partner = () => {
     return <NotFound />;
   }
 
-  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "tanhouse";
+  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "tanhouse" || makerId === "countryhouse";
 
 
   const HeroPlatforma = () => (

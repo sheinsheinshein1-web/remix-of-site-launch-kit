@@ -1019,6 +1019,27 @@ import tanhouseGrade1Plan from "@/assets/tanhouse/grade-1/04-plan.webp";
 import tanhouseAmiana1 from "@/assets/tanhouse/amiana/01.webp";
 import tanhouseAmiana2 from "@/assets/tanhouse/amiana/02.webp";
 import tanhouseAmianaPlan from "@/assets/tanhouse/amiana/03-plan.webp";
+import countryhouseLogo from "@/assets/countryhouse/logo.webp";
+import countryhouseHitechM1_1 from "@/assets/countryhouse/hitech-m1/01.webp";
+import countryhouseHitechM1_2 from "@/assets/countryhouse/hitech-m1/02.webp";
+import countryhouseHitechM1_3 from "@/assets/countryhouse/hitech-m1/03.webp";
+import countryhouseHitechM1Plan from "@/assets/countryhouse/hitech-m1/04-plan.webp";
+import countryhouseHitechM15_1 from "@/assets/countryhouse/hitech-m15/01.webp";
+import countryhouseHitechM15_2 from "@/assets/countryhouse/hitech-m15/02.webp";
+import countryhouseHitechM15_3 from "@/assets/countryhouse/hitech-m15/03.webp";
+import countryhouseHitechM15Plan from "@/assets/countryhouse/hitech-m15/04-plan.webp";
+import countryhouseHitechM2_1 from "@/assets/countryhouse/hitech-m2/01.webp";
+import countryhouseHitechM2_2 from "@/assets/countryhouse/hitech-m2/02.webp";
+import countryhouseHitechM2_3 from "@/assets/countryhouse/hitech-m2/03.webp";
+import countryhouseHitechM2Plan from "@/assets/countryhouse/hitech-m2/04-plan.webp";
+import countryhouseHitechM3_1 from "@/assets/countryhouse/hitech-m3/01.webp";
+import countryhouseHitechM3_2 from "@/assets/countryhouse/hitech-m3/02.webp";
+import countryhouseHitechM3_3 from "@/assets/countryhouse/hitech-m3/03.webp";
+import countryhouseHitechM3Plan from "@/assets/countryhouse/hitech-m3/04-plan.webp";
+import countryhouseHitechM5_1 from "@/assets/countryhouse/hitech-m5/01.webp";
+import countryhouseHitechM5_2 from "@/assets/countryhouse/hitech-m5/02.webp";
+import countryhouseHitechM5_3 from "@/assets/countryhouse/hitech-m5/03.webp";
+import countryhouseHitechM5Plan from "@/assets/countryhouse/hitech-m5/04-plan.webp";
 import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
@@ -1386,6 +1407,16 @@ const TANHOUSE: Maker = {
   productionAddress: "Свердловская область, п. Рассоха, КП Зеленые кварталы, ул. Фруктовая, 9",
   phone: "+7 (922) 209-80-55",
   email: "tanhouse@bk.ru",
+};
+const COUNTRYHOUSE: Maker = {
+  name: "CountryHouse",
+  initials: "CH",
+  id: "countryhouse",
+  logo: countryhouseLogo,
+  siteUrl: "https://modulniye-doma.ru/",
+  productionAddress: "Санкт-Петербург, Коломяжский пр-т, д. 33, к. 2",
+  phone: "+7 (952) 356-65-92",
+  email: "info@modulniye-doma.ru",
 };
 
 // ============================================================================
@@ -5615,6 +5646,103 @@ export const projects: Project[] = [
     features: ["Второй свет", "Мастер-комната", "Терраса"], style: "Минимализм", landSize: "8–12 соток",
     hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
   },
+
+  // ── CountryHouse · Санкт-Петербург ─────────────────────────────────────
+  {
+    id: 294, name: "Хайтек М1", badge: "Модульный дом", price: "по запросу",
+    area: "20 м²", area_m2: 20, beds: 1, baths: 1, floors: 1, term: "150 д.",
+    rooms: "студия", purpose: "Дача / Глэмпинг", city: "Санкт-Петербург",
+    maker: { ...COUNTRYHOUSE, siteUrl: "https://modulniye-doma.ru/modulhightek-m1" },
+    description: "Компактный одномодульный дом в стиле хай-тек с жилой зоной, санузлом и террасой.",
+    descriptionLong: "Хайтек М1 от CountryHouse — компактный одномодульный дом площадью 20 м² для дачи, гостевого сценария или глэмпинга. На странице производителя указаны высота потолков 2,65 м, утепление пола и стен 200 мм, кровли 250 мм, чистовая отделка, остекление, электрика, водоснабжение и санузел в составе дома.",
+    gallery: [
+      { image: countryhouseHitechM1_1, type: "photo", fit: "contain", blur: true },
+      { image: countryhouseHitechM1_2, type: "photo", fit: "contain", blur: true },
+      { image: countryhouseHitechM1_3, type: "photo", fit: "contain", blur: true },
+      { image: countryhouseHitechM1Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 42, rating: 4.9,
+    suitableFor: ["Дача", "Глэмпинг / аренда", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "200 мм",
+    features: ["Одномодульный формат", "Готовый санузел", "Терраса"], style: "Хай-тек", landSize: "3–6 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 295, name: "Хайтек М1.5", badge: "Модульный дом", price: "по запросу",
+    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 1, term: "150 д.",
+    rooms: "1 спальня", purpose: "Дача / Компактное проживание", city: "Санкт-Петербург",
+    maker: { ...COUNTRYHOUSE, siteUrl: "https://modulniye-doma.ru/modulhightek-m15" },
+    description: "Полуторамодульный дом с компактной жилой зоной, спальней, санузлом и террасой.",
+    descriptionLong: "Хайтек М1.5 от CountryHouse — полуторамодульный дом площадью 30 м² для небольшого участка, дачи или дополнительного жилья. Производитель описывает такие дома как быстрые в строительстве и полностью готовые к заселению: каркас, отделка, остекление, коммуникации, оборудование и сантехника входят в состав решения.",
+    gallery: [
+      { image: countryhouseHitechM15_1, type: "photo", fit: "contain", blur: true },
+      { image: countryhouseHitechM15_2, type: "photo", fit: "contain", blur: true },
+      { image: countryhouseHitechM15_3, type: "photo", fit: "contain", blur: true },
+      { image: countryhouseHitechM15Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 44, rating: 4.9,
+    suitableFor: ["Дача", "Компактное проживание", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "200 мм",
+    features: ["Полуторамодульный формат", "Чистовая отделка", "Санузел"], style: "Хай-тек", landSize: "3–6 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 296, name: "Г-образный проект М2", badge: "Модульный дом", price: "по запросу",
+    area: "40 м²", area_m2: 40, beds: 1, baths: 1, floors: 1, term: "150 д.",
+    rooms: "1 спальня", purpose: "Дача / Загородный дом", city: "Санкт-Петербург",
+    maker: { ...COUNTRYHOUSE, siteUrl: "https://modulniye-doma.ru/modulhightek-m2" },
+    description: "Двухмодульный дом с Г-образной планировкой, жилой зоной, спальней и террасой.",
+    descriptionLong: "Г-образный проект М2 от CountryHouse — двухмодульный дом площадью 40 м². Формат рассчитан на комфортное размещение одного человека или пары: в составе дома может быть спальня, кухня-гостиная, вместительный санузел и веранда для отдыха; дом изготавливается в заводских условиях и собирается на участке.",
+    gallery: [
+      { image: countryhouseHitechM2_1, type: "photo", fit: "contain", blur: true },
+      { image: countryhouseHitechM2_2, type: "photo", fit: "contain", blur: true },
+      { image: countryhouseHitechM2_3, type: "photo", fit: "contain", blur: true },
+      { image: countryhouseHitechM2Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 46, rating: 4.9,
+    suitableFor: ["Дача", "Для пары", "Круглогодичное проживание"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "200 мм",
+    features: ["Г-образная планировка", "Веранда", "Заводская сборка"], style: "Хай-тек", landSize: "4–8 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 297, name: "Три+ модуля с сауной", badge: "Модульный дом", price: "по запросу",
+    area: "60 м²", area_m2: 60, beds: 2, baths: 1, floors: 1, term: "150 д.",
+    rooms: "2 спальни", purpose: "ИЖС / Дача", city: "Санкт-Петербург",
+    maker: { ...COUNTRYHOUSE, siteUrl: "https://modulniye-doma.ru/modulhightek-m3" },
+    description: "Трёхмодульный дом с увеличенной площадью, сауной и планировкой для загородного отдыха.",
+    descriptionLong: "Три+ модуля с сауной от CountryHouse — модульный дом площадью 60 м² для загородного проживания и отдыха. Линейка трёхмодульных домов на сайте производителя включает несколько планировок, а выбранный вариант делает акцент на комфортном семейном сценарии, террасе и сауне.",
+    gallery: [
+      { image: countryhouseHitechM3_1, type: "photo", fit: "contain", blur: true },
+      { image: countryhouseHitechM3_2, type: "photo", fit: "contain", blur: true },
+      { image: countryhouseHitechM3_3, type: "photo", fit: "contain", blur: true },
+      { image: countryhouseHitechM3Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 49, rating: 4.9,
+    suitableFor: ["Круглогодичное проживание", "Для семьи", "Отдых с сауной"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "200 мм",
+    features: ["Сауна", "Терраса", "Трёхмодульный формат"], style: "Хай-тек", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 298, name: "5 модулей 1.0", badge: "Модульный дом", price: "по запросу",
+    area: "100 м²", area_m2: 100, beds: 2, baths: 1, floors: 1, term: "150 д.",
+    rooms: "2 спальни", purpose: "ИЖС / Загородный дом", city: "Санкт-Петербург",
+    maker: { ...COUNTRYHOUSE, siteUrl: "https://modulniye-doma.ru/modulhightek-m5" },
+    description: "Просторный пятимодульный дом для семьи с большой жилой зоной, спальнями и террасой.",
+    descriptionLong: "5 модулей 1.0 от CountryHouse — просторный модульный дом площадью 100 м² из линейки пятимодульных домов. Проект рассчитан на семейный загородный сценарий: большая жилая зона, спальни, санузел, терраса и заводское изготовление модулей с последующей сборкой на участке.",
+    gallery: [
+      { image: countryhouseHitechM5_1, type: "photo", fit: "contain", blur: true },
+      { image: countryhouseHitechM5_2, type: "photo", fit: "contain", blur: true },
+      { image: countryhouseHitechM5_3, type: "photo", fit: "contain", blur: true },
+      { image: countryhouseHitechM5Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 52, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для семьи", "Загородный участок"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "200 мм",
+    features: ["Пять модулей", "Большая жилая зона", "Терраса"], style: "Хай-тек", landSize: "8–12 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
   ...regionalBatchProjects,
 ];
 
@@ -5745,7 +5873,7 @@ export type MakerSummary = {
   telegram?: string;
 };
 const canonicalMakerSiteUrls: Record<string, string> = [
-  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, TANHOUSE,
+  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, TANHOUSE, COUNTRYHOUSE,
   ...regionalMakers,
 ].reduce((acc, m) => {
   if (m.id && m.siteUrl) acc[m.id] = m.siteUrl;
