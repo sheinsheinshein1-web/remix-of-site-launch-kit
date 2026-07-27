@@ -265,6 +265,24 @@ import thumb300 from "@/assets/cubadom/cuba-35-2/01__thumb.webp";
 import thumb301 from "@/assets/cubadom/cuba-53-1/01__thumb.webp";
 import thumb302 from "@/assets/cubadom/cuba-53-2/01__thumb.webp";
 import thumb303 from "@/assets/cubadom/cuba-70-1/01__thumb.webp";
+import thumb304 from "@/assets/idolhouse/modul-nyy-dom-aydolhaus-36/01__thumb.webp";
+import thumb305 from "@/assets/idolhouse/modul-nyy-dom-aydolhaus-47/01__thumb.webp";
+import thumb306 from "@/assets/idolhouse/modul-nyy-dom-aydolhaus-62/01__thumb.webp";
+import thumb307 from "@/assets/idolhouse/modul-nyy-dom-aydolhaus-72/01__thumb.webp";
+import thumb308 from "@/assets/idolhouse/modul-nyy-dom-aydolhaus-86/01__thumb.webp";
+import thumb309 from "@/assets/woodalp/woodhouse-60-pro/01__thumb.webp";
+import thumb310 from "@/assets/woodalp/woodhouse-90-pro/01__thumb.webp";
+import thumb311 from "@/assets/woodalp/woodhouse-120-pro/01__thumb.webp";
+import thumb312 from "@/assets/boxmate/flat-5-box/01__thumb.webp";
+import thumb313 from "@/assets/boxmate/flat-4-box/01__thumb.webp";
+import thumb314 from "@/assets/boxmate/flat-3-box/01__thumb.webp";
+import thumb315 from "@/assets/boxmate/red-5-box/01__thumb.webp";
+import thumb316 from "@/assets/boxmate/red-4-box/01__thumb.webp";
+import thumb317 from "@/assets/uvhouse/mono-30/01__thumb.webp";
+import thumb318 from "@/assets/uvhouse/skandi-32/01__thumb.webp";
+import thumb319 from "@/assets/uvhouse/nord-40/01__thumb.webp";
+import thumb320 from "@/assets/uvhouse/shale-24/01__thumb.webp";
+import thumb321 from "@/assets/uvhouse/skandi-40/01__thumb.webp";
 
 export const projectThumbs: Record<number, string> = {
   32: thumb32,
@@ -531,4 +549,22 @@ export const projectThumbs: Record<number, string> = {
   301: thumb301,
   302: thumb302,
   303: thumb303,
+  304: thumb304,
+  305: thumb305,
+  306: thumb306,
+  307: thumb307,
+  308: thumb308,
+  309: thumb309,
+  310: thumb310,
+  311: thumb311,
+  312: thumb312,
+  313: thumb313,
+  314: thumb314,
+  315: thumb315,
+  316: thumb316,
+  317: thumb317,
+  318: thumb318,
+  319: thumb319,
+  320: thumb320,
+  321: thumb321,
 };

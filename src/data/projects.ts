@@ -1061,6 +1061,45 @@ import cubadomCuba701_1 from "@/assets/cubadom/cuba-70-1/01.webp";
 import cubadomCuba701Plan1 from "@/assets/cubadom/cuba-70-1/02-plan.webp";
 import cubadomCuba701Plan2 from "@/assets/cubadom/cuba-70-1/03-plan.webp";
 import cubadomCuba701Plan3 from "@/assets/cubadom/cuba-70-1/04-plan.webp";
+import idolhouseLogo from "@/assets/idolhouse/logo.webp";
+import idolhouse36_1 from "@/assets/idolhouse/modul-nyy-dom-aydolhaus-36/01.webp";
+import idolhouse36Plan from "@/assets/idolhouse/modul-nyy-dom-aydolhaus-36/02.webp";
+import idolhouse47_1 from "@/assets/idolhouse/modul-nyy-dom-aydolhaus-47/01.webp";
+import idolhouse47Plan from "@/assets/idolhouse/modul-nyy-dom-aydolhaus-47/02.webp";
+import idolhouse62_1 from "@/assets/idolhouse/modul-nyy-dom-aydolhaus-62/01.webp";
+import idolhouse62Plan from "@/assets/idolhouse/modul-nyy-dom-aydolhaus-62/02.webp";
+import idolhouse72_1 from "@/assets/idolhouse/modul-nyy-dom-aydolhaus-72/01.webp";
+import idolhouse72Plan from "@/assets/idolhouse/modul-nyy-dom-aydolhaus-72/02.webp";
+import idolhouse86_1 from "@/assets/idolhouse/modul-nyy-dom-aydolhaus-86/01.webp";
+import idolhouse86Plan from "@/assets/idolhouse/modul-nyy-dom-aydolhaus-86/02.webp";
+import woodalpLogo from "@/assets/woodalp/logo.webp";
+import woodhouse60_1 from "@/assets/woodalp/woodhouse-60-pro/01.webp";
+import woodhouse60_2 from "@/assets/woodalp/woodhouse-60-pro/02.webp";
+import woodhouse90_1 from "@/assets/woodalp/woodhouse-90-pro/01.webp";
+import woodhouse90_2 from "@/assets/woodalp/woodhouse-90-pro/02.webp";
+import woodhouse120_1 from "@/assets/woodalp/woodhouse-120-pro/01.webp";
+import woodhouse120_2 from "@/assets/woodalp/woodhouse-120-pro/02.webp";
+import boxmateLogo from "@/assets/boxmate/logo.webp";
+import boxmateFlat5_1 from "@/assets/boxmate/flat-5-box/01.webp";
+import boxmateFlat4_1 from "@/assets/boxmate/flat-4-box/01.webp";
+import boxmateFlat3_1 from "@/assets/boxmate/flat-3-box/01.webp";
+import boxmateFlat3Plan from "@/assets/boxmate/flat-3-box/02.webp";
+import boxmateRed5_1 from "@/assets/boxmate/red-5-box/01.webp";
+import boxmateRed4_1 from "@/assets/boxmate/red-4-box/01.webp";
+import uvhouseLogo from "@/assets/uvhouse/logo.webp";
+import uvhouseMono30_1 from "@/assets/uvhouse/mono-30/01.webp";
+import uvhouseMono30Plan from "@/assets/uvhouse/mono-30/02.webp";
+import uvhouseScandi32_1 from "@/assets/uvhouse/skandi-32/01.webp";
+import uvhouseScandi32Plan from "@/assets/uvhouse/skandi-32/02.webp";
+import uvhouseNord40_1 from "@/assets/uvhouse/nord-40/01.webp";
+import uvhouseNord40_2 from "@/assets/uvhouse/nord-40/02.webp";
+import uvhouseNord40Plan from "@/assets/uvhouse/nord-40/03.webp";
+import uvhouseShale24_1 from "@/assets/uvhouse/shale-24/01.webp";
+import uvhouseShale24_2 from "@/assets/uvhouse/shale-24/02.webp";
+import uvhouseShale24Plan from "@/assets/uvhouse/shale-24/03.webp";
+import uvhouseScandi40_1 from "@/assets/uvhouse/skandi-40/01.webp";
+import uvhouseScandi40_2 from "@/assets/uvhouse/skandi-40/02.webp";
+import uvhouseScandi40Plan from "@/assets/uvhouse/skandi-40/03.webp";
 import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
@@ -1447,6 +1486,45 @@ const CUBADOM: Maker = {
   siteUrl: "https://cuba-dom.ru/",
   productionAddress: "Санкт-Петербург, 1-я Полевая 25а",
   phone: "+7 (812) 509-13-04",
+};
+const IDOLHOUSE: Maker = {
+  name: "АЙДОЛХАУС",
+  initials: "IH",
+  id: "idolhouse",
+  logo: idolhouseLogo,
+  siteUrl: "https://idolhouse.ru/",
+  productionAddress: "Воронежская область, Новоусманский район, село Бабяково, 1-й Парковый проезд, строение 11",
+  phone: "+7 (958) 509-08-19",
+  email: "hello@idolhouse.ru",
+};
+const WOODALP: Maker = {
+  name: "WOODALP",
+  initials: "WA",
+  id: "woodalp",
+  logo: woodalpLogo,
+  siteUrl: "https://woodalphouse.ru/",
+  productionAddress: "МО, Одинцовский городской округ, Малые Вяземы, БЦ Madex",
+  phone: "+7 (929) 692-90-09",
+  email: "vudalp@yandex.ru",
+};
+const BOXMATE: Maker = {
+  name: "Boxmate",
+  initials: "BM",
+  id: "boxmate",
+  logo: boxmateLogo,
+  siteUrl: "https://boxmate.ru/",
+  productionAddress: "Санкт-Петербург, Полтавский проезд, 2",
+  phone: "+7 (981) 717-91-20",
+};
+const UVHOUSE: Maker = {
+  name: "UV House",
+  initials: "UV",
+  id: "uvhouse",
+  logo: uvhouseLogo,
+  siteUrl: "https://ufa-vagon.ru/",
+  productionAddress: "Уфа",
+  phone: "+7 (917) 048-79-84",
+  email: "info@ufa-vagon.ru",
 };
 
 // ============================================================================
@@ -5870,6 +5948,319 @@ export const projects: Project[] = [
     features: ["3 спальни", "2 санузла", "Терраса"], style: "Современный", landSize: "7–11 соток",
     hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
   },
+
+  // ── АЙДОЛХАУС · Воронеж ───────────────────────────────────────────────
+  {
+    id: 304, name: "АЙДОЛХАУС 36", badge: "Модульный дом", price: "3 150 000 ₽",
+    area: "35,77 м²", area_m2: 35.77, beds: 1, baths: 1, floors: 1, term: "90 д.",
+    rooms: "1 спальня", purpose: "ИЖС / Дача", city: "Воронеж",
+    maker: { ...IDOLHOUSE, siteUrl: "https://idolhouse.ru/modul-house/36" },
+    description: "Компактный модульный дом с кухней-гостиной, спальней, санузлом и закрытой террасой.",
+    descriptionLong: "Модульный дом АЙДОЛХАУС 36 — проект площадью 35,77 м² для дачи, гостевого сценария или компактного круглогодичного проживания. По данным производителя, в планировке предусмотрены кухня-гостиная 12,33 м², спальня 8,54 м², санузел 3,39 м² и закрытая терраса 11,51 м².",
+    gallery: [
+      { image: idolhouse36_1, type: "photo", fit: "contain", blur: true },
+      { image: idolhouse36Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 44, rating: 4.9,
+    suitableFor: ["Дача", "Гостевой дом", "Компактное проживание"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Закрытая терраса", "Чистовая отделка", "Мебель и техника"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 305, name: "АЙДОЛХАУС 47", badge: "Модульный дом", price: "3 870 000 ₽",
+    area: "47,07 м²", area_m2: 47.07, beds: 1, baths: 1, floors: 1, term: "90 д.",
+    rooms: "1 спальня", purpose: "ИЖС / Дача", city: "Воронеж",
+    maker: { ...IDOLHOUSE, siteUrl: "https://idolhouse.ru/modul-house/47" },
+    description: "Модульный дом 47 м² с увеличенной кухней-гостиной, спальней, санузлом и закрытой террасой.",
+    descriptionLong: "АЙДОЛХАУС 47 — модульный дом площадью 47,07 м². Производитель указывает кухню-гостиную 23,63 м², спальню 8,54 м², санузел 3,39 м² и закрытую террасу 11,51 м²; проект рассчитан на быстрый монтаж и формат «заезжай и живи».",
+    gallery: [
+      { image: idolhouse47_1, type: "photo", fit: "contain", blur: true },
+      { image: idolhouse47Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 46, rating: 4.9,
+    suitableFor: ["Дача", "Для пары", "Круглогодичное проживание"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Большая кухня-гостиная", "Закрытая терраса", "Готовая отделка"], style: "Современный", landSize: "4–8 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 306, name: "АЙДОЛХАУС 62", badge: "Модульный дом", price: "4 200 000 ₽",
+    area: "61,53 м²", area_m2: 61.53, beds: 2, baths: 1, floors: 1, term: "90 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Воронеж",
+    maker: { ...IDOLHOUSE, siteUrl: "https://idolhouse.ru/modul-house/62" },
+    description: "Семейный модульный дом с двумя спальнями, кухней-гостиной и двумя террасами.",
+    descriptionLong: "АЙДОЛХАУС 62 — модульный дом площадью 61,53 м² с двумя спальнями. В описании производителя указаны кухня-гостиная 19,1 м², спальни 8,75 и 6,18 м², санузел, закрытая терраса 11,51 м² и открытая терраса 12,6 м².",
+    gallery: [
+      { image: idolhouse62_1, type: "photo", fit: "contain", blur: true },
+      { image: idolhouse62Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 48, rating: 4.9,
+    suitableFor: ["Круглогодичное проживание", "Для семьи", "СНТ"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["2 спальни", "Закрытая терраса", "Открытая терраса"], style: "Современный", landSize: "6–9 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 307, name: "АЙДОЛХАУС 72", badge: "Модульный дом", price: "4 920 000 ₽",
+    area: "72,46 м²", area_m2: 72.46, beds: 2, baths: 1, floors: 1, term: "90 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Воронеж",
+    maker: { ...IDOLHOUSE, siteUrl: "https://idolhouse.ru/modul-house/72" },
+    description: "Модульный дом 72 м² с двумя спальнями, просторной кухней-гостиной и террасами.",
+    descriptionLong: "АЙДОЛХАУС 72 — одноэтажный модульный дом площадью 72,46 м². Планировка включает кухню-гостиную 23,63 м², две спальни, санузел, закрытую террасу 11,51 м² и открытую террасу 12,5 м².",
+    gallery: [
+      { image: idolhouse72_1, type: "photo", fit: "contain", blur: true },
+      { image: idolhouse72Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 50, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для семьи", "Загородный участок"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["2 спальни", "Кухня-гостиная 23,63 м²", "2 террасы"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 308, name: "АЙДОЛХАУС 86", badge: "Модульный дом", price: "5 700 000 ₽",
+    area: "85,83 м²", area_m2: 85.83, beds: 3, baths: 1, floors: 1, term: "90 д.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Воронеж",
+    maker: { ...IDOLHOUSE, siteUrl: "https://idolhouse.ru/modul-house/86" },
+    description: "Просторный модульный дом с тремя спальнями, кухней-гостиной и двумя террасами.",
+    descriptionLong: "АЙДОЛХАУС 86 — модульный дом площадью 85,83 м² для семейного проживания. Производитель указывает три спальни, кухню-гостиную 30,61 м², санузел, закрытую террасу 11,51 м² и открытую террасу 12,5 м².",
+    gallery: [
+      { image: idolhouse86_1, type: "photo", fit: "contain", blur: true },
+      { image: idolhouse86Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 53, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для семьи", "ИЖС"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["3 спальни", "Кухня-гостиная 30,61 м²", "2 террасы"], style: "Современный", landSize: "7–11 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+  },
+
+  // ── WOODALP · Москва и МО ──────────────────────────────────────────────
+  {
+    id: 309, name: "WOODHOUSE 60 PRO", badge: "Модульно-каркасный дом", price: "по запросу",
+    area: "60 м²", area_m2: 60, beds: 2, baths: 1, floors: 1, term: "60 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...WOODALP, siteUrl: "https://woodalphouse.ru/#rec1541828301" },
+    description: "Модульно-каркасный дом WOODALP для постоянного проживания с полной отделкой и инженерией.",
+    descriptionLong: "WOODHOUSE 60 PRO от WOODALP — модульно-каркасный дом для постоянного проживания. Производитель описывает дома как заводские PREFAB-решения с полной отделкой, коммуникациями, свайным фундаментом и быстрым монтажом на участке.",
+    gallery: [
+      { image: woodhouse60_1, type: "photo", fit: "contain", blur: true },
+      { image: woodhouse60_2, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 45, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для семьи", "Загородный участок"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["PREFAB", "Панорамные окна", "Монтаж 1–2 дня"], style: "Современный", landSize: "6–9 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 310, name: "WOODHOUSE 90 PRO", badge: "Модульно-каркасный дом", price: "по запросу",
+    area: "90 м²", area_m2: 90, beds: 3, baths: 1, floors: 1, term: "60 д.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Москва и МО",
+    maker: { ...WOODALP, siteUrl: "https://woodalphouse.ru/#rec1541828301" },
+    description: "Семейный модульно-каркасный дом 90 м² с заводской готовностью и отделкой под ключ.",
+    descriptionLong: "WOODHOUSE 90 PRO — проект из линейки WOODALP для семейного загородного проживания. Дом изготавливается в заводских условиях, комплектуется отделкой и инженерией, а на участке собирается без долгой мокрой стройки.",
+    gallery: [
+      { image: woodhouse90_1, type: "photo", fit: "contain", blur: true },
+      { image: woodhouse90_2, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 48, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для семьи", "ИЖС"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Заводская сборка", "Полная отделка", "Энергоэффективный контур"], style: "Современный", landSize: "7–11 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 311, name: "WOODHOUSE 120 PRO", badge: "Модульно-каркасный дом", price: "по запросу",
+    area: "120 м²", area_m2: 120, beds: 3, baths: 2, floors: 1, term: "60 д.",
+    rooms: "3 спальни", purpose: "ИЖС", city: "Москва и МО",
+    maker: { ...WOODALP, siteUrl: "https://woodalphouse.ru/#rec1541828301" },
+    description: "Крупный модульно-каркасный дом для постоянного проживания с готовой инженерией.",
+    descriptionLong: "WOODHOUSE 120 PRO — старшая модель WOODALP из линейки модульно-каркасных домов. Формат рассчитан на постоянное проживание семьи: заводская подготовка, утепленный контур, панорамные окна, чистовая отделка и инженерные системы.",
+    gallery: [
+      { image: woodhouse120_1, type: "photo", fit: "contain", blur: true },
+      { image: woodhouse120_2, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 51, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для семьи", "Загородный участок"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Большая площадь", "Панорамные окна", "Готовая инженерия"], style: "Современный", landSize: "8–12 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+
+  // ── Boxmate · Санкт-Петербург и ЛО ─────────────────────────────────────
+  {
+    id: 312, name: "Flat 5 Box", badge: "Модульный дом", price: "по запросу",
+    area: "127 м²", area_m2: 127, beds: 3, baths: 2, floors: 1, term: "2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...BOXMATE, siteUrl: "https://boxmate.ru/flat5box_" },
+    description: "Дом линейки Flat Box площадью 127 м² для постоянного проживания семьи.",
+    descriptionLong: "Flat 5 Box от Boxmate — модульный дом площадью 127 м² из линейки Flat Box. Производитель позиционирует серию как готовое решение для загородной жизни с продуманной эргономикой, заводской сборкой и отделкой.",
+    gallery: [
+      { image: boxmateFlat5_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 56, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для семьи", "ИЖС"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Линейка Flat Box", "Заводская сборка", "Современная отделка"], style: "Современный", landSize: "8–12 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 313, name: "Flat 4 Box", badge: "Модульный дом", price: "по запросу",
+    area: "107 м²", area_m2: 107, beds: 3, baths: 2, floors: 1, term: "2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...BOXMATE, siteUrl: "https://boxmate.ru/flat4box_" },
+    description: "Модульный дом 107 м² из серии Flat Box с плоской кровлей и семейной планировкой.",
+    descriptionLong: "Flat 4 Box — модель Boxmate площадью 107 м². Дом относится к линейке Flat Box, где акцент сделан на современной архитектуре, плоской кровле, готовой отделке и комфортной планировке для семьи.",
+    gallery: [
+      { image: boxmateFlat4_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 54, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для семьи", "Загородный участок"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Flat Box", "Плоская кровля", "Готовая отделка"], style: "Минимализм", landSize: "7–11 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 314, name: "Flat 3 Box", badge: "Модульный дом", price: "от 7 055 000 ₽",
+    area: "86 м²", area_m2: 86, beds: 2, baths: 1, floors: 1, term: "2 мес.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...BOXMATE, siteUrl: "https://boxmate.ru/flat3box_" },
+    description: "Компактный дом Flat Box 86 м² с террасой и готовой отделкой.",
+    descriptionLong: "Flat 3 Box от Boxmate — модульный дом площадью 86 м². На странице производителя указаны габариты 9 × 10,1 м, общая площадь 86 м², площадь дома 62 м² и терраса 24 м²; стандартная комплектация стартует от 7 055 000 ₽.",
+    gallery: [
+      { image: boxmateFlat3_1, type: "photo", fit: "contain", blur: true },
+      { image: boxmateFlat3Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 52, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для пары", "СНТ"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Терраса 24 м²", "Плоская кровля", "Готовность за 2 месяца"], style: "Минимализм", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 315, name: "Red 5 Box", badge: "Модульный дом", price: "по запросу",
+    area: "135 м²", area_m2: 135, beds: 3, baths: 2, floors: 1, term: "2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...BOXMATE, siteUrl: "https://boxmate.ru/red5box_" },
+    description: "Модульный дом 135 м² из дизайнерской линейки Red Box.",
+    descriptionLong: "Red 5 Box — дом Boxmate площадью 135 м² из линейки Red Box. Серия делает акцент на выразительной архитектуре, дизайнерской отделке и заводской готовности, чтобы дом можно было быстро установить на участке.",
+    gallery: [
+      { image: boxmateRed5_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 57, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для семьи", "Дизайнерский дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Red Box", "Дизайнерская отделка", "Заводская сборка"], style: "Современный", landSize: "8–12 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 316, name: "Red 4 Box", badge: "Модульный дом", price: "по запросу",
+    area: "113 м²", area_m2: 113, beds: 3, baths: 2, floors: 1, term: "2 мес.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...BOXMATE, siteUrl: "https://boxmate.ru/red4box_" },
+    description: "Дом Red Box 113 м² с современной архитектурой и готовым интерьером.",
+    descriptionLong: "Red 4 Box от Boxmate — модульный дом площадью 113 м². Это средняя модель в линейке Red Box: современный экстерьер, заводская сборка, продуманная семейная планировка и финишная отделка.",
+    gallery: [
+      { image: boxmateRed4_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 55, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для семьи", "Загородный участок"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Red Box", "Семейная планировка", "Готовая отделка"], style: "Современный", landSize: "7–11 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+  },
+
+  // ── UV House · Уфа ─────────────────────────────────────────────────────
+  {
+    id: 317, name: "Моно 30", badge: "Модульный дом", price: "1 500 000 ₽",
+    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "студия", purpose: "Дача / Гостевой дом", city: "Уфа",
+    maker: { ...UVHOUSE, siteUrl: "https://ufa-vagon.ru/mono30" },
+    description: "Компактный модульный дом с террасой, кухней-гостиной, тамбуром и санузлом.",
+    descriptionLong: "Моно 30 от UV House — компактный модульный дом с просторной террасой. В описании производителя выделены панорамное окно в гостиной-кухне, удобный тамбур, санузел и сценарий для дачи или гостевого домика.",
+    gallery: [
+      { image: uvhouseMono30_1, type: "photo", fit: "contain", blur: true },
+      { image: uvhouseMono30Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 42, rating: 4.9,
+    suitableFor: ["Дача", "Гостевой дом", "Компактное проживание"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Терраса", "Панорамное окно", "Санузел"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 318, name: "Сканди 32", badge: "Модульный дом", price: "1 960 000 ₽",
+    area: "32 м²", area_m2: 32, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "1 спальня", purpose: "Дача / Гостевой дом", city: "Уфа",
+    maker: { ...UVHOUSE, siteUrl: "https://ufa-vagon.ru/scandi32" },
+    description: "Модульный дом в скандинавском стиле с панорамными окнами, спальней и террасой.",
+    descriptionLong: "Сканди 32 от UV House — модульный дом с панорамными окнами в гостиной-кухне и спальне. Производитель описывает проект как минималистичное и функциональное решение с уютной террасой для отдыха на участке.",
+    gallery: [
+      { image: uvhouseScandi32_1, type: "photo", fit: "contain", blur: true },
+      { image: uvhouseScandi32Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 44, rating: 4.9,
+    suitableFor: ["Дача", "Для пары", "Круглогодичное проживание"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Панорамные окна", "Терраса", "Скандинавский стиль"], style: "Скандинавский", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 319, name: "Норд 40", badge: "Модульный дом", price: "2 599 000 ₽",
+    area: "40 м²", area_m2: 40, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "1 спальня", purpose: "ИЖС / Дача", city: "Уфа",
+    maker: { ...UVHOUSE, siteUrl: "https://ufa-vagon.ru/nord40" },
+    description: "Популярный модульный дом 40 м² с большой кухней-гостиной, спальней и санузлом.",
+    descriptionLong: "Норд 40 — один из популярных проектов UV House: светлый модульный дом с большой гостиной-кухней и панорамными окнами. В планировке предусмотрены просторная спальня, санузел с душевой кабиной и функциональная жилая зона.",
+    gallery: [
+      { image: uvhouseNord40_1, type: "photo", fit: "contain", blur: true },
+      { image: uvhouseNord40_2, type: "photo", fit: "contain", blur: true },
+      { image: uvhouseNord40Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 47, rating: 4.9,
+    suitableFor: ["Круглогодичное проживание", "Для пары", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Кухня-гостиная", "Панорамные окна", "Санузел с душевой"], style: "Современный", landSize: "4–8 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 320, name: "Шале 24", badge: "Модульный дом", price: "2 599 000 ₽",
+    area: "24 м²", area_m2: 24, beds: 2, baths: 1, floors: 1, term: "по договору",
+    rooms: "2 спальни", purpose: "Дача / Гостевой дом", city: "Уфа",
+    maker: { ...UVHOUSE, siteUrl: "https://ufa-vagon.ru/shale24" },
+    description: "Компактный модульный дом в стиле шале с кухней-гостиной, двумя спальнями, санузлом и террасой.",
+    descriptionLong: "Шале 24 от UV House — компактный модульный дом с кухней-гостиной, двумя спальными комнатами, санузлом и террасой. Проект сочетает минималистичный дизайн шале, простые формы и функциональную планировку для дачного сценария.",
+    gallery: [
+      { image: uvhouseShale24_1, type: "photo", fit: "contain", blur: true },
+      { image: uvhouseShale24_2, type: "photo", fit: "contain", blur: true },
+      { image: uvhouseShale24Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 46, rating: 4.9,
+    suitableFor: ["Дача", "Гостевой дом", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["2 спальни", "Терраса", "Стиль шале"], style: "Шале", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 321, name: "Сканди 40", badge: "Модульный дом", price: "2 599 000 ₽",
+    area: "40 м²", area_m2: 40, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "1 спальня", purpose: "ИЖС / Дача", city: "Уфа",
+    maker: { ...UVHOUSE, siteUrl: "https://ufa-vagon.ru/scandi40" },
+    description: "Модульный дом 40 м² с панорамными окнами, спальней, санузлом и двумя террасами.",
+    descriptionLong: "Сканди 40 от UV House — модульный дом с панорамными окнами и двумя компактными террасами. Внутри предусмотрены просторная гостиная-кухня, спальня и санузел; проект рассчитан на комфортный загородный сценарий.",
+    gallery: [
+      { image: uvhouseScandi40_1, type: "photo", fit: "contain", blur: true },
+      { image: uvhouseScandi40_2, type: "photo", fit: "contain", blur: true },
+      { image: uvhouseScandi40Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 48, rating: 4.9,
+    suitableFor: ["Круглогодичное проживание", "Для пары", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["2 террасы", "Панорамные окна", "Кухня-гостиная"], style: "Скандинавский", landSize: "4–8 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
   ...regionalBatchProjects,
 ];
 
@@ -6000,7 +6391,7 @@ export type MakerSummary = {
   telegram?: string;
 };
 const canonicalMakerSiteUrls: Record<string, string> = [
-  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, TANHOUSE, COUNTRYHOUSE, CUBADOM,
+  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, TANHOUSE, COUNTRYHOUSE, CUBADOM, IDOLHOUSE, WOODALP, BOXMATE, UVHOUSE,
   ...regionalMakers,
 ].reduce((acc, m) => {
   if (m.id && m.siteUrl) acc[m.id] = m.siteUrl;
@@ -6062,4 +6453,4 @@ export const manufacturers = realManufacturers;
 // ГОРОДА
 // ============================================================================
 
-export const cities = ["Москва и МО", "Санкт-Петербург и ЛО", "Краснодарский край", "Казань", "Екатеринбург", "Пермский край", "Нижний Новгород", "Алтайский край", "Красноярск", "Самара", "Воронеж"];
+export const cities = ["Москва и МО", "Санкт-Петербург и ЛО", "Краснодарский край", "Казань", "Екатеринбург", "Пермский край", "Нижний Новгород", "Алтайский край", "Красноярск", "Самара", "Воронеж", "Уфа"];
