@@ -250,6 +250,11 @@ import thumb285 from "@/assets/histhut/hizhina-10/01__thumb.webp";
 import thumb286 from "@/assets/histhut/hizhina-12/01__thumb.webp";
 import thumb287 from "@/assets/histhut/hizhina-20/01__thumb.webp";
 import thumb288 from "@/assets/histhut/hizhina-25/01__thumb.webp";
+import thumb289 from "@/assets/tanhouse/delmar/01__thumb.webp";
+import thumb290 from "@/assets/tanhouse/lotus/01__thumb.webp";
+import thumb291 from "@/assets/tanhouse/olivia/01__thumb.webp";
+import thumb292 from "@/assets/tanhouse/grade-1/01__thumb.webp";
+import thumb293 from "@/assets/tanhouse/amiana/01__thumb.webp";
 
 export const projectThumbs: Record<number, string> = {
   32: thumb32,
@@ -501,4 +506,9 @@ export const projectThumbs: Record<number, string> = {
   286: thumb286,
   287: thumb287,
   288: thumb288,
+  289: thumb289,
+  290: thumb290,
+  291: thumb291,
+  292: thumb292,
+  293: thumb293,
 };

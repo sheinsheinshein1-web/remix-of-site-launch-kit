@@ -40,6 +40,8 @@ const aboutByMakerId: Record<string, string> = {
     "DUROV.HOUSE — производитель модульных домов из Воронежа. Компания выпускает одноэтажные дома серий Barn и Flat для дачи, аренды, глэмпинга и круглогодичного проживания с доставкой по России.",
   histhut:
     "HISTHUT — производитель модульных домов из Пермского края. Компания выпускает компактные модульные дома серии «Хижина» для дачи, глэмпинга, аренды и круглогодичного отдыха с доставкой по России.",
+  tanhouse:
+    "TAN HOUSE — строительная компания из Свердловской области. Компания строит современные дома под ключ для постоянного загородного проживания, работает с типовыми проектами, ипотечными программами и эскроу.",
   glezman:
     "Glezman Group — производитель каркасных домов из Перми. Линейка La Rus: компактные и просторные дома площадью от 45 до 127 м² с панорамным остеклением и продуманной планировкой.",
   divodom:
@@ -269,7 +271,7 @@ const Partner = () => {
     return <NotFound />;
   }
 
-  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut";
+  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "tanhouse";
 
 
   const HeroPlatforma = () => (
