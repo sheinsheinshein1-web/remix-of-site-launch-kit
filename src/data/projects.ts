@@ -978,6 +978,27 @@ import durovFlat124_1 from "@/assets/durov-house/flat-dh124/01.webp";
 import durovFlat124_2 from "@/assets/durov-house/flat-dh124/02.webp";
 import durovFlat124_3 from "@/assets/durov-house/flat-dh124/03.webp";
 import durovFlat124Plan from "@/assets/durov-house/flat-dh124/04-plan.webp";
+import histhutLogo from "@/assets/histhut/logo.webp";
+import histhutHizhina8_1 from "@/assets/histhut/hizhina-8/01.webp";
+import histhutHizhina8_2 from "@/assets/histhut/hizhina-8/02.webp";
+import histhutHizhina8_3 from "@/assets/histhut/hizhina-8/03.webp";
+import histhutHizhina8Plan from "@/assets/histhut/hizhina-8/04-plan.webp";
+import histhutHizhina10_1 from "@/assets/histhut/hizhina-10/01.webp";
+import histhutHizhina10_2 from "@/assets/histhut/hizhina-10/02.webp";
+import histhutHizhina10_3 from "@/assets/histhut/hizhina-10/03.webp";
+import histhutHizhina10Plan from "@/assets/histhut/hizhina-10/04-plan.webp";
+import histhutHizhina12_1 from "@/assets/histhut/hizhina-12/01.webp";
+import histhutHizhina12_2 from "@/assets/histhut/hizhina-12/02.webp";
+import histhutHizhina12_3 from "@/assets/histhut/hizhina-12/03.webp";
+import histhutHizhina12Plan from "@/assets/histhut/hizhina-12/04-plan.webp";
+import histhutHizhina20_1 from "@/assets/histhut/hizhina-20/01.webp";
+import histhutHizhina20_2 from "@/assets/histhut/hizhina-20/02.webp";
+import histhutHizhina20_3 from "@/assets/histhut/hizhina-20/03.webp";
+import histhutHizhina20Plan from "@/assets/histhut/hizhina-20/04-plan.webp";
+import histhutHizhina25_1 from "@/assets/histhut/hizhina-25/01.webp";
+import histhutHizhina25_2 from "@/assets/histhut/hizhina-25/02.webp";
+import histhutHizhina25_3 from "@/assets/histhut/hizhina-25/03.webp";
+import histhutHizhina25Plan from "@/assets/histhut/hizhina-25/04-plan.webp";
 import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
@@ -1325,6 +1346,16 @@ const DUROV_HOUSE: Maker = {
   productionAddress: "Воронежская область, Новоусманский район, село Бабяково, 1-й Парковый проезд, строение 11",
   phone: "+7 (906) 677-35-55",
   email: "sales@durov.house",
+};
+const HISTHUT: Maker = {
+  name: "HISTHUT",
+  initials: "HH",
+  id: "histhut",
+  logo: histhutLogo,
+  siteUrl: "https://histhut.ru/",
+  productionAddress: "г. Пермь, ул. Героев Хасана, 105 к70",
+  phone: "+7 (982) 496-77-77",
+  email: "info@histhut.ru",
 };
 
 // ============================================================================
@@ -5361,6 +5392,103 @@ export const projects: Project[] = [
     features: ["Три спальни", "Большая терраса", "Кухня-гостиная"], style: "Современный", landSize: "8–12 соток",
     hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
   },
+
+  // ── HISTHUT · Пермский край ─────────────────────────────────────────────
+  {
+    id: 284, name: "Хижина 8", badge: "Модульный дом", price: "1 000 000 ₽",
+    area: "15,76 м²", area_m2: 15.76, beds: 1, baths: 1, floors: 1, term: "от 60 д.",
+    rooms: "студия", purpose: "Дача / Глэмпинг / Аренда", city: "Пермский край",
+    maker: { ...HISTHUT, siteUrl: "https://histhut.ru/product/modul-hizhina-8" },
+    description: "Компактный модульный дом для двоих с жилой зоной, санузлом и открытой террасой.",
+    descriptionLong: "Хижина 8 от HISTHUT — компактный модульный дом площадью 15,76 м² для двоих. Проект подходит для дачи, гостевого размещения, глэмпинга и туристических объектов: внутри предусмотрена жилая зона, санузел, кухонный блок и открытая терраса.",
+    gallery: [
+      { image: histhutHizhina8_1, type: "photo", fit: "contain", blur: true },
+      { image: histhutHizhina8_2, type: "photo", fit: "contain", blur: true },
+      { image: histhutHizhina8_3, type: "photo", fit: "contain", blur: true },
+      { image: histhutHizhina8Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 41, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Глэмпинг / аренда", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Готовый санузел", "Компактный формат"], style: "Современный", landSize: "до 3 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 285, name: "Хижина 10", badge: "Модульный дом", price: "1 300 000 ₽",
+    area: "21,07 м²", area_m2: 21.07, beds: 1, baths: 1, floors: 1, term: "от 60 д.",
+    rooms: "студия", purpose: "Дача / Глэмпинг / Аренда", city: "Пермский край",
+    maker: { ...HISTHUT, siteUrl: "https://histhut.ru/product/modul-hizhina-10" },
+    description: "Модульный дом для двоих с увеличенной жилой зоной, санузлом и террасой.",
+    descriptionLong: "Хижина 10 от HISTHUT — модульный дом площадью 21,07 м² для двоих. По сравнению с младшей версией здесь больше внутренняя зона отдыха и терраса; формат подходит для загородного отдыха, аренды и небольшого глэмпинг-объекта.",
+    gallery: [
+      { image: histhutHizhina10_1, type: "photo", fit: "contain", blur: true },
+      { image: histhutHizhina10_2, type: "photo", fit: "contain", blur: true },
+      { image: histhutHizhina10_3, type: "photo", fit: "contain", blur: true },
+      { image: histhutHizhina10Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 43, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Глэмпинг / аренда", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Санузел", "Мебель"], style: "Современный", landSize: "до 3 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 286, name: "Хижина 12", badge: "Модульный дом", price: "1 674 000 ₽",
+    area: "26,43 м²", area_m2: 26.43, beds: 1, baths: 1, floors: 1, term: "от 60 д.",
+    rooms: "1 спальня", purpose: "Дача / Глэмпинг / Аренда", city: "Пермский край",
+    maker: { ...HISTHUT, siteUrl: "https://histhut.ru/product/modul-hizhina-12" },
+    description: "Модульный дом с отдельной спальней, зоной отдыха, санузлом и открытой террасой.",
+    descriptionLong: "Хижина 12 от HISTHUT — модульный дом площадью 26,43 м² с отдельной спальней, зоной отдыха и санузлом. Проект рассчитан на проживание пары и прием гостей, а большая открытая терраса усиливает сценарий загородного отдыха.",
+    gallery: [
+      { image: histhutHizhina12_1, type: "photo", fit: "contain", blur: true },
+      { image: histhutHizhina12_2, type: "photo", fit: "contain", blur: true },
+      { image: histhutHizhina12_3, type: "photo", fit: "contain", blur: true },
+      { image: histhutHizhina12Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 45, rating: 4.8,
+    suitableFor: ["Выходные / дача", "Глэмпинг / аренда", "Для одного / пары"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Спальня", "Открытая терраса", "Готовый санузел"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 287, name: "Хижина 20", badge: "Модульный дом", price: "600 000 ₽",
+    area: "42,52 м²", area_m2: 42.52, beds: 2, baths: 1, floors: 1, term: "от 60 д.",
+    rooms: "2 спальни", purpose: "ИЖС / Дача / Глэмпинг", city: "Пермский край",
+    maker: { ...HISTHUT, siteUrl: "https://histhut.ru/product/modul-hizhina-20" },
+    description: "Семейный модульный дом с двумя спальнями, жилой зоной и большой террасой.",
+    descriptionLong: "Хижина 20 от HISTHUT — модульный дом площадью 42,52 м² для семьи до пяти человек. В планировке предусмотрены две спальни, жилая зона, санузел и большая терраса; проект подходит для загородного проживания, аренды и коммерческих туристических сценариев.",
+    gallery: [
+      { image: histhutHizhina20_1, type: "photo", fit: "contain", blur: true },
+      { image: histhutHizhina20_2, type: "photo", fit: "contain", blur: true },
+      { image: histhutHizhina20_3, type: "photo", fit: "contain", blur: true },
+      { image: histhutHizhina20Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 47, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для семьи", "Глэмпинг / аренда"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Две спальни", "Большая терраса", "Семейная планировка"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 288, name: "Хижина 25", badge: "Модульный дом", price: "2 974 000 ₽",
+    area: "53,72 м²", area_m2: 53.72, beds: 2, baths: 1, floors: 1, term: "от 60 д.",
+    rooms: "2 спальни", purpose: "ИЖС / Дача / Глэмпинг", city: "Пермский край",
+    maker: { ...HISTHUT, siteUrl: "https://histhut.ru/product/modul-hizhina-25" },
+    description: "Большой модульный дом для семьи с двумя спальнями, санузлом и просторной террасой.",
+    descriptionLong: "Хижина 25 от HISTHUT — модульный дом площадью 53,72 м² для круглогодичного проживания семьи. Планировка включает две спальни, зону отдыха, санузел, техническое помещение и просторную террасу; один из сценариев производителя — замена второй спальни на хаммам или сауну.",
+    gallery: [
+      { image: histhutHizhina25_1, type: "photo", fit: "contain", blur: true },
+      { image: histhutHizhina25_2, type: "photo", fit: "contain", blur: true },
+      { image: histhutHizhina25_3, type: "photo", fit: "contain", blur: true },
+      { image: histhutHizhina25Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 50, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для семьи", "Глэмпинг / аренда"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Две спальни", "Техническое помещение", "Большая терраса"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
   ...regionalBatchProjects,
 ];
 
@@ -5491,7 +5619,7 @@ export type MakerSummary = {
   telegram?: string;
 };
 const canonicalMakerSiteUrls: Record<string, string> = [
-  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, DUROV_HOUSE,
+  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT,
   ...regionalMakers,
 ].reduce((acc, m) => {
   if (m.id && m.siteUrl) acc[m.id] = m.siteUrl;

@@ -245,6 +245,11 @@ import thumb280 from "@/assets/durov-house/barn-dh57/01__thumb.webp";
 import thumb281 from "@/assets/durov-house/barn-dh64/01__thumb.webp";
 import thumb282 from "@/assets/durov-house/flat-dh67/01__thumb.webp";
 import thumb283 from "@/assets/durov-house/flat-dh124/01__thumb.webp";
+import thumb284 from "@/assets/histhut/hizhina-8/01__thumb.webp";
+import thumb285 from "@/assets/histhut/hizhina-10/01__thumb.webp";
+import thumb286 from "@/assets/histhut/hizhina-12/01__thumb.webp";
+import thumb287 from "@/assets/histhut/hizhina-20/01__thumb.webp";
+import thumb288 from "@/assets/histhut/hizhina-25/01__thumb.webp";
 
 export const projectThumbs: Record<number, string> = {
   32: thumb32,
@@ -491,4 +496,9 @@ export const projectThumbs: Record<number, string> = {
   281: thumb281,
   282: thumb282,
   283: thumb283,
+  284: thumb284,
+  285: thumb285,
+  286: thumb286,
+  287: thumb287,
+  288: thumb288,
 };
