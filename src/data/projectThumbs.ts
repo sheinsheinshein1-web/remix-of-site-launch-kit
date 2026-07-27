@@ -260,6 +260,11 @@ import thumb295 from "@/assets/countryhouse/hitech-m15/01__thumb.webp";
 import thumb296 from "@/assets/countryhouse/hitech-m2/01__thumb.webp";
 import thumb297 from "@/assets/countryhouse/hitech-m3/01__thumb.webp";
 import thumb298 from "@/assets/countryhouse/hitech-m5/01__thumb.webp";
+import thumb299 from "@/assets/cubadom/cuba-35-1/01__thumb.webp";
+import thumb300 from "@/assets/cubadom/cuba-35-2/01__thumb.webp";
+import thumb301 from "@/assets/cubadom/cuba-53-1/01__thumb.webp";
+import thumb302 from "@/assets/cubadom/cuba-53-2/01__thumb.webp";
+import thumb303 from "@/assets/cubadom/cuba-70-1/01__thumb.webp";
 
 export const projectThumbs: Record<number, string> = {
   32: thumb32,
@@ -521,4 +526,9 @@ export const projectThumbs: Record<number, string> = {
   296: thumb296,
   297: thumb297,
   298: thumb298,
+  299: thumb299,
+  300: thumb300,
+  301: thumb301,
+  302: thumb302,
+  303: thumb303,
 };

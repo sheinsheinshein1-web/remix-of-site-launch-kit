@@ -44,6 +44,8 @@ const aboutByMakerId: Record<string, string> = {
     "TAN HOUSE — строительная компания из Свердловской области. Компания строит современные дома под ключ для постоянного загородного проживания, работает с типовыми проектами, ипотечными программами и эскроу.",
   countryhouse:
     "CountryHouse — производитель модульных домов и бань из Санкт-Петербурга. Компания строит модульные дома под ключ по всей России: от компактных одномодульных решений до просторных пятимодульных домов для загородного проживания.",
+  "cuba-dom":
+    "CUBA DOM — производитель модульных домов из Санкт-Петербурга. В каталоге компании представлены современные модульные дома площадью от 35 до 90 м² с разными планировками, террасами и комплектациями от тёплого контура до чистовой отделки.",
   glezman:
     "Glezman Group — производитель каркасных домов из Перми. Линейка La Rus: компактные и просторные дома площадью от 45 до 127 м² с панорамным остеклением и продуманной планировкой.",
   divodom:
@@ -273,7 +275,7 @@ const Partner = () => {
     return <NotFound />;
   }
 
-  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "tanhouse" || makerId === "countryhouse";
+  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "tanhouse" || makerId === "countryhouse" || makerId === "cuba-dom";
 
 
   const HeroPlatforma = () => (

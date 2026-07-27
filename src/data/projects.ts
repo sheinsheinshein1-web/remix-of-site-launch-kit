@@ -1040,6 +1040,27 @@ import countryhouseHitechM5_1 from "@/assets/countryhouse/hitech-m5/01.webp";
 import countryhouseHitechM5_2 from "@/assets/countryhouse/hitech-m5/02.webp";
 import countryhouseHitechM5_3 from "@/assets/countryhouse/hitech-m5/03.webp";
 import countryhouseHitechM5Plan from "@/assets/countryhouse/hitech-m5/04-plan.webp";
+import cubadomLogo from "@/assets/cubadom/logo.webp";
+import cubadomCuba351_1 from "@/assets/cubadom/cuba-35-1/01.webp";
+import cubadomCuba351Plan1 from "@/assets/cubadom/cuba-35-1/02-plan.webp";
+import cubadomCuba351Plan2 from "@/assets/cubadom/cuba-35-1/03-plan.webp";
+import cubadomCuba351Plan3 from "@/assets/cubadom/cuba-35-1/04-plan.webp";
+import cubadomCuba352_1 from "@/assets/cubadom/cuba-35-2/01.webp";
+import cubadomCuba352Plan1 from "@/assets/cubadom/cuba-35-2/02-plan.webp";
+import cubadomCuba352Plan2 from "@/assets/cubadom/cuba-35-2/03-plan.webp";
+import cubadomCuba352Plan3 from "@/assets/cubadom/cuba-35-2/04-plan.webp";
+import cubadomCuba531_1 from "@/assets/cubadom/cuba-53-1/01.webp";
+import cubadomCuba531Plan1 from "@/assets/cubadom/cuba-53-1/02-plan.webp";
+import cubadomCuba531Plan2 from "@/assets/cubadom/cuba-53-1/03-plan.webp";
+import cubadomCuba531Plan3 from "@/assets/cubadom/cuba-53-1/04-plan.webp";
+import cubadomCuba532_1 from "@/assets/cubadom/cuba-53-2/01.webp";
+import cubadomCuba532Plan1 from "@/assets/cubadom/cuba-53-2/02-plan.webp";
+import cubadomCuba532Plan2 from "@/assets/cubadom/cuba-53-2/03-plan.webp";
+import cubadomCuba532Plan3 from "@/assets/cubadom/cuba-53-2/04-plan.webp";
+import cubadomCuba701_1 from "@/assets/cubadom/cuba-70-1/01.webp";
+import cubadomCuba701Plan1 from "@/assets/cubadom/cuba-70-1/02-plan.webp";
+import cubadomCuba701Plan2 from "@/assets/cubadom/cuba-70-1/03-plan.webp";
+import cubadomCuba701Plan3 from "@/assets/cubadom/cuba-70-1/04-plan.webp";
 import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
@@ -1417,6 +1438,15 @@ const COUNTRYHOUSE: Maker = {
   productionAddress: "Санкт-Петербург, Коломяжский пр-т, д. 33, к. 2",
   phone: "+7 (952) 356-65-92",
   email: "info@modulniye-doma.ru",
+};
+const CUBADOM: Maker = {
+  name: "CUBA DOM",
+  initials: "CD",
+  id: "cuba-dom",
+  logo: cubadomLogo,
+  siteUrl: "https://cuba-dom.ru/",
+  productionAddress: "Санкт-Петербург, 1-я Полевая 25а",
+  phone: "+7 (812) 509-13-04",
 };
 
 // ============================================================================
@@ -5743,6 +5773,103 @@ export const projects: Project[] = [
     features: ["Пять модулей", "Большая жилая зона", "Терраса"], style: "Хай-тек", landSize: "8–12 соток",
     hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
   },
+
+  // ── CUBA DOM · Санкт-Петербург и ЛО ───────────────────────────────────
+  {
+    id: 299, name: "CUBA 35-1", badge: "Модульный дом", price: "2 280 000 ₽",
+    area: "35 м²", area_m2: 35, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "1 спальня", purpose: "ИЖС / Дача", city: "Санкт-Петербург и ЛО",
+    maker: { ...CUBADOM, siteUrl: "https://cuba-dom.ru/modulnye-doma-planirovki-i-ceny/tproduct/2136176771-964862565722-cuba-35-1" },
+    description: "Компактный модульный дом с одной спальней, кухней-гостиной и террасой.",
+    descriptionLong: "CUBA 35-1 от CUBA DOM — модульный дом площадью 35 м² с одной спальней и высотой потолков 2,6 м. В каталоге производителя проект представлен с несколькими вариантами комплектации: тёплый контур, чистовая отделка, а также версии с крытой террасой.",
+    gallery: [
+      { image: cubadomCuba351_1, type: "plan", fit: "contain" },
+      { image: cubadomCuba351Plan1, type: "plan", fit: "contain" },
+      { image: cubadomCuba351Plan2, type: "plan", fit: "contain" },
+      { image: cubadomCuba351Plan3, type: "plan", fit: "contain" },
+    ],
+    likes: 43, rating: 4.9,
+    suitableFor: ["Дача", "Компактное проживание", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Терраса", "Высота потолков 2,6 м", "Чистовая отделка"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 300, name: "CUBA 35-2", badge: "Модульный дом", price: "2 360 000 ₽",
+    area: "35 м²", area_m2: 35, beds: 2, baths: 1, floors: 1, term: "по договору",
+    rooms: "2 спальни", purpose: "ИЖС / Дача", city: "Санкт-Петербург и ЛО",
+    maker: { ...CUBADOM, siteUrl: "https://cuba-dom.ru/modulnye-doma-planirovki-i-ceny/tproduct/2136181381-241045539232-cuba-35-2" },
+    description: "Модульный дом 35 м² с двумя спальнями, кухней-гостиной и санузлом.",
+    descriptionLong: "CUBA 35-2 — компактный модульный дом площадью 35 м² для семьи или загородного проживания. В проекте две спальни, кухня-гостиная, прихожая и санузел; высота потолков на странице производителя указана 2,6 м.",
+    gallery: [
+      { image: cubadomCuba352_1, type: "plan", fit: "contain" },
+      { image: cubadomCuba352Plan1, type: "plan", fit: "contain" },
+      { image: cubadomCuba352Plan2, type: "plan", fit: "contain" },
+      { image: cubadomCuba352Plan3, type: "plan", fit: "contain" },
+    ],
+    likes: 45, rating: 4.9,
+    suitableFor: ["Дача", "Для семьи", "Круглогодичное проживание"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["2 спальни", "Терраса", "Высота потолков 2,6 м"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 301, name: "CUBA 53-1", badge: "Модульный дом", price: "3 470 000 ₽",
+    area: "53 м²", area_m2: 53, beds: 2, baths: 1, floors: 1, term: "по договору",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...CUBADOM, siteUrl: "https://cuba-dom.ru/modulnye-doma-planirovki-i-ceny/tproduct/2136181381-545476284282-cuba-53-1" },
+    description: "Модульный дом 53 м² с двумя спальнями, кухней-гостиной и террасой.",
+    descriptionLong: "CUBA 53-1 от CUBA DOM — модульный дом площадью 53 м² с двумя спальнями. Планировка рассчитана на комфортный загородный сценарий: кухня-гостиная, спальни, санузел, прихожая и терраса; высота потолков указана 2,6 м.",
+    gallery: [
+      { image: cubadomCuba531_1, type: "plan", fit: "contain" },
+      { image: cubadomCuba531Plan1, type: "plan", fit: "contain" },
+      { image: cubadomCuba531Plan2, type: "plan", fit: "contain" },
+      { image: cubadomCuba531Plan3, type: "plan", fit: "contain" },
+    ],
+    likes: 48, rating: 4.9,
+    suitableFor: ["Круглогодичное проживание", "Для семьи", "Загородный участок"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["2 спальни", "Терраса", "Кухня-гостиная"], style: "Современный", landSize: "6–9 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 302, name: "CUBA 53-2", badge: "Модульный дом", price: "3 470 000 ₽",
+    area: "53 м²", area_m2: 53, beds: 2, baths: 1, floors: 1, term: "по договору",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...CUBADOM, siteUrl: "https://cuba-dom.ru/modulnye-doma-planirovki-i-ceny/tproduct/2136181381-395158214302-cuba-53-2" },
+    description: "Вариант модульного дома 53 м² с двумя спальнями и просторной общей зоной.",
+    descriptionLong: "CUBA 53-2 — альтернативная планировка модульного дома площадью 53 м². Проект сохраняет семейный сценарий с двумя спальнями и кухней-гостиной, а разные варианты планировок позволяют подобрать решение под участок и образ жизни.",
+    gallery: [
+      { image: cubadomCuba532_1, type: "plan", fit: "contain" },
+      { image: cubadomCuba532Plan1, type: "plan", fit: "contain" },
+      { image: cubadomCuba532Plan2, type: "plan", fit: "contain" },
+      { image: cubadomCuba532Plan3, type: "plan", fit: "contain" },
+    ],
+    likes: 47, rating: 4.9,
+    suitableFor: ["Круглогодичное проживание", "Для семьи", "СНТ"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["2 спальни", "Терраса", "Чистовая отделка"], style: "Современный", landSize: "6–9 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 303, name: "CUBA 70-1", badge: "Модульный дом", price: "4 550 000 ₽",
+    area: "70 м²", area_m2: 70, beds: 3, baths: 2, floors: 1, term: "по договору",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...CUBADOM, siteUrl: "https://cuba-dom.ru/modulnye-doma-planirovki-i-ceny/tproduct/2136182161-885721032042-cuba-70-1" },
+    description: "Семейный модульный дом 70 м² с тремя спальнями, двумя санузлами и террасой.",
+    descriptionLong: "CUBA 70-1 от CUBA DOM — модульный дом площадью 70 м² для постоянного проживания семьи. В карточке производителя указаны три спальни, два санузла, кухня-гостиная, прихожая, терраса и высота потолков 2,6 м.",
+    gallery: [
+      { image: cubadomCuba701_1, type: "plan", fit: "contain" },
+      { image: cubadomCuba701Plan1, type: "plan", fit: "contain" },
+      { image: cubadomCuba701Plan2, type: "plan", fit: "contain" },
+      { image: cubadomCuba701Plan3, type: "plan", fit: "contain" },
+    ],
+    likes: 52, rating: 4.9,
+    suitableFor: ["Постоянное проживание", "Для семьи", "Загородный участок"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["3 спальни", "2 санузла", "Терраса"], style: "Современный", landSize: "7–11 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
   ...regionalBatchProjects,
 ];
 
@@ -5873,7 +6000,7 @@ export type MakerSummary = {
   telegram?: string;
 };
 const canonicalMakerSiteUrls: Record<string, string> = [
-  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, TANHOUSE, COUNTRYHOUSE,
+  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, TANHOUSE, COUNTRYHOUSE, CUBADOM,
   ...regionalMakers,
 ].reduce((acc, m) => {
   if (m.id && m.siteUrl) acc[m.id] = m.siteUrl;
