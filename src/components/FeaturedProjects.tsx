@@ -39,6 +39,7 @@ const baseProjects = projects.map((p) => ({
     "blackmodule",
     "domm",
     "my-module",
+    "4modul",
   ].includes(p.maker.id),
   city: p.city,
   name: p.name,

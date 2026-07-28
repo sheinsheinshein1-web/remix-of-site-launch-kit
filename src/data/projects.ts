@@ -1165,6 +1165,14 @@ import myModuleBarni_1 from "@/assets/my-module/barni/01.webp";
 import myModuleKorner_1 from "@/assets/my-module/korner/01.webp";
 import myModuleScandinavia_1 from "@/assets/my-module/scandinavia/01.webp";
 import myModuleZ_1 from "@/assets/my-module/z/01.webp";
+import fourModulKarelia30_1 from "@/assets/4modul/karelia-30/01.webp";
+import fourModulKarelia45_1 from "@/assets/4modul/karelia-45/01.webp";
+import fourModulKarelia45_2 from "@/assets/4modul/karelia-45/02.webp";
+import fourModulKarelia60_1 from "@/assets/4modul/karelia-60/01.webp";
+import fourModulKarelia60_2 from "@/assets/4modul/karelia-60/02.webp";
+import fourModulKarelia75_1 from "@/assets/4modul/karelia-75/01.webp";
+import fourModulKarelia75_2 from "@/assets/4modul/karelia-75/02.webp";
+import fourModulBarn60_1 from "@/assets/4modul/barn-60/01.webp";
 import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
@@ -1688,6 +1696,14 @@ const MY_MODULE: Maker = {
   phone: "8-800-222-07-67",
   email: "info@my-module.ru",
   telegram: "https://t.me/Mymodule",
+};
+const FOUR_MODUL: Maker = {
+  name: "4 Стихии",
+  initials: "4С",
+  id: "4modul",
+  siteUrl: "https://4modul.ru/",
+  productionAddress: "Рязань",
+  phone: "+7 (900) 609-69-09",
 };
 
 // ============================================================================
@@ -7138,6 +7154,89 @@ export const projects: Project[] = [
     features: ["60 м²", "2 спальни", "Современный фасад"], style: "Современный", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
   },
+  {
+    id: 371, name: "Дом Карелия 30", badge: "Модульный дом", price: "2 550 000 ₽",
+    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "2 комнаты", purpose: "Дача / ПМЖ", city: "Рязань",
+    maker: { ...FOUR_MODUL, siteUrl: "https://4modul.ru/karelia30" },
+    description: "Компактный модульный дом 6×6 м площадью 30 м² для дачи и загородного проживания.",
+    descriptionLong: "Дом Карелия 30 — компактный модульный дом от 4 Стихии размером 6000×6000 мм. Формат подходит для дачного участка, гостевого дома или небольшого круглогодичного сценария.",
+    gallery: [
+      { image: fourModulKarelia30_1, type: "photo" },
+    ],
+    likes: 63, rating: 4.9,
+    suitableFor: ["Дача", "Гостевой дом", "Пара"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["30 м²", "2 комнаты", "Заводская сборка"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 372, name: "Дом Карелия 45", badge: "Модульный дом", price: "3 450 000 ₽",
+    area: "45 м²", area_m2: 45, beds: 2, baths: 1, floors: 1, term: "по договору",
+    rooms: "3 комнаты", purpose: "Дача / ПМЖ", city: "Рязань",
+    maker: { ...FOUR_MODUL, siteUrl: "https://4modul.ru/karelia45" },
+    description: "Модульный дом Карелия 45 площадью 45 м² с планировкой на 3 комнаты.",
+    descriptionLong: "Дом Карелия 45 — модульный дом от 4 Стихии размером 6000×9000 мм. Проект площадью 45 м² рассчитан на дачное или круглогодичное проживание небольшой семьи.",
+    gallery: [
+      { image: fourModulKarelia45_1, type: "photo" },
+      { image: fourModulKarelia45_2, type: "photo" },
+    ],
+    likes: 68, rating: 4.9,
+    suitableFor: ["Для семьи", "Дача", "ПМЖ"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["45 м²", "3 комнаты", "Панорамные окна"], style: "Современный", landSize: "5–8 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 373, name: "Дом Карелия 60", badge: "Модульный дом", price: "4 750 000 ₽",
+    area: "61 м²", area_m2: 61, beds: 2, baths: 1, floors: 1, term: "по договору",
+    rooms: "3 комнаты", purpose: "Семья / ПМЖ", city: "Рязань",
+    maker: { ...FOUR_MODUL, siteUrl: "https://4modul.ru/karelia60" },
+    description: "Семейный модульный дом Карелия 60 площадью 61 м² для круглогодичного проживания.",
+    descriptionLong: "Дом Карелия 60 — модульный дом от 4 Стихии размером 6000×12000 мм. Планировка на 3 комнаты подходит для семьи, дачного участка или постоянного загородного проживания.",
+    gallery: [
+      { image: fourModulKarelia60_1, type: "photo" },
+      { image: fourModulKarelia60_2, type: "photo" },
+    ],
+    likes: 74, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["61 м²", "3 комнаты", "Заводская сборка"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 374, name: "Дом Карелия 75", badge: "Модульный дом", price: "5 900 000 ₽",
+    area: "76 м²", area_m2: 76, beds: 3, baths: 1, floors: 1, term: "по договору",
+    rooms: "4 комнаты", purpose: "Семья / ПМЖ", city: "Рязань",
+    maker: { ...FOUR_MODUL, siteUrl: "https://4modul.ru/karelia75" },
+    description: "Просторный модульный дом Карелия 75 площадью 76 м² с планировкой на 4 комнаты.",
+    descriptionLong: "Дом Карелия 75 — старший проект линейки Карелия от 4 Стихии. Дом размером 9000×12000 мм и площадью 76 м² рассчитан на семейное круглогодичное проживание.",
+    gallery: [
+      { image: fourModulKarelia75_1, type: "photo" },
+      { image: fourModulKarelia75_2, type: "photo" },
+    ],
+    likes: 77, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Просторный дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["76 м²", "4 комнаты", "Семейная планировка"], style: "Современный", landSize: "7–12 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 375, name: "Дом Барн 60", badge: "Барнхаус", price: "4 800 000 ₽",
+    area: "59 м²", area_m2: 59, beds: 3, baths: 1, floors: 1, term: "по договору",
+    rooms: "4 комнаты", purpose: "Семья / ПМЖ", city: "Рязань",
+    maker: { ...FOUR_MODUL, siteUrl: "https://4modul.ru/barn60" },
+    description: "Модульный дом в стиле барнхаус площадью 59 м² с выразительным панорамным фасадом.",
+    descriptionLong: "Дом Барн 60 — модульный барнхаус от 4 Стихии размером 7000×9600 мм. Проект площадью 59 м² подходит для семьи, отдыха за городом и круглогодичного проживания.",
+    gallery: [
+      { image: fourModulBarn60_1, type: "photo" },
+    ],
+    likes: 81, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Барнхаус", "59 м²", "Панорамное остекление"], style: "Барнхаус", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
   ...regionalBatchProjects,
 ];
 
@@ -7268,7 +7367,7 @@ export type MakerSummary = {
   telegram?: string;
 };
 const canonicalMakerSiteUrls: Record<string, string> = [
-  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, COUNTRYHOUSE, CUBADOM, IDOLHOUSE, WOODALP, BOXMATE, UVHOUSE, ASTERIUS, SMOLA, ULTRADOMSPB, FREEDOM_NATURI, CHEBWOOD, CAMPINGDOM, PSLCOMP, DOMNASM, BLACKMODULE, DOMM, MY_MODULE,
+  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, COUNTRYHOUSE, CUBADOM, IDOLHOUSE, WOODALP, BOXMATE, UVHOUSE, ASTERIUS, SMOLA, ULTRADOMSPB, FREEDOM_NATURI, CHEBWOOD, CAMPINGDOM, PSLCOMP, DOMNASM, BLACKMODULE, DOMM, MY_MODULE, FOUR_MODUL,
   ...regionalMakers,
 ].reduce((acc, m) => {
   if (m.id && m.siteUrl) acc[m.id] = m.siteUrl;
@@ -7330,4 +7429,4 @@ export const manufacturers = realManufacturers;
 // ГОРОДА
 // ============================================================================
 
-export const cities = ["Москва и МО", "Санкт-Петербург и ЛО", "Краснодарский край", "Казань", "Екатеринбург", "Пермский край", "Нижний Новгород", "Алтайский край", "Красноярск", "Самара", "Воронеж", "Уфа", "Чебоксары", "Новосибирск"];
+export const cities = ["Москва и МО", "Санкт-Петербург и ЛО", "Краснодарский край", "Казань", "Екатеринбург", "Пермский край", "Нижний Новгород", "Алтайский край", "Красноярск", "Самара", "Воронеж", "Уфа", "Чебоксары", "Новосибирск", "Рязань"];

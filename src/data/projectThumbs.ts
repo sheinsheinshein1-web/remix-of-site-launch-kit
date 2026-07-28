@@ -327,6 +327,11 @@ import thumb367 from "@/assets/my-module/barni/01__thumb.webp";
 import thumb368 from "@/assets/my-module/korner/01__thumb.webp";
 import thumb369 from "@/assets/my-module/scandinavia/01__thumb.webp";
 import thumb370 from "@/assets/my-module/z/01__thumb.webp";
+import thumb371 from "@/assets/4modul/karelia-30/01__thumb.webp";
+import thumb372 from "@/assets/4modul/karelia-45/01__thumb.webp";
+import thumb373 from "@/assets/4modul/karelia-60/01__thumb.webp";
+import thumb374 from "@/assets/4modul/karelia-75/01__thumb.webp";
+import thumb375 from "@/assets/4modul/barn-60/01__thumb.webp";
 
 export const projectThumbs: Record<number, string> = {
   32: thumb32,
@@ -655,4 +660,9 @@ export const projectThumbs: Record<number, string> = {
   368: thumb368,
   369: thumb369,
   370: thumb370,
+  371: thumb371,
+  372: thumb372,
+  373: thumb373,
+  374: thumb374,
+  375: thumb375,
 };

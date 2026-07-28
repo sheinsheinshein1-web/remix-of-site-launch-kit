@@ -164,6 +164,8 @@ const aboutByMakerId: Record<string, string> = {
     "DOMM — производитель модульных домов из Новосибирска. В подборке представлены компактные и семейные дома площадью от 27 до 60 м² для дачи, отдыха и круглогодичного проживания.",
   "my-module":
     "Мой Модуль — производитель модульных домов из Москвы и Московской области. В каталоге собраны проекты Барни, Корнер, Скандинавия и Z для дачного и круглогодичного загородного сценария.",
+  "4modul":
+    "4 Стихии — производитель модульных домов. В подборке представлены жилые проекты Карелия и Барн площадью от 30 до 76 м² с заводской сборкой, современными фасадами и планировками для дачи или круглогодичного проживания.",
 };
 
 const manualCounts: Record<string, number> = { bygge: 5 };
@@ -195,6 +197,7 @@ const partnerThemes: Record<string, PartnerTheme> = {
   blackmodule: { page: "0 0% 10%", panel: "0 0% 18%", ink: "0 0% 100%", light: false },
   domm: { page: "42 24% 13%", panel: "42 18% 21%", ink: "0 0% 100%", light: false },
   "my-module": { page: "216 16% 94%", panel: "0 0% 100%", ink: "218 20% 14%", light: true },
+  "4modul": { page: "90 10% 14%", panel: "90 8% 22%", ink: "0 0% 100%", light: false },
 };
 
 const Partner = () => {
@@ -332,7 +335,7 @@ const Partner = () => {
     return <NotFound />;
   }
 
-  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "countryhouse" || makerId === "cuba-dom" || makerId === "idolhouse" || makerId === "woodalp" || makerId === "boxmate" || makerId === "uvhouse" || makerId === "asterius-house" || makerId === "smola-house" || makerId === "ultradomspb" || makerId === "freedom-naturi" || makerId === "chebwood" || makerId === "campingdom" || makerId === "pslcomp" || makerId === "domnasm" || makerId === "blackmodule" || makerId === "domm" || makerId === "my-module";
+  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "countryhouse" || makerId === "cuba-dom" || makerId === "idolhouse" || makerId === "woodalp" || makerId === "boxmate" || makerId === "uvhouse" || makerId === "asterius-house" || makerId === "smola-house" || makerId === "ultradomspb" || makerId === "freedom-naturi" || makerId === "chebwood" || makerId === "campingdom" || makerId === "pslcomp" || makerId === "domnasm" || makerId === "blackmodule" || makerId === "domm" || makerId === "my-module" || makerId === "4modul";
   const theme = partnerThemes[makerId ?? ""] ?? DARK_THEME;
 
 
