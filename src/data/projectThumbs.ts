@@ -283,6 +283,18 @@ import thumb323 from "@/assets/asterius/altair-30/01__thumb.webp";
 import thumb324 from "@/assets/asterius/antares-40/01__thumb.webp";
 import thumb325 from "@/assets/asterius/antares-60/01__thumb.webp";
 import thumb326 from "@/assets/asterius/antares-80/01__thumb.webp";
+import thumb327 from "@/assets/smola/smola-103/01__thumb.webp";
+import thumb328 from "@/assets/smola/smola-65/01__thumb.webp";
+import thumb329 from "@/assets/smola/smola-77/01__thumb.webp";
+import thumb330 from "@/assets/smola/smola-43/01__thumb.webp";
+import thumb331 from "@/assets/ultradomspb/ultra-36/01__thumb.webp";
+import thumb332 from "@/assets/ultradomspb/ultra-54/01__thumb.webp";
+import thumb333 from "@/assets/ultradomspb/ultra-72/01__thumb.webp";
+import thumb334 from "@/assets/ultradomspb/ultra-65/01__thumb.webp";
+import thumb335 from "@/assets/ultradomspb/ultra-85/01__thumb.webp";
+import thumb336 from "@/assets/freedom/home-relaxation/01__thumb.webp";
+import thumb337 from "@/assets/freedom/home-privacy/01__thumb.webp";
+import thumb338 from "@/assets/freedom/mobile-home/01__thumb.webp";
 
 export const projectThumbs: Record<number, string> = {
   32: thumb32,
@@ -567,4 +579,16 @@ export const projectThumbs: Record<number, string> = {
   324: thumb324,
   325: thumb325,
   326: thumb326,
+  327: thumb327,
+  328: thumb328,
+  329: thumb329,
+  330: thumb330,
+  331: thumb331,
+  332: thumb332,
+  333: thumb333,
+  334: thumb334,
+  335: thumb335,
+  336: thumb336,
+  337: thumb337,
+  338: thumb338,
 };

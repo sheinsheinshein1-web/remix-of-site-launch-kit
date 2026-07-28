@@ -1096,6 +1096,36 @@ import asteriusAntares60Plan from "@/assets/asterius/antares-60/03-plan.webp";
 import asteriusAntares80_1 from "@/assets/asterius/antares-80/01.webp";
 import asteriusAntares80_2 from "@/assets/asterius/antares-80/02.webp";
 import asteriusAntares80Plan from "@/assets/asterius/antares-80/03-plan.webp";
+import smolaLogo from "@/assets/smola/logo.webp";
+import smola103_1 from "@/assets/smola/smola-103/01.webp";
+import smola103_2 from "@/assets/smola/smola-103/02.webp";
+import smola103Plan from "@/assets/smola/smola-103/03-plan.webp";
+import smola65_1 from "@/assets/smola/smola-65/01.webp";
+import smola65_2 from "@/assets/smola/smola-65/02.webp";
+import smola65Plan from "@/assets/smola/smola-65/03-plan.webp";
+import smola77_1 from "@/assets/smola/smola-77/01.webp";
+import smola77_2 from "@/assets/smola/smola-77/02.webp";
+import smola77Plan from "@/assets/smola/smola-77/03-plan.webp";
+import smola43_1 from "@/assets/smola/smola-43/01.webp";
+import smola43_2 from "@/assets/smola/smola-43/02.webp";
+import smola43Plan from "@/assets/smola/smola-43/03-plan.webp";
+import ultradomspbLogo from "@/assets/ultradomspb/logo.webp";
+import ultra36_1 from "@/assets/ultradomspb/ultra-36/01.webp";
+import ultra54_1 from "@/assets/ultradomspb/ultra-54/01.webp";
+import ultra72_1 from "@/assets/ultradomspb/ultra-72/01.webp";
+import ultra65_1 from "@/assets/ultradomspb/ultra-65/01.webp";
+import ultra65_2 from "@/assets/ultradomspb/ultra-65/02.webp";
+import ultra65Plan from "@/assets/ultradomspb/ultra-65/03-plan.webp";
+import ultra85_1 from "@/assets/ultradomspb/ultra-85/01.webp";
+import ultra85_2 from "@/assets/ultradomspb/ultra-85/02.webp";
+import ultra85Plan from "@/assets/ultradomspb/ultra-85/03-plan.webp";
+import freedomLogo from "@/assets/freedom/logo.webp";
+import freedomRelax_1 from "@/assets/freedom/home-relaxation/01.webp";
+import freedomRelax_2 from "@/assets/freedom/home-relaxation/02.webp";
+import freedomPrivacy_1 from "@/assets/freedom/home-privacy/01.webp";
+import freedomPrivacy_2 from "@/assets/freedom/home-privacy/02.webp";
+import freedomMobile_1 from "@/assets/freedom/mobile-home/01.webp";
+import freedomMobile_2 from "@/assets/freedom/mobile-home/02.webp";
 import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
@@ -1520,6 +1550,37 @@ const ASTERIUS: Maker = {
   siteUrl: "https://asterius-house.ru/",
   productionAddress: "Чебоксары, Кабельный проезд, 4",
   phone: "+7 (931) 105-80-90",
+};
+const SMOLA: Maker = {
+  name: "SMOLA HOUSE",
+  initials: "SH",
+  id: "smola-house",
+  logo: smolaLogo,
+  siteUrl: "https://smolahouse.ru/",
+  productionAddress: "Московская область",
+  phone: "+7 (910) 011-35-55",
+  email: "smolahouse@yandex.ru",
+  telegram: "https://t.me/smolahouse",
+};
+const ULTRADOMSPB: Maker = {
+  name: "UltraDomSPb",
+  initials: "UD",
+  id: "ultradomspb",
+  logo: ultradomspbLogo,
+  siteUrl: "https://ultradomspb.ru/",
+  productionAddress: "Санкт-Петербург",
+  phone: "+7 (812) 921-82-86",
+  email: "info@ultradomspb.ru",
+};
+const FREEDOM_NATURI: Maker = {
+  name: "FREEDOM NATURI",
+  initials: "FN",
+  id: "freedom-naturi",
+  logo: freedomLogo,
+  siteUrl: "https://freedom-modul.ru/",
+  productionAddress: "М.О. Воря-Богородское",
+  phone: "+7 (903) 715-95-20",
+  email: "info@freedom-modul.ru",
 };
 
 // ============================================================================
@@ -6250,6 +6311,213 @@ export const projects: Project[] = [
     features: ["2–3 спальни", "Панорамные окна", "Кухня-гостиная"], style: "Современный", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
   },
+  {
+    id: 327, name: "СМОЛА 103", badge: "Модульный дом", price: "9 690 000 ₽",
+    area: "103 м²", area_m2: 103, beds: 3, baths: 2, floors: 1, term: "по договору",
+    rooms: "3 спальни", purpose: "ИЖС / ПМЖ", city: "Москва и МО",
+    maker: { ...SMOLA, siteUrl: "https://smolahouse.ru/smola-103" },
+    description: "Просторный модульный дом 103 м² с большой террасой и панорамным остеклением.",
+    descriptionLong: "СМОЛА 103 от SMOLA HOUSE — одноэтажный модульный дом для семьи и круглогодичного проживания. Проект сочетает большую жилую площадь, выразительную кровлю, панорамное остекление и террасу; подходит для постоянного загородного сценария в Московской области.",
+    gallery: [
+      { image: smola103_1, type: "photo", fit: "contain", blur: true },
+      { image: smola103_2, type: "photo", fit: "contain", blur: true },
+      { image: smola103Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 72, rating: 4.9,
+    suitableFor: ["Круглогодичное проживание", "Для семьи", "ИЖС"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Терраса", "Панорамные окна", "Большая площадь"], style: "Современный", landSize: "8–12 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 328, name: "СМОЛА 65", badge: "Модульный дом", price: "6 290 000 ₽",
+    area: "65 м²", area_m2: 65, beds: 2, baths: 1, floors: 1, term: "по договору",
+    rooms: "2 спальни", purpose: "ИЖС / Дача", city: "Москва и МО",
+    maker: { ...SMOLA, siteUrl: "https://smolahouse.ru/smola-65" },
+    description: "Модульный дом 65 м² с террасой, панорамными окнами и семейной планировкой.",
+    descriptionLong: "СМОЛА 65 — компактный семейный модульный дом площадью 65 м². В проекте предусмотрены комфортные жилые зоны, терраса и панорамное остекление; дом подходит для дачи, сезонного отдыха и круглогодичного проживания.",
+    gallery: [
+      { image: smola65_1, type: "photo", fit: "contain", blur: true },
+      { image: smola65_2, type: "photo", fit: "contain", blur: true },
+      { image: smola65Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 64, rating: 4.8,
+    suitableFor: ["Круглогодичное проживание", "Для семьи", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Терраса", "Панорамные окна", "2 спальни"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 329, name: "СМОЛА 77", badge: "Модульный дом", price: "7 590 000 ₽",
+    area: "77 м²", area_m2: 77, beds: 3, baths: 1, floors: 1, term: "по договору",
+    rooms: "3 спальни", purpose: "ИЖС / ПМЖ", city: "Москва и МО",
+    maker: { ...SMOLA, siteUrl: "https://smolahouse.ru/smola-77" },
+    description: "Модульный дом 77 м² с террасой и планировкой для постоянного проживания семьи.",
+    descriptionLong: "СМОЛА 77 от SMOLA HOUSE — одноэтажный модульный дом для семейного загородного проживания. Визуально лёгкая архитектура, большая зона остекления и терраса делают проект удобным для жизни за городом и отдыха на участке.",
+    gallery: [
+      { image: smola77_1, type: "photo", fit: "contain", blur: true },
+      { image: smola77_2, type: "photo", fit: "contain", blur: true },
+      { image: smola77Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 68, rating: 4.9,
+    suitableFor: ["Круглогодичное проживание", "Для семьи", "ИЖС"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Терраса", "Панорамные окна", "Семейная планировка"], style: "Современный", landSize: "7–11 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 330, name: "СМОЛА 43", badge: "Модульный дом", price: "4 290 000 ₽",
+    area: "43 м²", area_m2: 43, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "1 спальня", purpose: "Дача / Глэмпинг", city: "Москва и МО",
+    maker: { ...SMOLA, siteUrl: "https://smolahouse.ru/smola-43" },
+    description: "Компактный модульный дом 43 м² для дачи, аренды или небольшой семьи.",
+    descriptionLong: "СМОЛА 43 — компактный модульный дом площадью 43 м² с современной архитектурой и террасой. Проект подходит для дачного сценария, гостевого дома, глэмпинга или арендного формата на загородном участке.",
+    gallery: [
+      { image: smola43_1, type: "photo", fit: "contain", blur: true },
+      { image: smola43_2, type: "photo", fit: "contain", blur: true },
+      { image: smola43Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 57, rating: 4.8,
+    suitableFor: ["Дача", "Глэмпинг", "Аренда"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Терраса", "Панорамные окна", "Компактный формат"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 331, name: "Ultra 36", badge: "Модульный дом", price: "3 320 000 ₽",
+    area: "36 м²", area_m2: 36, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "1 спальня", purpose: "ИЖС / Дача", city: "Санкт-Петербург и ЛО",
+    maker: { ...ULTRADOMSPB, siteUrl: "https://ultradomspb.ru/modeli-s-dvuskatnoj-krovlej/" },
+    description: "Одноэтажный модульный дом 36 м² с двускатной крышей под ключ.",
+    descriptionLong: "Ultra 36 от UltraDomSPb — компактный одноэтажный модульный дом с двускатной крышей. Проект подходит для дачи, гостевого дома или небольшого загородного проживания в Санкт-Петербурге и Ленинградской области.",
+    gallery: [
+      { image: ultra36_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 51, rating: 4.8,
+    suitableFor: ["Дача", "Для пары", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Двускатная крыша", "Компактный формат", "Под ключ"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 332, name: "Ultra 54", badge: "Модульный дом", price: "4 740 000 ₽",
+    area: "54 м²", area_m2: 54, beds: 2, baths: 1, floors: 1, term: "по договору",
+    rooms: "2 спальни", purpose: "ИЖС / Дача", city: "Санкт-Петербург и ЛО",
+    maker: { ...ULTRADOMSPB, siteUrl: "https://ultradomspb.ru/modeli-s-dvuskatnoj-krovlej/" },
+    description: "Модульный дом 54 м² с двускатной крышей для семьи или загородного отдыха.",
+    descriptionLong: "Ultra 54 — модульный дом средней площади с двускатной крышей и практичной одноэтажной планировкой. Подходит для семейного дачного сценария и круглогодичного проживания за городом.",
+    gallery: [
+      { image: ultra54_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 58, rating: 4.8,
+    suitableFor: ["Круглогодичное проживание", "Для семьи", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Двускатная крыша", "2 спальни", "Под ключ"], style: "Современный", landSize: "5–8 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 333, name: "Ultra 72", badge: "Модульный дом", price: "5 940 000 ₽",
+    area: "72 м²", area_m2: 72, beds: 3, baths: 1, floors: 1, term: "по договору",
+    rooms: "3 спальни", purpose: "ИЖС / ПМЖ", city: "Санкт-Петербург и ЛО",
+    maker: { ...ULTRADOMSPB, siteUrl: "https://ultradomspb.ru/modeli-s-dvuskatnoj-krovlej/" },
+    description: "Одноэтажный модульный дом 72 м² с двускатной крышей для постоянного проживания.",
+    descriptionLong: "Ultra 72 от UltraDomSPb — просторный одноэтажный модульный дом с двускатной крышей. Площадь 72 м² позволяет организовать семейный сценарий с несколькими спальнями и общей зоной для жизни за городом.",
+    gallery: [
+      { image: ultra72_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 62, rating: 4.9,
+    suitableFor: ["Круглогодичное проживание", "Для семьи", "ИЖС"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Двускатная крыша", "3 спальни", "Под ключ"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 334, name: "Ultra 65", badge: "Модульный дом", price: "по запросу",
+    area: "65 м²", area_m2: 65, beds: 3, baths: 1, floors: 1, term: "по договору",
+    rooms: "3 комнаты", purpose: "ИЖС / ПМЖ", city: "Санкт-Петербург и ЛО",
+    maker: { ...ULTRADOMSPB, siteUrl: "https://ultradomspb.ru/ultra65.html" },
+    description: "Модульный дом 65 м² с плоской кровлей, отделкой и несколькими комнатами.",
+    descriptionLong: "Ultra 65 — модульный дом площадью 65 м² с современным фасадом, плоской кровлей и готовой отделкой. На странице проекта представлены реальные фото интерьера и планировка, дом подходит для загородного проживания под ключ.",
+    gallery: [
+      { image: ultra65_1, type: "photo", fit: "contain", blur: true },
+      { image: ultra65_2, type: "photo", fit: "contain", blur: true },
+      { image: ultra65Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 67, rating: 4.9,
+    suitableFor: ["Круглогодичное проживание", "Для семьи", "ИЖС"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Плоская кровля", "Реальные фото", "Планировка"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 335, name: "Ultra 85", badge: "Модульный дом", price: "7 280 000 ₽",
+    area: "85 м²", area_m2: 85, beds: 3, baths: 1, floors: 1, term: "по договору",
+    rooms: "3 комнаты", purpose: "ИЖС / ПМЖ", city: "Санкт-Петербург и ЛО",
+    maker: { ...ULTRADOMSPB, siteUrl: "https://ultradomspb.ru/ultra85.html" },
+    description: "Модульный дом 85 м² с террасой, вентиляцией и панорамными окнами.",
+    descriptionLong: "Ultra 85 от UltraDomSPb — модульный дом 85 м² с террасой, панорамным остеклением и инженерными решениями для круглогодичного проживания. Проект представлен с реальными фотографиями и планировочной схемой.",
+    gallery: [
+      { image: ultra85_1, type: "photo", fit: "contain", blur: true },
+      { image: ultra85_2, type: "photo", fit: "contain", blur: true },
+      { image: ultra85Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 74, rating: 4.9,
+    suitableFor: ["Круглогодичное проживание", "Для семьи", "ИЖС"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Терраса", "Панорамные окна", "Вентиляция"], style: "Современный", landSize: "7–12 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 336, name: "Дом для расслабления", badge: "Модульный дом", price: "по запросу",
+    area: "по запросу", beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "1 спальня", purpose: "Отдых / Дача", city: "Москва и МО",
+    maker: { ...FREEDOM_NATURI, siteUrl: "https://freedom-modul.ru/catalog/home-for-relaxation" },
+    description: "Автономный модульный дом FREEDOM NATURI для отдыха и проживания на природе.",
+    descriptionLong: "Дом для расслабления FREEDOM NATURI — автономное модульное решение для отдыха, дачи и проживания вне городской среды. Компания делает дома, которые не требуют капитальной застройки и рассчитаны на быстрый сценарий установки.",
+    gallery: [
+      { image: freedomRelax_1, type: "photo", fit: "contain", blur: true },
+      { image: freedomRelax_2, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 59, rating: 4.8,
+    suitableFor: ["Дача", "Отдых", "Автономное проживание"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Автономность", "Быстрая установка", "Отдых на природе"], style: "Современный", landSize: "4–8 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 337, name: "Дом для уединения", badge: "Модульный дом", price: "по запросу",
+    area: "по запросу", beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "1 спальня", purpose: "Отдых / Глэмпинг", city: "Москва и МО",
+    maker: { ...FREEDOM_NATURI, siteUrl: "https://freedom-modul.ru/catalog/home-for-privacy" },
+    description: "Компактный автономный дом FREEDOM NATURI для приватного отдыха и проживания.",
+    descriptionLong: "Дом для уединения FREEDOM NATURI — компактный модульный формат для приватного отдыха, глэмпинга или гостевого сценария. Проект ориентирован на быстрое размещение на участке и использование в любое время года.",
+    gallery: [
+      { image: freedomPrivacy_1, type: "photo", fit: "contain", blur: true },
+      { image: freedomPrivacy_2, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 55, rating: 4.8,
+    suitableFor: ["Глэмпинг", "Дача", "Аренда"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Автономность", "Компактный формат", "Приватность"], style: "Современный", landSize: "3–7 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 338, name: "Автономный мобильный дом", badge: "Модульный дом", price: "по запросу",
+    area: "по запросу", beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "студия", purpose: "Глэмпинг / Аренда", city: "Москва и МО",
+    maker: { ...FREEDOM_NATURI, siteUrl: "https://freedom-modul.ru/catalog/autonomous-mobile-homes" },
+    description: "Мобильный автономный дом FREEDOM NATURI для глэмпинга, отдыха и работы.",
+    descriptionLong: "Автономный мобильный дом FREEDOM NATURI — готовое решение для отдыха, работы или коммерческого размещения на природе. Формат подходит для глэмпинга, аренды и мобильных сценариев без капитальной стройки.",
+    gallery: [
+      { image: freedomMobile_1, type: "photo", fit: "contain", blur: true },
+      { image: freedomMobile_2, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 61, rating: 4.9,
+    suitableFor: ["Глэмпинг", "Аренда", "Автономное проживание"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Мобильность", "Автономность", "Коммерческий сценарий"], style: "Современный", landSize: "3–8 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
   ...regionalBatchProjects,
 ];
 
@@ -6380,7 +6648,7 @@ export type MakerSummary = {
   telegram?: string;
 };
 const canonicalMakerSiteUrls: Record<string, string> = [
-  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, COUNTRYHOUSE, CUBADOM, IDOLHOUSE, WOODALP, BOXMATE, UVHOUSE, ASTERIUS,
+  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, COUNTRYHOUSE, CUBADOM, IDOLHOUSE, WOODALP, BOXMATE, UVHOUSE, ASTERIUS, SMOLA, ULTRADOMSPB, FREEDOM_NATURI,
   ...regionalMakers,
 ].reduce((acc, m) => {
   if (m.id && m.siteUrl) acc[m.id] = m.siteUrl;
