@@ -156,6 +156,14 @@ const aboutByMakerId: Record<string, string> = {
     "ПостройДом — строительная компания, работающая в Алтайском крае. В каталоге представлены современные каркасные дома Forest и A-frame площадью от 50 до 253 м².",
   "altai-mda":
     "Алтай МодульДом — производитель модульных домов из Алтайского края. В подборке представлены компактные и семейные дома заводской готовности площадью от 15 до 71,2 м².",
+  domnasm:
+    "Домнас Модуль — производитель модульных домов из Казани. В каталоге представлены дома заводской готовности с отделкой, мебелью и коммуникациями: компактные модули, семейные проекты и barn-формат.",
+  blackmodule:
+    "BlackModule — производитель модульных домов из Санкт-Петербурга и Ленинградской области. Компания делает современные дома заводской готовности с тёмными фасадами, террасами и форматами от одного до четырёх модулей.",
+  domm:
+    "DOMM — производитель модульных домов из Новосибирска. В подборке представлены компактные и семейные дома площадью от 27 до 60 м² для дачи, отдыха и круглогодичного проживания.",
+  "my-module":
+    "Мой Модуль — производитель модульных домов из Москвы и Московской области. В каталоге собраны проекты Барни, Корнер, Скандинавия и Z для дачного и круглогодичного загородного сценария.",
 };
 
 const manualCounts: Record<string, number> = { bygge: 5 };
@@ -183,7 +191,10 @@ const partnerThemes: Record<string, PartnerTheme> = {
   chebwood: { page: "40 20% 15%", panel: "40 16% 23%", ink: "0 0% 100%", light: false },
   campingdom: { page: "52 16% 14%", panel: "52 12% 22%", ink: "0 0% 100%", light: false },
   pslcomp: { page: "100 6% 16%", panel: "100 5% 24%", ink: "0 0% 100%", light: false },
-
+  domnasm: { page: "36 22% 92%", panel: "36 18% 96%", ink: "28 15% 12%", light: true },
+  blackmodule: { page: "0 0% 10%", panel: "0 0% 18%", ink: "0 0% 100%", light: false },
+  domm: { page: "42 24% 13%", panel: "42 18% 21%", ink: "0 0% 100%", light: false },
+  "my-module": { page: "216 16% 94%", panel: "0 0% 100%", ink: "218 20% 14%", light: true },
 };
 
 const Partner = () => {
@@ -321,7 +332,7 @@ const Partner = () => {
     return <NotFound />;
   }
 
-  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "countryhouse" || makerId === "cuba-dom" || makerId === "idolhouse" || makerId === "woodalp" || makerId === "boxmate" || makerId === "uvhouse" || makerId === "asterius-house" || makerId === "smola-house" || makerId === "ultradomspb" || makerId === "freedom-naturi" || makerId === "chebwood" || makerId === "campingdom" || makerId === "pslcomp";
+  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "countryhouse" || makerId === "cuba-dom" || makerId === "idolhouse" || makerId === "woodalp" || makerId === "boxmate" || makerId === "uvhouse" || makerId === "asterius-house" || makerId === "smola-house" || makerId === "ultradomspb" || makerId === "freedom-naturi" || makerId === "chebwood" || makerId === "campingdom" || makerId === "pslcomp" || makerId === "domnasm" || makerId === "blackmodule" || makerId === "domm" || makerId === "my-module";
   const theme = partnerThemes[makerId ?? ""] ?? DARK_THEME;
 
 

@@ -308,6 +308,25 @@ import thumb348 from "@/assets/pslcomp/haytek-36/01__thumb.webp";
 import thumb349 from "@/assets/pslcomp/barn-40/01__thumb.webp";
 import thumb350 from "@/assets/pslcomp/haytek-40/01__thumb.webp";
 import thumb351 from "@/assets/pslcomp/barn-45/01__thumb.webp";
+import thumb352 from "@/assets/domnasm/domnas-35/01__thumb.webp";
+import thumb353 from "@/assets/domnasm/domnas-50/01__thumb.webp";
+import thumb354 from "@/assets/domnasm/domnas-80/01__thumb.webp";
+import thumb355 from "@/assets/domnasm/barn/01__thumb.webp";
+import thumb356 from "@/assets/domnasm/mgn/01__thumb.webp";
+import thumb357 from "@/assets/blackmodule/one-module/01__thumb.webp";
+import thumb358 from "@/assets/blackmodule/one-half-module/01__thumb.webp";
+import thumb359 from "@/assets/blackmodule/two-module/01__thumb.webp";
+import thumb360 from "@/assets/blackmodule/three-module/01__thumb.webp";
+import thumb361 from "@/assets/blackmodule/four-module/01__thumb.webp";
+import thumb362 from "@/assets/domm/modul-house-1/01__thumb.webp";
+import thumb363 from "@/assets/domm/modul-house-2/01__thumb.webp";
+import thumb364 from "@/assets/domm/modul-house-3/01__thumb.webp";
+import thumb365 from "@/assets/domm/modul-house-4/01__thumb.webp";
+import thumb366 from "@/assets/domm/modul-house-6/01__thumb.webp";
+import thumb367 from "@/assets/my-module/barni/01__thumb.webp";
+import thumb368 from "@/assets/my-module/korner/01__thumb.webp";
+import thumb369 from "@/assets/my-module/scandinavia/01__thumb.webp";
+import thumb370 from "@/assets/my-module/z/01__thumb.webp";
 
 export const projectThumbs: Record<number, string> = {
   32: thumb32,
@@ -617,4 +636,23 @@ export const projectThumbs: Record<number, string> = {
   349: thumb349,
   350: thumb350,
   351: thumb351,
+  352: thumb352,
+  353: thumb353,
+  354: thumb354,
+  355: thumb355,
+  356: thumb356,
+  357: thumb357,
+  358: thumb358,
+  359: thumb359,
+  360: thumb360,
+  361: thumb361,
+  362: thumb362,
+  363: thumb363,
+  364: thumb364,
+  365: thumb365,
+  366: thumb366,
+  367: thumb367,
+  368: thumb368,
+  369: thumb369,
+  370: thumb370,
 };

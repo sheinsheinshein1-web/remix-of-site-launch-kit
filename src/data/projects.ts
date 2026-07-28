@@ -1143,6 +1143,28 @@ import pslHaytek36_1 from "@/assets/pslcomp/haytek-36/01.webp";
 import pslBarn40_1 from "@/assets/pslcomp/barn-40/01.webp";
 import pslHaytek40_1 from "@/assets/pslcomp/haytek-40/01.webp";
 import pslBarn45_1 from "@/assets/pslcomp/barn-45/01.webp";
+import domnas35_1 from "@/assets/domnasm/domnas-35/01.webp";
+import domnas50_1 from "@/assets/domnasm/domnas-50/01.webp";
+import domnas80_1 from "@/assets/domnasm/domnas-80/01.webp";
+import domnasBarn_1 from "@/assets/domnasm/barn/01.webp";
+import domnasMgn_1 from "@/assets/domnasm/mgn/01.webp";
+import blackmoduleLogo from "@/assets/blackmodule/logo.webp";
+import blackmoduleOne_1 from "@/assets/blackmodule/one-module/01.webp";
+import blackmoduleOneHalf_1 from "@/assets/blackmodule/one-half-module/01.webp";
+import blackmoduleTwo_1 from "@/assets/blackmodule/two-module/01.webp";
+import blackmoduleThree_1 from "@/assets/blackmodule/three-module/01.webp";
+import blackmoduleFour_1 from "@/assets/blackmodule/four-module/01.webp";
+import dommLogo from "@/assets/domm/logo.webp";
+import dommHouse1_1 from "@/assets/domm/modul-house-1/01.webp";
+import dommHouse2_1 from "@/assets/domm/modul-house-2/01.webp";
+import dommHouse3_1 from "@/assets/domm/modul-house-3/01.webp";
+import dommHouse4_1 from "@/assets/domm/modul-house-4/01.webp";
+import dommHouse6_1 from "@/assets/domm/modul-house-6/01.webp";
+import myModuleLogo from "@/assets/my-module/logo.webp";
+import myModuleBarni_1 from "@/assets/my-module/barni/01.webp";
+import myModuleKorner_1 from "@/assets/my-module/korner/01.webp";
+import myModuleScandinavia_1 from "@/assets/my-module/scandinavia/01.webp";
+import myModuleZ_1 from "@/assets/my-module/z/01.webp";
 import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
@@ -1628,6 +1650,44 @@ const PSLCOMP: Maker = {
   siteUrl: "https://www.pslcomp.ru/katalog-proektov-derevyannyh-domov/modulnye-doma",
   productionAddress: "Санкт-Петербург и Москва",
   phone: "+7 (812) 596-39-01",
+};
+const DOMNASM: Maker = {
+  name: "Домнас Модуль",
+  initials: "ДМ",
+  id: "domnasm",
+  siteUrl: "https://domnasm.ru/",
+  productionAddress: "Казань, ул. Адмиралтейская, д. 3, к. 1, офис 205",
+};
+const BLACKMODULE: Maker = {
+  name: "BlackModule",
+  initials: "BM",
+  id: "blackmodule",
+  logo: blackmoduleLogo,
+  siteUrl: "https://blackmodule.ru/",
+  productionAddress: "Мурино, Сквозной проезд, 4",
+  phone: "+7 (921) 343-70-44",
+  email: "blackmodulespb@gmail.com",
+};
+const DOMM: Maker = {
+  name: "DOMM",
+  initials: "DM",
+  id: "domm",
+  logo: dommLogo,
+  siteUrl: "https://domm.store/",
+  productionAddress: "Новосибирск",
+  phone: "+7 (983) 307-29-87",
+  email: "dom-m54@mail.ru",
+};
+const MY_MODULE: Maker = {
+  name: "Мой Модуль",
+  initials: "ММ",
+  id: "my-module",
+  logo: myModuleLogo,
+  siteUrl: "https://my-module.ru/module-dom/",
+  productionAddress: "Московская область, городской округ Балашиха, дер. Дятловка, 828",
+  phone: "8-800-222-07-67",
+  email: "info@my-module.ru",
+  telegram: "https://t.me/Mymodule",
 };
 
 // ============================================================================
@@ -6774,6 +6834,310 @@ export const projects: Project[] = [
     features: ["CLT", "45 м²", "Barn-стиль"], style: "Барнхаус", landSize: "5–8 соток",
     hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
   },
+  {
+    id: 352, name: "Домнас 35", badge: "Модульный дом", price: "2 017 000 ₽",
+    area: "35 м²", area_m2: 35, beds: 1, baths: 1, floors: 1, term: "30 д.",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Казань",
+    maker: { ...DOMNASM, siteUrl: "https://domnasm.ru/#projects" },
+    description: "Компактный модульный дом Домнас 35 с отделкой, мебелью и инженерными коммуникациями.",
+    descriptionLong: "Домнас 35 — небольшой модульный дом заводской готовности для дачи, гостевого сценария или первого загородного дома. Проект рассчитан на быстрый запуск проживания: отделка, мебель и коммуникации входят в концепцию производителя.",
+    gallery: [
+      { image: domnas35_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 58, rating: 4.9,
+    suitableFor: ["Дача", "Гостевой дом", "Круглогодичное проживание"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["35 м²", "Готовая отделка", "Заводская сборка"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 353, name: "Домнас 50", badge: "Модульный дом", price: "2 400 000 ₽",
+    area: "50 м²", area_m2: 50, beds: 1, baths: 1, floors: 1, term: "30 д.",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Казань",
+    maker: { ...DOMNASM, siteUrl: "https://domnasm.ru/#projects" },
+    description: "Модульный дом Домнас 50 с террасой и современной одноэтажной архитектурой.",
+    descriptionLong: "Домнас 50 — одноэтажный модульный дом для загородного участка в Казани и Татарстане. Формат подходит для сезонного и круглогодичного проживания, гостевого размещения или компактного семейного дома.",
+    gallery: [
+      { image: domnas50_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 62, rating: 4.9,
+    suitableFor: ["Дача", "Пара", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["50 м²", "Терраса", "Панорамное остекление"], style: "Современный", landSize: "5–8 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 354, name: "Домнас 80", badge: "Модульный дом", price: "3 600 000 ₽",
+    area: "80 м²", area_m2: 80, beds: 2, baths: 1, floors: 1, term: "30 д.",
+    rooms: "2 спальни", purpose: "Семья / ПМЖ", city: "Казань",
+    maker: { ...DOMNASM, siteUrl: "https://domnasm.ru/#projects" },
+    description: "Семейный модульный дом Домнас 80 с увеличенной площадью и террасой.",
+    descriptionLong: "Домнас 80 — модульный дом для семьи, которой нужен более просторный формат загородного проживания. Проект сохраняет заводскую скорость производства и подходит для круглогодичного сценария.",
+    gallery: [
+      { image: domnas80_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 66, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["80 м²", "2 спальни", "Терраса"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 355, name: "BARN", badge: "Модульный дом", price: "5 662 000 ₽",
+    area: "80 м²", area_m2: 80, beds: 2, baths: 1, floors: 1, term: "30 д.",
+    rooms: "2 спальни", purpose: "ПМЖ / Глэмпинг", city: "Казань",
+    maker: { ...DOMNASM, siteUrl: "https://domnasm.ru/#projects" },
+    description: "Модульный дом BARN от Домнас Модуль в выразительной barn-архитектуре.",
+    descriptionLong: "BARN — проект Домнас Модуль с архитектурным акцентом на панорамное остекление и современный силуэт. Подходит для загородного проживания, видового участка или коммерческого размещения.",
+    gallery: [
+      { image: domnasBarn_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 71, rating: 4.9,
+    suitableFor: ["ПМЖ", "Глэмпинг", "Видовой участок"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Barn-стиль", "Панорамное остекление", "Терраса"], style: "Барнхаус", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 356, name: "Домнас МГН", badge: "Модульный дом", price: "2 087 860 ₽",
+    area: "35 м²", area_m2: 35, beds: 1, baths: 1, floors: 1, term: "30 д.",
+    rooms: "студия", purpose: "Дача / Гостевой дом", city: "Казань",
+    maker: { ...DOMNASM, siteUrl: "https://domnasm.ru/#projects" },
+    description: "Компактный модульный дом Домнас МГН с готовой отделкой и коммуникациями.",
+    descriptionLong: "Домнас МГН — компактный модульный проект для быстрого размещения на участке. Формат подходит для дачи, гостевого дома или отдельного жилого модуля с готовыми инженерными решениями.",
+    gallery: [
+      { image: domnasMgn_1, type: "photo" },
+    ],
+    likes: 55, rating: 4.9,
+    suitableFor: ["Дача", "Гостевой дом", "Быстрый запуск"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["35 м²", "Готовая комплектация", "Компактный модуль"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 357, name: "Одномодульный дом", badge: "Модульный дом", price: "от 2 071 000 ₽",
+    area: "55 м²", area_m2: 55, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Санкт-Петербург и ЛО",
+    maker: { ...BLACKMODULE, siteUrl: "https://blackmodule.ru/#catalog" },
+    description: "Одномодульный дом BlackModule с террасой и тёмным современным фасадом.",
+    descriptionLong: "Одномодульный дом BlackModule — компактный проект для загородного отдыха и проживания. Площадь с террасой — до 55 м², тёплый контур — около 24 м².",
+    gallery: [
+      { image: blackmoduleOne_1, type: "photo" },
+    ],
+    likes: 64, rating: 4.9,
+    suitableFor: ["Дача", "Гостевой дом", "Пара"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Терраса", "Тёмный фасад", "Заводская сборка"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 358, name: "Полуторамодульный дом", badge: "Модульный дом", price: "от 3 150 000 ₽",
+    area: "62 м²", area_m2: 62, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Санкт-Петербург и ЛО",
+    maker: { ...BLACKMODULE, siteUrl: "https://blackmodule.ru/#catalog" },
+    description: "Полуторамодульный дом BlackModule с увеличенной площадью и террасой.",
+    descriptionLong: "Полуторамодульный дом BlackModule — формат для тех, кому нужен компактный дом, но с более свободной жилой зоной. Площадь с террасой — около 62 м², тёплый контур — около 37 м².",
+    gallery: [
+      { image: blackmoduleOneHalf_1, type: "photo" },
+    ],
+    likes: 67, rating: 4.9,
+    suitableFor: ["Дача", "ПМЖ", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["62 м²", "Терраса", "Деревянный фасад"], style: "Современный", landSize: "5–8 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 359, name: "Двухмодульный дом", badge: "Модульный дом", price: "от 4 150 000 ₽",
+    area: "96 м²", area_m2: 96, beds: 2, baths: 1, floors: 1, term: "по договору",
+    rooms: "2 спальни", purpose: "Семья / ПМЖ", city: "Санкт-Петербург и ЛО",
+    maker: { ...BLACKMODULE, siteUrl: "https://blackmodule.ru/#catalog" },
+    description: "Двухмодульный дом BlackModule для семьи и круглогодичного проживания.",
+    descriptionLong: "Двухмодульный дом BlackModule — семейный проект площадью до 96 м² с просторной планировкой и современным тёмным фасадом. Подходит для дачи и постоянного проживания за городом.",
+    gallery: [
+      { image: blackmoduleTwo_1, type: "photo" },
+    ],
+    likes: 73, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["96 м²", "2 модуля", "Терраса"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 360, name: "Трёхмодульный дом", badge: "Модульный дом", price: "от 6 200 000 ₽",
+    area: "120 м²", area_m2: 120, beds: 3, baths: 1, floors: 1, term: "по договору",
+    rooms: "3 спальни", purpose: "Семья / ПМЖ", city: "Санкт-Петербург и ЛО",
+    maker: { ...BLACKMODULE, siteUrl: "https://blackmodule.ru/#catalog" },
+    description: "Трёхмодульный дом BlackModule площадью до 120 м² для семейного проживания.",
+    descriptionLong: "Трёхмодульный дом BlackModule — просторный модульный проект с современным фасадом, террасой и площадью до 120 м². Формат рассчитан на постоянное проживание семьи за городом.",
+    gallery: [
+      { image: blackmoduleThree_1, type: "photo" },
+    ],
+    likes: 76, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Большой участок"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["120 м²", "3 модуля", "Панорамные окна"], style: "Современный", landSize: "8–12 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 361, name: "Четырёхмодульный дом", badge: "Модульный дом", price: "от 7 620 000 ₽",
+    area: "146 м²", area_m2: 146, beds: 3, baths: 2, floors: 1, term: "по договору",
+    rooms: "3 спальни", purpose: "Семья / ПМЖ", city: "Санкт-Петербург и ЛО",
+    maker: { ...BLACKMODULE, siteUrl: "https://blackmodule.ru/#catalog" },
+    description: "Четырёхмодульный дом BlackModule площадью до 146 м² с просторной планировкой.",
+    descriptionLong: "Четырёхмодульный дом BlackModule — самый просторный формат линейки для постоянного проживания, семейного сценария и участков, где нужна полноценная загородная резиденция.",
+    gallery: [
+      { image: blackmoduleFour_1, type: "photo" },
+    ],
+    likes: 79, rating: 4.9,
+    suitableFor: ["Большая семья", "ПМЖ", "Загородная резиденция"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["146 м²", "4 модуля", "Просторная планировка"], style: "Современный", landSize: "10–15 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 362, name: "MODUL HOUSE 1", badge: "Модульный дом", price: "990 000 ₽",
+    area: "27 м²", area_m2: 27, beds: 1, baths: 1, floors: 1, term: "30 д.",
+    rooms: "студия", purpose: "Дача / Отдых", city: "Новосибирск",
+    maker: { ...DOMM, siteUrl: "https://domm.store/" },
+    description: "Модульный дом DOMM площадью 27 м² с террасой для отдыха или проживания.",
+    descriptionLong: "MODUL HOUSE 1 от DOMM — компактный модульный дом с террасой для двух человек, дачного отдыха или гостевого размещения. Производитель работает в Новосибирске и выпускает дома заводской готовности.",
+    gallery: [
+      { image: dommHouse1_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 61, rating: 4.9,
+    suitableFor: ["Дача", "Гостевой дом", "Пара"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["27 м²", "Терраса", "Заводская сборка"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 363, name: "MODUL HOUSE 2", badge: "Модульный дом", price: "1 350 000 ₽",
+    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 1, term: "30 д.",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Новосибирск",
+    maker: { ...DOMM, siteUrl: "https://domm.store/" },
+    description: "Модульный дом DOMM 30 м² с террасой и компактной планировкой.",
+    descriptionLong: "MODUL HOUSE 2 — модульный дом площадью 30 м² для отдыха, дачи или компактного круглогодичного проживания. Проект сочетает небольшой размер, террасу и быстрый цикл производства.",
+    gallery: [
+      { image: dommHouse2_1, type: "photo" },
+    ],
+    likes: 64, rating: 4.9,
+    suitableFor: ["Дача", "ПМЖ", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["30 м²", "Терраса", "Компактная планировка"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 364, name: "MODUL HOUSE 3", badge: "Модульный дом", price: "1 450 000 ₽",
+    area: "40 м²", area_m2: 40, beds: 1, baths: 1, floors: 1, term: "30 д.",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Новосибирск",
+    maker: { ...DOMM, siteUrl: "https://domm.store/" },
+    description: "Модульный дом DOMM 40 м² для дачи и круглогодичного проживания.",
+    descriptionLong: "MODUL HOUSE 3 — проект площадью 40 м² от DOMM. Подходит для загородного участка, гостевого дома или небольшого постоянного проживания с современной модульной архитектурой.",
+    gallery: [
+      { image: dommHouse3_1, type: "photo" },
+    ],
+    likes: 66, rating: 4.9,
+    suitableFor: ["Дача", "ПМЖ", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["40 м²", "Терраса", "Панорамные окна"], style: "Современный", landSize: "5–8 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 365, name: "MODUL HOUSE 4", badge: "Модульный дом", price: "1 550 000 ₽",
+    area: "56,3 м²", area_m2: 56.3, beds: 2, baths: 1, floors: 1, term: "30 д.",
+    rooms: "2 спальни", purpose: "Семья / ПМЖ", city: "Новосибирск",
+    maker: { ...DOMM, siteUrl: "https://domm.store/" },
+    description: "Модульный дом DOMM 56,3 м² с увеличенной площадью для семьи.",
+    descriptionLong: "MODUL HOUSE 4 — модульный дом площадью 56,3 м² для семьи, дачного отдыха или постоянного проживания. Проект рассчитан на более свободный сценарий жизни за городом.",
+    gallery: [
+      { image: dommHouse4_1, type: "photo" },
+    ],
+    likes: 69, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["56,3 м²", "2 спальни", "Терраса"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 366, name: "MODUL HOUSE 6", badge: "Модульный дом", price: "2 350 000 ₽",
+    area: "60 м²", area_m2: 60, beds: 2, baths: 1, floors: 1, term: "30 д.",
+    rooms: "2 спальни", purpose: "Семья / ПМЖ", city: "Новосибирск",
+    maker: { ...DOMM, siteUrl: "https://domm.store/" },
+    description: "Модульный дом DOMM 60 м² с террасой для семейного проживания.",
+    descriptionLong: "MODUL HOUSE 6 — модульный дом площадью 60 м² для семьи и круглогодичного загородного проживания. Проект подходит для участка, где нужен быстрый запуск дома под ключ.",
+    gallery: [
+      { image: dommHouse6_1, type: "photo" },
+    ],
+    likes: 72, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["60 м²", "Терраса", "Семейный формат"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 367, name: "Барни", badge: "Модульный дом", price: "3 385 000 ₽",
+    area: "45 м²", area_m2: 45, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Москва и МО",
+    maker: { ...MY_MODULE, siteUrl: "https://my-module.ru/module-dom/modulnyj-dom-barni/" },
+    description: "Модульный дом «Барни» от Мой Модуль для дачи и загородного проживания.",
+    descriptionLong: "Барни — модульный дом от Мой Модуль с современной архитектурой и готовой заводской комплектацией. Производитель работает в Москве и Московской области.",
+    gallery: [
+      { image: myModuleBarni_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 65, rating: 4.9,
+    suitableFor: ["Дача", "ПМЖ", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Готовая комплектация", "Терраса", "Заводская сборка"], style: "Современный", landSize: "5–8 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 368, name: "Корнер", badge: "Модульный дом", price: "2 130 000 ₽",
+    area: "35 м²", area_m2: 35, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Москва и МО",
+    maker: { ...MY_MODULE, siteUrl: "https://my-module.ru/module-dom/modulnyj-dom-scandinavia-corner/" },
+    description: "Модульный дом «Корнер» от Мой Модуль в компактном современном формате.",
+    descriptionLong: "Корнер — компактный модульный дом от Мой Модуль для дачного участка, гостевого размещения или небольшого круглогодичного проживания в Московской области.",
+    gallery: [
+      { image: myModuleKorner_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 62, rating: 4.9,
+    suitableFor: ["Дача", "Гостевой дом", "Пара"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Компактный формат", "Терраса", "Московская область"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 369, name: "Скандинавия", badge: "Модульный дом", price: "1 475 000 ₽",
+    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "студия", purpose: "Дача / Отдых", city: "Москва и МО",
+    maker: { ...MY_MODULE, siteUrl: "https://my-module.ru/module-dom/modulnyj-dom-scandinavia/" },
+    description: "Модульный дом «Скандинавия» от Мой Модуль для отдыха и дачного проживания.",
+    descriptionLong: "Скандинавия — модульный дом от Мой Модуль в лаконичной современной архитектуре. Подходит для дачи, гостевого дома или компактного загородного сценария.",
+    gallery: [
+      { image: myModuleScandinavia_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 59, rating: 4.9,
+    suitableFor: ["Дача", "Отдых", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Скандинавский стиль", "Компактный модуль", "Заводская сборка"], style: "Скандинавский", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 370, name: "Z", badge: "Модульный дом", price: "4 350 000 ₽",
+    area: "60 м²", area_m2: 60, beds: 2, baths: 1, floors: 1, term: "по договору",
+    rooms: "2 спальни", purpose: "Семья / ПМЖ", city: "Москва и МО",
+    maker: { ...MY_MODULE, siteUrl: "https://my-module.ru/module-dom/modulnyj-dom-z/" },
+    description: "Модульный дом «Z» от Мой Модуль с выразительной современной архитектурой.",
+    descriptionLong: "Z — один из старших модульных проектов Мой Модуль для семейного проживания, дачи или загородного дома в Московской области. Проект выделяется современной архитектурой и готовой заводской комплектацией.",
+    gallery: [
+      { image: myModuleZ_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 70, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["60 м²", "2 спальни", "Современный фасад"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
   ...regionalBatchProjects,
 ];
 
@@ -6904,7 +7268,7 @@ export type MakerSummary = {
   telegram?: string;
 };
 const canonicalMakerSiteUrls: Record<string, string> = [
-  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, COUNTRYHOUSE, CUBADOM, IDOLHOUSE, WOODALP, BOXMATE, UVHOUSE, ASTERIUS, SMOLA, ULTRADOMSPB, FREEDOM_NATURI, CHEBWOOD, CAMPINGDOM, PSLCOMP,
+  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, COUNTRYHOUSE, CUBADOM, IDOLHOUSE, WOODALP, BOXMATE, UVHOUSE, ASTERIUS, SMOLA, ULTRADOMSPB, FREEDOM_NATURI, CHEBWOOD, CAMPINGDOM, PSLCOMP, DOMNASM, BLACKMODULE, DOMM, MY_MODULE,
   ...regionalMakers,
 ].reduce((acc, m) => {
   if (m.id && m.siteUrl) acc[m.id] = m.siteUrl;
@@ -6966,4 +7330,4 @@ export const manufacturers = realManufacturers;
 // ГОРОДА
 // ============================================================================
 
-export const cities = ["Москва и МО", "Санкт-Петербург и ЛО", "Краснодарский край", "Казань", "Екатеринбург", "Пермский край", "Нижний Новгород", "Алтайский край", "Красноярск", "Самара", "Воронеж", "Уфа", "Чебоксары"];
+export const cities = ["Москва и МО", "Санкт-Петербург и ЛО", "Краснодарский край", "Казань", "Екатеринбург", "Пермский край", "Нижний Новгород", "Алтайский край", "Красноярск", "Самара", "Воронеж", "Уфа", "Чебоксары", "Новосибирск"];
