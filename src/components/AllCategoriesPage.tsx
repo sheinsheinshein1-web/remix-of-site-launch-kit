@@ -122,8 +122,9 @@ const AllCategoriesPage = () => {
 
       {/* Content */}
       <div className={`${isMobile ? "mt-2" : "mt-[108px]"} flex-1 flex flex-col`}>
-        <div className={isMobile ? "flex flex-col flex-1" : "max-w-[1400px] mx-auto w-full"}>
-          <div className={`bg-background ${isMobile ? "rounded-t-2xl px-3 py-4 pb-24 flex-1" : "rounded-b-2xl px-8 py-8 mb-6"} flex-grow`}>
+        <div className={`flex flex-col flex-1 ${isMobile ? "" : "max-w-[1400px] mx-auto w-full"}`}>
+          <div className={`bg-background flex-1 ${isMobile ? "rounded-t-2xl px-3 py-4 pb-24" : "rounded-b-2xl px-8 py-8"} flex-grow`}>
+
 
             {/* Mobile Hero Banner inside bento */}
             {isMobile && (
