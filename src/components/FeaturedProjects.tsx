@@ -102,25 +102,27 @@ function getPagedProjects(page: number, seed: number, source: typeof baseProject
     ? shuffleWithSeed(interleaveByMaker(sortedSource), 1337)
     : shuffleWithSeed(sortedSource, seed);
 
-  // Поднимаем карточки Платформы повыше: первая идёт после первых двух,
+  // Поднимаем карточки проверенных производителей повыше: первая идёт в начале,
   // затем равномерно с шагом 4. Остальные проекты остаются в исходном порядке.
-  const platformaItems = baseOrder.filter((p) => p.maker === "Платформа");
-  const otherItems = baseOrder.filter((p) => p.maker !== "Платформа");
+  const VERIFIED_MAKERS = new Set(["Платформа", "Bygge"]);
+  const isVerified = (maker: string) => VERIFIED_MAKERS.has(maker);
+  const verifiedItems = baseOrder.filter((p) => isVerified(p.maker));
+  const otherItems = baseOrder.filter((p) => !isVerified(p.maker));
   const ordered: typeof baseProjects = [];
-  let pIdx = 0;
+  let vIdx = 0;
   let oIdx = 0;
-  const FIRST_AT = 2;
-  const STEP = 5;
+  const FIRST_AT = 0;
+  const STEP = 4;
   let i = 0;
-  while (pIdx < platformaItems.length || oIdx < otherItems.length) {
-    const shouldPlacePlatforma =
-      pIdx < platformaItems.length && i >= FIRST_AT && (i - FIRST_AT) % STEP === 0;
-    if (shouldPlacePlatforma) {
-      ordered.push(platformaItems[pIdx++]);
+  while (vIdx < verifiedItems.length || oIdx < otherItems.length) {
+    const shouldPlaceVerified =
+      vIdx < verifiedItems.length && (i < FIRST_AT || (i - FIRST_AT) % STEP === 0);
+    if (shouldPlaceVerified) {
+      ordered.push(verifiedItems[vIdx++]);
     } else if (oIdx < otherItems.length) {
       ordered.push(otherItems[oIdx++]);
     } else {
-      ordered.push(platformaItems[pIdx++]);
+      ordered.push(verifiedItems[vIdx++]);
     }
     i++;
   }
