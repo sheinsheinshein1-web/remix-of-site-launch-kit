@@ -17,6 +17,7 @@ import {
   projectsCountByMakerId,
   makersById,
 } from "@/data/projects";
+import { getPartnerReviews, getPartnerReviewSummary } from "@/data/partnerReviews";
 
 const wordForm = (n: number, forms: [string, string, string]) => {
   const m = Math.abs(n) % 100;
@@ -288,11 +289,8 @@ const Partner = () => {
   const cleanSiteUrl = partner.siteUrl.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
   const violationMailto = `mailto:inadvert@yandex.ru?subject=${encodeURIComponent("Сообщение о нарушении прав")}&body=${encodeURIComponent(`Карточка производителя: https://многоместа.рф/partner/${makerId}\nВаша компания: \nКомментарий: `)}`;
 
-  // Рейтинг: для компаний с публичным профилем в Яндекс.Картах — реальные значения.
-  const makerRatings: Record<string, { rating: number; reviewsLabel: string }> = {
-    bygge: { rating: 4.4, reviewsLabel: "18 отзывов" },
-  };
-  const { rating, reviewsLabel } = makerRatings[makerId] ?? { rating: 4.9, reviewsLabel: "новый" };
+  const { rating, reviewsLabel, hasReviews } = getPartnerReviewSummary(makerId);
+  const reviewPreviews = getPartnerReviews(makerId).slice(0, 4);
 
 
 
@@ -397,7 +395,10 @@ const Partner = () => {
           aria-label="Открыть отзывы"
         >
           <span className="font-semibold">{rating.toFixed(1)}</span>
-          <Star className="w-3.5 h-3.5 fill-[hsl(var(--pt-ink))] text-[hsl(var(--pt-ink))]" strokeWidth={0} />
+          <Star
+            className={`w-3.5 h-3.5 ${hasReviews ? "fill-[hsl(var(--pt-ink))] text-[hsl(var(--pt-ink))]" : "text-[hsl(var(--pt-ink)/0.65)]"}`}
+            strokeWidth={hasReviews ? 0 : 1.8}
+          />
           <span className="text-[hsl(var(--pt-ink)/0.75)]">({reviewsLabel})</span>
         </button>
         <div className="mt-1.5 text-[12px] text-[hsl(var(--pt-ink)/0.7)] inline-flex items-center justify-center gap-1.5 w-full">
@@ -779,23 +780,27 @@ const Partner = () => {
                 </div>
                 <div className="-mr-5 overflow-x-auto scrollbar-hide snap-x snap-mandatory">
                   <div className="flex gap-3 pr-5">
-                    {[
-                      { title: "Отличное качество", body: "Дом собрали быстро, всё аккуратно. Команда на связи, материалы качественные — рекомендую.", name: "Алексей", when: "2 нед. назад", stars: 5 },
-                      { title: "Тепло даже зимой", body: "Переехали в декабре, при −28°С внутри +23 без проблем. Утепление и окна на пятёрку.", name: "Мария", when: "1 мес. назад", stars: 5 },
-                      { title: "Рекомендую", body: "Прозрачная смета, никаких допов в процессе. Дом стоит уже полгода — всё ок.", name: "Елена", when: "2 мес. назад", stars: 5 },
-                      { title: "Качественная сборка", body: "Конструктив добротный, видно что работают на совесть. Узлы и стыки промазаны как надо.", name: "Дмитрий", when: "3 мес. назад", stars: 5 },
-                    ].map((r, idx) => (
-                      <div key={idx} className="shrink-0 w-[85%] snap-start rounded-xl p-4" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
-                        <div className="text-[14px] font-semibold mb-1">{r.title}</div>
-                        <div className="text-[13px] text-white/75 leading-snug line-clamp-3">{r.body}</div>
-                        <div className="flex items-center gap-1 mt-2">
-                          {[1, 2, 3, 4, 5].map((i) => (
-                            <Star key={i} className={`w-3 h-3 ${i <= r.stars ? "fill-white text-white" : "fill-white/20 text-white/20"}`} strokeWidth={0} />
-                          ))}
+                    {hasReviews ? (
+                      reviewPreviews.map((r, idx) => (
+                        <div key={idx} className="shrink-0 w-[85%] snap-start rounded-xl p-4" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
+                          <div className="text-[14px] font-semibold mb-1">{r.title}</div>
+                          <div className="text-[13px] text-white/75 leading-snug line-clamp-3">{r.body}</div>
+                          <div className="flex items-center gap-1 mt-2">
+                            {[1, 2, 3, 4, 5].map((i) => (
+                              <Star key={i} className={`w-3 h-3 ${i <= r.stars ? "fill-white text-white" : "fill-white/20 text-white/20"}`} strokeWidth={0} />
+                            ))}
+                          </div>
+                          <div className="text-[11px] text-white/55 mt-2">{r.name} · {r.when}</div>
                         </div>
-                        <div className="text-[11px] text-white/55 mt-2">{r.name} · {r.when}</div>
+                      ))
+                    ) : (
+                      <div className="shrink-0 w-[85%] snap-start rounded-xl p-4" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
+                        <div className="text-[14px] font-semibold mb-1">Отзывов пока нет</div>
+                        <div className="text-[13px] text-white/75 leading-snug">
+                          Здесь появятся только подтвержденные отзывы из публичных источников.
+                        </div>
                       </div>
-                    ))}
+                    )}
                   </div>
                 </div>
               </section>

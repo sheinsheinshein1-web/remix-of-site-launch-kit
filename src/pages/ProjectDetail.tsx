@@ -20,6 +20,7 @@ import house7 from "@/assets/house-7.webp";
 import house8 from "@/assets/house-8.webp";
 import house9 from "@/assets/house-9.webp";
 import { projectOverrides, projectsCountByMakerId } from "@/data/projects";
+import { getPartnerReviewSummary } from "@/data/partnerReviews";
 
 const defaultGallery = [
   { id: 1, image: house1, type: "photo" },
@@ -606,15 +607,11 @@ const ProjectDetail = () => {
                   )}
                 </div>
                 {(() => {
-                  const makerRatings: Record<string, { score: string; label: string }> = {
-                    platforma: { score: "4,9", label: "6 отзывов" },
-                    bygge: { score: "4,4", label: "18 отзывов" },
-                  };
-                  const r = makerRatings[project.makerId] ?? (project.id >= 279 ? { score: "4,9", label: "новый" } : undefined);
-                  return r ? (
+                  const r = getPartnerReviewSummary(project.makerId);
+                  return r.hasReviews ? (
                     <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-0.5">
                       <Star className="w-3 h-3 fill-primary text-primary" strokeWidth={1.5} />
-                      <span>{r.score} · {r.label}</span>
+                      <span>{r.rating.toFixed(1).replace(".", ",")} · {r.reviewsLabel}</span>
                     </div>
                   ) : (
                     <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-0.5">

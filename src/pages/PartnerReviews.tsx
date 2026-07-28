@@ -4,86 +4,13 @@ import { ArrowLeft, Star, ChevronDown, SlidersHorizontal, ThumbsUp, MoreHorizont
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { toast } from "sonner";
 import { projects as allProjects, makersById } from "@/data/projects";
+import {
+  formatReviewCount,
+  getPartnerReviews,
+  getPartnerReviewSummary,
+} from "@/data/partnerReviews";
 
 const partnerMakerIds: Record<string, string> = { "1": "platforma" };
-
-type ReviewTemplate = { title: string; body: string; name: string; when: string; stars: number };
-
-const REVIEW_TEMPLATES: ReviewTemplate[] = [
-  {
-    title: "Фиксированная цена и забота",
-    body: "Выбирали с мужем компанию по строительству модульного дома и остановилась на «Платформе». Понравилось, что цена фиксированная, без неожиданных доплат. Очень быстро отвечают, менеджер всегда на связи, не чувствовала себя брошенной. Ещё здорово, что можно было съездить на производство и посмотреть, как всё делается.",
-    name: "Полина",
-    when: "Дом сдан",
-    stars: 5,
-  },
-  {
-    title: "Подстроились под индивидуальный заказ",
-    body: "Долго выбирала где заказать дом. Оказалось что не все производители могут выполнить индивидуальный заказ. Штампуют одинаковые дома всем. Эти ребята подстроились под мои хотелки. А после поездки на производство и строящийся объект, сравнив качество с другими компаниями, окончательно убедилась в выборе.",
-    name: "Наталья",
-    when: "Дом на этапе производства",
-    stars: 5,
-  },
-  {
-    title: "Прозрачное производство",
-    body: "Приехали на производство, поняли, что и как делается. Впечатлялись, заказали дом. Наблюдаем процесс сборки.",
-    name: "Михаил",
-    when: "Дом на этапе производства",
-    stars: 5,
-  },
-  {
-    title: "Модульная баня — огонь",
-    body: "Взяли у «Платформы» модульную баню и не нарадуемся. Привезли без суеты, поставили ровно, внутри всё по-человечески сделано. Парилка разогревается быстро, тепло держит отлично. Теперь каждые выходные туда бегаем — вообще не понимаем, как раньше без неё жили.",
-    name: "Карина",
-    when: "Баня сдана",
-    stars: 5,
-  },
-];
-
-// Реальные отзывы, собранные с публичных источников (Яндекс.Карты).
-const MAKER_REVIEW_OVERRIDES: Record<string, ReviewTemplate[]> = {
-  bygge: [
-    {
-      title: "Проект «Сенат» по семейной ипотеке",
-      body: "Построили с Михаилом проект Сенат в Александрии по семейной ипотеке. Строительство прошло быстро и качественно, без вопросов. На этапе согласования проекта внесли правки: сменили вход в детскую, сделали панораму, перенесли камин. Дом прошёл холода −30, ни промерзаний, ни конденсата не обнаружил. Тёплый, подходит для круглогодичного проживания. Понравилось, что скважину и септик тоже удалось включить в ипотеку. В итоге получили дом «под тапочки» — заезжай и живи.",
-      name: "Игорь Д.",
-      when: "30 марта",
-      stars: 5,
-    },
-    {
-      title: "Заказали — привезли — собрали",
-      body: "Приняли решение всей семьёй приобрести участок и построить просторный дом. Побывав на производстве, все сомнения пропали. Фиксированная стоимость, качественные материалы, доп. опции. Ребята очень внимательны, всегда на связи, вопросы решаются оперативно. Отделка — такую и видели в своём доме. Окна — свет и воздух! Дополнительно сделали тёплый пол в прихожей и гостиной, комфортно даже в морозы. Реальность превзошла ожидания!",
-      name: "Василиса С.",
-      when: "3 июня 2025",
-      stars: 5,
-    },
-    {
-      title: "Модульный Gallant собрали раньше срока",
-      body: "Для нас построили модульный дом Gallant. Привлекло, что строительство идёт на производстве, материалы не мокнут, покрытие на участке не нарушается. Дом привозят несколькими модулями. Перед покупкой ездили смотреть выставочный — всё в точности так же. Доставили и собрали чуть раньше срока. Менеджер всегда на связи, правки удобно согласовывать. Специалисты по доставке несколько раз выезжали на участок (узкий проезд). На участке и в доме оставили идеальную чистоту.",
-      name: "Александр",
-      when: "1 апреля 2025",
-      stars: 5,
-    },
-    {
-      title: "Весной заказали — в июле въехали",
-      body: "Заказали дом у BYGGE весной, уже в июле въехали. Всё чётко по срокам, без затягиваний. Очень понравился подход: менеджер всё подробно объяснил, на каждом этапе присылали фотоотчёты. Качество сборки на уровне — тепло, никуда не продувает. Спасибо ребятам за слаженную работу: от проекта до последнего самореза всё продумано.",
-      name: "Миннигуль К.",
-      when: "19 октября 2025",
-      stars: 5,
-    },
-    {
-      title: "Пережил морозы −40, панорамные окна не подвели",
-      body: "Долго выбирала подрядчика, приглядывалась к модульным быстровозводимым домам. После покупки участка остановилась на этой компании: съездила посмотрела дом, коллега по работе побывал в цеху и остался доволен качеством. Дом стоит 2 месяца, прошёл испытания морозами −40. Было страшновато — практически весь в панорамном остеклении, но окна не промерзали, не «плакали», наледи не было. Отапливается конвекторами, тёплыми полами в санузле и прихожей, печью по выходным. Построили видоизменённый Шервуд 86 м² — с владельцем Михаилом поменяли планировку, получилась конфетка. Дополнительно поставили хоз.блок 5×2,5 м — единый стиль на участке.",
-      name: "Марина Ч.",
-      when: "4 февраля 2024",
-      stars: 5,
-    },
-  ],
-};
-
-const MAKER_REVIEW_TOTAL_OVERRIDES: Record<string, number> = {
-  bygge: 18,
-};
 
 const PartnerReviews = () => {
   const navigate = useNavigate();
@@ -99,7 +26,7 @@ const PartnerReviews = () => {
 
   const reviews = useMemo(() => {
     if (makerProjects.length === 0) return [];
-    const templates = MAKER_REVIEW_OVERRIDES[makerId] ?? REVIEW_TEMPLATES;
+    const templates = getPartnerReviews(makerId);
     return templates.map((tpl, i) => {
       const project = makerProjects[i % makerProjects.length];
       return { ...tpl, project };
@@ -107,7 +34,7 @@ const PartnerReviews = () => {
   }, [makerProjects, makerId]);
 
 
-  const totalCount = MAKER_REVIEW_TOTAL_OVERRIDES[makerId] ?? reviews.length;
+  const { totalCount } = getPartnerReviewSummary(makerId);
   const ratingAvg = useMemo(() => {
     if (reviews.length === 0) return 0;
     return reviews.reduce((s, r) => s + r.stars, 0) / reviews.length;
@@ -225,7 +152,7 @@ const PartnerReviews = () => {
                 ))}
               </div>
               <div className="text-[13px] text-white/70 mt-1.5">
-                {totalCount} {totalCount === 1 ? "отзыв" : totalCount < 5 ? "отзыва" : "отзывов"}
+                {reviews.length > 0 ? formatReviewCount(totalCount) : "отзывов пока нет"}
               </div>
             </div>
             <div className="flex-1 max-w-[200px] space-y-1">
@@ -248,29 +175,31 @@ const PartnerReviews = () => {
           </div>
         </section>
 
-        {/* Filter chips */}
-        <div className="flex items-center gap-2 overflow-x-auto -mx-3 px-3 scrollbar-hide">
-          <button
-            onClick={() => setSortOpen(true)}
-            className="shrink-0 h-9 px-3.5 rounded-xl flex items-center gap-1.5 text-[14px] text-white"
-            style={{ background: "hsl(0 0% 100% / 0.08)" }}
-          >
-            {sortLabel}
-            <ChevronDown className="w-4 h-4" strokeWidth={1.8} />
-          </button>
-          <button
-            onClick={() => setRatingOpen(true)}
-            className="shrink-0 h-9 px-3.5 rounded-xl flex items-center gap-1.5 text-[14px] text-white"
-            style={{ background: "hsl(0 0% 100% / 0.08)" }}
-          >
-            {ratingLabel}
-            <ChevronDown className="w-4 h-4" strokeWidth={1.8} />
-          </button>
-        </div>
+        {reviews.length > 0 ? (
+          <>
+            {/* Filter chips */}
+            <div className="flex items-center gap-2 overflow-x-auto -mx-3 px-3 scrollbar-hide">
+              <button
+                onClick={() => setSortOpen(true)}
+                className="shrink-0 h-9 px-3.5 rounded-xl flex items-center gap-1.5 text-[14px] text-white"
+                style={{ background: "hsl(0 0% 100% / 0.08)" }}
+              >
+                {sortLabel}
+                <ChevronDown className="w-4 h-4" strokeWidth={1.8} />
+              </button>
+              <button
+                onClick={() => setRatingOpen(true)}
+                className="shrink-0 h-9 px-3.5 rounded-xl flex items-center gap-1.5 text-[14px] text-white"
+                style={{ background: "hsl(0 0% 100% / 0.08)" }}
+              >
+                {ratingLabel}
+                <ChevronDown className="w-4 h-4" strokeWidth={1.8} />
+              </button>
+            </div>
 
-        {/* Reviews list */}
-        <div className="space-y-3">
-          {displayedReviews.map((r, idx) => (
+            {/* Reviews list */}
+            <div className="space-y-3">
+              {displayedReviews.map((r, idx) => (
             <article key={idx} className="rounded-2xl p-4" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
               <div className="flex items-start gap-3">
                 <div className="w-[72px] h-[72px] rounded-xl overflow-hidden shrink-0" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
@@ -349,8 +278,17 @@ const PartnerReviews = () => {
                 </a>
               </div>
             </article>
-          ))}
-        </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          <section className="rounded-2xl p-5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
+            <h2 className="text-[20px] font-semibold text-white">Отзывов пока нет</h2>
+            <p className="mt-2 text-[14px] leading-snug text-white/70">
+              Здесь появятся только подтвержденные отзывы из публичных источников.
+            </p>
+          </section>
+        )}
       </div>
 
       {/* Sort drawer */}
