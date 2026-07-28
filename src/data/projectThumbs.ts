@@ -295,6 +295,19 @@ import thumb335 from "@/assets/ultradomspb/ultra-85/01__thumb.webp";
 import thumb336 from "@/assets/freedom/home-relaxation/01__thumb.webp";
 import thumb337 from "@/assets/freedom/home-privacy/01__thumb.webp";
 import thumb338 from "@/assets/freedom/mobile-home/01__thumb.webp";
+import thumb339 from "@/assets/chebwood/modul-15/01__thumb.webp";
+import thumb340 from "@/assets/chebwood/dom-pod-kluch/01__thumb.webp";
+import thumb341 from "@/assets/chebwood/glamping/01__thumb.webp";
+import thumb342 from "@/assets/campingdom/campingdom-15/01__thumb.webp";
+import thumb343 from "@/assets/campingdom/campingdom-22/01__thumb.webp";
+import thumb344 from "@/assets/campingdom/campingdom-32/01__thumb.webp";
+import thumb345 from "@/assets/campingdom/campingdom-15-barn/01__thumb.webp";
+import thumb346 from "@/assets/campingdom/campingdom-28-barn/01__thumb.webp";
+import thumb347 from "@/assets/pslcomp/barn-36/01__thumb.webp";
+import thumb348 from "@/assets/pslcomp/haytek-36/01__thumb.webp";
+import thumb349 from "@/assets/pslcomp/barn-40/01__thumb.webp";
+import thumb350 from "@/assets/pslcomp/haytek-40/01__thumb.webp";
+import thumb351 from "@/assets/pslcomp/barn-45/01__thumb.webp";
 
 export const projectThumbs: Record<number, string> = {
   32: thumb32,
@@ -591,4 +604,17 @@ export const projectThumbs: Record<number, string> = {
   336: thumb336,
   337: thumb337,
   338: thumb338,
+  339: thumb339,
+  340: thumb340,
+  341: thumb341,
+  342: thumb342,
+  343: thumb343,
+  344: thumb344,
+  345: thumb345,
+  346: thumb346,
+  347: thumb347,
+  348: thumb348,
+  349: thumb349,
+  350: thumb350,
+  351: thumb351,
 };

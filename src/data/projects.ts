@@ -1126,6 +1126,23 @@ import freedomPrivacy_1 from "@/assets/freedom/home-privacy/01.webp";
 import freedomPrivacy_2 from "@/assets/freedom/home-privacy/02.webp";
 import freedomMobile_1 from "@/assets/freedom/mobile-home/01.webp";
 import freedomMobile_2 from "@/assets/freedom/mobile-home/02.webp";
+import chebwoodLogo from "@/assets/chebwood/logo.webp";
+import chebwoodModul15_1 from "@/assets/chebwood/modul-15/01.webp";
+import chebwoodModul15_2 from "@/assets/chebwood/modul-15/02.webp";
+import chebwoodDom_1 from "@/assets/chebwood/dom-pod-kluch/01.webp";
+import chebwoodGlamping_1 from "@/assets/chebwood/glamping/01.webp";
+import campingdomLogo from "@/assets/campingdom/logo.webp";
+import camping15_1 from "@/assets/campingdom/campingdom-15/01.webp";
+import camping22_1 from "@/assets/campingdom/campingdom-22/01.webp";
+import camping32_1 from "@/assets/campingdom/campingdom-32/01.webp";
+import camping15Barn_1 from "@/assets/campingdom/campingdom-15-barn/01.webp";
+import camping28Barn_1 from "@/assets/campingdom/campingdom-28-barn/01.webp";
+import pslcompLogo from "@/assets/pslcomp/logo.webp";
+import pslBarn36_1 from "@/assets/pslcomp/barn-36/01.webp";
+import pslHaytek36_1 from "@/assets/pslcomp/haytek-36/01.webp";
+import pslBarn40_1 from "@/assets/pslcomp/barn-40/01.webp";
+import pslHaytek40_1 from "@/assets/pslcomp/haytek-40/01.webp";
+import pslBarn45_1 from "@/assets/pslcomp/barn-45/01.webp";
 import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
@@ -1581,6 +1598,36 @@ const FREEDOM_NATURI: Maker = {
   productionAddress: "М.О. Воря-Богородское",
   phone: "+7 (903) 715-95-20",
   email: "info@freedom-modul.ru",
+};
+const CHEBWOOD: Maker = {
+  name: "Чебвуд",
+  initials: "ЧВ",
+  id: "chebwood",
+  logo: chebwoodLogo,
+  siteUrl: "https://chebwood.com/",
+  productionAddress: "Чебоксары, Дорожный проезд, 10А",
+  phone: "+7 (920) 733-77-33",
+  email: "chebwood21@mail.ru",
+  telegram: "https://t.me/chebwood",
+};
+const CAMPINGDOM: Maker = {
+  name: "Campingdom",
+  initials: "CD",
+  id: "campingdom",
+  logo: campingdomLogo,
+  siteUrl: "https://campingdom.ru/proekti",
+  productionAddress: "Республика Татарстан, с. Высокая Гора, ул. Большая Красная, д. 1а",
+  phone: "+7 (966) 240-47-47",
+  telegram: "https://t.me/RamilGubaev",
+};
+const PSLCOMP: Maker = {
+  name: "Промстройлес",
+  initials: "ПЛ",
+  id: "pslcomp",
+  logo: pslcompLogo,
+  siteUrl: "https://www.pslcomp.ru/katalog-proektov-derevyannyh-domov/modulnye-doma",
+  productionAddress: "Санкт-Петербург и Москва",
+  phone: "+7 (812) 596-39-01",
 };
 
 // ============================================================================
@@ -6518,6 +6565,215 @@ export const projects: Project[] = [
     features: ["Мобильность", "Автономность", "Коммерческий сценарий"], style: "Современный", landSize: "3–8 соток",
     hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
   },
+  {
+    id: 339, name: "Модульный дом от 15 м²", badge: "Модульный дом", price: "от 700 000 ₽",
+    area: "от 15 м²", area_m2: 15, beds: 1, baths: 1, floors: 1, term: "от 7 дней",
+    rooms: "студия", purpose: "Дача / Глэмпинг", city: "Чебоксары",
+    maker: { ...CHEBWOOD, siteUrl: "https://chebwood.com/" },
+    description: "Готовый модульный дом CHEBWOOD от 15 м² с доставкой и монтажом на участке.",
+    descriptionLong: "Модульный дом CHEBWOOD от 15 м² — компактное решение для дачи, отдыха, гостевого размещения или глэмпинга. Компания производит готовые модули в Чебоксарах, доставляет их на участок и выполняет монтаж в короткие сроки.",
+    gallery: [
+      { image: chebwoodModul15_1, type: "photo", fit: "contain", blur: true },
+      { image: chebwoodModul15_2, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 49, rating: 4.9,
+    suitableFor: ["Дача", "Глэмпинг", "Быстрая установка"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Производство от 7 дней", "Доставка по России", "Готовый модуль"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 340, name: "Дом под ключ CHEBWOOD", badge: "Модульный дом", price: "4 000 000 ₽",
+    area: "по проекту", beds: 2, baths: 1, floors: 1, term: "от 7 дней",
+    rooms: "2 спальни", purpose: "ИЖС / Дача", city: "Чебоксары",
+    maker: { ...CHEBWOOD, siteUrl: "https://chebwood.com/" },
+    description: "Модульный дом под ключ CHEBWOOD для загородного проживания с готовой комплектацией.",
+    descriptionLong: "Дом под ключ CHEBWOOD — готовое модульное решение для загородного участка. Формат подходит для дачи, проживания за городом и быстрого запуска объекта без долгой стройки на участке.",
+    gallery: [
+      { image: chebwoodDom_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 54, rating: 4.9,
+    suitableFor: ["Загородное проживание", "Дача", "Быстрый монтаж"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Под ключ", "Заводская готовность", "Монтаж на участке"], style: "Современный", landSize: "5–10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 341, name: "Гостевой модуль CHEBWOOD", badge: "Модульный дом", price: "от 700 000 ₽",
+    area: "от 15 м²", area_m2: 15, beds: 1, baths: 1, floors: 1, term: "от 7 дней",
+    rooms: "студия", purpose: "Глэмпинг / Бизнес", city: "Чебоксары",
+    maker: { ...CHEBWOOD, siteUrl: "https://chebwood.com/" },
+    description: "Компактный гостевой модуль CHEBWOOD для глэмпинга, аренды и размещения на участке.",
+    descriptionLong: "Гостевой модуль CHEBWOOD — компактный модульный формат для глэмпинга, гостевого дома, аренды или сезонного бизнеса. Проект рассчитан на быструю установку и использование на небольшом участке.",
+    gallery: [
+      { image: chebwoodGlamping_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 47, rating: 4.8,
+    suitableFor: ["Глэмпинг", "Аренда", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Компактный формат", "Для бизнеса", "Быстрый запуск"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 342, name: "Campingdom 15", badge: "Модульный дом", price: "по запросу",
+    area: "15 м²", area_m2: 15, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "студия", purpose: "Дача / Глэмпинг", city: "Казань",
+    maker: { ...CAMPINGDOM, siteUrl: "https://campingdom.ru/campingdom15" },
+    description: "Компактный модульный дом Campingdom 15 для отдыха, дачи и глэмпинга.",
+    descriptionLong: "Campingdom 15 — компактный модульный дом площадью 15 м² для размещения на дачном участке, базе отдыха или глэмпинге. Формат подходит для быстрого запуска гостевого сценария с минимальной площадью застройки.",
+    gallery: [
+      { image: camping15_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 51, rating: 4.9,
+    suitableFor: ["Дача", "Глэмпинг", "Аренда"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["15 м²", "Компактный модуль", "Готовое размещение"], style: "Современный", landSize: "3–5 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 343, name: "Campingdom 22", badge: "Модульный дом", price: "1 995 000 ₽",
+    area: "22 м²", area_m2: 22, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "студия", purpose: "Дача / Отдых", city: "Казань",
+    maker: { ...CAMPINGDOM, siteUrl: "https://campingdom.ru/campingdom22" },
+    description: "Модульный дом Campingdom 22 площадью 22 м² для дачи и круглогодичного отдыха.",
+    descriptionLong: "Campingdom 22 — модульный дом площадью 22 м² с современным внешним видом и компактной планировкой. Подходит для дачи, гостевого сценария, аренды и размещения на природных территориях.",
+    gallery: [
+      { image: camping22_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 58, rating: 4.9,
+    suitableFor: ["Дача", "Отдых", "Глэмпинг"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["22 м²", "Компактная планировка", "Под ключ"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 344, name: "Campingdom 32", badge: "Модульный дом", price: "2 695 000 ₽",
+    area: "32 м²", area_m2: 32, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Казань",
+    maker: { ...CAMPINGDOM, siteUrl: "https://campingdom.ru/campingdom32" },
+    description: "Модульный дом Campingdom 32 с увеличенной площадью для отдыха и проживания.",
+    descriptionLong: "Campingdom 32 — модульный дом площадью 32 м² для более комфортного сценария проживания за городом. Проект подходит для дачи, гостевого размещения и небольшого круглогодичного дома.",
+    gallery: [
+      { image: camping32_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 64, rating: 4.9,
+    suitableFor: ["Дача", "Круглогодичное проживание", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["32 м²", "Увеличенная площадь", "Панорамное остекление"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 345, name: "Campingdom 15 Barn", badge: "Модульный дом", price: "2 695 000 ₽",
+    area: "15 м²", area_m2: 15, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "студия", purpose: "Глэмпинг / Отдых", city: "Казань",
+    maker: { ...CAMPINGDOM, siteUrl: "https://campingdom.ru/campingdom15barn" },
+    description: "Компактный barn-модуль Campingdom 15 для глэмпинга и отдыха на природе.",
+    descriptionLong: "Campingdom 15 Barn — небольшой модульный дом в barn-стилистике для глэмпинга, аренды и отдыха. Компактная площадь позволяет быстро разместить объект на участке или базе отдыха.",
+    gallery: [
+      { image: camping15Barn_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 57, rating: 4.9,
+    suitableFor: ["Глэмпинг", "Аренда", "Отдых"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Barn-стиль", "Компактный модуль", "Для 4 человек"], style: "Барнхаус", landSize: "3–6 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 346, name: "Campingdom 28 Barn", badge: "Модульный дом", price: "2 195 000 ₽",
+    area: "28 м²", area_m2: 28, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "1 спальня", purpose: "Дача / Глэмпинг", city: "Казань",
+    maker: { ...CAMPINGDOM, siteUrl: "https://campingdom.ru/campingdom28barn" },
+    description: "Barn-модуль Campingdom 28 площадью 28 м² для отдыха, аренды и загородного размещения.",
+    descriptionLong: "Campingdom 28 Barn — модульный дом площадью 28 м² в barn-архитектуре. Проект подходит для дачи, глэмпинга, гостевого дома или коммерческого размещения с готовой архитектурой.",
+    gallery: [
+      { image: camping28Barn_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 61, rating: 4.9,
+    suitableFor: ["Дача", "Глэмпинг", "Аренда"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["28 м²", "Barn-стиль", "Для отдыха"], style: "Барнхаус", landSize: "4–7 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 347, name: "Барн 36", badge: "Модульный дом", price: "2 270 000 ₽",
+    area: "36 м²", area_m2: 36, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Санкт-Петербург и ЛО",
+    maker: { ...PSLCOMP, siteUrl: "https://www.pslcomp.ru/katalog-proektov-derevyannyh-domov/modulnye-doma/barn-36" },
+    description: "Модульный дом Барн 36 от Промстройлес площадью 36 м² по технологии CLT.",
+    descriptionLong: "Барн 36 от Промстройлес — модульный дом площадью 36 м² с габаритами 3,5 × 12 м. Проект выполнен в современной barn-архитектуре и подходит для дачи, гостевого дома или компактного круглогодичного проживания.",
+    gallery: [
+      { image: pslBarn36_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 63, rating: 4.9,
+    suitableFor: ["Дача", "Гостевой дом", "Круглогодичное проживание"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["CLT", "3,5 × 12 м", "Barn-стиль"], style: "Барнхаус", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 348, name: "Хайтек 36", badge: "Модульный дом", price: "2 270 000 ₽",
+    area: "36 м²", area_m2: 36, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Санкт-Петербург и ЛО",
+    maker: { ...PSLCOMP, siteUrl: "https://www.pslcomp.ru/katalog-proektov-derevyannyh-domov/modulnye-doma/haytek-36" },
+    description: "Модульный дом Хайтек 36 площадью 36 м² от Промстройлес.",
+    descriptionLong: "Хайтек 36 от Промстройлес — компактный модульный дом площадью 36 м² в современной архитектуре. Проект подходит для дачного участка, гостевого размещения и небольшого загородного дома.",
+    gallery: [
+      { image: pslHaytek36_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 59, rating: 4.9,
+    suitableFor: ["Дача", "Современный дом", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["CLT", "36 м²", "Современный фасад"], style: "Хайтек", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 349, name: "Барн 40", badge: "Модульный дом", price: "2 650 000 ₽",
+    area: "40 м²", area_m2: 40, beds: 2, baths: 1, floors: 1, term: "по договору",
+    rooms: "2 спальни", purpose: "Дача / ПМЖ", city: "Санкт-Петербург и ЛО",
+    maker: { ...PSLCOMP, siteUrl: "https://www.pslcomp.ru/katalog-proektov-derevyannyh-domov/modulnye-doma/barn-40" },
+    description: "Модульный дом Барн 40 площадью 40 м² с двумя спальнями.",
+    descriptionLong: "Барн 40 от Промстройлес — модульный дом площадью 40 м² с двумя спальнями и современной barn-архитектурой. Подходит для семьи, дачи и круглогодичного проживания на небольшом участке.",
+    gallery: [
+      { image: pslBarn40_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 67, rating: 4.9,
+    suitableFor: ["Для семьи", "Дача", "ПМЖ"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["CLT", "2 спальни", "Barn-стиль"], style: "Барнхаус", landSize: "5–8 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 350, name: "Хайтек 40", badge: "Модульный дом", price: "2 650 000 ₽",
+    area: "40 м²", area_m2: 40, beds: 2, baths: 1, floors: 1, term: "по договору",
+    rooms: "2 спальни", purpose: "Дача / ПМЖ", city: "Санкт-Петербург и ЛО",
+    maker: { ...PSLCOMP, siteUrl: "https://www.pslcomp.ru/katalog-proektov-derevyannyh-domov/modulnye-doma/haytek-40" },
+    description: "Модульный дом Хайтек 40 площадью 40 м² с современной архитектурой.",
+    descriptionLong: "Хайтек 40 от Промстройлес — модульный дом площадью 40 м² для дачи и проживания за городом. В проекте предусмотрена компактная семейная планировка и современный внешний вид.",
+    gallery: [
+      { image: pslHaytek40_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 65, rating: 4.9,
+    suitableFor: ["Для семьи", "Дача", "Современный дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["CLT", "40 м²", "2 спальни"], style: "Хайтек", landSize: "5–8 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 351, name: "Барн 45", badge: "Модульный дом", price: "2 920 000 ₽",
+    area: "45 м²", area_m2: 45, beds: 1, baths: 1, floors: 1, term: "по договору",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Санкт-Петербург и ЛО",
+    maker: { ...PSLCOMP, siteUrl: "https://www.pslcomp.ru/katalog-proektov-derevyannyh-domov/modulnye-doma/barn-45" },
+    description: "Модульный дом Барн 45 площадью 45 м² от Промстройлес.",
+    descriptionLong: "Барн 45 от Промстройлес — модульный дом площадью 45 м² в barn-стиле. Проект рассчитан на загородное проживание, дачный сценарий или гостевое размещение с комфортной площадью.",
+    gallery: [
+      { image: pslBarn45_1, type: "photo", fit: "contain", blur: true },
+    ],
+    likes: 69, rating: 4.9,
+    suitableFor: ["Дача", "ПМЖ", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["CLT", "45 м²", "Barn-стиль"], style: "Барнхаус", landSize: "5–8 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
   ...regionalBatchProjects,
 ];
 
@@ -6648,7 +6904,7 @@ export type MakerSummary = {
   telegram?: string;
 };
 const canonicalMakerSiteUrls: Record<string, string> = [
-  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, COUNTRYHOUSE, CUBADOM, IDOLHOUSE, WOODALP, BOXMATE, UVHOUSE, ASTERIUS, SMOLA, ULTRADOMSPB, FREEDOM_NATURI,
+  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, COUNTRYHOUSE, CUBADOM, IDOLHOUSE, WOODALP, BOXMATE, UVHOUSE, ASTERIUS, SMOLA, ULTRADOMSPB, FREEDOM_NATURI, CHEBWOOD, CAMPINGDOM, PSLCOMP,
   ...regionalMakers,
 ].reduce((acc, m) => {
   if (m.id && m.siteUrl) acc[m.id] = m.siteUrl;
@@ -6710,4 +6966,4 @@ export const manufacturers = realManufacturers;
 // ГОРОДА
 // ============================================================================
 
-export const cities = ["Москва и МО", "Санкт-Петербург и ЛО", "Краснодарский край", "Казань", "Екатеринбург", "Пермский край", "Нижний Новгород", "Алтайский край", "Красноярск", "Самара", "Воронеж", "Уфа"];
+export const cities = ["Москва и МО", "Санкт-Петербург и ЛО", "Краснодарский край", "Казань", "Екатеринбург", "Пермский край", "Нижний Новгород", "Алтайский край", "Красноярск", "Самара", "Воронеж", "Уфа", "Чебоксары"];

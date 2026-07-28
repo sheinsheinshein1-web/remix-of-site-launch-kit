@@ -110,7 +110,7 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
         <div className="px-[10px] pt-1 pb-1">
           <div className="flex items-center gap-1.5 min-w-0">
             <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{project.name}</h2>
-            {(project.maker.id === "platforma" || project.maker.id === "bygge" || project.maker.id === "durov-house" || project.maker.id === "histhut" || project.maker.id === "countryhouse" || project.maker.id === "cuba-dom" || project.maker.id === "idolhouse" || project.maker.id === "woodalp" || project.maker.id === "boxmate" || project.maker.id === "uvhouse" || project.maker.id === "asterius-house" || project.maker.id === "smola-house" || project.maker.id === "ultradomspb" || project.maker.id === "freedom-naturi") && (
+            {(project.maker.id === "platforma" || project.maker.id === "bygge" || project.maker.id === "durov-house" || project.maker.id === "histhut" || project.maker.id === "countryhouse" || project.maker.id === "cuba-dom" || project.maker.id === "idolhouse" || project.maker.id === "woodalp" || project.maker.id === "boxmate" || project.maker.id === "uvhouse" || project.maker.id === "asterius-house" || project.maker.id === "smola-house" || project.maker.id === "ultradomspb" || project.maker.id === "freedom-naturi" || project.maker.id === "chebwood" || project.maker.id === "campingdom" || project.maker.id === "pslcomp") && (
               <span className="ml-auto shrink-0 text-[9px] font-medium uppercase tracking-wide bg-primary/15 text-primary px-1.5 py-[2px] rounded-lg">Проверено</span>
             )}
           </div>

@@ -60,6 +60,12 @@ const aboutByMakerId: Record<string, string> = {
     "UltraDomSPb — строительная компания из Санкт-Петербурга, которая делает одноэтажные модульные дома под ключ. В каталоге представлены дома с двускатной и плоской кровлей, готовой отделкой, инженерией и реальными примерами построек.",
   "freedom-naturi":
     "FREEDOM NATURI — производитель автономных модульных домов из Московской области. Компания делает готовые дома для жизни, отдыха, глэмпинга и мобильных сценариев без капитальной стройки.",
+  chebwood:
+    "Чебвуд — производитель модульных домов и бань из Чебоксар. Компания выпускает готовые модули для дачи, проживания, глэмпинга и бизнеса с доставкой, монтажом на участке и быстрым циклом производства.",
+  campingdom:
+    "Campingdom — производитель модульных домов из Татарстана. Компания делает компактные дома для жизни, отдыха и бизнеса: от небольших модулей до barn-проектов с санузлом, террасами и готовой отделкой.",
+  pslcomp:
+    "Промстройлес — производитель деревянных и модульных CLT-домов из Санкт-Петербурга. В каталоге представлены жилые модульные дома Барн и Хайтек с фиксированными ценами, планировками и строительством под ключ.",
   glezman:
     "Glezman Group — производитель каркасных домов из Перми. Линейка La Rus: компактные и просторные дома площадью от 45 до 127 м² с панорамным остеклением и продуманной планировкой.",
   divodom:
@@ -170,6 +176,12 @@ const partnerThemes: Record<string, PartnerTheme> = {
   boxmate: { page: "215 12% 14%", panel: "215 10% 22%", ink: "0 0% 100%", light: false },
   uvhouse: { page: "210 18% 94%", panel: "0 0% 100%", ink: "215 25% 12%", light: true },
   "asterius-house": { page: "215 14% 16%", panel: "215 12% 24%", ink: "0 0% 100%", light: false },
+  "smola-house": { page: "30 14% 16%", panel: "30 12% 24%", ink: "0 0% 100%", light: false },
+  ultradomspb: { page: "210 18% 15%", panel: "210 14% 23%", ink: "0 0% 100%", light: false },
+  "freedom-naturi": { page: "120 16% 14%", panel: "120 12% 22%", ink: "0 0% 100%", light: false },
+  chebwood: { page: "115 22% 15%", panel: "115 18% 23%", ink: "0 0% 100%", light: false },
+  campingdom: { page: "93 28% 14%", panel: "93 20% 22%", ink: "0 0% 100%", light: false },
+  pslcomp: { page: "30 10% 16%", panel: "30 9% 24%", ink: "0 0% 100%", light: false },
 };
 
 const Partner = () => {
@@ -307,7 +319,7 @@ const Partner = () => {
     return <NotFound />;
   }
 
-  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "countryhouse" || makerId === "cuba-dom" || makerId === "idolhouse" || makerId === "woodalp" || makerId === "boxmate" || makerId === "uvhouse" || makerId === "asterius-house" || makerId === "smola-house" || makerId === "ultradomspb" || makerId === "freedom-naturi";
+  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "countryhouse" || makerId === "cuba-dom" || makerId === "idolhouse" || makerId === "woodalp" || makerId === "boxmate" || makerId === "uvhouse" || makerId === "asterius-house" || makerId === "smola-house" || makerId === "ultradomspb" || makerId === "freedom-naturi" || makerId === "chebwood" || makerId === "campingdom" || makerId === "pslcomp";
   const theme = partnerThemes[makerId ?? ""] ?? DARK_THEME;
 
 
