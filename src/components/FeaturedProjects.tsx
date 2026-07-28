@@ -97,8 +97,9 @@ function getPagedProjects(page: number, seed: number, source: typeof baseProject
     return a;
   };
   const baseOrder = seed === 0
-    ? shuffleWithSeed(interleaveByMaker(source), 1337)
-    : shuffleWithSeed(source, seed);
+    ? shuffleWithSeed(interleaveByMaker(sortedSource), 1337)
+    : shuffleWithSeed(sortedSource, seed);
+
   // Поднимаем карточки Платформы повыше: первая идёт после первых двух,
   // затем равномерно с шагом 4. Остальные проекты остаются в исходном порядке.
   const platformaItems = baseOrder.filter((p) => p.maker === "Платформа");
