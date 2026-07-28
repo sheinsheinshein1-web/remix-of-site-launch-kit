@@ -147,7 +147,9 @@ const AllCategoriesPage = () => {
                 </div>
               </div>
             )}
-            {sections.map((section, sIdx) => (
+            {sections
+              .filter((s) => s.title !== "Каркасные дома" && s.title !== "Префаб дома")
+              .map((section, sIdx) => (
             <div key={section.title} className={sIdx > 0 ? "mt-6" : ""}>
               <div className="flex items-center gap-2 mb-3">
                 <h2 className={`${isMobile ? "text-[20px]" : "text-[22px]"} font-semibold text-foreground`}>{section.title}</h2>
