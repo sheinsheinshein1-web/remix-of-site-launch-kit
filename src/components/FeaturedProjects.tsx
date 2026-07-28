@@ -16,6 +16,20 @@ import { useCity } from "@/components/CitySelector";
 const baseProjects = projects.map((p) => ({
   id: p.id,
   maker: p.maker.name,
+  makerId: p.maker.id,
+  verified: [
+    "platforma",
+    "bygge",
+    "durov-house",
+    "histhut",
+    "countryhouse",
+    "cuba-dom",
+    "idolhouse",
+    "woodalp",
+    "boxmate",
+    "uvhouse",
+    "asterius-house",
+  ].includes(p.maker.id),
   city: p.city,
   name: p.name,
   price: p.price,
@@ -104,10 +118,8 @@ function getPagedProjects(page: number, seed: number, source: typeof baseProject
 
   // Поднимаем карточки проверенных производителей повыше: первая идёт в начале,
   // затем равномерно с шагом 4. Остальные проекты остаются в исходном порядке.
-  const VERIFIED_MAKERS = new Set(["Платформа", "Bygge"]);
-  const isVerified = (maker: string) => VERIFIED_MAKERS.has(maker);
-  const verifiedItems = baseOrder.filter((p) => isVerified(p.maker));
-  const otherItems = baseOrder.filter((p) => !isVerified(p.maker));
+  const verifiedItems = baseOrder.filter((p) => p.verified);
+  const otherItems = baseOrder.filter((p) => !p.verified);
   const ordered: typeof baseProjects = [];
   let vIdx = 0;
   let oIdx = 0;
