@@ -19,7 +19,9 @@ const baseProjects = projects.map((p) => ({
   city: p.city,
   name: p.name,
   price: p.price,
+  technology: p.technology,
 }));
+
 
 const PAGE_SIZE = 8;
 const SCROLL_KEY = "home_feed_scroll";
