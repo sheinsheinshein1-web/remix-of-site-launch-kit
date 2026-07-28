@@ -60,11 +60,13 @@ function getPagedProjects(page: number, seed: number, source: typeof baseProject
   const TECH_PRIORITY: Record<string, number> = {
     "Модульный дом": 0,
     "Каркасный": 1,
+    "СИП-Префаб": 2,
     "Префаб": 2,
   };
   const sortedSource = [...source].sort((a, b) => {
     return (TECH_PRIORITY[a.technology] ?? 3) - (TECH_PRIORITY[b.technology] ?? 3);
   });
+
 
   // Чередуем проекты по производителю — чтобы карточки одного бренда не стояли подряд.
   const interleaveByMaker = (arr: typeof baseProjects) => {
