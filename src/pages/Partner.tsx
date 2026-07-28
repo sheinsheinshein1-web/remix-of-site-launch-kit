@@ -148,6 +148,24 @@ const aboutByMakerId: Record<string, string> = {
 
 const manualCounts: Record<string, number> = { bygge: 5 };
 
+/** Палитра страницы партнёра. Подбирается под визуал проектов производителя:
+ *  светлые, «белые» проекты — светлая страница, тёмные — тёмная. */
+type PartnerTheme = { page: string; panel: string; ink: string; light: boolean };
+const DARK_THEME: PartnerTheme = { page: "25 14% 16%", panel: "28 12% 24%", ink: "0 0% 100%", light: false };
+const partnerThemes: Record<string, PartnerTheme> = {
+  platforma: DARK_THEME,
+  bygge: { page: "24 10% 15%", panel: "26 9% 23%", ink: "0 0% 100%", light: false },
+  "durov-house": { page: "0 0% 12%", panel: "0 0% 19%", ink: "0 0% 100%", light: false },
+  histhut: { page: "22 20% 14%", panel: "24 16% 22%", ink: "0 0% 100%", light: false },
+  countryhouse: { page: "140 12% 14%", panel: "140 10% 22%", ink: "0 0% 100%", light: false },
+  "cuba-dom": { page: "35 24% 92%", panel: "35 22% 96%", ink: "25 15% 12%", light: true },
+  idolhouse: { page: "30 12% 93%", panel: "0 0% 100%", ink: "0 0% 10%", light: true },
+  woodalp: { page: "30 16% 15%", panel: "30 13% 23%", ink: "0 0% 100%", light: false },
+  boxmate: { page: "215 12% 14%", panel: "215 10% 22%", ink: "0 0% 100%", light: false },
+  uvhouse: { page: "210 18% 94%", panel: "0 0% 100%", ink: "215 25% 12%", light: true },
+  "asterius-house": { page: "215 14% 16%", panel: "215 12% 24%", ink: "0 0% 100%", light: false },
+};
+
 const Partner = () => {
   const navigate = useNavigate();
   const handleProjectClick = (e: React.MouseEvent<HTMLAnchorElement>, projectId: number) => {
@@ -284,6 +302,7 @@ const Partner = () => {
   }
 
   const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "countryhouse" || makerId === "cuba-dom" || makerId === "idolhouse" || makerId === "woodalp" || makerId === "boxmate" || makerId === "uvhouse" || makerId === "asterius-house";
+  const theme = partnerThemes[makerId ?? ""] ?? DARK_THEME;
 
 
   const HeroPlatforma = () => (
@@ -310,7 +329,7 @@ const Partner = () => {
       {/* Плавный градиент к цвету фона страницы — для читаемости и бесшовного перехода */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "linear-gradient(to bottom, transparent 35%, hsl(25, 14%, 16% / 0.55) 65%, hsl(25, 14%, 16%) 100%)" }}
+        style={{ background: `linear-gradient(to bottom, transparent 35%, hsl(${theme.page} / 0.55) 65%, hsl(${theme.page}) 100%)` }}
       />
 
 
@@ -334,23 +353,23 @@ const Partner = () => {
 
       {/* Текст на блюр-плашке (нижняя 1/3) */}
       <div className="relative mt-auto mb-[15%] h-1/3 flex flex-col items-center justify-center px-5 text-center">
-        <h1 className="text-background leading-[1.05] tracking-tight font-bold uppercase text-[clamp(32px,9vw,52px)]">
+        <h1 className="text-[hsl(var(--pt-ink))] leading-[1.05] tracking-tight font-bold uppercase text-[clamp(32px,9vw,52px)]">
           {partner.name}
         </h1>
         <button
           type="button"
           onClick={() => navigate(`/partner/${id}/reviews`, { state: { returnToMenu: true } })}
-          className="mt-3 inline-flex items-center gap-1.5 text-[13px] text-background px-3 py-1.5 rounded-xl bg-white/15 backdrop-blur-md active:bg-white/25 transition-colors"
+          className="mt-3 inline-flex items-center gap-1.5 text-[13px] text-[hsl(var(--pt-ink))] px-3 py-1.5 rounded-xl bg-[hsl(var(--pt-ink)/0.14)] backdrop-blur-md active:bg-[hsl(var(--pt-ink)/0.24)] transition-colors"
           aria-label="Открыть отзывы"
         >
           <span className="font-semibold">{rating.toFixed(1)}</span>
-          <Star className="w-3.5 h-3.5 fill-background text-background" strokeWidth={0} />
-          <span className="text-background/75">({reviewsLabel})</span>
+          <Star className="w-3.5 h-3.5 fill-[hsl(var(--pt-ink))] text-[hsl(var(--pt-ink))]" strokeWidth={0} />
+          <span className="text-[hsl(var(--pt-ink)/0.75)]">({reviewsLabel})</span>
         </button>
-        <div className="mt-1.5 text-[12px] text-background/70 inline-flex items-center justify-center gap-1.5 w-full">
+        <div className="mt-1.5 text-[12px] text-[hsl(var(--pt-ink)/0.7)] inline-flex items-center justify-center gap-1.5 w-full">
           <MapPin className="w-3 h-3" strokeWidth={1.8} />
           {partner.city}
-          <span className="text-background/40">·</span>
+          <span className="text-[hsl(var(--pt-ink)/0.4)]">·</span>
           {partner.category}
         </div>
       </div>
@@ -465,7 +484,11 @@ const Partner = () => {
   return (
     <div
       className={`relative min-h-screen font-sans pb-[140px] md:pb-10 ${isPlatforma ? "" : "bg-secondary"}`}
-      style={isPlatforma ? { backgroundColor: "hsl(25, 14%, 16%)" } : undefined}
+      style={
+        isPlatforma
+          ? ({ backgroundColor: `hsl(${theme.page})`, ["--pt-ink" as any]: theme.ink } as React.CSSProperties)
+          : undefined
+      }
     >
       <Seo
         title={seoTitle}
@@ -485,7 +508,7 @@ const Partner = () => {
           <div
             className="px-3 pt-[max(env(safe-area-inset-top),10px)] pb-2 border-b border-white/10"
             style={{
-              background: "hsl(0 0% 0% / 0.45)",
+              background: theme.light ? `hsl(${theme.page} / 0.8)` : "hsl(0 0% 0% / 0.45)",
               backdropFilter: "blur(18px) saturate(140%)",
               WebkitBackdropFilter: "blur(18px) saturate(140%)",
             }}
@@ -522,9 +545,9 @@ const Partner = () => {
           <div className="px-3 mt-3">
             <div
               className="rounded-2xl pt-5 pb-5"
-              style={{ background: "hsl(28, 12%, 24%)", ["--foreground" as any]: "0 0% 100%" }}
+              style={{ background: `hsl(${theme.panel})`, ["--foreground" as any]: theme.ink }}
             >
-              <h2 className="px-4 text-[22px] font-bold text-background tracking-tight">Популярные</h2>
+              <h2 className="px-4 text-[22px] font-bold text-[hsl(var(--pt-ink))] tracking-tight">Популярные</h2>
               <div className="mt-3 flex gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {makerProjects.map((p) => (
                   <div key={p.id} className="shrink-0 w-[235px] md:w-[260px]">
@@ -599,18 +622,18 @@ const Partner = () => {
         {isPlatforma && makerProjects.length > 0 && (
           <div className="px-3 mt-5">
             <div className="flex items-center justify-between px-1">
-              <h2 className="text-[24px] font-bold tracking-tight text-background">Все проекты</h2>
+              <h2 className="text-[24px] font-bold tracking-tight text-[hsl(var(--pt-ink))]">Все проекты</h2>
               <button
                 onClick={() => setSortOpen(true)}
-                className="w-10 h-10 rounded-xl backdrop-blur-md flex items-center justify-center bg-background/25"
+                className="w-10 h-10 rounded-xl backdrop-blur-md flex items-center justify-center bg-[hsl(var(--pt-ink)/0.15)]"
                 aria-label="Сортировка"
               >
-                <ArrowUpDown className="w-[18px] h-[18px] text-background" strokeWidth={2.2} />
+                <ArrowUpDown className="w-[18px] h-[18px] text-[hsl(var(--pt-ink))]" strokeWidth={2.2} />
               </button>
             </div>
             <div
               className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2.5"
-              style={{ ["--foreground" as any]: "0 0% 100%" }}
+              style={{ ["--foreground" as any]: theme.ink }}
             >
               {sortedMakerProjects.map((p) => (
                 <ProjectCard key={p.id} projectId={p.id} onCardClick={handleProjectClick} />
@@ -819,11 +842,11 @@ const Partner = () => {
       {/* Bottom Bar — CTA + tabs */}
       <div className="fixed bottom-0 left-0 right-0 z-40">
         <div
-          className={`border-t ${isPlatforma ? "border-white/10" : "border-border bg-background"}`}
+          className={`border-t ${isPlatforma ? "border-[hsl(var(--pt-ink)/0.12)]" : "border-border bg-background"}`}
           style={
             isPlatforma
               ? {
-                  background: "hsl(0 0% 0% / 0.45)",
+                  background: theme.light ? `hsl(${theme.page} / 0.75)` : "hsl(0 0% 0% / 0.45)",
                   backdropFilter: "blur(18px) saturate(140%)",
                   WebkitBackdropFilter: "blur(18px) saturate(140%)",
                 }
@@ -846,7 +869,7 @@ const Partner = () => {
                 className="flex-1 flex items-center justify-center py-2.5 px-4"
               >
                 <tab.icon
-                  className={`w-[26px] h-[26px] ${isPlatforma ? "text-white fill-white" : "text-muted-foreground fill-muted-foreground"}`}
+                  className={`w-[26px] h-[26px] ${isPlatforma ? "text-[hsl(var(--pt-ink))] fill-[hsl(var(--pt-ink))]" : "text-muted-foreground fill-muted-foreground"}`}
                   strokeWidth={1.5}
                 />
               </button>
