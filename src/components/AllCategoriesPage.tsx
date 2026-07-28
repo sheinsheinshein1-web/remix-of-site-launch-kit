@@ -72,9 +72,10 @@ const makeHouseItems = (imgs: { house: string; dacha: string; twostory: string; 
 ];
 
 const sections: { title: string; tech?: string; items: CategoryItem[] }[] = [
-  { title: "Каркасные дома", tech: "Каркасный", items: makeHouseItems({ house: catHouses, dacha: catDacha, twostory: catTwostory, studio: catStudio, guest: catGuest }) },
   { title: "Модульные дома", tech: "Модульный дом", items: makeHouseItems({ house: catHousesModular, dacha: catDachaModular, twostory: catTwostoryModular, studio: catStudioModular, guest: catGuestModular }) },
+  { title: "Каркасные дома", tech: "Каркасный", items: makeHouseItems({ house: catHouses, dacha: catDacha, twostory: catTwostory, studio: catStudio, guest: catGuest }) },
   { title: "Префаб дома", tech: "Префаб", items: makeHouseItems({ house: catHousesPrefab, dacha: catDachaPrefab, twostory: catTwostoryPrefab, studio: catStudioPrefab, guest: catGuestPrefab }) },
+
   {
     title: "Для бизнеса",
     items: [
