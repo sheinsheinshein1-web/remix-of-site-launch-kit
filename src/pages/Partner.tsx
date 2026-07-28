@@ -176,12 +176,14 @@ const partnerThemes: Record<string, PartnerTheme> = {
   boxmate: { page: "215 12% 14%", panel: "215 10% 22%", ink: "0 0% 100%", light: false },
   uvhouse: { page: "210 18% 94%", panel: "0 0% 100%", ink: "215 25% 12%", light: true },
   "asterius-house": { page: "215 14% 16%", panel: "215 12% 24%", ink: "0 0% 100%", light: false },
-  "smola-house": { page: "30 14% 16%", panel: "30 12% 24%", ink: "0 0% 100%", light: false },
-  ultradomspb: { page: "210 18% 15%", panel: "210 14% 23%", ink: "0 0% 100%", light: false },
-  "freedom-naturi": { page: "120 16% 14%", panel: "120 12% 22%", ink: "0 0% 100%", light: false },
-  chebwood: { page: "115 22% 15%", panel: "115 18% 23%", ink: "0 0% 100%", light: false },
-  campingdom: { page: "93 28% 14%", panel: "93 20% 22%", ink: "0 0% 100%", light: false },
-  pslcomp: { page: "30 10% 16%", panel: "30 9% 24%", ink: "0 0% 100%", light: false },
+  // Палитры ниже подобраны по среднему тону фотографий проектов производителя.
+  "smola-house": { page: "40 12% 93%", panel: "0 0% 100%", ink: "30 12% 12%", light: true },
+  ultradomspb: { page: "90 8% 92%", panel: "0 0% 100%", ink: "90 10% 12%", light: true },
+  "freedom-naturi": { page: "50 22% 13%", panel: "50 16% 21%", ink: "0 0% 100%", light: false },
+  chebwood: { page: "40 20% 15%", panel: "40 16% 23%", ink: "0 0% 100%", light: false },
+  campingdom: { page: "52 16% 14%", panel: "52 12% 22%", ink: "0 0% 100%", light: false },
+  pslcomp: { page: "100 6% 16%", panel: "100 5% 24%", ink: "0 0% 100%", light: false },
+
 };
 
 const Partner = () => {
