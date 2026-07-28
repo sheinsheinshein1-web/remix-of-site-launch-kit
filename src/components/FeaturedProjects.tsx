@@ -19,7 +19,9 @@ const baseProjects = projects.map((p) => ({
   city: p.city,
   name: p.name,
   price: p.price,
+  technology: p.technology,
 }));
+
 
 const PAGE_SIZE = 8;
 const SCROLL_KEY = "home_feed_scroll";
@@ -53,6 +55,19 @@ function getOrderedProjects(seed: number) {
 // Циклически генерируем «бесконечную» ленту, переиспользуя проекты в порядке seed.
 function getPagedProjects(page: number, seed: number, source: typeof baseProjects) {
   if (source.length === 0) return [];
+
+  // Сортируем по технологии: модульные выше каркасных, префаб дальше.
+  const TECH_PRIORITY: Record<string, number> = {
+    "Модульный дом": 0,
+    "Каркасный": 1,
+    "СИП-Префаб": 2,
+    "Префаб": 2,
+  };
+  const sortedSource = [...source].sort((a, b) => {
+    return (TECH_PRIORITY[a.technology] ?? 3) - (TECH_PRIORITY[b.technology] ?? 3);
+  });
+
+
   // Чередуем проекты по производителю — чтобы карточки одного бренда не стояли подряд.
   const interleaveByMaker = (arr: typeof baseProjects) => {
     const buckets = new Map<string, typeof baseProjects>();
@@ -71,6 +86,7 @@ function getPagedProjects(page: number, seed: number, source: typeof baseProject
     }
     return out;
   };
+
   // Базовый порядок: интерливим по производителю, затем стабильно тасуем,
   // чтобы в 2-колоночной сетке не получалось "столбцов" одного бренда.
   const shuffleWithSeed = (arr: typeof baseProjects, s: number) => {
@@ -83,8 +99,9 @@ function getPagedProjects(page: number, seed: number, source: typeof baseProject
     return a;
   };
   const baseOrder = seed === 0
-    ? shuffleWithSeed(interleaveByMaker(source), 1337)
-    : shuffleWithSeed(source, seed);
+    ? shuffleWithSeed(interleaveByMaker(sortedSource), 1337)
+    : shuffleWithSeed(sortedSource, seed);
+
   // Поднимаем карточки Платформы повыше: первая идёт после первых двух,
   // затем равномерно с шагом 4. Остальные проекты остаются в исходном порядке.
   const platformaItems = baseOrder.filter((p) => p.maker === "Платформа");
