@@ -1139,7 +1139,19 @@ import camping15Barn_1 from "@/assets/campingdom/campingdom-15-barn/01.webp";
 import camping28Barn_1 from "@/assets/campingdom/campingdom-28-barn/01.webp";
 import pslcompLogo from "@/assets/pslcomp/logo.webp";
 import pslBarn36_1 from "@/assets/pslcomp/barn-36/01.webp";
+import pslBarn36_2 from "@/assets/pslcomp/barn-36/02.webp";
+import pslBarn36_3 from "@/assets/pslcomp/barn-36/03.webp";
+import pslBarn36_4 from "@/assets/pslcomp/barn-36/04.webp";
+import pslBarn36_5 from "@/assets/pslcomp/barn-36/05.webp";
+import pslBarn36_6 from "@/assets/pslcomp/barn-36/06.webp";
+import pslBarn36Plan1 from "@/assets/pslcomp/barn-36/plan-1.webp";
 import pslHaytek36_1 from "@/assets/pslcomp/haytek-36/01.webp";
+import pslHaytek36_2 from "@/assets/pslcomp/haytek-36/02.webp";
+import pslHaytek36_3 from "@/assets/pslcomp/haytek-36/03.webp";
+import pslHaytek36_4 from "@/assets/pslcomp/haytek-36/04.webp";
+import pslHaytek36_5 from "@/assets/pslcomp/haytek-36/05.webp";
+import pslHaytek36_6 from "@/assets/pslcomp/haytek-36/06.webp";
+import pslHaytek36Plan1 from "@/assets/pslcomp/haytek-36/plan-1.webp";
 import pslBarn40_1 from "@/assets/pslcomp/barn-40/01.webp";
 import pslBarn40_2 from "@/assets/pslcomp/barn-40/02.webp";
 import pslBarn40_3 from "@/assets/pslcomp/barn-40/03.webp";
@@ -1148,7 +1160,20 @@ import pslBarn40_5 from "@/assets/pslcomp/barn-40/05.webp";
 import pslBarn40_6 from "@/assets/pslcomp/barn-40/06.webp";
 import pslBarn40Plan1 from "@/assets/pslcomp/barn-40/plan-1.webp";
 import pslHaytek40_1 from "@/assets/pslcomp/haytek-40/01.webp";
+import pslHaytek40_2 from "@/assets/pslcomp/haytek-40/02.webp";
+import pslHaytek40_3 from "@/assets/pslcomp/haytek-40/03.webp";
+import pslHaytek40_4 from "@/assets/pslcomp/haytek-40/04.webp";
+import pslHaytek40_5 from "@/assets/pslcomp/haytek-40/05.webp";
+import pslHaytek40_6 from "@/assets/pslcomp/haytek-40/06.webp";
+import pslHaytek40Plan1 from "@/assets/pslcomp/haytek-40/plan-1.webp";
 import pslBarn45_1 from "@/assets/pslcomp/barn-45/01.webp";
+import pslBarn45_2 from "@/assets/pslcomp/barn-45/02.webp";
+import pslBarn45_3 from "@/assets/pslcomp/barn-45/03.webp";
+import pslBarn45_4 from "@/assets/pslcomp/barn-45/04.webp";
+import pslBarn45_5 from "@/assets/pslcomp/barn-45/05.webp";
+import pslBarn45_6 from "@/assets/pslcomp/barn-45/06.webp";
+import pslBarn45Plan1 from "@/assets/pslcomp/barn-45/plan-1.webp";
+import pslBarn45Plan2 from "@/assets/pslcomp/barn-45/plan-2.webp";
 import domnas35_1 from "@/assets/domnasm/domnas-35/01.webp";
 import domnas50_1 from "@/assets/domnasm/domnas-50/01.webp";
 import domnas80_1 from "@/assets/domnasm/domnas-80/01.webp";
@@ -1207,14 +1232,39 @@ import panoramicXl45_2 from "@/assets/panoramic-home/xl-45/02.webp";
 import ambarnLogo from "@/assets/ambarn/logo.webp";
 import ambarnBarn40_1 from "@/assets/ambarn/barn-40-lux/01.webp";
 import ambarnBarn40_2 from "@/assets/ambarn/barn-40-lux/02.webp";
+import ambarnBarn40_3 from "@/assets/ambarn/barn-40-lux/03.webp";
+import ambarnBarn40_4 from "@/assets/ambarn/barn-40-lux/04.webp";
+import ambarnBarn40_5 from "@/assets/ambarn/barn-40-lux/05.webp";
+import ambarnBarn40_6 from "@/assets/ambarn/barn-40-lux/06.webp";
+import ambarnBarn40Plan1 from "@/assets/ambarn/barn-40-lux/plan-1.webp";
 import ambarnIndigo30_1 from "@/assets/ambarn/indigo-30/01.webp";
 import ambarnIndigo30_2 from "@/assets/ambarn/indigo-30/02.webp";
+import ambarnIndigo30_3 from "@/assets/ambarn/indigo-30/03.webp";
+import ambarnIndigo30_4 from "@/assets/ambarn/indigo-30/04.webp";
+import ambarnIndigo30_5 from "@/assets/ambarn/indigo-30/05.webp";
+import ambarnIndigo30_6 from "@/assets/ambarn/indigo-30/06.webp";
+import ambarnIndigo30Plan1 from "@/assets/ambarn/indigo-30/plan-1.webp";
 import ambarnIndigo40_1 from "@/assets/ambarn/indigo-40/01.webp";
 import ambarnIndigo40_2 from "@/assets/ambarn/indigo-40/02.webp";
+import ambarnIndigo40_3 from "@/assets/ambarn/indigo-40/03.webp";
+import ambarnIndigo40_4 from "@/assets/ambarn/indigo-40/04.webp";
+import ambarnIndigo40_5 from "@/assets/ambarn/indigo-40/05.webp";
+import ambarnIndigo40_6 from "@/assets/ambarn/indigo-40/06.webp";
+import ambarnIndigo40Plan1 from "@/assets/ambarn/indigo-40/plan-1.webp";
 import ambarnIndigo50_1 from "@/assets/ambarn/indigo-50/01.webp";
 import ambarnIndigo50_2 from "@/assets/ambarn/indigo-50/02.webp";
+import ambarnIndigo50_3 from "@/assets/ambarn/indigo-50/03.webp";
+import ambarnIndigo50_4 from "@/assets/ambarn/indigo-50/04.webp";
+import ambarnIndigo50_5 from "@/assets/ambarn/indigo-50/05.webp";
+import ambarnIndigo50_6 from "@/assets/ambarn/indigo-50/06.webp";
+import ambarnIndigo50Plan1 from "@/assets/ambarn/indigo-50/plan-1.webp";
 import ambarnIndigo36_1 from "@/assets/ambarn/indigo-36/01.webp";
 import ambarnIndigo36_2 from "@/assets/ambarn/indigo-36/02.webp";
+import ambarnIndigo36_3 from "@/assets/ambarn/indigo-36/03.webp";
+import ambarnIndigo36_4 from "@/assets/ambarn/indigo-36/04.webp";
+import ambarnIndigo36_5 from "@/assets/ambarn/indigo-36/05.webp";
+import ambarnIndigo36_6 from "@/assets/ambarn/indigo-36/06.webp";
+import ambarnIndigo36Plan1 from "@/assets/ambarn/indigo-36/plan-1.webp";
 import familyHouseLogo from "@/assets/myfamilyhouse/logo.webp";
 import familyHouseProject1_1 from "@/assets/myfamilyhouse/project-1/01.webp";
 import familyHouseProject1_2 from "@/assets/myfamilyhouse/project-1/02.webp";
@@ -6878,6 +6928,12 @@ export const projects: Project[] = [
     descriptionLong: "Барн 36 от Промстройлес — модульный дом площадью 36 м² с габаритами 3,5 × 12 м. Проект выполнен в современной barn-архитектуре и подходит для дачи, гостевого дома или компактного круглогодичного проживания.",
     gallery: [
       { image: pslBarn36_1, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn36_2, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn36_3, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn36_4, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn36_5, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn36_6, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn36Plan1, type: "plan", fit: "contain" },
     ],
     likes: 63, rating: 4.9,
     suitableFor: ["Дача", "Гостевой дом", "Круглогодичное проживание"],
@@ -6894,6 +6950,12 @@ export const projects: Project[] = [
     descriptionLong: "Хайтек 36 от Промстройлес — компактный модульный дом площадью 36 м² в современной архитектуре. Проект подходит для дачного участка, гостевого размещения и небольшого загородного дома.",
     gallery: [
       { image: pslHaytek36_1, type: "photo", fit: "contain", blur: true },
+      { image: pslHaytek36_2, type: "photo", fit: "contain", blur: true },
+      { image: pslHaytek36_3, type: "photo", fit: "contain", blur: true },
+      { image: pslHaytek36_4, type: "photo", fit: "contain", blur: true },
+      { image: pslHaytek36_5, type: "photo", fit: "contain", blur: true },
+      { image: pslHaytek36_6, type: "photo", fit: "contain", blur: true },
+      { image: pslHaytek36Plan1, type: "plan", fit: "contain" },
     ],
     likes: 59, rating: 4.9,
     suitableFor: ["Дача", "Современный дом", "Гостевой дом"],
@@ -6932,6 +6994,12 @@ export const projects: Project[] = [
     descriptionLong: "Хайтек 40 от Промстройлес — модульный дом площадью 40 м² для дачи и проживания за городом. В проекте предусмотрена компактная семейная планировка и современный внешний вид.",
     gallery: [
       { image: pslHaytek40_1, type: "photo", fit: "contain", blur: true },
+      { image: pslHaytek40_2, type: "photo", fit: "contain", blur: true },
+      { image: pslHaytek40_3, type: "photo", fit: "contain", blur: true },
+      { image: pslHaytek40_4, type: "photo", fit: "contain", blur: true },
+      { image: pslHaytek40_5, type: "photo", fit: "contain", blur: true },
+      { image: pslHaytek40_6, type: "photo", fit: "contain", blur: true },
+      { image: pslHaytek40Plan1, type: "plan", fit: "contain" },
     ],
     likes: 65, rating: 4.9,
     suitableFor: ["Для семьи", "Дача", "Современный дом"],
@@ -6948,6 +7016,13 @@ export const projects: Project[] = [
     descriptionLong: "Барн 45 от Промстройлес — модульный дом площадью 45 м² в barn-стиле. Проект рассчитан на загородное проживание, дачный сценарий или гостевое размещение с комфортной площадью.",
     gallery: [
       { image: pslBarn45_1, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn45_2, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn45_3, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn45_4, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn45_5, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn45_6, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn45Plan1, type: "plan", fit: "contain" },
+      { image: pslBarn45Plan2, type: "plan", fit: "contain" },
     ],
     likes: 69, rating: 4.9,
     suitableFor: ["Дача", "ПМЖ", "Гостевой дом"],
@@ -7539,6 +7614,11 @@ export const projects: Project[] = [
     gallery: [
       { image: ambarnBarn40_1, type: "photo" },
       { image: ambarnBarn40_2, type: "photo" },
+      { image: ambarnBarn40_3, type: "photo" },
+      { image: ambarnBarn40_4, type: "photo" },
+      { image: ambarnBarn40_5, type: "photo" },
+      { image: ambarnBarn40_6, type: "photo" },
+      { image: ambarnBarn40Plan1, type: "plan", fit: "contain" },
     ],
     likes: 74, rating: 4.9,
     suitableFor: ["Дача", "Гостевой дом", "Пара"],
@@ -7556,6 +7636,11 @@ export const projects: Project[] = [
     gallery: [
       { image: ambarnIndigo30_1, type: "photo" },
       { image: ambarnIndigo30_2, type: "photo" },
+      { image: ambarnIndigo30_3, type: "photo" },
+      { image: ambarnIndigo30_4, type: "photo" },
+      { image: ambarnIndigo30_5, type: "photo" },
+      { image: ambarnIndigo30_6, type: "photo" },
+      { image: ambarnIndigo30Plan1, type: "plan", fit: "contain" },
     ],
     likes: 73, rating: 4.9,
     suitableFor: ["Дача", "Гостевой дом", "Семья"],
@@ -7573,6 +7658,11 @@ export const projects: Project[] = [
     gallery: [
       { image: ambarnIndigo40_1, type: "photo" },
       { image: ambarnIndigo40_2, type: "photo" },
+      { image: ambarnIndigo40_3, type: "photo" },
+      { image: ambarnIndigo40_4, type: "photo" },
+      { image: ambarnIndigo40_5, type: "photo" },
+      { image: ambarnIndigo40_6, type: "photo" },
+      { image: ambarnIndigo40Plan1, type: "plan", fit: "contain" },
     ],
     likes: 78, rating: 4.9,
     suitableFor: ["Для семьи", "Дача", "ПМЖ"],
@@ -7590,6 +7680,11 @@ export const projects: Project[] = [
     gallery: [
       { image: ambarnIndigo50_1, type: "photo" },
       { image: ambarnIndigo50_2, type: "photo" },
+      { image: ambarnIndigo50_3, type: "photo" },
+      { image: ambarnIndigo50_4, type: "photo" },
+      { image: ambarnIndigo50_5, type: "photo" },
+      { image: ambarnIndigo50_6, type: "photo" },
+      { image: ambarnIndigo50Plan1, type: "plan", fit: "contain" },
     ],
     likes: 82, rating: 4.9,
     suitableFor: ["Для семьи", "ПМЖ", "Дача"],
@@ -7607,6 +7702,11 @@ export const projects: Project[] = [
     gallery: [
       { image: ambarnIndigo36_1, type: "photo" },
       { image: ambarnIndigo36_2, type: "photo" },
+      { image: ambarnIndigo36_3, type: "photo" },
+      { image: ambarnIndigo36_4, type: "photo" },
+      { image: ambarnIndigo36_5, type: "photo" },
+      { image: ambarnIndigo36_6, type: "photo" },
+      { image: ambarnIndigo36Plan1, type: "plan", fit: "contain" },
     ],
     likes: 75, rating: 4.9,
     suitableFor: ["Дача", "Для семьи", "ПМЖ"],

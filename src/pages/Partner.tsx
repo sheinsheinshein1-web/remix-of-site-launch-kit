@@ -4,7 +4,11 @@ import { ArrowLeft, ChevronRight, ShieldCheck, Star, ArrowUpDown, MapPin, Menu, 
 import Header from "@/components/Header";
 import { useIsMobile } from "@/hooks/use-mobile";
 import shareIcon from "@/assets/share-icon.svg";
+import chebwoodBackdrop from "@/assets/chebwood/glamping/01.webp";
+import dommBackdrop from "@/assets/domm/modul-house-1/01.webp";
+import panoramicBackdrop from "@/assets/panoramic-home/backdrop.webp";
 import pslBarn40Backdrop from "@/assets/pslcomp/barn-40/02.webp";
+import ultradomBackdrop from "@/assets/ultradomspb/ultra-65/01.webp";
 import ProjectCard from "@/components/ProjectCard";
 import Seo from "@/components/Seo";
 import NotFound from "@/pages/NotFound";
@@ -33,7 +37,11 @@ const wordForm = (n: number, forms: [string, string, string]) => {
 const partnerMakerIds: Record<string, string> = { "1": "platforma" };
 
 const hitBackdropByMakerId: Record<string, string> = {
+  chebwood: chebwoodBackdrop,
+  domm: dommBackdrop,
+  "panoramic-home": panoramicBackdrop,
   pslcomp: pslBarn40Backdrop,
+  ultradomspb: ultradomBackdrop,
 };
 
 // Тексты «о компании» — единственное, что не выводится автоматически из projects.ts.
