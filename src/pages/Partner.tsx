@@ -4,6 +4,7 @@ import { ArrowLeft, ChevronRight, ShieldCheck, Star, ArrowUpDown, MapPin, Menu, 
 import Header from "@/components/Header";
 import { useIsMobile } from "@/hooks/use-mobile";
 import shareIcon from "@/assets/share-icon.svg";
+import pslBarn40Backdrop from "@/assets/pslcomp/barn-40/02.webp";
 import ProjectCard from "@/components/ProjectCard";
 import Seo from "@/components/Seo";
 import NotFound from "@/pages/NotFound";
@@ -30,6 +31,10 @@ const wordForm = (n: number, forms: [string, string, string]) => {
 
 // Маппинг id из URL → makerId. Поддерживаем легаси "1" → platforma.
 const partnerMakerIds: Record<string, string> = { "1": "platforma" };
+
+const hitBackdropByMakerId: Record<string, string> = {
+  pslcomp: pslBarn40Backdrop,
+};
 
 // Тексты «о компании» — единственное, что не выводится автоматически из projects.ts.
 const aboutByMakerId: Record<string, string> = {
@@ -613,7 +618,7 @@ const Partner = () => {
 
         {/* Бенто: "Хиты продаж" — большое фото-бенто с карточками внизу */}
         {isPlatforma && makerProjects.length >= 2 && (() => {
-          const bgImage = makerProjects[1]?.gallery[0]?.image ?? heroImage;
+          const bgImage = hitBackdropByMakerId[makerId ?? ""] ?? makerProjects[1]?.gallery[0]?.image ?? heroImage;
           const cards = makerProjects.slice(0, 3);
           return (
             <div className="px-3 mt-3">
