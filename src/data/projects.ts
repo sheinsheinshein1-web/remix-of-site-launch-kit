@@ -1141,6 +1141,12 @@ import pslcompLogo from "@/assets/pslcomp/logo.webp";
 import pslBarn36_1 from "@/assets/pslcomp/barn-36/01.webp";
 import pslHaytek36_1 from "@/assets/pslcomp/haytek-36/01.webp";
 import pslBarn40_1 from "@/assets/pslcomp/barn-40/01.webp";
+import pslBarn40_2 from "@/assets/pslcomp/barn-40/02.webp";
+import pslBarn40_3 from "@/assets/pslcomp/barn-40/03.webp";
+import pslBarn40_4 from "@/assets/pslcomp/barn-40/04.webp";
+import pslBarn40_5 from "@/assets/pslcomp/barn-40/05.webp";
+import pslBarn40_6 from "@/assets/pslcomp/barn-40/06.webp";
+import pslBarn40Plan1 from "@/assets/pslcomp/barn-40/plan-1.webp";
 import pslHaytek40_1 from "@/assets/pslcomp/haytek-40/01.webp";
 import pslBarn45_1 from "@/assets/pslcomp/barn-45/01.webp";
 import domnas35_1 from "@/assets/domnasm/domnas-35/01.webp";
@@ -6904,6 +6910,12 @@ export const projects: Project[] = [
     descriptionLong: "Барн 40 от Промстройлес — модульный дом площадью 40 м² с двумя спальнями и современной barn-архитектурой. Подходит для семьи, дачи и круглогодичного проживания на небольшом участке.",
     gallery: [
       { image: pslBarn40_1, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn40_2, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn40_3, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn40_4, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn40_5, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn40_6, type: "photo", fit: "contain", blur: true },
+      { image: pslBarn40Plan1, type: "plan", fit: "contain" },
     ],
     likes: 67, rating: 4.9,
     suitableFor: ["Для семьи", "Дача", "ПМЖ"],
