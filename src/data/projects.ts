@@ -1173,6 +1173,53 @@ import fourModulKarelia60_2 from "@/assets/4modul/karelia-60/02.webp";
 import fourModulKarelia75_1 from "@/assets/4modul/karelia-75/01.webp";
 import fourModulKarelia75_2 from "@/assets/4modul/karelia-75/02.webp";
 import fourModulBarn60_1 from "@/assets/4modul/barn-60/01.webp";
+import cubberLogo from "@/assets/cubber/logo.webp";
+import cubberHouse48_1 from "@/assets/cubber/house-48/01.webp";
+import cubberHouse48Plan from "@/assets/cubber/house-48/02-plan.webp";
+import cubberHouse50_1 from "@/assets/cubber/house-50/01.webp";
+import cubberHouse50Plan from "@/assets/cubber/house-50/02-plan.webp";
+import cubberHouse60_1 from "@/assets/cubber/house-60/01.webp";
+import cubberHouse60Plan from "@/assets/cubber/house-60/02-plan.webp";
+import cubberHouse65_1 from "@/assets/cubber/house-65/01.webp";
+import cubberHouse65Plan from "@/assets/cubber/house-65/02-plan.webp";
+import cubberHouse95t_1 from "@/assets/cubber/house-95t/01.webp";
+import cubberHouse95tPlan from "@/assets/cubber/house-95t/02-plan.webp";
+import simplehouseLogo from "@/assets/simplehouse/logo.webp";
+import simple6_1 from "@/assets/simplehouse/simple-6/01.webp";
+import simple6Plan from "@/assets/simplehouse/simple-6/02-plan.webp";
+import panoramicLogo from "@/assets/panoramic-home/logo.webp";
+import panoramicXl54_1 from "@/assets/panoramic-home/xl-54/01.webp";
+import panoramicXl54_2 from "@/assets/panoramic-home/xl-54/02.webp";
+import panoramicMax87_1 from "@/assets/panoramic-home/max-87/01.webp";
+import panoramicMax87_2 from "@/assets/panoramic-home/max-87/02.webp";
+import panoramicXl60_1 from "@/assets/panoramic-home/xl-60/01.webp";
+import panoramicXl60_2 from "@/assets/panoramic-home/xl-60/02.webp";
+import panoramicXl72_1 from "@/assets/panoramic-home/xl-72/01.webp";
+import panoramicXl72_2 from "@/assets/panoramic-home/xl-72/02.webp";
+import panoramicXl45_1 from "@/assets/panoramic-home/xl-45/01.webp";
+import panoramicXl45_2 from "@/assets/panoramic-home/xl-45/02.webp";
+import ambarnLogo from "@/assets/ambarn/logo.webp";
+import ambarnBarn40_1 from "@/assets/ambarn/barn-40-lux/01.webp";
+import ambarnBarn40_2 from "@/assets/ambarn/barn-40-lux/02.webp";
+import ambarnIndigo30_1 from "@/assets/ambarn/indigo-30/01.webp";
+import ambarnIndigo30_2 from "@/assets/ambarn/indigo-30/02.webp";
+import ambarnIndigo40_1 from "@/assets/ambarn/indigo-40/01.webp";
+import ambarnIndigo40_2 from "@/assets/ambarn/indigo-40/02.webp";
+import ambarnIndigo50_1 from "@/assets/ambarn/indigo-50/01.webp";
+import ambarnIndigo50_2 from "@/assets/ambarn/indigo-50/02.webp";
+import ambarnIndigo36_1 from "@/assets/ambarn/indigo-36/01.webp";
+import ambarnIndigo36_2 from "@/assets/ambarn/indigo-36/02.webp";
+import familyHouseLogo from "@/assets/myfamilyhouse/logo.webp";
+import familyHouseProject1_1 from "@/assets/myfamilyhouse/project-1/01.webp";
+import familyHouseProject1_2 from "@/assets/myfamilyhouse/project-1/02.webp";
+import familyHouseProject2_1 from "@/assets/myfamilyhouse/project-2/01.webp";
+import familyHouseProject2_2 from "@/assets/myfamilyhouse/project-2/02.webp";
+import familyHouseProject3_1 from "@/assets/myfamilyhouse/project-3/01.webp";
+import familyHouseProject3_2 from "@/assets/myfamilyhouse/project-3/02.webp";
+import familyHouseProject4_1 from "@/assets/myfamilyhouse/project-4/01.webp";
+import familyHouseProject4_2 from "@/assets/myfamilyhouse/project-4/02.webp";
+import familyHouseProject5_1 from "@/assets/myfamilyhouse/project-5/01.webp";
+import familyHouseProject5_2 from "@/assets/myfamilyhouse/project-5/02.webp";
 import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
@@ -1704,6 +1751,52 @@ const FOUR_MODUL: Maker = {
   siteUrl: "https://4modul.ru/",
   productionAddress: "Рязань",
   phone: "+7 (900) 609-69-09",
+};
+const CUBBER: Maker = {
+  name: "Cubber Prefab",
+  initials: "CB",
+  id: "cubber",
+  logo: cubberLogo,
+  siteUrl: "https://cubber.ru/modul",
+  productionAddress: "Новокузнецк, Кемеровская область",
+  phone: "+7 (900) 105-61-30",
+};
+const SIMPLEHOUSE: Maker = {
+  name: "Simple House",
+  initials: "SH",
+  id: "simplehouse",
+  logo: simplehouseLogo,
+  siteUrl: "https://simplehouse1.ru/",
+  productionAddress: "Санкт-Петербург",
+  email: "simplehouse1@mail.ru",
+  telegram: "https://t.me/simple_house1",
+};
+const PANORAMIC_HOME: Maker = {
+  name: "Panoramic Home",
+  initials: "PH",
+  id: "panoramic-home",
+  logo: panoramicLogo,
+  siteUrl: "https://panoramic-home.ru/modular_house",
+  productionAddress: "Красноярск",
+  phone: "+7 (906) 974-44-00",
+};
+const AMBARN: Maker = {
+  name: "АмбарН",
+  initials: "АН",
+  id: "ambarn",
+  logo: ambarnLogo,
+  siteUrl: "https://ambarn.ru/product-category/modulnye-doma/",
+  productionAddress: "Краснодар и Краснодарский край",
+  phone: "+7 (937) 260-04-20",
+};
+const MYFAMILYHOUSE: Maker = {
+  name: "FAMILY HOUSE",
+  initials: "FH",
+  id: "myfamilyhouse",
+  logo: familyHouseLogo,
+  siteUrl: "https://myfamilyhouse.ru/",
+  productionAddress: "х. Суповский, ул. Ленина 88/4",
+  phone: "+7 (995) 103-67-03",
 };
 
 // ============================================================================
@@ -7237,6 +7330,363 @@ export const projects: Project[] = [
     features: ["Барнхаус", "59 м²", "Панорамное остекление"], style: "Барнхаус", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
+  {
+    id: 376, name: "HOUSE 48", badge: "Модульный дом", price: "по запросу",
+    area: "47 м²", area_m2: 47, beds: 2, baths: 1, floors: 1, term: "от 30 д.",
+    rooms: "2 спальни", purpose: "Дача / ПМЖ", city: "Кемеровская область",
+    maker: { ...CUBBER, siteUrl: "https://cubber.ru/modul" },
+    description: "Модульный дом HOUSE 48 от Cubber Prefab площадью 47 м² с жилой зоной 32 м².",
+    descriptionLong: "HOUSE 48 — модульный дом Cubber Prefab для дачи, гостевого размещения или круглогодичного проживания. На странице производителя указаны общая площадь 47 м², жилая площадь 32 м², две спальни и один санузел.",
+    gallery: [
+      { image: cubberHouse48_1, type: "photo" },
+      { image: cubberHouse48Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 69, rating: 4.9,
+    suitableFor: ["Дача", "ПМЖ", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["47 м²", "2 спальни", "Сибирский формат"], style: "Современный", landSize: "5–8 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 377, name: "HOUSE 50", badge: "Модульный дом", price: "по запросу",
+    area: "49 м²", area_m2: 49, beds: 2, baths: 1, floors: 1, term: "от 30 д.",
+    rooms: "2 спальни", purpose: "Дача / ПМЖ", city: "Кемеровская область",
+    maker: { ...CUBBER, siteUrl: "https://cubber.ru/modul" },
+    description: "Проект HOUSE 50 площадью 49 м² с двумя спальнями и жилой площадью 38 м².",
+    descriptionLong: "HOUSE 50 — модульный дом Cubber Prefab площадью 49 м². Проект рассчитан на две спальни, один санузел и загородный сценарий для семьи, отдыха или аренды.",
+    gallery: [
+      { image: cubberHouse50_1, type: "photo" },
+      { image: cubberHouse50Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 71, rating: 4.9,
+    suitableFor: ["Для семьи", "Дача", "Аренда"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["49 м²", "2 спальни", "Жилая площадь 38 м²"], style: "Современный", landSize: "5–8 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 378, name: "HOUSE 60", badge: "Модульный дом", price: "по запросу",
+    area: "59 м²", area_m2: 59, beds: 2, baths: 1, floors: 1, term: "от 30 д.",
+    rooms: "2 спальни", purpose: "Семья / ПМЖ", city: "Кемеровская область",
+    maker: { ...CUBBER, siteUrl: "https://cubber.ru/modul" },
+    description: "Модульный дом HOUSE 60 площадью 59 м² для семьи и круглогодичного проживания.",
+    descriptionLong: "HOUSE 60 — семейный проект Cubber Prefab с общей площадью 59 м² и жилой площадью 43 м². Дом подходит для постоянного проживания, дачи или размещения на туристическом участке.",
+    gallery: [
+      { image: cubberHouse60_1, type: "photo" },
+      { image: cubberHouse60Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 76, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["59 м²", "2 спальни", "Жилая площадь 43 м²"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 379, name: "HOUSE 65", badge: "Модульный дом", price: "по запросу",
+    area: "67 м²", area_m2: 67, beds: 3, baths: 1, floors: 1, term: "от 30 д.",
+    rooms: "3 спальни", purpose: "Семья / ПМЖ", city: "Кемеровская область",
+    maker: { ...CUBBER, siteUrl: "https://cubber.ru/modul" },
+    description: "Проект HOUSE 65 площадью 67 м² с тремя спальнями.",
+    descriptionLong: "HOUSE 65 — модульный дом Cubber Prefab для семейного проживания. По данным каталога производителя: общая площадь 67 м², три спальни, один санузел и жилая площадь 49 м².",
+    gallery: [
+      { image: cubberHouse65_1, type: "photo" },
+      { image: cubberHouse65Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 78, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["67 м²", "3 спальни", "Ипотека"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 380, name: "HOUSE 95T", badge: "Модульный дом", price: "по запросу",
+    area: "94 м²", area_m2: 94, beds: 2, baths: 1, floors: 1, term: "от 30 д.",
+    rooms: "2 спальни", purpose: "Семья / ПМЖ", city: "Кемеровская область",
+    maker: { ...CUBBER, siteUrl: "https://cubber.ru/modul" },
+    description: "Просторный модульный дом HOUSE 95T площадью 94 м² с террасным форматом.",
+    descriptionLong: "HOUSE 95T — старший проект линейки Cubber Prefab. В каталоге указаны общая площадь 94 м², жилая площадь 61 м², две спальни и один санузел.",
+    gallery: [
+      { image: cubberHouse95t_1, type: "photo" },
+      { image: cubberHouse95tPlan, type: "plan", fit: "contain" },
+    ],
+    likes: 84, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Загородный дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["94 м²", "Террасный формат", "Жилая площадь 61 м²"], style: "Современный", landSize: "8–12 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 381, name: "Simple 6", badge: "Модульный дом", price: "4 500 000 ₽",
+    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 1, term: "3–5 д.",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Санкт-Петербург и ЛО",
+    maker: { ...SIMPLEHOUSE, siteUrl: "https://simplehouse1.ru/simple6" },
+    description: "Модульный дом Simple 6 площадью 30 м² с террасой 5–15 м².",
+    descriptionLong: "Simple 6 — модульный дом Simple House с внешними габаритами 7,2×4,6 м и внутренней площадью 30 м². Проект рассчитан на спальню, санузел, компактную кухню-гостиную и террасу с лестницей.",
+    gallery: [
+      { image: simple6_1, type: "photo" },
+      { image: simple6Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 82, rating: 4.9,
+    suitableFor: ["Дача", "Пара", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["30 м²", "Терраса", "Монтаж 3–5 дней"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 382, name: "Модульный дом XL 54", badge: "Модульный дом", price: "4 280 000 ₽",
+    area: "54 м²", area_m2: 54, beds: 2, baths: 1, floors: 1, term: "30–45 д.",
+    rooms: "2 спальни", purpose: "Семья / ПМЖ", city: "Красноярск",
+    maker: { ...PANORAMIC_HOME, siteUrl: "https://panoramic-home.ru/modular_house_54" },
+    description: "Модульный дом XL 54 с кухней-гостиной, двумя спальнями, санузлом и тамбуром.",
+    descriptionLong: "Модульный дом XL 54 от Panoramic Home площадью 54 м². Планировка включает кухню-гостиную 22,9 м², две спальни по 7 м², санузел 3,3 м² и тамбур 3,7 м².",
+    gallery: [
+      { image: panoramicXl54_1, type: "photo", fit: "contain" },
+      { image: panoramicXl54_2, type: "photo", fit: "contain" },
+    ],
+    likes: 79, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["54 м²", "2 спальни", "Панорамные окна"], style: "Современный", landSize: "5–8 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 383, name: "Модульный дом MAX 87", badge: "Модульный дом", price: "6 680 000 ₽",
+    area: "87 м²", area_m2: 87, beds: 3, baths: 2, floors: 1, term: "30–45 д.",
+    rooms: "3 спальни", purpose: "Семья / ПМЖ", city: "Красноярск",
+    maker: { ...PANORAMIC_HOME, siteUrl: "https://panoramic-home.ru/modular_house_87" },
+    description: "Просторный модульный дом MAX 87 с тремя спальнями и кухней-гостиной 30,9 м².",
+    descriptionLong: "Модульный дом MAX 87 от Panoramic Home площадью 87 м². В планировке кухня-гостиная 30,9 м², три спальни, ванная, отдельный санузел, прихожая и коридор.",
+    gallery: [
+      { image: panoramicMax87_1, type: "photo", fit: "contain" },
+      { image: panoramicMax87_2, type: "photo", fit: "contain" },
+    ],
+    likes: 88, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Просторный дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["87 м²", "3 спальни", "2 санузла"], style: "Современный", landSize: "8–12 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 384, name: "Модульный дом XL 60", badge: "Модульный дом", price: "4 760 000 ₽",
+    area: "60 м²", area_m2: 60, beds: 3, baths: 1, floors: 1, term: "30–45 д.",
+    rooms: "3 спальни", purpose: "Семья / ПМЖ", city: "Красноярск",
+    maker: { ...PANORAMIC_HOME, siteUrl: "https://panoramic-home.ru/modular_house_60" },
+    description: "Модульный дом XL 60 с гостиной, кухней, тремя спальнями и санузлом.",
+    descriptionLong: "Модульный дом XL 60 от Panoramic Home площадью 60 м². Планировка включает гостиную 20,1 м², кухню 6,1 м², три спальни по 5,8 м², санузел и прихожую.",
+    gallery: [
+      { image: panoramicXl60_1, type: "photo", fit: "contain" },
+      { image: panoramicXl60_2, type: "photo", fit: "contain" },
+    ],
+    likes: 83, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["60 м²", "3 спальни", "Тёплый пол"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 385, name: "Модульный дом XL 72", badge: "Модульный дом", price: "5 740 000 ₽",
+    area: "72 м²", area_m2: 72, beds: 2, baths: 1, floors: 1, term: "30–45 д.",
+    rooms: "2 спальни", purpose: "Семья / ПМЖ", city: "Красноярск",
+    maker: { ...PANORAMIC_HOME, siteUrl: "https://panoramic-home.ru/modular_house_72" },
+    description: "Модульный дом XL 72 с большой кухней-гостиной, спальней, детской и санузлом.",
+    descriptionLong: "Модульный дом XL 72 от Panoramic Home площадью 72 м². В доме кухня-гостиная 31 м², спальня 10 м², детская 7 м², санузел 5 м² и прихожая 8 м².",
+    gallery: [
+      { image: panoramicXl72_1, type: "photo", fit: "contain" },
+      { image: panoramicXl72_2, type: "photo", fit: "contain" },
+    ],
+    likes: 86, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["72 м²", "Кухня-гостиная 31 м²", "Панорамное остекление"], style: "Современный", landSize: "7–12 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 386, name: "Модульный дом XL 45", badge: "Модульный дом", price: "3 590 000 ₽",
+    area: "45 м²", area_m2: 45, beds: 2, baths: 1, floors: 1, term: "30–45 д.",
+    rooms: "2 спальни", purpose: "Дача / ПМЖ", city: "Красноярск",
+    maker: { ...PANORAMIC_HOME, siteUrl: "https://panoramic-home.ru/modular_house_45" },
+    description: "Модульный дом XL 45 с кухней-гостиной, двумя спальнями и санузлом.",
+    descriptionLong: "Модульный дом XL 45 от Panoramic Home площадью 45 м². Планировка включает кухню-гостиную 19,5 м², две спальни по 5,8 м², санузел и тамбур.",
+    gallery: [
+      { image: panoramicXl45_1, type: "photo", fit: "contain" },
+      { image: panoramicXl45_2, type: "photo", fit: "contain" },
+    ],
+    likes: 77, rating: 4.9,
+    suitableFor: ["Дача", "Для семьи", "ПМЖ"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["45 м²", "2 спальни", "Готовая отделка"], style: "Современный", landSize: "5–8 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
+  },
+  {
+    id: 387, name: "Мини Барн 40", badge: "Барнхаус", price: "1 350 000 ₽",
+    area: "40 м²", area_m2: 40, beds: 1, baths: 1, floors: 1, term: "30 д.",
+    rooms: "3 комнаты", purpose: "Дача / ПМЖ", city: "Краснодарский край",
+    maker: { ...AMBARN, siteUrl: "https://ambarn.ru/product/barn-40-lyuks/" },
+    description: "Мини Барн 40 от АмбарН: 30 м² жилой площади и терраса 10 м².",
+    descriptionLong: "Мини Барн 40 — модульный дом от АмбарН площадью застройки 40 м². Проект состоит из двух жилых модулей и модуля террасы, рассчитан на 2 спальных места и 3 комнаты.",
+    gallery: [
+      { image: ambarnBarn40_1, type: "photo" },
+      { image: ambarnBarn40_2, type: "photo" },
+    ],
+    likes: 74, rating: 4.9,
+    suitableFor: ["Дача", "Гостевой дом", "Пара"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["40 м²", "Терраса 10 м²", "Барнхаус"], style: "Барнхаус", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 388, name: "Индиго 30", badge: "Модульный дом", price: "1 350 000 ₽",
+    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 1, term: "30 д.",
+    rooms: "3 комнаты", purpose: "Дача / ПМЖ", city: "Краснодарский край",
+    maker: { ...AMBARN, siteUrl: "https://ambarn.ru/product/modulnyj-dom-indigo-30/" },
+    description: "Модульный дом Индиго 30 с террасой 12 м² и планировкой на 3 комнаты.",
+    descriptionLong: "Индиго 30 — модульный дом АмбарН площадью 30 м². Дом состоит из двух модулей, имеет террасу 12 м², один санузел и рассчитан на 4 спальных места.",
+    gallery: [
+      { image: ambarnIndigo30_1, type: "photo" },
+      { image: ambarnIndigo30_2, type: "photo" },
+    ],
+    likes: 73, rating: 4.9,
+    suitableFor: ["Дача", "Гостевой дом", "Семья"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["30 м²", "Терраса 12 м²", "30 дней"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 389, name: "Индиго 40 модуль", badge: "Модульный дом", price: "2 000 000 ₽",
+    area: "40 м²", area_m2: 40, beds: 2, baths: 1, floors: 1, term: "30 д.",
+    rooms: "3 комнаты", purpose: "Дача / ПМЖ", city: "Краснодарский край",
+    maker: { ...AMBARN, siteUrl: "https://ambarn.ru/product/modulnyj-dom-indigo-40-modul/" },
+    description: "Модульный дом Индиго 40 площадью 40 м² с террасой 12 м².",
+    descriptionLong: "Индиго 40 модуль — проект АмбарН из четырёх модулей площадью 40 м² жилой площади. Общая площадь застройки 58,5 м², терраса 12 м², 4 спальных места и 3 комнаты.",
+    gallery: [
+      { image: ambarnIndigo40_1, type: "photo" },
+      { image: ambarnIndigo40_2, type: "photo" },
+    ],
+    likes: 78, rating: 4.9,
+    suitableFor: ["Для семьи", "Дача", "ПМЖ"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["40 м²", "Терраса 12 м²", "4 модуля"], style: "Современный", landSize: "5–8 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 390, name: "Индиго 50 модуль", badge: "Модульный дом", price: "2 000 000 ₽",
+    area: "73 м²", area_m2: 73, beds: 3, baths: 1, floors: 1, term: "30 д.",
+    rooms: "4 комнаты", purpose: "Семья / ПМЖ", city: "Краснодарский край",
+    maker: { ...AMBARN, siteUrl: "https://ambarn.ru/product/modulnyj-dom-indigo-50-modul/" },
+    description: "Семейный модульный дом Индиго 50 площадью застройки 73 м².",
+    descriptionLong: "Индиго 50 модуль — проект АмбарН из пяти модулей с 50 м² жилой площади и общей площадью застройки 73,14 м². В доме 4 комнаты, 6 спальных мест и терраса 13 м².",
+    gallery: [
+      { image: ambarnIndigo50_1, type: "photo" },
+      { image: ambarnIndigo50_2, type: "photo" },
+    ],
+    likes: 82, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["73 м²", "4 комнаты", "Терраса 13 м²"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 391, name: "Индиго 36", badge: "Модульный дом", price: "1 620 000 ₽",
+    area: "48 м²", area_m2: 48, beds: 2, baths: 1, floors: 1, term: "3 мес.",
+    rooms: "3 комнаты", purpose: "Дача / ПМЖ", city: "Краснодарский край",
+    maker: { ...AMBARN, siteUrl: "https://ambarn.ru/product/modulnyj-dom-indigo-36/" },
+    description: "Модульный дом Индиго 36 площадью застройки 48 м² с террасой.",
+    descriptionLong: "Индиго 36 — модульный дом АмбарН из двух модулей 6×3 м. Общая площадь застройки 48 м², жилая площадь 36 м², терраса 18 м², 4 спальных места и 3 комнаты.",
+    gallery: [
+      { image: ambarnIndigo36_1, type: "photo" },
+      { image: ambarnIndigo36_2, type: "photo" },
+    ],
+    likes: 75, rating: 4.9,
+    suitableFor: ["Дача", "Для семьи", "ПМЖ"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["48 м²", "Терраса 18 м²", "2 модуля"], style: "Современный", landSize: "5–8 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 392, name: "1,5-а модульный дом 3 м", badge: "Модульный дом", price: "1 250 000 ₽",
+    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 1, term: "до 21 д.",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Ростовская область",
+    maker: { ...MYFAMILYHOUSE, siteUrl: "http://myfamilyhouse.ru/tproduct/756750991712-proekt-15-a-modulnii-dom-spalnya-3-metra" },
+    description: "Проект FAMILY HOUSE 30 м² в стиле MODERN для 2–4 человек.",
+    descriptionLong: "1,5-а модульный дом FAMILY HOUSE с размером 6×5 м, площадью застройки 30 м², одной спальней, одним санузлом и террасой 2–6 м².",
+    gallery: [
+      { image: familyHouseProject1_1, type: "photo" },
+      { image: familyHouseProject1_2, type: "photo" },
+    ],
+    likes: 70, rating: 4.9,
+    suitableFor: ["Дача", "Пара", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["30 м²", "1 спальня", "MODERN"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 393, name: "1,5-а модульный дом 3,5 м", badge: "Модульный дом", price: "1 220 000 ₽",
+    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 1, term: "до 21 д.",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Ростовская область",
+    maker: { ...MYFAMILYHOUSE, siteUrl: "http://myfamilyhouse.ru/tproduct/431133215552-proekt-15-a-modulnii-dom-spalnya-35-metr" },
+    description: "Компактный проект FAMILY HOUSE 30 м² с увеличенной спальней 3,5 м.",
+    descriptionLong: "1,5-а модульный дом FAMILY HOUSE размером 6×5 м в стиле MODERN. Проект рассчитан на 2–4 человек, включает одну спальню, один санузел и террасу 2–6 м².",
+    gallery: [
+      { image: familyHouseProject2_1, type: "photo" },
+      { image: familyHouseProject2_2, type: "photo" },
+    ],
+    likes: 68, rating: 4.9,
+    suitableFor: ["Дача", "Пара", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["30 м²", "1 спальня", "Терраса"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 394, name: "1,5-а модульный дом с прихожей", badge: "Модульный дом", price: "1 360 000 ₽",
+    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 1, term: "до 21 д.",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Ростовская область",
+    maker: { ...MYFAMILYHOUSE, siteUrl: "http://myfamilyhouse.ru/tproduct/157307435312-proekt-15-a-modulnii-dom-s-prihozhei-i-s" },
+    description: "Проект FAMILY HOUSE 30 м² с прихожей, спальней и террасой до 12 м².",
+    descriptionLong: "1,5-а модульный дом FAMILY HOUSE размером 6×5 м. В проекте предусмотрены спальня, санузел, прихожая и терраса 6–12 м².",
+    gallery: [
+      { image: familyHouseProject3_1, type: "photo" },
+      { image: familyHouseProject3_2, type: "photo" },
+    ],
+    likes: 71, rating: 4.9,
+    suitableFor: ["Дача", "Пара", "ПМЖ"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["30 м²", "Прихожая", "Терраса 6–12 м²"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 395, name: "1,5-а модульный дом 7 м", badge: "Модульный дом", price: "1 405 000 ₽",
+    area: "35 м²", area_m2: 35, beds: 1, baths: 1, floors: 1, term: "до 21 д.",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Ростовская область",
+    maker: { ...MYFAMILYHOUSE, siteUrl: "http://myfamilyhouse.ru/tproduct/548761215592-proekt-15-a-modulnii-dom-7-metrov-i-spal" },
+    description: "Модульный дом FAMILY HOUSE 35 м² размером 7×5 м с террасой.",
+    descriptionLong: "1,5-а модульный дом FAMILY HOUSE размером 7×5 м. Площадь застройки 35 м², одна спальня, один санузел и терраса 6–12 м².",
+    gallery: [
+      { image: familyHouseProject4_1, type: "photo" },
+      { image: familyHouseProject4_2, type: "photo" },
+    ],
+    likes: 73, rating: 4.9,
+    suitableFor: ["Дача", "Пара", "ПМЖ"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["35 м²", "7×5 м", "Терраса"], style: "Современный", landSize: "4–7 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
+  {
+    id: 396, name: "Барн-Хаус Стандарт", badge: "Барнхаус", price: "1 660 000 ₽",
+    area: "40 м²", area_m2: 40, beds: 1, baths: 1, floors: 1, term: "до 30 д.",
+    rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Ростовская область",
+    maker: { ...MYFAMILYHOUSE, siteUrl: "http://myfamilyhouse.ru/tproduct/656940914592-proekt-2-h-modulnii-dom-barn-haus-standa" },
+    description: "Двухмодульный дом FAMILY HOUSE в стиле барнхаус площадью 40 м².",
+    descriptionLong: "Барн-Хаус Стандарт — проект FAMILY HOUSE размером 8×5 м. Дом рассчитан на 2–4 человек, включает одну спальню, один санузел и террасу 6–12 м².",
+    gallery: [
+      { image: familyHouseProject5_1, type: "photo" },
+      { image: familyHouseProject5_2, type: "photo" },
+    ],
+    likes: 76, rating: 4.9,
+    suitableFor: ["Дача", "ПМЖ", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["40 м²", "Барнхаус", "2 модуля"], style: "Барнхаус", landSize: "5–8 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
+  },
   ...regionalBatchProjects,
 ];
 
@@ -7429,4 +7879,4 @@ export const manufacturers = realManufacturers;
 // ГОРОДА
 // ============================================================================
 
-export const cities = ["Москва и МО", "Санкт-Петербург и ЛО", "Краснодарский край", "Казань", "Екатеринбург", "Пермский край", "Нижний Новгород", "Алтайский край", "Красноярск", "Самара", "Воронеж", "Уфа", "Чебоксары", "Новосибирск", "Рязань"];
+export const cities = ["Москва и МО", "Санкт-Петербург и ЛО", "Краснодарский край", "Казань", "Екатеринбург", "Пермский край", "Нижний Новгород", "Алтайский край", "Красноярск", "Самара", "Воронеж", "Уфа", "Чебоксары", "Новосибирск", "Рязань", "Кемеровская область", "Ростовская область"];

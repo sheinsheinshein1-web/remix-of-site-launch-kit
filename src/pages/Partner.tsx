@@ -167,6 +167,16 @@ const aboutByMakerId: Record<string, string> = {
     "Мой Модуль — производитель модульных домов из Москвы и Московской области. В каталоге собраны проекты Барни, Корнер, Скандинавия и Z для дачного и круглогодичного загородного сценария.",
   "4modul":
     "4 Стихии — производитель модульных домов. В подборке представлены жилые проекты Карелия и Барн площадью от 30 до 76 м² с заводской сборкой, современными фасадами и планировками для дачи или круглогодичного проживания.",
+  cubber:
+    "Cubber Prefab — производитель модульных домов из Новокузнецка. В подборке представлены проекты HOUSE площадью от 47 до 94 м² для дачи, постоянного проживания, аренды и туристических сценариев.",
+  simplehouse:
+    "Simple House — производитель модульных домов из Санкт-Петербурга. Основной продукт компании — модульный дом Simple с продуманной компактной планировкой, экологичными материалами и быстрым монтажом на участке.",
+  "panoramic-home":
+    "Panoramic Home — производитель модульных домов из Красноярска. В каталоге представлены готовые дома XL, BIG и MIDDLE с панорамным остеклением, заводской сборкой и комплектацией под ключ.",
+  ambarn:
+    "АмбарН — производитель модульных домов из Краснодарского края. В подборке представлены проекты Мини Барн и Индиго с террасами, быстрым сроком строительства и комплектацией под ключ.",
+  myfamilyhouse:
+    "FAMILY HOUSE — производитель каркасно-модульных домов. Компания строит дома под ключ с заводским изготовлением модулей, адаптацией планировки и доставкой по ЮФО и СКФО.",
 };
 
 const manualCounts: Record<string, number> = { bygge: 5 };
@@ -199,6 +209,11 @@ const partnerThemes: Record<string, PartnerTheme> = {
   domm: { page: "42 24% 13%", panel: "42 18% 21%", ink: "0 0% 100%", light: false },
   "my-module": { page: "216 16% 94%", panel: "0 0% 100%", ink: "218 20% 14%", light: true },
   "4modul": { page: "90 10% 14%", panel: "90 8% 22%", ink: "0 0% 100%", light: false },
+  cubber: { page: "94 14% 16%", panel: "94 11% 24%", ink: "0 0% 100%", light: false },
+  simplehouse: { page: "34 18% 14%", panel: "34 14% 22%", ink: "0 0% 100%", light: false },
+  "panoramic-home": { page: "210 14% 92%", panel: "0 0% 100%", ink: "215 18% 13%", light: true },
+  ambarn: { page: "84 18% 92%", panel: "0 0% 100%", ink: "80 16% 12%", light: true },
+  myfamilyhouse: { page: "38 18% 91%", panel: "0 0% 100%", ink: "30 16% 12%", light: true },
 };
 
 const Partner = () => {
@@ -333,7 +348,7 @@ const Partner = () => {
     return <NotFound />;
   }
 
-  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "countryhouse" || makerId === "cuba-dom" || makerId === "idolhouse" || makerId === "woodalp" || makerId === "boxmate" || makerId === "uvhouse" || makerId === "asterius-house" || makerId === "smola-house" || makerId === "ultradomspb" || makerId === "freedom-naturi" || makerId === "chebwood" || makerId === "campingdom" || makerId === "pslcomp" || makerId === "domnasm" || makerId === "blackmodule" || makerId === "domm" || makerId === "my-module" || makerId === "4modul";
+  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "countryhouse" || makerId === "cuba-dom" || makerId === "idolhouse" || makerId === "woodalp" || makerId === "boxmate" || makerId === "uvhouse" || makerId === "asterius-house" || makerId === "smola-house" || makerId === "ultradomspb" || makerId === "freedom-naturi" || makerId === "chebwood" || makerId === "campingdom" || makerId === "pslcomp" || makerId === "domnasm" || makerId === "blackmodule" || makerId === "domm" || makerId === "my-module" || makerId === "4modul" || makerId === "cubber" || makerId === "simplehouse" || makerId === "panoramic-home" || makerId === "ambarn" || makerId === "myfamilyhouse";
   const theme = partnerThemes[makerId ?? ""] ?? DARK_THEME;
 
 

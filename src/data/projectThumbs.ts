@@ -332,6 +332,27 @@ import thumb372 from "@/assets/4modul/karelia-45/01__thumb.webp";
 import thumb373 from "@/assets/4modul/karelia-60/01__thumb.webp";
 import thumb374 from "@/assets/4modul/karelia-75/01__thumb.webp";
 import thumb375 from "@/assets/4modul/barn-60/01__thumb.webp";
+import thumb376 from "@/assets/cubber/house-48/01__thumb.webp";
+import thumb377 from "@/assets/cubber/house-50/01__thumb.webp";
+import thumb378 from "@/assets/cubber/house-60/01__thumb.webp";
+import thumb379 from "@/assets/cubber/house-65/01__thumb.webp";
+import thumb380 from "@/assets/cubber/house-95t/01__thumb.webp";
+import thumb381 from "@/assets/simplehouse/simple-6/01__thumb.webp";
+import thumb382 from "@/assets/panoramic-home/xl-54/01__thumb.webp";
+import thumb383 from "@/assets/panoramic-home/max-87/01__thumb.webp";
+import thumb384 from "@/assets/panoramic-home/xl-60/01__thumb.webp";
+import thumb385 from "@/assets/panoramic-home/xl-72/01__thumb.webp";
+import thumb386 from "@/assets/panoramic-home/xl-45/01__thumb.webp";
+import thumb387 from "@/assets/ambarn/barn-40-lux/01__thumb.webp";
+import thumb388 from "@/assets/ambarn/indigo-30/01__thumb.webp";
+import thumb389 from "@/assets/ambarn/indigo-40/01__thumb.webp";
+import thumb390 from "@/assets/ambarn/indigo-50/01__thumb.webp";
+import thumb391 from "@/assets/ambarn/indigo-36/01__thumb.webp";
+import thumb392 from "@/assets/myfamilyhouse/project-1/01__thumb.webp";
+import thumb393 from "@/assets/myfamilyhouse/project-2/01__thumb.webp";
+import thumb394 from "@/assets/myfamilyhouse/project-3/01__thumb.webp";
+import thumb395 from "@/assets/myfamilyhouse/project-4/01__thumb.webp";
+import thumb396 from "@/assets/myfamilyhouse/project-5/01__thumb.webp";
 
 export const projectThumbs: Record<number, string> = {
   32: thumb32,
@@ -665,4 +686,25 @@ export const projectThumbs: Record<number, string> = {
   373: thumb373,
   374: thumb374,
   375: thumb375,
+  376: thumb376,
+  377: thumb377,
+  378: thumb378,
+  379: thumb379,
+  380: thumb380,
+  381: thumb381,
+  382: thumb382,
+  383: thumb383,
+  384: thumb384,
+  385: thumb385,
+  386: thumb386,
+  387: thumb387,
+  388: thumb388,
+  389: thumb389,
+  390: thumb390,
+  391: thumb391,
+  392: thumb392,
+  393: thumb393,
+  394: thumb394,
+  395: thumb395,
+  396: thumb396,
 };
