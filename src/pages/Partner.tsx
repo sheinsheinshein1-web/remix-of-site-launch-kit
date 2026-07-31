@@ -9,6 +9,12 @@ import dommBackdrop from "@/assets/domm/modul-house-1/01.webp";
 import panoramicBackdrop from "@/assets/panoramic-home/backdrop.webp";
 import pslBarn40Backdrop from "@/assets/pslcomp/barn-40/02.webp";
 import ultradomBackdrop from "@/assets/ultradomspb/ultra-65/01.webp";
+import stroygradBackdrop from "@/assets/stroygrad/quattro-barn/01.webp";
+import modulcampBackdrop from "@/assets/modulcamp/barn-house/01.webp";
+import elmacoBackdrop from "@/assets/elmaco/ivor/01.webp";
+import novatorBackdrop from "@/assets/novator/radius/01.webp";
+import blagohouseBackdrop from "@/assets/blagohouse/blagobarn-29/01.webp";
+import stilnyeModuliBackdrop from "@/assets/stilnye-moduli/barn-75/01.webp";
 import ProjectCard from "@/components/ProjectCard";
 import Seo from "@/components/Seo";
 import NotFound from "@/pages/NotFound";
@@ -42,6 +48,12 @@ const hitBackdropByMakerId: Record<string, string> = {
   "panoramic-home": panoramicBackdrop,
   pslcomp: pslBarn40Backdrop,
   ultradomspb: ultradomBackdrop,
+  stroygrad: stroygradBackdrop,
+  modulcamp: modulcampBackdrop,
+  elmaco: elmacoBackdrop,
+  novator: novatorBackdrop,
+  blagohouse: blagohouseBackdrop,
+  "stilnye-moduli": stilnyeModuliBackdrop,
 };
 
 // Тексты «о компании» — единственное, что не выводится автоматически из projects.ts.
@@ -190,6 +202,18 @@ const aboutByMakerId: Record<string, string> = {
     "АмбарН — производитель модульных домов из Краснодарского края. В подборке представлены проекты Мини Барн и Индиго с террасами, быстрым сроком строительства и комплектацией под ключ.",
   myfamilyhouse:
     "FAMILY HOUSE — производитель каркасно-модульных домов. Компания строит дома под ключ с заводским изготовлением модулей, адаптацией планировки и доставкой по ЮФО и СКФО.",
+  stroygrad:
+    "СтройГрад — производитель модульных домов и загородных строений из Московской области. В подборке представлены компактные mini-дома и семейные модульные проекты в современной и барн-архитектуре.",
+  modulcamp:
+    "Modul Camp — производитель модульных домов для Московской области и загородных участков. В каталоге представлены одноэтажные дома Барн-Хаус, Голландия, Шале, Финляндия и Дания с готовыми планировочными решениями.",
+  elmaco:
+    "Elmaco Homes — производитель модульных домов с представительствами в Санкт-Петербурге, Москве и Краснодаре. В подборке представлены серии Ivor, Lukas, Jung, Tor и Oscar: от компактных домов до просторных семейных решений.",
+  novator:
+    "Novator — производитель модульных домов из Санкт-Петербурга. Компания выпускает компактные модули серий N и Radius для глэмпинга, отдыха, аренды и круглогодичного загородного сценария.",
+  blagohouse:
+    "BlagoHouse — производитель готовых модульных домов и барнхаусов в Москве и Московской области. В каталоге представлены BlagoBarn площадью от компактных гостевых домов до больших семейных проектов.",
+  "stilnye-moduli":
+    "Стильные Модули — производитель модульных домов, офисов и бань под ключ в Московской области. В подборке представлены типовые решения Куб, Овал, Трапеция и Барн для дачи, проживания и глэмпинга.",
 };
 
 const manualCounts: Record<string, number> = { bygge: 5 };
@@ -227,6 +251,12 @@ const partnerThemes: Record<string, PartnerTheme> = {
   "panoramic-home": { page: "210 14% 92%", panel: "0 0% 100%", ink: "215 18% 13%", light: true },
   ambarn: { page: "84 18% 92%", panel: "0 0% 100%", ink: "80 16% 12%", light: true },
   myfamilyhouse: { page: "38 18% 91%", panel: "0 0% 100%", ink: "30 16% 12%", light: true },
+  stroygrad: { page: "96 12% 15%", panel: "96 10% 23%", ink: "0 0% 100%", light: false },
+  modulcamp: { page: "42 18% 91%", panel: "0 0% 100%", ink: "34 16% 12%", light: true },
+  elmaco: { page: "34 12% 93%", panel: "0 0% 100%", ink: "30 12% 12%", light: true },
+  novator: { page: "220 14% 13%", panel: "220 12% 21%", ink: "0 0% 100%", light: false },
+  blagohouse: { page: "92 14% 15%", panel: "92 12% 23%", ink: "0 0% 100%", light: false },
+  "stilnye-moduli": { page: "120 9% 14%", panel: "120 8% 22%", ink: "0 0% 100%", light: false },
 };
 
 const Partner = () => {
@@ -361,7 +391,7 @@ const Partner = () => {
     return <NotFound />;
   }
 
-  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "countryhouse" || makerId === "cuba-dom" || makerId === "idolhouse" || makerId === "woodalp" || makerId === "boxmate" || makerId === "uvhouse" || makerId === "asterius-house" || makerId === "smola-house" || makerId === "ultradomspb" || makerId === "freedom-naturi" || makerId === "chebwood" || makerId === "campingdom" || makerId === "pslcomp" || makerId === "domnasm" || makerId === "blackmodule" || makerId === "domm" || makerId === "my-module" || makerId === "4modul" || makerId === "cubber" || makerId === "simplehouse" || makerId === "panoramic-home" || makerId === "ambarn" || makerId === "myfamilyhouse";
+  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "countryhouse" || makerId === "cuba-dom" || makerId === "idolhouse" || makerId === "woodalp" || makerId === "boxmate" || makerId === "uvhouse" || makerId === "asterius-house" || makerId === "smola-house" || makerId === "ultradomspb" || makerId === "freedom-naturi" || makerId === "chebwood" || makerId === "campingdom" || makerId === "pslcomp" || makerId === "domnasm" || makerId === "blackmodule" || makerId === "domm" || makerId === "my-module" || makerId === "4modul" || makerId === "cubber" || makerId === "simplehouse" || makerId === "panoramic-home" || makerId === "ambarn" || makerId === "myfamilyhouse" || makerId === "stroygrad" || makerId === "modulcamp" || makerId === "elmaco" || makerId === "novator" || makerId === "blagohouse" || makerId === "stilnye-moduli";
   const theme = partnerThemes[makerId ?? ""] ?? DARK_THEME;
 
 

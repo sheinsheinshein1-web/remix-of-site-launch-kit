@@ -353,6 +353,36 @@ import thumb393 from "@/assets/myfamilyhouse/project-2/01__thumb.webp";
 import thumb394 from "@/assets/myfamilyhouse/project-3/01__thumb.webp";
 import thumb395 from "@/assets/myfamilyhouse/project-4/01__thumb.webp";
 import thumb396 from "@/assets/myfamilyhouse/project-5/01__thumb.webp";
+import thumb397 from "@/assets/stroygrad/quattro-barn/01__thumb.webp";
+import thumb398 from "@/assets/stroygrad/sonin-lug/01__thumb.webp";
+import thumb399 from "@/assets/stroygrad/minidom/01__thumb.webp";
+import thumb400 from "@/assets/stroygrad/siete-offset/01__thumb.webp";
+import thumb401 from "@/assets/stroygrad/double-barn/01__thumb.webp";
+import thumb402 from "@/assets/modulcamp/barn-house/01__thumb.webp";
+import thumb403 from "@/assets/modulcamp/gollandiya/01__thumb.webp";
+import thumb404 from "@/assets/modulcamp/shale/01__thumb.webp";
+import thumb405 from "@/assets/modulcamp/finlandiya/01__thumb.webp";
+import thumb406 from "@/assets/modulcamp/daniya/01__thumb.webp";
+import thumb407 from "@/assets/elmaco/ivor/01__thumb.webp";
+import thumb408 from "@/assets/elmaco/lukas/01__thumb.webp";
+import thumb409 from "@/assets/elmaco/jung/01__thumb.webp";
+import thumb410 from "@/assets/elmaco/tor/01__thumb.webp";
+import thumb411 from "@/assets/elmaco/oscar/01__thumb.webp";
+import thumb412 from "@/assets/novator/radius/01__thumb.webp";
+import thumb413 from "@/assets/novator/n3/01__thumb.webp";
+import thumb414 from "@/assets/novator/n2/01__thumb.webp";
+import thumb415 from "@/assets/novator/n1/01__thumb.webp";
+import thumb416 from "@/assets/novator/n4/01__thumb.webp";
+import thumb417 from "@/assets/blagohouse/blagobarn-29/01__thumb.webp";
+import thumb418 from "@/assets/blagohouse/blagobarn-60/01__thumb.webp";
+import thumb419 from "@/assets/blagohouse/blagobarn-65/01__thumb.webp";
+import thumb420 from "@/assets/blagohouse/blagobarn-103/01__thumb.webp";
+import thumb421 from "@/assets/blagohouse/blagobarn-41/01__thumb.webp";
+import thumb422 from "@/assets/stilnye-moduli/kub-30/01__thumb.webp";
+import thumb423 from "@/assets/stilnye-moduli/oval-36/01__thumb.webp";
+import thumb424 from "@/assets/stilnye-moduli/trapeciya-45/01__thumb.webp";
+import thumb425 from "@/assets/stilnye-moduli/barn-60/01__thumb.webp";
+import thumb426 from "@/assets/stilnye-moduli/barn-75/01__thumb.webp";
 
 export const projectThumbs: Record<number, string> = {
   32: thumb32,
@@ -707,4 +737,34 @@ export const projectThumbs: Record<number, string> = {
   394: thumb394,
   395: thumb395,
   396: thumb396,
+  397: thumb397,
+  398: thumb398,
+  399: thumb399,
+  400: thumb400,
+  401: thumb401,
+  402: thumb402,
+  403: thumb403,
+  404: thumb404,
+  405: thumb405,
+  406: thumb406,
+  407: thumb407,
+  408: thumb408,
+  409: thumb409,
+  410: thumb410,
+  411: thumb411,
+  412: thumb412,
+  413: thumb413,
+  414: thumb414,
+  415: thumb415,
+  416: thumb416,
+  417: thumb417,
+  418: thumb418,
+  419: thumb419,
+  420: thumb420,
+  421: thumb421,
+  422: thumb422,
+  423: thumb423,
+  424: thumb424,
+  425: thumb425,
+  426: thumb426,
 };
