@@ -8,6 +8,7 @@ import ProjectCard from "@/components/ProjectCard";
 import Seo from "@/components/Seo";
 import NotFound from "@/pages/NotFound";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
+import { getTelegramLabel, getTelegramUrl } from "@/lib/telegram";
 import { toast } from "sonner";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import {
@@ -377,6 +378,8 @@ const Partner = () => {
   );
 
   const Hero = isPlatforma ? HeroPlatforma : HeroDefault;
+  const telegramUrl = getTelegramUrl(partner.telegram);
+  const telegramLabel = getTelegramLabel(partner.telegram);
   const seoTitle = `${partner.name} — проекты домов | многоместа.рф`;
   const seoDescription =
     `${partner.name}: ${projectsCount} ${wordForm(projectsCount, ["проект", "проекта", "проектов"])} в каталоге многоместа.рф. ${partner.about}`;
@@ -388,7 +391,7 @@ const Partner = () => {
     address: partner.productionAddress,
     telephone: partner.phone,
     email: partner.email,
-    sameAs: [partner.siteUrl, partner.telegram].filter(Boolean),
+    sameAs: [partner.siteUrl, telegramUrl].filter(Boolean),
   };
 
   /* ─── Layout ─── */
@@ -732,7 +735,7 @@ const Partner = () => {
                   { label: "Сайт", icon: Globe, href: partner.siteUrl },
                   partner.email ? { label: partner.email, icon: Mail, href: `mailto:${partner.email}` } : null,
                   partner.phone ? { label: partner.phone, icon: Phone, href: `tel:${partner.phone.replace(/[^+\d]/g, "")}` } : null,
-                  partner.telegram ? { label: `@${partner.telegram}`, icon: Send, href: `https://t.me/${partner.telegram}` } : null,
+                  telegramUrl && telegramLabel ? { label: telegramLabel, icon: Send, href: telegramUrl } : null,
                 ].filter(Boolean).map((item: any) => (
                   <a
                     key={item.label}

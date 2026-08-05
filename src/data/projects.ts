@@ -1306,10 +1306,33 @@ import novatorN2_1 from "@/assets/novator/n2/01.webp";
 import novatorN1_1 from "@/assets/novator/n1/01.webp";
 import novatorN4_1 from "@/assets/novator/n4/01.webp";
 import blagohouseBarn29_1 from "@/assets/blagohouse/blagobarn-29/01.webp";
+import blagohouseBarn29_2 from "@/assets/blagohouse/blagobarn-29/02.webp";
+import blagohouseBarn29_3 from "@/assets/blagohouse/blagobarn-29/03.webp";
+import blagohouseBarn29_4 from "@/assets/blagohouse/blagobarn-29/04.webp";
+import blagohouseBarn29Plan from "@/assets/blagohouse/blagobarn-29/plan.webp";
 import blagohouseBarn60_1 from "@/assets/blagohouse/blagobarn-60/01.webp";
+import blagohouseBarn60_2 from "@/assets/blagohouse/blagobarn-60/02.webp";
+import blagohouseBarn60_3 from "@/assets/blagohouse/blagobarn-60/03.webp";
+import blagohouseBarn60_4 from "@/assets/blagohouse/blagobarn-60/04.webp";
+import blagohouseBarn60Plan from "@/assets/blagohouse/blagobarn-60/plan.webp";
+import blagohouseBarn60Plan2 from "@/assets/blagohouse/blagobarn-60/plan2.webp";
 import blagohouseBarn65_1 from "@/assets/blagohouse/blagobarn-65/01.webp";
+import blagohouseBarn65_2 from "@/assets/blagohouse/blagobarn-65/02.webp";
+import blagohouseBarn65_3 from "@/assets/blagohouse/blagobarn-65/03.webp";
+import blagohouseBarn65_4 from "@/assets/blagohouse/blagobarn-65/04.webp";
+import blagohouseBarn65Plan from "@/assets/blagohouse/blagobarn-65/plan.webp";
+import blagohouseBarn65Plan2 from "@/assets/blagohouse/blagobarn-65/plan2.webp";
 import blagohouseBarn103_1 from "@/assets/blagohouse/blagobarn-103/01.webp";
+import blagohouseBarn103_2 from "@/assets/blagohouse/blagobarn-103/02.webp";
+import blagohouseBarn103_3 from "@/assets/blagohouse/blagobarn-103/03.webp";
+import blagohouseBarn103_4 from "@/assets/blagohouse/blagobarn-103/04.webp";
+import blagohouseBarn103Plan from "@/assets/blagohouse/blagobarn-103/plan.webp";
 import blagohouseBarn41_1 from "@/assets/blagohouse/blagobarn-41/01.webp";
+import blagohouseBarn41_2 from "@/assets/blagohouse/blagobarn-41/02.webp";
+import blagohouseBarn41_3 from "@/assets/blagohouse/blagobarn-41/03.webp";
+import blagohouseBarn41_4 from "@/assets/blagohouse/blagobarn-41/04.webp";
+import blagohouseBarn41Plan from "@/assets/blagohouse/blagobarn-41/plan.webp";
+import blagohouseBarn41Plan2 from "@/assets/blagohouse/blagobarn-41/plan2.webp";
 import stilnyeDoubleS_1 from "@/assets/stilnye-moduli/double-s/01.webp";
 import stilnyeDoubleS_2 from "@/assets/stilnye-moduli/double-s/02.webp";
 import stilnyeDoubleS_3 from "@/assets/stilnye-moduli/double-s/03.webp";
@@ -8217,7 +8240,13 @@ export const projects: Project[] = [
     maker: { ...BLAGOHOUSE, siteUrl: "https://blagohouse.ru/blagobarn29" },
     description: "Компактный модульный дом BlagoBarn 29 от BlagoHouse.",
     descriptionLong: "BlagoBarn 29 — компактный модульный барнхаус BlagoHouse для дачи, гостевого размещения или арендного сценария.",
-    gallery: [{ image: blagohouseBarn29_1, type: "photo" }],
+    gallery: [
+      { image: blagohouseBarn29_1, type: "photo" },
+      { image: blagohouseBarn29_2, type: "photo" },
+      { image: blagohouseBarn29_3, type: "photo" },
+      { image: blagohouseBarn29_4, type: "photo" },
+      { image: blagohouseBarn29Plan, type: "plan", fit: "contain" },
+    ],
     likes: 78, rating: 4.9,
     suitableFor: ["Дача", "Гостевой дом", "Аренда"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
@@ -8231,7 +8260,14 @@ export const projects: Project[] = [
     maker: { ...BLAGOHOUSE, siteUrl: "https://blagohouse.ru/blagobarn60" },
     description: "Модульный дом BlagoBarn 60 для загородного проживания.",
     descriptionLong: "BlagoBarn 60 — одноэтажный модульный дом BlagoHouse с барн-архитектурой и площадью, подходящей для отдыха или круглогодичного проживания небольшой семьи.",
-    gallery: [{ image: blagohouseBarn60_1, type: "photo" }],
+    gallery: [
+      { image: blagohouseBarn60_1, type: "photo" },
+      { image: blagohouseBarn60_2, type: "photo" },
+      { image: blagohouseBarn60_3, type: "photo" },
+      { image: blagohouseBarn60_4, type: "photo" },
+      { image: blagohouseBarn60Plan, type: "plan", fit: "contain" },
+      { image: blagohouseBarn60Plan2, type: "plan", fit: "contain" },
+    ],
     likes: 83, rating: 4.9,
     suitableFor: ["Дача", "ПМЖ", "Для семьи"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
@@ -8245,7 +8281,14 @@ export const projects: Project[] = [
     maker: { ...BLAGOHOUSE, siteUrl: "https://blagohouse.ru/blagobarn65" },
     description: "Семейный модульный дом BlagoBarn 65 от BlagoHouse.",
     descriptionLong: "BlagoBarn 65 — модульный дом BlagoHouse с увеличенной площадью для загородного проживания, отдыха и арендных сценариев.",
-    gallery: [{ image: blagohouseBarn65_1, type: "photo" }],
+    gallery: [
+      { image: blagohouseBarn65_1, type: "photo" },
+      { image: blagohouseBarn65_2, type: "photo" },
+      { image: blagohouseBarn65_3, type: "photo" },
+      { image: blagohouseBarn65_4, type: "photo" },
+      { image: blagohouseBarn65Plan, type: "plan", fit: "contain" },
+      { image: blagohouseBarn65Plan2, type: "plan", fit: "contain" },
+    ],
     likes: 85, rating: 4.9,
     suitableFor: ["Для семьи", "ПМЖ", "Дача"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
@@ -8259,7 +8302,13 @@ export const projects: Project[] = [
     maker: { ...BLAGOHOUSE, siteUrl: "https://blagohouse.ru/blagobarn103" },
     description: "Просторный модульный дом BlagoBarn 103 для семьи.",
     descriptionLong: "BlagoBarn 103 — большой модульный дом BlagoHouse для постоянного загородного проживания. Проект рассчитан на семейный сценарий и современную барн-архитектуру.",
-    gallery: [{ image: blagohouseBarn103_1, type: "photo" }],
+    gallery: [
+      { image: blagohouseBarn103_1, type: "photo" },
+      { image: blagohouseBarn103_2, type: "photo" },
+      { image: blagohouseBarn103_3, type: "photo" },
+      { image: blagohouseBarn103_4, type: "photo" },
+      { image: blagohouseBarn103Plan, type: "plan", fit: "contain" },
+    ],
     likes: 89, rating: 4.9,
     suitableFor: ["Для семьи", "ПМЖ", "Загородный дом"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
@@ -8273,7 +8322,14 @@ export const projects: Project[] = [
     maker: { ...BLAGOHOUSE, siteUrl: "https://blagohouse.ru/blagobarn41" },
     description: "Модульный дом BlagoBarn 41 в компактном барн-формате.",
     descriptionLong: "BlagoBarn 41 — компактный модульный дом BlagoHouse для отдыха, гостевого размещения или постоянного проживания одного-двух человек.",
-    gallery: [{ image: blagohouseBarn41_1, type: "photo" }],
+    gallery: [
+      { image: blagohouseBarn41_1, type: "photo" },
+      { image: blagohouseBarn41_2, type: "photo" },
+      { image: blagohouseBarn41_3, type: "photo" },
+      { image: blagohouseBarn41_4, type: "photo" },
+      { image: blagohouseBarn41Plan, type: "plan", fit: "contain" },
+      { image: blagohouseBarn41Plan2, type: "plan", fit: "contain" },
+    ],
     likes: 80, rating: 4.9,
     suitableFor: ["Дача", "Пара", "Гостевой дом"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
