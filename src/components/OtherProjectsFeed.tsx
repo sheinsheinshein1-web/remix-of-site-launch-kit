@@ -4,6 +4,7 @@ import { navigateWithTransition } from "@/lib/viewTransition";
 import ProjectCardSkeleton from "@/components/ProjectCardSkeleton";
 import ProjectCard from "@/components/ProjectCard";
 import { projects as allProjects } from "@/data/projects";
+import { compareProjectTechnologyPriority } from "@/lib/projectPriority";
 
 const PAGE_SIZE = 6;
 const SCROLL_KEY_PREFIX = "project_feed_scroll_";
@@ -22,7 +23,8 @@ const OtherProjectsFeed = ({ currentId }: Props) => {
     const targetCity = current?.city;
     return allProjects
       .filter((p) => String(p.id) !== currentId)
-      .filter((p) => (targetCity ? p.city === targetCity : true));
+      .filter((p) => (targetCity ? p.city === targetCity : true))
+      .sort(compareProjectTechnologyPriority);
   }, [currentId]);
 
   const [page, setPage] = useState(1);
@@ -102,4 +104,3 @@ const OtherProjectsFeed = ({ currentId }: Props) => {
 };
 
 export default OtherProjectsFeed;
-

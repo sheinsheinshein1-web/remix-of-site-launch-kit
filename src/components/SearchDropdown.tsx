@@ -3,6 +3,7 @@ import { Search, X, Home, Factory, FileText, LayoutGrid, ArrowRight, ChevronRigh
 import { useNavigate } from "react-router-dom";
 import { manufacturers as dataManufacturers, projects as dataProjects } from "@/data/projects";
 import { useCity } from "@/components/CitySelector";
+import { compareProjectTechnologyPriority } from "@/lib/projectPriority";
 
 // Поиск всегда строится из единого источника правды src/data/projects.ts.
 const projects = dataProjects.map((p) => ({
@@ -14,6 +15,7 @@ const projects = dataProjects.map((p) => ({
   area: p.area,
   beds: p.beds,
   baths: p.baths,
+  technology: p.technology,
   tags: [
     p.badge,
     p.city,
@@ -426,14 +428,16 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
 
     let filteredProjects;
     if (hasFilters) {
-      filteredProjects = filterProjects(filters, cityProjects).slice(0, 3);
+      filteredProjects = filterProjects(filters, cityProjects)
+        .sort(compareProjectTechnologyPriority)
+        .slice(0, 3);
     } else {
       const words = nq.split(/\s+/).filter(w => w.length >= 1);
       const rawWords = rawQ.split(/\s+/).filter(w => w.length >= 1);
       filteredProjects = cityProjects.filter(p => {
         const haystack = (p.name + " " + p.maker + " " + (p.tags || "")).toLowerCase();
         return words.some(w => haystack.includes(w)) || rawWords.some(w => haystack.includes(w));
-      }).slice(0, 4);
+      }).sort(compareProjectTechnologyPriority).slice(0, 4);
     }
 
     const catWords = (hasFilters ? filters.textQuery : nq).split(/\s+/).filter(w => w.length >= 1);

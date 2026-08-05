@@ -13,6 +13,7 @@ import ProjectCard from "@/components/ProjectCard";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import Seo from "@/components/Seo";
 import { buildSiteUrl } from "@/lib/seo";
+import { compareWithProjectPriority } from "@/lib/projectPriority";
 import { projectThumbs } from "@/data/projectThumbs";
 
 import {
@@ -499,18 +500,20 @@ const Catalog = () => {
     return true;
   });
 
-  const sortedItems = [...filteredItems].sort((a, b) => {
-    switch (sortBy) {
-      case "cheap": return priceNum(a.price) - priceNum(b.price);
-      case "expensive": return priceNum(b.price) - priceNum(a.price);
-      case "area_asc": return areaNum(a.area) - areaNum(b.area);
-      case "area_desc": return areaNum(b.area) - areaNum(a.area);
-      case "fast": return termNum(a.term) - termNum(b.term);
-      case "popular": return b.likes - a.likes;
-      case "new": return b.id - a.id;
-      default: return 0;
-    }
-  });
+  const sortedItems = [...filteredItems].sort((a, b) =>
+    compareWithProjectPriority(a, b, (a, b) => {
+      switch (sortBy) {
+        case "cheap": return priceNum(a.price) - priceNum(b.price);
+        case "expensive": return priceNum(b.price) - priceNum(a.price);
+        case "area_asc": return areaNum(a.area) - areaNum(b.area);
+        case "area_desc": return areaNum(b.area) - areaNum(a.area);
+        case "fast": return termNum(a.term) - termNum(b.term);
+        case "popular": return b.likes - a.likes;
+        case "new": return b.id - a.id;
+        default: return 0;
+      }
+    })
+  );
 
   const toggleFav = (item: typeof catalogItems[0]) => {
     toggleFavorite({

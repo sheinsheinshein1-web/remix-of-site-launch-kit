@@ -9,6 +9,7 @@ import Seo from "@/components/Seo";
 import NotFound from "@/pages/NotFound";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { getTelegramLabel, getTelegramUrl } from "@/lib/telegram";
+import { compareProjectTechnologyPriority, compareWithProjectPriority } from "@/lib/projectPriority";
 import { toast } from "sonner";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import {
@@ -153,7 +154,7 @@ const Partner = () => {
 
   // Проекты этой компании — берём из единого источника правды.
   const makerProjects = useMemo(
-    () => allProjects.filter((p) => p.maker.id === makerId),
+    () => allProjects.filter((p) => p.maker.id === makerId).sort(compareProjectTechnologyPriority),
     [makerId]
   );
   const heroImage = makerProjects[0]?.gallery[0]?.image ?? "";
@@ -172,7 +173,7 @@ const Partner = () => {
 
   const sortedMakerProjects = useMemo(() => {
     const arr = [...makerProjects];
-    arr.sort((a: any, b: any) => {
+    arr.sort((a: any, b: any) => compareWithProjectPriority(a, b, (a, b) => {
       switch (sortBy) {
         case "cheap": return priceNum(a.price) - priceNum(b.price);
         case "expensive": return priceNum(b.price) - priceNum(a.price);
@@ -184,7 +185,7 @@ const Partner = () => {
         case "rating": return (b.rating ?? 0) - (a.rating ?? 0);
         default: return 0;
       }
-    });
+    }));
     return arr;
   }, [makerProjects, sortBy]);
 

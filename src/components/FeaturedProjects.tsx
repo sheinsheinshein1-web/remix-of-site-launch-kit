@@ -8,6 +8,7 @@ import { usePullToRefresh } from "@/hooks/usePullToRefresh";
 import { projects } from "@/data/projects";
 import { buildSiteUrl } from "@/lib/seo";
 import { isVerifiedMaker } from "@/lib/verifiedMakers";
+import { groupByProjectTechnologyPriority } from "@/lib/projectPriority";
 
 import { useCity } from "@/components/CitySelector";
 
@@ -59,18 +60,6 @@ function getOrderedProjects(seed: number) {
 function getPagedProjects(page: number, seed: number, source: typeof baseProjects) {
   if (source.length === 0) return [];
 
-  // Сортируем по технологии: модульные выше каркасных, префаб дальше.
-  const TECH_PRIORITY: Record<string, number> = {
-    "Модульный дом": 0,
-    "Каркасный": 1,
-    "СИП-Префаб": 2,
-    "Префаб": 2,
-  };
-  const sortedSource = [...source].sort((a, b) => {
-    return (TECH_PRIORITY[a.technology] ?? 3) - (TECH_PRIORITY[b.technology] ?? 3);
-  });
-
-
   // Чередуем проекты по производителю — чтобы карточки одного бренда не стояли подряд.
   const interleaveByMaker = (arr: typeof baseProjects) => {
     const buckets = new Map<string, typeof baseProjects>();
@@ -101,32 +90,39 @@ function getPagedProjects(page: number, seed: number, source: typeof baseProject
     }
     return a;
   };
-  const baseOrder = seed === 0
-    ? shuffleWithSeed(interleaveByMaker(sortedSource), 1337)
-    : shuffleWithSeed(sortedSource, seed);
-
   // Поднимаем карточки проверенных производителей повыше: первая идёт в начале,
   // затем равномерно с шагом 4. Остальные проекты остаются в исходном порядке.
-  const verifiedItems = baseOrder.filter((p) => p.verified);
-  const otherItems = baseOrder.filter((p) => !p.verified);
-  const ordered: typeof baseProjects = [];
-  let vIdx = 0;
-  let oIdx = 0;
-  const FIRST_AT = 0;
-  const STEP = 4;
-  let i = 0;
-  while (vIdx < verifiedItems.length || oIdx < otherItems.length) {
-    const shouldPlaceVerified =
-      vIdx < verifiedItems.length && (i < FIRST_AT || (i - FIRST_AT) % STEP === 0);
-    if (shouldPlaceVerified) {
-      ordered.push(verifiedItems[vIdx++]);
-    } else if (oIdx < otherItems.length) {
-      ordered.push(otherItems[oIdx++]);
-    } else {
-      ordered.push(verifiedItems[vIdx++]);
+  const pinVerified = (baseOrder: typeof baseProjects) => {
+    const verifiedItems = baseOrder.filter((p) => p.verified);
+    const otherItems = baseOrder.filter((p) => !p.verified);
+    const ordered: typeof baseProjects = [];
+    let vIdx = 0;
+    let oIdx = 0;
+    const FIRST_AT = 0;
+    const STEP = 4;
+    let i = 0;
+    while (vIdx < verifiedItems.length || oIdx < otherItems.length) {
+      const shouldPlaceVerified =
+        vIdx < verifiedItems.length && (i < FIRST_AT || (i - FIRST_AT) % STEP === 0);
+      if (shouldPlaceVerified) {
+        ordered.push(verifiedItems[vIdx++]);
+      } else if (oIdx < otherItems.length) {
+        ordered.push(otherItems[oIdx++]);
+      } else {
+        ordered.push(verifiedItems[vIdx++]);
+      }
+      i++;
     }
-    i++;
-  }
+    return ordered;
+  };
+
+  const ordered = groupByProjectTechnologyPriority(source).flatMap((group, index) => {
+    const groupOrder = seed === 0
+      ? shuffleWithSeed(interleaveByMaker(group), 1337 + index)
+      : shuffleWithSeed(group, seed + index);
+    return pinVerified(groupOrder);
+  });
+
   const total = page * PAGE_SIZE;
   const items: { project: typeof baseProjects[number]; key: string }[] = [];
   for (let k = 0; k < total; k++) {

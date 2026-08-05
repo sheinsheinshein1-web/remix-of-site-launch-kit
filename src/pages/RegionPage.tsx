@@ -6,6 +6,7 @@ import ProjectCard from "@/components/ProjectCard";
 import Seo from "@/components/Seo";
 import { regionsBySlug } from "@/data/regions";
 import { projects, makersById } from "@/data/projects";
+import { compareProjectTechnologyPriority } from "@/lib/projectPriority";
 import {
   Accordion,
   AccordionContent,
@@ -22,7 +23,9 @@ const RegionPage = () => {
     return <Navigate to="/catalog" replace />;
   }
 
-  const regionProjects = projects.filter((p) => p.city === region.cityValue);
+  const regionProjects = projects
+    .filter((p) => p.city === region.cityValue)
+    .sort(compareProjectTechnologyPriority);
 
   // Уникальные производители в регионе
   const makerIds = Array.from(new Set(regionProjects.map((p) => p.maker.id).filter(Boolean) as string[]));
