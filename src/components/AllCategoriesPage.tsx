@@ -140,7 +140,7 @@ const AllCategoriesPage = () => {
                   />
                   <div className="relative z-20 px-4 py-3 flex flex-col">
                     <h2 className="text-[22px] font-bold leading-[1.15] tracking-tight mb-1 max-w-[65%] text-white">
-                      Сотни быстро-<br/>возводимых домов
+                      Сотни завод-<br/>ских&nbsp;домов
                     </h2>
                     <p className="text-[12px] font-light leading-[1.4] mt-1 mb-2.5 max-w-[55%] text-white/70">
                       Находите проекты от&nbsp;проверенных производителей.
