@@ -1120,12 +1120,35 @@ import ultra85_1 from "@/assets/ultradomspb/ultra-85/01.webp";
 import ultra85_2 from "@/assets/ultradomspb/ultra-85/02.webp";
 import ultra85Plan from "@/assets/ultradomspb/ultra-85/03-plan.webp";
 import freedomLogo from "@/assets/freedom/logo.webp";
-import freedomRelax_1 from "@/assets/freedom/home-relaxation/01.webp";
-import freedomRelax_2 from "@/assets/freedom/home-relaxation/02.webp";
-import freedomPrivacy_1 from "@/assets/freedom/home-privacy/01.webp";
-import freedomPrivacy_2 from "@/assets/freedom/home-privacy/02.webp";
-import freedomMobile_1 from "@/assets/freedom/mobile-home/01.webp";
-import freedomMobile_2 from "@/assets/freedom/mobile-home/02.webp";
+import freedomNaturi55_1 from "@/assets/freedom/naturi-55/01.webp";
+import freedomNaturi55_2 from "@/assets/freedom/naturi-55/02.webp";
+import freedomNaturi55Plan from "@/assets/freedom/naturi-55/03-plan.webp";
+import freedomNaturi55_4 from "@/assets/freedom/naturi-55/04.webp";
+import freedomNaturi55_5 from "@/assets/freedom/naturi-55/05.webp";
+import freedomNaturi55_6 from "@/assets/freedom/naturi-55/06.webp";
+import freedomNaturi55_7 from "@/assets/freedom/naturi-55/07.webp";
+import freedomNaturi55_8 from "@/assets/freedom/naturi-55/08.webp";
+import freedomNaturi55_9 from "@/assets/freedom/naturi-55/09.webp";
+import freedomNaturi100_1 from "@/assets/freedom/naturi-100/01.webp";
+import freedomNaturi100Plan from "@/assets/freedom/naturi-100/02-plan.webp";
+import freedomNaturi100_3 from "@/assets/freedom/naturi-100/03.webp";
+import freedomNaturi100_4 from "@/assets/freedom/naturi-100/04.webp";
+import freedomNaturi100_5 from "@/assets/freedom/naturi-100/05.webp";
+import freedomNaturi100_6 from "@/assets/freedom/naturi-100/06.webp";
+import freedomNaturi100_7 from "@/assets/freedom/naturi-100/07.webp";
+import freedomNaturi100_8 from "@/assets/freedom/naturi-100/08.webp";
+import freedomNaturi100_9 from "@/assets/freedom/naturi-100/09.webp";
+import freedomNaturi100_10 from "@/assets/freedom/naturi-100/10.webp";
+import freedomBarn_1 from "@/assets/freedom/freedom-barn/01.webp";
+import freedomBarn_2 from "@/assets/freedom/freedom-barn/02.webp";
+import freedomBarnPlan from "@/assets/freedom/freedom-barn/03-plan.webp";
+import freedomBarn_4 from "@/assets/freedom/freedom-barn/04.webp";
+import freedomBarn_5 from "@/assets/freedom/freedom-barn/05.webp";
+import freedomBarn_6 from "@/assets/freedom/freedom-barn/06.webp";
+import freedomBarn_7 from "@/assets/freedom/freedom-barn/07.webp";
+import freedomBarn_8 from "@/assets/freedom/freedom-barn/08.webp";
+import freedomBarn_9 from "@/assets/freedom/freedom-barn/09.webp";
+import freedomBarn_10 from "@/assets/freedom/freedom-barn/10.webp";
 import chebwoodLogo from "@/assets/chebwood/logo.webp";
 import chebwoodModul15_1 from "@/assets/chebwood/modul-15/01.webp";
 import chebwoodModul15_2 from "@/assets/chebwood/modul-15/02.webp";
@@ -6873,54 +6896,77 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 336, name: "Дом для расслабления", badge: "Модульный дом", price: "по запросу",
-    area: "по запросу", beds: 1, baths: 1, floors: 1, term: "по договору",
+    id: 336, name: "FREEDOM NATURI 55", badge: "Модульный дом", price: "по запросу",
+    area: "55 м²", area_m2: 55, beds: 1, baths: 1, floors: 1, term: "по договору",
     rooms: "1 спальня", purpose: "Отдых / Дача", city: "Москва и МО",
-    maker: { ...FREEDOM_NATURI, siteUrl: "https://freedom-modul.ru/catalog/home-for-relaxation" },
-    description: "Автономный модульный дом FREEDOM NATURI для отдыха и проживания на природе.",
-    descriptionLong: "Дом для расслабления FREEDOM NATURI — автономное модульное решение для отдыха, дачи и проживания вне городской среды. Компания делает дома, которые не требуют капитальной застройки и рассчитаны на быстрый сценарий установки.",
+    maker: { ...FREEDOM_NATURI, siteUrl: "https://freedom-modul.ru/freedomnaturi_55" },
+    description: "Модульный дом FREEDOM NATURI 55 из вертикального бруса NATURI для отдыха и проживания на природе.",
+    descriptionLong: "FREEDOM NATURI 55 — модульный дом из натурального дерева с панорамным остеклением, террасой, жилой зоной, спальней и санузлом. Формат подходит для отдыха, дачи и круглогодичного проживания за городом.",
     gallery: [
-      { image: freedomRelax_1, type: "photo", fit: "contain", blur: true },
-      { image: freedomRelax_2, type: "photo", fit: "contain", blur: true },
+      { image: freedomNaturi55_1, type: "photo", fit: "contain", blur: true },
+      { image: freedomNaturi55_2, type: "photo", fit: "contain", blur: true },
+      { image: freedomNaturi55Plan, type: "plan", fit: "contain" },
+      { image: freedomNaturi55_4, type: "photo", fit: "contain", blur: true },
+      { image: freedomNaturi55_5, type: "photo", fit: "contain", blur: true },
+      { image: freedomNaturi55_6, type: "photo", fit: "contain", blur: true },
+      { image: freedomNaturi55_7, type: "photo", fit: "contain", blur: true },
+      { image: freedomNaturi55_8, type: "photo", fit: "contain", blur: true },
+      { image: freedomNaturi55_9, type: "photo", fit: "contain", blur: true },
     ],
     likes: 77, rating: 4.8,
     suitableFor: ["Дача", "Отдых", "Автономное проживание"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
-    features: ["Автономность", "Быстрая установка", "Отдых на природе"], style: "Современный", landSize: "4–8 соток",
+    features: ["Планировка", "Панорамные окна", "Терраса"], style: "Современный", landSize: "4–8 соток",
     hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
   },
   {
-    id: 337, name: "Дом для уединения", badge: "Модульный дом", price: "по запросу",
-    area: "по запросу", beds: 1, baths: 1, floors: 1, term: "по договору",
-    rooms: "1 спальня", purpose: "Отдых / Глэмпинг", city: "Москва и МО",
-    maker: { ...FREEDOM_NATURI, siteUrl: "https://freedom-modul.ru/catalog/home-for-privacy" },
-    description: "Компактный автономный дом FREEDOM NATURI для приватного отдыха и проживания.",
-    descriptionLong: "Дом для уединения FREEDOM NATURI — компактный модульный формат для приватного отдыха, глэмпинга или гостевого сценария. Проект ориентирован на быстрое размещение на участке и использование в любое время года.",
+    id: 337, name: "FREEDOM NATURI 100", badge: "Модульный дом", price: "по запросу",
+    area: "100 м²", area_m2: 100, beds: 2, baths: 1, floors: 1, term: "по договору",
+    rooms: "2 спальни", purpose: "Дом для семьи", city: "Москва и МО",
+    maker: { ...FREEDOM_NATURI, siteUrl: "https://freedom-modul.ru/freedomnaturi_100" },
+    description: "Просторный дом FREEDOM NATURI 100 с деревянной отделкой, панорамными окнами и готовой планировкой.",
+    descriptionLong: "FREEDOM NATURI 100 — модульный дом из вертикального бруса NATURI для семьи и загородного проживания. В проекте предусмотрены спальни, общая кухня-гостиная, санузел и большие окна с видом на участок.",
     gallery: [
-      { image: freedomPrivacy_1, type: "photo", fit: "contain", blur: true },
-      { image: freedomPrivacy_2, type: "photo", fit: "contain", blur: true },
+      { image: freedomNaturi100_1, type: "photo", fit: "contain", blur: true },
+      { image: freedomNaturi100Plan, type: "plan", fit: "contain" },
+      { image: freedomNaturi100_3, type: "photo", fit: "contain", blur: true },
+      { image: freedomNaturi100_4, type: "photo", fit: "contain", blur: true },
+      { image: freedomNaturi100_5, type: "photo", fit: "contain", blur: true },
+      { image: freedomNaturi100_6, type: "photo", fit: "contain", blur: true },
+      { image: freedomNaturi100_7, type: "photo", fit: "contain", blur: true },
+      { image: freedomNaturi100_8, type: "photo", fit: "contain", blur: true },
+      { image: freedomNaturi100_9, type: "photo", fit: "contain", blur: true },
+      { image: freedomNaturi100_10, type: "photo", fit: "contain", blur: true },
     ],
     likes: 72, rating: 4.8,
-    suitableFor: ["Глэмпинг", "Дача", "Аренда"],
+    suitableFor: ["Постоянное проживание", "Для семьи", "Дача"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
-    features: ["Автономность", "Компактный формат", "Приватность"], style: "Современный", landSize: "3–7 соток",
+    features: ["Планировка", "Панорамные окна", "Деревянная отделка"], style: "Современный", landSize: "6–12 соток",
     hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
   },
   {
-    id: 338, name: "Автономный мобильный дом", badge: "Модульный дом", price: "по запросу",
-    area: "по запросу", beds: 1, baths: 1, floors: 1, term: "по договору",
+    id: 338, name: "FREEDOM BARN", badge: "Модульный дом", price: "по запросу",
+    area: "по запросу", beds: 1, baths: 1, floors: 2, term: "по договору",
     rooms: "студия", purpose: "Глэмпинг / Аренда", city: "Москва и МО",
-    maker: { ...FREEDOM_NATURI, siteUrl: "https://freedom-modul.ru/catalog/autonomous-mobile-homes" },
-    description: "Мобильный автономный дом FREEDOM NATURI для глэмпинга, отдыха и работы.",
-    descriptionLong: "Автономный мобильный дом FREEDOM NATURI — готовое решение для отдыха, работы или коммерческого размещения на природе. Формат подходит для глэмпинга, аренды и мобильных сценариев без капитальной стройки.",
+    maker: { ...FREEDOM_NATURI, siteUrl: "https://freedom-modul.ru/freedom_barn" },
+    description: "Двухуровневый модуль FREEDOM BARN с кухней, санузлом, спальной зоной и планировкой.",
+    descriptionLong: "FREEDOM BARN — компактный двухуровневый модульный дом для глэмпинга, аренды и загородного отдыха. На первом уровне расположены спальная зона, мини-кухня с обеденной зоной и санузел, а панорамное остекление добавляет ощущение пространства.",
     gallery: [
-      { image: freedomMobile_1, type: "photo", fit: "contain", blur: true },
-      { image: freedomMobile_2, type: "photo", fit: "contain", blur: true },
+      { image: freedomBarn_1, type: "photo", fit: "contain", blur: true },
+      { image: freedomBarn_2, type: "photo", fit: "contain", blur: true },
+      { image: freedomBarnPlan, type: "plan", fit: "contain" },
+      { image: freedomBarn_4, type: "photo", fit: "contain", blur: true },
+      { image: freedomBarn_5, type: "photo", fit: "contain", blur: true },
+      { image: freedomBarn_6, type: "photo", fit: "contain", blur: true },
+      { image: freedomBarn_7, type: "photo", fit: "contain", blur: true },
+      { image: freedomBarn_8, type: "photo", fit: "contain", blur: true },
+      { image: freedomBarn_9, type: "photo", fit: "contain", blur: true },
+      { image: freedomBarn_10, type: "photo", fit: "contain", blur: true },
     ],
     likes: 79, rating: 4.9,
     suitableFor: ["Глэмпинг", "Аренда", "Автономное проживание"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
-    features: ["Мобильность", "Автономность", "Коммерческий сценарий"], style: "Современный", landSize: "3–8 соток",
+    features: ["Планировка", "Второй уровень", "Панорамные окна"], style: "Барнхаус", landSize: "3–8 соток",
     hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
   },
   {
