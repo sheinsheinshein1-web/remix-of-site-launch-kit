@@ -236,10 +236,10 @@ const Lab = () => {
       {/* === Projects grid (glass cards) === */}
       <section className="mt-3 px-3 grid grid-cols-2 gap-3">
         {[
-          { img: house1, name: "Wide House", price: "от 4.2 млн", area: "85 м²", likes: 64 },
-          { img: house2, name: "Bear 168", price: "от 6.8 млн", area: "168 м²", likes: 95 },
-          { img: house3, name: "Tundra", price: "от 3.6 млн", area: "72 м²", likes: 41 },
-          { img: house4, name: "Sherwood", price: "от 5.1 млн", area: "110 м²", likes: 28 },
+          { img: house1, name: "Wide House", price: "от 4.2 млн", area: "85 м²", likes: 83 },
+          { img: house2, name: "Bear 168", price: "от 6.8 млн", area: "168 м²", likes: 124 },
+          { img: house3, name: "Tundra", price: "от 3.6 млн", area: "72 м²", likes: 53 },
+          { img: house4, name: "Sherwood", price: "от 5.1 млн", area: "110 м²", likes: 36 },
         ].map((p) => (
           <div
             key={p.name}

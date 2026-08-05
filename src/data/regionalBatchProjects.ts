@@ -138,7 +138,7 @@ const project = (input: ProjectInput): Project => ({
   description: input.description,
   descriptionLong: `Проект «${input.name}» от компании «${input.maker.name}»: дом площадью ${areaLabel(input.area)} м² и габаритами ${input.dimensions}. ${input.description}`,
   gallery: gallery(input.assetFolder, input.planFiles),
-  likes: 28 + (input.id % 17),
+  likes: Math.round((28 + (input.id % 17)) * 1.3),
   rating: 4.7 + (input.id % 3) * 0.05,
   suitableFor: input.suitableFor ?? ["Постоянное проживание", "Для семьи"],
   technology: input.technology,
