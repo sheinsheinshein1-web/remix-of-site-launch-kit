@@ -378,11 +378,11 @@ import thumb418 from "@/assets/blagohouse/blagobarn-60/01__thumb.webp";
 import thumb419 from "@/assets/blagohouse/blagobarn-65/01__thumb.webp";
 import thumb420 from "@/assets/blagohouse/blagobarn-103/01__thumb.webp";
 import thumb421 from "@/assets/blagohouse/blagobarn-41/01__thumb.webp";
-import thumb422 from "@/assets/stilnye-moduli/kub-30/01__thumb.webp";
-import thumb423 from "@/assets/stilnye-moduli/oval-36/01__thumb.webp";
-import thumb424 from "@/assets/stilnye-moduli/trapeciya-45/01__thumb.webp";
-import thumb425 from "@/assets/stilnye-moduli/barn-60/01__thumb.webp";
-import thumb426 from "@/assets/stilnye-moduli/barn-75/01__thumb.webp";
+import thumb422 from "@/assets/stilnye-moduli/double-s/01__thumb.webp";
+import thumb423 from "@/assets/stilnye-moduli/double-xs-terrace/01__thumb.webp";
+import thumb424 from "@/assets/stilnye-moduli/barnhaus-double/01__thumb.webp";
+import thumb425 from "@/assets/stilnye-moduli/triple-s-terrace/01__thumb.webp";
+import thumb426 from "@/assets/stilnye-moduli/quad/01__thumb.webp";
 
 export const projectThumbs: Record<number, string> = {
   32: thumb32,

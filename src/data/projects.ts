@@ -1310,11 +1310,26 @@ import blagohouseBarn60_1 from "@/assets/blagohouse/blagobarn-60/01.webp";
 import blagohouseBarn65_1 from "@/assets/blagohouse/blagobarn-65/01.webp";
 import blagohouseBarn103_1 from "@/assets/blagohouse/blagobarn-103/01.webp";
 import blagohouseBarn41_1 from "@/assets/blagohouse/blagobarn-41/01.webp";
-import stilnyeKub30_1 from "@/assets/stilnye-moduli/kub-30/01.webp";
-import stilnyeOval36_1 from "@/assets/stilnye-moduli/oval-36/01.webp";
-import stilnyeTrapeciya45_1 from "@/assets/stilnye-moduli/trapeciya-45/01.webp";
-import stilnyeBarn60_1 from "@/assets/stilnye-moduli/barn-60/01.webp";
-import stilnyeBarn75_1 from "@/assets/stilnye-moduli/barn-75/01.webp";
+import stilnyeDoubleS_1 from "@/assets/stilnye-moduli/double-s/01.webp";
+import stilnyeDoubleS_2 from "@/assets/stilnye-moduli/double-s/02.webp";
+import stilnyeDoubleS_3 from "@/assets/stilnye-moduli/double-s/03.webp";
+import stilnyeDoubleSPlan from "@/assets/stilnye-moduli/double-s/plan.webp";
+import stilnyeDoubleXsTerrace_1 from "@/assets/stilnye-moduli/double-xs-terrace/01.webp";
+import stilnyeDoubleXsTerrace_2 from "@/assets/stilnye-moduli/double-xs-terrace/02.webp";
+import stilnyeDoubleXsTerrace_3 from "@/assets/stilnye-moduli/double-xs-terrace/03.webp";
+import stilnyeDoubleXsTerracePlan from "@/assets/stilnye-moduli/double-xs-terrace/plan.webp";
+import stilnyeBarnhausDouble_1 from "@/assets/stilnye-moduli/barnhaus-double/01.webp";
+import stilnyeBarnhausDouble_2 from "@/assets/stilnye-moduli/barnhaus-double/02.webp";
+import stilnyeBarnhausDouble_3 from "@/assets/stilnye-moduli/barnhaus-double/03.webp";
+import stilnyeBarnhausDoublePlan from "@/assets/stilnye-moduli/barnhaus-double/plan.webp";
+import stilnyeTripleSTerrace_1 from "@/assets/stilnye-moduli/triple-s-terrace/01.webp";
+import stilnyeTripleSTerrace_2 from "@/assets/stilnye-moduli/triple-s-terrace/02.webp";
+import stilnyeTripleSTerrace_3 from "@/assets/stilnye-moduli/triple-s-terrace/03.webp";
+import stilnyeTripleSTerracePlan from "@/assets/stilnye-moduli/triple-s-terrace/plan.webp";
+import stilnyeQuad_1 from "@/assets/stilnye-moduli/quad/01.webp";
+import stilnyeQuad_2 from "@/assets/stilnye-moduli/quad/02.webp";
+import stilnyeQuad_3 from "@/assets/stilnye-moduli/quad/03.webp";
+import stilnyeQuadPlan from "@/assets/stilnye-moduli/quad/plan.webp";
 import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
@@ -8266,73 +8281,98 @@ export const projects: Project[] = [
     hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
   },
   {
-    id: 422, name: "Куб 30", badge: "Модульный дом", price: "по запросу",
-    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 1, term: "от 30 д.",
+    id: 422, name: "DOUBLE S", badge: "Модульный дом", price: "от 2 340 000 ₽",
+    area: "28,8 м²", area_m2: 28.8, beds: 1, baths: 1, floors: 1, term: "от 30 д.",
     rooms: "1 спальня", purpose: "Дача / Гостевой дом", city: "Москва и МО",
-    maker: STILNYE_MODULI,
-    description: "Модульный дом «Куб 30» от компании Стильные Модули.",
-    descriptionLong: "Куб 30 — компактный модульный дом Стильные Модули для дачи, гостевого размещения или небольшого участка. Проект представлен как типовое решение в линейке производителя.",
-    gallery: [{ image: stilnyeKub30_1, type: "photo" }],
+    maker: { ...STILNYE_MODULI, siteUrl: "https://stilnye-moduli.ru/#!/tproduct/756989732-225025541852" },
+    description: "Модульный дом DOUBLE S от компании Стильные Модули.",
+    descriptionLong: "DOUBLE S — компактный модульный дом площадью 28,8 м² для дачи, гостевого размещения или арендного сценария. В галерее добавлены фасады, интерьер и планировка от производителя.",
+    gallery: [
+      { image: stilnyeDoubleS_1, type: "photo" },
+      { image: stilnyeDoubleS_2, type: "photo" },
+      { image: stilnyeDoubleS_3, type: "photo" },
+      { image: stilnyeDoubleSPlan, type: "plan", fit: "contain" },
+    ],
     likes: 74, rating: 4.8,
     suitableFor: ["Дача", "Гостевой дом", "Аренда"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
-    features: ["30 м²", "Компактный формат", "Модульный дом"], style: "Современный", landSize: "3–6 соток",
+    features: ["28,8 м²", "1 спальня", "Планировка"], style: "Современный", landSize: "3–6 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 423, name: "Овал 36", badge: "Модульный дом", price: "по запросу",
-    area: "36 м²", area_m2: 36, beds: 1, baths: 1, floors: 1, term: "от 30 д.",
+    id: 423, name: "DOUBLE XS + Терраса", badge: "Модульный дом", price: "от 2 795 000 ₽",
+    area: "32,4 м²", area_m2: 32.4, beds: 1, baths: 1, floors: 1, term: "от 30 д.",
     rooms: "1 спальня", purpose: "Дача / Глэмпинг", city: "Москва и МО",
-    maker: STILNYE_MODULI,
-    description: "Модульный дом «Овал 36» от Стильные Модули.",
-    descriptionLong: "Овал 36 — компактный модульный дом с мягкой современной формой. Подходит для загородного участка, глэмпинга и арендного сценария.",
-    gallery: [{ image: stilnyeOval36_1, type: "photo" }],
+    maker: { ...STILNYE_MODULI, siteUrl: "https://stilnye-moduli.ru/#!/tproduct/756989732-737118218652" },
+    description: "Модульный дом DOUBLE XS с террасой от Стильные Модули.",
+    descriptionLong: "DOUBLE XS + Терраса — модульный дом площадью 32,4 м² с террасой, спальней, кухней-гостиной и санузлом. Подходит для дачи, глэмпинга и арендного размещения.",
+    gallery: [
+      { image: stilnyeDoubleXsTerrace_1, type: "photo" },
+      { image: stilnyeDoubleXsTerrace_2, type: "photo" },
+      { image: stilnyeDoubleXsTerrace_3, type: "photo" },
+      { image: stilnyeDoubleXsTerracePlan, type: "plan", fit: "contain" },
+    ],
     likes: 76, rating: 4.8,
     suitableFor: ["Глэмпинг", "Дача", "Аренда"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
-    features: ["36 м²", "Овальная форма", "Готовый модуль"], style: "Современный", landSize: "3–6 соток",
+    features: ["32,4 м²", "Терраса", "Планировка"], style: "Современный", landSize: "3–6 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 424, name: "Трапеция 45", badge: "Модульный дом", price: "по запросу",
+    id: 424, name: "Барнхаус DOUBLE", badge: "Модульный дом", price: "от 2 574 000 ₽",
     area: "45 м²", area_m2: 45, beds: 1, baths: 1, floors: 1, term: "от 30 д.",
     rooms: "1 спальня", purpose: "Дача / ПМЖ", city: "Москва и МО",
-    maker: STILNYE_MODULI,
-    description: "Модульный дом «Трапеция 45» с выразительным силуэтом.",
-    descriptionLong: "Трапеция 45 — модульный дом Стильные Модули для отдыха и загородного проживания. Проект выделяется нестандартной геометрией и компактной площадью.",
-    gallery: [{ image: stilnyeTrapeciya45_1, type: "photo" }],
+    maker: { ...STILNYE_MODULI, siteUrl: "https://stilnye-moduli.ru/#!/tproduct/756989732-998480078782" },
+    description: "Модульный дом Барнхаус DOUBLE площадью 45 м².",
+    descriptionLong: "Барнхаус DOUBLE — модульный дом Стильные Модули площадью 45 м² в современном барн-формате. В подборку добавлены фасады и планировка производителя.",
+    gallery: [
+      { image: stilnyeBarnhausDouble_1, type: "photo" },
+      { image: stilnyeBarnhausDouble_2, type: "photo" },
+      { image: stilnyeBarnhausDouble_3, type: "photo" },
+      { image: stilnyeBarnhausDoublePlan, type: "plan", fit: "contain" },
+    ],
     likes: 78, rating: 4.8,
     suitableFor: ["Дача", "ПМЖ", "Глэмпинг"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
-    features: ["45 м²", "Современная форма", "Под ключ"], style: "Современный", landSize: "4–7 соток",
+    features: ["45 м²", "Барнхаус", "Планировка"], style: "Барнхаус", landSize: "4–7 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 425, name: "Барн 60", badge: "Модульный дом", price: "по запросу",
-    area: "60 м²", area_m2: 60, beds: 2, baths: 1, floors: 1, term: "от 45 д.",
+    id: 425, name: "TRIPLE S + Терраса", badge: "Модульный дом", price: "от 3 895 000 ₽",
+    area: "57,6 м²", area_m2: 57.6, beds: 2, baths: 1, floors: 1, term: "от 45 д.",
     rooms: "2 спальни", purpose: "Дача / ПМЖ", city: "Москва и МО",
-    maker: STILNYE_MODULI,
-    description: "Модульный дом «Барн 60» от Стильные Модули.",
-    descriptionLong: "Барн 60 — модульный дом в стиле барнхаус для дачного или круглогодичного проживания. Площадь подходит для семьи или пары, которой нужен запас пространства.",
-    gallery: [{ image: stilnyeBarn60_1, type: "photo" }],
+    maker: { ...STILNYE_MODULI, siteUrl: "https://stilnye-moduli.ru/#!/tproduct/756989732-584867968312" },
+    description: "Модульный дом TRIPLE S с террасой от Стильные Модули.",
+    descriptionLong: "TRIPLE S + Терраса — модульный дом площадью 57,6 м² для загородного проживания. В доме предусмотрены кухня-гостиная, две спальные зоны, санузел и терраса.",
+    gallery: [
+      { image: stilnyeTripleSTerrace_1, type: "photo" },
+      { image: stilnyeTripleSTerrace_2, type: "photo" },
+      { image: stilnyeTripleSTerrace_3, type: "photo" },
+      { image: stilnyeTripleSTerracePlan, type: "plan", fit: "contain" },
+    ],
     likes: 82, rating: 4.9,
     suitableFor: ["Для семьи", "Дача", "ПМЖ"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
-    features: ["60 м²", "2 спальни", "Барнхаус"], style: "Барнхаус", landSize: "5–9 соток",
+    features: ["57,6 м²", "2 спальни", "Терраса"], style: "Современный", landSize: "5–9 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
   {
-    id: 426, name: "Барн 75", badge: "Модульный дом", price: "по запросу",
-    area: "75 м²", area_m2: 75, beds: 2, baths: 1, floors: 1, term: "от 45 д.",
-    rooms: "2 спальни", purpose: "ПМЖ", city: "Москва и МО",
-    maker: STILNYE_MODULI,
-    description: "Семейный модульный дом «Барн 75» от Стильные Модули.",
-    descriptionLong: "Барн 75 — модульный дом в стиле барнхаус для постоянного загородного проживания. Проект подходит для семьи, которой нужен современный одноэтажный дом с понятной архитектурой.",
-    gallery: [{ image: stilnyeBarn75_1, type: "photo" }],
+    id: 426, name: "QUAD", badge: "Модульный дом", price: "от 7 800 000 ₽",
+    area: "75,2 м²", area_m2: 75.2, beds: 3, baths: 1, floors: 1, term: "от 45 д.",
+    rooms: "3 спальни", purpose: "ПМЖ", city: "Москва и МО",
+    maker: { ...STILNYE_MODULI, siteUrl: "https://stilnye-moduli.ru/#!/tproduct/756989732-297960448632" },
+    description: "Модульный дом QUAD площадью 75,2 м² от Стильные Модули.",
+    descriptionLong: "QUAD — просторный модульный дом Стильные Модули площадью 75,2 м². Подходит для постоянного загородного проживания семьи, в галерее есть фасады и планировка.",
+    gallery: [
+      { image: stilnyeQuad_1, type: "photo" },
+      { image: stilnyeQuad_2, type: "photo" },
+      { image: stilnyeQuad_3, type: "photo" },
+      { image: stilnyeQuadPlan, type: "plan", fit: "contain" },
+    ],
     likes: 85, rating: 4.9,
     suitableFor: ["Для семьи", "ПМЖ", "Загородный дом"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
-    features: ["75 м²", "2 спальни", "Барнхаус"], style: "Барнхаус", landSize: "6–10 соток",
+    features: ["75,2 м²", "3 спальни", "Планировка"], style: "Современный", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
   ...regionalBatchProjects,

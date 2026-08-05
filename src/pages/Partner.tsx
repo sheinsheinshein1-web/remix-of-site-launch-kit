@@ -14,7 +14,7 @@ import modulcampBackdrop from "@/assets/modulcamp/barn-house/01.webp";
 import elmacoBackdrop from "@/assets/elmaco/ivor/01.webp";
 import novatorBackdrop from "@/assets/novator/radius/01.webp";
 import blagohouseBackdrop from "@/assets/blagohouse/blagobarn-29/01.webp";
-import stilnyeModuliBackdrop from "@/assets/stilnye-moduli/barn-75/01.webp";
+import stilnyeModuliBackdrop from "@/assets/stilnye-moduli/quad/01.webp";
 import ProjectCard from "@/components/ProjectCard";
 import Seo from "@/components/Seo";
 import NotFound from "@/pages/NotFound";
