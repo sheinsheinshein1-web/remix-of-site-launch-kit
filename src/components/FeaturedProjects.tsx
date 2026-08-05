@@ -7,6 +7,7 @@ import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react
 import { usePullToRefresh } from "@/hooks/usePullToRefresh";
 import { projects } from "@/data/projects";
 import { buildSiteUrl } from "@/lib/seo";
+import { isVerifiedMaker } from "@/lib/verifiedMakers";
 
 import { useCity } from "@/components/CitySelector";
 
@@ -17,30 +18,7 @@ const baseProjects = projects.map((p) => ({
   id: p.id,
   maker: p.maker.name,
   makerId: p.maker.id,
-  verified: [
-    "platforma",
-    "bygge",
-    "durov-house",
-    "histhut",
-    "countryhouse",
-    "cuba-dom",
-    "idolhouse",
-    "woodalp",
-    "boxmate",
-    "uvhouse",
-    "asterius-house",
-    "smola-house",
-    "ultradomspb",
-    "freedom-naturi",
-    "chebwood",
-    "campingdom",
-    "pslcomp",
-    "domnasm",
-    "blackmodule",
-    "domm",
-    "my-module",
-    "4modul",
-  ].includes(p.maker.id),
+  verified: isVerifiedMaker(p.maker.id),
   city: p.city,
   name: p.name,
   price: p.price,

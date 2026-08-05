@@ -21,6 +21,7 @@ import house8 from "@/assets/house-8.webp";
 import house9 from "@/assets/house-9.webp";
 import { projectOverrides, projectsCountByMakerId } from "@/data/projects";
 import { getPartnerReviewSummary } from "@/data/partnerReviews";
+import { isVerifiedMaker } from "@/lib/verifiedMakers";
 
 const defaultGallery = [
   { id: 1, image: house1, type: "photo" },
@@ -602,7 +603,7 @@ const ProjectDetail = () => {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-1.5 min-w-0">
                   <div className="text-[13px] font-semibold text-foreground leading-tight truncate">{project.maker}</div>
-                  {(project.makerId === "platforma" || project.makerId === "bygge" || project.makerId === "durov-house" || project.makerId === "histhut" || project.makerId === "countryhouse" || project.makerId === "cuba-dom" || project.makerId === "idolhouse" || project.makerId === "woodalp" || project.makerId === "boxmate" || project.makerId === "uvhouse" || project.makerId === "asterius-house" || project.makerId === "smola-house" || project.makerId === "ultradomspb" || project.makerId === "freedom-naturi" || project.makerId === "chebwood" || project.makerId === "campingdom" || project.makerId === "pslcomp" || project.makerId === "domnasm" || project.makerId === "blackmodule" || project.makerId === "domm" || project.makerId === "my-module" || project.makerId === "4modul" || project.makerId === "cubber" || project.makerId === "simplehouse" || project.makerId === "panoramic-home" || project.makerId === "ambarn" || project.makerId === "myfamilyhouse" || project.makerId === "stroygrad" || project.makerId === "modulcamp" || project.makerId === "elmaco" || project.makerId === "novator" || project.makerId === "blagohouse" || project.makerId === "stilnye-moduli") && (
+                  {isVerifiedMaker(project.makerId) && (
                     <span className="shrink-0 text-[9px] font-medium uppercase tracking-wide bg-primary/15 text-primary px-1.5 py-[2px] rounded-lg">Проверено</span>
                   )}
                 </div>
