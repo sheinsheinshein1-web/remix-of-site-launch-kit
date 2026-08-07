@@ -389,31 +389,58 @@ const Section = ({
   </section>
 );
 
+/** Полноширинный кадр проекта — как в референсе: фото во всю ширину, подпись поверх снизу. */
 const Card = ({ p, tall }: { p: Project; tall?: boolean }) => (
-  <a href={p.href} {...ext(p.href)} className="group block">
-    <div className={`${tall ? "aspect-[4/5]" : "aspect-[4/3]"} overflow-hidden`} style={{ background: PLACEHOLDER }}>
+  <a href={p.href} {...ext(p.href)} className="group relative block overflow-hidden">
+    <div
+      className={`${tall ? "aspect-[4/5] md:aspect-[21/9]" : "aspect-[4/3] md:aspect-[16/7]"} overflow-hidden`}
+      style={{ background: PLACEHOLDER }}
+    >
       <img
         src={p.image}
         alt={`Модульный дом ${p.name} — IP MODUL`}
         loading="lazy"
-        className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.05]"
+        className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
       />
     </div>
-    <div className="flex items-baseline justify-between gap-6 pt-5">
-      <Display as="h3" className="text-[22px] md:text-[30px]" style={{ color: INK }}>
-        {p.name} — {p.area}
-      </Display>
-      <span className="shrink-0 text-[13px]" style={{ color: MUTED }}>
-        от {p.price}
+    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+    <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-5 md:flex-row md:items-end md:justify-between md:p-10">
+      <div>
+        <Display as="h3" className="text-[26px] text-white md:text-[46px]">
+          {p.name}
+        </Display>
+        {p.specs.length > 0 && (
+          <p className="mt-1 text-[13px] leading-[1.6] text-white/75">{p.specs.join(" · ")}</p>
+        )}
+      </div>
+      <span className="shrink-0 text-[13px] uppercase tracking-[0.14em] text-white/90 md:text-[15px]">
+        {p.area} · от {p.price}
       </span>
     </div>
-    {p.specs.length > 0 && (
-      <p className="mt-2 text-[13px] leading-[1.7]" style={{ color: MUTED }}>
-        {p.specs.join(" · ")}
-      </p>
-    )}
   </a>
 );
+
+/** Компактный кадр для второстепенных серий — плотная сетка без просветов. */
+const TileCard = ({ p }: { p: Project }) => (
+  <a href={p.href} {...ext(p.href)} className="group relative block overflow-hidden">
+    <div className="aspect-[4/3] overflow-hidden" style={{ background: PLACEHOLDER }}>
+      <img
+        src={p.image}
+        alt={`Модульный дом ${p.name} — IP MODUL`}
+        loading="lazy"
+        className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.05]"
+      />
+    </div>
+    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 to-transparent" />
+    <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5">
+      <Display as="h3" className="text-[20px] text-white md:text-[26px]">
+        {p.name}
+      </Display>
+      <span className="shrink-0 text-[12px] text-white/85">от {p.price}</span>
+    </div>
+  </a>
+);
+
 
 const Row = ({ label, title, text }: { label?: string; title: string; text: string }) => (
   <div
