@@ -370,9 +370,10 @@ const IpModul = () => {
       <section id="top" className="border-b border-[hsl(150,8%,18%)]">
         <div className="mx-auto grid max-w-[1240px] items-center gap-10 px-4 py-14 md:grid-cols-[1fr_1fr] md:px-8 md:py-20">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-xl border border-[hsl(150,8%,26%)] bg-[hsl(150,10%,13%)] px-3 py-1.5 text-xs text-[hsl(40,12%,80%)]">
-              Производство в Ленинградской области · доставка и монтаж
-            </div>
+            <p className="text-[11px] uppercase tracking-[0.18em] text-[hsl(40,10%,60%)]">
+              Производство в Ленинградской области — доставка и монтаж
+            </p>
+
             <h1 className="mt-6 text-[34px] font-bold leading-[1.08] text-[hsl(40,30%,94%)] md:text-[54px]">
               Построим ваш уютный модульный дом или баню
             </h1>
