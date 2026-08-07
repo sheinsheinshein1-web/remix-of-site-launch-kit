@@ -269,13 +269,13 @@ const jsonLd = {
 const Sand = "text-[hsl(35,32%,82%)]";
 
 const ProjectCard = ({ p }: { p: Project }) => (
-  <article className="group overflow-hidden rounded-2xl bg-[hsl(150,10%,13%)] border border-[hsl(150,8%,22%)]">
-    <div className="aspect-[4/3] overflow-hidden bg-[hsl(150,8%,18%)]">
+  <article className="group overflow-hidden rounded-2xl bg-[hsl(150,10%,14%)] border border-[hsl(150,8%,22%)] shadow-[0_10px_30px_-18px_rgba(0,0,0,0.9)] transition-colors hover:border-[hsl(35,32%,45%)]">
+    <div className="aspect-[4/3] overflow-hidden bg-[hsl(150,8%,20%)]">
       <img
         src={p.image}
         alt={`Модульный дом ${p.name} от IP MODUL`}
         loading="lazy"
-        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+        className="h-full w-full object-cover brightness-[1.12] saturate-[1.05] transition-transform duration-500 group-hover:scale-[1.04]"
       />
     </div>
     <div className="p-5">
@@ -371,9 +371,9 @@ const IpModul = () => {
         <img
           src={IMG.g[1]}
           alt="Модульный дом IP MODUL с террасой"
-          className="absolute inset-0 h-full w-full object-cover opacity-35"
+          className="absolute inset-0 h-full w-full object-cover opacity-80 brightness-[1.15] saturate-[1.05]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(150,14%,9%)]/70 via-[hsl(150,14%,9%)]/80 to-[hsl(150,14%,9%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(150,14%,9%)]/55 via-[hsl(150,14%,9%)]/75 to-[hsl(150,14%,9%)]" />
         <div className="relative mx-auto grid max-w-[1240px] gap-10 px-4 py-20 md:grid-cols-[1.15fr_0.85fr] md:px-8 md:py-32">
           <div>
             <div className="inline-flex items-center gap-2 rounded-xl border border-[hsl(150,8%,26%)] bg-[hsl(150,10%,13%)]/70 px-3 py-1.5 text-xs text-[hsl(40,12%,80%)]">
@@ -450,9 +450,9 @@ const IpModul = () => {
         <Section id="start" eyebrow="Серия СТАРТ" title="Дома серии СТАРТ" subtitle="Компактные модульные дома в полной комплектации.">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {startSeries.map((s) => (
-              <article key={s.name} className="overflow-hidden rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)]">
-                <div className="aspect-[4/3] overflow-hidden bg-[hsl(150,8%,18%)]">
-                  <img src={s.image} alt={`Модульный дом ${s.name}`} loading="lazy" className="h-full w-full object-cover" />
+              <article key={s.name} className="overflow-hidden rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,14%)] shadow-[0_10px_30px_-18px_rgba(0,0,0,0.9)] transition-colors hover:border-[hsl(35,32%,45%)]">
+                <div className="aspect-[4/3] overflow-hidden bg-[hsl(150,8%,20%)]">
+                  <img src={s.image} alt={`Модульный дом ${s.name}`} loading="lazy" className="h-full w-full object-cover brightness-[1.12] saturate-[1.05]" />
                 </div>
                 <div className="p-5">
                   <div className="flex items-baseline justify-between gap-3">
@@ -471,7 +471,7 @@ const IpModul = () => {
       <Section eyebrow="Технология" title="Из чего состоит модульный дом" subtitle="Полный пирог конструкции — как на производстве.">
         <div className="grid gap-4 md:grid-cols-2">
           {construction.map((c) => (
-            <div key={c.n} className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6">
+            <div key={c.n} className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,14%)] shadow-[0_10px_30px_-18px_rgba(0,0,0,0.9)] p-6">
               <div className="flex items-center gap-3">
                 <span className="rounded-xl bg-[hsl(150,8%,18%)] px-2.5 py-1 text-[11px] font-semibold text-[hsl(35,32%,78%)]">{c.n}</span>
                 <h3 className="text-lg font-semibold text-[hsl(40,30%,94%)]">{c.title}</h3>
@@ -488,10 +488,10 @@ const IpModul = () => {
           ))}
         </div>
         <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-5 text-sm text-[hsl(40,16%,88%)]">
+          <div className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,14%)] shadow-[0_10px_30px_-18px_rgba(0,0,0,0.9)] p-5 text-sm text-[hsl(40,16%,88%)]">
             Готовая крытая терраса
           </div>
-          <div className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-5 text-sm text-[hsl(40,16%,88%)]">
+          <div className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,14%)] shadow-[0_10px_30px_-18px_rgba(0,0,0,0.9)] p-5 text-sm text-[hsl(40,16%,88%)]">
             Лестницы на террасу
           </div>
         </div>
@@ -502,12 +502,12 @@ const IpModul = () => {
         <Section id="gallery" eyebrow="Портфолио" title="Галерея наших объектов">
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
             {IMG.g.map((src, i) => (
-              <div key={src + i} className="aspect-square overflow-hidden rounded-2xl bg-[hsl(150,8%,18%)]">
+              <div key={src + i} className="aspect-square overflow-hidden rounded-2xl bg-[hsl(150,8%,20%)]">
                 <img
                   src={src}
                   alt={`Готовый объект IP MODUL №${i + 1}`}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                  className="h-full w-full object-cover brightness-[1.12] saturate-[1.05] transition-transform duration-500 hover:scale-105"
                 />
               </div>
             ))}
@@ -519,7 +519,7 @@ const IpModul = () => {
       <Section eyebrow="Опции" title="Дополнительные опции">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {options.map((o) => (
-            <div key={o} className="flex items-start gap-3 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-5">
+            <div key={o} className="flex items-start gap-3 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,14%)] shadow-[0_10px_30px_-18px_rgba(0,0,0,0.9)] p-5">
               <Check className="mt-[2px] h-4 w-4 shrink-0 text-[hsl(35,32%,78%)]" />
               <span className="text-sm text-[hsl(40,16%,88%)]">{o}</span>
             </div>
@@ -532,7 +532,7 @@ const IpModul = () => {
         <Section id="reviews" eyebrow="Почему мы?" title="О нас говорят клиенты" subtitle="Рейтинг 5,0 по отзывам покупателей.">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {reviews.map((r) => (
-              <blockquote key={r.name} className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6">
+              <blockquote key={r.name} className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,14%)] shadow-[0_10px_30px_-18px_rgba(0,0,0,0.9)] p-6">
                 <p className="text-[13px] leading-relaxed text-[hsl(40,12%,78%)]">{r.text}</p>
                 <footer className={`mt-4 text-sm font-semibold ${Sand}`}>{r.name}</footer>
               </blockquote>
@@ -556,7 +556,7 @@ const IpModul = () => {
         <div className="grid gap-4 md:grid-cols-3">
           <a
             href={PHONE_HREF}
-            className="flex items-start gap-3 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6"
+            className="flex items-start gap-3 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,14%)] shadow-[0_10px_30px_-18px_rgba(0,0,0,0.9)] p-6"
           >
             <Phone className="mt-1 h-4 w-4 text-[hsl(35,32%,78%)]" />
             <span>
@@ -564,14 +564,14 @@ const IpModul = () => {
               <span className="block text-base font-semibold text-[hsl(40,30%,94%)]">{PHONE}</span>
             </span>
           </a>
-          <div className="flex items-start gap-3 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6">
+          <div className="flex items-start gap-3 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,14%)] shadow-[0_10px_30px_-18px_rgba(0,0,0,0.9)] p-6">
             <MapPin className="mt-1 h-4 w-4 shrink-0 text-[hsl(35,32%,78%)]" />
             <span>
               <span className="block text-xs text-[hsl(40,10%,66%)]">Адрес</span>
               <span className="block text-sm font-medium text-[hsl(40,30%,94%)]">{ADDRESS}</span>
             </span>
           </div>
-          <div className="flex flex-col gap-3 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6">
+          <div className="flex flex-col gap-3 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,14%)] shadow-[0_10px_30px_-18px_rgba(0,0,0,0.9)] p-6">
             <span className="text-xs text-[hsl(40,10%,66%)]">Мессенджеры</span>
             <div className="flex gap-3">
               <a
