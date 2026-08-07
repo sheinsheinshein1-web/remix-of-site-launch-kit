@@ -275,7 +275,7 @@ const ProjectCard = ({ p }: { p: Project }) => (
         src={p.image}
         alt={`Модульный дом ${p.name} от IP MODUL`}
         loading="lazy"
-        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+        className="h-full w-full object-cover brightness-[1.12] transition-transform duration-500 group-hover:scale-[1.04]"
       />
     </div>
     <div className="p-5">
@@ -371,9 +371,9 @@ const IpModul = () => {
         <img
           src={IMG.g[1]}
           alt="Модульный дом IP MODUL с террасой"
-          className="absolute inset-0 h-full w-full object-cover opacity-35"
+          className="absolute inset-0 h-full w-full object-cover opacity-100 brightness-[1.35] saturate-[1.1]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(150,14%,9%)]/70 via-[hsl(150,14%,9%)]/80 to-[hsl(150,14%,9%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(150,14%,9%)]/30 via-[hsl(150,14%,9%)]/60 to-[hsl(150,14%,9%)]" />
         <div className="relative mx-auto grid max-w-[1240px] gap-10 px-4 py-20 md:grid-cols-[1.15fr_0.85fr] md:px-8 md:py-32">
           <div>
             <div className="inline-flex items-center gap-2 rounded-xl border border-[hsl(150,8%,26%)] bg-[hsl(150,10%,13%)]/70 px-3 py-1.5 text-xs text-[hsl(40,12%,80%)]">
@@ -507,7 +507,7 @@ const IpModul = () => {
                   src={src}
                   alt={`Готовый объект IP MODUL №${i + 1}`}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                  className="h-full w-full object-cover brightness-[1.12] transition-transform duration-500 hover:scale-105"
                 />
               </div>
             ))}
