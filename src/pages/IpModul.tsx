@@ -269,25 +269,24 @@ const jsonLd = {
 const Sand = "text-[hsl(35,32%,82%)]";
 
 const ProjectCard = ({ p }: { p: Project }) => (
-  <article className="group overflow-hidden rounded-2xl bg-[hsl(150,10%,13%)] border border-[hsl(150,8%,22%)]">
+  <article className="group">
     <div className="aspect-[4/3] overflow-hidden bg-[hsl(150,8%,18%)]">
       <img
         src={p.image}
         alt={`Модульный дом ${p.name} от IP MODUL`}
         loading="lazy"
-        className="h-full w-full object-cover brightness-[1.12] transition-transform duration-500 group-hover:scale-[1.04]"
+        className="h-full w-full object-cover brightness-[1.12] transition-transform duration-700 group-hover:scale-[1.03]"
       />
     </div>
-    <div className="p-5">
+    <div className="mt-5 border-t border-[hsl(150,8%,20%)] pt-4">
       <div className="flex items-baseline justify-between gap-3">
-        <h3 className="text-lg font-semibold text-[hsl(40,30%,94%)]">{p.name}</h3>
-        <span className={`text-base font-semibold ${Sand}`}>{p.price}</span>
+        <h3 className="text-[19px] font-semibold tracking-tight text-[hsl(40,30%,94%)]">{p.name}</h3>
+        <span className={`text-[15px] font-semibold ${Sand}`}>{p.price}</span>
       </div>
-      <p className="mt-2 text-[13px] leading-relaxed text-[hsl(40,10%,70%)]">{p.desc}</p>
-      <ul className="mt-4 space-y-1.5">
+      <p className="mt-2 text-[13px] leading-relaxed text-[hsl(40,10%,66%)]">{p.desc}</p>
+      <ul className="mt-4 space-y-1">
         {p.specs.map((s) => (
-          <li key={s} className="flex gap-2 text-[13px] text-[hsl(40,12%,78%)]">
-            <span className="mt-[9px] h-px w-2.5 shrink-0 bg-[hsl(35,32%,60%)]" />
+          <li key={s} className="text-[13px] text-[hsl(40,12%,76%)]">
             {s}
           </li>
         ))}
@@ -296,13 +295,14 @@ const ProjectCard = ({ p }: { p: Project }) => (
         href={p.href}
         target="_blank"
         rel="noopener noreferrer nofollow"
-        className="mt-5 inline-flex items-center gap-2 rounded-xl bg-[hsl(35,32%,82%)] px-4 py-2 text-[13px] font-semibold text-[hsl(150,14%,10%)] transition-colors hover:bg-[hsl(35,40%,88%)]"
+        className="mt-4 inline-block text-[13px] font-medium text-[hsl(40,30%,94%)] underline decoration-[hsl(150,8%,32%)] underline-offset-4 transition-colors hover:decoration-[hsl(35,32%,82%)]"
       >
         Подробнее
       </a>
     </div>
   </article>
 );
+
 
 const Section = ({
   eyebrow,
@@ -318,11 +318,22 @@ const Section = ({
   id?: string;
 }) => (
   <section id={id} className="mx-auto max-w-[1240px] px-4 py-16 md:px-8 md:py-24">
-    {eyebrow && <div className={`text-xs uppercase tracking-[0.18em] ${Sand}`}>{eyebrow}</div>}
-    <h2 className="mt-3 max-w-3xl text-3xl font-bold leading-tight text-[hsl(40,30%,94%)] md:text-[42px]">{title}</h2>
-    {subtitle && <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[hsl(40,10%,70%)] md:text-base">{subtitle}</p>}
-    <div className="mt-10">{children}</div>
+    <div className="border-t border-[hsl(150,8%,20%)] pt-6 md:grid md:grid-cols-[220px_1fr] md:gap-10">
+      {eyebrow && (
+        <div className="text-[11px] uppercase tracking-[0.18em] text-[hsl(40,10%,58%)]">{eyebrow}</div>
+      )}
+      <div>
+        <h2 className="mt-3 max-w-3xl text-[30px] font-semibold leading-[1.1] tracking-tight text-[hsl(40,30%,94%)] md:mt-0 md:text-[44px]">
+          {title}
+        </h2>
+        {subtitle && (
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[hsl(40,10%,66%)] md:text-base">{subtitle}</p>
+        )}
+      </div>
+    </div>
+    <div className="mt-12">{children}</div>
   </section>
+
 );
 
 const IpModul = () => {
@@ -412,7 +423,7 @@ const IpModul = () => {
             </dl>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-[hsl(150,8%,20%)] bg-[hsl(150,8%,18%)]">
+          <div className="overflow-hidden bg-[hsl(150,8%,18%)]">
             <img
               src={IMG.g[1]}
               alt="Модульный дом IP MODUL с террасой"
@@ -424,18 +435,16 @@ const IpModul = () => {
 
       {/* Advantages */}
       <Section eyebrow="Почему IP MODUL" title="Что вы получаете">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-4">
           {advantages.map((a) => (
-            <div
-              key={a.n}
-              className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6"
-            >
-              <span className={`text-sm font-semibold tracking-[0.14em] ${Sand}`}>{a.n}</span>
-              <p className="mt-4 text-sm leading-relaxed text-[hsl(40,16%,88%)]">{a.text}</p>
+            <div key={a.n} className="border-t border-[hsl(150,8%,20%)] py-5">
+              <span className="text-[11px] font-medium tracking-[0.18em] text-[hsl(40,10%,58%)]">{a.n}</span>
+              <p className="mt-3 text-sm leading-relaxed text-[hsl(40,16%,86%)]">{a.text}</p>
             </div>
           ))}
         </div>
       </Section>
+
 
 
       {/* Projects */}
@@ -445,19 +454,19 @@ const IpModul = () => {
         title="Наши проекты"
         subtitle="Готовые модульные дома с террасой под завоз мебели. Возможны разные планировки."
       >
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => (
             <ProjectCard key={`${p.name}-${i}`} p={p} />
           ))}
           {showMore && moreProjects.map((p, i) => <ProjectCard key={`more-${i}`} p={p} />)}
         </div>
         {!showMore && (
-          <div className="mt-8 flex justify-center">
+          <div className="mt-12 border-t border-[hsl(150,8%,20%)] pt-6">
             <button
               onClick={() => setShowMore(true)}
-              className="rounded-xl border border-[hsl(150,8%,28%)] px-6 py-3 text-sm font-semibold text-[hsl(40,30%,94%)] transition-colors hover:bg-[hsl(150,10%,15%)]"
+              className="text-sm font-medium text-[hsl(40,30%,94%)] underline decoration-[hsl(150,8%,32%)] underline-offset-4 transition-colors hover:decoration-[hsl(35,32%,82%)]"
             >
-              Показать ещё
+              Показать ещё проекты
             </button>
           </div>
         )}
@@ -466,18 +475,18 @@ const IpModul = () => {
       {/* Start series */}
       <div className="border-y border-[hsl(150,8%,18%)] bg-[hsl(150,12%,11%)]">
         <Section id="start" eyebrow="Серия СТАРТ" title="Дома серии СТАРТ" subtitle="Компактные модульные дома в полной комплектации.">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {startSeries.map((s) => (
-              <article key={s.name} className="overflow-hidden rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)]">
+              <article key={s.name}>
                 <div className="aspect-[4/3] overflow-hidden bg-[hsl(150,8%,18%)]">
-                  <img src={s.image} alt={`Модульный дом ${s.name}`} loading="lazy" className="h-full w-full object-cover" />
+                  <img src={s.image} alt={`Модульный дом ${s.name}`} loading="lazy" className="h-full w-full object-cover brightness-[1.08]" />
                 </div>
-                <div className="p-5">
+                <div className="mt-5 border-t border-[hsl(150,8%,22%)] pt-4">
                   <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="text-lg font-semibold text-[hsl(40,30%,94%)]">{s.name}</h3>
-                    <span className={`text-base font-semibold ${Sand}`}>{s.price}</span>
+                    <h3 className="text-[19px] font-semibold tracking-tight text-[hsl(40,30%,94%)]">{s.name}</h3>
+                    <span className={`text-[15px] font-semibold ${Sand}`}>{s.price}</span>
                   </div>
-                  <p className="mt-2 text-[13px] text-[hsl(40,10%,70%)]">{s.desc}</p>
+                  <p className="mt-2 text-[13px] text-[hsl(40,10%,66%)]">{s.desc}</p>
                 </div>
               </article>
             ))}
@@ -487,17 +496,16 @@ const IpModul = () => {
 
       {/* Construction */}
       <Section eyebrow="Технология" title="Из чего состоит модульный дом" subtitle="Полный пирог конструкции — как на производстве.">
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-x-10 md:grid-cols-2">
           {construction.map((c) => (
-            <div key={c.n} className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6">
-              <div className="flex items-center gap-3">
-                <span className={`text-sm font-semibold tracking-[0.14em] ${Sand}`}>{c.n}</span>
-                <h3 className="text-lg font-semibold text-[hsl(40,30%,94%)]">{c.title}</h3>
+            <div key={c.n} className="border-t border-[hsl(150,8%,20%)] py-6">
+              <div className="flex items-baseline gap-3">
+                <span className="text-[11px] font-medium tracking-[0.18em] text-[hsl(40,10%,58%)]">{c.n}</span>
+                <h3 className="text-[17px] font-semibold text-[hsl(40,30%,94%)]">{c.title}</h3>
               </div>
-              <ul className="mt-4 space-y-1.5">
+              <ul className="mt-3 space-y-1">
                 {c.items.map((i) => (
-                  <li key={i} className="flex gap-2 text-[13px] text-[hsl(40,12%,76%)]">
-                    <span className="mt-[9px] h-px w-2.5 shrink-0 bg-[hsl(35,32%,60%)]" />
+                  <li key={i} className="text-[13px] leading-relaxed text-[hsl(40,12%,74%)]">
                     {i}
                   </li>
                 ))}
@@ -505,27 +513,23 @@ const IpModul = () => {
             </div>
           ))}
         </div>
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-5 text-sm text-[hsl(40,16%,88%)]">
-            Готовая крытая терраса
-          </div>
-          <div className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-5 text-sm text-[hsl(40,16%,88%)]">
-            Лестницы на террасу
-          </div>
-        </div>
+        <p className="mt-8 border-t border-[hsl(150,8%,20%)] pt-5 text-sm text-[hsl(40,12%,78%)]">
+          В базовой комплектации: готовая крытая терраса и лестницы на террасу.
+        </p>
       </Section>
+
 
       {/* Gallery */}
       <div className="border-y border-[hsl(150,8%,18%)] bg-[hsl(150,12%,11%)]">
         <Section id="gallery" eyebrow="Портфолио" title="Галерея наших объектов">
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
             {IMG.g.map((src, i) => (
-              <div key={src + i} className="aspect-square overflow-hidden rounded-2xl bg-[hsl(150,8%,18%)]">
+              <div key={src + i} className="aspect-square overflow-hidden bg-[hsl(150,8%,18%)]">
                 <img
                   src={src}
                   alt={`Готовый объект IP MODUL №${i + 1}`}
                   loading="lazy"
-                  className="h-full w-full object-cover brightness-[1.12] transition-transform duration-500 hover:scale-105"
+                  className="h-full w-full object-cover brightness-[1.12] transition-transform duration-700 hover:scale-[1.04]"
                 />
               </div>
             ))}
@@ -535,35 +539,34 @@ const IpModul = () => {
 
       {/* Options */}
       <Section eyebrow="Опции" title="Дополнительные опции">
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
           {options.map((o) => (
-            <div key={o} className="flex items-start gap-3 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-5">
-              <span className="mt-[9px] h-px w-3 shrink-0 bg-[hsl(35,32%,60%)]" />
-              <span className="text-sm text-[hsl(40,16%,88%)]">{o}</span>
-            </div>
+            <li key={o} className="border-t border-[hsl(150,8%,20%)] py-4 text-sm text-[hsl(40,16%,86%)]">
+              {o}
+            </li>
           ))}
-        </div>
+        </ul>
       </Section>
 
       {/* Reviews */}
       <div className="border-y border-[hsl(150,8%,18%)] bg-[hsl(150,12%,11%)]">
-        <Section id="reviews" eyebrow="Почему мы?" title="О нас говорят клиенты" subtitle="Рейтинг 5,0 по отзывам покупателей.">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <Section id="reviews" eyebrow="Отзывы" title="О нас говорят клиенты" subtitle="Рейтинг 5,0 по отзывам покупателей.">
+          <div className="grid gap-x-10 md:grid-cols-2 lg:grid-cols-3">
             {reviews.map((r) => (
-              <blockquote key={r.name} className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6">
-                <p className="text-[13px] leading-relaxed text-[hsl(40,12%,78%)]">{r.text}</p>
-                <footer className={`mt-4 text-sm font-semibold ${Sand}`}>{r.name}</footer>
+              <blockquote key={r.name} className="border-t border-[hsl(150,8%,22%)] py-6">
+                <p className="text-[13px] leading-relaxed text-[hsl(40,12%,76%)]">{r.text}</p>
+                <footer className="mt-4 text-[13px] font-medium text-[hsl(40,30%,94%)]">{r.name}</footer>
               </blockquote>
             ))}
           </div>
-          <div className="mt-8">
+          <div className="mt-6">
             <a
               href={AVITO}
               target="_blank"
               rel="noopener noreferrer nofollow"
-              className="inline-flex items-center gap-2 rounded-xl border border-[hsl(150,8%,28%)] px-6 py-3 text-sm font-semibold text-[hsl(40,30%,94%)] transition-colors hover:bg-[hsl(150,10%,15%)]"
+              className="text-sm font-medium text-[hsl(40,30%,94%)] underline decoration-[hsl(150,8%,32%)] underline-offset-4 transition-colors hover:decoration-[hsl(35,32%,82%)]"
             >
-              Посмотреть отзывы
+              Все отзывы
             </a>
           </div>
         </Section>
@@ -571,32 +574,27 @@ const IpModul = () => {
 
       {/* CTA + contacts */}
       <Section id="contacts" eyebrow="Контакты" title="Скачайте каталог с актуальными ценами" subtitle="Для домов, глэмпингов и баз отдыха.">
-        <div className="grid gap-4 md:grid-cols-3">
-          <a
-            href={PHONE_HREF}
-            className="flex items-start gap-3 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6"
-          >
-            <Phone className="mt-1 h-4 w-4 text-[hsl(35,32%,78%)]" />
-            <span>
-              <span className="block text-xs text-[hsl(40,10%,66%)]">Телефон</span>
-              <span className="block text-base font-semibold text-[hsl(40,30%,94%)]">{PHONE}</span>
+        <div className="grid gap-x-10 md:grid-cols-3">
+          <a href={PHONE_HREF} className="group border-t border-[hsl(150,8%,20%)] py-5">
+            <span className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-[hsl(40,10%,58%)]">
+              <Phone className="h-3.5 w-3.5" /> Телефон
             </span>
+            <span className="mt-2 block text-[19px] font-semibold text-[hsl(40,30%,94%)]">{PHONE}</span>
           </a>
-          <div className="flex items-start gap-3 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6">
-            <MapPin className="mt-1 h-4 w-4 shrink-0 text-[hsl(35,32%,78%)]" />
-            <span>
-              <span className="block text-xs text-[hsl(40,10%,66%)]">Адрес</span>
-              <span className="block text-sm font-medium text-[hsl(40,30%,94%)]">{ADDRESS}</span>
+          <div className="border-t border-[hsl(150,8%,20%)] py-5">
+            <span className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-[hsl(40,10%,58%)]">
+              <MapPin className="h-3.5 w-3.5" /> Адрес
             </span>
+            <span className="mt-2 block text-sm leading-relaxed text-[hsl(40,20%,90%)]">{ADDRESS}</span>
           </div>
-          <div className="flex flex-col gap-3 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6">
-            <span className="text-xs text-[hsl(40,10%,66%)]">Мессенджеры</span>
-            <div className="flex gap-3">
+          <div className="border-t border-[hsl(150,8%,20%)] py-5">
+            <span className="text-[11px] uppercase tracking-[0.18em] text-[hsl(40,10%,58%)]">Мессенджеры</span>
+            <div className="mt-2 flex gap-5 text-sm font-medium text-[hsl(40,30%,94%)]">
               <a
                 href={TELEGRAM}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="inline-flex items-center gap-2 rounded-xl bg-[hsl(150,8%,18%)] px-4 py-2 text-[13px] font-semibold text-[hsl(40,30%,94%)]"
+                className="inline-flex items-center gap-1.5 underline decoration-[hsl(150,8%,32%)] underline-offset-4 hover:decoration-[hsl(35,32%,82%)]"
               >
                 <Send className="h-3.5 w-3.5" /> Telegram
               </a>
@@ -604,7 +602,7 @@ const IpModul = () => {
                 href={WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="inline-flex items-center gap-2 rounded-xl bg-[hsl(150,8%,18%)] px-4 py-2 text-[13px] font-semibold text-[hsl(40,30%,94%)]"
+                className="underline decoration-[hsl(150,8%,32%)] underline-offset-4 hover:decoration-[hsl(35,32%,82%)]"
               >
                 WhatsApp
               </a>
@@ -612,6 +610,7 @@ const IpModul = () => {
           </div>
         </div>
       </Section>
+
 
       <footer className="border-t border-[hsl(150,8%,18%)] px-4 py-10 md:px-8">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-2 text-xs text-[hsl(40,8%,58%)]">
