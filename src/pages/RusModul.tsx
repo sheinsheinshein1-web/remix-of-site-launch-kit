@@ -256,36 +256,45 @@ const RusModul = () => {
         </div>
       </header>
 
-      {/* Герой — крупное фото, подпись под ним */}
-      <section id="top" className="px-5 pt-10 md:px-12 md:pt-16">
-        <div className="mx-auto max-w-[1240px]">
-          <h1
-            className="max-w-4xl text-[36px] font-normal leading-[1.05] tracking-[-0.03em] md:text-[72px]"
-            style={{ color: INK }}
-          >
-            Модульные дома, бани и хозблоки с установкой от одного дня
-          </h1>
-          <div className="mt-10 flex flex-col gap-8 md:mt-14 md:flex-row md:items-end md:justify-between">
-            <p className="max-w-md text-[15px] leading-[1.75] md:text-[17px]" style={{ color: MUTED }}>
-              Строим на заводе и привозим готовый дом прямо к вам на участок. Производство от 30 дней,
-              Санкт-Петербург и Ленинградская область.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Btn href={SITE}>Оставить заявку</Btn>
-              <Btn href="#houses" ghost>
-                Смотреть проекты
-              </Btn>
+      {/* Герой — фото во всю ширину экрана, текст поверх */}
+      <section id="top" className="relative h-[calc(100svh-4rem)] min-h-[520px] w-full overflow-hidden">
+        <img
+          src={IMG.hero}
+          alt="Модульный дом РУСМОДУЛЬ с установкой за один день"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 px-5 pb-12 md:px-12 md:pb-16">
+          <div className="mx-auto max-w-[1240px]">
+            <h1 className="max-w-3xl text-[34px] font-normal leading-[1.06] tracking-[-0.03em] text-white md:text-[68px]">
+              Модульные дома, бани и хозблоки с установкой от одного дня
+            </h1>
+            <div className="mt-7 flex flex-col gap-7 md:mt-10 md:flex-row md:items-end md:justify-between">
+              <p className="max-w-md text-[15px] leading-[1.7] text-white/75 md:text-[17px]">
+                Строим на заводе и привозим готовый дом к вам на участок. Производство от 30 дней,
+                Санкт-Петербург и Ленинградская область.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href={SITE}
+                  {...ext(SITE)}
+                  className="inline-flex items-center justify-center px-8 py-3.5 text-[13px] transition-opacity duration-300 hover:opacity-90"
+                  style={{ background: CREAM, color: INK }}
+                >
+                  Оставить заявку
+                </a>
+                <a
+                  href="#houses"
+                  className="inline-flex items-center justify-center border border-white/70 px-8 py-3.5 text-[13px] text-white transition-colors duration-300 hover:bg-white hover:text-[hsl(24,10%,14%)]"
+                >
+                  Смотреть проекты
+                </a>
+              </div>
             </div>
-          </div>
-          <div className="mt-12 aspect-[16/9] overflow-hidden md:mt-16" style={{ background: "hsl(30,14%,90%)" }}>
-            <img
-              src={IMG.hero}
-              alt="Модульный дом РУСМОДУЛЬ с установкой за один день"
-              className="h-full w-full object-cover"
-            />
           </div>
         </div>
       </section>
+
 
       {/* Цифры */}
       <section className="px-5 py-14 md:px-12 md:py-20">
