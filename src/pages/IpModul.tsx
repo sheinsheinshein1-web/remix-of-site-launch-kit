@@ -490,7 +490,7 @@ const IpModul = () => {
           {construction.map((c) => (
             <div key={c.n} className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6">
               <div className="flex items-center gap-3">
-                <span className="rounded-xl bg-[hsl(150,8%,18%)] px-2.5 py-1 text-[11px] font-semibold text-[hsl(35,32%,78%)]">{c.n}</span>
+                <span className={`text-sm font-semibold tracking-[0.14em] ${Sand}`}>{c.n}</span>
                 <h3 className="text-lg font-semibold text-[hsl(40,30%,94%)]">{c.title}</h3>
               </div>
               <ul className="mt-4 space-y-1.5">
