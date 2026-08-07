@@ -566,42 +566,67 @@ const IpModul = () => {
         </div>
       </Section>
 
-      {/* Проекты */}
-      <Section
-        id="projects"
-        eyebrow="Модельный ряд"
-        title="Проекты"
-        subtitle="Готовые дома с террасой под завоз мебели. Планировки меняются под задачу."
-      >
-        <div className="grid gap-x-6 gap-y-16 md:grid-cols-2 md:gap-x-10 md:gap-y-24">
+      {/* Проекты — полноширинные кадры друг под другом */}
+      <section id="projects" className="py-20 md:py-28" style={{ borderTop: `1px solid ${HAIR}` }}>
+        <div className="mx-auto max-w-[1400px] px-5 md:px-10">
+          <p className="text-[11px] uppercase tracking-[0.26em]" style={{ color: MUTED }}>
+            Модельный ряд
+          </p>
+          <div className="mt-4 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <Display className="text-[38px] md:text-[76px]" style={{ color: INK }}>
+              Проекты
+            </Display>
+            <p className="max-w-sm text-[15px] leading-[1.7] md:text-right" style={{ color: MUTED }}>
+              Готовые дома с террасой под завоз мебели. Планировки меняются под задачу.
+            </p>
+          </div>
+        </div>
+        <div className="mt-12 flex flex-col gap-px md:mt-20" style={{ background: HAIR }}>
           {projects.map((p, i) => (
-            <Card key={p.name} p={p} tall={i % 4 === 0} />
+            <Card key={p.name} p={p} tall={i % 3 === 0} />
           ))}
         </div>
-      </Section>
+      </section>
 
       {/* Большие дома */}
-      <Section eyebrow="Большая площадь" title="Шале и двухэтажные">
-        <div className="grid gap-x-6 gap-y-14 md:grid-cols-3 md:gap-x-8">
+      <section className="py-20 md:py-28" style={{ borderTop: `1px solid ${HAIR}` }}>
+        <div className="mx-auto max-w-[1400px] px-5 md:px-10">
+          <p className="text-[11px] uppercase tracking-[0.26em]" style={{ color: MUTED }}>
+            Большая площадь
+          </p>
+          <Display className="mt-4 text-[38px] md:text-[76px]" style={{ color: INK }}>
+            Шале и двухэтажные
+          </Display>
+        </div>
+        <div className="mt-12 grid gap-px md:mt-20 md:grid-cols-2" style={{ background: HAIR }}>
           {bigProjects.map((p) => (
-            <Card key={p.name} p={p} />
+            <TileCard key={p.name} p={p} />
           ))}
         </div>
-      </Section>
+      </section>
 
       {/* Серия Старт */}
-      <Section
-        id="start"
-        eyebrow="Серия «Старт»"
-        title="Компактные модули"
-        subtitle="Формат для дачи, аренды и глэмпинга — с той же заводской отделкой."
-      >
-        <div className="grid gap-x-6 gap-y-14 md:grid-cols-3 md:gap-x-8">
+      <section id="start" className="py-20 md:py-28" style={{ borderTop: `1px solid ${HAIR}` }}>
+        <div className="mx-auto max-w-[1400px] px-5 md:px-10">
+          <p className="text-[11px] uppercase tracking-[0.26em]" style={{ color: MUTED }}>
+            Серия «Старт»
+          </p>
+          <div className="mt-4 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <Display className="text-[38px] md:text-[76px]" style={{ color: INK }}>
+              Компактные модули
+            </Display>
+            <p className="max-w-sm text-[15px] leading-[1.7] md:text-right" style={{ color: MUTED }}>
+              Формат для дачи, аренды и глэмпинга — с той же заводской отделкой.
+            </p>
+          </div>
+        </div>
+        <div className="mt-12 grid gap-px md:mt-20 md:grid-cols-3" style={{ background: HAIR }}>
           {startSeries.map((p) => (
-            <Card key={p.name} p={p} />
+            <TileCard key={p.name} p={p} />
           ))}
         </div>
-      </Section>
+      </section>
+
 
       {/* Технология */}
       <Section id="tech" eyebrow="Технология" title="Из чего состоит дом">
