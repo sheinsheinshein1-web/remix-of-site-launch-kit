@@ -1376,6 +1376,27 @@ import stilnyeQuad_1 from "@/assets/stilnye-moduli/quad/01.webp";
 import stilnyeQuad_2 from "@/assets/stilnye-moduli/quad/02.webp";
 import stilnyeQuad_3 from "@/assets/stilnye-moduli/quad/03.webp";
 import stilnyeQuadPlan from "@/assets/stilnye-moduli/quad/plan.webp";
+import ipModulLogo from "@/assets/ip-modul/logo.webp";
+import ipModul40_1 from "@/assets/ip-modul/ip-40/01.webp";
+import ipModul40_2 from "@/assets/ip-modul/ip-40/02.webp";
+import ipModul40_3 from "@/assets/ip-modul/ip-40/03.webp";
+import ipModul40Plan from "@/assets/ip-modul/ip-40/plan.webp";
+import ipModul48_1 from "@/assets/ip-modul/ip-48/01.webp";
+import ipModul48_2 from "@/assets/ip-modul/ip-48/02.webp";
+import ipModul48_3 from "@/assets/ip-modul/ip-48/03.webp";
+import ipModul48Plan from "@/assets/ip-modul/ip-48/plan.webp";
+import ipModul60_1 from "@/assets/ip-modul/ip-60/01.webp";
+import ipModul60_2 from "@/assets/ip-modul/ip-60/02.webp";
+import ipModul60_3 from "@/assets/ip-modul/ip-60/03.webp";
+import ipModul60Plan from "@/assets/ip-modul/ip-60/plan.webp";
+import ipModul64_1 from "@/assets/ip-modul/ip-64/01.webp";
+import ipModul64_2 from "@/assets/ip-modul/ip-64/02.webp";
+import ipModul64_3 from "@/assets/ip-modul/ip-64/03.webp";
+import ipModul64Plan from "@/assets/ip-modul/ip-64/plan.webp";
+import ipModul72_1 from "@/assets/ip-modul/ip-72/01.webp";
+import ipModul72_2 from "@/assets/ip-modul/ip-72/02.webp";
+import ipModul72_3 from "@/assets/ip-modul/ip-72/03.webp";
+import ipModul72Plan from "@/assets/ip-modul/ip-72/plan.webp";
 import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
@@ -2009,6 +2030,15 @@ const STILNYE_MODULI: Maker = {
   productionAddress: "Московская область",
   phone: "+7 (915) 142-45-00",
   telegram: "https://t.me/glempingdom",
+};
+const IP_MODUL: Maker = {
+  name: "IP Modul",
+  initials: "IP",
+  id: "ip-modul",
+  logo: ipModulLogo,
+  siteUrl: "https://ip-modul.ru/",
+  productionAddress: "Ленинградская область, Гатчинский район, д. Новый Свет, д. 118А",
+  phone: "+7 (812) 203-82-06",
 };
 
 // ============================================================================
@@ -8477,6 +8507,101 @@ export const projects: Project[] = [
     features: ["75,2 м²", "3 спальни", "Планировка"], style: "Современный", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
+  {
+    id: 427, name: "IP 40", badge: "Модульный дом", price: "от 2 620 000 ₽",
+    area: "40 м²", area_m2: 40, beds: 1, baths: 1, floors: 1, term: "от 45 д.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Санкт-Петербург и ЛО",
+    maker: { ...IP_MODUL, siteUrl: "https://ip-modul.ru/ip40" },
+    description: "Модульный дом IP 40 с террасой, готовый под завоз мебели.",
+    descriptionLong: "IP 40 от IP Modul — компактный модульный дом общей площадью 40 м², включая террасу. По данным производителя, жилая площадь составляет 26 м², габариты дома — 2,9 × 5 × 8 м, высота потолков — 2–2,4 м. В галерее есть реальные фото фасада, интерьера и планировка.",
+    gallery: [
+      { image: ipModul40_1, type: "photo" },
+      { image: ipModul40_2, type: "photo" },
+      { image: ipModul40_3, type: "photo" },
+      { image: ipModul40Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 83, rating: 4.9,
+    suitableFor: ["Дача", "Гостевой дом", "Аренда"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Терраса", "Реальные фото", "Планировка"], style: "Современный", landSize: "4–6 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 428, name: "IP 48", badge: "Модульный дом", price: "от 3 080 000 ₽",
+    area: "48 м²", area_m2: 48, beds: 1, baths: 1, floors: 1, term: "от 45 д.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Санкт-Петербург и ЛО",
+    maker: { ...IP_MODUL, siteUrl: "https://ip-modul.ru/ip48" },
+    description: "Модульный дом IP 48 с террасой и готовой внутренней отделкой.",
+    descriptionLong: "IP 48 от IP Modul — одноэтажный модульный дом общей площадью 48 м², включая террасу. Жилая площадь — 31 м², габариты дома — 3,6 × 6 × 8 м, высота потолков — 2–3,1 м. Внутри предусмотрены кухня-гостиная, спальня, санузел и терраса.",
+    gallery: [
+      { image: ipModul48_1, type: "photo" },
+      { image: ipModul48_2, type: "photo" },
+      { image: ipModul48_3, type: "photo" },
+      { image: ipModul48Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 87, rating: 4.9,
+    suitableFor: ["Дача", "ПМЖ", "Аренда"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Терраса", "Отделка", "Планировка"], style: "Современный", landSize: "5–7 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 429, name: "IP 60", badge: "Модульный дом", price: "от 3 870 000 ₽",
+    area: "60 м²", area_m2: 60, beds: 2, baths: 1, floors: 1, term: "от 45 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...IP_MODUL, siteUrl: "https://ip-modul.ru/ip60" },
+    description: "Модульный дом IP 60 с террасой и несколькими вариантами планировки.",
+    descriptionLong: "IP 60 от IP Modul — модульный дом общей площадью 60 м², включая террасу. Жилая площадь — 40 м², габариты дома — 3,3 × 7,5 × 8 м, высота потолков — 2–2,7 м. Проект подходит для дачи или компактного круглогодичного проживания.",
+    gallery: [
+      { image: ipModul60_1, type: "photo" },
+      { image: ipModul60_2, type: "photo" },
+      { image: ipModul60_3, type: "photo" },
+      { image: ipModul60Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 92, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Терраса", "2 спальни", "Планировка"], style: "Современный", landSize: "6–8 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 430, name: "IP 64", badge: "Модульный дом", price: "от 4 950 000 ₽",
+    area: "64 м²", area_m2: 64, beds: 2, baths: 1, floors: 1, term: "от 45 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...IP_MODUL, siteUrl: "https://ip-modul.ru/ip64" },
+    description: "Модульный дом IP 64 с террасой, панорамным фасадом и готовой отделкой.",
+    descriptionLong: "IP 64 от IP Modul — одноэтажный модульный дом общей площадью 64 м², включая террасу. Жилая площадь — 43 м², габариты дома — 3,7 × 8 × 8 м, высота потолков — 2–3,1 м. В галерее добавлены фасады, интерьер и планировка.",
+    gallery: [
+      { image: ipModul64_1, type: "photo" },
+      { image: ipModul64_2, type: "photo" },
+      { image: ipModul64_3, type: "photo" },
+      { image: ipModul64Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 96, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Загородный дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Терраса", "Панорамные окна", "Планировка"], style: "Современный", landSize: "6–8 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 431, name: "IP 72", badge: "Модульный дом", price: "от 4 150 000 ₽",
+    area: "72 м²", area_m2: 72, beds: 2, baths: 1, floors: 1, term: "от 45 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
+    maker: { ...IP_MODUL, siteUrl: "https://ip-modul.ru/ip72" },
+    description: "Модульный дом IP 72 с большой террасой и панорамным остеклением.",
+    descriptionLong: "IP 72 от IP Modul — модульный дом общей площадью 72 м², включая террасу. Жилая площадь — 49 м², габариты дома — 3,7 × 9 × 8 м, высота потолков — 2–3,1 м. Подходит для круглогодичного проживания за городом и отдыха семьи.",
+    gallery: [
+      { image: ipModul72_1, type: "photo" },
+      { image: ipModul72_2, type: "photo" },
+      { image: ipModul72_3, type: "photo" },
+      { image: ipModul72Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 101, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Загородный дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Большая терраса", "Панорамные окна", "Планировка"], style: "Современный", landSize: "6–10 соток",
+    hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
+  },
   ...regionalBatchProjects,
 ];
 
@@ -8607,7 +8732,7 @@ export type MakerSummary = {
   telegram?: string;
 };
 const canonicalMakerSiteUrls: Record<string, string> = [
-  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, COUNTRYHOUSE, CUBADOM, IDOLHOUSE, WOODALP, BOXMATE, UVHOUSE, ASTERIUS, SMOLA, ULTRADOMSPB, FREEDOM_NATURI, CHEBWOOD, CAMPINGDOM, PSLCOMP, DOMNASM, BLACKMODULE, DOMM, MY_MODULE, FOUR_MODUL, CUBBER, SIMPLEHOUSE, PANORAMIC_HOME, AMBARN, MYFAMILYHOUSE, STROYGRAD, MODULCAMP, ELMACO, NOVATOR, BLAGOHOUSE, STILNYE_MODULI,
+  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, COUNTRYHOUSE, CUBADOM, IDOLHOUSE, WOODALP, BOXMATE, UVHOUSE, ASTERIUS, SMOLA, ULTRADOMSPB, FREEDOM_NATURI, CHEBWOOD, CAMPINGDOM, PSLCOMP, DOMNASM, BLACKMODULE, DOMM, MY_MODULE, FOUR_MODUL, CUBBER, SIMPLEHOUSE, PANORAMIC_HOME, AMBARN, MYFAMILYHOUSE, STROYGRAD, MODULCAMP, ELMACO, NOVATOR, BLAGOHOUSE, STILNYE_MODULI, IP_MODUL,
   ...regionalMakers,
 ].reduce((acc, m) => {
   if (m.id && m.siteUrl) acc[m.id] = m.siteUrl;

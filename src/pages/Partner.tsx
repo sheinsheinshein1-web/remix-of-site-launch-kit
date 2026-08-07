@@ -15,6 +15,7 @@ import elmacoBackdrop from "@/assets/elmaco/ivor/01.webp";
 import novatorBackdrop from "@/assets/novator/radius/01.webp";
 import blagohouseBackdrop from "@/assets/blagohouse/blagobarn-29/01.webp";
 import stilnyeModuliBackdrop from "@/assets/stilnye-moduli/quad/01.webp";
+import ipModulBackdrop from "@/assets/ip-modul/ip-72/01.webp";
 import ProjectCard from "@/components/ProjectCard";
 import Seo from "@/components/Seo";
 import NotFound from "@/pages/NotFound";
@@ -56,6 +57,7 @@ const hitBackdropByMakerId: Record<string, string> = {
   novator: novatorBackdrop,
   blagohouse: blagohouseBackdrop,
   "stilnye-moduli": stilnyeModuliBackdrop,
+  "ip-modul": ipModulBackdrop,
 };
 
 // Тексты «о компании» — единственное, что не выводится автоматически из projects.ts.
@@ -216,6 +218,8 @@ const aboutByMakerId: Record<string, string> = {
     "BlagoHouse — производитель готовых модульных домов и барнхаусов в Москве и Московской области. В каталоге представлены BlagoBarn площадью от компактных гостевых домов до больших семейных проектов.",
   "stilnye-moduli":
     "Стильные Модули — производитель модульных домов, офисов и бань под ключ в Московской области. В подборке представлены типовые решения Куб, Овал, Трапеция и Барн для дачи, проживания и глэмпинга.",
+  "ip-modul":
+    "IP Modul — производитель модульных домов и бань под ключ из Ленинградской области. В каталоге представлены готовые дома серии IP с террасами, реальными фото, внутренней отделкой и планировками для дачи, аренды и круглогодичного проживания.",
 };
 
 const manualCounts: Record<string, number> = { bygge: 5 };
@@ -259,6 +263,7 @@ const partnerThemes: Record<string, PartnerTheme> = {
   novator: { page: "220 14% 13%", panel: "220 12% 21%", ink: "0 0% 100%", light: false },
   blagohouse: { page: "92 14% 15%", panel: "92 12% 23%", ink: "0 0% 100%", light: false },
   "stilnye-moduli": { page: "120 9% 14%", panel: "120 8% 22%", ink: "0 0% 100%", light: false },
+  "ip-modul": { page: "92 16% 14%", panel: "92 12% 22%", ink: "0 0% 100%", light: false },
 };
 
 const Partner = () => {
@@ -393,7 +398,7 @@ const Partner = () => {
     return <NotFound />;
   }
 
-  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "countryhouse" || makerId === "cuba-dom" || makerId === "idolhouse" || makerId === "woodalp" || makerId === "boxmate" || makerId === "uvhouse" || makerId === "asterius-house" || makerId === "smola-house" || makerId === "ultradomspb" || makerId === "freedom-naturi" || makerId === "chebwood" || makerId === "campingdom" || makerId === "pslcomp" || makerId === "domnasm" || makerId === "blackmodule" || makerId === "domm" || makerId === "my-module" || makerId === "4modul" || makerId === "cubber" || makerId === "simplehouse" || makerId === "panoramic-home" || makerId === "ambarn" || makerId === "myfamilyhouse" || makerId === "stroygrad" || makerId === "modulcamp" || makerId === "elmaco" || makerId === "novator" || makerId === "blagohouse" || makerId === "stilnye-moduli";
+  const isPlatforma = makerId === "platforma" || makerId === "bygge" || makerId === "durov-house" || makerId === "histhut" || makerId === "countryhouse" || makerId === "cuba-dom" || makerId === "idolhouse" || makerId === "woodalp" || makerId === "boxmate" || makerId === "uvhouse" || makerId === "asterius-house" || makerId === "smola-house" || makerId === "ultradomspb" || makerId === "freedom-naturi" || makerId === "chebwood" || makerId === "campingdom" || makerId === "pslcomp" || makerId === "domnasm" || makerId === "blackmodule" || makerId === "domm" || makerId === "my-module" || makerId === "4modul" || makerId === "cubber" || makerId === "simplehouse" || makerId === "panoramic-home" || makerId === "ambarn" || makerId === "myfamilyhouse" || makerId === "stroygrad" || makerId === "modulcamp" || makerId === "elmaco" || makerId === "novator" || makerId === "blagohouse" || makerId === "stilnye-moduli" || makerId === "ip-modul";
   const theme = partnerThemes[makerId ?? ""] ?? DARK_THEME;
 
 

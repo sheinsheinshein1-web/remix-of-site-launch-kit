@@ -32,6 +32,7 @@ const VERIFIED_MAKER_IDS = new Set([
   "novator",
   "blagohouse",
   "stilnye-moduli",
+  "ip-modul",
 ]);
 
 export const isVerifiedMaker = (makerId?: string) =>

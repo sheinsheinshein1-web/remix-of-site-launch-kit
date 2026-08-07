@@ -383,6 +383,11 @@ import thumb423 from "@/assets/stilnye-moduli/double-xs-terrace/01__thumb.webp";
 import thumb424 from "@/assets/stilnye-moduli/barnhaus-double/01__thumb.webp";
 import thumb425 from "@/assets/stilnye-moduli/triple-s-terrace/01__thumb.webp";
 import thumb426 from "@/assets/stilnye-moduli/quad/01__thumb.webp";
+import thumb427 from "@/assets/ip-modul/ip-40/01__thumb.webp";
+import thumb428 from "@/assets/ip-modul/ip-48/01__thumb.webp";
+import thumb429 from "@/assets/ip-modul/ip-60/01__thumb.webp";
+import thumb430 from "@/assets/ip-modul/ip-64/01__thumb.webp";
+import thumb431 from "@/assets/ip-modul/ip-72/01__thumb.webp";
 
 export const projectThumbs: Record<number, string> = {
   32: thumb32,
@@ -767,4 +772,9 @@ export const projectThumbs: Record<number, string> = {
   424: thumb424,
   425: thumb425,
   426: thumb426,
+  427: thumb427,
+  428: thumb428,
+  429: thumb429,
+  430: thumb430,
+  431: thumb431,
 };
