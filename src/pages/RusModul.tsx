@@ -406,18 +406,32 @@ const RusModul = () => {
 
       {/* Галерея */}
       <Section id="gallery" eyebrow="Портфолио" title="Реализованные объекты">
-        <div className="grid grid-cols-2 gap-px bg-[hsl(0,0%,90%)] md:grid-cols-4">
-          {IMG.gallery.map((src, i) => (
-            <div key={src + i} className="aspect-square overflow-hidden bg-[hsl(0,0%,94%)]">
-              <img
-                src={src}
-                alt={`Готовый объект РУСМОДУЛЬ №${i + 1}`}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.05]"
-              />
-            </div>
-          ))}
+        <div className="space-y-6 md:space-y-10">
+          <div className="aspect-[16/9] overflow-hidden bg-[hsl(0,0%,94%)]">
+            <img
+              src={IMG.gallery[0]}
+              alt="Готовый объект РУСМОДУЛЬ"
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out hover:scale-[1.03]"
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-6 md:gap-10">
+            {IMG.gallery.slice(1).map((src, i) => (
+              <div
+                key={src + i}
+                className={`${i % 3 === 0 ? "aspect-[4/5]" : "aspect-[5/4]"} overflow-hidden bg-[hsl(0,0%,94%)]`}
+              >
+                <img
+                  src={src}
+                  alt={`Готовый объект РУСМОДУЛЬ №${i + 2}`}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out hover:scale-[1.03]"
+                />
+              </div>
+            ))}
+          </div>
         </div>
+
       </Section>
 
       {/* Отзывы */}
