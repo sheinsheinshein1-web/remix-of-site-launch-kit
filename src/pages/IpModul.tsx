@@ -522,14 +522,14 @@ const IpModul = () => {
       {/* Gallery */}
       <div className="border-y border-[hsl(150,8%,18%)] bg-[hsl(150,12%,11%)]">
         <Section id="gallery" eyebrow="Портфолио" title="Галерея наших объектов">
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
             {IMG.g.map((src, i) => (
-              <div key={src + i} className="aspect-square overflow-hidden rounded-2xl bg-[hsl(150,8%,18%)]">
+              <div key={src + i} className="aspect-square overflow-hidden bg-[hsl(150,8%,18%)]">
                 <img
                   src={src}
                   alt={`Готовый объект IP MODUL №${i + 1}`}
                   loading="lazy"
-                  className="h-full w-full object-cover brightness-[1.12] transition-transform duration-500 hover:scale-105"
+                  className="h-full w-full object-cover brightness-[1.12] transition-transform duration-700 hover:scale-[1.04]"
                 />
               </div>
             ))}
@@ -539,35 +539,34 @@ const IpModul = () => {
 
       {/* Options */}
       <Section eyebrow="Опции" title="Дополнительные опции">
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
           {options.map((o) => (
-            <div key={o} className="flex items-start gap-3 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-5">
-              <span className="mt-[9px] h-px w-3 shrink-0 bg-[hsl(35,32%,60%)]" />
-              <span className="text-sm text-[hsl(40,16%,88%)]">{o}</span>
-            </div>
+            <li key={o} className="border-t border-[hsl(150,8%,20%)] py-4 text-sm text-[hsl(40,16%,86%)]">
+              {o}
+            </li>
           ))}
-        </div>
+        </ul>
       </Section>
 
       {/* Reviews */}
       <div className="border-y border-[hsl(150,8%,18%)] bg-[hsl(150,12%,11%)]">
-        <Section id="reviews" eyebrow="Почему мы?" title="О нас говорят клиенты" subtitle="Рейтинг 5,0 по отзывам покупателей.">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <Section id="reviews" eyebrow="Отзывы" title="О нас говорят клиенты" subtitle="Рейтинг 5,0 по отзывам покупателей.">
+          <div className="grid gap-x-10 md:grid-cols-2 lg:grid-cols-3">
             {reviews.map((r) => (
-              <blockquote key={r.name} className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6">
-                <p className="text-[13px] leading-relaxed text-[hsl(40,12%,78%)]">{r.text}</p>
-                <footer className={`mt-4 text-sm font-semibold ${Sand}`}>{r.name}</footer>
+              <blockquote key={r.name} className="border-t border-[hsl(150,8%,22%)] py-6">
+                <p className="text-[13px] leading-relaxed text-[hsl(40,12%,76%)]">{r.text}</p>
+                <footer className="mt-4 text-[13px] font-medium text-[hsl(40,30%,94%)]">{r.name}</footer>
               </blockquote>
             ))}
           </div>
-          <div className="mt-8">
+          <div className="mt-6">
             <a
               href={AVITO}
               target="_blank"
               rel="noopener noreferrer nofollow"
-              className="inline-flex items-center gap-2 rounded-xl border border-[hsl(150,8%,28%)] px-6 py-3 text-sm font-semibold text-[hsl(40,30%,94%)] transition-colors hover:bg-[hsl(150,10%,15%)]"
+              className="text-sm font-medium text-[hsl(40,30%,94%)] underline decoration-[hsl(150,8%,32%)] underline-offset-4 transition-colors hover:decoration-[hsl(35,32%,82%)]"
             >
-              Посмотреть отзывы
+              Все отзывы
             </a>
           </div>
         </Section>
@@ -575,32 +574,27 @@ const IpModul = () => {
 
       {/* CTA + contacts */}
       <Section id="contacts" eyebrow="Контакты" title="Скачайте каталог с актуальными ценами" subtitle="Для домов, глэмпингов и баз отдыха.">
-        <div className="grid gap-4 md:grid-cols-3">
-          <a
-            href={PHONE_HREF}
-            className="flex items-start gap-3 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6"
-          >
-            <Phone className="mt-1 h-4 w-4 text-[hsl(35,32%,78%)]" />
-            <span>
-              <span className="block text-xs text-[hsl(40,10%,66%)]">Телефон</span>
-              <span className="block text-base font-semibold text-[hsl(40,30%,94%)]">{PHONE}</span>
+        <div className="grid gap-x-10 md:grid-cols-3">
+          <a href={PHONE_HREF} className="group border-t border-[hsl(150,8%,20%)] py-5">
+            <span className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-[hsl(40,10%,58%)]">
+              <Phone className="h-3.5 w-3.5" /> Телефон
             </span>
+            <span className="mt-2 block text-[19px] font-semibold text-[hsl(40,30%,94%)]">{PHONE}</span>
           </a>
-          <div className="flex items-start gap-3 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6">
-            <MapPin className="mt-1 h-4 w-4 shrink-0 text-[hsl(35,32%,78%)]" />
-            <span>
-              <span className="block text-xs text-[hsl(40,10%,66%)]">Адрес</span>
-              <span className="block text-sm font-medium text-[hsl(40,30%,94%)]">{ADDRESS}</span>
+          <div className="border-t border-[hsl(150,8%,20%)] py-5">
+            <span className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-[hsl(40,10%,58%)]">
+              <MapPin className="h-3.5 w-3.5" /> Адрес
             </span>
+            <span className="mt-2 block text-sm leading-relaxed text-[hsl(40,20%,90%)]">{ADDRESS}</span>
           </div>
-          <div className="flex flex-col gap-3 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6">
-            <span className="text-xs text-[hsl(40,10%,66%)]">Мессенджеры</span>
-            <div className="flex gap-3">
+          <div className="border-t border-[hsl(150,8%,20%)] py-5">
+            <span className="text-[11px] uppercase tracking-[0.18em] text-[hsl(40,10%,58%)]">Мессенджеры</span>
+            <div className="mt-2 flex gap-5 text-sm font-medium text-[hsl(40,30%,94%)]">
               <a
                 href={TELEGRAM}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="inline-flex items-center gap-2 rounded-xl bg-[hsl(150,8%,18%)] px-4 py-2 text-[13px] font-semibold text-[hsl(40,30%,94%)]"
+                className="inline-flex items-center gap-1.5 underline decoration-[hsl(150,8%,32%)] underline-offset-4 hover:decoration-[hsl(35,32%,82%)]"
               >
                 <Send className="h-3.5 w-3.5" /> Telegram
               </a>
@@ -608,7 +602,7 @@ const IpModul = () => {
                 href={WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="inline-flex items-center gap-2 rounded-xl bg-[hsl(150,8%,18%)] px-4 py-2 text-[13px] font-semibold text-[hsl(40,30%,94%)]"
+                className="underline decoration-[hsl(150,8%,32%)] underline-offset-4 hover:decoration-[hsl(35,32%,82%)]"
               >
                 WhatsApp
               </a>
@@ -616,6 +610,7 @@ const IpModul = () => {
           </div>
         </div>
       </Section>
+
 
       <footer className="border-t border-[hsl(150,8%,18%)] px-4 py-10 md:px-8">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-2 text-xs text-[hsl(40,8%,58%)]">
