@@ -182,31 +182,28 @@ const Section = ({
   </section>
 );
 
-const Card = ({ p }: { p: Project }) => (
-  <a href={p.href} target="_blank" rel="noopener noreferrer nofollow" className="group block bg-white">
-    <div className="aspect-[4/3] overflow-hidden bg-[hsl(0,0%,94%)]">
+const Card = ({ p, tall }: { p: Project; tall?: boolean }) => (
+  <a href={p.href} target="_blank" rel="noopener noreferrer nofollow" className="group block">
+    <div className={`${tall ? "aspect-[4/5]" : "aspect-[5/4]"} overflow-hidden bg-[hsl(0,0%,94%)]`}>
       <img
         src={p.image}
         alt={`Модульный дом ${p.name} ${p.area} — РУСМОДУЛЬ`}
         loading="lazy"
-        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+        className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
       />
     </div>
-    <div className={`border-t ${LINE} px-5 py-5`}>
-      <div className="flex items-baseline justify-between gap-3">
-        <h3 className="text-[15px] font-bold uppercase tracking-[0.06em] text-[hsl(0,0%,8%)]">
-          {p.name} | {p.area}
-        </h3>
-      </div>
-      <div className="mt-3 flex items-center justify-between">
-        <span className={`text-[15px] font-semibold ${ORANGE}`}>{p.price}</span>
-        <span className="text-[11px] uppercase tracking-[0.16em] text-[hsl(0,0%,45%)] group-hover:text-[hsl(0,0%,10%)]">
-          Подробнее
-        </span>
-      </div>
+    <div className="flex items-baseline justify-between gap-4 pt-5">
+      <h3 className="text-[17px] font-medium tracking-[0.01em] text-[hsl(0,0%,8%)] md:text-[19px]">
+        {p.name} <span className="text-[hsl(0,0%,55%)]">· {p.area}</span>
+      </h3>
+      <span className="shrink-0 text-[14px] text-[hsl(0,0%,35%)]">{p.price}</span>
     </div>
+    <span className="mt-2 inline-block text-[11px] uppercase tracking-[0.18em] text-[hsl(0,0%,58%)] transition-colors group-hover:text-[hsl(18,82%,57%)]">
+      Подробнее
+    </span>
   </a>
 );
+
 
 const RusModul = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -307,12 +304,12 @@ const RusModul = () => {
         title="Модульные дома"
         subtitle="Готовые дома заводского производства с чистовой отделкой и разведёнными коммуникациями."
       >
-        <div className="grid gap-px bg-[hsl(0,0%,90%)] sm:grid-cols-2 lg:grid-cols-4">
-          {houses.map((p) => (
-            <Card key={`${p.name}-${p.area}`} p={p} />
+        <div className="grid gap-x-6 gap-y-16 md:grid-cols-2 md:gap-x-10 md:gap-y-24">
+          {houses.map((p, i) => (
+            <Card key={`${p.name}-${p.area}`} p={p} tall={i % 3 === 0} />
           ))}
         </div>
-        <div className="mt-10">
+        <div className="mt-16">
           <Btn href="https://rusmodul-spb.ru/projects" ghost>
             Все проекты
           </Btn>
@@ -321,12 +318,13 @@ const RusModul = () => {
 
       {/* Бани */}
       <Section id="banya" tone="grey" eyebrow="Бани" title="Модульные бани «Кедр»" subtitle="Готовая баня с отделкой — привозим и устанавливаем за один день.">
-        <div className="grid gap-px bg-[hsl(0,0%,90%)] sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-x-6 gap-y-16 md:grid-cols-2 md:gap-x-10">
           {banyas.map((p) => (
             <Card key={`${p.name}-${p.area}`} p={p} />
           ))}
         </div>
       </Section>
+
 
       {/* Этапы */}
       <Section id="steps" eyebrow="Этапы работы" title="Как строится ваш дом">
@@ -408,18 +406,32 @@ const RusModul = () => {
 
       {/* Галерея */}
       <Section id="gallery" eyebrow="Портфолио" title="Реализованные объекты">
-        <div className="grid grid-cols-2 gap-px bg-[hsl(0,0%,90%)] md:grid-cols-4">
-          {IMG.gallery.map((src, i) => (
-            <div key={src + i} className="aspect-square overflow-hidden bg-[hsl(0,0%,94%)]">
-              <img
-                src={src}
-                alt={`Готовый объект РУСМОДУЛЬ №${i + 1}`}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.05]"
-              />
-            </div>
-          ))}
+        <div className="space-y-6 md:space-y-10">
+          <div className="aspect-[16/9] overflow-hidden bg-[hsl(0,0%,94%)]">
+            <img
+              src={IMG.gallery[0]}
+              alt="Готовый объект РУСМОДУЛЬ"
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out hover:scale-[1.03]"
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-6 md:gap-10">
+            {IMG.gallery.slice(1).map((src, i) => (
+              <div
+                key={src + i}
+                className={`${i % 3 === 0 ? "aspect-[4/5]" : "aspect-[5/4]"} overflow-hidden bg-[hsl(0,0%,94%)]`}
+              >
+                <img
+                  src={src}
+                  alt={`Готовый объект РУСМОДУЛЬ №${i + 2}`}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out hover:scale-[1.03]"
+                />
+              </div>
+            ))}
+          </div>
         </div>
+
       </Section>
 
       {/* Отзывы */}
