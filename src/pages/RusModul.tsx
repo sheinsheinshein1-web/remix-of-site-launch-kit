@@ -304,12 +304,12 @@ const RusModul = () => {
         title="Модульные дома"
         subtitle="Готовые дома заводского производства с чистовой отделкой и разведёнными коммуникациями."
       >
-        <div className="grid gap-px bg-[hsl(0,0%,90%)] sm:grid-cols-2 lg:grid-cols-4">
-          {houses.map((p) => (
-            <Card key={`${p.name}-${p.area}`} p={p} />
+        <div className="grid gap-x-6 gap-y-16 md:grid-cols-2 md:gap-x-10 md:gap-y-24">
+          {houses.map((p, i) => (
+            <Card key={`${p.name}-${p.area}`} p={p} tall={i % 3 === 0} />
           ))}
         </div>
-        <div className="mt-10">
+        <div className="mt-16">
           <Btn href="https://rusmodul-spb.ru/projects" ghost>
             Все проекты
           </Btn>
@@ -318,12 +318,13 @@ const RusModul = () => {
 
       {/* Бани */}
       <Section id="banya" tone="grey" eyebrow="Бани" title="Модульные бани «Кедр»" subtitle="Готовая баня с отделкой — привозим и устанавливаем за один день.">
-        <div className="grid gap-px bg-[hsl(0,0%,90%)] sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-x-6 gap-y-16 md:grid-cols-2 md:gap-x-10">
           {banyas.map((p) => (
             <Card key={`${p.name}-${p.area}`} p={p} />
           ))}
         </div>
       </Section>
+
 
       {/* Этапы */}
       <Section id="steps" eyebrow="Этапы работы" title="Как строится ваш дом">
