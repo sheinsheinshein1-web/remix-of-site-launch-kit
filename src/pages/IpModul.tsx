@@ -423,7 +423,7 @@ const IpModul = () => {
             </dl>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-[hsl(150,8%,20%)] bg-[hsl(150,8%,18%)]">
+          <div className="overflow-hidden bg-[hsl(150,8%,18%)]">
             <img
               src={IMG.g[1]}
               alt="Модульный дом IP MODUL с террасой"
@@ -435,18 +435,16 @@ const IpModul = () => {
 
       {/* Advantages */}
       <Section eyebrow="Почему IP MODUL" title="Что вы получаете">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-4">
           {advantages.map((a) => (
-            <div
-              key={a.n}
-              className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6"
-            >
-              <span className={`text-sm font-semibold tracking-[0.14em] ${Sand}`}>{a.n}</span>
-              <p className="mt-4 text-sm leading-relaxed text-[hsl(40,16%,88%)]">{a.text}</p>
+            <div key={a.n} className="border-t border-[hsl(150,8%,20%)] py-5">
+              <span className="text-[11px] font-medium tracking-[0.18em] text-[hsl(40,10%,58%)]">{a.n}</span>
+              <p className="mt-3 text-sm leading-relaxed text-[hsl(40,16%,86%)]">{a.text}</p>
             </div>
           ))}
         </div>
       </Section>
+
 
 
       {/* Projects */}
