@@ -269,25 +269,24 @@ const jsonLd = {
 const Sand = "text-[hsl(35,32%,82%)]";
 
 const ProjectCard = ({ p }: { p: Project }) => (
-  <article className="group overflow-hidden rounded-2xl bg-[hsl(150,10%,13%)] border border-[hsl(150,8%,22%)]">
+  <article className="group">
     <div className="aspect-[4/3] overflow-hidden bg-[hsl(150,8%,18%)]">
       <img
         src={p.image}
         alt={`Модульный дом ${p.name} от IP MODUL`}
         loading="lazy"
-        className="h-full w-full object-cover brightness-[1.12] transition-transform duration-500 group-hover:scale-[1.04]"
+        className="h-full w-full object-cover brightness-[1.12] transition-transform duration-700 group-hover:scale-[1.03]"
       />
     </div>
-    <div className="p-5">
+    <div className="mt-5 border-t border-[hsl(150,8%,20%)] pt-4">
       <div className="flex items-baseline justify-between gap-3">
-        <h3 className="text-lg font-semibold text-[hsl(40,30%,94%)]">{p.name}</h3>
-        <span className={`text-base font-semibold ${Sand}`}>{p.price}</span>
+        <h3 className="text-[19px] font-semibold tracking-tight text-[hsl(40,30%,94%)]">{p.name}</h3>
+        <span className={`text-[15px] font-semibold ${Sand}`}>{p.price}</span>
       </div>
-      <p className="mt-2 text-[13px] leading-relaxed text-[hsl(40,10%,70%)]">{p.desc}</p>
-      <ul className="mt-4 space-y-1.5">
+      <p className="mt-2 text-[13px] leading-relaxed text-[hsl(40,10%,66%)]">{p.desc}</p>
+      <ul className="mt-4 space-y-1">
         {p.specs.map((s) => (
-          <li key={s} className="flex gap-2 text-[13px] text-[hsl(40,12%,78%)]">
-            <span className="mt-[9px] h-px w-2.5 shrink-0 bg-[hsl(35,32%,60%)]" />
+          <li key={s} className="text-[13px] text-[hsl(40,12%,76%)]">
             {s}
           </li>
         ))}
@@ -296,13 +295,14 @@ const ProjectCard = ({ p }: { p: Project }) => (
         href={p.href}
         target="_blank"
         rel="noopener noreferrer nofollow"
-        className="mt-5 inline-flex items-center gap-2 rounded-xl bg-[hsl(35,32%,82%)] px-4 py-2 text-[13px] font-semibold text-[hsl(150,14%,10%)] transition-colors hover:bg-[hsl(35,40%,88%)]"
+        className="mt-4 inline-block text-[13px] font-medium text-[hsl(40,30%,94%)] underline decoration-[hsl(150,8%,32%)] underline-offset-4 transition-colors hover:decoration-[hsl(35,32%,82%)]"
       >
         Подробнее
       </a>
     </div>
   </article>
 );
+
 
 const Section = ({
   eyebrow,
