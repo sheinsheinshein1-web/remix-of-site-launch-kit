@@ -389,31 +389,58 @@ const Section = ({
   </section>
 );
 
+/** Полноширинный кадр проекта — как в референсе: фото во всю ширину, подпись поверх снизу. */
 const Card = ({ p, tall }: { p: Project; tall?: boolean }) => (
-  <a href={p.href} {...ext(p.href)} className="group block">
-    <div className={`${tall ? "aspect-[4/5]" : "aspect-[4/3]"} overflow-hidden`} style={{ background: PLACEHOLDER }}>
+  <a href={p.href} {...ext(p.href)} className="group relative block overflow-hidden">
+    <div
+      className={`${tall ? "aspect-[4/5] md:aspect-[21/9]" : "aspect-[4/3] md:aspect-[16/7]"} overflow-hidden`}
+      style={{ background: PLACEHOLDER }}
+    >
       <img
         src={p.image}
         alt={`Модульный дом ${p.name} — IP MODUL`}
         loading="lazy"
-        className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.05]"
+        className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
       />
     </div>
-    <div className="flex items-baseline justify-between gap-6 pt-5">
-      <Display as="h3" className="text-[22px] md:text-[30px]" style={{ color: INK }}>
-        {p.name} — {p.area}
-      </Display>
-      <span className="shrink-0 text-[13px]" style={{ color: MUTED }}>
-        от {p.price}
+    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+    <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-5 md:flex-row md:items-end md:justify-between md:p-10">
+      <div>
+        <Display as="h3" className="text-[26px] text-white md:text-[46px]">
+          {p.name}
+        </Display>
+        {p.specs.length > 0 && (
+          <p className="mt-1 text-[13px] leading-[1.6] text-white/75">{p.specs.join(" · ")}</p>
+        )}
+      </div>
+      <span className="shrink-0 text-[13px] uppercase tracking-[0.14em] text-white/90 md:text-[15px]">
+        {p.area} · от {p.price}
       </span>
     </div>
-    {p.specs.length > 0 && (
-      <p className="mt-2 text-[13px] leading-[1.7]" style={{ color: MUTED }}>
-        {p.specs.join(" · ")}
-      </p>
-    )}
   </a>
 );
+
+/** Компактный кадр для второстепенных серий — плотная сетка без просветов. */
+const TileCard = ({ p }: { p: Project }) => (
+  <a href={p.href} {...ext(p.href)} className="group relative block overflow-hidden">
+    <div className="aspect-[4/3] overflow-hidden" style={{ background: PLACEHOLDER }}>
+      <img
+        src={p.image}
+        alt={`Модульный дом ${p.name} — IP MODUL`}
+        loading="lazy"
+        className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.05]"
+      />
+    </div>
+    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 to-transparent" />
+    <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5">
+      <Display as="h3" className="text-[20px] text-white md:text-[26px]">
+        {p.name}
+      </Display>
+      <span className="shrink-0 text-[12px] text-white/85">от {p.price}</span>
+    </div>
+  </a>
+);
+
 
 const Row = ({ label, title, text }: { label?: string; title: string; text: string }) => (
   <div
@@ -539,42 +566,67 @@ const IpModul = () => {
         </div>
       </Section>
 
-      {/* Проекты */}
-      <Section
-        id="projects"
-        eyebrow="Модельный ряд"
-        title="Проекты"
-        subtitle="Готовые дома с террасой под завоз мебели. Планировки меняются под задачу."
-      >
-        <div className="grid gap-x-6 gap-y-16 md:grid-cols-2 md:gap-x-10 md:gap-y-24">
+      {/* Проекты — полноширинные кадры друг под другом */}
+      <section id="projects" className="py-20 md:py-28" style={{ borderTop: `1px solid ${HAIR}` }}>
+        <div className="mx-auto max-w-[1400px] px-5 md:px-10">
+          <p className="text-[11px] uppercase tracking-[0.26em]" style={{ color: MUTED }}>
+            Модельный ряд
+          </p>
+          <div className="mt-4 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <Display className="text-[38px] md:text-[76px]" style={{ color: INK }}>
+              Проекты
+            </Display>
+            <p className="max-w-sm text-[15px] leading-[1.7] md:text-right" style={{ color: MUTED }}>
+              Готовые дома с террасой под завоз мебели. Планировки меняются под задачу.
+            </p>
+          </div>
+        </div>
+        <div className="mt-12 flex flex-col gap-px md:mt-20" style={{ background: HAIR }}>
           {projects.map((p, i) => (
-            <Card key={p.name} p={p} tall={i % 4 === 0} />
+            <Card key={p.name} p={p} tall={i % 3 === 0} />
           ))}
         </div>
-      </Section>
+      </section>
 
       {/* Большие дома */}
-      <Section eyebrow="Большая площадь" title="Шале и двухэтажные">
-        <div className="grid gap-x-6 gap-y-14 md:grid-cols-3 md:gap-x-8">
+      <section className="py-20 md:py-28" style={{ borderTop: `1px solid ${HAIR}` }}>
+        <div className="mx-auto max-w-[1400px] px-5 md:px-10">
+          <p className="text-[11px] uppercase tracking-[0.26em]" style={{ color: MUTED }}>
+            Большая площадь
+          </p>
+          <Display className="mt-4 text-[38px] md:text-[76px]" style={{ color: INK }}>
+            Шале и двухэтажные
+          </Display>
+        </div>
+        <div className="mt-12 grid gap-px md:mt-20 md:grid-cols-2" style={{ background: HAIR }}>
           {bigProjects.map((p) => (
-            <Card key={p.name} p={p} />
+            <TileCard key={p.name} p={p} />
           ))}
         </div>
-      </Section>
+      </section>
 
       {/* Серия Старт */}
-      <Section
-        id="start"
-        eyebrow="Серия «Старт»"
-        title="Компактные модули"
-        subtitle="Формат для дачи, аренды и глэмпинга — с той же заводской отделкой."
-      >
-        <div className="grid gap-x-6 gap-y-14 md:grid-cols-3 md:gap-x-8">
+      <section id="start" className="py-20 md:py-28" style={{ borderTop: `1px solid ${HAIR}` }}>
+        <div className="mx-auto max-w-[1400px] px-5 md:px-10">
+          <p className="text-[11px] uppercase tracking-[0.26em]" style={{ color: MUTED }}>
+            Серия «Старт»
+          </p>
+          <div className="mt-4 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <Display className="text-[38px] md:text-[76px]" style={{ color: INK }}>
+              Компактные модули
+            </Display>
+            <p className="max-w-sm text-[15px] leading-[1.7] md:text-right" style={{ color: MUTED }}>
+              Формат для дачи, аренды и глэмпинга — с той же заводской отделкой.
+            </p>
+          </div>
+        </div>
+        <div className="mt-12 grid gap-px md:mt-20 md:grid-cols-3" style={{ background: HAIR }}>
           {startSeries.map((p) => (
-            <Card key={p.name} p={p} />
+            <TileCard key={p.name} p={p} />
           ))}
         </div>
-      </Section>
+      </section>
+
 
       {/* Технология */}
       <Section id="tech" eyebrow="Технология" title="Из чего состоит дом">
