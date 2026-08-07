@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Phone, MapPin, Send } from "lucide-react";
 import Seo from "@/components/Seo";
 
 /**
  * Лендинг производителя IP MODUL (ip-modul.ru).
- * Дизайн-референс: woodart.ru — тёмная лесная палитра + песочный акцент.
+ * Визуальная система — та же, что у страницы РУСМОДУЛЬ (референс rhodeskin.com):
+ * тёплый кремовый фон, крупные фото, много воздуха, спокойная типографика,
+ * тонкие линии вместо плашек. Акцент — тёплый древесный тон.
  * Контент, проекты, цены и отзывы взяты с ip-modul.ru без изменений.
  */
 
@@ -14,7 +15,16 @@ const TELEGRAM = "https://t.me/IPMODUL";
 const WHATSAPP = "https://api.whatsapp.com/send/?phone=79934912461";
 const AVITO =
   "https://www.avito.ru/brands/i192533124/all?src=sharing&sellerId=9fc38c2e8091cbeee2f2fb39a2fa647b";
+const SITE = "https://ip-modul.ru/";
 const ADDRESS = "Ленинградская область, Гатчинский район, д. Новый Свет, д. 118А";
+
+/** Палитра: тёплый кремовый фон, графитовый текст, древесный акцент */
+const CREAM = "hsl(38,32%,95%)";
+const INK = "hsl(24,10%,14%)";
+const MUTED = "hsl(24,8%,44%)";
+const HAIR = "hsl(30,14%,86%)";
+const BRAND = "hsl(30,38%,42%)";
+const PLACEHOLDER = "hsl(30,14%,90%)";
 
 const IMG = {
   g: [
@@ -153,17 +163,38 @@ const moreProjects: Project[] = [
   },
 ];
 
-const startSeries = [
-  { name: "Старт 24", price: "1 300 000 ₽", desc: "Компактный модульный дом в полной комплектации.", image: IMG.start[0] },
-  { name: "МБ-36", price: "1 950 000 ₽", desc: "Компактный модульный дом в полной комплектации.", image: IMG.start[1] },
-  { name: "Старт 30", price: "1 625 000 ₽", desc: "Компактный модульный дом в полной комплектации.", image: IMG.start[2] },
+const startSeries: Project[] = [
+  {
+    name: "Старт 24",
+    price: "1 300 000 ₽",
+    desc: "Компактный модульный дом в полной комплектации.",
+    specs: [],
+    href: "https://ip-modul.ru/#popup-stoimost",
+    image: IMG.start[0],
+  },
+  {
+    name: "МБ-36",
+    price: "1 950 000 ₽",
+    desc: "Компактный модульный дом в полной комплектации.",
+    specs: [],
+    href: "https://ip-modul.ru/#popup-stoimost",
+    image: IMG.start[1],
+  },
+  {
+    name: "Старт 30",
+    price: "1 625 000 ₽",
+    desc: "Компактный модульный дом в полной комплектации.",
+    specs: [],
+    href: "https://ip-modul.ru/#popup-stoimost",
+    image: IMG.start[2],
+  },
 ];
 
 const advantages = [
-  { n: "01", text: "Уникальные планировки дома, которые будут отражать вашу индивидуальность!" },
-  { n: "02", text: "Быстрая и качественная реализация ваших проектов." },
-  { n: "03", text: "Индивидуальный подход к каждому клиенту: мы учитываем все ваши пожелания и требования." },
-  { n: "04", text: "Профессиональная команда строителей и дизайнеров: качество, которому можно доверять." },
+  { n: "01", title: "Уникальные планировки", text: "Планировки дома, которые будут отражать вашу индивидуальность." },
+  { n: "02", title: "Скорость", text: "Быстрая и качественная реализация ваших проектов." },
+  { n: "03", title: "Индивидуальный подход", text: "Учитываем все ваши пожелания и требования к дому." },
+  { n: "04", title: "Команда", text: "Профессиональные строители и дизайнеры: качество, которому можно доверять." },
 ];
 
 const construction = [
@@ -231,23 +262,38 @@ const reviews = [
   },
   {
     name: "Леонид М.",
-    text: "Хочу сказать спасибо за дом. Цены растут, но мы успели внести предоплату заранее и зафиксировали цену на пол года. При заключении договора добавили всё, что хотели, прописали, что какого цвета будет. По работе проблем не было, все мелочи решались в рабочем порядке. Сейчас сдаём дом в аренду, получаем только положительные отзывы от своих клиентов. К сотрудничеству рекомендуем!",
+    text: "Хочу сказать спасибо за дом. Цены растут, но мы успели внести предоплату заранее и зафиксировали цену на пол года. При заключении договора добавили всё, что хотели, прописали, что какого цвета будет. Сейчас сдаём дом в аренду, получаем только положительные отзывы от своих клиентов.",
   },
   {
     name: "Кристина",
-    text: "Мы хотим выразить огромную благодарность, потому что мы скоро сможем въехать в наш новый дом. Мы долго искали компанию для строительства нашего дома, но когда нашли эту, мы сразу же отправились в их офис, чтобы обсудить все детали. Уже на первой встрече мы были впечатлены профессионализмом и качеством работы. Все работы были выполнены безупречно и аккуратно.",
+    text: "Мы долго искали компанию для строительства нашего дома, но когда нашли эту, сразу же отправились в их офис, чтобы обсудить все детали. Уже на первой встрече мы были впечатлены профессионализмом и качеством работы. Все работы были выполнены безупречно и аккуратно.",
   },
   {
     name: "Мария",
-    text: "Теперь у нас есть дом, это компания, которой можно доверить на все 100. Очень клиентоориентированны, после консультации приехал на экскурсию на производство, удалось увидеть своими глазами и потрогать своими руками. Алексей и Иван сопровождали весь цикл строительства, за 2,5 месяца уже готовый дом стоял у нас на участке. Рекомендую данную компанию!",
+    text: "Теперь у нас есть дом, это компания, которой можно доверить на все 100. После консультации приехал на экскурсию на производство, удалось увидеть своими глазами и потрогать своими руками. За 2,5 месяца уже готовый дом стоял у нас на участке.",
   },
   {
     name: "Дарья",
-    text: "Выражаем огромную благодарность Ивану за его работу! Теперь у нас есть прекрасный загородный каркасный домик «под ключ». Повезло на просторах Авито найти таких мастеров. При выборе компании и до заключения договора Иван всегда был на связи, помогал с проектом, подсказывал и отвечал на все наши вопросы. Все материалы в доме очень качественные, со вкусом, наши пожелания всегда учитывались.",
+    text: "Выражаем огромную благодарность Ивану за его работу! Теперь у нас есть прекрасный загородный каркасный домик «под ключ». Иван всегда был на связи, помогал с проектом, подсказывал и отвечал на все наши вопросы. Все материалы в доме очень качественные.",
   },
   {
     name: "Анастасия",
-    text: "Благодарю за подход: учли пожелания, подобрали дизайн, меняли в ходе сборки дома на производстве планировку. Работой и отзывчивостью мы остались максимально довольны! Доставка дома тоже была вопросом со звёздочкой, который Иван и его команда решили. Если нам обещают сделать — значит сделают!",
+    text: "Благодарю за подход: учли пожелания, подобрали дизайн, меняли в ходе сборки дома на производстве планировку. Работой и отзывчивостью мы остались максимально довольны! Если нам обещают сделать — значит сделают!",
+  },
+];
+
+const faq = [
+  {
+    q: "Сколько времени занимает изготовление дома?",
+    a: "Дом собирается на производстве и приезжает к вам готовым — в среднем весь цикл занимает около 2,5 месяцев.",
+  },
+  {
+    q: "Что входит в стоимость дома?",
+    a: "Готовый дом с террасой под завоз мебели: чистовая отделка, окна, инженерия и утепление по заводскому стандарту.",
+  },
+  {
+    q: "Можно ли изменить планировку?",
+    a: "Да, планировка меняется под ваши задачи — вплоть до индивидуального проекта, плоской крыши, тёплого пола и системы умного дома.",
   },
 ];
 
@@ -263,350 +309,433 @@ const jsonLd = {
     streetAddress: "Гатчинский район, д. Новый Свет, д. 118А",
     addressCountry: "RU",
   },
-  description: "Модульные дома и бани под ключ от 1,6 млн рублей с гарантией 10 лет.",
+  description: "Модульные дома и бани под ключ от 1,3 млн рублей с гарантией.",
 };
 
-const INK = "text-[hsl(0,0%,96%)]";
-const DIM = "text-[hsl(0,0%,64%)]";
-const LINE = "border-[hsl(0,0%,18%)]";
+const ext = (href: string) =>
+  href.startsWith("#") || href.startsWith("tel:") || href.startsWith("mailto:")
+    ? {}
+    : { target: "_blank", rel: "noopener noreferrer nofollow" };
 
 const Btn = ({ href, children, ghost }: { href: string; children: React.ReactNode; ghost?: boolean }) => (
   <a
     href={href}
-    target={href.startsWith("http") ? "_blank" : undefined}
-    rel={href.startsWith("http") ? "noopener noreferrer nofollow" : undefined}
-    className={
-      ghost
-        ? "inline-flex items-center justify-center border border-[hsl(0,0%,40%)] px-10 py-4 text-[13px] font-semibold uppercase tracking-[0.14em] text-[hsl(0,0%,96%)] transition-colors hover:bg-[hsl(0,0%,96%)] hover:text-[hsl(0,0%,7%)]"
-        : "inline-flex items-center justify-center bg-[hsl(35,34%,78%)] px-10 py-4 text-[13px] font-semibold uppercase tracking-[0.14em] text-[hsl(0,0%,8%)] transition-colors hover:bg-[hsl(35,44%,86%)]"
-    }
+    {...ext(href)}
+    className="inline-flex items-center justify-center px-8 py-3.5 text-[13px] tracking-[0.02em] transition-colors duration-300"
+    style={ghost ? { border: `1px solid ${INK}`, color: INK } : { background: INK, color: CREAM }}
   >
     {children}
   </a>
 );
 
-const ProjectCard = ({ p }: { p: Project }) => (
-  <article className="group bg-[hsl(0,0%,10%)]">
-    <div className="aspect-[4/3] overflow-hidden">
-      <img
-        src={p.image}
-        alt={`Модульный дом ${p.name} от IP MODUL`}
-        loading="lazy"
-        className="h-full w-full object-cover brightness-[1.08] transition-transform duration-700 group-hover:scale-[1.04]"
-      />
-    </div>
-    <div className="p-6">
-      <div className="flex items-baseline justify-between gap-3">
-        <h3 className={`text-xl font-bold uppercase tracking-[0.08em] ${INK}`}>{p.name}</h3>
-        <span className="text-[15px] font-semibold text-[hsl(35,34%,78%)]">{p.price}</span>
-      </div>
-      <p className={`mt-3 text-[13px] leading-relaxed ${DIM}`}>{p.desc}</p>
-      <dl className={`mt-5 divide-y divide-[hsl(0,0%,18%)] border-t ${LINE}`}>
-        {p.specs.map((s) => (
-          <div key={s} className="py-2 text-[13px] text-[hsl(0,0%,78%)]">
-            {s}
-          </div>
-        ))}
-      </dl>
-      <a
-        href={p.href}
-        target="_blank"
-        rel="noopener noreferrer nofollow"
-        className="mt-5 inline-block text-[12px] font-semibold uppercase tracking-[0.14em] text-[hsl(35,34%,78%)] transition-opacity hover:opacity-70"
-      >
-        Подробнее
-      </a>
-    </div>
-  </article>
-);
-
 const Section = ({
+  id,
   eyebrow,
   title,
   subtitle,
   children,
-  id,
-  tone,
+  divider = true,
 }: {
+  id?: string;
   eyebrow?: string;
-  title: string;
+  title?: string;
   subtitle?: string;
   children: React.ReactNode;
-  id?: string;
-  tone?: "dark";
+  divider?: boolean;
 }) => (
-  <section id={id} className={tone === "dark" ? "bg-[hsl(0,0%,10%)]" : ""}>
-    <div className="mx-auto max-w-[1360px] px-4 py-16 md:px-10 md:py-24">
-      {eyebrow && (
-        <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[hsl(35,34%,78%)]">{eyebrow}</div>
+  <section
+    id={id}
+    className="px-5 py-20 md:px-12 md:py-32"
+    style={divider ? { borderTop: `1px solid ${HAIR}` } : undefined}
+  >
+    <div className="mx-auto max-w-[1240px]">
+      {(eyebrow || title) && (
+        <div className="max-w-3xl">
+          {eyebrow && (
+            <p className="text-[11px] uppercase tracking-[0.24em]" style={{ color: MUTED }}>
+              {eyebrow}
+            </p>
+          )}
+          {title && (
+            <h2
+              className="mt-5 text-[30px] font-normal leading-[1.1] tracking-[-0.02em] md:text-[52px]"
+              style={{ color: INK }}
+            >
+              {title}
+            </h2>
+          )}
+          {subtitle && (
+            <p className="mt-5 max-w-xl text-[15px] leading-[1.7] md:text-[17px]" style={{ color: MUTED }}>
+              {subtitle}
+            </p>
+          )}
+        </div>
       )}
-      <h2 className={`mt-4 max-w-4xl text-[28px] font-bold uppercase leading-[1.1] tracking-[0.02em] md:text-[44px] ${INK}`}>
-        {title}
-      </h2>
-      {subtitle && <p className={`mt-4 max-w-2xl text-sm leading-relaxed md:text-base ${DIM}`}>{subtitle}</p>}
-      <div className="mt-12">{children}</div>
+      <div className={eyebrow || title ? "mt-14 md:mt-20" : ""}>{children}</div>
     </div>
   </section>
 );
 
+/** Карточка проекта — крупное фото и тихая подпись, без рамок */
+const Card = ({ p, tall }: { p: Project; tall?: boolean }) => (
+  <a href={p.href} {...ext(p.href)} className="group block">
+    <div className={`${tall ? "aspect-[4/5]" : "aspect-[5/4]"} overflow-hidden`} style={{ background: PLACEHOLDER }}>
+      <img
+        src={p.image}
+        alt={`Модульный дом ${p.name} — IP MODUL`}
+        loading="lazy"
+        className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
+      />
+    </div>
+    <div className="flex items-baseline justify-between gap-6 pt-6">
+      <h3 className="text-[19px] font-normal tracking-[-0.01em] md:text-[22px]" style={{ color: INK }}>
+        {p.name}
+      </h3>
+      <span className="shrink-0 text-[14px]" style={{ color: MUTED }}>
+        от {p.price}
+      </span>
+    </div>
+    {p.specs.length > 0 && (
+      <p className="mt-3 text-[14px] leading-[1.7]" style={{ color: MUTED }}>
+        {p.specs.slice(1, 3).join(" · ")}
+      </p>
+    )}
+  </a>
+);
+
+const Row = ({ label, title, text }: { label?: string; title: string; text: string }) => (
+  <div
+    className="grid gap-4 py-8 md:grid-cols-[80px_1fr_1.4fr] md:items-baseline md:gap-10 md:py-10"
+    style={{ borderTop: `1px solid ${HAIR}` }}
+  >
+    <span className="text-[12px] tracking-[0.2em]" style={{ color: BRAND }}>
+      {label}
+    </span>
+    <h3 className="text-[20px] font-normal leading-tight tracking-[-0.01em] md:text-[24px]" style={{ color: INK }}>
+      {title}
+    </h3>
+    <p className="text-[15px] leading-[1.75]" style={{ color: MUTED }}>
+      {text}
+    </p>
+  </div>
+);
+
 const IpModul = () => {
-  const [showMore, setShowMore] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
-    <div className="min-h-screen bg-[hsl(0,0%,7%)] font-sans antialiased">
+    <div className="min-h-screen font-sans antialiased" style={{ background: CREAM, color: INK }}>
       <Seo
-        title="IP MODUL — модульные дома и бани под ключ"
-        description="Модульные дома и бани под ключ от 1,6 млн ₽ с гарантией 10 лет. Производство в Ленинградской области, доставка и монтаж."
+        title="IP MODUL — модульные дома под ключ в Ленобласти"
+        description="Модульные дома IP MODUL от 1 300 000 ₽: заводская сборка с чистовой отделкой, терраса, готовность за 2,5 месяца. Производство в Гатчинском районе."
         canonicalPath="/ip-modul"
         jsonLd={jsonLd}
       />
 
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-[hsl(0,0%,7%)]">
-        <div className={`mx-auto flex max-w-[1360px] items-center justify-between gap-4 border-b ${LINE} px-4 py-5 md:px-10`}>
-          <a href="#top" className={`text-2xl font-bold uppercase tracking-[0.12em] ${INK}`}>
+      {/* Шапка */}
+      <header
+        className="sticky top-0 z-40 backdrop-blur"
+        style={{ background: "hsla(38,32%,95%,0.9)", borderBottom: `1px solid ${HAIR}` }}
+      >
+        <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between px-5 md:px-12">
+          <a href="#top" className="text-[15px] tracking-[0.22em]" style={{ color: INK }}>
             IP MODUL
           </a>
-          <div className="text-right">
-            <a href={PHONE_HREF} className={`block text-[15px] font-semibold ${INK}`}>
-              {PHONE}
-            </a>
-            <span className={`text-xs ${DIM}`}>Ленинградская область</span>
-          </div>
+          <nav className="hidden items-center gap-9 text-[13px] lg:flex" style={{ color: MUTED }}>
+            <a href="#projects" className="transition-colors hover:text-[hsl(24,10%,14%)]">Проекты</a>
+            <a href="#start" className="transition-colors hover:text-[hsl(24,10%,14%)]">Серия «Старт»</a>
+            <a href="#tech" className="transition-colors hover:text-[hsl(24,10%,14%)]">Технология</a>
+            <a href="#gallery" className="transition-colors hover:text-[hsl(24,10%,14%)]">Галерея</a>
+            <a href="#reviews" className="transition-colors hover:text-[hsl(24,10%,14%)]">Отзывы</a>
+            <a href="#contacts" className="transition-colors hover:text-[hsl(24,10%,14%)]">Контакты</a>
+          </nav>
+          <a href={PHONE_HREF} className="text-[13px]" style={{ color: INK }}>
+            {PHONE}
+          </a>
         </div>
-        <nav className={`mx-auto hidden max-w-[1360px] items-center gap-8 border-b ${LINE} px-4 py-3.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-[hsl(0,0%,72%)] md:flex md:px-10`}>
-          <a href="#projects" className="hover:text-[hsl(0,0%,96%)]">Модельный ряд</a>
-          <a href="#start" className="hover:text-[hsl(0,0%,96%)]">Серия СТАРТ</a>
-          <a href="#tech" className="hover:text-[hsl(0,0%,96%)]">Технология</a>
-          <a href="#gallery" className="hover:text-[hsl(0,0%,96%)]">Галерея</a>
-          <a href="#reviews" className="hover:text-[hsl(0,0%,96%)]">Отзывы</a>
-          <a href="#contacts" className="hover:text-[hsl(0,0%,96%)]">Контакты</a>
-        </nav>
       </header>
 
-      {/* Hero — full-bleed фото с наложенным текстом */}
-      <section id="top" className="relative min-h-[560px] md:min-h-[760px]">
+      {/* Герой — фото во всю ширину экрана, текст поверх */}
+      <section id="top" className="relative h-[calc(100svh-4rem)] min-h-[520px] w-full overflow-hidden">
         <img
-          src={IMG.g[1]}
+          src={IMG.g[0]}
           alt="Модульный дом IP MODUL с террасой"
-          className="absolute inset-0 h-full w-full object-cover brightness-[0.95]"
+          className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent" />
-        <div className="relative mx-auto flex min-h-[560px] max-w-[1360px] flex-col justify-center px-4 py-20 md:min-h-[760px] md:px-10">
-          <h1 className={`text-[38px] font-bold uppercase leading-[0.98] tracking-[0.02em] md:text-[76px] ${INK}`}>
-            IP MODUL
-          </h1>
-          <p className={`mt-2 max-w-2xl text-[18px] font-bold uppercase leading-tight tracking-[0.02em] md:text-[32px] ${INK}`}>
-            Модульные дома и бани под ключ
-          </p>
-          <div className="mt-8 space-y-1 text-sm text-[hsl(0,0%,82%)] md:text-[15px]">
-            <p>Модульно-каркасная технология, гарантия 10 лет</p>
-            <p>Производство в Ленинградской области</p>
-            <p>Доставка и монтаж по России — от 1,6 млн ₽</p>
-          </div>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Btn href="#projects">Модельный ряд</Btn>
-            <Btn href={WHATSAPP} ghost>
-              Рассчитать стоимость
-            </Btn>
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 px-5 pb-12 md:px-12 md:pb-16">
+          <div className="mx-auto max-w-[1240px]">
+            <h1 className="max-w-3xl text-[34px] font-normal leading-[1.06] tracking-[-0.03em] text-white md:text-[68px]">
+              Модульные дома с террасой под завоз мебели
+            </h1>
+            <div className="mt-7 flex flex-col gap-7 md:mt-10 md:flex-row md:items-end md:justify-between">
+              <p className="max-w-md text-[15px] leading-[1.7] text-white/75 md:text-[17px]">
+                Собираем дом на производстве в Гатчинском районе и привозим готовым на участок.
+                Полный цикл — около 2,5 месяцев.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href={SITE}
+                  {...ext(SITE)}
+                  className="inline-flex items-center justify-center px-8 py-3.5 text-[13px] transition-opacity duration-300 hover:opacity-90"
+                  style={{ background: CREAM, color: INK }}
+                >
+                  Оставить заявку
+                </a>
+                <a
+                  href="#projects"
+                  className="inline-flex items-center justify-center border border-white/70 px-8 py-3.5 text-[13px] text-white transition-colors duration-300 hover:bg-white hover:text-[hsl(24,10%,14%)]"
+                >
+                  Смотреть проекты
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Ключевые цифры */}
-      <div className={`border-b ${LINE} bg-[hsl(0,0%,10%)]`}>
-        <dl className="mx-auto grid max-w-[1360px] grid-cols-3 divide-x divide-[hsl(0,0%,18%)] px-4 md:px-10">
+      {/* Цифры */}
+      <section className="px-5 py-14 md:px-12 md:py-20">
+        <dl className="mx-auto grid max-w-[1240px] grid-cols-1 gap-10 sm:grid-cols-3">
           {[
-            { v: "10 лет", l: "гарантия" },
-            { v: "30 дней", l: "срок производства" },
-            { v: "100+", l: "готовых объектов" },
+            { v: "2,5 месяца", l: "от договора до готового дома" },
+            { v: "от 1,3 млн ₽", l: "цена дома в комплектации" },
+            { v: "26–84 м²", l: "жилая площадь моделей" },
           ].map((s) => (
-            <div key={s.l} className="px-4 py-8 first:pl-0 md:py-10">
-              <dt className={`text-xl font-bold uppercase tracking-[0.04em] md:text-3xl ${INK}`}>{s.v}</dt>
-              <dd className={`mt-2 text-[11px] uppercase tracking-[0.16em] ${DIM}`}>{s.l}</dd>
+            <div key={s.l}>
+              <dt className="text-[30px] font-normal tracking-[-0.02em] md:text-[42px]" style={{ color: INK }}>
+                {s.v}
+              </dt>
+              <dd className="mt-2 text-[13px]" style={{ color: MUTED }}>
+                {s.l}
+              </dd>
             </div>
           ))}
         </dl>
-      </div>
+      </section>
 
-      {/* Advantages */}
-      <Section eyebrow="Почему IP MODUL" title="Что вы получаете">
-        <div className="grid gap-px bg-[hsl(0,0%,18%)] sm:grid-cols-2 lg:grid-cols-4">
-          {advantages.map((a) => (
-            <div key={a.n} className="bg-[hsl(0,0%,7%)] p-7">
-              <span className="text-[11px] font-semibold tracking-[0.2em] text-[hsl(35,34%,78%)]">{a.n}</span>
-              <p className="mt-4 text-sm leading-relaxed text-[hsl(0,0%,84%)]">{a.text}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Projects */}
+      {/* Проекты */}
       <Section
         id="projects"
-        tone="dark"
         eyebrow="Модельный ряд"
-        title="Наши проекты"
-        subtitle="Готовые модульные дома с террасой под завоз мебели. Возможны разные планировки."
+        title="Модульные дома IP MODUL"
+        subtitle="Готовые дома с террасой под завоз мебели. Возможны разные планировки."
       >
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-x-8 gap-y-20 md:grid-cols-2 md:gap-x-14 md:gap-y-28">
           {projects.map((p, i) => (
-            <ProjectCard key={`${p.name}-${i}`} p={p} />
-          ))}
-          {showMore && moreProjects.map((p, i) => <ProjectCard key={`more-${i}`} p={p} />)}
-        </div>
-        {!showMore && (
-          <div className="mt-10">
-            <button
-              onClick={() => setShowMore(true)}
-              className="inline-flex items-center justify-center border border-[hsl(0,0%,40%)] px-10 py-4 text-[13px] font-semibold uppercase tracking-[0.14em] text-[hsl(0,0%,96%)] transition-colors hover:bg-[hsl(0,0%,96%)] hover:text-[hsl(0,0%,7%)]"
-            >
-              Показать ещё
-            </button>
-          </div>
-        )}
-      </Section>
-
-      {/* Start series */}
-      <Section id="start" eyebrow="Серия СТАРТ" title="Дома серии СТАРТ" subtitle="Компактные модульные дома в полной комплектации.">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {startSeries.map((s) => (
-            <article key={s.name} className="bg-[hsl(0,0%,10%)]">
-              <div className="aspect-[4/3] overflow-hidden">
-                <img src={s.image} alt={`Модульный дом ${s.name}`} loading="lazy" className="h-full w-full object-cover brightness-[1.06]" />
-              </div>
-              <div className="p-6">
-                <div className="flex items-baseline justify-between gap-3">
-                  <h3 className={`text-xl font-bold uppercase tracking-[0.08em] ${INK}`}>{s.name}</h3>
-                  <span className="text-[15px] font-semibold text-[hsl(35,34%,78%)]">{s.price}</span>
-                </div>
-                <p className={`mt-3 text-[13px] leading-relaxed ${DIM}`}>{s.desc}</p>
-              </div>
-            </article>
+            <Card key={`${p.name}-${p.price}`} p={p} tall={i % 3 === 0} />
           ))}
         </div>
       </Section>
 
-      {/* Construction */}
-      <Section id="tech" tone="dark" eyebrow="Технология" title="Из чего состоит модульный дом" subtitle="Полный пирог конструкции — как на производстве.">
-        <div className="grid gap-px bg-[hsl(0,0%,18%)] md:grid-cols-2">
+      {/* Большие дома */}
+      <Section
+        eyebrow="Большие дома"
+        title="Шале, двухэтажные и классические"
+        subtitle="Проекты с увеличенной площадью, высокими потолками и двумя санузлами."
+      >
+        <div className="grid gap-x-8 gap-y-20 md:grid-cols-2 md:gap-x-14 md:gap-y-28">
+          {moreProjects.map((p, i) => (
+            <Card key={p.name} p={p} tall={i === 0} />
+          ))}
+        </div>
+      </Section>
+
+      {/* Серия Старт */}
+      <Section
+        id="start"
+        eyebrow="Серия «Старт»"
+        title="Компактные дома в полной комплектации"
+        subtitle="Небольшой формат для дачи, аренды и глэмпинга — с той же заводской отделкой."
+      >
+        <div className="grid gap-x-8 gap-y-16 md:grid-cols-3 md:gap-x-10">
+          {startSeries.map((p) => (
+            <Card key={p.name} p={p} />
+          ))}
+        </div>
+      </Section>
+
+      {/* Технология */}
+      <Section id="tech" eyebrow="Технология" title="Из чего состоит дом">
+        <div>
           {construction.map((c) => (
-            <div key={c.n} className="bg-[hsl(0,0%,10%)] p-7">
-              <div className="flex items-baseline gap-3">
-                <span className="text-[11px] font-semibold tracking-[0.2em] text-[hsl(35,34%,78%)]">{c.n}</span>
-                <h3 className={`text-base font-bold uppercase tracking-[0.08em] ${INK}`}>{c.title}</h3>
+            <Row key={c.n} label={c.n} title={c.title} text={c.items.join(", ")} />
+          ))}
+        </div>
+      </Section>
+
+      {/* Преимущества */}
+      <Section eyebrow="Преимущества" title="Почему IP MODUL">
+        <div>
+          {advantages.map((a) => (
+            <Row key={a.n} label={a.n} title={a.title} text={a.text} />
+          ))}
+        </div>
+      </Section>
+
+      {/* Опции */}
+      <section className="px-5 py-20 md:px-12 md:py-28" style={{ borderTop: `1px solid ${HAIR}` }}>
+        <div className="mx-auto grid max-w-[1240px] gap-10 md:grid-cols-2 md:items-start">
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.24em]" style={{ color: BRAND }}>
+              Опции
+            </p>
+            <h2
+              className="mt-5 text-[30px] font-normal leading-[1.1] tracking-[-0.02em] md:text-[52px]"
+              style={{ color: INK }}
+            >
+              Дом можно собрать под себя
+            </h2>
+            <div className="mt-8">
+              <Btn href={SITE}>Обсудить проект</Btn>
+            </div>
+          </div>
+          <ul>
+            {options.map((o) => (
+              <li
+                key={o}
+                className="py-5 text-[16px] leading-[1.6] md:text-[18px]"
+                style={{ borderTop: `1px solid ${HAIR}`, color: INK }}
+              >
+                {o}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Галерея */}
+      <Section id="gallery" eyebrow="Галерея" title="Дома и производство">
+        <div className="space-y-8 md:space-y-14">
+          <div className="aspect-[16/9] overflow-hidden" style={{ background: PLACEHOLDER }}>
+            <img
+              src={IMG.g[12]}
+              alt="Модульный дом IP MODUL на участке"
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out hover:scale-[1.04]"
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-8 md:gap-14">
+            {IMG.g.slice(13).concat(IMG.g.slice(4, 9)).map((src, i) => (
+              <div
+                key={src + i}
+                className={`${i % 3 === 0 ? "aspect-[4/5]" : "aspect-[5/4]"} overflow-hidden`}
+                style={{ background: PLACEHOLDER }}
+              >
+                <img
+                  src={src}
+                  alt={`Дом IP MODUL №${i + 2}`}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out hover:scale-[1.04]"
+                />
               </div>
-              <ul className="mt-4 space-y-1.5">
-                {c.items.map((i) => (
-                  <li key={i} className="text-[13px] leading-relaxed text-[hsl(0,0%,74%)]">
-                    {i}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <p className="mt-8 text-sm text-[hsl(0,0%,78%)]">
-          В базовой комплектации: готовая крытая терраса и лестницы на террасу.
-        </p>
-      </Section>
-
-      {/* Gallery — плотная сетка без скруглений */}
-      <Section id="gallery" eyebrow="Портфолио" title="Галерея наших объектов">
-        <div className="grid grid-cols-2 gap-px bg-[hsl(0,0%,18%)] md:grid-cols-4">
-          {IMG.g.map((src, i) => (
-            <div key={src + i} className="aspect-square overflow-hidden bg-[hsl(0,0%,12%)]">
-              <img
-                src={src}
-                alt={`Готовый объект IP MODUL №${i + 1}`}
-                loading="lazy"
-                className="h-full w-full object-cover brightness-[1.06] transition-transform duration-700 hover:scale-[1.05]"
-              />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </Section>
 
-      {/* Options */}
-      <Section tone="dark" eyebrow="Опции" title="Дополнительные опции">
-        <ul className="grid gap-px bg-[hsl(0,0%,18%)] sm:grid-cols-2 lg:grid-cols-3">
-          {options.map((o) => (
-            <li key={o} className="bg-[hsl(0,0%,10%)] px-6 py-5 text-sm text-[hsl(0,0%,84%)]">
-              {o}
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      {/* Reviews */}
-      <Section id="reviews" eyebrow="Отзывы" title="О нас говорят клиенты" subtitle="Рейтинг 5,0 по отзывам покупателей.">
-        <div className="grid gap-px bg-[hsl(0,0%,18%)] md:grid-cols-2 lg:grid-cols-3">
+      {/* Отзывы */}
+      <Section id="reviews" eyebrow="Отзывы" title="Что говорят владельцы">
+        <div className="grid gap-12 md:grid-cols-3 md:gap-14">
           {reviews.map((r) => (
-            <blockquote key={r.name} className="bg-[hsl(0,0%,7%)] p-7">
-              <p className="text-[13px] leading-relaxed text-[hsl(0,0%,76%)]">{r.text}</p>
-              <footer className={`mt-5 text-[12px] font-semibold uppercase tracking-[0.14em] ${INK}`}>{r.name}</footer>
+            <blockquote key={r.name + r.text.slice(0, 12)} className="pt-6" style={{ borderTop: `1px solid ${HAIR}` }}>
+              <p className="text-[15px] leading-[1.8]" style={{ color: MUTED }}>
+                {r.text}
+              </p>
+              <footer className="mt-6 text-[13px]" style={{ color: INK }}>
+                {r.name}
+              </footer>
             </blockquote>
           ))}
         </div>
-        <div className="mt-10">
-          <Btn href={AVITO} ghost>
-            Все отзывы
-          </Btn>
+      </Section>
+
+      {/* FAQ */}
+      <Section eyebrow="Вопросы" title="Частые вопросы">
+        <div>
+          {faq.map((f, i) => (
+            <div key={f.q} style={{ borderTop: `1px solid ${HAIR}` }}>
+              <button
+                onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                className="flex w-full items-center justify-between gap-8 py-7 text-left"
+              >
+                <span className="text-[17px] font-normal tracking-[-0.01em] md:text-[20px]" style={{ color: INK }}>
+                  {f.q}
+                </span>
+                <span className="text-xl leading-none" style={{ color: BRAND }}>
+                  {openFaq === i ? "–" : "+"}
+                </span>
+              </button>
+              {openFaq === i && (
+                <p className="max-w-2xl pb-8 text-[15px] leading-[1.75]" style={{ color: MUTED }}>
+                  {f.a}
+                </p>
+              )}
+            </div>
+          ))}
         </div>
       </Section>
 
-      {/* Contacts */}
-      <Section id="contacts" tone="dark" eyebrow="Контакты" title="Свяжитесь с нами" subtitle="Пришлём каталог с актуальными ценами — для домов, глэмпингов и баз отдыха.">
-        <div className="grid gap-px bg-[hsl(0,0%,18%)] md:grid-cols-3">
-          <a href={PHONE_HREF} className="bg-[hsl(0,0%,10%)] p-7">
-            <span className={`flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] ${DIM}`}>
-              <Phone className="h-3.5 w-3.5" /> Телефон
-            </span>
-            <span className={`mt-3 block text-xl font-bold ${INK}`}>{PHONE}</span>
-          </a>
-          <div className="bg-[hsl(0,0%,10%)] p-7">
-            <span className={`flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] ${DIM}`}>
-              <MapPin className="h-3.5 w-3.5" /> Адрес
-            </span>
-            <span className="mt-3 block text-sm leading-relaxed text-[hsl(0,0%,88%)]">{ADDRESS}</span>
-          </div>
-          <div className="bg-[hsl(0,0%,10%)] p-7">
-            <span className={`text-[11px] uppercase tracking-[0.2em] ${DIM}`}>Мессенджеры</span>
-            <div className="mt-4 flex flex-wrap gap-3">
-              <a
-                href={TELEGRAM}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="inline-flex items-center gap-2 border border-[hsl(0,0%,32%)] px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-[hsl(0,0%,96%)] transition-colors hover:bg-[hsl(0,0%,96%)] hover:text-[hsl(0,0%,8%)]"
-              >
-                <Send className="h-3.5 w-3.5" /> Telegram
+      {/* Контакты */}
+      <Section
+        id="contacts"
+        eyebrow="Контакты"
+        title="Приезжайте на производство"
+        subtitle="Покажем дома в сборке, материалы и отделку вживую — и подберём планировку под ваш участок."
+      >
+        <div className="grid gap-10 md:grid-cols-3">
+          <div className="pt-6" style={{ borderTop: `1px solid ${HAIR}` }}>
+            <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTED }}>
+              Телефон
+            </p>
+            <a href={PHONE_HREF} className="mt-4 block text-[22px] font-normal tracking-[-0.01em]" style={{ color: INK }}>
+              {PHONE}
+            </a>
+            <div className="mt-3 flex flex-wrap gap-4 text-[14px]" style={{ color: MUTED }}>
+              <a href={TELEGRAM} {...ext(TELEGRAM)} className="underline underline-offset-2">
+                Telegram
               </a>
-              <a
-                href={WHATSAPP}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="inline-flex items-center gap-2 border border-[hsl(0,0%,32%)] px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-[hsl(0,0%,96%)] transition-colors hover:bg-[hsl(0,0%,96%)] hover:text-[hsl(0,0%,8%)]"
-              >
+              <a href={WHATSAPP} {...ext(WHATSAPP)} className="underline underline-offset-2">
                 WhatsApp
               </a>
+              <a href={AVITO} {...ext(AVITO)} className="underline underline-offset-2">
+                Авито
+              </a>
+            </div>
+          </div>
+          <div className="pt-6" style={{ borderTop: `1px solid ${HAIR}` }}>
+            <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTED }}>
+              Производство
+            </p>
+            <p className="mt-4 text-[15px] leading-[1.7]" style={{ color: INK }}>
+              {ADDRESS}
+            </p>
+          </div>
+          <div className="pt-6" style={{ borderTop: `1px solid ${HAIR}` }}>
+            <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTED }}>
+              Сайт
+            </p>
+            <p className="mt-4 text-[15px]" style={{ color: INK }}>
+              ip-modul.ru
+            </p>
+            <div className="mt-7">
+              <Btn href={SITE} ghost>
+                Перейти на сайт
+              </Btn>
             </div>
           </div>
         </div>
       </Section>
 
-      <footer className={`border-t ${LINE} px-4 py-12 md:px-10`}>
-        <div className={`mx-auto flex max-w-[1360px] flex-col gap-2 text-xs ${DIM}`}>
-          <span className={`text-lg font-bold uppercase tracking-[0.12em] ${INK}`}>IP MODUL</span>
-          <span>ИНН 470607991608</span>
+      <footer className="px-5 py-14 md:px-12" style={{ borderTop: `1px solid ${HAIR}` }}>
+        <div className="mx-auto flex max-w-[1240px] flex-col gap-3 text-[13px]" style={{ color: MUTED }}>
+          <span className="text-[15px] tracking-[0.22em]" style={{ color: INK }}>
+            IP MODUL
+          </span>
           <span>{ADDRESS}</span>
           <span>
             Информация о проектах и ценах взята с официального сайта производителя{" "}
-            <a
-              href="https://ip-modul.ru/"
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              className="underline underline-offset-2 hover:text-[hsl(0,0%,96%)]"
-            >
+            <a href={SITE} {...ext(SITE)} className="underline underline-offset-2">
               ip-modul.ru
             </a>
             .
@@ -618,4 +747,3 @@ const IpModul = () => {
 };
 
 export default IpModul;
-
