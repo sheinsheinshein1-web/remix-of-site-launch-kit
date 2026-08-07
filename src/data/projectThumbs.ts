@@ -388,6 +388,11 @@ import thumb428 from "@/assets/ip-modul/ip-48/01__thumb.webp";
 import thumb429 from "@/assets/ip-modul/ip-60/01__thumb.webp";
 import thumb430 from "@/assets/ip-modul/ip-64/01__thumb.webp";
 import thumb431 from "@/assets/ip-modul/ip-72/01__thumb.webp";
+import thumb432 from "@/assets/rusmodul-spb/atreum-21/01__thumb.webp";
+import thumb433 from "@/assets/rusmodul-spb/atreum-28/01__thumb.webp";
+import thumb434 from "@/assets/rusmodul-spb/lodge-30/01__thumb.webp";
+import thumb435 from "@/assets/rusmodul-spb/double-lodge-50/01__thumb.webp";
+import thumb436 from "@/assets/rusmodul-spb/scandic-double-60/01__thumb.webp";
 
 export const projectThumbs: Record<number, string> = {
   32: thumb32,
@@ -777,4 +782,9 @@ export const projectThumbs: Record<number, string> = {
   429: thumb429,
   430: thumb430,
   431: thumb431,
+  432: thumb432,
+  433: thumb433,
+  434: thumb434,
+  435: thumb435,
+  436: thumb436,
 };

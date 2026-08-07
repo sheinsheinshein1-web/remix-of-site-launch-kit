@@ -1397,6 +1397,32 @@ import ipModul72_1 from "@/assets/ip-modul/ip-72/01.webp";
 import ipModul72_2 from "@/assets/ip-modul/ip-72/02.webp";
 import ipModul72_3 from "@/assets/ip-modul/ip-72/03.webp";
 import ipModul72Plan from "@/assets/ip-modul/ip-72/plan.webp";
+import rusmodulLogo from "@/assets/rusmodul-spb/logo.svg";
+import rusmodulAtreum21_1 from "@/assets/rusmodul-spb/atreum-21/01.webp";
+import rusmodulAtreum21_2 from "@/assets/rusmodul-spb/atreum-21/02.webp";
+import rusmodulAtreum21_3 from "@/assets/rusmodul-spb/atreum-21/03.webp";
+import rusmodulAtreum21Plan from "@/assets/rusmodul-spb/atreum-21/plan.webp";
+import rusmodulAtreum21Plan3d from "@/assets/rusmodul-spb/atreum-21/plan-3d.webp";
+import rusmodulAtreum28_1 from "@/assets/rusmodul-spb/atreum-28/01.webp";
+import rusmodulAtreum28_2 from "@/assets/rusmodul-spb/atreum-28/02.webp";
+import rusmodulAtreum28_3 from "@/assets/rusmodul-spb/atreum-28/03.webp";
+import rusmodulAtreum28Plan from "@/assets/rusmodul-spb/atreum-28/plan.webp";
+import rusmodulAtreum28Plan2 from "@/assets/rusmodul-spb/atreum-28/plan-2.webp";
+import rusmodulLodge30_1 from "@/assets/rusmodul-spb/lodge-30/01.webp";
+import rusmodulLodge30_2 from "@/assets/rusmodul-spb/lodge-30/02.webp";
+import rusmodulLodge30_3 from "@/assets/rusmodul-spb/lodge-30/03.webp";
+import rusmodulLodge30Plan from "@/assets/rusmodul-spb/lodge-30/plan.webp";
+import rusmodulLodge30Plan2 from "@/assets/rusmodul-spb/lodge-30/plan-2.webp";
+import rusmodulDoubleLodge50_1 from "@/assets/rusmodul-spb/double-lodge-50/01.webp";
+import rusmodulDoubleLodge50_2 from "@/assets/rusmodul-spb/double-lodge-50/02.webp";
+import rusmodulDoubleLodge50_3 from "@/assets/rusmodul-spb/double-lodge-50/03.webp";
+import rusmodulDoubleLodge50Plan from "@/assets/rusmodul-spb/double-lodge-50/plan.webp";
+import rusmodulDoubleLodge50Plan2 from "@/assets/rusmodul-spb/double-lodge-50/plan-2.webp";
+import rusmodulScandicDouble60_1 from "@/assets/rusmodul-spb/scandic-double-60/01.webp";
+import rusmodulScandicDouble60_2 from "@/assets/rusmodul-spb/scandic-double-60/02.webp";
+import rusmodulScandicDouble60_3 from "@/assets/rusmodul-spb/scandic-double-60/03.webp";
+import rusmodulScandicDouble60Plan from "@/assets/rusmodul-spb/scandic-double-60/plan.webp";
+import rusmodulScandicDouble60Plan2 from "@/assets/rusmodul-spb/scandic-double-60/plan-2.webp";
 import { regionalBatchProjects, regionalMakers } from "@/data/regionalBatchProjects";
 
 // ============================================================================
@@ -2039,6 +2065,16 @@ const IP_MODUL: Maker = {
   siteUrl: "https://ip-modul.ru/",
   productionAddress: "Ленинградская область, Гатчинский район, д. Новый Свет, д. 118А",
   phone: "+7 (812) 203-82-06",
+};
+const RUSMODUL_SPB: Maker = {
+  name: "РусМодуль",
+  initials: "РМ",
+  id: "rusmodul-spb",
+  logo: rusmodulLogo,
+  siteUrl: "https://rusmodul-spb.ru/projects",
+  productionAddress: "Ленинградская область, Русско-Высоцкое, улица Дорога на Южный птицекомплекс, 3",
+  phone: "+7 (812) 703-85-84",
+  email: "SKRus178@yandex.ru",
 };
 
 // ============================================================================
@@ -8602,6 +8638,106 @@ export const projects: Project[] = [
     features: ["Большая терраса", "Панорамные окна", "Планировка"], style: "Современный", landSize: "6–10 соток",
     hasRealPhotos: true, hasShowroom: false, hasInstallment: false,
   },
+  {
+    id: 432, name: "Атриум 21", badge: "Модульный дом", price: "от 1 155 000 ₽",
+    area: "21 м²", area_m2: 21, beds: 1, baths: 1, floors: 1, term: "от 30 д.",
+    rooms: "1 спальня", purpose: "Дача / аренда", city: "Санкт-Петербург и ЛО",
+    maker: { ...RUSMODUL_SPB, siteUrl: "https://rusmodul-spb.ru/atreum21" },
+    description: "Компактный модульный дом Атриум 21 с панорамным остеклением и отделкой из термодревесины.",
+    descriptionLong: "Атриум 21 от РусМодуль — компактный модульный дом площадью 21 м² с габаритами 3,5 × 6 м и высотой потолков 2,7 м. В планировке предусмотрены спальная зона, санузел и кухня-гостиная, а в галерее добавлены фасады, интерьер и планировки.",
+    gallery: [
+      { image: rusmodulAtreum21_1, type: "photo" },
+      { image: rusmodulAtreum21_2, type: "photo" },
+      { image: rusmodulAtreum21_3, type: "photo" },
+      { image: rusmodulAtreum21Plan, type: "plan", fit: "contain" },
+      { image: rusmodulAtreum21Plan3d, type: "plan", fit: "contain" },
+    ],
+    likes: 108, rating: 4.9,
+    suitableFor: ["Дача", "Глэмпинг", "Аренда"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Панорамные окна", "Планировка", "Компактный формат"], style: "Современный", landSize: "3–5 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 433, name: "Атриум 28", badge: "Модульный дом", price: "от 1 540 000 ₽",
+    area: "28 м²", area_m2: 28, beds: 1, baths: 1, floors: 1, term: "от 30 д.",
+    rooms: "1 спальня", purpose: "Дача / глэмпинг", city: "Санкт-Петербург и ЛО",
+    maker: { ...RUSMODUL_SPB, siteUrl: "https://rusmodul-spb.ru/atreum28" },
+    description: "Модульный дом Атриум 28 с увеличенной площадью, панорамным фасадом и готовой планировкой.",
+    descriptionLong: "Атриум 28 от РусМодуль — одноэтажный модульный дом площадью 28 м² с габаритами 3,5 × 8 м и высотой потолков 3 м. Проект подходит для загородного отдыха, арендного бизнеса или компактного круглогодичного сценария.",
+    gallery: [
+      { image: rusmodulAtreum28_1, type: "photo" },
+      { image: rusmodulAtreum28_2, type: "photo" },
+      { image: rusmodulAtreum28_3, type: "photo" },
+      { image: rusmodulAtreum28Plan, type: "plan", fit: "contain" },
+      { image: rusmodulAtreum28Plan2, type: "plan", fit: "contain" },
+    ],
+    likes: 113, rating: 4.9,
+    suitableFor: ["Дача", "Глэмпинг", "Аренда"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["Панорамное остекление", "Высокие потолки", "Планировка"], style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 434, name: "Лодж 30", badge: "Модульный дом", price: "от 1 650 000 ₽",
+    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 1, term: "от 30 д.",
+    rooms: "1 спальня", purpose: "Дача / аренда", city: "Санкт-Петербург и ЛО",
+    maker: { ...RUSMODUL_SPB, siteUrl: "https://rusmodul-spb.ru/lodge30" },
+    description: "Модульный дом Лодж 30 для отдыха, аренды и компактного проживания за городом.",
+    descriptionLong: "Лодж 30 от РусМодуль — модульный дом площадью 30 м² с габаритами 3,5 × 8 м и высотой потолков 2,7 м. Внутри предусмотрены спальня, санузел и кухня-гостиная; в галерее есть фасады, интерьер и схемы планировки.",
+    gallery: [
+      { image: rusmodulLodge30_1, type: "photo" },
+      { image: rusmodulLodge30_2, type: "photo" },
+      { image: rusmodulLodge30_3, type: "photo" },
+      { image: rusmodulLodge30Plan, type: "plan", fit: "contain" },
+      { image: rusmodulLodge30Plan2, type: "plan", fit: "contain" },
+    ],
+    likes: 119, rating: 4.9,
+    suitableFor: ["Дача", "Аренда", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["30 м²", "1 спальня", "Планировка"], style: "Современный", landSize: "4–6 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 435, name: "Двойной Лодж 50", badge: "Модульный дом", price: "от 2 750 000 ₽",
+    area: "50 м²", area_m2: 50, beds: 1, baths: 1, floors: 1, term: "от 30 д.",
+    rooms: "1 спальня", purpose: "ПМЖ / дача", city: "Санкт-Петербург и ЛО",
+    maker: { ...RUSMODUL_SPB, siteUrl: "https://rusmodul-spb.ru/doublelodge50" },
+    description: "Двойной Лодж 50 — модульный дом с увеличенной площадью, террасой и панорамными окнами.",
+    descriptionLong: "Двойной Лодж 50 от РусМодуль — одноэтажный модульный дом площадью 50 м² с габаритами 7 × 7,14 м и высотой потолков 2,7 м. Проект рассчитан на комфортный загородный сценарий: кухня-гостиная, спальня, санузел и террасные зоны.",
+    gallery: [
+      { image: rusmodulDoubleLodge50_1, type: "photo" },
+      { image: rusmodulDoubleLodge50_2, type: "photo" },
+      { image: rusmodulDoubleLodge50_3, type: "photo" },
+      { image: rusmodulDoubleLodge50Plan, type: "plan", fit: "contain" },
+      { image: rusmodulDoubleLodge50Plan2, type: "plan", fit: "contain" },
+    ],
+    likes: 127, rating: 4.9,
+    suitableFor: ["ПМЖ", "Дача", "Аренда"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["50 м²", "Терраса", "Планировка"], style: "Современный", landSize: "5–8 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
+  {
+    id: 436, name: "Скандик Дабл 60", badge: "Модульный дом", price: "от 3 300 000 ₽",
+    area: "60 м²", area_m2: 60, beds: 2, baths: 1, floors: 1, term: "от 30 д.",
+    rooms: "2 спальни", purpose: "ПМЖ / дача", city: "Санкт-Петербург и ЛО",
+    maker: { ...RUSMODUL_SPB, siteUrl: "https://rusmodul-spb.ru/scandidubl60" },
+    description: "Скандик Дабл 60 — семейный модульный дом с двумя спальнями и террасами.",
+    descriptionLong: "Скандик Дабл 60 от РусМодуль — модульный дом площадью 60 м² с габаритами 7 × 11,4 м и высотой потолков 2,8 м. В планировке две спальни, кухня-гостиная, санузел и террасы, поэтому проект подходит для семьи, отдыха и круглогодичного проживания.",
+    gallery: [
+      { image: rusmodulScandicDouble60_1, type: "photo" },
+      { image: rusmodulScandicDouble60_2, type: "photo" },
+      { image: rusmodulScandicDouble60_3, type: "photo" },
+      { image: rusmodulScandicDouble60Plan, type: "plan", fit: "contain" },
+      { image: rusmodulScandicDouble60Plan2, type: "plan", fit: "contain" },
+    ],
+    likes: 134, rating: 4.9,
+    suitableFor: ["Для семьи", "ПМЖ", "Загородный дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
+    features: ["2 спальни", "Террасы", "Планировка"], style: "Скандинавский", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
+  },
   ...regionalBatchProjects,
 ];
 
@@ -8732,7 +8868,7 @@ export type MakerSummary = {
   telegram?: string;
 };
 const canonicalMakerSiteUrls: Record<string, string> = [
-  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, COUNTRYHOUSE, CUBADOM, IDOLHOUSE, WOODALP, BOXMATE, UVHOUSE, ASTERIUS, SMOLA, ULTRADOMSPB, FREEDOM_NATURI, CHEBWOOD, CAMPINGDOM, PSLCOMP, DOMNASM, BLACKMODULE, DOMM, MY_MODULE, FOUR_MODUL, CUBBER, SIMPLEHOUSE, PANORAMIC_HOME, AMBARN, MYFAMILYHOUSE, STROYGRAD, MODULCAMP, ELMACO, NOVATOR, BLAGOHOUSE, STILNYE_MODULI, IP_MODUL,
+  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, COUNTRYHOUSE, CUBADOM, IDOLHOUSE, WOODALP, BOXMATE, UVHOUSE, ASTERIUS, SMOLA, ULTRADOMSPB, FREEDOM_NATURI, CHEBWOOD, CAMPINGDOM, PSLCOMP, DOMNASM, BLACKMODULE, DOMM, MY_MODULE, FOUR_MODUL, CUBBER, SIMPLEHOUSE, PANORAMIC_HOME, AMBARN, MYFAMILYHOUSE, STROYGRAD, MODULCAMP, ELMACO, NOVATOR, BLAGOHOUSE, STILNYE_MODULI, IP_MODUL, RUSMODUL_SPB,
   ...regionalMakers,
 ].reduce((acc, m) => {
   if (m.id && m.siteUrl) acc[m.id] = m.siteUrl;
