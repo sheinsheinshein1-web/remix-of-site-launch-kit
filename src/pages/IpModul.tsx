@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, Check, Phone, MapPin, Send } from "lucide-react";
+import { Phone, MapPin, Send } from "lucide-react";
 import Seo from "@/components/Seo";
 
 /**
@@ -287,7 +287,7 @@ const ProjectCard = ({ p }: { p: Project }) => (
       <ul className="mt-4 space-y-1.5">
         {p.specs.map((s) => (
           <li key={s} className="flex gap-2 text-[13px] text-[hsl(40,12%,78%)]">
-            <Check className="mt-[3px] h-3.5 w-3.5 shrink-0 text-[hsl(35,32%,72%)]" strokeWidth={2} />
+            <span className="mt-[9px] h-px w-2.5 shrink-0 bg-[hsl(35,32%,60%)]" />
             {s}
           </li>
         ))}
@@ -298,7 +298,7 @@ const ProjectCard = ({ p }: { p: Project }) => (
         rel="noopener noreferrer nofollow"
         className="mt-5 inline-flex items-center gap-2 rounded-xl bg-[hsl(35,32%,82%)] px-4 py-2 text-[13px] font-semibold text-[hsl(150,14%,10%)] transition-colors hover:bg-[hsl(35,40%,88%)]"
       >
-        Подробнее <ArrowRight className="h-4 w-4" />
+        Подробнее
       </a>
     </div>
   </article>
@@ -377,7 +377,7 @@ const IpModul = () => {
         <div className="relative mx-auto grid max-w-[1240px] gap-10 px-4 py-20 md:grid-cols-[1.15fr_0.85fr] md:px-8 md:py-32">
           <div>
             <div className="inline-flex items-center gap-2 rounded-xl border border-[hsl(150,8%,26%)] bg-[hsl(150,10%,13%)]/70 px-3 py-1.5 text-xs text-[hsl(40,12%,80%)]">
-              <Check className="h-3.5 w-3.5 text-[hsl(35,32%,78%)]" /> Производство в Ленинградской области · доставка и монтаж
+              Производство в Ленинградской области · доставка и монтаж
             </div>
             <h1 className="mt-6 text-[34px] font-bold leading-[1.08] text-[hsl(40,30%,94%)] md:text-[56px]">
               Построим ваш уютный модульный дом или баню
@@ -391,7 +391,7 @@ const IpModul = () => {
                 href="#projects"
                 className="inline-flex items-center gap-2 rounded-xl bg-[hsl(35,32%,82%)] px-6 py-3.5 text-sm font-semibold text-[hsl(150,14%,10%)] transition-colors hover:bg-[hsl(35,40%,88%)]"
               >
-                Посмотреть проекты <ArrowRight className="h-4 w-4" />
+                Посмотреть проекты
               </a>
               <a
                 href={WHATSAPP}
@@ -479,7 +479,7 @@ const IpModul = () => {
               <ul className="mt-4 space-y-1.5">
                 {c.items.map((i) => (
                   <li key={i} className="flex gap-2 text-[13px] text-[hsl(40,12%,76%)]">
-                    <Check className="mt-[3px] h-3.5 w-3.5 shrink-0 text-[hsl(35,32%,72%)]" strokeWidth={2} />
+                    <span className="mt-[9px] h-px w-2.5 shrink-0 bg-[hsl(35,32%,60%)]" />
                     {i}
                   </li>
                 ))}
@@ -520,7 +520,7 @@ const IpModul = () => {
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {options.map((o) => (
             <div key={o} className="flex items-start gap-3 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-5">
-              <Check className="mt-[2px] h-4 w-4 shrink-0 text-[hsl(35,32%,78%)]" />
+              <span className="mt-[9px] h-px w-3 shrink-0 bg-[hsl(35,32%,60%)]" />
               <span className="text-sm text-[hsl(40,16%,88%)]">{o}</span>
             </div>
           ))}
@@ -545,7 +545,7 @@ const IpModul = () => {
               rel="noopener noreferrer nofollow"
               className="inline-flex items-center gap-2 rounded-xl border border-[hsl(150,8%,28%)] px-6 py-3 text-sm font-semibold text-[hsl(40,30%,94%)] transition-colors hover:bg-[hsl(150,10%,15%)]"
             >
-              Посмотреть отзывы <ArrowRight className="h-4 w-4" />
+              Посмотреть отзывы
             </a>
           </div>
         </Section>
