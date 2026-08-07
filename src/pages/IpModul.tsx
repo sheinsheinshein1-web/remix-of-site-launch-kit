@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Seo from "@/components/Seo";
 
 /**
  * Лендинг производителя IP MODUL (ip-modul.ru).
- * Визуальная система — та же, что у страницы РУСМОДУЛЬ (референс rhodeskin.com):
- * тёплый кремовый фон, крупные фото, много воздуха, спокойная типографика,
- * тонкие линии вместо плашек. Акцент — тёплый древесный тон.
- * Контент, проекты, цены и отзывы взяты с ip-modul.ru без изменений.
+ * Визуальная система — референс onehouse.ru: белый фон, крупная узкая
+ * uppercase-типографика, полноэкранный герой с фото, минимум декора,
+ * тонкие линии, чёрно-белый контраст.
+ * Контент, проекты и цены взяты с ip-modul.ru. Придуманных блоков нет:
+ * галереи «дома и производство» на сайте производителя нет — её здесь тоже нет.
  */
 
 const PHONE = "+7 (812) 203 82 06";
@@ -18,13 +19,14 @@ const AVITO =
 const SITE = "https://ip-modul.ru/";
 const ADDRESS = "Ленинградская область, Гатчинский район, д. Новый Свет, д. 118А";
 
-/** Палитра: тёплый кремовый фон, графитовый текст, древесный акцент */
-const CREAM = "hsl(38,32%,95%)";
-const INK = "hsl(24,10%,14%)";
-const MUTED = "hsl(24,8%,44%)";
-const HAIR = "hsl(30,14%,86%)";
-const BRAND = "hsl(30,38%,42%)";
-const PLACEHOLDER = "hsl(30,14%,90%)";
+/** Палитра: белый фон, чёрный текст, серые линии */
+const BG = "hsl(0,0%,100%)";
+const INK = "hsl(0,0%,7%)";
+const MUTED = "hsl(0,0%,42%)";
+const HAIR = "hsl(0,0%,88%)";
+const PLACEHOLDER = "hsl(0,0%,93%)";
+
+const DISPLAY = "'Oswald', 'Arial Narrow', system-ui, sans-serif";
 
 const IMG = {
   g: [
@@ -40,10 +42,6 @@ const IMG = {
     "https://optim.tildacdn.com/tild3762-3162-4062-a631-376437663363/-/format/webp/IMG_7834.jpeg.webp",
     "https://optim.tildacdn.com/tild3663-3364-4435-b364-623162386561/-/format/webp/IMG_2096.jpeg.webp",
     "https://optim.tildacdn.com/tild3564-6335-4235-a361-386232383365/-/format/webp/WhatsApp_Image_2024-.jpeg.webp",
-    "https://optim.tildacdn.com/tild3664-3063-4532-b433-333438353463/-/format/webp/IMG_9684.jpeg.webp",
-    "https://optim.tildacdn.com/tild3533-3733-4030-a666-333066626566/-/format/webp/WhatsApp_Image_2024-.jpeg.webp",
-    "https://optim.tildacdn.com/tild6537-3566-4532-b164-393534356636/-/format/webp/photo.jpeg.webp",
-    "https://optim.tildacdn.com/tild3662-3537-4130-a566-653830353334/-/format/webp/_11.jpg.webp",
   ],
   start: [
     "https://optim.tildacdn.com/tild3833-6536-4565-b862-346336333963/-/format/webp/ChatGPT_Image_30__20.png.webp",
@@ -55,7 +53,7 @@ const IMG = {
 type Project = {
   name: string;
   price: string;
-  desc: string;
+  area: string;
   specs: string[];
   href: string;
   image: string;
@@ -65,99 +63,91 @@ const projects: Project[] = [
   {
     name: "IP 40",
     price: "2 620 000 ₽",
-    desc: "Готовый дом с террасой под завоз мебели. Возможны разные планировки.",
-    specs: ["Габариты ВхШхД: 2,9 × 5 × 8 м", "Жилая площадь 26 м²", "Общая площадь (включая террасу) 40 м²", "Высота потолков 2 – 2,4 м"],
+    area: "40 м²",
+    specs: ["2,9 × 5 × 8 м", "жилая 26 м²", "потолки 2 – 2,4 м"],
     href: "https://ip-modul.ru/ip40",
     image: IMG.g[0],
   },
   {
     name: "IP 48",
     price: "3 080 000 ₽",
-    desc: "Готовый дом с террасой под завоз мебели. Возможны разные планировки.",
-    specs: ["Габариты ВхШхД: 3,6 × 6 × 8 м", "Жилая площадь 31 м²", "Общая площадь (включая террасу) 48 м²", "Высота потолков 2 – 3,1 м"],
+    area: "48 м²",
+    specs: ["3,6 × 6 × 8 м", "жилая 31 м²", "потолки 2 – 3,1 м"],
     href: "https://ip-modul.ru/ip48",
     image: IMG.g[1],
   },
   {
     name: "IP 60",
     price: "3 870 000 ₽",
-    desc: "Готовый дом с террасой под завоз мебели. Возможны разные планировки.",
-    specs: ["Габариты ВхШхД: 3,3 × 7,5 × 8 м", "Жилая площадь 40 м²", "Общая площадь (включая террасу) 60 м²", "Высота потолков 2 – 2,7 м"],
+    area: "60 м²",
+    specs: ["3,3 × 7,5 × 8 м", "жилая 40 м²", "потолки 2 – 2,7 м"],
     href: "https://ip-modul.ru/ip60",
     image: IMG.g[2],
   },
   {
     name: "IP 64",
     price: "4 950 000 ₽",
-    desc: "Готовый дом с террасой под завоз мебели. Возможны разные планировки.",
-    specs: ["Габариты ВхШхД: 3,7 × 8 × 8 м", "Жилая площадь 43 м²", "Общая площадь (включая террасу) 64 м²", "Высота потолков 2 – 3,1 м"],
+    area: "64 м²",
+    specs: ["3,7 × 8 × 8 м", "жилая 43 м²", "потолки 2 – 3,1 м"],
     href: "https://ip-modul.ru/ip64",
     image: IMG.g[3],
   },
   {
     name: "IP 72",
     price: "4 150 000 ₽",
-    desc: "Готовый дом с террасой под завоз мебели. Возможны разные планировки.",
-    specs: ["Габариты ВхШхД: 3,7 × 9 × 8 м", "Жилая площадь 49 м²", "Общая площадь (включая террасу) 72 м²", "Высота потолков 2 – 3,1 м"],
+    area: "72 м²",
+    specs: ["3,7 × 9 × 8 м", "жилая 49 м²", "потолки 2 – 3,1 м"],
     href: "https://ip-modul.ru/ip72",
     image: IMG.g[4],
   },
   {
     name: "IP 82",
     price: "5 850 000 ₽",
-    desc: "Готовый дом с террасой под завоз мебели. Возможны разные планировки.",
-    specs: ["Габариты ВхШхД: 3,6 × 7,5 × 11 м", "Жилая площадь 60 м²", "Общая площадь (включая террасу) 82 м²", "Высота потолков 2 – 3 м"],
+    area: "82 м²",
+    specs: ["3,6 × 7,5 × 11 м", "жилая 60 м²", "потолки 2 – 3 м"],
     href: "https://ip-modul.ru/ip82",
     image: IMG.g[5],
   },
   {
     name: "IP 88",
     price: "6 350 000 ₽",
-    desc: "Готовый дом с террасой под завоз мебели. Возможны разные планировки.",
-    specs: ["Габариты ВхШхД: 3,6 × 8 × 11 м", "Жилая площадь 64 м²", "Общая площадь (включая террасу) 88 м²", "Высота потолков 2 – 3 м"],
+    area: "88 м²",
+    specs: ["3,6 × 8 × 11 м", "жилая 64 м²", "потолки 2 – 3 м"],
     href: "https://ip-modul.ru/ip88",
     image: IMG.g[6],
   },
   {
     name: "IP 99",
     price: "7 210 000 ₽",
-    desc: "Готовый дом с террасой под завоз мебели. Возможны разные планировки.",
-    specs: ["Габариты ВхШхД: 3,7 × 9 × 11 м", "Жилая площадь 74 м²", "Общая площадь (включая террасу) 99 м²", "Высота потолков 2 – 3,1 м"],
+    area: "99 м²",
+    specs: ["3,7 × 9 × 11 м", "жилая 74 м²", "потолки 2 – 3,1 м"],
     href: "https://ip-modul.ru/ip99",
     image: IMG.g[7],
   },
-  {
-    name: "IP 60",
-    price: "3 456 000 ₽",
-    desc: "Готовый дом с террасой под завоз мебели. Возможны разные планировки.",
-    specs: ["Габариты ВхШхД: 3,3 × 7,5 × 8 м", "Жилая площадь 40 м²", "Общая площадь (включая террасу) 60 м²", "Высота потолков 2 – 2,7 м"],
-    href: "https://ip-modul.ru/#popup-stoimost",
-    image: IMG.g[8],
-  },
 ];
 
-const moreProjects: Project[] = [
+const bigProjects: Project[] = [
   {
     name: "Дом Шале",
     price: "6 120 000 ₽",
-    desc: "Просторный дом с высокими потолками и двумя санузлами.",
-    specs: ["Габариты ВхШхД: 5,5 × 10 × 12 м", "Внутренняя площадь 84 м²", "Общая площадь (включая террасу) 102 м²", "Высота потолков 2,4 – 4 м"],
+    area: "102 м²",
+    specs: ["5,5 × 10 × 12 м", "внутри 84 м²", "потолки 2,4 – 4 м"],
     href: "https://ip-modul.ru/#popup-stoimost",
     image: IMG.g[9],
   },
   {
     name: "Двухэтажный дом",
     price: "8 550 000 ₽",
-    desc: "Готовый дом с террасой под завоз мебели. Возможны разные планировки.",
-    specs: ["Габариты ВхШхД: 3,7 × 9 × 11 м", "Жилая площадь 74 м²", "Общая площадь (включая террасу) 99 м²", "Высота потолков 2 – 3,1 м"],
+    area: "99 м²",
+    specs: ["3,7 × 9 × 11 м", "жилая 74 м²", "потолки 2 – 3,1 м"],
     href: "https://ip-modul.ru/#popup-stoimost",
     image: IMG.g[10],
   },
   {
     name: "Классический дом",
     price: "7 400 000 ₽",
-    desc: "Одноэтажный каркасный дом с высокими потолками и террасой.",
-    specs: ["Габариты ВхШхД: 4,5 × 8,8 × 12 м", "Внутренняя площадь 78 м²", "Общая площадь (включая террасу) 102 м²", "Высота потолков 2,4 – 3,5 м"],
+    area: "102 м²",
+    specs: ["4,5 × 8,8 × 12 м", "внутри 78 м²", "потолки 2,4 – 3,5 м"],
     href: "https://ip-modul.ru/#popup-stoimost",
     image: IMG.g[11],
   },
@@ -167,7 +157,7 @@ const startSeries: Project[] = [
   {
     name: "Старт 24",
     price: "1 300 000 ₽",
-    desc: "Компактный модульный дом в полной комплектации.",
+    area: "24 м²",
     specs: [],
     href: "https://ip-modul.ru/#popup-stoimost",
     image: IMG.start[0],
@@ -175,7 +165,7 @@ const startSeries: Project[] = [
   {
     name: "МБ-36",
     price: "1 950 000 ₽",
-    desc: "Компактный модульный дом в полной комплектации.",
+    area: "36 м²",
     specs: [],
     href: "https://ip-modul.ru/#popup-stoimost",
     image: IMG.start[1],
@@ -183,11 +173,18 @@ const startSeries: Project[] = [
   {
     name: "Старт 30",
     price: "1 625 000 ₽",
-    desc: "Компактный модульный дом в полной комплектации.",
+    area: "30 м²",
     specs: [],
     href: "https://ip-modul.ru/#popup-stoimost",
     image: IMG.start[2],
   },
+];
+
+const competences = [
+  { title: "Модульные дома", text: "Готовые дома с террасой под завоз мебели, площадь 40 – 99 м²." },
+  { title: "Серия «Старт»", text: "Компактные модули 24 – 36 м² в полной комплектации." },
+  { title: "Большие дома", text: "Шале, двухэтажные и классические проекты до 102 м²." },
+  { title: "Индивидуальный проект", text: "Планировка, плоская крыша, умный дом и тёплый пол под задачу." },
 ];
 
 const advantages = [
@@ -262,23 +259,23 @@ const reviews = [
   },
   {
     name: "Леонид М.",
-    text: "Хочу сказать спасибо за дом. Цены растут, но мы успели внести предоплату заранее и зафиксировали цену на пол года. При заключении договора добавили всё, что хотели, прописали, что какого цвета будет. Сейчас сдаём дом в аренду, получаем только положительные отзывы от своих клиентов.",
+    text: "Хочу сказать спасибо за дом. Цены растут, но мы успели внести предоплату заранее и зафиксировали цену на пол года. При заключении договора добавили всё, что хотели, прописали, что какого цвета будет.",
   },
   {
     name: "Кристина",
-    text: "Мы долго искали компанию для строительства нашего дома, но когда нашли эту, сразу же отправились в их офис, чтобы обсудить все детали. Уже на первой встрече мы были впечатлены профессионализмом и качеством работы. Все работы были выполнены безупречно и аккуратно.",
+    text: "Мы долго искали компанию для строительства нашего дома. Уже на первой встрече мы были впечатлены профессионализмом и качеством работы. Все работы были выполнены безупречно и аккуратно.",
   },
   {
     name: "Мария",
-    text: "Теперь у нас есть дом, это компания, которой можно доверить на все 100. После консультации приехал на экскурсию на производство, удалось увидеть своими глазами и потрогать своими руками. За 2,5 месяца уже готовый дом стоял у нас на участке.",
+    text: "Теперь у нас есть дом, это компания, которой можно доверить на все 100. После консультации приехал на экскурсию на производство. За 2,5 месяца уже готовый дом стоял у нас на участке.",
   },
   {
     name: "Дарья",
-    text: "Выражаем огромную благодарность Ивану за его работу! Теперь у нас есть прекрасный загородный каркасный домик «под ключ». Иван всегда был на связи, помогал с проектом, подсказывал и отвечал на все наши вопросы. Все материалы в доме очень качественные.",
+    text: "Выражаем огромную благодарность Ивану за его работу! Теперь у нас есть прекрасный загородный каркасный домик «под ключ». Все материалы в доме очень качественные.",
   },
   {
     name: "Анастасия",
-    text: "Благодарю за подход: учли пожелания, подобрали дизайн, меняли в ходе сборки дома на производстве планировку. Работой и отзывчивостью мы остались максимально довольны! Если нам обещают сделать — значит сделают!",
+    text: "Благодарю за подход: учли пожелания, подобрали дизайн, меняли в ходе сборки дома на производстве планировку. Если нам обещают сделать — значит сделают!",
   },
 ];
 
@@ -317,12 +314,35 @@ const ext = (href: string) =>
     ? {}
     : { target: "_blank", rel: "noopener noreferrer nofollow" };
 
+const Display = ({
+  children,
+  className = "",
+  as: Tag = "h2",
+  style,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  as?: "h1" | "h2" | "h3";
+  style?: React.CSSProperties;
+}) => (
+  <Tag
+    className={`uppercase leading-[0.92] ${className}`}
+    style={{ fontFamily: DISPLAY, fontWeight: 600, letterSpacing: "-0.01em", ...style }}
+  >
+    {children}
+  </Tag>
+);
+
 const Btn = ({ href, children, ghost }: { href: string; children: React.ReactNode; ghost?: boolean }) => (
   <a
     href={href}
     {...ext(href)}
-    className="inline-flex items-center justify-center px-8 py-3.5 text-[13px] tracking-[0.02em] transition-colors duration-300"
-    style={ghost ? { border: `1px solid ${INK}`, color: INK } : { background: INK, color: CREAM }}
+    className="inline-flex items-center justify-center px-9 py-4 text-[12px] uppercase tracking-[0.14em] transition-colors duration-300"
+    style={
+      ghost
+        ? { border: `1px solid ${INK}`, color: INK, fontFamily: DISPLAY, fontWeight: 500 }
+        : { background: INK, color: BG, fontFamily: DISPLAY, fontWeight: 500 }
+    }
   >
     {children}
   </a>
@@ -334,70 +354,62 @@ const Section = ({
   title,
   subtitle,
   children,
-  divider = true,
 }: {
   id?: string;
   eyebrow?: string;
   title?: string;
   subtitle?: string;
   children: React.ReactNode;
-  divider?: boolean;
 }) => (
-  <section
-    id={id}
-    className="px-5 py-20 md:px-12 md:py-32"
-    style={divider ? { borderTop: `1px solid ${HAIR}` } : undefined}
-  >
-    <div className="mx-auto max-w-[1240px]">
+  <section id={id} className="px-5 py-20 md:px-10 md:py-28" style={{ borderTop: `1px solid ${HAIR}` }}>
+    <div className="mx-auto max-w-[1400px]">
       {(eyebrow || title) && (
-        <div className="max-w-3xl">
-          {eyebrow && (
-            <p className="text-[11px] uppercase tracking-[0.24em]" style={{ color: MUTED }}>
-              {eyebrow}
-            </p>
-          )}
-          {title && (
-            <h2
-              className="mt-5 text-[30px] font-normal leading-[1.1] tracking-[-0.02em] md:text-[52px]"
-              style={{ color: INK }}
-            >
-              {title}
-            </h2>
-          )}
+        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div>
+            {eyebrow && (
+              <p className="text-[11px] uppercase tracking-[0.26em]" style={{ color: MUTED }}>
+                {eyebrow}
+              </p>
+            )}
+            {title && (
+              <Display className="mt-4 text-[38px] md:text-[76px]" style={{ color: INK }}>
+                {title}
+              </Display>
+            )}
+          </div>
           {subtitle && (
-            <p className="mt-5 max-w-xl text-[15px] leading-[1.7] md:text-[17px]" style={{ color: MUTED }}>
+            <p className="max-w-sm text-[15px] leading-[1.7] md:text-right" style={{ color: MUTED }}>
               {subtitle}
             </p>
           )}
         </div>
       )}
-      <div className={eyebrow || title ? "mt-14 md:mt-20" : ""}>{children}</div>
+      <div className={eyebrow || title ? "mt-12 md:mt-20" : ""}>{children}</div>
     </div>
   </section>
 );
 
-/** Карточка проекта — крупное фото и тихая подпись, без рамок */
 const Card = ({ p, tall }: { p: Project; tall?: boolean }) => (
   <a href={p.href} {...ext(p.href)} className="group block">
-    <div className={`${tall ? "aspect-[4/5]" : "aspect-[5/4]"} overflow-hidden`} style={{ background: PLACEHOLDER }}>
+    <div className={`${tall ? "aspect-[4/5]" : "aspect-[4/3]"} overflow-hidden`} style={{ background: PLACEHOLDER }}>
       <img
         src={p.image}
         alt={`Модульный дом ${p.name} — IP MODUL`}
         loading="lazy"
-        className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
+        className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.05]"
       />
     </div>
-    <div className="flex items-baseline justify-between gap-6 pt-6">
-      <h3 className="text-[19px] font-normal tracking-[-0.01em] md:text-[22px]" style={{ color: INK }}>
-        {p.name}
-      </h3>
-      <span className="shrink-0 text-[14px]" style={{ color: MUTED }}>
+    <div className="flex items-baseline justify-between gap-6 pt-5">
+      <Display as="h3" className="text-[22px] md:text-[30px]" style={{ color: INK }}>
+        {p.name} — {p.area}
+      </Display>
+      <span className="shrink-0 text-[13px]" style={{ color: MUTED }}>
         от {p.price}
       </span>
     </div>
     {p.specs.length > 0 && (
-      <p className="mt-3 text-[14px] leading-[1.7]" style={{ color: MUTED }}>
-        {p.specs.slice(1, 3).join(" · ")}
+      <p className="mt-2 text-[13px] leading-[1.7]" style={{ color: MUTED }}>
+        {p.specs.join(" · ")}
       </p>
     )}
   </a>
@@ -405,15 +417,15 @@ const Card = ({ p, tall }: { p: Project; tall?: boolean }) => (
 
 const Row = ({ label, title, text }: { label?: string; title: string; text: string }) => (
   <div
-    className="grid gap-4 py-8 md:grid-cols-[80px_1fr_1.4fr] md:items-baseline md:gap-10 md:py-10"
+    className="grid gap-3 py-8 md:grid-cols-[70px_1fr_1.5fr] md:items-baseline md:gap-10 md:py-10"
     style={{ borderTop: `1px solid ${HAIR}` }}
   >
-    <span className="text-[12px] tracking-[0.2em]" style={{ color: BRAND }}>
+    <span className="text-[12px] tracking-[0.2em]" style={{ color: MUTED }}>
       {label}
     </span>
-    <h3 className="text-[20px] font-normal leading-tight tracking-[-0.01em] md:text-[24px]" style={{ color: INK }}>
+    <Display as="h3" className="text-[22px] md:text-[32px]" style={{ color: INK }}>
       {title}
-    </h3>
+    </Display>
     <p className="text-[15px] leading-[1.75]" style={{ color: MUTED }}>
       {text}
     </p>
@@ -423,8 +435,18 @@ const Row = ({ label, title, text }: { label?: string; title: string; text: stri
 const IpModul = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
+  useEffect(() => {
+    const id = "oswald-font";
+    if (document.getElementById(id)) return;
+    const link = document.createElement("link");
+    link.id = id;
+    link.rel = "stylesheet";
+    link.href = "https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap";
+    document.head.appendChild(link);
+  }, []);
+
   return (
-    <div className="min-h-screen font-sans antialiased" style={{ background: CREAM, color: INK }}>
+    <div className="min-h-screen font-sans antialiased" style={{ background: BG, color: INK }}>
       <Seo
         title="IP MODUL — модульные дома под ключ в Ленобласти"
         description="Модульные дома IP MODUL от 1 300 000 ₽: заводская сборка с чистовой отделкой, терраса, готовность за 2,5 месяца. Производство в Гатчинском районе."
@@ -435,58 +457,65 @@ const IpModul = () => {
       {/* Шапка */}
       <header
         className="sticky top-0 z-40 backdrop-blur"
-        style={{ background: "hsla(38,32%,95%,0.9)", borderBottom: `1px solid ${HAIR}` }}
+        style={{ background: "hsla(0,0%,100%,0.92)", borderBottom: `1px solid ${HAIR}` }}
       >
-        <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between px-5 md:px-12">
-          <a href="#top" className="text-[15px] tracking-[0.22em]" style={{ color: INK }}>
-            IP MODUL
+        <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-5 md:px-10">
+          <a
+            href="#top"
+            className="text-[17px] uppercase tracking-[0.12em]"
+            style={{ color: INK, fontFamily: DISPLAY, fontWeight: 700 }}
+          >
+            IP Modul
           </a>
-          <nav className="hidden items-center gap-9 text-[13px] lg:flex" style={{ color: MUTED }}>
-            <a href="#projects" className="transition-colors hover:text-[hsl(24,10%,14%)]">Проекты</a>
-            <a href="#start" className="transition-colors hover:text-[hsl(24,10%,14%)]">Серия «Старт»</a>
-            <a href="#tech" className="transition-colors hover:text-[hsl(24,10%,14%)]">Технология</a>
-            <a href="#gallery" className="transition-colors hover:text-[hsl(24,10%,14%)]">Галерея</a>
-            <a href="#reviews" className="transition-colors hover:text-[hsl(24,10%,14%)]">Отзывы</a>
-            <a href="#contacts" className="transition-colors hover:text-[hsl(24,10%,14%)]">Контакты</a>
+          <nav
+            className="hidden items-center gap-8 text-[12px] uppercase tracking-[0.14em] lg:flex"
+            style={{ color: INK, fontFamily: DISPLAY, fontWeight: 400 }}
+          >
+            <a href="#projects" className="transition-opacity hover:opacity-50">Проекты</a>
+            <a href="#start" className="transition-opacity hover:opacity-50">Старт</a>
+            <a href="#tech" className="transition-opacity hover:opacity-50">Технология</a>
+            <a href="#reviews" className="transition-opacity hover:opacity-50">Отзывы</a>
+            <a href="#contacts" className="transition-opacity hover:opacity-50">Контакты</a>
           </nav>
-          <a href={PHONE_HREF} className="text-[13px]" style={{ color: INK }}>
+          <a href={PHONE_HREF} className="text-[13px] tracking-[0.06em]" style={{ color: INK }}>
             {PHONE}
           </a>
         </div>
       </header>
 
-      {/* Герой — фото во всю ширину экрана, текст поверх */}
-      <section id="top" className="relative h-[calc(100svh-4rem)] min-h-[520px] w-full overflow-hidden">
+      {/* Герой */}
+      <section id="top" className="relative h-[calc(100svh-4rem)] min-h-[540px] w-full overflow-hidden">
         <img
           src={IMG.g[0]}
           alt="Модульный дом IP MODUL с террасой"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 px-5 pb-12 md:px-12 md:pb-16">
-          <div className="mx-auto max-w-[1240px]">
-            <h1 className="max-w-3xl text-[34px] font-normal leading-[1.06] tracking-[-0.03em] text-white md:text-[68px]">
-              Модульные дома с террасой под завоз мебели
-            </h1>
-            <div className="mt-7 flex flex-col gap-7 md:mt-10 md:flex-row md:items-end md:justify-between">
-              <p className="max-w-md text-[15px] leading-[1.7] text-white/75 md:text-[17px]">
-                Собираем дом на производстве в Гатчинском районе и привозим готовым на участок.
-                Полный цикл — около 2,5 месяцев.
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/25 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 px-5 pb-12 md:px-10 md:pb-14">
+          <div className="mx-auto max-w-[1400px]">
+            <Display as="h1" className="max-w-5xl text-[44px] text-white md:text-[104px]">
+              Модульные дома под ключ
+            </Display>
+            <div className="mt-6 flex flex-col gap-6 md:mt-8 md:flex-row md:items-end md:justify-between">
+              <p className="max-w-md text-[15px] leading-[1.7] text-white/80 md:text-[17px]">
+                Собираем дом с террасой и чистовой отделкой на производстве в Гатчинском районе
+                и привозим готовым на участок — около 2,5 месяцев.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
                   href={SITE}
                   {...ext(SITE)}
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-[13px] transition-opacity duration-300 hover:opacity-90"
-                  style={{ background: CREAM, color: INK }}
+                  className="inline-flex items-center justify-center px-9 py-4 text-[12px] uppercase tracking-[0.14em] transition-opacity duration-300 hover:opacity-90"
+                  style={{ background: BG, color: INK, fontFamily: DISPLAY, fontWeight: 500 }}
                 >
                   Оставить заявку
                 </a>
                 <a
                   href="#projects"
-                  className="inline-flex items-center justify-center border border-white/70 px-8 py-3.5 text-[13px] text-white transition-colors duration-300 hover:bg-white hover:text-[hsl(24,10%,14%)]"
+                  className="inline-flex items-center justify-center border border-white/70 px-9 py-4 text-[12px] uppercase tracking-[0.14em] text-white transition-colors duration-300 hover:bg-white hover:text-black"
+                  style={{ fontFamily: DISPLAY, fontWeight: 500 }}
                 >
-                  Смотреть проекты
+                  Проекты
                 </a>
               </div>
             </div>
@@ -494,49 +523,41 @@ const IpModul = () => {
         </div>
       </section>
 
-      {/* Цифры */}
-      <section className="px-5 py-14 md:px-12 md:py-20">
-        <dl className="mx-auto grid max-w-[1240px] grid-cols-1 gap-10 sm:grid-cols-3">
-          {[
-            { v: "2,5 месяца", l: "от договора до готового дома" },
-            { v: "от 1,3 млн ₽", l: "цена дома в комплектации" },
-            { v: "26–84 м²", l: "жилая площадь моделей" },
-          ].map((s) => (
-            <div key={s.l}>
-              <dt className="text-[30px] font-normal tracking-[-0.02em] md:text-[42px]" style={{ color: INK }}>
-                {s.v}
-              </dt>
-              <dd className="mt-2 text-[13px]" style={{ color: MUTED }}>
-                {s.l}
-              </dd>
+      {/* Компетенции */}
+      <Section eyebrow="Что мы делаем" title="Наши компетенции">
+        <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-4" style={{ background: HAIR }}>
+          {competences.map((c) => (
+            <div key={c.title} className="p-7 md:p-8" style={{ background: BG }}>
+              <Display as="h3" className="text-[22px] md:text-[26px]" style={{ color: INK }}>
+                {c.title}
+              </Display>
+              <p className="mt-4 text-[14px] leading-[1.7]" style={{ color: MUTED }}>
+                {c.text}
+              </p>
             </div>
           ))}
-        </dl>
-      </section>
+        </div>
+      </Section>
 
       {/* Проекты */}
       <Section
         id="projects"
         eyebrow="Модельный ряд"
-        title="Модульные дома IP MODUL"
-        subtitle="Готовые дома с террасой под завоз мебели. Возможны разные планировки."
+        title="Проекты"
+        subtitle="Готовые дома с террасой под завоз мебели. Планировки меняются под задачу."
       >
-        <div className="grid gap-x-8 gap-y-20 md:grid-cols-2 md:gap-x-14 md:gap-y-28">
+        <div className="grid gap-x-6 gap-y-16 md:grid-cols-2 md:gap-x-10 md:gap-y-24">
           {projects.map((p, i) => (
-            <Card key={`${p.name}-${p.price}`} p={p} tall={i % 3 === 0} />
+            <Card key={p.name} p={p} tall={i % 4 === 0} />
           ))}
         </div>
       </Section>
 
       {/* Большие дома */}
-      <Section
-        eyebrow="Большие дома"
-        title="Шале, двухэтажные и классические"
-        subtitle="Проекты с увеличенной площадью, высокими потолками и двумя санузлами."
-      >
-        <div className="grid gap-x-8 gap-y-20 md:grid-cols-2 md:gap-x-14 md:gap-y-28">
-          {moreProjects.map((p, i) => (
-            <Card key={p.name} p={p} tall={i === 0} />
+      <Section eyebrow="Большая площадь" title="Шале и двухэтажные">
+        <div className="grid gap-x-6 gap-y-14 md:grid-cols-3 md:gap-x-8">
+          {bigProjects.map((p) => (
+            <Card key={p.name} p={p} />
           ))}
         </div>
       </Section>
@@ -545,10 +566,10 @@ const IpModul = () => {
       <Section
         id="start"
         eyebrow="Серия «Старт»"
-        title="Компактные дома в полной комплектации"
-        subtitle="Небольшой формат для дачи, аренды и глэмпинга — с той же заводской отделкой."
+        title="Компактные модули"
+        subtitle="Формат для дачи, аренды и глэмпинга — с той же заводской отделкой."
       >
-        <div className="grid gap-x-8 gap-y-16 md:grid-cols-3 md:gap-x-10">
+        <div className="grid gap-x-6 gap-y-14 md:grid-cols-3 md:gap-x-8">
           {startSeries.map((p) => (
             <Card key={p.name} p={p} />
           ))}
@@ -565,7 +586,7 @@ const IpModul = () => {
       </Section>
 
       {/* Преимущества */}
-      <Section eyebrow="Преимущества" title="Почему IP MODUL">
+      <Section eyebrow="Преимущества" title="Почему IP Modul">
         <div>
           {advantages.map((a) => (
             <Row key={a.n} label={a.n} title={a.title} text={a.text} />
@@ -574,18 +595,15 @@ const IpModul = () => {
       </Section>
 
       {/* Опции */}
-      <section className="px-5 py-20 md:px-12 md:py-28" style={{ borderTop: `1px solid ${HAIR}` }}>
-        <div className="mx-auto grid max-w-[1240px] gap-10 md:grid-cols-2 md:items-start">
+      <section className="px-5 py-20 md:px-10 md:py-28" style={{ borderTop: `1px solid ${HAIR}` }}>
+        <div className="mx-auto grid max-w-[1400px] gap-10 md:grid-cols-2 md:items-start">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.24em]" style={{ color: BRAND }}>
+            <p className="text-[11px] uppercase tracking-[0.26em]" style={{ color: MUTED }}>
               Опции
             </p>
-            <h2
-              className="mt-5 text-[30px] font-normal leading-[1.1] tracking-[-0.02em] md:text-[52px]"
-              style={{ color: INK }}
-            >
-              Дом можно собрать под себя
-            </h2>
+            <Display className="mt-4 text-[38px] md:text-[76px]" style={{ color: INK }}>
+              Дом собирается под себя
+            </Display>
             <div className="mt-8">
               <Btn href={SITE}>Обсудить проект</Btn>
             </div>
@@ -604,45 +622,18 @@ const IpModul = () => {
         </div>
       </section>
 
-      {/* Галерея */}
-      <Section id="gallery" eyebrow="Галерея" title="Дома и производство">
-        <div className="space-y-8 md:space-y-14">
-          <div className="aspect-[16/9] overflow-hidden" style={{ background: PLACEHOLDER }}>
-            <img
-              src={IMG.g[12]}
-              alt="Модульный дом IP MODUL на участке"
-              loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out hover:scale-[1.04]"
-            />
-          </div>
-          <div className="grid grid-cols-2 gap-8 md:gap-14">
-            {IMG.g.slice(13).concat(IMG.g.slice(4, 9)).map((src, i) => (
-              <div
-                key={src + i}
-                className={`${i % 3 === 0 ? "aspect-[4/5]" : "aspect-[5/4]"} overflow-hidden`}
-                style={{ background: PLACEHOLDER }}
-              >
-                <img
-                  src={src}
-                  alt={`Дом IP MODUL №${i + 2}`}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out hover:scale-[1.04]"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
       {/* Отзывы */}
-      <Section id="reviews" eyebrow="Отзывы" title="Что говорят владельцы">
-        <div className="grid gap-12 md:grid-cols-3 md:gap-14">
+      <Section id="reviews" eyebrow="Отзывы" title="Слово владельцам">
+        <div className="grid gap-10 md:grid-cols-3 md:gap-12">
           {reviews.map((r) => (
             <blockquote key={r.name + r.text.slice(0, 12)} className="pt-6" style={{ borderTop: `1px solid ${HAIR}` }}>
               <p className="text-[15px] leading-[1.8]" style={{ color: MUTED }}>
                 {r.text}
               </p>
-              <footer className="mt-6 text-[13px]" style={{ color: INK }}>
+              <footer
+                className="mt-6 text-[13px] uppercase tracking-[0.14em]"
+                style={{ color: INK, fontFamily: DISPLAY }}
+              >
                 {r.name}
               </footer>
             </blockquote>
@@ -659,10 +650,10 @@ const IpModul = () => {
                 onClick={() => setOpenFaq(openFaq === i ? null : i)}
                 className="flex w-full items-center justify-between gap-8 py-7 text-left"
               >
-                <span className="text-[17px] font-normal tracking-[-0.01em] md:text-[20px]" style={{ color: INK }}>
+                <Display as="h3" className="text-[18px] md:text-[26px]" style={{ color: INK }}>
                   {f.q}
-                </span>
-                <span className="text-xl leading-none" style={{ color: BRAND }}>
+                </Display>
+                <span className="text-xl leading-none" style={{ color: MUTED }}>
                   {openFaq === i ? "–" : "+"}
                 </span>
               </button>
@@ -681,14 +672,14 @@ const IpModul = () => {
         id="contacts"
         eyebrow="Контакты"
         title="Приезжайте на производство"
-        subtitle="Покажем дома в сборке, материалы и отделку вживую — и подберём планировку под ваш участок."
+        subtitle="Покажем дома в сборке, материалы и отделку вживую."
       >
         <div className="grid gap-10 md:grid-cols-3">
           <div className="pt-6" style={{ borderTop: `1px solid ${HAIR}` }}>
-            <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTED }}>
+            <p className="text-[11px] uppercase tracking-[0.22em]" style={{ color: MUTED }}>
               Телефон
             </p>
-            <a href={PHONE_HREF} className="mt-4 block text-[22px] font-normal tracking-[-0.01em]" style={{ color: INK }}>
+            <a href={PHONE_HREF} className="mt-4 block text-[24px]" style={{ color: INK, fontFamily: DISPLAY }}>
               {PHONE}
             </a>
             <div className="mt-3 flex flex-wrap gap-4 text-[14px]" style={{ color: MUTED }}>
@@ -704,7 +695,7 @@ const IpModul = () => {
             </div>
           </div>
           <div className="pt-6" style={{ borderTop: `1px solid ${HAIR}` }}>
-            <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTED }}>
+            <p className="text-[11px] uppercase tracking-[0.22em]" style={{ color: MUTED }}>
               Производство
             </p>
             <p className="mt-4 text-[15px] leading-[1.7]" style={{ color: INK }}>
@@ -712,7 +703,7 @@ const IpModul = () => {
             </p>
           </div>
           <div className="pt-6" style={{ borderTop: `1px solid ${HAIR}` }}>
-            <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTED }}>
+            <p className="text-[11px] uppercase tracking-[0.22em]" style={{ color: MUTED }}>
               Сайт
             </p>
             <p className="mt-4 text-[15px]" style={{ color: INK }}>
@@ -727,10 +718,10 @@ const IpModul = () => {
         </div>
       </Section>
 
-      <footer className="px-5 py-14 md:px-12" style={{ borderTop: `1px solid ${HAIR}` }}>
-        <div className="mx-auto flex max-w-[1240px] flex-col gap-3 text-[13px]" style={{ color: MUTED }}>
-          <span className="text-[15px] tracking-[0.22em]" style={{ color: INK }}>
-            IP MODUL
+      <footer className="px-5 py-12 md:px-10" style={{ borderTop: `1px solid ${HAIR}` }}>
+        <div className="mx-auto flex max-w-[1400px] flex-col gap-3 text-[13px]" style={{ color: MUTED }}>
+          <span className="text-[17px] uppercase tracking-[0.12em]" style={{ color: INK, fontFamily: DISPLAY }}>
+            IP Modul
           </span>
           <span>{ADDRESS}</span>
           <span>
