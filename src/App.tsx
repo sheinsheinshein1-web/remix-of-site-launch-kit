@@ -177,6 +177,7 @@ const AppRoutes = () => (
         <Route path="/operator" element={<OperatorChat />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/region/:slug" element={<RegionPage />} />
+        <Route path="/ip-modul" element={<IpModul />} />
         <Route path="/lab" element={<Lab />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
