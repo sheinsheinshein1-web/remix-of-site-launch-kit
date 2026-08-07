@@ -30,6 +30,7 @@ const Lab = lazy(() => import("./pages/Lab.tsx"));
 const OperatorChat = lazy(() => import("./pages/OperatorChat.tsx"));
 const RegionPage = lazy(() => import("./pages/RegionPage.tsx"));
 const IpModul = lazy(() => import("./pages/IpModul.tsx"));
+const RusModul = lazy(() => import("./pages/RusModul.tsx"));
 
 import avatar3d from "@/assets/avatar-3d.webp";
 import heart3d from "@/assets/heart-3d.webp";
@@ -178,6 +179,7 @@ const AppRoutes = () => (
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/region/:slug" element={<RegionPage />} />
         <Route path="/ip-modul" element={<IpModul />} />
+        <Route path="/rusmodul" element={<RusModul />} />
         <Route path="/lab" element={<Lab />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
