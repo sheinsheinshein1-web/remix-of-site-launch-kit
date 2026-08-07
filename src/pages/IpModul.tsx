@@ -318,11 +318,22 @@ const Section = ({
   id?: string;
 }) => (
   <section id={id} className="mx-auto max-w-[1240px] px-4 py-16 md:px-8 md:py-24">
-    {eyebrow && <div className={`text-xs uppercase tracking-[0.18em] ${Sand}`}>{eyebrow}</div>}
-    <h2 className="mt-3 max-w-3xl text-3xl font-bold leading-tight text-[hsl(40,30%,94%)] md:text-[42px]">{title}</h2>
-    {subtitle && <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[hsl(40,10%,70%)] md:text-base">{subtitle}</p>}
-    <div className="mt-10">{children}</div>
+    <div className="border-t border-[hsl(150,8%,20%)] pt-6 md:grid md:grid-cols-[220px_1fr] md:gap-10">
+      {eyebrow && (
+        <div className="text-[11px] uppercase tracking-[0.18em] text-[hsl(40,10%,58%)]">{eyebrow}</div>
+      )}
+      <div>
+        <h2 className="mt-3 max-w-3xl text-[30px] font-semibold leading-[1.1] tracking-tight text-[hsl(40,30%,94%)] md:mt-0 md:text-[44px]">
+          {title}
+        </h2>
+        {subtitle && (
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[hsl(40,10%,66%)] md:text-base">{subtitle}</p>
+        )}
+      </div>
+    </div>
+    <div className="mt-12">{children}</div>
   </section>
+
 );
 
 const IpModul = () => {
