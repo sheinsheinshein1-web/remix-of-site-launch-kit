@@ -367,22 +367,16 @@ const IpModul = () => {
       </header>
 
       {/* Hero */}
-      <section id="top" className="relative overflow-hidden">
-        <img
-          src={IMG.g[1]}
-          alt="Модульный дом IP MODUL с террасой"
-          className="absolute inset-0 h-full w-full object-cover opacity-100 brightness-[1.35] saturate-[1.1]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(150,14%,9%)]/30 via-[hsl(150,14%,9%)]/60 to-[hsl(150,14%,9%)]" />
-        <div className="relative mx-auto grid max-w-[1240px] gap-10 px-4 py-20 md:grid-cols-[1.15fr_0.85fr] md:px-8 md:py-32">
+      <section id="top" className="border-b border-[hsl(150,8%,18%)]">
+        <div className="mx-auto grid max-w-[1240px] items-center gap-10 px-4 py-14 md:grid-cols-[1fr_1fr] md:px-8 md:py-20">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-xl border border-[hsl(150,8%,26%)] bg-[hsl(150,10%,13%)]/70 px-3 py-1.5 text-xs text-[hsl(40,12%,80%)]">
+            <div className="inline-flex items-center gap-2 rounded-xl border border-[hsl(150,8%,26%)] bg-[hsl(150,10%,13%)] px-3 py-1.5 text-xs text-[hsl(40,12%,80%)]">
               Производство в Ленинградской области · доставка и монтаж
             </div>
-            <h1 className="mt-6 text-[34px] font-bold leading-[1.08] text-[hsl(40,30%,94%)] md:text-[56px]">
+            <h1 className="mt-6 text-[34px] font-bold leading-[1.08] text-[hsl(40,30%,94%)] md:text-[54px]">
               Построим ваш уютный модульный дом или баню
             </h1>
-            <p className={`mt-4 text-xl font-semibold md:text-2xl ${Sand}`}>от 1,6 млн ₽ с гарантией 10 лет!</p>
+            <p className={`mt-4 text-xl font-semibold md:text-2xl ${Sand}`}>от 1,6 млн ₽ с гарантией 10 лет</p>
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-[hsl(40,10%,72%)] md:text-base">
               Высокое качество, сроки и контроль всех этапов — мы берём на себя всё, от закупки материалов до финальной уборки.
             </p>
@@ -402,23 +396,46 @@ const IpModul = () => {
                 Рассчитать стоимость
               </a>
             </div>
+
+            <dl className="mt-10 grid max-w-lg grid-cols-3 gap-4 border-t border-[hsl(150,8%,20%)] pt-6">
+              {[
+                { v: "10 лет", l: "гарантия" },
+                { v: "30 дней", l: "срок производства" },
+                { v: "100+", l: "готовых объектов" },
+              ].map((s) => (
+                <div key={s.l}>
+                  <dt className={`text-lg font-semibold md:text-xl ${Sand}`}>{s.v}</dt>
+                  <dd className="mt-1 text-xs text-[hsl(40,10%,66%)]">{s.l}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
-          <div className="space-y-3 self-center">
-            {advantages.map((a) => (
-              <div
-                key={a.n}
-                className="flex items-start justify-between gap-4 rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)]/80 p-5"
-              >
-                <p className="text-sm leading-relaxed text-[hsl(40,16%,88%)]">{a.text}</p>
-                <span className="shrink-0 rounded-xl bg-[hsl(150,8%,18%)] px-2.5 py-1 text-[11px] font-semibold text-[hsl(35,32%,78%)]">
-                  {a.n}
-                </span>
-              </div>
-            ))}
+          <div className="overflow-hidden rounded-2xl border border-[hsl(150,8%,20%)] bg-[hsl(150,8%,18%)]">
+            <img
+              src={IMG.g[1]}
+              alt="Модульный дом IP MODUL с террасой"
+              className="h-full max-h-[560px] w-full object-cover brightness-[1.1]"
+            />
           </div>
         </div>
       </section>
+
+      {/* Advantages */}
+      <Section eyebrow="Почему IP MODUL" title="Что вы получаете">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {advantages.map((a) => (
+            <div
+              key={a.n}
+              className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6"
+            >
+              <span className={`text-sm font-semibold tracking-[0.14em] ${Sand}`}>{a.n}</span>
+              <p className="mt-4 text-sm leading-relaxed text-[hsl(40,16%,88%)]">{a.text}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
 
       {/* Projects */}
       <Section
@@ -473,7 +490,7 @@ const IpModul = () => {
           {construction.map((c) => (
             <div key={c.n} className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6">
               <div className="flex items-center gap-3">
-                <span className="rounded-xl bg-[hsl(150,8%,18%)] px-2.5 py-1 text-[11px] font-semibold text-[hsl(35,32%,78%)]">{c.n}</span>
+                <span className={`text-sm font-semibold tracking-[0.14em] ${Sand}`}>{c.n}</span>
                 <h3 className="text-lg font-semibold text-[hsl(40,30%,94%)]">{c.title}</h3>
               </div>
               <ul className="mt-4 space-y-1.5">
