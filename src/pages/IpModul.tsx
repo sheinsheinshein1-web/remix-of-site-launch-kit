@@ -266,36 +266,53 @@ const jsonLd = {
   description: "Модульные дома и бани под ключ от 1,6 млн рублей с гарантией 10 лет.",
 };
 
-const Sand = "text-[hsl(35,32%,82%)]";
+const INK = "text-[hsl(0,0%,96%)]";
+const DIM = "text-[hsl(0,0%,64%)]";
+const LINE = "border-[hsl(0,0%,18%)]";
+
+const Btn = ({ href, children, ghost }: { href: string; children: React.ReactNode; ghost?: boolean }) => (
+  <a
+    href={href}
+    target={href.startsWith("http") ? "_blank" : undefined}
+    rel={href.startsWith("http") ? "noopener noreferrer nofollow" : undefined}
+    className={
+      ghost
+        ? "inline-flex items-center justify-center border border-[hsl(0,0%,40%)] px-10 py-4 text-[13px] font-semibold uppercase tracking-[0.14em] text-[hsl(0,0%,96%)] transition-colors hover:bg-[hsl(0,0%,96%)] hover:text-[hsl(0,0%,7%)]"
+        : "inline-flex items-center justify-center bg-[hsl(35,34%,78%)] px-10 py-4 text-[13px] font-semibold uppercase tracking-[0.14em] text-[hsl(0,0%,8%)] transition-colors hover:bg-[hsl(35,44%,86%)]"
+    }
+  >
+    {children}
+  </a>
+);
 
 const ProjectCard = ({ p }: { p: Project }) => (
-  <article className="group">
-    <div className="aspect-[4/3] overflow-hidden bg-[hsl(150,8%,18%)]">
+  <article className="group bg-[hsl(0,0%,10%)]">
+    <div className="aspect-[4/3] overflow-hidden">
       <img
         src={p.image}
         alt={`Модульный дом ${p.name} от IP MODUL`}
         loading="lazy"
-        className="h-full w-full object-cover brightness-[1.12] transition-transform duration-700 group-hover:scale-[1.03]"
+        className="h-full w-full object-cover brightness-[1.08] transition-transform duration-700 group-hover:scale-[1.04]"
       />
     </div>
-    <div className="mt-5 border-t border-[hsl(150,8%,20%)] pt-4">
+    <div className="p-6">
       <div className="flex items-baseline justify-between gap-3">
-        <h3 className="text-[19px] font-semibold tracking-tight text-[hsl(40,30%,94%)]">{p.name}</h3>
-        <span className={`text-[15px] font-semibold ${Sand}`}>{p.price}</span>
+        <h3 className={`text-xl font-bold uppercase tracking-[0.08em] ${INK}`}>{p.name}</h3>
+        <span className="text-[15px] font-semibold text-[hsl(35,34%,78%)]">{p.price}</span>
       </div>
-      <p className="mt-2 text-[13px] leading-relaxed text-[hsl(40,10%,66%)]">{p.desc}</p>
-      <ul className="mt-4 space-y-1">
+      <p className={`mt-3 text-[13px] leading-relaxed ${DIM}`}>{p.desc}</p>
+      <dl className={`mt-5 divide-y divide-[hsl(0,0%,18%)] border-t ${LINE}`}>
         {p.specs.map((s) => (
-          <li key={s} className="text-[13px] text-[hsl(40,12%,76%)]">
+          <div key={s} className="py-2 text-[13px] text-[hsl(0,0%,78%)]">
             {s}
-          </li>
+          </div>
         ))}
-      </ul>
+      </dl>
       <a
         href={p.href}
         target="_blank"
         rel="noopener noreferrer nofollow"
-        className="mt-4 inline-block text-[13px] font-medium text-[hsl(40,30%,94%)] underline decoration-[hsl(150,8%,32%)] underline-offset-4 transition-colors hover:decoration-[hsl(35,32%,82%)]"
+        className="mt-5 inline-block text-[12px] font-semibold uppercase tracking-[0.14em] text-[hsl(35,34%,78%)] transition-opacity hover:opacity-70"
       >
         Подробнее
       </a>
@@ -303,44 +320,40 @@ const ProjectCard = ({ p }: { p: Project }) => (
   </article>
 );
 
-
 const Section = ({
   eyebrow,
   title,
   subtitle,
   children,
   id,
+  tone,
 }: {
   eyebrow?: string;
   title: string;
   subtitle?: string;
   children: React.ReactNode;
   id?: string;
+  tone?: "dark";
 }) => (
-  <section id={id} className="mx-auto max-w-[1240px] px-4 py-16 md:px-8 md:py-24">
-    <div className="border-t border-[hsl(150,8%,20%)] pt-6 md:grid md:grid-cols-[220px_1fr] md:gap-10">
+  <section id={id} className={tone === "dark" ? "bg-[hsl(0,0%,10%)]" : ""}>
+    <div className="mx-auto max-w-[1360px] px-4 py-16 md:px-10 md:py-24">
       {eyebrow && (
-        <div className="text-[11px] uppercase tracking-[0.18em] text-[hsl(40,10%,58%)]">{eyebrow}</div>
+        <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[hsl(35,34%,78%)]">{eyebrow}</div>
       )}
-      <div>
-        <h2 className="mt-3 max-w-3xl text-[30px] font-semibold leading-[1.1] tracking-tight text-[hsl(40,30%,94%)] md:mt-0 md:text-[44px]">
-          {title}
-        </h2>
-        {subtitle && (
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[hsl(40,10%,66%)] md:text-base">{subtitle}</p>
-        )}
-      </div>
+      <h2 className={`mt-4 max-w-4xl text-[28px] font-bold uppercase leading-[1.1] tracking-[0.02em] md:text-[44px] ${INK}`}>
+        {title}
+      </h2>
+      {subtitle && <p className={`mt-4 max-w-2xl text-sm leading-relaxed md:text-base ${DIM}`}>{subtitle}</p>}
+      <div className="mt-12">{children}</div>
     </div>
-    <div className="mt-12">{children}</div>
   </section>
-
 );
 
 const IpModul = () => {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[hsl(150,14%,9%)] font-sans antialiased">
+    <div className="min-h-screen bg-[hsl(0,0%,7%)] font-sans antialiased">
       <Seo
         title="IP MODUL — модульные дома и бани под ключ"
         description="Модульные дома и бани под ключ от 1,6 млн ₽ с гарантией 10 лет. Производство в Ленинградской области, доставка и монтаж."
@@ -349,163 +362,143 @@ const IpModul = () => {
       />
 
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-[hsl(150,8%,18%)] bg-[hsl(150,14%,9%)]/90 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between gap-4 px-4 md:px-8">
-          <a href="#top" className="text-base font-bold tracking-[0.14em] text-[hsl(40,30%,94%)]">
+      <header className="sticky top-0 z-50 bg-[hsl(0,0%,7%)]">
+        <div className={`mx-auto flex max-w-[1360px] items-center justify-between gap-4 border-b ${LINE} px-4 py-5 md:px-10`}>
+          <a href="#top" className={`text-2xl font-bold uppercase tracking-[0.12em] ${INK}`}>
             IP MODUL
           </a>
-          <nav className="hidden items-center gap-7 text-sm text-[hsl(40,12%,78%)] md:flex">
-            <a href="#projects" className="hover:text-[hsl(40,30%,94%)]">Наши проекты</a>
-            <a href="#start" className="hover:text-[hsl(40,30%,94%)]">Серия СТАРТ</a>
-            <a href="#gallery" className="hover:text-[hsl(40,30%,94%)]">Галерея</a>
-            <a href="#reviews" className="hover:text-[hsl(40,30%,94%)]">Отзывы</a>
-            <a href="#contacts" className="hover:text-[hsl(40,30%,94%)]">Контакты</a>
-          </nav>
-          <div className="flex items-center gap-3">
-            <a href={PHONE_HREF} className="hidden text-sm font-semibold text-[hsl(40,30%,94%)] sm:block">
+          <div className="text-right">
+            <a href={PHONE_HREF} className={`block text-[15px] font-semibold ${INK}`}>
               {PHONE}
             </a>
-            <a
-              href={TELEGRAM}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              className="rounded-xl bg-[hsl(35,32%,82%)] px-4 py-2 text-[13px] font-semibold text-[hsl(150,14%,10%)] transition-colors hover:bg-[hsl(35,40%,88%)]"
-            >
-              Рассчитать
-            </a>
+            <span className={`text-xs ${DIM}`}>Ленинградская область</span>
           </div>
         </div>
+        <nav className={`mx-auto hidden max-w-[1360px] items-center gap-8 border-b ${LINE} px-4 py-3.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-[hsl(0,0%,72%)] md:flex md:px-10`}>
+          <a href="#projects" className="hover:text-[hsl(0,0%,96%)]">Модельный ряд</a>
+          <a href="#start" className="hover:text-[hsl(0,0%,96%)]">Серия СТАРТ</a>
+          <a href="#tech" className="hover:text-[hsl(0,0%,96%)]">Технология</a>
+          <a href="#gallery" className="hover:text-[hsl(0,0%,96%)]">Галерея</a>
+          <a href="#reviews" className="hover:text-[hsl(0,0%,96%)]">Отзывы</a>
+          <a href="#contacts" className="hover:text-[hsl(0,0%,96%)]">Контакты</a>
+        </nav>
       </header>
 
-      {/* Hero */}
-      <section id="top" className="border-b border-[hsl(150,8%,18%)]">
-        <div className="mx-auto grid max-w-[1240px] items-center gap-10 px-4 py-14 md:grid-cols-[1fr_1fr] md:px-8 md:py-20">
-          <div>
-            <p className="text-[11px] uppercase tracking-[0.18em] text-[hsl(40,10%,60%)]">
-              Производство в Ленинградской области — доставка и монтаж
-            </p>
-
-            <h1 className="mt-6 text-[34px] font-bold leading-[1.08] text-[hsl(40,30%,94%)] md:text-[54px]">
-              Построим ваш уютный модульный дом или баню
-            </h1>
-            <p className={`mt-4 text-xl font-semibold md:text-2xl ${Sand}`}>от 1,6 млн ₽ с гарантией 10 лет</p>
-            <p className="mt-5 max-w-xl text-sm leading-relaxed text-[hsl(40,10%,72%)] md:text-base">
-              Высокое качество, сроки и контроль всех этапов — мы берём на себя всё, от закупки материалов до финальной уборки.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#projects"
-                className="inline-flex items-center gap-2 rounded-xl bg-[hsl(35,32%,82%)] px-6 py-3.5 text-sm font-semibold text-[hsl(150,14%,10%)] transition-colors hover:bg-[hsl(35,40%,88%)]"
-              >
-                Посмотреть проекты
-              </a>
-              <a
-                href={WHATSAPP}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="inline-flex items-center gap-2 rounded-xl border border-[hsl(150,8%,28%)] bg-[hsl(150,10%,13%)] px-6 py-3.5 text-sm font-semibold text-[hsl(40,30%,94%)] transition-colors hover:bg-[hsl(150,10%,17%)]"
-              >
-                Рассчитать стоимость
-              </a>
-            </div>
-
-            <dl className="mt-10 grid max-w-lg grid-cols-3 gap-4 border-t border-[hsl(150,8%,20%)] pt-6">
-              {[
-                { v: "10 лет", l: "гарантия" },
-                { v: "30 дней", l: "срок производства" },
-                { v: "100+", l: "готовых объектов" },
-              ].map((s) => (
-                <div key={s.l}>
-                  <dt className={`text-lg font-semibold md:text-xl ${Sand}`}>{s.v}</dt>
-                  <dd className="mt-1 text-xs text-[hsl(40,10%,66%)]">{s.l}</dd>
-                </div>
-              ))}
-            </dl>
+      {/* Hero — full-bleed фото с наложенным текстом */}
+      <section id="top" className="relative min-h-[560px] md:min-h-[760px]">
+        <img
+          src={IMG.g[1]}
+          alt="Модульный дом IP MODUL с террасой"
+          className="absolute inset-0 h-full w-full object-cover brightness-[0.95]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent" />
+        <div className="relative mx-auto flex min-h-[560px] max-w-[1360px] flex-col justify-center px-4 py-20 md:min-h-[760px] md:px-10">
+          <h1 className={`text-[38px] font-bold uppercase leading-[0.98] tracking-[0.02em] md:text-[76px] ${INK}`}>
+            IP MODUL
+          </h1>
+          <p className={`mt-2 max-w-2xl text-[18px] font-bold uppercase leading-tight tracking-[0.02em] md:text-[32px] ${INK}`}>
+            Модульные дома и бани под ключ
+          </p>
+          <div className="mt-8 space-y-1 text-sm text-[hsl(0,0%,82%)] md:text-[15px]">
+            <p>Модульно-каркасная технология, гарантия 10 лет</p>
+            <p>Производство в Ленинградской области</p>
+            <p>Доставка и монтаж по России — от 1,6 млн ₽</p>
           </div>
-
-          <div className="overflow-hidden bg-[hsl(150,8%,18%)]">
-            <img
-              src={IMG.g[1]}
-              alt="Модульный дом IP MODUL с террасой"
-              className="h-full max-h-[560px] w-full object-cover brightness-[1.1]"
-            />
+          <div className="mt-10 flex flex-wrap gap-3">
+            <Btn href="#projects">Модельный ряд</Btn>
+            <Btn href={WHATSAPP} ghost>
+              Рассчитать стоимость
+            </Btn>
           </div>
         </div>
       </section>
 
+      {/* Ключевые цифры */}
+      <div className={`border-b ${LINE} bg-[hsl(0,0%,10%)]`}>
+        <dl className="mx-auto grid max-w-[1360px] grid-cols-3 divide-x divide-[hsl(0,0%,18%)] px-4 md:px-10">
+          {[
+            { v: "10 лет", l: "гарантия" },
+            { v: "30 дней", l: "срок производства" },
+            { v: "100+", l: "готовых объектов" },
+          ].map((s) => (
+            <div key={s.l} className="px-4 py-8 first:pl-0 md:py-10">
+              <dt className={`text-xl font-bold uppercase tracking-[0.04em] md:text-3xl ${INK}`}>{s.v}</dt>
+              <dd className={`mt-2 text-[11px] uppercase tracking-[0.16em] ${DIM}`}>{s.l}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
       {/* Advantages */}
       <Section eyebrow="Почему IP MODUL" title="Что вы получаете">
-        <div className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-px bg-[hsl(0,0%,18%)] sm:grid-cols-2 lg:grid-cols-4">
           {advantages.map((a) => (
-            <div key={a.n} className="border-t border-[hsl(150,8%,20%)] py-5">
-              <span className="text-[11px] font-medium tracking-[0.18em] text-[hsl(40,10%,58%)]">{a.n}</span>
-              <p className="mt-3 text-sm leading-relaxed text-[hsl(40,16%,86%)]">{a.text}</p>
+            <div key={a.n} className="bg-[hsl(0,0%,7%)] p-7">
+              <span className="text-[11px] font-semibold tracking-[0.2em] text-[hsl(35,34%,78%)]">{a.n}</span>
+              <p className="mt-4 text-sm leading-relaxed text-[hsl(0,0%,84%)]">{a.text}</p>
             </div>
           ))}
         </div>
       </Section>
 
-
-
       {/* Projects */}
       <Section
         id="projects"
-        eyebrow="Дома"
+        tone="dark"
+        eyebrow="Модельный ряд"
         title="Наши проекты"
         subtitle="Готовые модульные дома с террасой под завоз мебели. Возможны разные планировки."
       >
-        <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => (
             <ProjectCard key={`${p.name}-${i}`} p={p} />
           ))}
           {showMore && moreProjects.map((p, i) => <ProjectCard key={`more-${i}`} p={p} />)}
         </div>
         {!showMore && (
-          <div className="mt-12 border-t border-[hsl(150,8%,20%)] pt-6">
+          <div className="mt-10">
             <button
               onClick={() => setShowMore(true)}
-              className="text-sm font-medium text-[hsl(40,30%,94%)] underline decoration-[hsl(150,8%,32%)] underline-offset-4 transition-colors hover:decoration-[hsl(35,32%,82%)]"
+              className="inline-flex items-center justify-center border border-[hsl(0,0%,40%)] px-10 py-4 text-[13px] font-semibold uppercase tracking-[0.14em] text-[hsl(0,0%,96%)] transition-colors hover:bg-[hsl(0,0%,96%)] hover:text-[hsl(0,0%,7%)]"
             >
-              Показать ещё проекты
+              Показать ещё
             </button>
           </div>
         )}
       </Section>
 
       {/* Start series */}
-      <div className="border-y border-[hsl(150,8%,18%)] bg-[hsl(150,12%,11%)]">
-        <Section id="start" eyebrow="Серия СТАРТ" title="Дома серии СТАРТ" subtitle="Компактные модульные дома в полной комплектации.">
-          <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-            {startSeries.map((s) => (
-              <article key={s.name}>
-                <div className="aspect-[4/3] overflow-hidden bg-[hsl(150,8%,18%)]">
-                  <img src={s.image} alt={`Модульный дом ${s.name}`} loading="lazy" className="h-full w-full object-cover brightness-[1.08]" />
+      <Section id="start" eyebrow="Серия СТАРТ" title="Дома серии СТАРТ" subtitle="Компактные модульные дома в полной комплектации.">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {startSeries.map((s) => (
+            <article key={s.name} className="bg-[hsl(0,0%,10%)]">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img src={s.image} alt={`Модульный дом ${s.name}`} loading="lazy" className="h-full w-full object-cover brightness-[1.06]" />
+              </div>
+              <div className="p-6">
+                <div className="flex items-baseline justify-between gap-3">
+                  <h3 className={`text-xl font-bold uppercase tracking-[0.08em] ${INK}`}>{s.name}</h3>
+                  <span className="text-[15px] font-semibold text-[hsl(35,34%,78%)]">{s.price}</span>
                 </div>
-                <div className="mt-5 border-t border-[hsl(150,8%,22%)] pt-4">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="text-[19px] font-semibold tracking-tight text-[hsl(40,30%,94%)]">{s.name}</h3>
-                    <span className={`text-[15px] font-semibold ${Sand}`}>{s.price}</span>
-                  </div>
-                  <p className="mt-2 text-[13px] text-[hsl(40,10%,66%)]">{s.desc}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </Section>
-      </div>
+                <p className={`mt-3 text-[13px] leading-relaxed ${DIM}`}>{s.desc}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </Section>
 
       {/* Construction */}
-      <Section eyebrow="Технология" title="Из чего состоит модульный дом" subtitle="Полный пирог конструкции — как на производстве.">
-        <div className="grid gap-x-10 md:grid-cols-2">
+      <Section id="tech" tone="dark" eyebrow="Технология" title="Из чего состоит модульный дом" subtitle="Полный пирог конструкции — как на производстве.">
+        <div className="grid gap-px bg-[hsl(0,0%,18%)] md:grid-cols-2">
           {construction.map((c) => (
-            <div key={c.n} className="border-t border-[hsl(150,8%,20%)] py-6">
+            <div key={c.n} className="bg-[hsl(0,0%,10%)] p-7">
               <div className="flex items-baseline gap-3">
-                <span className="text-[11px] font-medium tracking-[0.18em] text-[hsl(40,10%,58%)]">{c.n}</span>
-                <h3 className="text-[17px] font-semibold text-[hsl(40,30%,94%)]">{c.title}</h3>
+                <span className="text-[11px] font-semibold tracking-[0.2em] text-[hsl(35,34%,78%)]">{c.n}</span>
+                <h3 className={`text-base font-bold uppercase tracking-[0.08em] ${INK}`}>{c.title}</h3>
               </div>
-              <ul className="mt-3 space-y-1">
+              <ul className="mt-4 space-y-1.5">
                 {c.items.map((i) => (
-                  <li key={i} className="text-[13px] leading-relaxed text-[hsl(40,12%,74%)]">
+                  <li key={i} className="text-[13px] leading-relaxed text-[hsl(0,0%,74%)]">
                     {i}
                   </li>
                 ))}
@@ -513,35 +506,32 @@ const IpModul = () => {
             </div>
           ))}
         </div>
-        <p className="mt-8 border-t border-[hsl(150,8%,20%)] pt-5 text-sm text-[hsl(40,12%,78%)]">
+        <p className="mt-8 text-sm text-[hsl(0,0%,78%)]">
           В базовой комплектации: готовая крытая терраса и лестницы на террасу.
         </p>
       </Section>
 
-
-      {/* Gallery */}
-      <div className="border-y border-[hsl(150,8%,18%)] bg-[hsl(150,12%,11%)]">
-        <Section id="gallery" eyebrow="Портфолио" title="Галерея наших объектов">
-          <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
-            {IMG.g.map((src, i) => (
-              <div key={src + i} className="aspect-square overflow-hidden bg-[hsl(150,8%,18%)]">
-                <img
-                  src={src}
-                  alt={`Готовый объект IP MODUL №${i + 1}`}
-                  loading="lazy"
-                  className="h-full w-full object-cover brightness-[1.12] transition-transform duration-700 hover:scale-[1.04]"
-                />
-              </div>
-            ))}
-          </div>
-        </Section>
-      </div>
+      {/* Gallery — плотная сетка без скруглений */}
+      <Section id="gallery" eyebrow="Портфолио" title="Галерея наших объектов">
+        <div className="grid grid-cols-2 gap-px bg-[hsl(0,0%,18%)] md:grid-cols-4">
+          {IMG.g.map((src, i) => (
+            <div key={src + i} className="aspect-square overflow-hidden bg-[hsl(0,0%,12%)]">
+              <img
+                src={src}
+                alt={`Готовый объект IP MODUL №${i + 1}`}
+                loading="lazy"
+                className="h-full w-full object-cover brightness-[1.06] transition-transform duration-700 hover:scale-[1.05]"
+              />
+            </div>
+          ))}
+        </div>
+      </Section>
 
       {/* Options */}
-      <Section eyebrow="Опции" title="Дополнительные опции">
-        <ul className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
+      <Section tone="dark" eyebrow="Опции" title="Дополнительные опции">
+        <ul className="grid gap-px bg-[hsl(0,0%,18%)] sm:grid-cols-2 lg:grid-cols-3">
           {options.map((o) => (
-            <li key={o} className="border-t border-[hsl(150,8%,20%)] py-4 text-sm text-[hsl(40,16%,86%)]">
+            <li key={o} className="bg-[hsl(0,0%,10%)] px-6 py-5 text-sm text-[hsl(0,0%,84%)]">
               {o}
             </li>
           ))}
@@ -549,52 +539,45 @@ const IpModul = () => {
       </Section>
 
       {/* Reviews */}
-      <div className="border-y border-[hsl(150,8%,18%)] bg-[hsl(150,12%,11%)]">
-        <Section id="reviews" eyebrow="Отзывы" title="О нас говорят клиенты" subtitle="Рейтинг 5,0 по отзывам покупателей.">
-          <div className="grid gap-x-10 md:grid-cols-2 lg:grid-cols-3">
-            {reviews.map((r) => (
-              <blockquote key={r.name} className="border-t border-[hsl(150,8%,22%)] py-6">
-                <p className="text-[13px] leading-relaxed text-[hsl(40,12%,76%)]">{r.text}</p>
-                <footer className="mt-4 text-[13px] font-medium text-[hsl(40,30%,94%)]">{r.name}</footer>
-              </blockquote>
-            ))}
-          </div>
-          <div className="mt-6">
-            <a
-              href={AVITO}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              className="text-sm font-medium text-[hsl(40,30%,94%)] underline decoration-[hsl(150,8%,32%)] underline-offset-4 transition-colors hover:decoration-[hsl(35,32%,82%)]"
-            >
-              Все отзывы
-            </a>
-          </div>
-        </Section>
-      </div>
+      <Section id="reviews" eyebrow="Отзывы" title="О нас говорят клиенты" subtitle="Рейтинг 5,0 по отзывам покупателей.">
+        <div className="grid gap-px bg-[hsl(0,0%,18%)] md:grid-cols-2 lg:grid-cols-3">
+          {reviews.map((r) => (
+            <blockquote key={r.name} className="bg-[hsl(0,0%,7%)] p-7">
+              <p className="text-[13px] leading-relaxed text-[hsl(0,0%,76%)]">{r.text}</p>
+              <footer className={`mt-5 text-[12px] font-semibold uppercase tracking-[0.14em] ${INK}`}>{r.name}</footer>
+            </blockquote>
+          ))}
+        </div>
+        <div className="mt-10">
+          <Btn href={AVITO} ghost>
+            Все отзывы
+          </Btn>
+        </div>
+      </Section>
 
-      {/* CTA + contacts */}
-      <Section id="contacts" eyebrow="Контакты" title="Скачайте каталог с актуальными ценами" subtitle="Для домов, глэмпингов и баз отдыха.">
-        <div className="grid gap-x-10 md:grid-cols-3">
-          <a href={PHONE_HREF} className="group border-t border-[hsl(150,8%,20%)] py-5">
-            <span className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-[hsl(40,10%,58%)]">
+      {/* Contacts */}
+      <Section id="contacts" tone="dark" eyebrow="Контакты" title="Свяжитесь с нами" subtitle="Пришлём каталог с актуальными ценами — для домов, глэмпингов и баз отдыха.">
+        <div className="grid gap-px bg-[hsl(0,0%,18%)] md:grid-cols-3">
+          <a href={PHONE_HREF} className="bg-[hsl(0,0%,10%)] p-7">
+            <span className={`flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] ${DIM}`}>
               <Phone className="h-3.5 w-3.5" /> Телефон
             </span>
-            <span className="mt-2 block text-[19px] font-semibold text-[hsl(40,30%,94%)]">{PHONE}</span>
+            <span className={`mt-3 block text-xl font-bold ${INK}`}>{PHONE}</span>
           </a>
-          <div className="border-t border-[hsl(150,8%,20%)] py-5">
-            <span className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-[hsl(40,10%,58%)]">
+          <div className="bg-[hsl(0,0%,10%)] p-7">
+            <span className={`flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] ${DIM}`}>
               <MapPin className="h-3.5 w-3.5" /> Адрес
             </span>
-            <span className="mt-2 block text-sm leading-relaxed text-[hsl(40,20%,90%)]">{ADDRESS}</span>
+            <span className="mt-3 block text-sm leading-relaxed text-[hsl(0,0%,88%)]">{ADDRESS}</span>
           </div>
-          <div className="border-t border-[hsl(150,8%,20%)] py-5">
-            <span className="text-[11px] uppercase tracking-[0.18em] text-[hsl(40,10%,58%)]">Мессенджеры</span>
-            <div className="mt-2 flex gap-5 text-sm font-medium text-[hsl(40,30%,94%)]">
+          <div className="bg-[hsl(0,0%,10%)] p-7">
+            <span className={`text-[11px] uppercase tracking-[0.2em] ${DIM}`}>Мессенджеры</span>
+            <div className="mt-4 flex flex-wrap gap-3">
               <a
                 href={TELEGRAM}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="inline-flex items-center gap-1.5 underline decoration-[hsl(150,8%,32%)] underline-offset-4 hover:decoration-[hsl(35,32%,82%)]"
+                className="inline-flex items-center gap-2 border border-[hsl(0,0%,32%)] px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-[hsl(0,0%,96%)] transition-colors hover:bg-[hsl(0,0%,96%)] hover:text-[hsl(0,0%,8%)]"
               >
                 <Send className="h-3.5 w-3.5" /> Telegram
               </a>
@@ -602,7 +585,7 @@ const IpModul = () => {
                 href={WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="underline decoration-[hsl(150,8%,32%)] underline-offset-4 hover:decoration-[hsl(35,32%,82%)]"
+                className="inline-flex items-center gap-2 border border-[hsl(0,0%,32%)] px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-[hsl(0,0%,96%)] transition-colors hover:bg-[hsl(0,0%,96%)] hover:text-[hsl(0,0%,8%)]"
               >
                 WhatsApp
               </a>
@@ -611,10 +594,9 @@ const IpModul = () => {
         </div>
       </Section>
 
-
-      <footer className="border-t border-[hsl(150,8%,18%)] px-4 py-10 md:px-8">
-        <div className="mx-auto flex max-w-[1240px] flex-col gap-2 text-xs text-[hsl(40,8%,58%)]">
-          <span className="text-sm font-bold tracking-[0.14em] text-[hsl(40,30%,94%)]">IP MODUL</span>
+      <footer className={`border-t ${LINE} px-4 py-12 md:px-10`}>
+        <div className={`mx-auto flex max-w-[1360px] flex-col gap-2 text-xs ${DIM}`}>
+          <span className={`text-lg font-bold uppercase tracking-[0.12em] ${INK}`}>IP MODUL</span>
           <span>ИНН 470607991608</span>
           <span>{ADDRESS}</span>
           <span>
@@ -623,7 +605,7 @@ const IpModul = () => {
               href="https://ip-modul.ru/"
               target="_blank"
               rel="noopener noreferrer nofollow"
-              className="underline underline-offset-2 hover:text-[hsl(40,30%,94%)]"
+              className="underline underline-offset-2 hover:text-[hsl(0,0%,96%)]"
             >
               ip-modul.ru
             </a>
@@ -636,3 +618,4 @@ const IpModul = () => {
 };
 
 export default IpModul;
+
