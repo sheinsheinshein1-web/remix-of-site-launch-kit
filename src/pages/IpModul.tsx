@@ -454,19 +454,19 @@ const IpModul = () => {
         title="Наши проекты"
         subtitle="Готовые модульные дома с террасой под завоз мебели. Возможны разные планировки."
       >
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => (
             <ProjectCard key={`${p.name}-${i}`} p={p} />
           ))}
           {showMore && moreProjects.map((p, i) => <ProjectCard key={`more-${i}`} p={p} />)}
         </div>
         {!showMore && (
-          <div className="mt-8 flex justify-center">
+          <div className="mt-12 border-t border-[hsl(150,8%,20%)] pt-6">
             <button
               onClick={() => setShowMore(true)}
-              className="rounded-xl border border-[hsl(150,8%,28%)] px-6 py-3 text-sm font-semibold text-[hsl(40,30%,94%)] transition-colors hover:bg-[hsl(150,10%,15%)]"
+              className="text-sm font-medium text-[hsl(40,30%,94%)] underline decoration-[hsl(150,8%,32%)] underline-offset-4 transition-colors hover:decoration-[hsl(35,32%,82%)]"
             >
-              Показать ещё
+              Показать ещё проекты
             </button>
           </div>
         )}
@@ -475,18 +475,18 @@ const IpModul = () => {
       {/* Start series */}
       <div className="border-y border-[hsl(150,8%,18%)] bg-[hsl(150,12%,11%)]">
         <Section id="start" eyebrow="Серия СТАРТ" title="Дома серии СТАРТ" subtitle="Компактные модульные дома в полной комплектации.">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {startSeries.map((s) => (
-              <article key={s.name} className="overflow-hidden rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)]">
+              <article key={s.name}>
                 <div className="aspect-[4/3] overflow-hidden bg-[hsl(150,8%,18%)]">
-                  <img src={s.image} alt={`Модульный дом ${s.name}`} loading="lazy" className="h-full w-full object-cover" />
+                  <img src={s.image} alt={`Модульный дом ${s.name}`} loading="lazy" className="h-full w-full object-cover brightness-[1.08]" />
                 </div>
-                <div className="p-5">
+                <div className="mt-5 border-t border-[hsl(150,8%,22%)] pt-4">
                   <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="text-lg font-semibold text-[hsl(40,30%,94%)]">{s.name}</h3>
-                    <span className={`text-base font-semibold ${Sand}`}>{s.price}</span>
+                    <h3 className="text-[19px] font-semibold tracking-tight text-[hsl(40,30%,94%)]">{s.name}</h3>
+                    <span className={`text-[15px] font-semibold ${Sand}`}>{s.price}</span>
                   </div>
-                  <p className="mt-2 text-[13px] text-[hsl(40,10%,70%)]">{s.desc}</p>
+                  <p className="mt-2 text-[13px] text-[hsl(40,10%,66%)]">{s.desc}</p>
                 </div>
               </article>
             ))}
@@ -496,17 +496,16 @@ const IpModul = () => {
 
       {/* Construction */}
       <Section eyebrow="Технология" title="Из чего состоит модульный дом" subtitle="Полный пирог конструкции — как на производстве.">
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-x-10 md:grid-cols-2">
           {construction.map((c) => (
-            <div key={c.n} className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-6">
-              <div className="flex items-center gap-3">
-                <span className={`text-sm font-semibold tracking-[0.14em] ${Sand}`}>{c.n}</span>
-                <h3 className="text-lg font-semibold text-[hsl(40,30%,94%)]">{c.title}</h3>
+            <div key={c.n} className="border-t border-[hsl(150,8%,20%)] py-6">
+              <div className="flex items-baseline gap-3">
+                <span className="text-[11px] font-medium tracking-[0.18em] text-[hsl(40,10%,58%)]">{c.n}</span>
+                <h3 className="text-[17px] font-semibold text-[hsl(40,30%,94%)]">{c.title}</h3>
               </div>
-              <ul className="mt-4 space-y-1.5">
+              <ul className="mt-3 space-y-1">
                 {c.items.map((i) => (
-                  <li key={i} className="flex gap-2 text-[13px] text-[hsl(40,12%,76%)]">
-                    <span className="mt-[9px] h-px w-2.5 shrink-0 bg-[hsl(35,32%,60%)]" />
+                  <li key={i} className="text-[13px] leading-relaxed text-[hsl(40,12%,74%)]">
                     {i}
                   </li>
                 ))}
@@ -514,15 +513,11 @@ const IpModul = () => {
             </div>
           ))}
         </div>
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-5 text-sm text-[hsl(40,16%,88%)]">
-            Готовая крытая терраса
-          </div>
-          <div className="rounded-2xl border border-[hsl(150,8%,22%)] bg-[hsl(150,10%,13%)] p-5 text-sm text-[hsl(40,16%,88%)]">
-            Лестницы на террасу
-          </div>
-        </div>
+        <p className="mt-8 border-t border-[hsl(150,8%,20%)] pt-5 text-sm text-[hsl(40,12%,78%)]">
+          В базовой комплектации: готовая крытая терраса и лестницы на террасу.
+        </p>
       </Section>
+
 
       {/* Gallery */}
       <div className="border-y border-[hsl(150,8%,18%)] bg-[hsl(150,12%,11%)]">
