@@ -3,6 +3,7 @@
  *
  * cityValue должен ТОЧНО совпадать с полем `city` в src/data/projects.ts,
  * иначе грид окажется пустым.
+ * cityValues используется, когда один SEO-регион собирает несколько значений city.
  */
 
 export type RegionFaq = { question: string; answer: string };
@@ -10,6 +11,7 @@ export type RegionFaq = { question: string; answer: string };
 export type Region = {
   slug: string;
   cityValue: string;
+  cityValues?: string[];
   name: string;
   namePrepositional: string; // "в Москве", "в Перми"
   title: string;
@@ -421,6 +423,104 @@ export const regions: Region[] = [
     ],
   },
 ];
+
+const makeCompactRegion = ({
+  slug,
+  cityValue,
+  name,
+  namePrepositional,
+}: {
+  slug: string;
+  cityValue: string;
+  name: string;
+  namePrepositional: string;
+}): Region => ({
+  slug,
+  cityValue,
+  name,
+  namePrepositional,
+  title: `Модульные и каркасные дома ${namePrepositional} — многоместа.рф`,
+  description: `Проекты модульных и каркасных домов ${namePrepositional}: цены, площади, планировки, производители, доставка и монтаж.`,
+  h1: `Модульные и каркасные дома ${namePrepositional}`,
+  introHtml: `
+    <p>На этой странице собраны проекты домов, которые можно рассматривать для строительства ${namePrepositional}: модульные дома, каркасные решения, барнхаусы и компактные дачные форматы. Карточки помогают сравнить площадь, цену, планировки, сроки и производителя до перехода на сайт компании.</p>
+    <p>Региональная подборка нужна, чтобы смотреть не абстрактный каталог, а предложения с учётом реальной логистики: доставки домокомплекта, монтажа на участке, сезонности работ и доступности производителей в вашем направлении.</p>
+    <p>Используйте фильтры по площади, бюджету, этажности и технологии, чтобы быстрее найти подходящий формат дома для дачи, постоянного проживания или гостевого сценария.</p>
+  `,
+  faq: [
+    {
+      question: `Какие дома можно найти ${namePrepositional}?`,
+      answer:
+        "В каталоге представлены модульные и каркасные дома, компактные дачные проекты, барнхаусы и дома для постоянного проживания. Состав проектов зависит от производителей, работающих в регионе.",
+    },
+    {
+      question: "Что сравнивать при выборе проекта?",
+      answer:
+        "Смотрите площадь, планировку, комплектацию, утепление, срок производства, условия доставки и монтажа, а также наличие реальных фото и шоурума у производителя.",
+    },
+    {
+      question: "Можно ли перейти на сайт производителя?",
+      answer:
+        "Да. В карточке проекта есть кнопка перехода на сайт производителя, чтобы уточнить актуальную цену, комплектацию и сроки строительства.",
+    },
+  ],
+});
+
+const sanktPeterburg = regions.find((region) => region.slug === "sankt-peterburg");
+if (sanktPeterburg) {
+  sanktPeterburg.cityValues = ["Санкт-Петербург и ЛО", "Санкт-Петербург"];
+}
+
+regions.push(
+  makeCompactRegion({
+    slug: "voronezh",
+    cityValue: "Воронеж",
+    name: "Воронеж",
+    namePrepositional: "в Воронеже",
+  }),
+  makeCompactRegion({
+    slug: "ufa",
+    cityValue: "Уфа",
+    name: "Уфа",
+    namePrepositional: "в Уфе",
+  }),
+  makeCompactRegion({
+    slug: "novosibirsk",
+    cityValue: "Новосибирск",
+    name: "Новосибирск",
+    namePrepositional: "в Новосибирске",
+  }),
+  makeCompactRegion({
+    slug: "ryazan",
+    cityValue: "Рязань",
+    name: "Рязань",
+    namePrepositional: "в Рязани",
+  }),
+  makeCompactRegion({
+    slug: "kemerovskaya-oblast",
+    cityValue: "Кемеровская область",
+    name: "Кемеровская область",
+    namePrepositional: "в Кемеровской области",
+  }),
+  makeCompactRegion({
+    slug: "krasnoyarsk",
+    cityValue: "Красноярск",
+    name: "Красноярск",
+    namePrepositional: "в Красноярске",
+  }),
+  makeCompactRegion({
+    slug: "rostovskaya-oblast",
+    cityValue: "Ростовская область",
+    name: "Ростовская область",
+    namePrepositional: "в Ростовской области",
+  }),
+  makeCompactRegion({
+    slug: "cheboksary",
+    cityValue: "Чебоксары",
+    name: "Чебоксары",
+    namePrepositional: "в Чебоксарах",
+  })
+);
 
 export const regionsBySlug: Record<string, Region> = Object.fromEntries(
   regions.map((r) => [r.slug, r])

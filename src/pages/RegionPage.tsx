@@ -23,8 +23,9 @@ const RegionPage = () => {
     return <Navigate to="/catalog" replace />;
   }
 
+  const regionCityValues = region.cityValues ?? [region.cityValue];
   const regionProjects = projects
-    .filter((p) => p.city === region.cityValue)
+    .filter((p) => regionCityValues.includes(p.city))
     .sort(compareProjectTechnologyPriority);
 
   // Уникальные производители в регионе

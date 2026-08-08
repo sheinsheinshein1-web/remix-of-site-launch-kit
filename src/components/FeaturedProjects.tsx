@@ -28,6 +28,8 @@ const baseProjects = projects.map((p) => ({
 
 
 const PAGE_SIZE = 8;
+const FEATURED_PREVIEW_SIZE = 6;
+const FEATURED_MOBILE_VISIBLE_SIZE = 3;
 const SCROLL_KEY = "home_feed_scroll";
 const PAGE_PARAM = "page";
 
@@ -154,8 +156,8 @@ const FeaturedProjects = () => {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const didMountRef = useRef(false);
   const rawItems = getPagedProjects(page, seed, cityProjects);
-  // Все карточки в ленте — одного размера.
-  const items = rawItems;
+  // На главной показываем короткую витрину из трёх домов.
+  const items = rawItems.slice(0, FEATURED_PREVIEW_SIZE);
   const MAX_PAGE = 50;
   const isEmpty = cityProjects.length === 0;
   const [restoreMinHeight, setRestoreMinHeight] = useState<number | undefined>(() => {
@@ -193,6 +195,7 @@ const FeaturedProjects = () => {
   // остаётся в viewport после подгрузки, новый триггер не приходит.
   useEffect(() => {
     if (!sentinelRef.current) return;
+    if (items.length >= FEATURED_PREVIEW_SIZE) return;
     if (page >= MAX_PAGE) return;
     if (isEmpty) return;
     const el = sentinelRef.current;
@@ -210,7 +213,7 @@ const FeaturedProjects = () => {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [page, seed, isEmpty]);
+  }, [page, seed, isEmpty, items.length]);
 
   // Снимаем флаг загрузки после отрисовки новых карточек
   useEffect(() => {
@@ -331,19 +334,18 @@ const FeaturedProjects = () => {
             <div className="text-[13px] font-light text-muted-foreground">Выберите другой город в шапке, чтобы увидеть подборку</div>
           </div>
         )}
-        <div className={`grid grid-flow-row-dense grid-cols-2 md:grid-cols-4 gap-x-[2px] gap-y-[6px] md:gap-4 md:mt-0 ${isEmpty ? "hidden" : ""}`}>
-          {items.map(({ project, key }) => (
-            <div key={key}>
-              <ProjectCard projectId={project.id} onCardClick={handleCardClick} />
+        <div className={`grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 gap-y-3 md:gap-2 md:mt-0 ${isEmpty ? "hidden" : ""}`}>
+          {items.map(({ project, key }, index) => (
+            <div key={key} className={index >= FEATURED_MOBILE_VISIBLE_SIZE ? "hidden md:block" : undefined}>
+              <ProjectCard projectId={project.id} height="aspect-[5/4] h-auto" onCardClick={handleCardClick} />
             </div>
           ))}
           {isLoadingMore &&
-            Array.from({ length: 8 }).map((_, i) => (
-              <ProjectCardSkeleton key={`skeleton-${i}`} height="h-[260px] md:h-[240px]" />
+            Array.from({ length: FEATURED_PREVIEW_SIZE }).map((_, i) => (
+              <ProjectCardSkeleton key={`skeleton-${i}`} height="aspect-[5/4] h-auto" />
             ))}
         </div>
-        {/* Сентинел для IntersectionObserver — невидимый */}
-        <div ref={sentinelRef} aria-hidden="true" className="h-1 w-full" />
+        <div ref={sentinelRef} aria-hidden="true" className="hidden" />
       </div>
     </section>
   );

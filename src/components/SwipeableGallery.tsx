@@ -167,7 +167,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", priority = false,
   return (
     <div
       ref={containerRef}
-      className={`relative ${height} overflow-hidden select-none rounded-[14px] bg-muted`}
+      className={`relative ${height} overflow-hidden select-none rounded-[3px] bg-muted`}
       onMouseMove={!isMobile ? onMouseMove : undefined}
       onMouseLeave={!isMobile ? onMouseLeave : undefined}
     >

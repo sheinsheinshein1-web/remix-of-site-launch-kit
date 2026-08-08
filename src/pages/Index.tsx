@@ -3,6 +3,9 @@ import HeroSection from "@/components/HeroSection";
 import StatsRow from "@/components/StatsRow";
 import CategoriesSection from "@/components/CategoriesSection";
 import FeaturedProjects from "@/components/FeaturedProjects";
+import HomeCategoryLinks from "@/components/HomeCategoryLinks";
+import HomeRegionLinks from "@/components/HomeRegionLinks";
+import HomeManufacturers from "@/components/HomeManufacturers";
 import HowItWorks from "@/components/HowItWorks";
 import ManufacturersList from "@/components/ManufacturersList";
 import ReviewsSection from "@/components/ReviewsSection";
@@ -52,39 +55,26 @@ const Index = () => {
         canonicalPath="/"
         jsonLd={homeJsonLd}
       />
-      {/* Big white bento: header + hero + categories + projects */}
-      <div className="max-w-[1400px] mx-auto bg-background md:rounded-b-2xl pb-4">
+      {/* Home surface: editorial hero + project feed */}
+      <div className="bg-background md:rounded-b-2xl pb-4">
         <Header />
-        <div className="hidden md:block px-3 md:px-8 md:pt-[92px]">
-          <HeroSection />
-        </div>
-        <div className="md:hidden pt-[50px]" />
-        <div className="px-2 md:px-8 pt-2 md:pt-3 pb-2">
-          <FeaturedProjects />
-        </div>
-        <div className="px-3 md:px-8 pt-2 pb-4">
-          <h2 className="text-base md:text-lg font-semibold text-foreground mb-3">Дома по регионам</h2>
-          <div className="flex flex-wrap gap-2">
-            {[
-              { label: "Москва и МО", slug: "moskva" },
-              { label: "Санкт-Петербург и ЛО", slug: "sankt-peterburg" },
-              { label: "Краснодарский край", slug: "krasnodar" },
-              { label: "Казань", slug: "kazan" },
-              { label: "Екатеринбург", slug: "ekaterinburg" },
-              { label: "Пермский край", slug: "perm" },
-              { label: "Нижний Новгород", slug: "nizhniy-novgorod" },
-              { label: "Алтайский край", slug: "altayskiy-kray" },
-            ].map((r) => (
-              <a
-                key={r.slug}
-                href={`/region/${r.slug}`}
-                className="px-3 py-1.5 rounded-xl bg-secondary text-[13px] text-foreground hover:bg-muted transition-colors"
-              >
-                {r.label}
-              </a>
-            ))}
+        <HeroSection />
+        <div className="mx-auto w-full max-w-[1400px] px-4 pt-10 sm:px-8 sm:pt-16 lg:px-12">
+          <div className="flex items-baseline justify-between mb-4 sm:mb-5">
+            <h2 className="text-[11px] md:text-[12px] font-semibold uppercase tracking-[0.16em] text-[#342d27]">
+              Рекомендуемые дома
+            </h2>
+            <a href="/catalog" className="text-[10px] md:text-[11px] font-medium uppercase tracking-[0.16em] text-primary transition-colors hover:text-primary/80 focus-visible:outline-none">
+              Посмотреть все
+            </a>
           </div>
         </div>
+        <div className="mx-auto w-full max-w-[1400px] px-4 pb-2 pt-0 sm:px-8 lg:px-12">
+          <FeaturedProjects />
+        </div>
+        <HomeCategoryLinks />
+        <HomeRegionLinks />
+        <HomeManufacturers />
       </div>
 
       <Footer />

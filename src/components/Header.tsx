@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation, useNavigationType, Link } from "react-router-dom";
-import logoColor from "@/assets/logo-color.svg";
+import logoColor from "@/assets/logo-mnogo-mesta.png";
 import logoIcon from "@/assets/logo-icon.svg";
 import logoMark from "@/assets/logo-mark.svg";
 import logoMarkWhite from "@/assets/logo-mark-white.svg";
-import { SlidersHorizontal, ChevronDown, LayoutGrid, Heart, MessageSquare } from "lucide-react";
+import { Menu, SlidersHorizontal, ChevronDown, LayoutGrid, Heart, MessageSquare } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 import SearchDropdown from "./SearchDropdown";
 import CitySelector, { useCity } from "./CitySelector";
@@ -33,6 +33,7 @@ const Header = () => {
   const [enableTransitions, setEnableTransitions] = useState(!isReturningScrolled);
   const [cityOpen, setCityOpen] = useState(false);
   const { city, selectCity } = useCity();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -95,6 +96,68 @@ const Header = () => {
       window.removeEventListener("scroll", onScroll);
     };
   }, []);
+
+  if (isHome) {
+    const homeHeaderSolid = mobileScrolled;
+    const homeHeaderText = homeHeaderSolid
+      ? "text-[#342d27]/75 hover:text-[#342d27]"
+      : "text-white/75 hover:text-white";
+
+    return (
+      <>
+        <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-300 ${
+          homeHeaderSolid
+            ? "border-[#dfe5f5] bg-white"
+            : "border-white/25 bg-transparent"
+        }`}>
+          <div className="mx-auto flex h-[50px] w-full max-w-[1400px] items-center px-4 md:h-[52px] md:px-9">
+            <Link to="/" className="flex items-center">
+              <img src={logoColor} alt="Много места" className={`h-[18px] md:h-[22px] w-auto transition-[filter] duration-300 ${homeHeaderSolid ? "" : "brightness-0 invert"}`} loading="eager" decoding="async" />
+            </Link>
+
+            <nav className={`hidden lg:flex ml-auto mr-8 items-center gap-8 text-[9px] uppercase tracking-[0.22em] font-medium transition-colors duration-300 ${homeHeaderSolid ? "text-[#342d27]/70" : "text-white/75"}`}>
+              <Link to="/catalog" className={`inline-flex items-center gap-1.5 transition-colors ${homeHeaderText}`}>
+                Дома
+                <ChevronDown className="h-3 w-3" strokeWidth={1.5} />
+              </Link>
+              <Link to="/partner" className={`inline-flex items-center gap-1.5 transition-colors ${homeHeaderText}`}>
+                Производители
+                <ChevronDown className="h-3 w-3" strokeWidth={1.5} />
+              </Link>
+              <Link to="/categories" className={`inline-flex items-center gap-1.5 transition-colors ${homeHeaderText}`}>
+                Виды
+                <ChevronDown className="h-3 w-3" strokeWidth={1.5} />
+              </Link>
+              <button type="button" onClick={() => setCityOpen(true)} className={`inline-flex items-center gap-1.5 transition-colors ${homeHeaderText}`}>
+                {city}
+                <ChevronDown className="h-3 w-3" strokeWidth={1.5} />
+              </button>
+            </nav>
+
+            <div className="hidden md:flex items-center gap-6">
+              <Link to="/favorites" className={`text-[9px] uppercase tracking-[0.22em] font-medium transition-colors ${homeHeaderText}`}>
+                Сравнивать
+              </Link>
+              <Link to="/catalog" className="h-8 inline-flex items-center rounded-[3px] px-5 bg-[#244bd8] text-white text-[9px] uppercase tracking-[0.18em] font-semibold hover:bg-[#1e3fc0] transition-colors">
+                Найдите свой дом
+              </Link>
+            </div>
+
+            <button
+              type="button"
+              className={`ml-auto md:hidden h-9 w-9 inline-flex items-center justify-center transition-colors ${homeHeaderSolid ? "text-[#342d27]" : "text-white"}`}
+              aria-label="Открыть меню"
+              onClick={() => setMenuOpen(true)}
+            >
+              <Menu className="h-6 w-6" strokeWidth={1.2} />
+            </button>
+          </div>
+        </header>
+        <MobileMenu open={menuOpen} onOpenChange={setMenuOpen} />
+        <CitySelector open={cityOpen} onOpenChange={setCityOpen} city={city} onSelect={selectCity} />
+      </>
+    );
+  }
 
   return (
     <>
