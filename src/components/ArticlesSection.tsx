@@ -28,7 +28,7 @@ const ArticlesSection = ({ showHeader = true, className = "" }: ArticlesSectionP
       {homeArticles.map((article) => (
         <Link
           key={article.slug}
-          to={`/articles#${article.slug}`}
+          to={article.path}
           className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
         >
           <span className="relative flex aspect-[1.45/1] items-center justify-center overflow-hidden rounded-[3px] bg-[#f6f7fa] dark:bg-secondary">

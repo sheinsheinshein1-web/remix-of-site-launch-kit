@@ -62,7 +62,7 @@ const PartnerRenderingsLanding = () => {
           visual: <PartnerRenderingEstimatePreview />,
         },
       ]}
-      finalTitle="Пришлите изображения проекта"
+      finalTitle="Отправьте изображения проекта"
       finalDescription="Оставьте контакты и приложите материалы по дому. Предложим визуальную концепцию, состав изображений и рассчитаем стоимость работы."
       ctaLabel="Рассчитать стоимость"
     />

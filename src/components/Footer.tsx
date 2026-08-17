@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Mail, MessageCircle, Send } from "lucide-react";
 import logoColor from "@/assets/logo-mnogo-mesta.png";
+import { FRAME_VS_MODULAR_ARTICLE_PATH } from "@/data/articles";
 import { regions } from "@/data/regions";
 import ThemeToggle from "@/components/ThemeToggle";
 import { sortGeoItems } from "@/lib/geoOrder";
@@ -41,9 +42,9 @@ const buyerLinks: FooterItem[] = [
 
 const materialLinks: FooterItem[] = [
   { label: "Журнал", path: "/articles" },
-  { label: "Как выбрать дом", path: "/articles#kak-vybrat-modulnyy-dom" },
-  { label: "Из чего складывается цена", path: "/articles#iz-chego-skladyvaetsya-tsena" },
-  { label: "Каркасный или модульный дом", path: "/articles#karkasnyy-ili-modulnyy-dom" },
+  { label: "Как выбрать дом", path: "/articles/kak-vybrat-modulnyy-dom" },
+  { label: "Из чего складывается цена", path: "/articles/iz-chego-skladyvaetsya-tsena" },
+  { label: "Каркасный или модульный дом", path: FRAME_VS_MODULAR_ARTICLE_PATH },
 ];
 
 const manufacturerLinks: FooterItem[] = [

@@ -7,6 +7,7 @@ import regionsScreenshot from "@/assets/partner-screens/regions.png";
 import { partnerCommercialTerms } from "@/data/partnerProgram";
 import type { MakerSummary, Project } from "@/data/projects";
 import { getCityPrepositionalName } from "@/lib/cityDisplay";
+import { cn } from "@/lib/utils";
 
 const largeVisualClassName = "xl:flex xl:aspect-square xl:items-center";
 const heroVisualClassName = "xl:flex xl:aspect-[16/10] xl:items-center";
@@ -28,13 +29,16 @@ type PlatformScreenshotProps = {
 };
 
 const PlatformScreenshot = ({ src, alt, layout = "feature" }: PlatformScreenshotProps) => (
-  <div className={`overflow-hidden rounded-[3px] bg-[#eef0f4] p-3 sm:p-5 md:p-7 dark:bg-secondary ${layout === "hero" ? "aspect-square sm:aspect-[16/10]" : "aspect-square"}`}>
+  <div className={`partner-platform-screenshot flex items-center justify-center overflow-hidden rounded-[3px] bg-[#eef0f4] p-3 sm:p-5 md:p-7 dark:bg-secondary ${layout === "hero" ? "aspect-square sm:aspect-[16/10]" : "aspect-square"}`}>
     <img
       src={src}
       alt={alt}
       width={4486}
       height={2648}
-      className={`h-full w-full rounded-[3px] object-cover ${layout === "hero" ? "object-center" : "object-left-top"}`}
+      className={cn(
+        "partner-platform-screenshot-image flex-none rounded-[3px] object-contain object-center",
+        layout === "hero" ? "h-full w-full" : "h-[82%] w-auto max-w-none",
+      )}
       loading="lazy"
       decoding="async"
       draggable={false}
