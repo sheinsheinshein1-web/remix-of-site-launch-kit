@@ -5,62 +5,17 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import PartnerApplicationForm from "@/components/PartnerApplicationForm";
+import VerifiedBadge from "@/components/VerifiedBadge";
 import partnerHeroImg from "@/assets/partner-hero-illustration.webp";
+import { partnerBenefits, partnerPlans, partnerSteps } from "@/data/partnerProgram";
 
-const features = [
-  { icon: ShieldCheck, title: "Бейдж «Проверено»", desc: "На карточке компании и каждом проекте" },
-  { icon: TrendingUp, title: "Приоритет в выдаче", desc: "Выше в каталоге и поиске по региону" },
-  { icon: LayoutGrid, title: "Страница компании", desc: "Портфолио, галерея, отзывы и рейтинг" },
-  { icon: Sparkles, title: "Оформление карточек", desc: "Единый стиль и аккуратная типографика" },
-  { icon: MapPin, title: "География работ", desc: "Жители ваших регионов видят первыми" },
-  { icon: Search, title: "Индексация в поиске", desc: "Покупатели находят вас через Google и Яндекс" },
-];
-
-type Plan = {
-  name: string;
-  price: string;
-  priceHint: string;
-  period: string;
-  features: string[];
-  popular?: boolean;
-};
-
-const plans: Plan[] = [
-  {
-    name: "База",
-    price: "19 000 ₽",
-    priceHint: "от",
-    period: "на 3 месяца",
-    features: ["Бейдж «Проверено»", "До 5 проектов в каталоге", "2 региона работы", "Страница с отзывами"],
-  },
-  {
-    name: "Рост",
-    price: "39 000 ₽",
-    priceHint: "от",
-    period: "на 3 месяца",
-    popular: true,
-    features: ["Всё из «Базы»", "Приоритет в выдаче", "До 20 проектов", "5 регионов работы", "Фото и тексты от редакции"],
-  },
-  {
-    name: "Макс",
-    price: "79 000 ₽",
-    priceHint: "от",
-    period: "на 3 месяца",
-    features: [
-      "Всё из «Роста»",
-      "Топ выдачи в регионе",
-      "Без лимита по проектам",
-      "Персональный сайт компании",
-      "Персональный менеджер",
-    ],
-  },
-];
-
-const steps = [
-  { num: "01", title: "Оставляете заявку", desc: "Контакты, ИНН и ссылка на сайт." },
-  { num: "02", title: "Мы проверяем вручную", desc: "Сверяем реквизиты, обсуждаем формат." },
-  { num: "03", title: "Запускаем витрину", desc: "Оплата, оформление, бейдж «Проверено»." },
-];
+const benefitIcons = [LayoutGrid, MapPin, ShieldCheck, Search, TrendingUp, Sparkles];
+const features = partnerBenefits.map((feature, index) => ({
+  ...feature,
+  icon: benefitIcons[index] ?? LayoutGrid,
+}));
+const plans = partnerPlans;
+const steps = partnerSteps;
 
 interface PartnerDrawerProps {
   children?: React.ReactNode;
@@ -110,9 +65,7 @@ const PartnerContent = ({ onClose, onStartChat }: { onClose: () => void; onStart
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-1.5 mb-0.5 flex-wrap">
               <span className="text-[13px] font-semibold text-foreground">Sherwood Home</span>
-              <span className="inline-flex items-center gap-1 bg-primary/10 text-primary text-[10px] font-bold px-1.5 py-0.5 rounded-md">
-                <ShieldCheck className="w-2.5 h-2.5" /> Проверено
-              </span>
+              <VerifiedBadge />
             </div>
             <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
               <Star className="w-2.5 h-2.5 fill-current text-foreground" />
@@ -149,7 +102,7 @@ const PartnerContent = ({ onClose, onStartChat }: { onClose: () => void; onStart
     <div className="bg-background rounded-2xl p-4">
       <p className="text-[11px] font-bold tracking-wider uppercase text-primary mb-1.5">Форматы участия</p>
       <h2 className="text-[20px] font-extrabold text-foreground leading-tight mb-4 tracking-tight">
-        Три тарифа, разные уровни присутствия
+        Бесплатное размещение или работа за результат
       </h2>
       <div className="flex flex-col gap-2.5">
         {plans.map((p) => {
@@ -206,7 +159,7 @@ const PartnerContent = ({ onClose, onStartChat }: { onClose: () => void; onStart
         })}
       </div>
       <p className="text-[11px] text-muted-foreground text-center mt-4 leading-relaxed">
-        Продление — в любой момент. Переход на другой тариф — без потери оставшегося периода.
+        Комиссию и порядок учёта сделок закрепляем в договоре до запуска.
       </p>
     </div>
 
@@ -238,7 +191,7 @@ const PartnerContent = ({ onClose, onStartChat }: { onClose: () => void; onStart
         Готовы стать партнёром?
       </h2>
       <p className="text-[13px] text-muted-foreground mb-5">
-        Оплата после подтверждения. Менеджер свяжется в течение дня.
+        Базовое размещение бесплатно. Менеджер свяжется в течение дня.
       </p>
       <button
         onClick={onStartChat}

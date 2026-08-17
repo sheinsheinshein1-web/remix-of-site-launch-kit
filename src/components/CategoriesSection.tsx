@@ -10,8 +10,19 @@ import catBarrelBath from "@/assets/cat-barrel-bath.webp";
 import catPartner from "@/assets/partner-icon.webp";
 import catGuide from "@/assets/cat-guide.webp";
 import PartnerDrawer from "@/components/PartnerDrawer";
+import { CATALOG_PATH } from "@/lib/siteRoutes";
 
-const categories = [
+type Category = {
+  name: string;
+  count: string;
+  img: string;
+  imgClass?: string;
+  isAll?: boolean;
+  isPartner?: boolean;
+  tag?: "soon";
+};
+
+const categories: Category[] = [
   { name: "Все", count: "214", img: catAll, isAll: true },
   { name: "Дома", count: "84", img: catHouses, imgClass: "bottom-[-28px] right-[-32px] md:right-[-60px]" },
   { name: "Глэмпинг", count: "31", img: catGlamping },
@@ -24,22 +35,22 @@ const categories = [
   { name: "Бытовки", count: "14", img: catShed, tag: "soon" as const },
 ];
 
-const CategoryCard = ({ cat, onClick }: { cat: typeof categories[number]; onClick?: () => void }) => (
+const CategoryCard = ({ cat, onClick }: { cat: Category; onClick?: () => void }) => (
   <button
     onClick={onClick}
-    className={`shrink-0 group h-[95px] md:w-auto md:h-auto md:aspect-[5/3] rounded-2xl p-2.5 md:p-3 flex flex-col items-start text-left transition-colors overflow-hidden relative bg-secondary hover:border-primary ${(cat as any).tag ? "opacity-45 grayscale pointer-events-auto cursor-default" : ""}`}
+    className={`shrink-0 group h-[95px] md:w-auto md:h-auto md:aspect-[5/3] rounded-2xl p-2.5 md:p-3 flex flex-col items-start text-left transition-colors overflow-hidden relative bg-secondary hover:border-primary ${cat.tag ? "opacity-45 grayscale pointer-events-auto cursor-default" : ""}`}
   >
     <span className="text-[13px] md:text-base font-normal transition-colors z-10 max-w-[85%] leading-tight text-foreground group-hover:text-primary whitespace-pre-line">
       {cat.name}
     </span>
-    {(cat as any).tag && (
+    {cat.tag && (
       <span className="mt-1 text-[10px] font-medium text-muted-foreground bg-white/80 rounded-full px-2 py-0.5 z-10">скоро</span>
     )}
     <img
       src={cat.img}
       alt={cat.name}
       loading="lazy"
-      className={`absolute w-[120px] h-[120px] md:w-[200px] md:h-[200px] object-contain ${(cat as any).imgClass || "bottom-[-28px] right-[-22px]"}`}
+      className={`absolute w-[120px] h-[120px] md:w-[200px] md:h-[200px] object-contain ${cat.imgClass || "bottom-[-28px] right-[-22px]"}`}
     />
   </button>
 );
@@ -52,7 +63,7 @@ const CategoriesSection = () => {
       <div className="md:py-5">
         <div className="-mx-3 px-3 md:mx-0 md:px-0 grid grid-rows-2 grid-flow-col auto-cols-[calc(36vw-8px)] gap-2 overflow-x-auto scrollbar-hide md:grid-rows-none md:grid-flow-row md:auto-cols-auto md:grid-cols-5 md:gap-4">
           {categories.map((cat) => {
-            if ((cat as any).isPartner) {
+            if (cat.isPartner) {
               return (
                 <CategoryCard
                   key={cat.name}
@@ -66,8 +77,8 @@ const CategoriesSection = () => {
                 key={cat.name}
                 cat={cat}
                 onClick={() => {
-                  if ((cat as any).tag) return;
-                  cat.isAll ? navigate("/categories") : navigate("/catalog");
+                  if (cat.tag) return;
+                  navigate(cat.isAll ? "/categories" : CATALOG_PATH);
                 }}
               />
             );

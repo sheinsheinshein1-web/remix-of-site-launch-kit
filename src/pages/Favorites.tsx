@@ -1,380 +1,222 @@
-import { useState, useEffect } from "react";
-import { formatSpecs } from "@/lib/utils";
-import { useNavigate } from "react-router-dom";
-import { navigateWithTransition } from "@/lib/viewTransition";
-import { Heart, Check, MoreHorizontal, Grid2X2, List, Calculator, Search, ArrowUpDown, SlidersHorizontal, Camera, Truck, Maximize, BedDouble, Bath, ChevronDown, Layers } from "lucide-react";
-import SwipeableGallery from "@/components/SwipeableGallery";
-import MobileTabBar from "@/components/MobileTabBar";
+import { useMemo, useState } from "react";
+import { ChevronDown, Heart, Search, X } from "lucide-react";
+import { Link } from "react-router-dom";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { useIsMobile } from "@/hooks/use-mobile";
-import { useFavorites } from "@/contexts/FavoritesContext";
-import { Drawer, DrawerContent } from "@/components/ui/drawer";
-import Seo from "@/components/Seo";
+import ManufacturerListItem from "@/components/ManufacturerListItem";
 import ProjectCard from "@/components/ProjectCard";
+import Seo from "@/components/Seo";
+import SiteBreadcrumbs, { siteBreadcrumbPageContainerClassName } from "@/components/SiteBreadcrumbs";
+import { useFavorites } from "@/contexts/FavoritesContext";
+import { makersById, projects } from "@/data/projects";
+import { CATALOG_PATH } from "@/lib/siteRoutes";
 
-import house1 from "@/assets/house-1.webp";
-import house2 from "@/assets/house-2.webp";
-import house3 from "@/assets/house-3.webp";
-import heart3d from "@/assets/heart-3d.webp";
-import {
-  projectGalleries,
-  projectFits,
-  projectBlurBackground,
-  projectObjectPositions,
-  projectEdgeBleed,
-  projects as allProjects,
-} from "@/data/projects";
+type SortValue = "saved" | "popular" | "price-asc" | "price-desc" | "area";
 
-const likesById: Record<number, number> = Object.fromEntries(
-  allProjects.map((p) => [p.id, p.likes])
-);
-// +1 — пользователь сам лайкнул проект, раз он в избранном
-const getLikes = (id: number, fallback: number) =>
-  (likesById[id] ?? fallback ?? 0) + 1;
-
-function getProjectImages(mainImage: string, id: number): string[] {
-  return projectGalleries[id] ?? [mainImage];
-}
-
-const favoriteProjects = [
-  { id: 1, badge: "Дом", maker: "СибМодуль", makerFull: "СибМодуль · Новосибирск", name: "Тайга 72", price: "2 450 000 ₽", area: "72 м²", term: "4–6 нед.", type: "Жилой дом", purpose: "ИЖС / СНТ", image: house1 },
-  { id: 2, badge: "Глэмпинг", maker: "ГлэмпингСтрой", makerFull: "ГлэмпингСтрой · Сочи", name: "Купол Альпика", price: "1 200 000 ₽", area: "36 м²", term: "1 нед.", type: "Глэмпинг", purpose: "Коммерч.", image: house3 },
-  { id: 3, badge: "Баня", maker: "УралДом", makerFull: "УралДом · Екатеринбург", name: "Кедр 24", price: "890 000 ₽", area: "24 м²", term: "2 нед.", type: "Баня", purpose: "СНТ / ИЖС", image: house2 },
-  { id: 4, badge: "Дом", maker: "МодульХаус", makerFull: "МодульХаус · Москва", name: "Loft 48", price: "1 750 000 ₽", area: "48 м²", term: "3–5 нед.", type: "Жилой дом", purpose: "ИЖС", image: house1 },
-  { id: 5, badge: "Корпус", maker: "ДомКомплект", makerFull: "ДомКомплект · Казань", name: "Гостевой G-120", price: "3 900 000 ₽", area: "120 м²", term: "6–8 нед.", type: "Гостевой корпус", purpose: "Коммерч.", image: house2 },
+const sortOptions: Array<{ value: SortValue; label: string }> = [
+  { value: "saved", label: "Недавно сохранённые" },
+  { value: "popular", label: "Популярные" },
+  { value: "price-asc", label: "Сначала дешевле" },
+  { value: "price-desc", label: "Сначала дороже" },
+  { value: "area", label: "По площади" },
 ];
 
-const savedCalcs = [
-  {
-    id: 1, name: "Тайга 72 · МО", date: "22 марта 2026",
-    rows: [
-      { label: "Проект и производство", value: "1 200 000 ₽" },
-      { label: "Доставка", value: "180 000 ₽" },
-      { label: "Фундамент (сваи)", value: "120 000 ₽" },
-      { label: "Монтаж", value: "150 000 ₽" },
-    ],
-    total: "1 650 000 ₽",
-  },
-  {
-    id: 2, name: "Кедр 24 · Краснодар", date: "20 марта 2026",
-    rows: [
-      { label: "Проект и производство", value: "890 000 ₽" },
-      { label: "Доставка", value: "220 000 ₽" },
-      { label: "Фундамент (лента)", value: "95 000 ₽" },
-      { label: "Монтаж", value: "45 000 ₽" },
-    ],
-    total: "1 250 000 ₽",
-  },
-];
-
-type TabKey = "projects" | "compare" | "calcs";
-
-const tabs: { key: TabKey; label: string; count: number }[] = [
-  { key: "projects", label: "Проекты", count: 5 },
-  { key: "compare", label: "Сравнение", count: 3 },
-  { key: "calcs", label: "Расчёты", count: 2 },
-];
-
-const GridIcon = ({ active }: { active: boolean }) => (
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-    <rect x="0" y="0" width="6" height="6" rx="1.5" fill={active ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))"} />
-    <rect x="8" y="0" width="6" height="6" rx="1.5" fill={active ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))"} />
-    <rect x="0" y="8" width="6" height="6" rx="1.5" fill={active ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))"} />
-    <rect x="8" y="8" width="6" height="6" rx="1.5" fill={active ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))"} />
-  </svg>
-);
-
-const ListIcon = ({ active }: { active: boolean }) => (
-  <svg width="16" height="14" viewBox="0 0 16 14" fill="none">
-    <rect x="0" y="0" width="16" height="4" rx="1.5" fill={active ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))"} />
-    <rect x="0" y="5" width="16" height="4" rx="1.5" fill={active ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))"} />
-    <rect x="0" y="10" width="16" height="4" rx="1.5" fill={active ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))"} />
-  </svg>
-);
-
-/* PROJECT CARD — единый компонент @/components/ProjectCard, импорт ниже */
-
-/* ─── CALC CARD ─── */
-const CalcCard = ({ calc }: { calc: typeof savedCalcs[0] }) => (
-  <div className="border border-border rounded-[14px] p-5">
-    <div className="flex justify-between items-start mb-3.5">
-      <div>
-        <p className="text-[15px] font-medium text-foreground">{calc.name}</p>
-        <p className="text-xs font-light text-muted-foreground mt-0.5">{calc.date}</p>
-      </div>
-      <MoreHorizontal className="w-5 h-5 text-muted-foreground cursor-pointer" strokeWidth={1.5} />
-    </div>
-    <div className="flex flex-col gap-[7px] mb-3.5">
-      {calc.rows.map((row) => (
-        <div key={row.label} className="flex justify-between">
-          <span className="text-[13px] font-light text-muted-foreground">{row.label}</span>
-          <span className="text-[13px] font-light text-foreground">{row.value}</span>
-        </div>
-      ))}
-    </div>
-    <div className="flex justify-between pt-3 border-t border-border mb-3.5">
-      <span className="text-sm font-medium text-foreground">Итого под ключ</span>
-      <span className="text-base font-medium text-primary">{calc.total}</span>
-    </div>
-    <div className="flex gap-2">
-      <button className="flex-1 text-[13px] font-light text-muted-foreground border border-border rounded-lg py-2.5 hover:bg-secondary transition-colors">Удалить</button>
-      <button className="flex-1 text-[13px] font-normal text-primary-foreground bg-primary rounded-lg py-2.5 hover:opacity-90 transition-opacity">Отправить производителю</button>
-    </div>
-  </div>
-);
-
-const favChips = ["Все", "Дома", "Бани", "Глэмпинг", "Гостевые"];
+const getNumber = (value: string) => Number(value.replace(/[^\d]/g, "")) || 0;
+const getPrice = (value: string) => {
+  const price = getNumber(value);
+  return price > 0 ? price : null;
+};
 
 const Favorites = () => {
-  const [activeTab, setActiveTab] = useState<TabKey>("projects");
-  const [compareSelected, setCompareSelected] = useState<Set<number>>(new Set([1, 2]));
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [sortOrder, setSortOrder] = useState<"date" | "price_asc" | "price_desc">("date");
-  const [activeChip, setActiveChip] = useState("Все");
-  const [collapsed, setCollapsed] = useState(false);
-  const [sortOpen, setSortOpen] = useState(false);
-  const [sortBy, setSortBy] = useState("popular");
+  const { favoriteItems, favoriteMakerItems, favoriteCount } = useFavorites();
+  const [query, setQuery] = useState("");
+  const [sortBy, setSortBy] = useState<SortValue>("saved");
 
-  const sortOptions = [
-    { value: "popular", label: "Популярные" },
-    { value: "new", label: "Недавно добавленные" },
-    { value: "cheap", label: "Дешевле" },
-    { value: "expensive", label: "Дороже" },
-    { value: "area_asc", label: "По площади м², от меньшего" },
-    { value: "area_desc", label: "По площади м², от большего" },
-  ];
-  const isMobile = useIsMobile();
-  const navigate = useNavigate();
-  const { favoriteItems, toggleFavorite } = useFavorites();
+  const favoriteProjects = useMemo(() => {
+    const normalizedQuery = query.trim().toLocaleLowerCase("ru");
+    const savedOrder = new Map(favoriteItems.map((item, index) => [item.id, index]));
+    const favoriteIds = new Set(favoriteItems.map((item) => item.id));
 
-  useEffect(() => {
-    let lastY = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      setCollapsed(y > 60 && y > lastY);
-      lastY = y;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const filtered = projects.filter((project) => {
+      if (!favoriteIds.has(project.id)) return false;
+      if (!normalizedQuery) return true;
 
-  const toggleCompare = (id: number) => {
-    setCompareSelected((prev) => {
-      const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
-      return next;
+      return [
+        project.name,
+        project.maker.name,
+        project.city,
+        project.badge,
+        project.area,
+      ].some((value) => value.toLocaleLowerCase("ru").includes(normalizedQuery));
     });
-  };
 
-  /* ═══════ MOBILE ═══════ */
-  if (isMobile) {
-    return (
-      <div className="min-h-screen bg-muted font-sans flex flex-col">
-        <Seo title="Избранное — многоместа.рф" description="Сохранённые проекты модульных и префаб домов." canonicalPath="/favorites" noIndex />
-        {/* Search bar — catalog-style header */}
-        <div className="sticky top-0 z-40">
-          <div className="bg-background rounded-b-2xl shadow-sm pt-[env(safe-area-inset-top)]">
-            <div className="px-4 pt-5 pb-3 flex items-center gap-3">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                <input
-                  type="text"
-                  placeholder="Найти в избранном"
-                  className="w-full h-12 pl-9 pr-4 rounded-xl bg-secondary text-[16px] font-light text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/30"
-                />
-              </div>
-            </div>
+    return filtered.sort((a, b) => {
+      if (sortBy === "popular") return b.likes - a.likes || a.name.localeCompare(b.name, "ru");
+      if (sortBy === "price-asc") return (getPrice(a.price) ?? Number.POSITIVE_INFINITY) - (getPrice(b.price) ?? Number.POSITIVE_INFINITY) || a.name.localeCompare(b.name, "ru");
+      if (sortBy === "price-desc") return (getPrice(b.price) ?? Number.NEGATIVE_INFINITY) - (getPrice(a.price) ?? Number.NEGATIVE_INFINITY) || a.name.localeCompare(b.name, "ru");
+      if (sortBy === "area") return (b.area_m2 ?? getNumber(b.area)) - (a.area_m2 ?? getNumber(a.area));
+      return (savedOrder.get(b.id) ?? 0) - (savedOrder.get(a.id) ?? 0);
+    });
+  }, [favoriteItems, query, sortBy]);
 
-            {/* View toggle, sort & chips */}
-            <div className={`transition-all duration-300 overflow-hidden ${collapsed ? "max-h-0 pb-0" : "max-h-[60px] pb-2.5"}`}>
-              <div className="px-4 flex items-center gap-2 overflow-x-auto scrollbar-hide">
-              <div className="flex bg-secondary rounded-xl p-1 gap-0.5 h-10 shrink-0">
-                <button
-                  onClick={() => setViewMode("list")}
-                  className={`w-[32px] rounded-lg flex items-center justify-center ${viewMode === "list" ? "bg-background" : ""}`}
-                >
-                  <ListIcon active={viewMode === "list"} />
-                </button>
-                <button
-                  onClick={() => setViewMode("grid")}
-                  className={`w-[32px] rounded-lg flex items-center justify-center ${viewMode === "grid" ? "bg-background" : ""}`}
-                >
-                  <GridIcon active={viewMode === "grid"} />
-                </button>
-              </div>
-              <div className="flex-1" />
-              <button
-                onClick={() => setSortOpen(true)}
-                className="flex items-center justify-center bg-secondary rounded-xl w-10 h-10 shrink-0"
-              >
-                <ArrowUpDown className="w-5 h-5 text-muted-foreground" strokeWidth={2.5} />
-              </button>
-            </div>
-            </div>
-          </div>
-        </div>
+  const favoriteManufacturers = useMemo(() => {
+    const normalizedQuery = query.trim().toLocaleLowerCase("ru");
+    const savedOrder = new Map(favoriteMakerItems.map((makerId, index) => [makerId, index]));
 
-        {favoriteItems.length === 0 ? (
-          <div className="bg-card rounded-t-2xl mt-2 flex-1 flex flex-col items-center text-center px-6 pt-20 pb-32">
-            {/* 3D heart illustration */}
-            <div className="w-44 h-44 mb-4">
-              <img src={heart3d} alt="" className="w-full h-full object-contain" loading="eager" decoding="sync" fetchPriority="high" />
-            </div>
-            <h2 className="text-lg font-semibold text-foreground mb-2">Здесь пока пусто</h2>
-            <p className="text-[13px] text-muted-foreground leading-relaxed max-w-[260px]">
-              Нажмите на сердечко в карточке проекта — и он сохранится сюда. Так вы сможете быстро вернуться к понравившимся вариантам.
-            </p>
-          </div>
-        ) : (
-          <div className="mt-2 flex flex-col flex-1">
+    return favoriteMakerItems
+      .map((makerId) => makersById[makerId])
+      .filter(Boolean)
+      .filter((maker) => !normalizedQuery || `${maker.name} ${maker.city} ${maker.technology}`.toLocaleLowerCase("ru").includes(normalizedQuery))
+      .sort((first, second) => (savedOrder.get(second.id) ?? 0) - (savedOrder.get(first.id) ?? 0));
+  }, [favoriteMakerItems, query]);
 
-            {/* Cards */}
-            <div className={`bg-background rounded-2xl px-2 py-3 flex-1 pb-[calc(140px+env(safe-area-inset-bottom))] ${viewMode === "grid" ? "" : ""}`}>
-            <div className={viewMode === "grid" ? "grid grid-cols-2 gap-x-[2px] gap-y-[6px]" : "flex flex-col gap-[10px]"}>
-              {favoriteItems.map((item) => (
-                <ProjectCard key={item.id} projectId={item.id} height="aspect-[3/4] h-auto" />
-              ))}
-            </div>
-            </div>
-          </div>
-        )}
+  const visibleFavoritesCount = favoriteProjects.length + favoriteManufacturers.length;
 
-        {/* Sort Drawer */}
-        <Drawer open={sortOpen} onOpenChange={setSortOpen}>
-          <DrawerContent className="mx-0 rounded-t-[20px] p-0">
-            <div className="px-5 pt-5 pb-2">
-              <h3 className="text-[20px] font-semibold text-foreground">Показать сначала</h3>
-            </div>
-            <div className="bg-secondary rounded-xl mx-4 mb-6 divide-y divide-border/50">
-              {sortOptions.map((option) => (
-                <button
-                  key={option.value}
-                  onClick={() => { setSortBy(option.value); setSortOpen(false); }}
-                  className="w-full flex items-center gap-3 px-4 py-4 text-left"
-                >
-                  <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${sortBy === option.value ? "border-primary" : "border-muted-foreground/30"}`}>
-                    {sortBy === option.value && <div className="w-3 h-3 rounded-full bg-primary" />}
-                  </div>
-                  <span className="text-[16px] text-foreground">{option.label}</span>
-                </button>
-              ))}
-            </div>
-          </DrawerContent>
-        </Drawer>
-
-        <MobileTabBar />
-      </div>
-    );
-  }
-
-  /* ═══════ DESKTOP ═══════ */
   return (
     <div className="min-h-screen bg-secondary font-sans">
-      <Seo title="Избранное — многоместа.рф" description="Сохранённые проекты модульных и префаб домов." canonicalPath="/favorites" noIndex />
-      <Header />
-      <div className="pt-[108px] pb-6">
-        <div className="max-w-[1400px] mx-auto bg-background rounded-b-2xl">
-          <div className="px-8 pt-8 pb-6">
-          {/* Sort row */}
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <span className="text-[14px] font-medium text-foreground">{favoriteItems.length > 0 ? `${favoriteItems.length} проектов` : "Нет проектов"}</span>
-              <div className="relative inline-flex items-center gap-1 cursor-pointer bg-secondary rounded-xl px-3 py-1.5">
-                <span className="text-[13px] font-medium text-foreground">
-                  {sortOptions.find(o => o.value === sortBy)?.label ?? "Сортировка"}
-                </span>
-                <ChevronDown className="w-4 h-4 text-foreground" strokeWidth={2} />
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                  aria-label="Сортировка"
-                >
-                  {sortOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
-                </select>
-              </div>
-            </div>
-            <div className="flex bg-secondary rounded-xl p-0.5 gap-0.5">
-              <button onClick={() => setViewMode("grid")} className={`w-8 h-7 rounded-lg flex items-center justify-center ${viewMode === "grid" ? "bg-background" : ""}`}>
-                <GridIcon active={viewMode === "grid"} />
-              </button>
-              <button onClick={() => setViewMode("list")} className={`w-8 h-7 rounded-lg flex items-center justify-center ${viewMode === "list" ? "bg-background" : ""}`}>
-                <ListIcon active={viewMode === "list"} />
-              </button>
+      <Seo
+        title="Избранное — многоместа.рф"
+        description="Сохранённые проекты модульных домов и производители."
+        canonicalPath="/favorites"
+        noIndex
+      />
+
+      <main className="bg-background">
+        <Header variant="home" />
+
+        <div className={`${siteBreadcrumbPageContainerClassName} pb-14 sm:pb-20`}>
+          <SiteBreadcrumbs
+            items={[{ label: "Главная", to: "/" }, { label: "Избранное" }]}
+          />
+
+          <div>
+            <div className="max-w-[720px]">
+              <h1 className="text-[30px] font-semibold leading-[1.08] tracking-[-0.025em] text-[#342d27] dark:text-foreground md:text-[46px]">
+                Избранное
+              </h1>
+              <p className="mt-4 text-[15px] leading-relaxed text-[#342d27]/65 dark:text-muted-foreground md:max-w-[680px] md:text-[17px]">
+                Сохранённые проекты и производители, к которым можно вернуться перед выбором дома.
+              </p>
             </div>
           </div>
 
-          {favoriteItems.length === 0 ? (
-            <div className="bg-background rounded-2xl flex flex-col items-center text-center px-6 py-20">
-              <div className="w-44 h-44 mb-4">
-                <img src={heart3d} alt="" className="w-full h-full object-contain" loading="eager" decoding="sync" />
-              </div>
-              <h2 className="text-lg font-semibold text-foreground mb-2">Здесь пока пусто</h2>
-              <p className="text-[13px] text-muted-foreground leading-relaxed max-w-[300px]">
-                Нажмите на сердечко в карточке проекта — и он сохранится сюда.
+          {favoriteCount === 0 ? (
+            <section className="flex min-h-[430px] flex-col items-start justify-center py-14 md:min-h-[520px] md:items-center md:text-center" aria-labelledby="favorites-empty-heading">
+              <Heart className="h-9 w-9 text-[#342d27]/25" strokeWidth={1.4} aria-hidden />
+              <h2 id="favorites-empty-heading" className="mt-6 text-[24px] font-semibold tracking-[-0.02em] text-[#342d27] dark:text-foreground md:text-[30px]">
+                Пока ничего не сохранено
+              </h2>
+              <p className="mt-3 max-w-[480px] text-[15px] leading-relaxed text-muted-foreground md:text-[16px]">
+                Нажимайте на сердце в карточках проектов и производителей — всё выбранное появится здесь.
               </p>
-            </div>
-          ) : viewMode === "grid" ? (
-            <div className="grid grid-cols-3 gap-4">
-              {favoriteItems.map((item) => (
-                <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="cursor-pointer group bg-background rounded-2xl overflow-hidden">
-                  <SwipeableGallery images={getProjectImages(item.image, item.id)} fits={projectFits[item.id]} objectPositions={projectObjectPositions[item.id]} blurBackground={projectBlurBackground[item.id]} edgeBleed={projectEdgeBleed[item.id]} alt={item.name} height="h-[260px]">
-                    <div className="absolute top-2.5 right-2.5 z-10">
-                      <button
-                        onClick={(e) => { e.stopPropagation(); toggleFavorite(item); }}
-                        className="flex items-center gap-1 bg-foreground/40 backdrop-blur-md rounded-full px-2 py-[4px]"
-                      >
-                        <Heart className="w-3.5 h-3.5 fill-red-500 text-red-500" strokeWidth={1.5} />
-                        <span className="text-[11px] font-medium text-white">{getLikes(item.id, item.likes)}</span>
-                      </button>
-                    </div>
-                  </SwipeableGallery>
-                  <div className="px-[10px] pt-1 pb-1">
-                    <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{item.name}</h2>
-                    <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">от {item.price}</div>
-                    <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[3px]">
-                      <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{item.area}</span>
-                      <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{item.beds}</span>
-                      <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{item.baths}</span>
-                      <span className="inline-flex items-center gap-[3px]"><Layers className="w-3 h-3" strokeWidth={1.75} />{allProjects.find(p => p.id === item.id)?.floors ?? 1}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+              <Link
+                to={CATALOG_PATH}
+                className="mt-7 inline-flex min-h-12 items-center justify-center rounded-[3px] bg-primary px-6 text-[15px] font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              >
+                Смотреть проекты
+              </Link>
+            </section>
           ) : (
-            <div className="grid grid-cols-2 gap-4">
-              {favoriteItems.map((item) => (
-                <div key={item.id} data-project-id={item.id} onClick={(e) => navigateWithTransition(e, navigate, `/project/${item.id}`)} className="flex gap-4 cursor-pointer bg-background rounded-2xl overflow-hidden group">
-                  <div className="w-[220px] h-[180px] flex-shrink-0 relative overflow-hidden rounded-2xl">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" loading="lazy" />
-                    <div className="absolute top-2 right-2">
-                      <button
-                        onClick={(e) => { e.stopPropagation(); toggleFavorite(item); }}
-                        className="flex items-center gap-1 bg-foreground/40 backdrop-blur-md rounded-full px-2 py-[4px]"
-                      >
-                        <Heart className="w-3.5 h-3.5 fill-red-500 text-red-500" strokeWidth={1.5} />
-                        <span className="text-[11px] font-medium text-white">{getLikes(item.id, item.likes)}</span>
-                      </button>
-                    </div>
-                  </div>
-                  <div className="flex-1 py-2 pr-3 flex flex-col justify-center">
-                    <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{item.name}</h2>
-                    <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">от {item.price}</div>
-                    <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[3px]">
-                      <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{item.area}</span>
-                      <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{item.beds}</span>
-                      <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{item.baths}</span>
-                      <span className="inline-flex items-center gap-[3px]"><Layers className="w-3 h-3" strokeWidth={1.75} />{allProjects.find(p => p.id === item.id)?.floors ?? 1}</span>
-                    </div>
-                  </div>
+            <>
+              <div className={`mt-8 grid gap-3 pb-7 md:mt-10 md:gap-4 md:pb-8 ${favoriteItems.length > 0 ? "md:grid-cols-[minmax(260px,1fr)_260px]" : "md:grid-cols-1"}`}>
+                <label className="relative block">
+                  <span className="sr-only">Поиск в избранном</span>
+                  <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" strokeWidth={1.7} aria-hidden />
+                  <input
+                    type="search"
+                    value={query}
+                    onChange={(event) => setQuery(event.target.value)}
+                    placeholder="Проект или производитель"
+                    className="h-12 w-full rounded-[3px] border border-border bg-background pl-11 pr-11 text-[16px] text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/10 md:text-[15px]"
+                  />
+                  {query && (
+                    <button
+                      type="button"
+                      onClick={() => setQuery("")}
+                      className="absolute right-0 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-[3px] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+                      aria-label="Очистить поиск"
+                    >
+                      <X className="h-4 w-4" strokeWidth={1.7} aria-hidden />
+                    </button>
+                  )}
+                </label>
+
+                {favoriteItems.length > 0 && (
+                  <label className="relative block">
+                    <span className="sr-only">Сортировка избранных проектов</span>
+                    <select
+                      value={sortBy}
+                      onChange={(event) => setSortBy(event.target.value as SortValue)}
+                      className="h-12 w-full cursor-pointer appearance-none rounded-[3px] border border-border bg-background pl-4 pr-12 text-[15px] text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/10"
+                    >
+                      {sortOptions.map((option) => (
+                        <option key={option.value} value={option.value}>{option.label}</option>
+                      ))}
+                    </select>
+                    <ChevronDown className="pointer-events-none absolute right-5 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground" strokeWidth={1.7} aria-hidden />
+                  </label>
+                )}
+              </div>
+
+              <div className="flex min-h-14 items-center justify-between py-4">
+                <p className="text-[13px] text-muted-foreground md:text-[14px]">
+                  Показано: <span className="font-medium text-foreground">{visibleFavoritesCount}</span>
+                </p>
+                {query && visibleFavoritesCount === 0 && (
+                  <button type="button" onClick={() => setQuery("")} className="min-h-11 text-[14px] font-medium text-primary transition-colors hover:text-primary/75">
+                    Очистить поиск
+                  </button>
+                )}
+              </div>
+
+              {visibleFavoritesCount > 0 ? (
+                <div className="space-y-12 md:space-y-16">
+                  {favoriteProjects.length > 0 && (
+                    <section aria-labelledby="favorite-projects-heading">
+                      <h2 id="favorite-projects-heading" className="mb-6 text-[22px] font-semibold tracking-[-0.015em] text-foreground md:text-[28px]">
+                        Проекты
+                      </h2>
+                      <div className="grid grid-cols-2 gap-x-2 gap-y-8 sm:gap-x-4 md:gap-y-10">
+                        {favoriteProjects.map((project) => (
+                          <ProjectCard
+                            key={project.id}
+                            projectId={project.id}
+                            height="aspect-[4/3] h-auto md:aspect-[5/4]"
+                          />
+                        ))}
+                      </div>
+                    </section>
+                  )}
+
+                  {favoriteManufacturers.length > 0 && (
+                    <section aria-labelledby="favorite-manufacturers-heading">
+                      <h2 id="favorite-manufacturers-heading" className="mb-3 text-[22px] font-semibold tracking-[-0.015em] text-foreground md:mb-4 md:text-[28px]">
+                        Производители
+                      </h2>
+                      <div className="grid sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3 lg:gap-x-10">
+                        {favoriteManufacturers.map((maker) => (
+                          <ManufacturerListItem key={maker.id} makerId={maker.id} />
+                        ))}
+                      </div>
+                    </section>
+                  )}
                 </div>
-              ))}
-            </div>
+              ) : (
+                <section className="flex min-h-[340px] flex-col items-start justify-center py-12" aria-labelledby="favorites-search-empty-heading">
+                  <h2 id="favorites-search-empty-heading" className="text-[22px] font-semibold tracking-[-0.015em] text-foreground md:text-[26px]">
+                    Ничего не найдено
+                  </h2>
+                  <p className="mt-2 max-w-[440px] text-[15px] leading-relaxed text-muted-foreground">
+                    Попробуйте изменить название проекта или производителя.
+                  </p>
+                </section>
+              )}
+            </>
           )}
-          </div>
         </div>
-      </div>
+      </main>
+
+      <Footer />
     </div>
   );
 };

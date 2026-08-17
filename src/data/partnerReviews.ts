@@ -48,10 +48,6 @@ export const PARTNER_REVIEWS: Record<string, PartnerReviewTemplate[]> = {
   ],
 };
 
-export const PARTNER_REVIEW_TOTALS: Record<string, number> = {
-  bygge: 18,
-};
-
 export const formatReviewCount = (count: number) => {
   const lastTwo = count % 100;
   const lastOne = count % 10;
@@ -66,7 +62,7 @@ export const getPartnerReviews = (makerId?: string) =>
 
 export const getPartnerReviewSummary = (makerId?: string) => {
   const reviews = getPartnerReviews(makerId);
-  const totalCount = makerId ? PARTNER_REVIEW_TOTALS[makerId] ?? reviews.length : 0;
+  const totalCount = reviews.length;
 
   if (reviews.length === 0 || totalCount === 0) {
     return {

@@ -3,11 +3,18 @@ import path from "node:path";
 import sharp from "sharp";
 
 const root = process.cwd();
+const generatorPath = new URL(import.meta.url);
 const projectsPath = path.join(root, "src/data/projects.ts");
 const regionalPath = path.join(root, "src/data/regionalBatchProjects.ts");
 const outPath = path.join(root, "src/data/projectThumbs.ts");
 const projectsSource = fs.readFileSync(projectsPath, "utf8");
 const regionalSource = fs.readFileSync(regionalPath, "utf8");
+
+// Карточка на главной занимает до трети широкого экрана, а на мобильном —
+// почти всю ширину. 640 px недостаточно для Retina/HiDPI: браузер растягивал
+// миниатюры и даже качественные исходники выглядели размытыми.
+const CARD_THUMB_WIDTH = 1200;
+const CARD_THUMB_QUALITY = 84;
 
 const importByVar = new Map();
 for (const match of projectsSource.matchAll(/^import\s+(\w+)\s+from\s+"@\/assets\/([^"]+)";/gm)) {
@@ -62,11 +69,15 @@ for (const ref of uniqueRefs) {
   const thumbAbs = path.join(parsed.dir, `${parsed.name}__thumb.webp`);
   before += fs.statSync(sourceAbs).size;
 
-  if (!fs.existsSync(thumbAbs) || fs.statSync(thumbAbs).mtimeMs < fs.statSync(sourceAbs).mtimeMs) {
+  const thumbNeedsUpdate = !fs.existsSync(thumbAbs)
+    || fs.statSync(thumbAbs).mtimeMs < fs.statSync(sourceAbs).mtimeMs
+    || fs.statSync(thumbAbs).mtimeMs < fs.statSync(generatorPath).mtimeMs;
+
+  if (thumbNeedsUpdate) {
     await sharp(sourceAbs)
       .rotate()
-      .resize({ width: 640, withoutEnlargement: true })
-      .webp({ quality: 72, effort: 5 })
+      .resize({ width: CARD_THUMB_WIDTH, withoutEnlargement: true })
+      .webp({ quality: CARD_THUMB_QUALITY, effort: 5 })
       .toFile(thumbAbs);
     generated += 1;
   } else {

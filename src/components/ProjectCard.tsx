@@ -2,25 +2,25 @@
  * Единая карточка проекта для каталога, ленты, главной и избранного.
  *
  * Принцип: карточка САМА читает все данные из `src/data/projects.ts` по `projectId`
- * (галерея, blur, fit, edgeBleed, лайки, цена, площадь, метро). Это гарантирует,
+ * (галерея, fit, лайки, цена, площадь, метро). Это гарантирует,
  * что любая правка вида или правил отображения автоматически применяется во всех
  * местах. НИКОГДА не передавай эти данные пропами — карточка всегда тянет их сама.
  *
  * Если нужно показать карточку проекта — используй ТОЛЬКО этот компонент.
  */
-import { Heart, Maximize, BedDouble, Bath, Layers } from "lucide-react";
+import { Heart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import SwipeableGallery from "@/components/SwipeableGallery";
 import { useFavorites } from "@/contexts/FavoritesContext";
+import { getProjectPath } from "@/lib/siteRoutes";
 import { projectThumbs } from "@/data/projectThumbs";
 import { isVerifiedMaker } from "@/lib/verifiedMakers";
+import VerifiedBadge from "@/components/VerifiedBadge";
 import {
   projects as allProjects,
   projectFits,
-  projectBlurBackground,
   projectObjectPositions,
-  projectEdgeBleed,
 } from "@/data/projects";
 
 interface ProjectCardProps {
@@ -34,6 +34,15 @@ interface ProjectCardProps {
 }
 
 const DEFAULT_HEIGHT = "aspect-[3/4] h-auto md:h-[240px] md:aspect-auto";
+
+const wordForm = (count: number, forms: [string, string, string]) => {
+  const mod100 = Math.abs(count) % 100;
+  const mod10 = mod100 % 10;
+  if (mod100 > 10 && mod100 < 20) return forms[2];
+  if (mod10 === 1) return forms[0];
+  if (mod10 >= 2 && mod10 <= 4) return forms[1];
+  return forms[2];
+};
 
 const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleImage = false }: ProjectCardProps) => {
   const navigate = useNavigate();
@@ -50,9 +59,10 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
   const images = singleImage ? cardImages.slice(0, 1) : cardImages;
   const liked = isFavorite(project.id);
   const likesCount = project.likes + (liked ? 1 : 0);
-
-
-  const projectHref = `/project/${project.id}`;
+  const projectHref = getProjectPath(project);
+  const displayPrice = /^(?:от(?:\s|$)|по запросу(?:\s|$))/i.test(project.price.trim())
+    ? project.price
+    : `от ${project.price}`;
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (onCardClick) onCardClick(e, project.id);
     else navigateWithTransition(e, navigate, projectHref);
@@ -83,21 +93,19 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
         href={projectHref}
         onClick={handleClick}
         className="block cursor-pointer"
-        aria-label={`${project.name} — от ${project.price}`}
+        aria-label={`${project.name} — ${displayPrice}`}
       >
         <SwipeableGallery
           images={images}
           fits={projectFits[project.id]}
           objectPositions={projectObjectPositions[project.id]}
-          blurBackground={projectBlurBackground[project.id]}
-          edgeBleed={projectEdgeBleed[project.id]}
           alt={project.name}
           height={height}
         >
           <div className="absolute top-2 right-2 z-10">
             <button
               onClick={handleFavToggle}
-              className="flex items-center gap-1 bg-foreground/40 backdrop-blur-md rounded-full px-2 py-[4px]"
+              className="flex items-center gap-1 rounded-[3px] bg-foreground/40 px-2 py-[4px] backdrop-blur-md"
               aria-label="В избранное"
             >
               <Heart
@@ -108,20 +116,19 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
             </button>
           </div>
         </SwipeableGallery>
-        <div className="px-[10px] pt-1 pb-1">
-          <div className="flex items-center gap-1.5 min-w-0">
-            <h2 className="text-[11px] font-medium text-foreground/60 uppercase tracking-wide truncate">{project.name}</h2>
-            {isVerifiedMaker(project.maker.id) && (
-              <span className="ml-auto shrink-0 text-[9px] font-medium uppercase tracking-wide bg-primary/15 text-primary px-1.5 py-[2px] rounded-lg">Проверено</span>
-            )}
+        <div className="px-1 pb-1.5 pt-2">
+          <div className="flex min-w-0 items-center gap-2">
+            <h2 className="truncate text-[14px] font-medium leading-tight text-[#342d27] md:text-[15px]">{project.name}</h2>
+            {isVerifiedMaker(project.maker.id) && <VerifiedBadge className="ml-auto" />}
           </div>
-          <div className="text-[13px] font-bold text-foreground whitespace-nowrap leading-tight mt-[1px]">{/по запросу/i.test(project.price) ? project.price : `от ${project.price}`}</div>
-          <div className="flex items-center gap-2 text-[12px] font-normal text-foreground/80 whitespace-nowrap leading-none mt-[3px]">
-            <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{project.area}</span>
-            <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{project.beds}</span>
-            <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{project.baths}</span>
-            <span className="inline-flex items-center gap-[3px]"><Layers className="w-3 h-3" strokeWidth={1.75} />{project.floors}</span>
+
+          <div className="mt-1 whitespace-nowrap text-[13px] font-medium leading-tight text-[#342d27] md:text-[14px]">
+            {displayPrice}
           </div>
+
+          <p className="mt-2 text-[13px] font-medium leading-snug tracking-normal text-[#595653] md:text-[14px]">
+            {project.area} · {project.beds} {wordForm(project.beds, ["спальня", "спальни", "спален"])} · {project.baths} {wordForm(project.baths, ["санузел", "санузла", "санузлов"])} · {project.floors} {wordForm(project.floors, ["этаж", "этажа", "этажей"])}
+          </p>
         </div>
       </a>
     </article>

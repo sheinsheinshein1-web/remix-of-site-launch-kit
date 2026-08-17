@@ -1,304 +1,285 @@
-import { useNavigate } from "react-router-dom";
-import { ShieldCheck, TrendingUp, LayoutGrid, Sparkles, MapPin, Search, Check, Star } from "lucide-react";
-import Header from "@/components/Header";
-import PartnerApplicationForm from "@/components/PartnerApplicationForm";
+import { useState } from "react";
+import partnerRenderAfter from "@/assets/partner-render-after.webp";
+import partnerRenderBefore from "@/assets/partner-render-before.webp";
+import BeforeAfterComparison from "@/components/BeforeAfterComparison";
+import FaqList from "@/components/FaqList";
 import Footer from "@/components/Footer";
-import PartnerDrawer from "@/components/PartnerDrawer";
-import { useIsMobile } from "@/hooks/use-mobile";
-import { useEffect, useState } from "react";
-import partnerHeroImg from "@/assets/partner-hero-illustration.webp";
+import Header from "@/components/Header";
+import PartnerApplicationContent from "@/components/partner/PartnerApplicationContent";
+import PartnerFeatureSection from "@/components/partner/PartnerFeatureSection";
+import PartnerHeroSection from "@/components/partner/PartnerHeroSection";
+import {
+  PartnerBusinessPreview,
+  PartnerCrmPreview,
+  PartnerMarketplacePreview,
+  PartnerProfilePreview,
+  PartnerWebsitePreview,
+} from "@/components/partner/PartnerProductVisuals";
 import Seo from "@/components/Seo";
+import { Button } from "@/components/ui/button";
+import {
+  partnerFaq,
+  partnerSteps,
+} from "@/data/partnerProgram";
+import { partnerServices } from "@/data/partnerServices";
+import { makersById, projects } from "@/data/projects";
+import { geoLocationCount } from "@/data/regions";
+import { buildCanonicalUrl } from "@/lib/seo";
 
-const features = [
-  { icon: ShieldCheck, title: "Бейдж «Проверено»", desc: "На карточке компании и на каждом проекте. Покупатели отличают вас от непроверенных." },
-  { icon: TrendingUp, title: "Приоритет в выдаче", desc: "Ваши проекты показываются выше в ленте каталога и в поиске по региону." },
-  { icon: LayoutGrid, title: "Страница компании", desc: "Описание, контакты, портфолио, галерея работ, отзывы клиентов и рейтинг." },
-  { icon: Sparkles, title: "Оформление карточек", desc: "Единый стиль и аккуратная типографика. Бренд выглядит достойно среди коллег." },
-  { icon: MapPin, title: "География работ", desc: "Указываете регионы — ваши проекты видят жители этих регионов первыми." },
-  { icon: Search, title: "Индексация в поиске", desc: "Страница компании попадает в поисковую выдачу. Приходят покупатели, ищущие именно вас." },
-];
+const showcaseMaker = makersById.platforma ?? Object.values(makersById)[0];
+const showcaseProjects = projects.filter((project) => project.maker.id === showcaseMaker?.id).slice(0, 3);
+const marketplaceProjects = showcaseProjects.length >= 2 ? showcaseProjects : projects.slice(0, 3);
+const businessProjects = projects
+  .filter((project) => project.suitableFor.some((value) => ["Аренда", "Бизнес", "Гостевой дом"].includes(value)))
+  .slice(0, 3);
+const manufacturerCount = Object.keys(makersById).length;
 
-type Plan = {
-  name: string;
-  price: string;
-  priceHint: string;
-  period: string;
-  features: string[];
-  popular?: boolean;
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: partnerFaq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
 };
 
-const plans: Plan[] = [
-  {
-    name: "База",
-    price: "19 000 ₽",
-    priceHint: "от",
-    period: "на 3 месяца",
-    features: ["Бейдж «Проверено»", "До 5 проектов в каталоге", "2 региона работы", "Страница с отзывами"],
-  },
-  {
-    name: "Рост",
-    price: "39 000 ₽",
-    priceHint: "от",
-    period: "на 3 месяца",
-    popular: true,
-    features: ["Всё из «Базы»", "Приоритет в выдаче", "До 20 проектов", "5 регионов работы", "Фото и тексты от редакции"],
-  },
-  {
-    name: "Макс",
-    price: "79 000 ₽",
-    priceHint: "от",
-    period: "на 3 месяца",
-    features: [
-      "Всё из «Роста»",
-      "Топ выдачи в регионе",
-      "Без лимита по проектам",
-      "Персональный сайт компании",
-      "Персональный менеджер",
-    ],
-  },
-];
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Главная", item: buildCanonicalUrl("/") },
+    { "@type": "ListItem", position: 2, name: "Производителям", item: buildCanonicalUrl("/partner") },
+  ],
+};
 
-const steps = [
-  { num: "01", title: "Оставляете заявку", desc: "Контакты, ИНН и ссылка на сайт — чтобы мы поняли, с кем работаем." },
-  { num: "02", title: "Мы проверяем вручную", desc: "Сверяем реквизиты, связываемся с вами, обсуждаем формат размещения." },
-  { num: "03", title: "Запускаем витрину", desc: "Оплата, оформление страницы, бейдж «Проверено». Можно работать." },
-];
+const ctaClassName =
+  "min-h-12 rounded-[3px] px-6 text-[15px] font-semibold focus-visible:ring-primary focus-visible:ring-offset-2";
 
 const PartnerLanding = () => {
-  const navigate = useNavigate();
-  const isMobile = useIsMobile();
-  const [drawerOpen, setDrawerOpen] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const [initialInterest, setInitialInterest] = useState("");
 
-  useEffect(() => {
-    if (isMobile) setDrawerOpen(true);
-  }, [isMobile]);
-
-  const handleDrawerChange = (open: boolean) => {
-    setDrawerOpen(open);
-    if (!open && isMobile) navigate(-1);
+  const openForm = () => {
+    setInitialInterest("Бесплатное размещение");
+    setShowForm(true);
+    window.scrollTo({ top: 0, behavior: "auto" });
   };
 
-  const handleStartChat = () => setShowForm(true);
+  const openFormWithInterest = (interest: string) => {
+    setInitialInterest(interest);
+    setShowForm(true);
+    window.scrollTo({ top: 0, behavior: "auto" });
+  };
 
-  if (isMobile) {
-    return (
-      <>
-        <Seo title="Стать партнёром — многоместа.рф" description="Размещайте проекты модульных и префаб домов на маркетплейсе многоместа.рф." canonicalPath="/partner" />
-        <PartnerDrawer drawerOpen={drawerOpen} onDrawerOpenChange={handleDrawerChange}>
-          <div />
-        </PartnerDrawer>
-      </>
-    );
-  }
+  const closeForm = () => {
+    setShowForm(false);
+    window.scrollTo({ top: 0, behavior: "auto" });
+  };
 
   if (showForm) {
     return (
-      <div className="min-h-screen bg-secondary font-sans">
-        <Header />
-        <div className="pt-[152px]">
-          <div className="max-w-[560px] mx-auto px-8 mb-12">
-            <div className="bg-background rounded-2xl p-8">
-              <PartnerApplicationForm onBack={() => setShowForm(false)} />
-            </div>
-          </div>
-        </div>
+      <div className="min-h-screen bg-background font-sans">
+        <Seo
+          title="Заявка на бесплатное размещение — многоместа.рф"
+          description="Оставьте заявку на бесплатное размещение проектов модульных домов на многоместа.рф."
+          canonicalPath="/partner"
+          noIndex
+        />
+        <Header variant="partner" />
+        <PartnerApplicationContent
+          breadcrumbItems={[
+            { label: "Главная", to: "/" },
+            { label: "Производителям", to: "/partner", onClick: closeForm },
+            { label: "Заявка" },
+          ]}
+          initialInterest={initialInterest}
+          onBack={closeForm}
+          visual={showcaseMaker && marketplaceProjects.length >= 2
+            ? <PartnerMarketplacePreview projects={marketplaceProjects} maker={showcaseMaker} />
+            : undefined}
+        />
         <Footer />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-secondary font-sans">
-      <Seo title="Стать партнёром — многоместа.рф" description="Размещайте проекты модульных и префаб домов на маркетплейсе многоместа.рф." canonicalPath="/partner" />
-      <Header />
-      <div className="pt-[152px] pb-12">
-        <div className="max-w-[1200px] mx-auto px-8 flex flex-col gap-3">
-          {/* HERO */}
-          <div className="bg-primary rounded-2xl relative overflow-hidden">
-            <div className="absolute top-[-150px] left-[-120px] w-[400px] h-[400px] bg-primary-foreground/5 rounded-full pointer-events-none" />
-            <div className="absolute bottom-[-100px] right-[-100px] w-[300px] h-[300px] bg-primary-foreground/5 rounded-full pointer-events-none" />
+    <div className="min-h-screen bg-background font-sans">
+      <Seo
+        title="Размещение проектов модульных домов для производителей | многоместа.рф"
+        description="Получайте трафик и обращения по проектам модульных домов без платы за размещение. Вознаграждение 5% начисляется только после состоявшейся сделки."
+        canonicalPath="/partner"
+        jsonLd={[breadcrumbJsonLd, faqJsonLd]}
+      />
+      <Header variant="partner" onPartnerCta={() => openFormWithInterest("Бесплатное размещение")} />
 
-            <div className="flex items-center gap-10 px-12 py-14 relative z-[1]">
-              <div className="flex-1 min-w-0">
-                <p className="text-[12px] font-bold tracking-wider uppercase text-primary-foreground/50 mb-4">Для застройщиков</p>
-                <h1 className="text-[40px] font-extrabold text-primary-foreground leading-[1.1] mb-4 tracking-tight">
-                  Покажите свои дома<br />в лучшем свете
-                </h1>
-                <p className="text-[15px] text-primary-foreground/70 leading-relaxed mb-7 max-w-[480px]">
-                  Красивая витрина, проверенный статус и приоритет в выдаче — чтобы покупатели видели вас первыми и запоминали.
-                </p>
-                <button
-                  onClick={handleStartChat}
-                  className="h-[52px] px-8 rounded-xl text-[15px] font-bold bg-primary-foreground text-primary hover:opacity-90 transition-opacity"
-                >
-                  Стать партнёром
-                </button>
-              </div>
-              <div className="w-[360px] shrink-0 flex items-center justify-center">
-                <img src={partnerHeroImg} alt="" className="w-full h-auto" loading="lazy" decoding="async" />
-              </div>
+      <main>
+        <PartnerHeroSection>
+          <div className="max-w-[920px]">
+            <h1 className="text-[40px] font-semibold leading-[1.01] tracking-[-0.045em] text-[#342d27] sm:text-[52px] md:text-[68px] dark:text-foreground">
+              Продавайте больше модульных домов
+            </h1>
+            <p className="mt-6 max-w-[760px] text-[17px] leading-relaxed text-[#595653] md:text-[20px] dark:text-muted-foreground">
+              На платформе размещаем ваши проекты без платы за публикацию и оформляем страницу компании. Дополнительно вы получаете собственный сайт, трафик без ограничений и платите вознаграждение 5% только после состоявшейся сделки.
+            </p>
+            <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+              <Button type="button" size="lg" onClick={() => openFormWithInterest("Бесплатное размещение")} className={ctaClassName}>
+                Разместить проекты
+              </Button>
+              <Button
+                type="button"
+                size="lg"
+                variant="secondary"
+                onClick={() => openFormWithInterest("Демонстрация платформы")}
+                className={`${ctaClassName} border-0 bg-secondary text-foreground hover:bg-secondary hover:text-primary`}
+              >
+                Запросить демонстрацию
+              </Button>
             </div>
           </div>
 
-          {/* PREVIEW CARD */}
-          <div className="bg-background rounded-2xl p-8">
-            <p className="text-[12px] font-bold tracking-wider uppercase text-primary mb-4">Как выглядит партнёрская карточка</p>
-            <div className="bg-secondary rounded-2xl p-5 max-w-[520px]">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-11 h-11 rounded-xl bg-foreground text-background flex items-center justify-center text-[12px] font-bold shrink-0">
-                  SW
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <span className="text-[14px] font-semibold text-foreground">Sherwood Home</span>
-                    <span className="inline-flex items-center gap-1 bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-md">
-                      <ShieldCheck className="w-3 h-3" /> Проверено
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-[12px] text-muted-foreground">
-                    <Star className="w-3 h-3 fill-current text-foreground" />
-                    <span>5,0 · 13 отзывов · 12 проектов</span>
-                  </div>
-                </div>
-              </div>
-              <div className="aspect-[16/9] rounded-xl bg-gradient-to-b from-[hsl(205,30%,65%)] to-[hsl(80,20%,40%)]" />
+          {showcaseMaker && marketplaceProjects.length >= 2 && (
+            <div className="mt-12 md:mt-16">
+              <PartnerMarketplacePreview projects={marketplaceProjects} maker={showcaseMaker} />
             </div>
-          </div>
+          )}
 
-          {/* FEATURES */}
-          <div className="bg-background rounded-2xl p-8">
-            <p className="text-[12px] font-bold tracking-wider uppercase text-primary mb-2">Что получают партнёры</p>
-            <h2 className="text-[26px] font-extrabold text-foreground leading-tight mb-6 tracking-tight">
-              Представительство, которое работает на ваш бренд
+          <div className="mt-10 grid gap-6 md:mt-14 lg:grid-cols-[minmax(240px,0.9fr)_minmax(0,2.1fr)] lg:items-end lg:gap-14">
+            <p className="max-w-[330px] text-[18px] font-medium leading-snug tracking-[-0.015em] text-[#342d27] md:text-[20px] dark:text-foreground">
+              Проекты и производители модульных домов по всей России
+            </p>
+            <dl className="grid grid-cols-3 gap-4 md:gap-10">
+              <div>
+                <dd className="text-[25px] font-semibold tracking-[-0.025em] text-[#342d27] md:text-[34px] dark:text-foreground">{projects.length}</dd>
+                <dt className="mt-1 text-[11px] leading-snug text-muted-foreground md:text-[13px]">проектов домов</dt>
+              </div>
+              <div>
+                <dd className="text-[25px] font-semibold tracking-[-0.025em] text-[#342d27] md:text-[34px] dark:text-foreground">{manufacturerCount}</dd>
+                <dt className="mt-1 text-[11px] leading-snug text-muted-foreground md:text-[13px]">производителей</dt>
+              </div>
+              <div>
+                <dd className="text-[25px] font-semibold tracking-[-0.025em] text-[#342d27] md:text-[34px] dark:text-foreground">{geoLocationCount}</dd>
+                <dt className="mt-1 text-[11px] leading-snug text-muted-foreground md:text-[13px]">городов и областей</dt>
+              </div>
+            </dl>
+          </div>
+        </PartnerHeroSection>
+
+        {showcaseMaker && showcaseProjects.length > 0 && (
+          <PartnerFeatureSection
+            title="Проекты на платформе и страница компании"
+            visual={<PartnerProfilePreview projects={showcaseProjects} maker={showcaseMaker} />}
+            actionHref={partnerServices.freePlacement.path}
+            actionLabel="Подробнее о размещении"
+          >
+            <p>Публикуем ассортимент на платформе: фотографии, планировки, площадь, цена, комплектация, срок изготовления и города доставки. Покупатель сравнивает вашу модель с другими и оставляет заявку по конкретному дому.</p>
+            <p>Все дома собраны на странице компании с контактами и отзывами. Если цена изменилась, сообщите один раз, и мы обновим все страницы.</p>
+          </PartnerFeatureSection>
+        )}
+
+        {showcaseMaker && showcaseProjects.length > 0 && (
+          <PartnerFeatureSection
+            title="Получайте больше клиентов с собственным сайтом"
+            visual={<PartnerWebsitePreview projects={showcaseProjects} maker={showcaseMaker} />}
+            actionHref={partnerServices.manufacturerWebsite.path}
+            actionLabel="Подробнее о сайте"
+            reverse
+          >
+            <p>Вместе с размещением вы дополнительно получаете полноценный сайт компании, который представляет проекты, помогает покупателям находить вас в интернете и превращает интерес к дому в заявку.</p>
+            <p>Вам не нужно платить разработчикам и маркетинговым агентствам. Мы запускаем сайт и постоянно обновляем проекты, цены и географию доставки, а вы получаете ещё один источник клиентов.</p>
+          </PartnerFeatureSection>
+        )}
+
+        <PartnerFeatureSection
+          title="Получайте трафик без ограничений и платите только за результат"
+          visual={<PartnerCrmPreview />}
+          actionHref={partnerServices.salesCommission.path}
+          actionLabel="Подробнее о работе за результат"
+        >
+          <p>Размещаем проекты бесплатно и показываем их покупателям во всех согласованных регионах доставки. Вы не платите за публикацию, просмотры или обращения.</p>
+          <p>Вознаграждение 5% возникает только после того, как покупатель заключил с вами договор и внёс оплату. Каждую заявку передаём в вашу CRM вместе с выбранным проектом, регионом и источником обращения.</p>
+        </PartnerFeatureSection>
+
+        {showcaseMaker && businessProjects.length > 0 && (
+          <PartnerFeatureSection
+            title="Продавайте больше проектов для бизнеса"
+            visual={<PartnerBusinessPreview projects={businessProjects} maker={showcaseMaker} />}
+            actionHref={partnerServices.businessPlacement.path}
+            actionLabel="Подробнее о разделе «Бизнес»"
+            reverse
+          >
+            <p>Выходите на предпринимателей и инвесторов, которые выбирают дома для глэмпингов, баз отдыха, гостиниц и аренды. Отдельная витрина помогает представить проект как готовое решение для запуска бизнеса: с понятной вместимостью, комплектацией, сроком изготовления и условиями поставки.</p>
+            <p>Вы получаете обращения по более крупным заказам, в которых покупателю может потребоваться сразу несколько домов. Каждый проект остаётся связан с вашей компанией, а заявка приходит в CRM с выбранной моделью и параметрами объекта.</p>
+          </PartnerFeatureSection>
+        )}
+
+        <PartnerFeatureSection
+          title="Изображения, которые помогают продавать"
+          visual={(
+            <div>
+              <BeforeAfterComparison
+                beforeSrc={partnerRenderBefore}
+                afterSrc={partnerRenderAfter}
+                beforeAlt="Фотография построенного модульного дома до художественной визуализации"
+                afterAlt="Художественный рендер модульного дома в хвойном лесу"
+              />
+              <p className="mt-3 text-[12px] leading-relaxed text-muted-foreground">Реальный пример преобразования фотографии построенного дома в художественный рендер.</p>
+            </div>
+          )}
+          actionHref={partnerServices.renderings.path}
+          actionLabel="Подробнее о рендерах"
+        >
+          <p>Покупателю проще решиться на обращение, когда он может представить готовый дом на своём участке. Хорошая визуализация показывает архитектуру, материалы, остекление и террасу так, чтобы проект был понятен без дополнительных объяснений менеджера.</p>
+          <p>Вы получаете готовый комплект изображений для карточек, сайта, презентаций и рекламы. Ваши проекты выглядят убедительно во всех каналах, помогают покупателю выбрать конкретную модель и перейти к предметному разговору о покупке.</p>
+        </PartnerFeatureSection>
+
+        <section>
+          <div className="mx-auto w-full max-w-[1400px] px-4 py-12 sm:px-8 md:py-16 lg:px-12 lg:py-20">
+            <h2 className="max-w-[760px] text-[30px] font-semibold leading-[1.08] tracking-[-0.03em] text-[#342d27] sm:text-[36px] md:text-[44px] dark:text-foreground">
+              От заявки до первых обращений
             </h2>
-            <div className="grid grid-cols-3 gap-3">
-              {features.map((f, i) => (
-                <div key={i} className="bg-secondary rounded-xl p-5">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
-                    <f.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="text-[14px] font-semibold text-foreground mb-1">{f.title}</div>
-                  <div className="text-[12px] text-muted-foreground leading-relaxed">{f.desc}</div>
-                </div>
+            <ol className="mt-10 grid gap-9 md:mt-14 md:grid-cols-3 md:gap-12">
+              {partnerSteps.map((step) => (
+                <li key={step.num}>
+                  <span className="text-[15px] font-semibold text-primary">{step.num}</span>
+                  <h3 className="mt-4 text-[20px] font-semibold leading-snug text-[#342d27] md:text-[24px] dark:text-foreground">{step.title}</h3>
+                  <p className="mt-3 text-[14px] leading-relaxed text-[#595653] md:text-[16px] dark:text-muted-foreground">{step.desc}</p>
+                </li>
               ))}
-            </div>
+            </ol>
+            <Button type="button" size="lg" onClick={openForm} className={`${ctaClassName} mt-10`}>
+              Начать размещение
+            </Button>
           </div>
+        </section>
 
-          {/* PLANS */}
-          <div className="bg-background rounded-2xl p-8">
-            <p className="text-[12px] font-bold tracking-wider uppercase text-primary mb-2">Форматы участия</p>
-            <h2 className="text-[26px] font-extrabold text-foreground leading-tight mb-6 tracking-tight">
-              Три тарифа, разные уровни присутствия
+        <section id="partner-faq" className="scroll-mt-24">
+          <div className="mx-auto grid w-full max-w-[1400px] gap-8 px-4 py-12 sm:px-8 md:grid-cols-[0.72fr_1.28fr] md:gap-14 md:py-16 lg:px-12 lg:py-20">
+            <h2 className="max-w-[470px] text-[30px] font-semibold leading-[1.08] tracking-[-0.03em] text-[#342d27] sm:text-[36px] md:text-[44px] dark:text-foreground">
+              Часто задаваемые вопросы
             </h2>
-            <div className="grid grid-cols-3 gap-3">
-              {plans.map((p) => {
-                const isHero = p.popular;
-                return (
-                  <div
-                    key={p.name}
-                    className={`rounded-2xl p-6 flex flex-col ${
-                      isHero ? "bg-foreground text-background" : "bg-secondary text-foreground"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between mb-4">
-                      <span
-                        className={`text-[11px] font-bold tracking-wider uppercase ${
-                          isHero ? "text-background/50" : "text-muted-foreground"
-                        }`}
-                      >
-                        {p.name}
-                      </span>
-                      {isHero && (
-                        <span className="text-[10px] font-bold tracking-wider uppercase bg-primary text-primary-foreground px-2 py-1 rounded-md">
-                          Популярный
-                        </span>
-                      )}
-                    </div>
-                    <div className="flex items-baseline gap-1.5 mb-1">
-                      <span className={`text-[13px] font-medium ${isHero ? "text-background/50" : "text-muted-foreground"}`}>
-                        {p.priceHint}
-                      </span>
-                      <span className="text-[28px] font-extrabold tracking-tight leading-none">{p.price}</span>
-                    </div>
-                    <div className={`text-[12px] mb-5 ${isHero ? "text-background/50" : "text-muted-foreground"}`}>
-                      {p.period}
-                    </div>
-                    <ul className="flex flex-col gap-2.5 mb-6">
-                      {p.features.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2.5">
-                          <div
-                            className={`w-4 h-4 rounded-md flex items-center justify-center shrink-0 mt-0.5 ${
-                              isHero ? "bg-primary/30" : "bg-primary/15"
-                            }`}
-                          >
-                            <Check
-                              className={`w-2.5 h-2.5 ${isHero ? "text-primary-foreground" : "text-primary"}`}
-                              strokeWidth={3}
-                            />
-                          </div>
-                          <span className={`text-[13px] leading-snug ${isHero ? "text-background/90" : "text-foreground"}`}>
-                            {item}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                    <button
-                      onClick={handleStartChat}
-                      className={`mt-auto h-[44px] rounded-xl text-[14px] font-bold transition-opacity hover:opacity-90 ${
-                        isHero
-                          ? "bg-primary-foreground text-foreground"
-                          : "bg-primary text-primary-foreground"
-                      }`}
-                    >
-                      Выбрать
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-            <p className="text-[12px] text-muted-foreground text-center mt-5">
-              Продление — в любой момент. Переход на другой тариф — без потери оставшегося периода.
-            </p>
+            <FaqList items={partnerFaq} idPrefix="partner-faq" />
           </div>
+        </section>
 
-          {/* HOW IT WORKS */}
-          <div className="bg-foreground rounded-2xl p-8 relative overflow-hidden">
-            <div className="absolute top-[-80px] right-[-80px] w-[260px] h-[260px] bg-primary/20 rounded-full pointer-events-none" />
-            <div className="relative z-[1]">
-              <p className="text-[12px] font-bold tracking-wider uppercase text-background/40 mb-2">Как это работает</p>
-              <h2 className="text-[26px] font-extrabold text-background leading-tight mb-8 tracking-tight">
-                Подключение занимает 2–3 рабочих дня
-              </h2>
-              <div className="grid grid-cols-3 gap-4">
-                {steps.map((s) => (
-                  <div key={s.num} className="bg-background/5 rounded-xl p-5">
-                    <div className="text-[24px] font-extrabold text-primary tracking-tight mb-2">{s.num}</div>
-                    <div className="text-[15px] font-semibold text-background mb-1">{s.title}</div>
-                    <div className="text-[12px] text-background/50 leading-relaxed">{s.desc}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* FINAL CTA */}
-          <div className="bg-background rounded-2xl p-10 text-center">
-            <h2 className="text-[28px] font-extrabold text-foreground leading-tight mb-2 tracking-tight">
-              Готовы стать партнёром?
+        <section>
+          <div className="mx-auto flex w-full max-w-[980px] flex-col items-center px-4 py-14 text-center sm:px-8 md:py-20">
+            <h2 className="max-w-[780px] text-[32px] font-semibold leading-[1.06] tracking-[-0.035em] text-[#342d27] sm:text-[40px] md:text-[52px] dark:text-foreground">
+              Разместим первые проекты и подготовим страницы
             </h2>
-            <p className="text-[14px] text-muted-foreground mb-6 max-w-[440px] mx-auto">
-              Оплата после подтверждения. Менеджер свяжется в течение дня.
+            <p className="mt-5 max-w-[620px] text-[15px] leading-relaxed text-[#595653] md:text-[17px] dark:text-muted-foreground">
+              Оставьте контакты компании. Посмотрим ассортимент, уточним города доставки и покажем страницы до публикации.
             </p>
-            <button
-              onClick={handleStartChat}
-              className="h-[52px] px-10 rounded-xl text-[15px] font-bold bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
-            >
-              Оставить заявку
-            </button>
+            <Button type="button" size="lg" onClick={openForm} className={`${ctaClassName} mt-8`}>
+              Разместить проекты
+            </Button>
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
 
       <Footer />
     </div>

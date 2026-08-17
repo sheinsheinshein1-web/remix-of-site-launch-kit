@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-function plural(n: number, one: string, few: string, many: string) {
+export function pluralizeRu(n: number, one: string, few: string, many: string) {
   const abs = Math.abs(n) % 100;
   const last = abs % 10;
   if (abs > 10 && abs < 20) return many;
@@ -15,5 +15,5 @@ function plural(n: number, one: string, few: string, many: string) {
 }
 
 export function formatSpecs(area: string, beds: number, baths: number) {
-  return `${area}, ${beds} ${plural(beds, "спальня", "спальни", "спален")}, ${baths} ${plural(baths, "сан.узел", "сан.узла", "сан.узлов")}`;
+  return `${area}, ${beds} ${pluralizeRu(beds, "спальня", "спальни", "спален")}, ${baths} ${pluralizeRu(baths, "сан.узел", "сан.узла", "сан.узлов")}`;
 }

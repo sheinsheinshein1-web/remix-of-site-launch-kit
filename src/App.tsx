@@ -1,12 +1,15 @@
-import { lazy, Suspense, useEffect, useLayoutEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes, useLocation, useParams } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ThemeProvider } from "next-themes";
 import { FavoritesProvider } from "@/contexts/FavoritesContext";
 import Index from "./pages/Index.tsx";
-import ScrollToTop from "./components/ScrollToTop.tsx";
+import ScrollRestoration from "./components/ScrollToTop.tsx";
+import CookieConsentBanner from "./components/CookieConsentBanner.tsx";
+import { CATALOG_PATH, MANUFACTURERS_PATH, REGIONS_PATH } from "@/lib/siteRoutes";
 
 // Lazy-loaded routes — each becomes its own chunk, kept out of the main bundle.
 const Catalog = lazy(() => import("./pages/Catalog.tsx"));
@@ -20,16 +23,26 @@ const PartnerChat = lazy(() => import("./pages/PartnerChat.tsx"));
 const CompanyChat = lazy(() => import("./pages/CompanyChat.tsx"));
 const Profile = lazy(() => import("./pages/Profile.tsx"));
 const Requests = lazy(() => import("./pages/Requests.tsx"));
-const Partner = lazy(() => import("./pages/Partner.tsx"));
+const Partner = lazy(() => import("./pages/ManufacturerProfile.tsx"));
 const PartnerReviews = lazy(() => import("./pages/PartnerReviews.tsx"));
 const PartnerLanding = lazy(() => import("./pages/PartnerLanding.tsx"));
+const PartnerFreePlacementLanding = lazy(() => import("./pages/PartnerFreePlacementLanding.tsx"));
+const PartnerSalesCommissionLanding = lazy(() => import("./pages/PartnerSalesCommissionLanding.tsx"));
+const PartnerManufacturerWebsiteLanding = lazy(() => import("./pages/PartnerManufacturerWebsiteLanding.tsx"));
+const PartnerRenderingsLanding = lazy(() => import("./pages/PartnerRenderingsLanding.tsx"));
+const PartnerBusinessPlacementLanding = lazy(() => import("./pages/PartnerBusinessPlacementLanding.tsx"));
 const PartnerLab = lazy(() => import("./pages/PartnerLab.tsx"));
-const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.tsx"));
+const Legal = lazy(() => import("./pages/Legal.tsx"));
+const LegalDocument = lazy(() => import("./pages/LegalDocument.tsx"));
 const MessagesLayout = lazy(() => import("./pages/MessagesLayout.tsx"));
 const Lab = lazy(() => import("./pages/Lab.tsx"));
 const OperatorChat = lazy(() => import("./pages/OperatorChat.tsx"));
 const RegionPage = lazy(() => import("./pages/RegionPage.tsx"));
+const Regions = lazy(() => import("./pages/Regions.tsx"));
+const Manufacturers = lazy(() => import("./pages/Manufacturers.tsx"));
+const Articles = lazy(() => import("./pages/Articles.tsx"));
 const IpModul = lazy(() => import("./pages/IpModul.tsx"));
+const RusModul = lazy(() => import("./pages/RusModul.tsx"));
 
 import avatar3d from "@/assets/avatar-3d.webp";
 import heart3d from "@/assets/heart-3d.webp";
@@ -113,24 +126,9 @@ const preloadedAssets = [
 
 const queryClient = new QueryClient();
 
-const BrowserScrollRestoration = () => {
-  useLayoutEffect(() => {
-    if (!("scrollRestoration" in window.history)) return;
-
-    const previous = window.history.scrollRestoration;
-    window.history.scrollRestoration = "manual";
-
-    return () => {
-      window.history.scrollRestoration = previous;
-    };
-  }, []);
-
-  return null;
-};
-
 const AssetPreloader = () => {
   const { pathname } = useLocation();
-  const shouldPreload = pathname === "/" || pathname === "/categories" || pathname === "/catalog" || pathname.startsWith("/project/");
+  const shouldPreload = pathname === "/" || pathname === "/categories" || pathname === CATALOG_PATH || pathname.includes("/proekty/");
 
   useEffect(() => {
     if (!shouldPreload) return;
@@ -146,20 +144,27 @@ const AssetPreloader = () => {
 
 // Forces ProjectDetail to remount on :id change so internal state and scroll reset cleanly.
 const ProjectDetailRoute = () => {
-  const { id } = useParams();
-  return <ProjectDetail key={id} />;
+  const { projectSlug, id } = useParams();
+  return <ProjectDetail key={projectSlug ?? id} />;
+};
+
+const RedirectWithLocation = ({ to }: { to: string }) => {
+  const location = useLocation();
+  return <Navigate to={`${to}${location.search}${location.hash}`} replace />;
 };
 
 const AppRoutes = () => (
   <>
-    <BrowserScrollRestoration />
-    <ScrollToTop />
+    <ScrollRestoration />
     <AssetPreloader />
     <Suspense fallback={<div className="min-h-screen bg-secondary" />}>
       <Routes>
         <Route path="/" element={<Index />} />
-        <Route path="/catalog" element={<Catalog />} />
+        <Route path={CATALOG_PATH} element={<Catalog />} />
+        <Route path="/catalog" element={<RedirectWithLocation to={CATALOG_PATH} />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="/modulnye-doma/proekty/:projectSlug" element={<ProjectDetailRoute />} />
+        <Route path="/prefab-doma/proekty/:projectSlug" element={<ProjectDetailRoute />} />
         <Route path="/project/:id" element={<ProjectDetailRoute />} />
         <Route path="/categories" element={<AllCategoriesPage />} />
         <Route path="/messages" element={<MessagesLayout />}>
@@ -171,32 +176,51 @@ const AppRoutes = () => (
         <Route path="/profile" element={<Profile />} />
         <Route path="/requests" element={<Requests />} />
         <Route path="/partner" element={<PartnerLanding />} />
+        <Route path="/partner/free-placement" element={<PartnerFreePlacementLanding />} />
+        <Route path="/partner/sales-commission" element={<PartnerSalesCommissionLanding />} />
+        <Route path="/partner/manufacturer-website" element={<PartnerManufacturerWebsiteLanding />} />
+        <Route path="/partner/renderings" element={<PartnerRenderingsLanding />} />
+        <Route path="/partner/business-placement" element={<PartnerBusinessPlacementLanding />} />
+        <Route path="/proizvoditeli/:id" element={<Partner />} />
         <Route path="/partner/:id" element={<Partner />} />
         <Route path="/lab/partner/:id" element={<PartnerLab />} />
+        <Route path="/proizvoditeli/:id/otzyvy" element={<PartnerReviews />} />
         <Route path="/partner/:id/reviews" element={<PartnerReviews />} />
         <Route path="/operator" element={<OperatorChat />} />
-        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/legal" element={<Legal />} />
+        <Route path="/legal/:slug" element={<LegalDocument />} />
+        <Route path="/privacy" element={<Navigate to="/legal/privacy" replace />} />
+        <Route path="/modulnye-doma/:slug" element={<RegionPage />} />
         <Route path="/region/:slug" element={<RegionPage />} />
+        <Route path={REGIONS_PATH} element={<Regions />} />
+        <Route path="/regions" element={<RedirectWithLocation to={REGIONS_PATH} />} />
+        <Route path={MANUFACTURERS_PATH} element={<Manufacturers />} />
+        <Route path="/manufacturers" element={<RedirectWithLocation to={MANUFACTURERS_PATH} />} />
+        <Route path="/articles" element={<Articles />} />
         <Route path="/ip-modul" element={<IpModul />} />
+        <Route path="/rusmodul" element={<RusModul />} />
         <Route path="/lab" element={<Lab />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
+    <CookieConsentBanner />
   </>
 );
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <FavoritesProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
-      </FavoritesProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <ThemeProvider attribute="class" defaultTheme="system" enableSystem storageKey="mnogo-mesta-theme" disableTransitionOnChange>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <FavoritesProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </FavoritesProvider>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </ThemeProvider>
 );
 
 export default App;

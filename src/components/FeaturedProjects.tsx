@@ -1,14 +1,16 @@
 import { Loader2 } from "lucide-react";
-import { useNavigate, useNavigationType } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ProjectCard from "@/components/ProjectCard";
 import ProjectCardSkeleton from "@/components/ProjectCardSkeleton";
 import { navigateWithTransition } from "@/lib/viewTransition";
-import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { usePullToRefresh } from "@/hooks/usePullToRefresh";
 import { projects } from "@/data/projects";
 import { buildSiteUrl } from "@/lib/seo";
+import { getProjectPath } from "@/lib/siteRoutes";
 import { isVerifiedMaker } from "@/lib/verifiedMakers";
 import { groupByProjectTechnologyPriority } from "@/lib/projectPriority";
+import { isProjectAvailableInGeo } from "@/lib/geoSelection";
 
 import { useCity } from "@/components/CitySelector";
 
@@ -24,13 +26,13 @@ const baseProjects = projects.map((p) => ({
   name: p.name,
   price: p.price,
   technology: p.technology,
+  deliveryRegionSlugs: p.deliveryRegionSlugs,
 }));
 
 
 const PAGE_SIZE = 8;
 const FEATURED_PREVIEW_SIZE = 6;
 const FEATURED_MOBILE_VISIBLE_SIZE = 3;
-const SCROLL_KEY = "home_feed_scroll";
 const PAGE_PARAM = "page";
 
 // Mulberry32 — детерминированный PRNG
@@ -137,8 +139,6 @@ function getPagedProjects(page: number, seed: number, source: typeof baseProject
 
 const FeaturedProjects = () => {
   const navigate = useNavigate();
-  const navigationType = useNavigationType();
-  
 
   const initialPage = (() => {
     if (typeof window === "undefined") return 1;
@@ -148,7 +148,9 @@ const FeaturedProjects = () => {
   })();
 
   const { city } = useCity();
-  const cityProjects = baseProjects.filter((p) => p.city === city);
+  const cityProjects = baseProjects.filter((project) => (
+    isProjectAvailableInGeo(project.city, city, project.deliveryRegionSlugs)
+  ));
 
   const [page, setPage] = useState(initialPage);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
@@ -160,12 +162,6 @@ const FeaturedProjects = () => {
   const items = rawItems.slice(0, FEATURED_PREVIEW_SIZE);
   const MAX_PAGE = 50;
   const isEmpty = cityProjects.length === 0;
-  const [restoreMinHeight, setRestoreMinHeight] = useState<number | undefined>(() => {
-    if (typeof window === "undefined" || navigationType !== "POP") return undefined;
-    const saved = sessionStorage.getItem(SCROLL_KEY);
-    const targetY = parseInt(saved || "", 10);
-    return Number.isFinite(targetY) && targetY > 0 ? targetY + window.innerHeight + 8 : undefined;
-  });
 
   // Pull-to-refresh: перемешиваем порядок и сбрасываем на первую страницу
   const handleRefresh = useCallback(async () => {
@@ -225,63 +221,16 @@ const FeaturedProjects = () => {
     const url = new URL(window.location.href);
     if (page === 1) url.searchParams.delete(PAGE_PARAM);
     else url.searchParams.set(PAGE_PARAM, String(page));
-    window.history.replaceState({}, "", url.toString());
+    // Не затираем служебные key/idx React Router: они нужны, чтобы кнопки
+    // «Назад» и «Вперёд» возвращали конкретную запись истории вместе со скроллом.
+    window.history.replaceState(window.history.state, "", url.toString());
   }, [page]);
-
-  // Восстановление позиции при возврате с детальной.
-  // Важно: не скроллим в maxY, пока страница короче сохранённой позиции —
-  // на мобильном это выглядит как резкий прыжок в футер и возврат обратно.
-  // Вместо этого ждём, пока высота документа дорастёт, и только затем делаем scrollTo.
-  useLayoutEffect(() => {
-    if (navigationType !== "POP") {
-      setRestoreMinHeight(undefined);
-      return;
-    }
-    const saved = sessionStorage.getItem(SCROLL_KEY);
-    sessionStorage.removeItem(SCROLL_KEY);
-    if (!saved) {
-      setRestoreMinHeight(undefined);
-      return;
-    }
-    const targetY = parseInt(saved, 10);
-    if (!Number.isFinite(targetY) || targetY <= 0) {
-      setRestoreMinHeight(undefined);
-      return;
-    }
-
-    setRestoreMinHeight(targetY + window.innerHeight + 8);
-
-    let cancelled = false;
-    const start = performance.now();
-    const TIMEOUT = 2000;
-
-    const tryScroll = () => {
-      if (cancelled) return;
-      const maxY = document.documentElement.scrollHeight - window.innerHeight;
-      const hasEnoughHeight = maxY >= targetY - 2;
-      const timedOut = performance.now() - start > TIMEOUT;
-
-      if (hasEnoughHeight || timedOut) {
-        window.scrollTo(0, Math.min(targetY, Math.max(0, maxY)));
-        window.setTimeout(() => {
-          if (!cancelled) setRestoreMinHeight(undefined);
-        }, 600);
-        return;
-      }
-
-      requestAnimationFrame(tryScroll);
-    };
-    tryScroll();
-
-    return () => { cancelled = true; };
-  }, [navigationType]);
 
   const handleCardClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, projectId: number) => {
-      // Сохраняем позицию для восстановления
-      sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
       // Любая карточка проекта на главной открывает карточку проекта.
-      navigateWithTransition(e, navigate, `/project/${projectId}`);
+      const project = projects.find((item) => item.id === projectId);
+      if (project) navigateWithTransition(e, navigate, getProjectPath(project));
     },
     [navigate]
   );
@@ -290,19 +239,18 @@ const FeaturedProjects = () => {
   const itemListJson = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    itemListElement: baseProjects.slice(0, 20).map((p, i) => ({
+    itemListElement: projects.slice(0, 20).map((p, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      url: buildSiteUrl(`/project/${p.id}`),
+      url: buildSiteUrl(getProjectPath(p)),
       name: p.name,
     })),
   };
 
   return (
-    <section aria-label="Лента проектов" style={restoreMinHeight ? { minHeight: `${restoreMinHeight}px` } : undefined}>
+    <section aria-label="Лента проектов">
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJson) }}
       />
       {/* Pull-to-refresh индикатор */}

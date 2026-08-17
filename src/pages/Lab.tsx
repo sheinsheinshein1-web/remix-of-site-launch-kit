@@ -115,7 +115,7 @@ const Lab = () => {
             className="inline-block text-[10px] uppercase tracking-[0.12em] px-2.5 py-1 text-white"
             style={{ ...GLASS_DARK, borderRadius: 999 }}
           >
-            Маркетплейс
+            Платформа
           </span>
           <h1
             className="mt-3 text-white text-[26px] leading-[1.1] tracking-[-0.02em]"

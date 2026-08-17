@@ -19,13 +19,15 @@
 // 4. technology — используй ТОЧНО одно из значений каталожного фильтра:
 //      "Модульный дом" | "Каркасный" | "Домокомплект" | "СИП-Префаб"
 //    (см. src/pages/Catalog.tsx — иначе проект не попадёт в фильтры).
-// 5. city — должен быть в массиве `cities` ниже, иначе проект не попадёт в ленту.
+// 5. city — должен совпадать с cityValue базового региона в src/data/regions.ts.
 // 6. Проверь, что поиск импортирует данные из `projects.ts`, без локального хардкода.
 // 7. Добавь текст «о компании» в `aboutByMakerId` в src/pages/Partner.tsx.
 //
 // Всё остальное (карточка /partner/:id, счётчик проектов, поиск,
 // manufacturers, makersById, projectGalleries и т.п.) рассчитывается автоматически.
 // ============================================================================
+
+import { isPublicProject } from "@/data/catalogVisibility";
 
 
 
@@ -1301,10 +1303,27 @@ import familyHouseProject5_1 from "@/assets/myfamilyhouse/project-5/01.webp";
 import familyHouseProject5_2 from "@/assets/myfamilyhouse/project-5/02.webp";
 import stroygradLogo from "@/assets/stroygrad/logo.webp";
 import stroygradQuattroBarn_1 from "@/assets/stroygrad/quattro-barn/01.webp";
+import stroygradQuattroBarn_2 from "@/assets/stroygrad/quattro-barn/02.webp";
+import stroygradQuattroBarn_3 from "@/assets/stroygrad/quattro-barn/03.webp";
 import stroygradSoninLug_1 from "@/assets/stroygrad/sonin-lug/01.webp";
+import stroygradSoninLug_2 from "@/assets/stroygrad/sonin-lug/02.webp";
 import stroygradMinidom_1 from "@/assets/stroygrad/minidom/01.webp";
+import stroygradMinidom_2 from "@/assets/stroygrad/minidom/02.webp";
+import stroygradMinidom_3 from "@/assets/stroygrad/minidom/03.webp";
+import stroygradMinidom_4 from "@/assets/stroygrad/minidom/04.webp";
+import stroygradMinidom_5 from "@/assets/stroygrad/minidom/05.webp";
+import stroygradMinidom_6 from "@/assets/stroygrad/minidom/06.webp";
+import stroygradMinidom_7 from "@/assets/stroygrad/minidom/07.webp";
+import stroygradMinidom_8 from "@/assets/stroygrad/minidom/08.webp";
+import stroygradMinidom_9 from "@/assets/stroygrad/minidom/09.webp";
 import stroygradSieteOffset_1 from "@/assets/stroygrad/siete-offset/01.webp";
+import stroygradSieteOffset_2 from "@/assets/stroygrad/siete-offset/02.webp";
+import stroygradSieteOffset_3 from "@/assets/stroygrad/siete-offset/03.webp";
 import stroygradDoubleBarn_1 from "@/assets/stroygrad/double-barn/01.webp";
+import stroygradDoubleBarn_2 from "@/assets/stroygrad/double-barn/02.webp";
+import stroygradDoubleBarn_3 from "@/assets/stroygrad/double-barn/03.webp";
+import stroygradDoubleBarn_4 from "@/assets/stroygrad/double-barn/04.webp";
+import stroygradDoubleBarn_5 from "@/assets/stroygrad/double-barn/05.webp";
 import modulcampLogo from "@/assets/modulcamp/logo.webp";
 import modulcampBarnHouse_1 from "@/assets/modulcamp/barn-house/01.webp";
 import modulcampBarnHousePlan from "@/assets/modulcamp/barn-house/plan.webp";
@@ -1446,6 +1465,7 @@ export type Maker = {
   siteUrl?: string;
   productionAddress?: string;
   phone?: string;
+  additionalPhones?: string[];
   email?: string;
   telegram?: string;
 };
@@ -1459,12 +1479,15 @@ export type Project = {
   area: string;
   area_m2?: number;
   beds: number;
+  kitchens?: number;
   baths: number;
   floors: number;
   term: string; // "30 д."
   rooms: string; // "2 спальни"
   purpose: string; // "ИЖС / СНТ"
   city: string;
+  /** Точные регионы доставки из src/data/regions.ts; без поля используется зона базового региона производства. */
+  deliveryRegionSlugs?: string[];
   maker: Maker;
   description: string;
   descriptionLong: string;
@@ -1706,8 +1729,12 @@ const MODOM: Maker = {
   name: "Modom",
   initials: "MO",
   id: "modom",
-  siteUrl: "https://modom.pro/proekty-modulnyh-domov/",
-  productionAddress: "Санкт-Петербург и Ленинградская область",
+  siteUrl: "https://modom.pro/",
+  productionAddress: "Ленинградская область, Всеволожский район, д. Порошкино, Промышленный проезд, 2Б",
+  phone: "+7 (812) 615-22-51",
+  additionalPhones: ["+7 (911) 977-55-90"],
+  email: "sales@modom.pro",
+  telegram: "https://t.me/modom_spb",
 };
 const HOUSEBOX: Maker = {
   name: "HouseBox",
@@ -2025,9 +2052,9 @@ const ELMACO: Maker = {
   initials: "EH",
   id: "elmaco",
   siteUrl: "https://www.elmaco.ru/homes/",
-  productionAddress: "Санкт-Петербург / Москва / Краснодар",
-  phone: "8 800 700-58-30",
-  email: "spb@elmaco.ru",
+  productionAddress: "197374, г. Санкт-Петербург, ул. Оптиков, д. 4, корп. 2, лит. А, офис 311",
+  phone: "+7 (812) 449-31-79",
+  email: "info@elmaco.ru",
 };
 const NOVATOR: Maker = {
   name: "Novator",
@@ -2081,7 +2108,8 @@ const RUSMODUL_SPB: Maker = {
 // ПРОЕКТЫ — единый источник правды
 // ============================================================================
 
-export const projects: Project[] = [
+/** Полный набор исходных данных, включая временно скрытые продукты. */
+export const allProjects: Project[] = [
   // ── Платформа · Екатеринбург ────────────────────────────────────────────
   {
     id: 32, name: "Wide House", badge: "Жилой дом", price: "5 480 000 ₽",
@@ -4276,7 +4304,7 @@ export const projects: Project[] = [
   },
   {
     id: 126, name: "7х9 Гостимир", badge: "Жилой дом", price: "1 204 500 ₽",
-    area: "118 м²", area_m2: 118, beds: 3, baths: 2, floors: 2, term: "от 1 мес.",
+    area: "118 м²", area_m2: 118, beds: 3, kitchens: 1, baths: 2, floors: 2, term: "от 1 мес.",
     rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Санкт-Петербург и ЛО",
     maker: { ...BAGROVSTROY, siteUrl: "https://bagrovstroy.ru/karkasnye-doma/kd-gostimir" },
     description: "Каркасный дом 7х9 Гостимир 118 м² размером 7×9 от производителя «Багров Строй». В проекте отмечены: терраса.",
@@ -7085,7 +7113,7 @@ export const projects: Project[] = [
     hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
   },
   {
-    id: 342, name: "Campingdom 15", badge: "Модульный дом", price: "по запросу",
+    id: 342, name: "Campingdom 15", badge: "Модульный дом", price: "1 995 000 ₽",
     area: "15 м²", area_m2: 15, beds: 1, baths: 1, floors: 1, term: "по договору",
     rooms: "студия", purpose: "Дача / Глэмпинг", city: "Казань",
     maker: { ...CAMPINGDOM, siteUrl: "https://campingdom.ru/campingdom15" },
@@ -8051,7 +8079,11 @@ export const projects: Project[] = [
     maker: { ...STROYGRAD, siteUrl: "https://stroygrad-sk.ru/our-projects/modulnyy-dom-v-stile-barnkhaus-tverskaya-obl-d-privorot/" },
     description: "Модульный дом Quattro Barn от СтройГрад с современной барн-архитектурой.",
     descriptionLong: "Quattro Barn — готовый модульный дом СтройГрад для загородного проживания. Формат подходит для дачи, аренды или постоянного проживания, а тёмный фасад и простая геометрия хорошо смотрятся на лесном или загородном участке.",
-    gallery: [{ image: stroygradQuattroBarn_1, type: "photo" }],
+    gallery: [
+      { image: stroygradQuattroBarn_1, type: "photo" },
+      { image: stroygradQuattroBarn_2, type: "photo" },
+      { image: stroygradQuattroBarn_3, type: "photo" },
+    ],
     likes: 109, rating: 4.9,
     suitableFor: ["Дача", "ПМЖ", "Аренда"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
@@ -8065,7 +8097,10 @@ export const projects: Project[] = [
     maker: { ...STROYGRAD, siteUrl: "https://stroygrad-sk.ru/our-projects/" },
     description: "Просторный модульный дом СтройГрад для семейного загородного проживания.",
     descriptionLong: "Сонин Луг — семейный модульный дом с увеличенной площадью, современным фасадом и планировкой для круглогодичного проживания за городом.",
-    gallery: [{ image: stroygradSoninLug_1, type: "photo" }],
+    gallery: [
+      { image: stroygradSoninLug_1, type: "photo" },
+      { image: stroygradSoninLug_2, type: "photo" },
+    ],
     likes: 103, rating: 4.9,
     suitableFor: ["Для семьи", "ПМЖ", "Загородный дом"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
@@ -8079,7 +8114,17 @@ export const projects: Project[] = [
     maker: { ...STROYGRAD, siteUrl: "https://stroygrad-sk.ru/our-projects/" },
     description: "Компактный модульный дом СтройГрад для дачи, гостевого размещения или аренды.",
     descriptionLong: "MiniDom Торбеево — небольшой готовый модульный дом с лаконичной архитектурой. Подходит для дачного участка, гостевого домика или первого компактного загородного сценария.",
-    gallery: [{ image: stroygradMinidom_1, type: "photo" }],
+    gallery: [
+      { image: stroygradMinidom_1, type: "photo" },
+      { image: stroygradMinidom_2, type: "photo" },
+      { image: stroygradMinidom_3, type: "photo" },
+      { image: stroygradMinidom_4, type: "photo" },
+      { image: stroygradMinidom_5, type: "photo" },
+      { image: stroygradMinidom_6, type: "photo" },
+      { image: stroygradMinidom_7, type: "photo" },
+      { image: stroygradMinidom_8, type: "photo" },
+      { image: stroygradMinidom_9, type: "photo" },
+    ],
     likes: 95, rating: 4.8,
     suitableFor: ["Дача", "Гостевой дом", "Аренда"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
@@ -8093,7 +8138,11 @@ export const projects: Project[] = [
     maker: { ...STROYGRAD, siteUrl: "https://stroygrad-sk.ru/our-projects/" },
     description: "Модульный дом Siete Offset с выразительной современной геометрией.",
     descriptionLong: "Siete Offset — одноэтажный модульный дом СтройГрад для загородного проживания. Проект рассчитан на комфортный дачный или круглогодичный сценарий с современным внешним видом.",
-    gallery: [{ image: stroygradSieteOffset_1, type: "photo" }],
+    gallery: [
+      { image: stroygradSieteOffset_1, type: "photo" },
+      { image: stroygradSieteOffset_2, type: "photo" },
+      { image: stroygradSieteOffset_3, type: "photo" },
+    ],
     likes: 99, rating: 4.8,
     suitableFor: ["Дача", "ПМЖ", "Пара"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
@@ -8107,7 +8156,13 @@ export const projects: Project[] = [
     maker: { ...STROYGRAD, siteUrl: "https://stroygrad-sk.ru/our-projects/" },
     description: "Семейный модульный барнхаус Double Barn от СтройГрад.",
     descriptionLong: "Double Barn Чехов — модульный дом в стиле барнхаус для семьи. Проект подходит для постоянного проживания за городом и участков, где важны современная архитектура и простая эксплуатация.",
-    gallery: [{ image: stroygradDoubleBarn_1, type: "photo" }],
+    gallery: [
+      { image: stroygradDoubleBarn_1, type: "photo" },
+      { image: stroygradDoubleBarn_2, type: "photo" },
+      { image: stroygradDoubleBarn_3, type: "photo" },
+      { image: stroygradDoubleBarn_4, type: "photo" },
+      { image: stroygradDoubleBarn_5, type: "photo" },
+    ],
     likes: 107, rating: 4.9,
     suitableFor: ["Для семьи", "ПМЖ", "Загородный дом"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "круглогодичный",
@@ -8741,6 +8796,9 @@ export const projects: Project[] = [
   ...regionalBatchProjects,
 ];
 
+/** Публичный каталог. Исходные записи при фильтрации не изменяются. */
+export const projects: Project[] = allProjects.filter(isPublicProject);
+
 // ============================================================================
 // ПРОИЗВОДНЫЕ СТРУКТУРЫ — рассчитываются автоматически
 // ============================================================================
@@ -8762,6 +8820,7 @@ export const catalogItems = projects.map((p) => ({
   fav: false,
   likes: p.likes,
   city: p.city,
+  deliveryRegionSlugs: p.deliveryRegionSlugs,
   floors: p.floors,
   suitableFor: p.suitableFor,
   technology: p.technology,
@@ -8864,6 +8923,7 @@ export type MakerSummary = {
   technology: string;
   productionAddress?: string;
   phone?: string;
+  additionalPhones?: string[];
   email?: string;
   telegram?: string;
 };
@@ -8888,6 +8948,7 @@ export const makersById: Record<string, MakerSummary> = projects.reduce((acc, p)
     technology: p.technology,
     productionAddress: p.maker.productionAddress,
     phone: p.maker.phone,
+    additionalPhones: p.maker.additionalPhones,
     email: p.maker.email,
     telegram: p.maker.telegram,
   };
@@ -8925,9 +8986,3 @@ const realManufacturers = Array.from(
 }));
 
 export const manufacturers = realManufacturers;
-
-// ============================================================================
-// ГОРОДА
-// ============================================================================
-
-export const cities = ["Москва и МО", "Санкт-Петербург и ЛО", "Краснодарский край", "Казань", "Екатеринбург", "Пермский край", "Нижний Новгород", "Алтайский край", "Красноярск", "Самара", "Воронеж", "Уфа", "Чебоксары", "Новосибирск", "Рязань", "Кемеровская область", "Ростовская область"];

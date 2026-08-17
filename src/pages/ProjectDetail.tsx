@@ -1,313 +1,276 @@
-import { useState, useEffect, useRef, useCallback } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Heart, Play, ChevronRight, ChevronDown, MoreHorizontal, Phone, MessageSquare, Share2, Bookmark, EyeOff, Flag, X, Ruler, BedDouble, Bath, Layers, Star, MessageCircleQuestion, Image, Send, MapPin, Maximize } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  ArrowLeft,
+  Bath,
+  BedDouble,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  CircleHelp,
+  Forward,
+  Heart,
+  Images,
+  Layers,
+  Maximize,
+  Play,
+  Star,
+  X,
+} from "lucide-react";
 import Header from "@/components/Header";
-import MobileTabBar from "@/components/MobileTabBar";
+import CitySelector, { useCity } from "@/components/CitySelector";
+import Footer from "@/components/Footer";
+import MobileExpandableText from "@/components/MobileExpandableText";
+import OtherProjectsFeed from "@/components/OtherProjectsFeed";
+import ProjectReportDialog from "@/components/ProjectReportDialog";
+import ProjectRooms from "@/components/ProjectRooms";
+import Seo from "@/components/Seo";
+import SiteBreadcrumbs, { siteBreadcrumbPageContainerClassName } from "@/components/SiteBreadcrumbs";
+import VerifiedBadge from "@/components/VerifiedBadge";
+import NotFound from "@/pages/NotFound";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useFavorites } from "@/contexts/FavoritesContext";
-import CitySelector, { useCity } from "@/components/CitySelector";
-import OtherProjectsFeed from "@/components/OtherProjectsFeed";
-import Seo from "@/components/Seo";
-import NotFound from "@/pages/NotFound";
 import { buildAssetUrl, buildSiteUrl } from "@/lib/seo";
-import house1 from "@/assets/house-1.webp";
-import house2 from "@/assets/house-2.webp";
-import house3 from "@/assets/house-3.webp";
-import house4 from "@/assets/house-4.webp";
-import house5 from "@/assets/house-5.webp";
-import house6 from "@/assets/house-6.webp";
-import house7 from "@/assets/house-7.webp";
-import house8 from "@/assets/house-8.webp";
-import house9 from "@/assets/house-9.webp";
-import { projectOverrides, projectsCountByMakerId } from "@/data/projects";
+import { getCityDisplayName } from "@/lib/cityDisplay";
+import {
+  getGeoSelectionAccusative,
+  getGeoSelectionLabel,
+  getGeoSelectionPrepositional,
+  getProjectDeliveryRegions,
+  isAllRegionsGeo,
+  isProjectAvailableInGeo,
+  normalizeGeoSelection,
+} from "@/lib/geoSelection";
+import { projects, projectsCountByMakerId } from "@/data/projects";
 import { getPartnerReviewSummary } from "@/data/partnerReviews";
 import { isVerifiedMaker } from "@/lib/verifiedMakers";
+import {
+  CATALOG_PATH,
+  getManufacturerPath,
+  getProjectIdFromRouteParam,
+  getProjectPath,
+  getRegionPath,
+} from "@/lib/siteRoutes";
 
-const defaultGallery = [
-  { id: 1, image: house1, type: "photo" },
-  { id: 2, image: house2, type: "photo" },
-  { id: 3, image: house3, type: "photo" },
-  { id: 4, image: house4, type: "photo" },
-  { id: 5, image: house5, type: "video" },
-];
-
-// projectOverrides импортируется из src/data/projects.ts (единый источник правды).
-
-const baseParams = [
-  { key: "Тип фундамента", value: "Свайный", link: true },
-  { key: "Срок строительства", value: "3–6 месяцев" },
-];
-
-const constructParams = [
-  { key: "Внешние стены", value: "Модульный дом", link: true },
-  { key: "Вентиляция фасада", value: "Да" },
-  { key: "Материал перекрытий", value: "Деревянные", link: true },
-  { key: "Огнебиозащита", value: "Да" },
-  { key: "Толщина стен", value: "220 мм" },
-  { key: "Фасад", value: "Имитация бруса", link: true },
-];
-
-const insulationParams = [
-  { key: "Пол первого этажа", value: "200 мм" },
-  { key: "Внешние стены", value: "150 мм" },
-  { key: "Кровля", value: "200 мм" },
-  { key: "Утеплитель", value: "Минвата KNAUF" },
-  { key: "Пароизоляция", value: "ONDUTISS PRO" },
-];
-
-const roofParams = [
-  { key: "Покрытие", value: "Оцинк. профнастил", link: true },
-  { key: "Водосточная система", value: "Да" },
-];
-
-const finishParams = [
-  { key: "Фасад", value: "Имитация бруса А,Б" },
-  { key: "Пол", value: "Ламинат 33 класс" },
-  { key: "Двери", value: "CARDA soft touch" },
-  { key: "Входная дверь", value: "Алюм. с остеклением" },
-];
-
-const engineeringParams = [
-  { key: "Электроснабжение", value: "Розетки, автоматика" },
-  { key: "Водоснабжение", value: "Разводка" },
-];
-
-const techParams = [
-  { key: "Общая площадь", value: "60 м²" },
-  { key: "Площадь застройки", value: "72 м²" },
-  { key: "Тип фундамента", value: "Свайный", link: true },
-  { key: "Материал стен", value: "Модульный дом", link: true },
-  { key: "Толщина внешних стен", value: "220 мм" },
-  { key: "Отделка фасада", value: "Имитация бруса", link: true },
-  { key: "Материал кровли", value: "Оцинк. профнастил", link: true },
-];
-
-const planParams = [
-  { key: "Высота потолков", value: "от 2,4 м" },
-  { key: "Этажей", value: "1" },
-  { key: "Спальни", value: "2" },
-  { key: "Санузлы", value: "1" },
-  { key: "Кухня-гостиная", value: "Да" },
-  { key: "Веранда", value: "Да" },
-];
-
-const builtHouses = [
-  { name: "Мидленд 66", photos: "6 фото", image: house6 },
-  { name: "Шервуд 72", photos: "4 фото", image: house7 },
-  { name: "Бонд 55", photos: "8 фото", image: house8 },
-];
-
-const reviews = [
-  {
-    initial: "М",
-    name: "Максим С.",
-    rating: "5.0",
-    date: "Построено · 11 мар 26",
-    text: "Решили построить дом-баню под сдачу. Долго выбирали подрядчика, читали отзывы, смотрели проекты…",
-    builtTime: "Построен за 1–3 месяца",
-  },
-  {
-    initial: "Д",
-    name: "Дарья К.",
-    rating: "5.0",
-    date: "Построено · фев 26",
-    text: "Мы живём здесь с 2024 года. Дом стал нашим любимым местом…",
-    builtTime: "Построен за 2 месяца",
-  },
-];
-
-const contractorProjects = [
-  { name: "Мидленд 66", price: "от 4,4 млн ₽", meta: "56 м² · 2 спальни · 1 этаж", image: house6 },
-  { name: "Шервуд 72", price: "от 4,4 млн ₽", meta: "70 м² · 2 спальни · 1 этаж", image: house7 },
-  { name: "Бонд 88", price: "от 5,8 млн ₽", meta: "88 м² · 3 спальни · 1 этаж", image: house8 },
-  { name: "Печора", price: "от 4,6 млн ₽", meta: "73 м² · 2 спальни · 1 этаж", image: house4 },
-  { name: "БД-109", price: "от 5,7 млн ₽", meta: "109 м² · 3 спальни · 1 этаж", image: house5 },
-  { name: "Тайга 72", price: "от 2,4 млн ₽", meta: "72 м² · 2 спальни · 1 этаж", image: house9 },
-];
-
-const similarProjects = [
-  { name: "Печора", price: "от 4,6 млн ₽", meta: "73 м² · 2 спальни · 1 этаж", image: house4 },
-  { name: "БД-109", price: "от 5,7 млн ₽", meta: "109 м² · 3 спальни · 1 этаж", image: house5 },
-  { name: "Тайга 72", price: "от 2,4 млн ₽", meta: "72 м² · 2 спальни · 1 этаж", image: house9 },
-];
-
-const chatQuestions = [
-  "Что нужно для строительства?",
-  "Какие сроки строительства?",
-  "Проконсультируете по строительству?",
-];
-
-const ParamRow = ({ item }: { item: { key: string; value: string; link?: boolean } }) => (
-  <div className="flex justify-between items-center py-[11px] border-b border-border last:border-b-0">
-    <span className="text-sm text-muted-foreground">{item.key}</span>
-    <span className={`text-sm font-medium text-right ${item.link ? "text-primary" : "text-foreground"}`}>{item.value}</span>
-  </div>
-);
-
-const ParamGroup = ({ title, params }: { title: string; params: { key: string; value: string; link?: boolean }[] }) => (
-  <div className="mt-4">
-    <div className="text-[15px] font-semibold text-foreground mb-2">{title}</div>
-    <div className="flex flex-col">
-      {params.map((p, i) => <ParamRow key={i} item={p} />)}
-    </div>
-  </div>
-);
-
-const ProjectCard = ({ project }: { project: { name: string; price: string; meta: string; image: string } }) => (
-  <div className="flex-shrink-0 w-[160px]">
-    <div className="h-[110px] rounded-xl overflow-hidden mb-2">
-      <img src={project.image} alt={project.name} className="w-full h-full object-cover" loading="lazy" />
-    </div>
-    <div className="text-[13px] font-semibold text-foreground mb-0.5">{project.name}</div>
-    <div className="text-xs font-medium text-green-600 mb-0.5">{project.price}</div>
-    <div className="text-[11px] text-muted-foreground">{project.meta}</div>
-  </div>
-);
+const wordForm = (count: number, forms: [string, string, string]) => {
+  const mod100 = Math.abs(count) % 100;
+  const mod10 = mod100 % 10;
+  if (mod100 > 10 && mod100 < 20) return forms[2];
+  if (mod10 === 1) return forms[0];
+  if (mod10 >= 2 && mod10 <= 4) return forms[1];
+  return forms[2];
+};
 
 const ProjectDetail = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const location = useLocation();
+  const { id, projectSlug } = useParams();
   const isMobile = useIsMobile();
   const { toggleFavorite, isFavorite } = useFavorites();
+  const { city: deliveryRegionSlug, selectCity: selectDeliveryRegion } = useCity();
+  const routeProjectId = getProjectIdFromRouteParam(projectSlug ?? id);
+  const project = projects.find((item) => item.id === routeProjectId);
+  const projectDeliveryRegions = getProjectDeliveryRegions(project?.city, project?.deliveryRegionSlugs);
+
   const [activeImage, setActiveImage] = useState(0);
-
-  // Данные проекта (с override по id)
-  const override = id ? projectOverrides[id] : undefined;
-  const isUnknownProject = !id || !override;
-  const project = {
-    id: id ? Number(id) : 1,
-    name: override?.name ?? "Шервуд 72.1",
-    maker: override?.maker ?? "Sherwood Home",
-    makerInitials: override?.makerInitials ?? "SW",
-    makerLogo: override?.makerLogo,
-    makerId: override?.makerId ?? "1",
-    makerHref: `/partner/${override?.makerId ?? "1"}`,
-    siteUrl: override?.siteUrl ?? "https://platforma-modul.ru/",
-    price: override?.price ?? "4 950 000 ₽",
-    area: override?.area ?? "60 м²",
-    beds: override?.beds ?? 2,
-    baths: override?.baths ?? 1,
-    floors: override?.floors ?? 1,
-    cityDefault: override?.city,
-    description: override?.description ?? "Компактный одноэтажный дом с панорамным остеклением. Каркасная технология, сборка за 45 дней.",
-    descriptionLong: override?.descriptionLong ?? "Шервуд 72.1 — ваш дом за 6 недель. Компактный одноэтажный дом с продуманной планировкой для комфортной жизни за городом. Две изолированные спальни, просторная кухня-гостиная с панорамным остеклением и уютная веранда — всё, что нужно для семьи.",
-  };
-  const galleryImages = override?.gallery ?? defaultGallery;
-
-  const projectFavItem = {
-    id: project.id,
-    badge: "Хит",
-    maker: project.maker,
-    name: project.name,
-    price: `от ${project.price}`,
-    area: project.area,
-    beds: project.beds,
-    baths: project.baths,
-    term: "3–6 мес.",
-    image: galleryImages[0]?.image ?? "",
-    likes: 0,
-    city: project.cityDefault ?? "",
-  };
-  const liked = isFavorite(projectFavItem.id);
-  const handleToggleFav = () => toggleFavorite(projectFavItem);
-  const [showActions, setShowActions] = useState(false);
-  const [expanded, setExpanded] = useState(false);
-  const [descExpanded, setDescExpanded] = useState(false);
-  const [openSection, setOpenSection] = useState<"equipment" | "specs" | null>(null);
-  const [scrolled, setScrolled] = useState(false);
-  const { city, selectCity } = useCity();
-  const [cityOpen, setCityOpen] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
-
-  // Gallery slider touch — с фиксацией оси, чтобы вертикальный скролл не дёргал страницу
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const [deliveryCityOpen, setDeliveryCityOpen] = useState(false);
+  const [detailsExpanded, setDetailsExpanded] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const galleryWrapRef = useRef<HTMLDivElement>(null);
-  const [dragOffset, setDragOffset] = useState(0);
-  const dragOffsetRef = useRef(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
   const touchStartY = useRef(0);
+  const dragOffsetRef = useRef(0);
   const lockedAxis = useRef<"x" | "y" | null>(null);
   const isDragging = useRef(false);
+  const [dragOffset, setDragOffset] = useState(0);
+  const lightboxStartX = useRef<number | null>(null);
+
+  const galleryLength = project?.gallery.length ?? 0;
 
   const finishSwipe = useCallback(() => {
     if (!isDragging.current) return;
     isDragging.current = false;
-    if (sliderRef.current) sliderRef.current.style.transition = '';
+    if (sliderRef.current) sliderRef.current.style.transition = "";
     const offset = dragOffsetRef.current;
     if (lockedAxis.current === "x" && Math.abs(offset) > 60) {
-      if (offset < 0 && activeImage < galleryImages.length - 1) {
-        setActiveImage(prev => prev + 1);
-      } else if (offset > 0 && activeImage > 0) {
-        setActiveImage(prev => prev - 1);
-      }
+      if (offset < 0) setActiveImage((current) => Math.min(galleryLength - 1, current + 1));
+      if (offset > 0) setActiveImage((current) => Math.max(0, current - 1));
     }
     lockedAxis.current = null;
     dragOffsetRef.current = 0;
     setDragOffset(0);
-  }, [activeImage, galleryImages.length]);
+  }, [galleryLength]);
 
-  // Нативные non-passive listeners — нужны чтобы preventDefault блокировал
-  // вертикальный скролл во время горизонтального свайпа
   useEffect(() => {
-    const el = galleryWrapRef.current;
-    if (!el) return;
+    setDetailsExpanded(false);
+  }, [routeProjectId]);
 
-    const handleStart = (e: TouchEvent) => {
-      touchStartX.current = e.touches[0].clientX;
-      touchStartY.current = e.touches[0].clientY;
+  useEffect(() => {
+    const element = galleryWrapRef.current;
+    if (!element) return;
+
+    const handleStart = (event: TouchEvent) => {
+      touchStartX.current = event.touches[0].clientX;
+      touchStartY.current = event.touches[0].clientY;
       lockedAxis.current = null;
       isDragging.current = true;
       dragOffsetRef.current = 0;
-      if (sliderRef.current) sliderRef.current.style.transition = 'none';
+      if (sliderRef.current) sliderRef.current.style.transition = "none";
     };
 
-    const handleMove = (e: TouchEvent) => {
+    const handleMove = (event: TouchEvent) => {
       if (!isDragging.current) return;
-      const dx = e.touches[0].clientX - touchStartX.current;
-      const dy = e.touches[0].clientY - touchStartY.current;
+      const dx = event.touches[0].clientX - touchStartX.current;
+      const dy = event.touches[0].clientY - touchStartY.current;
 
-      if (!lockedAxis.current) {
-        if (Math.abs(dx) > 8 || Math.abs(dy) > 8) {
-          lockedAxis.current = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
-        } else {
-          return;
-        }
+      if (!lockedAxis.current && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+        lockedAxis.current = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
       }
-
       if (lockedAxis.current === "x") {
-        // Блокируем вертикальный скролл, пока листаем горизонтально
-        if (e.cancelable) e.preventDefault();
+        if (event.cancelable) event.preventDefault();
         dragOffsetRef.current = dx;
         setDragOffset(dx);
       }
     };
 
-    const handleEnd = () => finishSwipe();
-
-    el.addEventListener("touchstart", handleStart, { passive: true });
-    el.addEventListener("touchmove", handleMove, { passive: false });
-    el.addEventListener("touchend", handleEnd, { passive: true });
-    el.addEventListener("touchcancel", handleEnd, { passive: true });
-
+    element.addEventListener("touchstart", handleStart, { passive: true });
+    element.addEventListener("touchmove", handleMove, { passive: false });
+    element.addEventListener("touchend", finishSwipe, { passive: true });
+    element.addEventListener("touchcancel", finishSwipe, { passive: true });
     return () => {
-      el.removeEventListener("touchstart", handleStart);
-      el.removeEventListener("touchmove", handleMove);
-      el.removeEventListener("touchend", handleEnd);
-      el.removeEventListener("touchcancel", handleEnd);
+      element.removeEventListener("touchstart", handleStart);
+      element.removeEventListener("touchmove", handleMove);
+      element.removeEventListener("touchend", finishSwipe);
+      element.removeEventListener("touchcancel", finishSwipe);
     };
   }, [finishSwipe]);
 
-  const navigateBack = useCallback(() => navigate(-1), [navigate]);
-
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 300);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 420);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  if (isUnknownProject) {
-    return <NotFound />;
-  }
+  useEffect(() => {
+    setActiveImage(0);
+  }, [routeProjectId]);
+
+  useEffect(() => {
+    if (!project) return;
+    const canonicalProjectPath = getProjectPath(project);
+    if (location.pathname === canonicalProjectPath) return;
+    navigate(`${canonicalProjectPath}${location.search}${location.hash}`, { replace: true });
+  }, [location.hash, location.pathname, location.search, navigate, project]);
+
+  if (!project) return <NotFound />;
+
+  const makerId = project.maker.id ?? "";
+  const canonicalPath = getProjectPath(project);
+  const makerHref = getManufacturerPath(makerId);
+  const verified = isVerifiedMaker(makerId);
+  const reviewSummary = getPartnerReviewSummary(makerId);
+  const liked = isFavorite(project.id);
+  const firstImage = project.gallery[0]?.image ?? "";
+  const priceLabel = /^(?:от(?:\s|$)|по запросу(?:\s|$))/i.test(project.price.trim())
+    ? project.price
+    : `от ${project.price}`;
+  const seoProjectType = project.technology.toLocaleLowerCase("ru").includes("префаб")
+    ? "Префаб-дом"
+    : "Модульный дом";
+  const seoTitle = `${seoProjectType} ${project.name}, ${project.area} от ${project.maker.name} | многоместа.рф`;
+  const seoDescription = `${seoProjectType} ${project.name} площадью ${project.area} от ${project.maker.name}. Цена ${priceLabel}. ${project.description}`.slice(0, 160);
+  const deliveryCityLabel = getGeoSelectionLabel(deliveryRegionSlug);
+  const deliveryRegionAccusative = getGeoSelectionAccusative(deliveryRegionSlug);
+  const deliveryRegionPrepositional = getGeoSelectionPrepositional(deliveryRegionSlug);
+  const allRegionsSelected = isAllRegionsGeo(deliveryRegionSlug);
+  const deliveryRegionHref = allRegionsSelected
+    ? CATALOG_PATH
+    : getRegionPath(normalizeGeoSelection(deliveryRegionSlug));
+  const deliveryAvailable = isProjectAvailableInGeo(project.city, deliveryRegionSlug, project.deliveryRegionSlugs);
+
+  const favoriteItem = {
+    id: project.id,
+    badge: project.badge,
+    maker: project.maker.name,
+    name: project.name,
+    price: project.price,
+    area: project.area,
+    beds: project.beds,
+    baths: project.baths,
+    term: project.term,
+    image: firstImage,
+    likes: project.likes,
+    city: project.city,
+  };
+
+  const handleToggleFavorite = () => toggleFavorite(favoriteItem);
+  const handleShare = async () => {
+    const shareData = { title: `${project.name} — Много места`, url: window.location.href };
+    if (navigator.share) {
+      await navigator.share(shareData).catch(() => undefined);
+      return;
+    }
+    await navigator.clipboard?.writeText(window.location.href).catch(() => undefined);
+  };
+
+  const renderDeliveryMessage = () => (
+    <p className="mt-2 text-[13px] leading-relaxed text-[#717b8e]">
+      {allRegionsSelected ? (
+        <>
+          Цена зависит от комплектации и региона доставки.{" "}
+          <button
+            type="button"
+            onClick={() => setDeliveryCityOpen(true)}
+            className="font-medium text-primary transition-colors hover:text-primary/75 focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+          >
+            Выбрать регион
+          </button>
+        </>
+      ) : deliveryAvailable ? (
+        <>
+          Цена зависит от комплектации и доставки в{" "}
+          <button
+            type="button"
+            onClick={() => setDeliveryCityOpen(true)}
+            className="inline-flex items-center gap-0.5 font-medium text-primary underline decoration-primary/25 underline-offset-2 transition-colors hover:text-primary/75 hover:decoration-primary/60 focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+            aria-label={`Выбрать регион доставки. Сейчас ${deliveryCityLabel}`}
+          >
+            {deliveryRegionAccusative}
+            <ChevronDown className="h-3 w-3 shrink-0" strokeWidth={1.8} aria-hidden />
+          </button>
+        </>
+      ) : (
+        <>
+          Проект недоступен для доставки в {deliveryRegionAccusative}.{" "}
+          <button
+            type="button"
+            onClick={() => setDeliveryCityOpen(true)}
+            className="font-medium text-primary transition-colors hover:text-primary/75 focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+          >
+            Выбрать другой регион
+          </button>
+        </>
+      )}
+    </p>
+  );
+
+  const renderProjectAction = (className: string) => deliveryAvailable ? (
+    <a
+      href={project.maker.siteUrl}
+      target="_blank"
+      rel="noopener noreferrer nofollow sponsored"
+      className={className}
+    >
+      Перейти на сайт
+    </a>
+  ) : (
+    <button type="button" onClick={() => navigate(deliveryRegionHref)} className={className}>
+      Смотреть проекты {deliveryRegionPrepositional}
+    </button>
+  );
 
   const priceDigits = (project.price.match(/\d+/g) ?? []).join("");
   const productJsonLd = {
@@ -315,447 +278,489 @@ const ProjectDetail = () => {
     "@type": "Product",
     name: project.name,
     description: project.descriptionLong || project.description,
-    brand: { "@type": "Brand", name: project.maker },
-    image: galleryImages[0]?.image ? buildAssetUrl(galleryImages[0].image) : undefined,
+    brand: { "@type": "Brand", name: project.maker.name },
+    image: firstImage ? buildAssetUrl(firstImage) : undefined,
     offers: priceDigits
       ? {
           "@type": "Offer",
           priceCurrency: "RUB",
           price: priceDigits,
-          availability: "https://schema.org/InStock",
-          url: buildSiteUrl(`/project/${project.id}`),
+          url: buildSiteUrl(canonicalPath),
         }
       : undefined,
   };
-
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Главная", item: buildSiteUrl("/") },
-      { "@type": "ListItem", position: 2, name: "Каталог", item: buildSiteUrl("/catalog") },
-      { "@type": "ListItem", position: 3, name: project.name, item: buildSiteUrl(`/project/${project.id}`) },
+      { "@type": "ListItem", position: 2, name: "Проекты", item: buildSiteUrl(CATALOG_PATH) },
+      { "@type": "ListItem", position: 3, name: project.name, item: buildSiteUrl(canonicalPath) },
     ],
   };
 
+  const specItems = [
+    { icon: Maximize, value: project.area, label: "Площадь" },
+    { icon: BedDouble, value: String(project.beds), label: wordForm(project.beds, ["Спальня", "Спальни", "Спален"]) },
+    { icon: Bath, value: String(project.baths), label: wordForm(project.baths, ["Санузел", "Санузла", "Санузлов"]) },
+    { icon: Layers, value: String(project.floors), label: wordForm(project.floors, ["Этаж", "Этажа", "Этажей"]) },
+  ];
+  const rawProjectDescription = project.descriptionLong || project.description;
+  const descriptionPrefix = `${project.name} — `;
+  const unprefixedProjectDescription = rawProjectDescription.startsWith(descriptionPrefix)
+    ? rawProjectDescription.slice(descriptionPrefix.length)
+    : rawProjectDescription;
+  const projectDescription = unprefixedProjectDescription.charAt(0).toUpperCase() + unprefixedProjectDescription.slice(1);
+
+  const detailRows = [
+    ["Технология", project.technology],
+    ["Утепление", project.insulation],
+    ["Срок строительства", "до 60 дней"],
+    ["Стиль", project.style],
+    ["Регион производства", getCityDisplayName(project.city)],
+  ];
+
+  const renderGalleryImage = (index: number, mobile = false) => {
+    const item = project.gallery[index];
+    const isContain = item.fit === "contain";
+    return (
+      <div className={`relative isolate overflow-hidden bg-secondary ${mobile ? "aspect-[4/3]" : "h-full"}`}>
+        <img
+          src={item.image}
+          alt={`${project.name}, изображение ${index + 1}`}
+          className={`relative z-10 h-full w-full ${isContain ? "object-contain" : "object-cover"}`}
+          loading={index === 0 ? "eager" : "lazy"}
+          decoding="async"
+          draggable={false}
+          onClick={() => setLightboxOpen(true)}
+        />
+        {item.type === "video" && (
+          <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
+            <span className="flex h-14 w-14 items-center justify-center rounded-[3px] bg-white/90 text-[#342d27] shadow-sm">
+              <Play className="h-5 w-5 fill-current" aria-hidden />
+            </span>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const mosaicIndexes = project.gallery.slice(0, 5).map((_, index) => index);
+  const mosaicPreviewCount = Math.max(0, mosaicIndexes.length - 1);
+  const lastMosaicIndex = mosaicIndexes[mosaicIndexes.length - 1] ?? 0;
+
+  const mosaicCellClass = (previewIndex: number) => {
+    if (mosaicPreviewCount === 1) return "col-span-2 row-span-2";
+    if (mosaicPreviewCount === 2) return "col-span-2";
+    if (mosaicPreviewCount === 3 && previewIndex === 0) return "col-span-2";
+    return "";
+  };
+
+  const renderMosaicImage = (index: number, primary = false, previewIndex = 0) => {
+    const item = project.gallery[index];
+    const isContain = item.fit === "contain";
+    const showCount = index === lastMosaicIndex;
+
+    return (
+      <button
+        key={index}
+        type="button"
+        onClick={() => { setActiveImage(index); setLightboxOpen(true); }}
+        className={`group relative isolate h-full min-h-0 w-full cursor-pointer overflow-hidden rounded-[3px] bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 ${primary ? "" : mosaicCellClass(previewIndex)}`}
+        aria-label={`Открыть фотографию ${index + 1} из ${project.gallery.length}`}
+      >
+        <img
+          src={item.image}
+          alt={`${project.name}, фотография ${index + 1}`}
+          className={`relative z-10 h-full w-full transition-transform duration-300 group-hover:scale-[1.01] motion-reduce:transform-none ${isContain ? "object-contain" : "object-cover"}`}
+          style={item.objectPosition ? { objectPosition: item.objectPosition } : undefined}
+          loading={index === 0 ? "eager" : "lazy"}
+          decoding="async"
+          draggable={false}
+        />
+        {item.type === "video" && (
+          <span className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
+            <span className="flex h-11 w-11 items-center justify-center rounded-[3px] bg-white/90 text-[#342d27] shadow-sm">
+              <Play className="h-4 w-4 fill-current" aria-hidden />
+            </span>
+          </span>
+        )}
+        {showCount && (
+          <span className="absolute bottom-3 right-3 z-30 inline-flex min-h-9 items-center gap-1.5 rounded-[3px] bg-[#342d27]/90 px-3 text-[12px] font-medium text-white backdrop-blur-sm">
+            <Images className="h-4 w-4" strokeWidth={1.6} aria-hidden />
+            {project.gallery.length} фото
+          </span>
+        )}
+      </button>
+    );
+  };
+
+  const renderSpecs = () => (
+    <dl className="grid grid-cols-4 gap-x-2 sm:gap-x-6">
+      {specItems.map(({ icon: Icon, value, label }) => (
+        <div key={label} className="min-w-0 py-1">
+          <Icon className="mb-2 h-[18px] w-[18px] text-primary" strokeWidth={1.7} aria-hidden />
+          <dd className="text-[14px] font-semibold leading-tight text-[#342d27] sm:text-[16px] dark:text-foreground">{value}</dd>
+          <dt className="mt-1 text-[11px] leading-tight text-[#717b8e] sm:text-[12px]">{label}</dt>
+        </div>
+      ))}
+    </dl>
+  );
+
+  const renderMakerCard = () => (
+    <button
+      type="button"
+      onClick={() => navigate(makerHref)}
+      className="group flex min-h-12 w-full items-center gap-3 rounded-[3px] bg-[#f1f4ff] px-3 py-2.5 text-left transition-colors hover:bg-[#e9efff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:bg-primary/10 dark:hover:bg-primary/15"
+    >
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[3px] bg-white text-[11px] font-bold shadow-[0_0_0_1px_rgba(59,70,96,0.08)] dark:bg-card">
+        {project.maker.logo ? (
+          <img src={project.maker.logo} alt="" className="h-full w-full object-cover" loading="lazy" />
+        ) : (
+          project.maker.initials
+        )}
+      </span>
+      <span className="min-w-0 flex-1">
+          <span className="flex items-center gap-2">
+            <span className="truncate text-[14px] font-semibold text-[#342d27] dark:text-foreground">{project.maker.name}</span>
+          {verified && <VerifiedBadge />}
+        </span>
+        <span className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] leading-tight text-[#717b8e]">
+          {reviewSummary.hasReviews && (
+            <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap">
+              <Star className="h-3.5 w-3.5 fill-primary text-primary" strokeWidth={1.5} aria-hidden />
+              <span>{reviewSummary.rating.toFixed(1).replace(".", ",")} · {reviewSummary.reviewsLabel}</span>
+            </span>
+          )}
+          <span className="shrink-0 whitespace-nowrap">
+            {projectsCountByMakerId[makerId] ?? 0} проектов в каталоге
+          </span>
+        </span>
+      </span>
+      <ChevronRight className="h-5 w-5 shrink-0 text-[#717b8e] transition-[color,transform] duration-200 group-hover:translate-x-0.5 group-hover:text-primary motion-reduce:transform-none" strokeWidth={1.8} aria-hidden />
+    </button>
+  );
+
   return (
-    <div className="min-h-screen bg-muted pb-24 md:pb-0">
+    <div className="min-h-screen bg-white text-[#342d27] dark:bg-background dark:text-foreground">
       <Seo
-        title={`${project.name} от ${project.maker} — ${project.price} | многоместа.рф`}
-        description={`${project.name} (${project.area}, ${project.beds} спальни). ${project.description}`.slice(0, 160)}
-        canonicalPath={`/project/${project.id}`}
+        title={seoTitle}
+        description={seoDescription}
+        canonicalPath={canonicalPath}
         type="product"
-        image={galleryImages[0]?.image}
+        image={firstImage}
         jsonLd={[productJsonLd, breadcrumbJsonLd]}
       />
-      {/* Desktop header */}
-      <div className="hidden md:block"><Header /></div>
-      {/* Sticky bento header on scroll */}
-      {isMobile && (
-        <div className={`fixed top-0 left-0 right-0 z-50 transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-          <div className="bg-background px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 rounded-b-2xl shadow-sm">
-            <div className="flex items-center justify-between">
-              <button onClick={navigateBack} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
-                <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
-              </button>
-              <div className="flex-1 min-w-0 ml-3">
-                <div className="text-[14px] font-semibold text-foreground truncate">{projectFavItem.name}</div>
-                <div className="text-[13px] font-medium text-primary">{projectFavItem.price}</div>
-              </div>
-              <div className="flex items-center gap-2">
-                <button className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center" onClick={() => { if (navigator.share) { navigator.share({ title: 'Проект', url: window.location.href }); } else { navigator.clipboard.writeText(window.location.href); } }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 100 103" fill="hsl(var(--foreground) / 0.8)" stroke="hsl(var(--foreground) / 0.8)" strokeWidth="4" strokeLinejoin="round" strokeLinecap="round">
-                    <path d="M53 20 L84 50 L53 80 L53 65 C30 65 15 75 10 93 C10 68 15 38 53 33 Z" />
-                  </svg>
-                </button>
-                <button onClick={handleToggleFav} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
-                  <Heart className={`w-[18px] h-[18px] ${liked ? "text-red-500 fill-red-500" : "text-foreground"}`} strokeWidth={1.8} />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-      {/* Mobile floating nav - visible only when not scrolled */}
-      {isMobile && (
-        <div className={`fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-3 pt-3 transition-opacity duration-300 ${scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-          <button
-            onClick={navigateBack}
-            className="w-9 h-9 rounded-xl bg-background shadow-sm flex items-center justify-center"
-          >
-            <ArrowLeft className="w-[18px] h-[18px] text-foreground" strokeWidth={1.8} />
-          </button>
-          <div className="flex items-center gap-2">
-            <button className="w-9 h-9 rounded-xl bg-background shadow-sm flex items-center justify-center" onClick={() => { if (navigator.share) { navigator.share({ title: 'Проект', url: window.location.href }); } else { navigator.clipboard.writeText(window.location.href); } }}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 100 103" fill="hsl(var(--foreground) / 0.8)" stroke="hsl(var(--foreground) / 0.8)" strokeWidth="4" strokeLinejoin="round" strokeLinecap="round">
-                <path d="M53 20 L84 50 L53 80 L53 65 C30 65 15 75 10 93 C10 68 15 38 53 33 Z" />
-              </svg>
-            </button>
-            <button
-              onClick={handleToggleFav}
-              className="w-9 h-9 rounded-xl bg-background shadow-sm flex items-center justify-center"
-            >
-              <Heart className={`w-[18px] h-[18px] ${liked ? "text-red-500 fill-red-500" : "text-foreground"}`} strokeWidth={1.8} />
-            </button>
-          </div>
-        </div>
-      )}
+      <Header variant="home" />
 
-      {/* Actions bottom sheet */}
-      {showActions && (
-        <>
-          <div className="fixed inset-0 z-[60] bg-black/40" onClick={() => setShowActions(false)} />
-          <div className="fixed bottom-0 left-0 right-0 z-[60] bg-background rounded-t-2xl px-5 pb-8 pt-4 animate-in slide-in-from-bottom duration-200">
-            <button onClick={() => setShowActions(false)} className="mb-4">
-              <X className="w-5 h-5 text-muted-foreground" />
-            </button>
-            <h3 className="text-lg font-medium text-foreground mb-4">Действия</h3>
-            <div className="flex flex-col">
-              {[
-                { icon: Phone, label: "Позвонить" },
-                { icon: MessageSquare, label: "Написать" },
-                { icon: Share2, label: "Поделиться" },
-                { icon: Heart, label: "Добавить в избранное" },
-                { icon: Bookmark, label: "Оставить заметку" },
-                { icon: EyeOff, label: "Скрыть объявление" },
-                { icon: Flag, label: "Пожаловаться на объявление" },
-              ].map(({ icon: Icon, label }, i) => (
-                <button
-                  key={label}
-                  className={`flex items-center gap-3.5 py-3.5 text-[15px] font-light text-foreground ${i > 0 ? "border-t border-border" : ""}`}
-                  onClick={() => setShowActions(false)}
-                >
-                  <Icon className="w-5 h-5 text-muted-foreground" strokeWidth={1.5} />
-                  {label}
-                </button>
-              ))}
-            </div>
-          </div>
-        </>
-      )}
-
-      <main className={`${isMobile ? "pt-0" : "pt-[140px] max-w-[1400px] mx-auto bg-background rounded-2xl px-8 pb-8 mt-3"}`}>
-        {!isMobile && (
-          <div className="pt-6 pb-2">
-            <button onClick={() => navigate("/catalog")} className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-              Назад в каталог
-            </button>
-          </div>
-        )}
-        <div className={isMobile ? "" : "grid grid-cols-[1fr_420px] gap-8"}>
-        <div>
-        {/* ===== GALLERY ===== */}
-        {isMobile ? (
-          <div className="relative bg-background">
-            <div ref={galleryWrapRef} className="relative overflow-hidden rounded-b-2xl">
-            <div
-              ref={sliderRef}
-              className="flex transition-transform duration-300 ease-out"
-              style={{ transform: `translateX(calc(-${activeImage * 100}% + ${dragOffset}px))` }}
-            >
-              {galleryImages.map((img, i) => {
-                const isContain = (img as any).fit === "contain";
-                const hasBlur = Boolean((img as any).blur);
-                const isActive = i === activeImage;
-                return (
-                  <div key={img.id} className="relative isolate w-full flex-shrink-0 aspect-[4/5] bg-muted overflow-hidden">
-                    {isContain && hasBlur && (
-                      <img
-                        src={img.image}
-                        alt=""
-                        aria-hidden="true"
-                        className="absolute inset-0 w-full h-full object-cover opacity-70 z-0"
-                        style={{ filter: "blur(18px)", transform: "scale(1.12)" }}
-                        draggable={false}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    )}
-                    <img
-                      src={img.image}
-                      alt={`Фото ${i + 1}`}
-                      className={`relative z-10 w-full h-full ${isContain ? "object-contain" : "object-cover"}`}
-                      decoding="sync"
-                      loading="lazy"
-                      draggable={false}
-                      onClick={() => setLightboxOpen(true)}
-                      style={undefined}
-                    />
-                    {img.type === "video" && (
-                      <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-                        <Play className="w-12 h-12 text-white/80" />
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-            <span className="absolute bottom-3 right-4 text-xs text-white bg-black/45 px-2.5 py-1 rounded-full" style={{ textShadow: "0 1px 3px rgba(0,0,0,0.45)" }}>
-              {activeImage + 1} из {galleryImages.length}
-            </span>
-            </div>
-          </div>
-        ) : (
-          <div className="bg-background rounded-2xl p-3 flex flex-col gap-3">
-            {/* Main image with optional blurred background */}
-            <div className="relative rounded-xl overflow-hidden bg-muted h-[500px]">
-              {/* Blurred background — только если у изображения явно включён blur (планировки рендерятся на сером bg-muted) */}
-              {(galleryImages[activeImage] as any).fit === "contain" && Boolean((galleryImages[activeImage] as any).blur) && (
-                <img
-                  src={galleryImages[activeImage].image}
-                  alt=""
-                  className="absolute inset-0 w-full h-full object-cover opacity-60"
-                  style={{ filter: "blur(16px)", transform: "scale(1.08)" }}
-                  draggable={false} loading="lazy" decoding="async" />
-              )}
-              {/* Main image */}
-              <div className="relative h-full flex items-center justify-center">
-                <img
-                  src={galleryImages[activeImage].image}
-                  alt={`Фото ${activeImage + 1}`}
-                  className="max-h-full max-w-full object-contain relative z-10"
-                  draggable={false} loading="lazy" decoding="async" />
-                {galleryImages[activeImage].type === "video" && (
-                  <div className="absolute inset-0 flex items-center justify-center z-20">
-                    <Play className="w-14 h-14 text-white/80" />
-                  </div>
-                )}
-              </div>
-              {/* Nav arrows */}
-              <button
-                onClick={() => setActiveImage(Math.max(0, activeImage - 1))}
-                className={`absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-xl bg-background/90 shadow-sm flex items-center justify-center transition-opacity ${activeImage === 0 ? "opacity-30 pointer-events-none" : "opacity-100 hover:bg-background"}`}
-              >
-                <ChevronDown className="w-5 h-5 text-foreground rotate-90" />
-              </button>
-              <button
-                onClick={() => setActiveImage(Math.min(galleryImages.length - 1, activeImage + 1))}
-                className={`absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-xl bg-background/90 shadow-sm flex items-center justify-center transition-opacity ${activeImage === galleryImages.length - 1 ? "opacity-30 pointer-events-none" : "opacity-100 hover:bg-background"}`}
-              >
-                <ChevronDown className="w-5 h-5 text-foreground -rotate-90" />
-              </button>
-              {/* Counter */}
-              <span className="absolute bottom-3 right-4 text-xs text-white bg-black/45 px-2.5 py-1 rounded-full z-20">
-                {activeImage + 1} из {galleryImages.length}
-              </span>
-            </div>
-            {/* Thumbnails */}
-            <div className="flex gap-2 overflow-x-auto scrollbar-hide">
-              {galleryImages.map((img, i) => (
-                <button
-                  key={img.id}
-                  onClick={() => setActiveImage(i)}
-                  className={`flex-shrink-0 w-[80px] h-[56px] rounded-lg overflow-hidden border-2 transition-colors ${activeImage === i ? "border-primary" : "border-transparent opacity-70 hover:opacity-100"}`}
-                >
-                  <img src={img.image} alt={`Миниатюра ${i + 1}`} className="w-full h-full object-cover" loading="lazy" decoding="async" />
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-        {/* End gallery / left column on desktop */}
-        </div>
-
-        {/* Right column on desktop: info */}
-        <div>
-        {/* ===== MAIN INFO — BENTO ===== */}
-        <div className={`flex flex-col gap-2 ${isMobile ? "" : "sticky top-[80px]"}`}>
-          {/* Row 1: Title + Price + Specs + Maker + Description (inline expandable) + Accordions + CTA */}
-          <div className={`bg-background px-2 pt-3 pb-3 ${isMobile ? "rounded-b-2xl" : "rounded-2xl"}`}>
+      {isMobile && scrolled && (
+        <div className="fixed inset-x-0 top-[50px] z-40 bg-white dark:bg-background">
+          <div className="flex h-14 items-center gap-3 px-4">
             <button
               type="button"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="flex items-baseline justify-between gap-3 mb-1 w-full text-left -mx-1 px-1 py-0.5 rounded-md hover:bg-muted/50 active:bg-muted transition-colors cursor-pointer"
-              aria-label="Наверх страницы"
+              onClick={() => navigate(-1)}
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] text-[#342d27] transition-colors hover:bg-[#f3f4f7] dark:text-foreground"
+              aria-label="Назад"
             >
-              <h1 className="text-[18px] font-bold text-foreground tracking-tight leading-tight min-w-0 flex-1 break-words">{project.name}</h1>
-              <div className="text-[15px] whitespace-nowrap flex-shrink-0">
-                <span className="text-muted-foreground font-normal">от </span>
-                <span className="font-bold text-foreground">{project.price.replace(/^от\s*/i, "")}</span>
-              </div>
+              <ArrowLeft className="h-5 w-5" strokeWidth={1.6} aria-hidden />
             </button>
-            <div className="flex items-center gap-2.5 text-[12px] text-muted-foreground">
-              <span className="inline-flex items-center gap-[3px]"><Maximize className="w-3 h-3" strokeWidth={1.75} />{project.area}</span>
-              <span className="inline-flex items-center gap-[3px]"><BedDouble className="w-3 h-3" strokeWidth={1.75} />{project.beds}</span>
-              <span className="inline-flex items-center gap-[3px]"><Bath className="w-3 h-3" strokeWidth={1.75} />{project.baths}</span>
-              <span className="inline-flex items-center gap-[3px]"><Layers className="w-3 h-3" strokeWidth={1.75} />{project.floors}</span>
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-[14px] font-semibold">{project.name}</p>
+              <p className="text-[13px] text-primary">{priceLabel}</p>
             </div>
-
-            {/* Локация доставки */}
-            <div className="mt-1.5 flex items-center gap-1.5">
-              <MapPin className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0" strokeWidth={2} />
-              <span className="flex-1 text-[12px] text-muted-foreground truncate">{project.cityDefault ?? city}</span>
-            </div>
-
-            {/* Maker pill */}
-            <div
-              className="mt-3 flex items-center gap-2.5 bg-secondary rounded-xl px-2.5 py-2 cursor-pointer"
-              onClick={() => navigate(project.makerHref)}
+            <button
+              type="button"
+              onClick={handleToggleFavorite}
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] text-[#342d27] transition-colors hover:bg-[#f3f4f7] dark:text-foreground"
+              aria-label={liked ? "Удалить из избранного" : "Добавить в избранное"}
             >
-              <div className="w-9 h-9 bg-background rounded-lg flex items-center justify-center text-foreground text-[10px] font-bold flex-shrink-0 overflow-hidden">
-                {project.makerLogo ? (
-                  <img src={project.makerLogo} alt={project.maker} className="w-full h-full object-cover" loading="lazy" decoding="async" />
-                ) : (
-                  project.makerInitials
-                )}
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-1.5 min-w-0">
-                  <div className="text-[13px] font-semibold text-foreground leading-tight truncate">{project.maker}</div>
-                  {isVerifiedMaker(project.makerId) && (
-                    <span className="shrink-0 text-[9px] font-medium uppercase tracking-wide bg-primary/15 text-primary px-1.5 py-[2px] rounded-lg">Проверено</span>
-                  )}
-                </div>
-                {(() => {
-                  const r = getPartnerReviewSummary(project.makerId);
-                  return r.hasReviews ? (
-                    <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-0.5">
-                      <Star className="w-3 h-3 fill-primary text-primary" strokeWidth={1.5} />
-                      <span>{r.rating.toFixed(1).replace(".", ",")} · {r.reviewsLabel}</span>
-                    </div>
-                  ) : (
-                    <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-0.5">
-                      <Star className="w-3 h-3 text-muted-foreground" strokeWidth={1.5} />
-                      <span>0,0 · Недостаточно данных</span>
-                    </div>
-                  );
-                })()}
-              </div>
-              <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-            </div>
+              <Heart className={`h-5 w-5 ${liked ? "fill-red-500 text-red-500" : ""}`} strokeWidth={1.6} aria-hidden />
+            </button>
+          </div>
+        </div>
+      )}
 
-            {/* Описание — inline раскрытие */}
-            {(() => {
-              const fullText = project.descriptionLong || project.description;
-              return !descExpanded ? (
-                <p className="mt-3 text-[14px] text-foreground leading-snug">
-                  <span className="line-clamp-2">{fullText}</span>
-                  {" "}
+      <main className="pt-[50px] md:pt-0">
+        <div className={`${siteBreadcrumbPageContainerClassName} hidden md:block`}>
+          <SiteBreadcrumbs
+            items={[{ label: "Главная", to: "/" }, { label: "Проекты", to: CATALOG_PATH }, { label: project.name }]}
+          />
+        </div>
+
+        <div className="mx-auto max-w-[1400px] px-0 md:px-9 lg:px-12">
+
+          <section aria-label="Фотографии проекта" className="min-w-0">
+            <div className="relative md:hidden">
+              <div ref={galleryWrapRef} className="overflow-hidden bg-secondary">
+                <div
+                  ref={sliderRef}
+                  className="flex transition-transform duration-300 ease-out motion-reduce:transition-none"
+                  style={{ transform: `translateX(calc(-${activeImage * 100}% + ${dragOffset}px))` }}
+                >
+                  {project.gallery.map((_, index) => (
+                    <div key={index} className="w-full shrink-0">{renderGalleryImage(index, true)}</div>
+                  ))}
+                </div>
+              </div>
+              <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-24 bg-gradient-to-b from-black/45 via-black/15 to-transparent" aria-hidden />
+              <div className="absolute left-3 top-3 z-30 flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => navigate(-1)}
+                  className="flex h-11 w-11 items-center justify-center rounded-[3px] text-white transition-colors duration-150 hover:bg-black/15 active:bg-black/25 focus-visible:bg-black/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+                  aria-label="Назад"
+                >
+                  <ArrowLeft className="h-5 w-5" strokeWidth={1.9} aria-hidden />
+                </button>
+              </div>
+              <div className="absolute right-3 top-3 z-30 flex gap-2">
+                <button
+                  type="button"
+                  onClick={handleShare}
+                  className="flex h-11 w-11 items-center justify-center rounded-[3px] text-white transition-colors duration-150 hover:bg-black/15 active:bg-black/25 focus-visible:bg-black/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+                  aria-label="Поделиться"
+                >
+                  <Forward className="h-5 w-5" strokeWidth={1.9} aria-hidden />
+                </button>
+                <button
+                  type="button"
+                  onClick={handleToggleFavorite}
+                  className="flex h-11 w-11 items-center justify-center rounded-[3px] text-white transition-colors duration-150 hover:bg-black/15 active:bg-black/25 focus-visible:bg-black/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+                  aria-label={liked ? "Удалить из избранного" : "Добавить в избранное"}
+                >
+                  <Heart className={`h-5 w-5 ${liked ? "fill-red-500 text-red-500" : ""}`} strokeWidth={1.9} aria-hidden />
+                </button>
+                <ProjectReportDialog
+                  projectId={project.id}
+                  projectName={project.name}
+                  manufacturerName={project.maker.name}
+                >
                   <button
-                    onClick={() => setDescExpanded(true)}
-                    className="text-primary hover:underline transition-colors"
+                    type="button"
+                    className="flex h-11 items-center justify-center gap-1.5 rounded-[3px] px-2.5 text-[12px] font-medium text-white transition-colors duration-150 hover:bg-black/15 active:bg-black/25 focus-visible:bg-black/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+                    aria-label="Пожаловаться на проект"
                   >
-                    Подробнее
+                    <CircleHelp className="h-[18px] w-[18px] shrink-0" strokeWidth={1.8} aria-hidden />
+                    Пожаловаться
                   </button>
-                </p>
-              ) : (
-                <div className="mt-3">
-                  <p className="text-[14px] text-foreground leading-relaxed mb-3">
-                    {fullText}
-                  </p>
-                  <p className="text-[14px] text-foreground leading-relaxed">
-                    <button onClick={() => setDescExpanded(false)} className="text-primary hover:underline">
-                      Свернуть
-                    </button>
-                  </p>
+                </ProjectReportDialog>
+              </div>
+              <span className="absolute bottom-3 right-3 z-30 rounded-[3px] bg-[#342d27]/75 px-2.5 py-1.5 text-[12px] font-medium text-white">
+                {activeImage + 1} / {project.gallery.length}
+              </span>
+            </div>
+
+            <div className={`hidden h-[clamp(440px,47vw,650px)] gap-1.5 md:grid ${mosaicIndexes.length > 1 ? "grid-cols-[minmax(0,1.75fr)_minmax(280px,0.9fr)]" : "grid-cols-1"}`}>
+              {renderMosaicImage(mosaicIndexes[0], true)}
+              {mosaicIndexes.length > 1 && (
+                <div className="grid min-h-0 grid-cols-2 grid-rows-2 gap-1.5">
+                  {mosaicIndexes.slice(1).map((index, previewIndex) => renderMosaicImage(index, false, previewIndex))}
                 </div>
-              );
-            })()}
+              )}
+            </div>
+          </section>
 
-            {/* Комплектация и Характеристики временно скрыты */}
+          <div className="grid items-start lg:mt-9 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_380px] xl:gap-16">
+            <article className="min-w-0 px-4 py-7 md:px-0 md:py-8 lg:py-0">
+              <div className="flex items-start gap-3">
+                <h1 className="min-w-0 flex-1 text-[30px] font-semibold leading-[1.08] tracking-[-0.035em] text-[#342d27] md:text-[42px] dark:text-foreground">
+                  {project.name}
+                </h1>
+                <div className="hidden items-center gap-1.5 md:flex">
+                  <button
+                    type="button"
+                    onClick={handleShare}
+                    className="flex h-11 w-11 items-center justify-center rounded-[3px] bg-[#f6f7fa] text-[#595653] transition-colors hover:bg-[#edf1fb] hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:bg-secondary dark:text-muted-foreground"
+                    aria-label="Поделиться"
+                  >
+                    <Forward className="h-5 w-5" strokeWidth={1.6} aria-hidden />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleToggleFavorite}
+                    className="flex h-11 w-11 items-center justify-center rounded-[3px] bg-[#f6f7fa] text-[#595653] transition-colors hover:bg-[#edf1fb] hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:bg-secondary dark:text-muted-foreground"
+                    aria-label={liked ? "Удалить из избранного" : "Добавить в избранное"}
+                  >
+                    <Heart className={`h-5 w-5 ${liked ? "fill-red-500 text-red-500" : ""}`} strokeWidth={1.6} aria-hidden />
+                  </button>
+                  <ProjectReportDialog
+                    projectId={project.id}
+                    projectName={project.name}
+                    manufacturerName={project.maker.name}
+                  >
+                    <button
+                      type="button"
+                      className="flex h-11 w-11 items-center justify-center gap-2 rounded-[3px] bg-[#f6f7fa] px-0 text-[13px] font-medium text-[#595653] transition-colors hover:bg-[#edf1fb] hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 xl:w-auto xl:px-3.5 dark:bg-secondary dark:text-muted-foreground"
+                      aria-label="Пожаловаться на проект"
+                    >
+                      <CircleHelp className="h-5 w-5 shrink-0" strokeWidth={1.6} aria-hidden />
+                      <span className="hidden xl:inline">Пожаловаться</span>
+                    </button>
+                  </ProjectReportDialog>
+                </div>
+              </div>
 
-            {/* CTA в самом низу */}
-            <a
-              href={project.siteUrl}
-              target="_blank"
-              rel="noopener noreferrer nofollow sponsored"
-              className="w-full h-12 bg-secondary text-foreground rounded-xl text-[15px] font-semibold mt-4 flex items-center justify-center hover:bg-secondary/80 transition-colors"
-            >
-              Перейти на сайт
-            </a>
+              <div className="mt-3 hidden md:block lg:hidden">
+                <p className="text-[28px] font-semibold tracking-[-0.025em] text-[#342d27] md:text-[30px] dark:text-foreground">
+                  {priceLabel}
+                </p>
+                {renderDeliveryMessage()}
+                {renderProjectAction("mt-4 hidden h-12 w-full max-w-[420px] items-center justify-center gap-2 rounded-[3px] bg-primary px-5 text-[15px] font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:flex")}
+              </div>
+
+              <div className="mt-6 max-w-[560px] md:mt-7">{renderSpecs()}</div>
+
+              <div className="mt-7 md:hidden">
+                <p className="text-[12px] font-medium text-[#717b8e]">Стоимость проекта</p>
+                <p className="mt-1 text-[28px] font-semibold tracking-[-0.025em] text-[#342d27] dark:text-foreground">
+                  {priceLabel}
+                </p>
+                {renderDeliveryMessage()}
+                {renderProjectAction("mt-4 flex min-h-12 w-full items-center justify-center rounded-[3px] bg-primary px-5 text-[15px] font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2")}
+              </div>
+
+              <div className="mt-5 max-w-[620px] border-t border-[#e2e6ef] pt-5 lg:hidden dark:border-border">{renderMakerCard()}</div>
+
+              <section className="mt-10 max-w-[800px] md:mt-12" aria-labelledby="about-project-heading">
+                <h2 id="about-project-heading" className="text-[26px] font-semibold tracking-[-0.025em] text-[#342d27] md:text-[30px] dark:text-foreground">
+                  О проекте
+                </h2>
+                <MobileExpandableText
+                  text={projectDescription}
+                  contentId="project-description-content"
+                  className="mt-5 max-w-[760px] text-[16px] leading-[1.72] text-[#595653] dark:text-muted-foreground"
+                />
+
+                <ProjectRooms beds={project.beds} baths={project.baths} kitchens={project.kitchens} />
+
+                <section className="mt-10" aria-labelledby="project-characteristics-heading">
+                  <h3 id="project-characteristics-heading" className="text-[20px] font-semibold text-[#342d27] dark:text-foreground">Характеристики</h3>
+                  <dl id="project-characteristics-content" className="mt-5 grid gap-x-10 gap-y-4 sm:grid-cols-2">
+                    {detailRows.map(([label, value], index) => (
+                      <div
+                        key={label}
+                        className={`min-w-0 grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-baseline gap-4 text-[14px] sm:text-[15px] ${detailsExpanded || index < 4 ? "grid" : "hidden md:grid"}`}
+                      >
+                        <dt className="text-[#717b8e]">{label}</dt>
+                        <dd className="min-w-0 font-medium leading-snug text-[#342d27] dark:text-foreground">{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  {detailRows.length > 4 && (
+                    <button
+                      type="button"
+                      onClick={() => setDetailsExpanded((current) => !current)}
+                      className="mt-2 inline-flex min-h-11 items-center gap-1 text-[15px] font-medium text-[#342d27] transition-colors duration-200 hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:hidden dark:text-foreground"
+                      aria-expanded={detailsExpanded}
+                      aria-controls="project-characteristics-content"
+                    >
+                      {detailsExpanded ? "Свернуть" : "Все характеристики"}
+                      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${detailsExpanded ? "rotate-180" : ""}`} strokeWidth={1.8} aria-hidden />
+                    </button>
+                  )}
+                </section>
+              </section>
+            </article>
+
+            <aside className="hidden lg:block" aria-label="Стоимость и связь с производителем">
+              <p className="text-[12px] font-medium text-[#717b8e]">Стоимость проекта</p>
+              <p className="mt-1 text-[30px] font-semibold tracking-[-0.025em] text-[#342d27] dark:text-foreground">
+                {priceLabel}
+              </p>
+              {renderDeliveryMessage()}
+              {renderProjectAction("mt-5 flex h-12 w-full items-center justify-center gap-2 rounded-[3px] bg-primary px-5 text-center text-[15px] font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2")}
+              <div className="mt-5 border-t border-[#e2e6ef] pt-5 dark:border-border">{renderMakerCard()}</div>
+            </aside>
           </div>
 
+          <section className="mx-4 py-12 md:mx-0 md:py-16" aria-labelledby="other-projects-heading">
+            <div className="mb-8 flex items-end justify-between gap-4">
+              <div>
+                <h2 id="other-projects-heading" className="text-[26px] font-semibold tracking-[-0.025em] text-[#342d27] md:text-[32px] dark:text-foreground">
+                  {allRegionsSelected ? "Другие проекты" : `Другие проекты ${deliveryRegionPrepositional}`}
+                </h2>
+              </div>
+              <button
+                type="button"
+                onClick={() => navigate(deliveryRegionHref)}
+                className="hidden min-h-11 shrink-0 items-center gap-1 text-[15px] font-medium text-[#342d27] transition-colors duration-200 hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 sm:flex md:text-[16px]"
+              >
+                Все проекты <ChevronRight className="h-4 w-4" strokeWidth={1.8} aria-hidden />
+              </button>
+            </div>
+            <OtherProjectsFeed currentId={String(project.id)} deliveryRegion={deliveryRegionSlug} />
+          </section>
         </div>
-        {/* End right column */}
-        </div>
-        {/* End two-column grid */}
-        </div>
-
-        {/* ===== ПОСТРОЕННЫЕ + ОТЗЫВЫ + ПРОЕКТЫ — BENTO ===== */}
-        <div className="flex flex-col gap-2 mt-2">
-          {/* Другие проекты — бесконечная лента */}
-          <div className="bg-background rounded-2xl px-2 py-3">
-            <div className="text-[17px] font-bold text-foreground mb-3 px-1">Другие проекты</div>
-            <OtherProjectsFeed currentId={id} />
-          </div>
-
-        </div>
-
-        <div className="h-[100px]" />
       </main>
 
-      <MobileTabBar />
-      <CitySelector open={cityOpen} onOpenChange={setCityOpen} city={city} onSelect={selectCity} />
+      <Footer />
 
-      {/* Lightbox — полноэкранный просмотр исходного фото со свайпом */}
+      <CitySelector
+        open={deliveryCityOpen}
+        onOpenChange={setDeliveryCityOpen}
+        city={deliveryRegionSlug}
+        onSelect={selectDeliveryRegion}
+        title="Куда доставить дом?"
+        availableRegions={projectDeliveryRegions}
+      />
+
       {lightboxOpen && (
         <div
-          className="fixed inset-0 z-[80] bg-black/95 flex items-center justify-center"
+          className="fixed inset-0 z-[90] flex items-center justify-center bg-black/95 p-3 md:p-10"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Просмотр изображений"
           onClick={() => setLightboxOpen(false)}
-          onTouchStart={(e) => {
-            (e.currentTarget as any)._lbx = e.touches[0].clientX;
-            (e.currentTarget as any)._lby = e.touches[0].clientY;
-            (e.currentTarget as any)._lbAxis = null;
-          }}
-          onTouchMove={(e) => {
-            const startX = (e.currentTarget as any)._lbx;
-            const startY = (e.currentTarget as any)._lby;
-            if (startX == null) return;
-            const dx = e.touches[0].clientX - startX;
-            const dy = e.touches[0].clientY - startY;
-            if (!(e.currentTarget as any)._lbAxis && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
-              (e.currentTarget as any)._lbAxis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+          onTouchStart={(event) => { lightboxStartX.current = event.touches[0].clientX; }}
+          onTouchEnd={(event) => {
+            if (lightboxStartX.current === null) return;
+            const dx = event.changedTouches[0].clientX - lightboxStartX.current;
+            if (Math.abs(dx) > 50) {
+              if (dx < 0) setActiveImage((current) => Math.min(project.gallery.length - 1, current + 1));
+              if (dx > 0) setActiveImage((current) => Math.max(0, current - 1));
             }
-          }}
-          onTouchEnd={(e) => {
-            const startX = (e.currentTarget as any)._lbx;
-            if (startX == null) return;
-            const dx = e.changedTouches[0].clientX - startX;
-            const axis = (e.currentTarget as any)._lbAxis;
-            if (axis === "x" && Math.abs(dx) > 50) {
-              if (dx < 0 && activeImage < galleryImages.length - 1) setActiveImage(activeImage + 1);
-              else if (dx > 0 && activeImage > 0) setActiveImage(activeImage - 1);
-            }
-            (e.currentTarget as any)._lbx = null;
+            lightboxStartX.current = null;
           }}
         >
           <button
-            onClick={(e) => { e.stopPropagation(); setLightboxOpen(false); }}
-            className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/15 flex items-center justify-center text-white"
+            type="button"
+            onClick={(event) => { event.stopPropagation(); setLightboxOpen(false); }}
+            className="absolute right-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-[3px] bg-white/10 text-white transition-colors hover:bg-white/20"
             aria-label="Закрыть"
           >
-            <X className="w-5 h-5" />
+            <X className="h-5 w-5" aria-hidden />
           </button>
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white text-xs bg-white/15 rounded-full px-3 py-1">
-            {activeImage + 1} из {galleryImages.length}
-          </div>
+          <span className="absolute left-4 top-4 z-20 rounded-[3px] bg-white/10 px-3 py-2 text-[12px] font-medium text-white">
+            {activeImage + 1} / {project.gallery.length}
+          </span>
           <img
-            src={galleryImages[activeImage].image}
-            alt={`Фото ${activeImage + 1}`}
-            className="max-w-full max-h-full object-contain select-none"
-            loading="lazy"
-            decoding="async"
-            onClick={(e) => e.stopPropagation()}
+            src={project.gallery[activeImage].image}
+            alt={`${project.name}, изображение ${activeImage + 1}`}
+            className="max-h-full max-w-full select-none object-contain"
+            onClick={(event) => event.stopPropagation()}
             draggable={false}
           />
-          {!isMobile && activeImage > 0 && (
-            <button
-              onClick={(e) => { e.stopPropagation(); setActiveImage(activeImage - 1); }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/15 flex items-center justify-center text-white"
-              aria-label="Предыдущее"
-            >
-              <ChevronDown className="w-6 h-6 rotate-90" />
-            </button>
-          )}
-          {!isMobile && activeImage < galleryImages.length - 1 && (
-            <button
-              onClick={(e) => { e.stopPropagation(); setActiveImage(activeImage + 1); }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/15 flex items-center justify-center text-white"
-              aria-label="Следующее"
-            >
-              <ChevronDown className="w-6 h-6 -rotate-90" />
-            </button>
+          {!isMobile && (
+            <>
+              <button
+                type="button"
+                onClick={(event) => { event.stopPropagation(); setActiveImage((current) => Math.max(0, current - 1)); }}
+                disabled={activeImage === 0}
+                className="absolute left-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-[3px] bg-white/10 text-white transition-colors hover:bg-white/20 disabled:pointer-events-none disabled:opacity-25"
+                aria-label="Предыдущее изображение"
+              >
+                <ChevronLeft className="h-6 w-6" aria-hidden />
+              </button>
+              <button
+                type="button"
+                onClick={(event) => { event.stopPropagation(); setActiveImage((current) => Math.min(project.gallery.length - 1, current + 1)); }}
+                disabled={activeImage === project.gallery.length - 1}
+                className="absolute right-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-[3px] bg-white/10 text-white transition-colors hover:bg-white/20 disabled:pointer-events-none disabled:opacity-25"
+                aria-label="Следующее изображение"
+              >
+                <ChevronRight className="h-6 w-6" aria-hidden />
+              </button>
+            </>
           )}
         </div>
       )}

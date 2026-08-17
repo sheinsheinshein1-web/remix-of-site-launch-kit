@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-secondary font-sans pb-16 md:pb-0">
+    <div className="min-h-screen bg-secondary font-sans">
       <Seo
         title="Политика конфиденциальности — многоместа.рф"
         description="Политика обработки персональных данных на сайте многоместа.рф."

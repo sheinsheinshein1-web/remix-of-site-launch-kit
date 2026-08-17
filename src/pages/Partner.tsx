@@ -33,6 +33,11 @@ import {
   makersById,
 } from "@/data/projects";
 import { getPartnerReviews, getPartnerReviewSummary } from "@/data/partnerReviews";
+import {
+  getManufacturerPath,
+  getManufacturerReviewsPath,
+  getProjectPath,
+} from "@/lib/siteRoutes";
 
 const wordForm = (n: number, forms: [string, string, string]) => {
   const m = Math.abs(n) % 100;
@@ -213,7 +218,7 @@ const aboutByMakerId: Record<string, string> = {
   modulcamp:
     "Modul Camp — производитель модульных домов для Московской области и загородных участков. В каталоге представлены одноэтажные дома Барн-Хаус, Голландия, Шале, Финляндия и Дания с готовыми планировочными решениями.",
   elmaco:
-    "Elmaco Homes — производитель модульных домов с представительствами в Санкт-Петербурге, Москве и Краснодаре. В подборке представлены серии Ivor, Lukas, Jung, Tor и Oscar: от компактных домов до просторных семейных решений.",
+    "Elmaco Homes — производитель модульных домов из Санкт-Петербурга. В подборке представлены серии Ivor, Lukas, Jung, Tor и Oscar: от компактных домов до просторных семейных решений.",
   novator:
     "Novator — производитель модульных домов из Санкт-Петербурга. Компания выпускает компактные модули серий N и Radius для глэмпинга, отдыха, аренды и круглогодичного загородного сценария.",
   blagohouse:
@@ -274,7 +279,8 @@ const partnerThemes: Record<string, PartnerTheme> = {
 const Partner = () => {
   const navigate = useNavigate();
   const handleProjectClick = (e: React.MouseEvent<HTMLAnchorElement>, projectId: number) => {
-    navigateWithTransition(e, navigate, `/project/${projectId}`);
+    const project = allProjects.find((item) => item.id === projectId);
+    if (project) navigateWithTransition(e, navigate, getProjectPath(project));
   };
   const location = useLocation();
   const isMobile = useIsMobile();
@@ -357,7 +363,7 @@ const Partner = () => {
   };
 
   const cleanSiteUrl = partner.siteUrl.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
-  const violationMailto = `mailto:inadvert@yandex.ru?subject=${encodeURIComponent("Сообщение о нарушении прав")}&body=${encodeURIComponent(`Карточка производителя: https://многоместа.рф/partner/${makerId}\nВаша компания: \nКомментарий: `)}`;
+  const violationMailto = `mailto:inadvert@yandex.ru?subject=${encodeURIComponent("Сообщение о нарушении прав")}&body=${encodeURIComponent(`Карточка производителя: https://многоместа.рф${getManufacturerPath(makerId)}\nВаша компания: \nКомментарий: `)}`;
 
   const { rating, reviewsLabel, hasReviews } = getPartnerReviewSummary(makerId);
   const reviewPreviews = getPartnerReviews(makerId).slice(0, 4);
@@ -460,7 +466,7 @@ const Partner = () => {
         </h1>
         <button
           type="button"
-          onClick={() => navigate(`/partner/${id}/reviews`, { state: { returnToMenu: true } })}
+          onClick={() => navigate(getManufacturerReviewsPath(makerId), { state: { returnToMenu: true } })}
           className="mt-3 inline-flex items-center gap-1.5 text-[13px] text-[hsl(var(--pt-ink))] px-3 py-1.5 rounded-xl bg-[hsl(var(--pt-ink)/0.14)] backdrop-blur-md active:bg-[hsl(var(--pt-ink)/0.24)] transition-colors"
           aria-label="Открыть отзывы"
         >
@@ -600,7 +606,7 @@ const Partner = () => {
       <Seo
         title={seoTitle}
         description={seoDescription}
-        canonicalPath={`/partner/${makerId}`}
+        canonicalPath={getManufacturerPath(makerId)}
         image={heroImage}
         jsonLd={partnerJsonLd}
       />
@@ -831,7 +837,7 @@ const Partner = () => {
               <section className="rounded-2xl p-5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-[22px] font-bold">Отзывы</h3>
-                  <button onClick={() => navigate(`/partner/${id}/reviews`, { state: { returnToMenu: true } })} className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center" aria-label="Все отзывы">
+                  <button onClick={() => navigate(getManufacturerReviewsPath(makerId), { state: { returnToMenu: true } })} className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center" aria-label="Все отзывы">
                     <ArrowUpRight className="w-4 h-4 text-white" strokeWidth={1.8} />
                   </button>
                 </div>

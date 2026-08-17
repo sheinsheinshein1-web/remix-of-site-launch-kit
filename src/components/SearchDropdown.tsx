@@ -1,21 +1,34 @@
 import { useState, useRef, useEffect, useMemo } from "react";
-import { Search, X, Home, Factory, FileText, LayoutGrid, ArrowRight, ChevronRight, Clock } from "lucide-react";
+import { createPortal } from "react-dom";
+import { Search, X, Home, Factory, FileText, LayoutGrid, ArrowRight, ChevronRight, Clock, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { manufacturers as dataManufacturers, projects as dataProjects } from "@/data/projects";
+import { makersById, projects as dataProjects } from "@/data/projects";
 import { useCity } from "@/components/CitySelector";
 import { compareProjectTechnologyPriority } from "@/lib/projectPriority";
+import { allCategoryLinks } from "@/data/categoryLinks";
+import { allRegions } from "@/data/regions";
+import { isProjectAvailableInGeo } from "@/lib/geoSelection";
+import {
+  CATALOG_PATH,
+  getManufacturerPath,
+  getProjectPath,
+  getRegionPath,
+} from "@/lib/siteRoutes";
 
 // Поиск всегда строится из единого источника правды src/data/projects.ts.
 const projects = dataProjects.map((p) => ({
   id: p.id,
   name: p.name,
   maker: p.maker.name,
+  makerId: p.maker.id,
   city: p.city,
   price: p.price,
   area: p.area,
   beds: p.beds,
   baths: p.baths,
   technology: p.technology,
+  deliveryRegionSlugs: p.deliveryRegionSlugs,
+  path: getProjectPath(p),
   tags: [
     p.badge,
     p.city,
@@ -33,27 +46,37 @@ const projects = dataProjects.map((p) => ({
   ].join(" "),
 }));
 
-const categories = [
-  { name: "Дома", slug: "houses" },
-  { name: "Каркасные дома", slug: "frame" },
-  { name: "Модульные дома", slug: "modular" },
-];
+const categories = allCategoryLinks.map((category, index) => ({
+  name: category.title,
+  slug: String(index),
+  href: category.href,
+}));
 
-const manufacturers = dataManufacturers.map((m) => ({ name: m.name, location: m.location }));
+const manufacturers = Object.values(makersById).map((maker) => ({
+  id: maker.id,
+  name: maker.name,
+  location: maker.city,
+}));
+
+const deliveryRegions = allRegions.map((region) => ({
+  slug: region.slug,
+  name: region.name,
+  type: region.deliveryArea ? "Регион доставки" : "Город доставки",
+  searchText: [region.name, region.catalogRegionLabel, ...(region.searchAliases ?? [])]
+    .filter(Boolean)
+    .join(" ")
+    .toLocaleLowerCase("ru"),
+}));
 
 // Quick suggestion chips shown when query has text
 const quickSuggestions: Record<string, string[]> = {
   "дом": ["под ключ", "для семьи", "с террасой", "до 5 млн", "большой", "одноэтажный"],
   "модуль": ["для жизни", "под ключ", "с отделкой", "скандинавский"],
-  "каркас": ["la rus", "пермь", "для семьи", "с террасой"],
   "barn": ["barn house", "недорогой"],
   "bear": ["bear house 45", "bear house 77", "bear house 86", "bear house 134", "bear house 168"],
   "vast": ["vast house 140"],
   "wide": ["wide house"],
-  "la ru": ["la rus 45", "la rus 75", "la rus 100", "la rus 120", "la rus 127"],
-  "larus": ["la rus 45", "la rus 75", "la rus 100", "la rus 120", "la rus 127"],
-  "глезман": ["la rus 45", "la rus 75", "la rus 100", "la rus 120", "la rus 127"],
-  "пермь": ["la rus", "диво", "каркасный дом", "модульный дом"],
+  "пермь": ["диво", "модульный дом"],
   "диво": ["диво start", "диво 34", "диво 51", "диво 64", "диво 88"],
   "divodom": ["диво start", "диво 34", "диво 51", "диво 64", "диво 88"],
   "дивадом": ["диво start", "диво 34", "диво 51", "диво 64", "диво 88"],
@@ -109,7 +132,6 @@ const typoMap: Record<string, string> = {
   "спалня": "спальня", "спални": "спальни", "спалнями": "спальнями",
   "спальнми": "спальнями", "спалень": "спален", "сапльни": "спальни",
   "комнотный": "комнатный", "комнотные": "комнатные",
-  "каркасый": "каркасный", "керкасный": "каркасный",
   "тирраса": "терраса", "терасса": "терраса", "террасса": "терраса",
   "глемпинг": "глэмпинг", "глампинг": "глэмпинг",
   "двухэтажый": "двухэтажный", "двухэтажный": "двухэтажный",
@@ -122,12 +144,13 @@ const dictWords = (() => {
     ...projects.flatMap(p => [p.name, p.maker]),
     ...categories.map(c => c.name),
     ...manufacturers.flatMap(m => [m.name, m.location]),
+    ...allRegions.flatMap(region => [region.name, ...(region.searchAliases ?? [])]),
     
     "модульный", "модульные", "модульного", "дом", "дома", "дому",
     "спальня", "спальни", "спальнями", "спален",
     "комната", "комнаты", "комнатный", "комнатные",
     "баня", "бани", "баню", "глэмпинг",
-    "каркасный", "каркасные", "терраса", "террасой",
+    "терраса", "террасой",
     "дача", "дачи", "дачный", "дачные",
     "руб", "рублей", "рубль", "рубли", "млн", "миллион", "миллиона",
     "тыс", "тысяч", "тысячи",
@@ -164,7 +187,7 @@ function normalizeQuery(raw: string): string {
     .replace(/\s+/g, " ").trim();
 }
 
-interface ParsedFilters {
+export interface ParsedSearchFilters {
   beds?: number;
   baths?: number;
   minPrice?: number;
@@ -186,9 +209,16 @@ const wordToNumber: Record<string, number> = {
 // Cyrillic-aware char class for word continuations
 const CYR = "[а-яёА-ЯЁ]";
 
-function parseFilters(raw: string): ParsedFilters {
-  let q = normalizeQuery(raw);
-  const filters: ParsedFilters = { textQuery: "" };
+// This parser is shared with the hero and catalog, not only with the dropdown.
+// eslint-disable-next-line react-refresh/only-export-components
+export function parseSearchFilters(raw: string): ParsedSearchFilters {
+  const canonicalRaw = raw.toLowerCase()
+    .replace(/(^|\s)(?:не\s+дороже|не\s+больше|дешевле|максимум)(?=\s|$)/gu, "$1до")
+    .replace(/(^|\s)(?:не\s+дешевле|не\s+меньше|дороже|минимум)(?=\s|$)/gu, "$1от")
+    .replace(/(^|\s)бюджет(?:ом)?\s+(?=\d)/gu, "$1до ")
+    .replace(/(^|\s)за\s+(?=\d)/gu, "$1до ");
+  let q = normalizeQuery(canonicalRaw);
+  const filters: ParsedSearchFilters = { textQuery: "" };
 
   // 1) digit + bedroom word
   const bedsDigit = q.match(new RegExp(`(\\d+)\\s*[-\\s]?(?:спал${CYR}*|комнат${CYR}*|bedroom\\w*|сп${CYR}{0,12})`, "u"));
@@ -263,7 +293,7 @@ function parseFilters(raw: string): ParsedFilters {
   return filters;
 }
 
-function filterProjects(filters: ParsedFilters, list: typeof projects = projects) {
+function filterProjects(filters: ParsedSearchFilters, list: typeof projects = projects) {
   return list.filter(p => {
     if (filters.beds !== undefined && p.beds !== filters.beds) return false;
     if (filters.baths !== undefined && p.baths !== filters.baths) return false;
@@ -351,19 +381,24 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
     // Always pass the raw query so the catalog input shows it
     if (query.trim() && !params.q) sp.set("q", query.trim());
     Object.entries(params).forEach(([k, v]) => sp.set(k, String(v)));
-    return `/catalog?${sp.toString()}`;
+    return `${CATALOG_PATH}?${sp.toString()}`;
   };
 
   const results = useMemo(() => {
     const rawQ = query.trim().toLowerCase();
     const nq = normalizeQuery(query.trim());
-    if (!nq) return { suggestions: [], projects: [], categories: [], manufacturers: [], articles: [], hasFilters: false };
-    const filters = parseFilters(nq);
+    if (!nq) return { suggestions: [], regions: [], projects: [], categories: [], manufacturers: [], articles: [], hasFilters: false };
+    const filters = parseSearchFilters(nq);
     const hasFilters = filters.beds !== undefined || filters.baths !== undefined || filters.minPrice !== undefined || filters.maxPrice !== undefined || filters.minArea !== undefined || filters.maxArea !== undefined;
 
     // Гео-фильтр: показываем только проекты и производителей выбранного города.
-    const cityProjects = city ? projects.filter(p => p.city === city) : projects;
-    const cityManufacturers = city ? manufacturers.filter(m => m.location === city) : manufacturers;
+    const cityProjects = city
+      ? projects.filter((project) => isProjectAvailableInGeo(project.city, city, project.deliveryRegionSlugs))
+      : projects;
+    const cityMakerIds = new Set(cityProjects.map((project) => project.makerId).filter(Boolean));
+    const cityManufacturers = city
+      ? manufacturers.filter((maker) => cityMakerIds.has(maker.id))
+      : manufacturers;
 
     const suggestions: { label: string; sub: string; url: string }[] = [];
 
@@ -452,8 +487,20 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
       ? cityManufacturers.filter(m => allSearchWords.some(w => m.name.toLowerCase().includes(w) || m.location.toLowerCase().includes(w))).slice(0, 3)
       : [];
 
+    const normalizedRegionWords = nq.split(/\s+/).filter(Boolean);
+    const rawRegionWords = rawQ.split(/\s+/).filter(Boolean);
+    const matchedRegions = !hasFilters && normalizedRegionWords.length > 0
+      ? deliveryRegions
+        .filter((region) => (
+          normalizedRegionWords.every((word) => region.searchText.includes(word))
+          || rawRegionWords.every((word) => region.searchText.includes(word))
+        ))
+        .slice(0, 5)
+      : [];
+
     return {
       suggestions,
+      regions: matchedRegions,
       projects: filteredProjects,
       categories: matchedCategories,
       manufacturers: matchedManufacturers,
@@ -462,7 +509,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
     };
   }, [query, city]);
 
-  const hasResults = results.suggestions.length + results.projects.length + results.categories.length + results.manufacturers.length + results.articles.length > 0;
+  const hasResults = results.suggestions.length + results.regions.length + results.projects.length + results.categories.length + results.manufacturers.length + results.articles.length > 0;
 
   // Desktop: click outside
   useEffect(() => {
@@ -530,11 +577,27 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
         </div>
       )}
 
+      {results.regions.length > 0 && (
+        <div className="px-4 pb-1 pt-2">
+          <div className="mb-2 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">Регионы доставки</div>
+          {results.regions.map((region) => (
+            <button key={region.slug} onClick={() => handleSelect(getRegionPath(region.slug))} className="flex w-full items-center gap-3 border-b border-border/50 py-3 last:border-0">
+              <MapPin className="h-4 w-4 shrink-0 text-muted-foreground/50" strokeWidth={1.7} />
+              <div className="min-w-0 flex-1 text-left">
+                <div className="text-[14px] text-foreground">{region.name}</div>
+                <div className="text-[12px] text-muted-foreground">{region.type}</div>
+              </div>
+              <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground/40" />
+            </button>
+          ))}
+        </div>
+      )}
+
       {results.projects.length > 0 && (
         <div className="px-4 pt-2 pb-1">
           <div className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide mb-2">Проекты</div>
           {results.projects.map((p) => (
-            <button key={p.id} onClick={() => handleSelect(`/project/${p.id}`)} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
+            <button key={p.id} onClick={() => handleSelect(p.path)} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
               <Search className="w-4 h-4 text-muted-foreground/50 shrink-0" />
               <div className="flex-1 text-left min-w-0">
                 <div className="text-[14px] text-foreground">{p.name}</div>
@@ -550,7 +613,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
         <div className="px-4 pt-2 pb-1">
           <div className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide mb-2">Категории</div>
           {results.categories.map((cat) => (
-            <button key={cat.slug} onClick={() => handleSelect("/catalog")} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
+            <button key={cat.slug} onClick={() => handleSelect(cat.href)} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
               <LayoutGrid className="w-4 h-4 text-muted-foreground/50 shrink-0" />
               <span className="text-[14px] text-foreground flex-1 text-left">{cat.name}</span>
               <ChevronRight className="w-4 h-4 text-muted-foreground/40 shrink-0" />
@@ -563,7 +626,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
         <div className="px-4 pt-2 pb-1">
           <div className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide mb-2">Производители</div>
           {results.manufacturers.map((m) => (
-            <button key={m.name} onClick={() => handleSelect("/catalog")} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
+            <button key={m.id} onClick={() => handleSelect(getManufacturerPath(m.id))} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
               <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-[12px] font-semibold text-primary">{m.name.slice(0, 2)}</div>
               <div className="flex-1 text-left min-w-0">
                 <div className="text-[14px] text-foreground">{m.name}</div>
@@ -577,10 +640,10 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
 
       {results.articles.length > 0 && (
         <div className="px-4 pt-2 pb-3">
-          <div className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide mb-2">Статьи</div>
+          <div className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide mb-2">Журнал</div>
           {results.articles.map((a) => (
             <button key={a.title} onClick={() => handleSelect("/categories")} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
-              <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center shrink-0"><FileText className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} /></div>
+              <div className="w-8 h-8 rounded-[3px] bg-secondary flex items-center justify-center shrink-0"><FileText className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} /></div>
               <div className="flex-1 text-left min-w-0">
                 <div className="text-[14px] text-foreground">{a.title}</div>
                 <div className="text-[12px] text-muted-foreground">{a.tag}</div>
@@ -603,11 +666,11 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
       <>
         {/* Placeholder to keep header layout */}
         <div className={`relative ${className}`}>
-          <div className="w-full h-12 rounded-xl" />
+          <div className="w-full h-12 rounded-[3px]" />
         </div>
 
-        {/* Fullscreen overlay */}
-        <div className="fixed inset-0 z-[200] bg-background flex flex-col">
+        {/* Render outside sticky/header stacking contexts so the search always covers the site header. */}
+        {createPortal(<div className="fixed inset-0 z-[200] bg-background flex flex-col">
           {/* Top bar with search + cancel */}
           <div className="shrink-0 px-3 pt-[max(env(safe-area-inset-top),10px)] pb-2 bg-background border-b border-border/30">
             <div className="flex items-center gap-2">
@@ -619,9 +682,14 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
                   enterKeyHint="search"
                   value={query}
                   onChange={(e) => updateQuery(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && query.trim()) {
+                      handleSelect(buildCatalogUrl({ q: query.trim() }));
+                    }
+                  }}
                   placeholder="Поиск на многоместа.рф"
                   autoFocus
-                  className="w-full h-11 pl-9 pr-9 rounded-xl text-[16px] font-light text-foreground placeholder:text-muted-foreground focus:outline-none bg-secondary"
+                  className="w-full h-11 pl-9 pr-9 rounded-[3px] text-[16px] font-light text-foreground placeholder:text-muted-foreground focus:outline-none bg-secondary"
                 />
                 {query && (
                   <button
@@ -684,7 +752,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
 
             {query.trim() && renderResults()}
           </div>
-        </div>
+        </div>, document.body)}
       </>
     );
   }
@@ -694,7 +762,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
     return (
       <>
         <button
-          className="md:hidden w-9 h-9 rounded-xl bg-secondary flex items-center justify-center"
+          className="md:hidden w-9 h-9 rounded-[3px] bg-secondary flex items-center justify-center"
           onClick={() => setMobileOpen(true)}
         >
           <Search className="w-[18px] h-[18px] text-muted-foreground" />
@@ -711,9 +779,14 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
                     enterKeyHint="search"
                     value={query}
                     onChange={(e) => updateQuery(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && query.trim()) {
+                        handleSelect(buildCatalogUrl({ q: query.trim() }));
+                      }
+                    }}
                     placeholder="Поиск на многоместа.рф"
                     autoFocus
-                    className="w-full h-11 pl-9 pr-9 rounded-xl text-[16px] font-light text-foreground placeholder:text-muted-foreground focus:outline-none bg-secondary"
+                    className="w-full h-11 pl-9 pr-9 rounded-[3px] text-[16px] font-light text-foreground placeholder:text-muted-foreground focus:outline-none bg-secondary"
                   />
                   {query && (
                     <button
@@ -769,8 +842,9 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
 
       {/* Mobile: tap opens fullscreen */}
       <button
-        className={`md:hidden w-full h-12 pl-9 ${showFilterButton ? "pr-12" : "pr-9"} rounded-xl text-[16px] font-light text-left focus:outline-none truncate ${query ? "text-foreground" : "text-muted-foreground"} ${inputClassName}`}
+        className={`md:hidden w-full h-12 pl-9 ${showFilterButton ? "pr-12" : "pr-9"} rounded-[3px] text-[16px] font-light text-left focus:outline-none truncate ${query ? "text-foreground" : "text-muted-foreground"} ${inputClassName}`}
         onClick={() => setMobileOpen(true)}
+        aria-label="Открыть поиск"
       >
         {query || "Поиск на многоместа.рф"}
       </button>
@@ -778,6 +852,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
         <button
           onClick={(e) => { e.stopPropagation(); onFilterClick?.(); }}
           className="md:hidden absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center z-10"
+          aria-label="Открыть фильтры"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={hasActiveFilters ? "text-primary" : "text-muted-foreground"}>
             <line x1="3" y1="8" x2="21" y2="8" /><circle cx="9" cy="8" r="2.5" fill="hsl(var(--background))" />
@@ -803,14 +878,15 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
             }
           }}
           placeholder="Поиск на многоместа.рф"
-          className={`w-full h-12 pl-9 pr-24 rounded-xl text-[16px] font-light text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/30 ${inputClassName}`}
+          className={`w-full h-12 pl-9 pr-24 rounded-[3px] text-[16px] font-light text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/30 ${inputClassName}`}
         />
         {query && (
           <button
             onClick={() => { updateQuery(""); }}
-            className="absolute right-[88px] top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-muted-foreground/20 flex items-center justify-center z-10"
+            className="absolute right-[96px] top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-[3px] bg-transparent text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+            aria-label="Очистить поиск"
           >
-            <X className="w-3 h-3 text-muted-foreground" />
+            <X className="h-4 w-4" strokeWidth={1.7} />
           </button>
         )}
         <button
@@ -819,7 +895,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
               handleSelect(buildCatalogUrl({ q: query.trim() }));
             }
           }}
-          className="absolute right-1.5 top-1/2 -translate-y-1/2 h-9 px-5 bg-primary text-primary-foreground text-sm font-medium rounded-xl hover:opacity-90 transition-opacity z-10"
+          className="absolute right-1.5 top-1/2 z-10 h-9 -translate-y-1/2 rounded-[3px] bg-primary px-5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
         >
           Найти
         </button>
@@ -827,7 +903,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
 
       {/* Desktop dropdown */}
       {showDropdown && (
-        <div className="hidden md:block absolute top-full left-0 right-0 mt-1 bg-card rounded-2xl shadow-lg border border-border max-h-[60vh] overflow-y-auto z-50">
+        <div className="hidden md:block absolute top-full left-0 right-0 mt-1 bg-card rounded-[3px] shadow-lg border border-border max-h-[60vh] overflow-y-auto z-50">
           {renderResults()}
         </div>
       )}

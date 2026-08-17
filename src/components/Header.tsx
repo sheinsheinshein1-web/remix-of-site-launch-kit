@@ -4,14 +4,26 @@ import logoColor from "@/assets/logo-mnogo-mesta.png";
 import logoIcon from "@/assets/logo-icon.svg";
 import logoMark from "@/assets/logo-mark.svg";
 import logoMarkWhite from "@/assets/logo-mark-white.svg";
-import { Menu, SlidersHorizontal, ChevronDown, LayoutGrid, Heart, MessageSquare } from "lucide-react";
+import { Menu, X, SlidersHorizontal, ChevronDown, LayoutGrid, Heart, MessageSquare } from "lucide-react";
 import MobileMenu from "./MobileMenu";
+import DesktopNavigation from "./DesktopNavigation";
 import SearchDropdown from "./SearchDropdown";
 import CitySelector, { useCity } from "./CitySelector";
+import { getSavedScrollPosition } from "@/lib/scrollRestoration";
+import { getGeoSelectionLabel, isAllRegionsGeo, normalizeGeoSelection } from "@/lib/geoSelection";
+import { useFavorites } from "@/contexts/FavoritesContext";
+import { CATALOG_PATH, getRegionPath } from "@/lib/siteRoutes";
 
-const Header = () => {
+type HeaderProps = {
+  variant?: "default" | "home" | "partner";
+  onPartnerCta?: () => void;
+};
+
+const Header = ({ variant = "default", onPartnerCta }: HeaderProps) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const isHome = location.pathname === "/";
+  const useMarketplaceHeader = isHome || variant === "home" || variant === "partner";
   const navigationType = useNavigationType();
   const [menuOpen, setMenuOpen] = useState(false);
   // Синхронно определяем, возвращаемся ли мы на проскролленную главную.
@@ -19,12 +31,11 @@ const Header = () => {
   // считаем, что страница открывается с нуля, чтобы не показывать компактный поиск.
   const isReturningScrolled = (() => {
     if (typeof window === "undefined") return false;
+    if (!isHome) return false;
     if (navigationType !== "POP") return false;
     if (window.scrollY > 10) return true;
-    const saved = sessionStorage.getItem("home_feed_scroll");
-    if (!saved) return false;
-    const y = parseInt(saved, 10);
-    return Number.isFinite(y) && y > 10;
+    const saved = getSavedScrollPosition(location.key);
+    return saved !== undefined && saved > 10;
   })();
   const [showCompactHeader, setShowCompactHeader] = useState(isReturningScrolled);
   const [scrolled, setScrolled] = useState(isReturningScrolled);
@@ -32,8 +43,23 @@ const Header = () => {
   // Подавляем transition на первые кадры при возврате, чтобы не было мелькания
   const [enableTransitions, setEnableTransitions] = useState(!isReturningScrolled);
   const [cityOpen, setCityOpen] = useState(false);
-  const { city, selectCity } = useCity();
-  const isHome = location.pathname === "/";
+  const { city, selectCity, hasExplicitSelection } = useCity();
+  const { favoriteCount } = useFavorites();
+  const cityLabel = hasExplicitSelection ? getGeoSelectionLabel(city) : "Выберите регион";
+  const favoritesAriaLabel = favoriteCount > 0
+    ? `Избранное, сохранено: ${favoriteCount}`
+    : "Избранное";
+  const showMarketplaceNavigation = !scrolled || showCompactHeader;
+
+  const handleCitySelect = (nextCity: string) => {
+    const normalizedCity = normalizeGeoSelection(nextCity);
+    selectCity(normalizedCity);
+    const isRegionPage = location.pathname.startsWith("/region/")
+      || (location.pathname.startsWith("/modulnye-doma/") && !location.pathname.includes("/proekty/"));
+    if (isRegionPage) {
+      navigate(isAllRegionsGeo(normalizedCity) ? CATALOG_PATH : getRegionPath(normalizedCity));
+    }
+  };
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -97,64 +123,118 @@ const Header = () => {
     };
   }, []);
 
-  if (isHome) {
-    const homeHeaderSolid = mobileScrolled;
-    const homeHeaderText = homeHeaderSolid
-      ? "text-[#342d27]/75 hover:text-[#342d27]"
-      : "text-white/75 hover:text-white";
+  if (useMarketplaceHeader) {
+    const homeHeaderText = "text-[#342d27]/90 hover:text-primary dark:text-white/85 dark:hover:text-primary";
 
     return (
       <>
-        <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-300 ${
-          homeHeaderSolid
-            ? "border-[#dfe5f5] bg-white"
-            : "border-white/25 bg-transparent"
-        }`}>
-          <div className="mx-auto flex h-[50px] w-full max-w-[1400px] items-center px-4 md:h-[52px] md:px-9">
-            <Link to="/" className="flex items-center">
-              <img src={logoColor} alt="Много места" className={`h-[18px] md:h-[22px] w-auto transition-[filter] duration-300 ${homeHeaderSolid ? "" : "brightness-0 invert"}`} loading="eager" decoding="async" />
+        <header className="fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-white text-[#342d27] dark:bg-background dark:text-foreground">
+          <div className="mx-auto flex h-[50px] w-full max-w-[1400px] items-center px-4 md:h-[60px] md:px-9 lg:px-12">
+            <Link to="/" className="flex items-center md:h-11">
+              <img src={logoColor} alt="Много места" className="h-[18px] w-auto dark:brightness-0 dark:invert md:h-[23px]" loading="eager" decoding="async" />
             </Link>
-
-            <nav className={`hidden lg:flex ml-auto mr-8 items-center gap-8 text-[9px] uppercase tracking-[0.22em] font-medium transition-colors duration-300 ${homeHeaderSolid ? "text-[#342d27]/70" : "text-white/75"}`}>
-              <Link to="/catalog" className={`inline-flex items-center gap-1.5 transition-colors ${homeHeaderText}`}>
-                Дома
-                <ChevronDown className="h-3 w-3" strokeWidth={1.5} />
-              </Link>
-              <Link to="/partner" className={`inline-flex items-center gap-1.5 transition-colors ${homeHeaderText}`}>
-                Производители
-                <ChevronDown className="h-3 w-3" strokeWidth={1.5} />
-              </Link>
-              <Link to="/categories" className={`inline-flex items-center gap-1.5 transition-colors ${homeHeaderText}`}>
-                Виды
-                <ChevronDown className="h-3 w-3" strokeWidth={1.5} />
-              </Link>
-              <button type="button" onClick={() => setCityOpen(true)} className={`inline-flex items-center gap-1.5 transition-colors ${homeHeaderText}`}>
-                {city}
-                <ChevronDown className="h-3 w-3" strokeWidth={1.5} />
-              </button>
-            </nav>
-
-            <div className="hidden md:flex items-center gap-6">
-              <Link to="/favorites" className={`text-[9px] uppercase tracking-[0.22em] font-medium transition-colors ${homeHeaderText}`}>
-                Сравнивать
-              </Link>
-              <Link to="/catalog" className="h-8 inline-flex items-center rounded-[3px] px-5 bg-[#244bd8] text-white text-[9px] uppercase tracking-[0.18em] font-semibold hover:bg-[#1e3fc0] transition-colors">
-                Найдите свой дом
-              </Link>
-            </div>
 
             <button
               type="button"
-              className={`ml-auto md:hidden h-9 w-9 inline-flex items-center justify-center transition-colors ${homeHeaderSolid ? "text-[#342d27]" : "text-white"}`}
-              aria-label="Открыть меню"
-              onClick={() => setMenuOpen(true)}
+              onClick={() => setCityOpen(true)}
+              className="ml-2 inline-flex h-8 min-w-0 max-w-[136px] items-center gap-0.5 text-[12px] font-medium tracking-normal text-[#342d27]/90 transition-colors hover:text-primary md:ml-5 md:h-11 md:max-w-[210px] md:gap-1.5 md:text-[15px]"
+              aria-label={hasExplicitSelection
+                ? `Выбрать регион. Сейчас выбран: ${cityLabel}`
+                : "Выбрать регион"}
             >
-              <Menu className="h-6 w-6" strokeWidth={1.2} />
+              <span className="truncate">{cityLabel}</span>
+              <ChevronDown className="h-3 w-3 shrink-0 md:h-4 md:w-4" strokeWidth={1.6} aria-hidden />
+            </button>
+
+            <div className="ml-auto hidden items-center gap-3 lg:flex">
+              <Link
+                to="/favorites"
+                aria-label={favoritesAriaLabel}
+                aria-current={location.pathname === "/favorites" ? "page" : undefined}
+                className={`inline-flex h-11 items-center gap-2 whitespace-nowrap px-2 text-[14px] font-medium tracking-normal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 ${
+                  location.pathname === "/favorites"
+                    ? "text-primary"
+                    : homeHeaderText
+                }`}
+              >
+                <Heart className="h-[18px] w-[18px]" strokeWidth={1.6} aria-hidden />
+                Избранное
+              </Link>
+              {onPartnerCta ? (
+                <button
+                  type="button"
+                  onClick={onPartnerCta}
+                  className="inline-flex h-11 items-center whitespace-nowrap rounded-[3px] bg-primary px-6 text-[14px] font-semibold tracking-normal text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                >
+                  Разместиться бесплатно
+                </button>
+              ) : variant !== "partner" ? (
+                <Link
+                  to="/partner"
+                  aria-current={location.pathname === "/partner" ? "page" : undefined}
+                  className="inline-flex h-11 items-center whitespace-nowrap rounded-[3px] bg-primary px-6 text-[14px] font-semibold tracking-normal text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                >
+                  Для производителей
+                </Link>
+              ) : null}
+            </div>
+
+            <Link
+              to="/favorites"
+              aria-label={favoritesAriaLabel}
+              aria-current={location.pathname === "/favorites" ? "page" : undefined}
+              className={`ml-auto inline-flex h-11 w-11 shrink-0 items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 lg:hidden ${
+                location.pathname === "/favorites" ? "text-primary" : "text-[#342d27] hover:text-primary dark:text-white dark:hover:text-primary"
+              }`}
+            >
+              <Heart className="h-[21px] w-[21px]" strokeWidth={1.55} aria-hidden />
+            </Link>
+
+            <button
+              id="mobile-menu-toggle"
+              type="button"
+              className="ml-0.5 inline-flex h-11 w-11 shrink-0 items-center justify-center text-[#342d27] transition-colors hover:text-primary lg:hidden"
+              aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-navigation"
+              onClick={() => setMenuOpen((current) => !current)}
+            >
+              {menuOpen ? (
+                <X className="h-6 w-6" strokeWidth={1.35} aria-hidden />
+              ) : (
+                <Menu className="h-6 w-6" strokeWidth={1.2} aria-hidden />
+              )}
             </button>
           </div>
+
+          <div
+            className={`hidden transition-[max-height,opacity] duration-200 motion-reduce:transition-none md:block ${
+              showMarketplaceNavigation
+                ? "max-h-[60px] overflow-visible border-t border-border/70 opacity-100"
+                : "pointer-events-none max-h-0 overflow-hidden border-t-0 opacity-0"
+            }`}
+          >
+            <div className="mx-auto flex h-[60px] w-full max-w-[1400px] items-center px-9 lg:px-12">
+              <DesktopNavigation
+                className="h-[60px] gap-7 text-[14px] font-medium tracking-normal"
+                triggerClassName={homeHeaderText}
+              />
+            </div>
+          </div>
         </header>
-        <MobileMenu open={menuOpen} onOpenChange={setMenuOpen} />
-        <CitySelector open={cityOpen} onOpenChange={setCityOpen} city={city} onSelect={selectCity} />
+        <MobileMenu
+          open={menuOpen}
+          onOpenChange={setMenuOpen}
+          onPartnerCta={onPartnerCta}
+          hidePartnerCta={variant === "partner" && !onPartnerCta}
+        />
+        <CitySelector
+          open={cityOpen}
+          onOpenChange={setCityOpen}
+          city={city}
+          onSelect={handleCitySelect}
+          hasExplicitSelection={hasExplicitSelection}
+        />
       </>
     );
   }
@@ -176,7 +256,7 @@ const Header = () => {
                 Много места
               </Link>
               <button onClick={() => setCityOpen(true)} className="flex items-center gap-1 text-[13px] font-medium text-primary bg-secondary rounded-xl h-9 px-3 max-w-[160px] min-w-0">
-                <span className="truncate">{city}</span>
+                <span className="truncate">{cityLabel}</span>
                 <ChevronDown className="w-3.5 h-3.5 text-primary flex-shrink-0" strokeWidth={2} />
               </button>
             </div>
@@ -206,14 +286,14 @@ const Header = () => {
                   </a>
                   <button onClick={() => setCityOpen(true)} className="inline-flex items-center gap-1.5 text-primary-foreground/90 hover:text-primary-foreground transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <span className="text-sm font-medium">{city}</span>
+                    <span className="text-sm font-medium">{cityLabel}</span>
                     <ChevronDown className="w-4 h-4 opacity-70" />
                   </button>
                 </div>
 
                 <div className="flex items-center gap-6">
                   <nav className="flex items-center gap-6">
-                    <Link to="/categories" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname === "/categories" || location.pathname === "/catalog" ? "font-semibold text-primary-foreground" : "font-medium text-primary-foreground/80 hover:text-primary-foreground"}`}><LayoutGrid className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Категории</Link>
+                    <Link to="/categories" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname === "/categories" || location.pathname === CATALOG_PATH ? "font-semibold text-primary-foreground" : "font-medium text-primary-foreground/80 hover:text-primary-foreground"}`}><LayoutGrid className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Категории</Link>
                     <Link to="/favorites" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname === "/favorites" ? "font-semibold text-primary-foreground" : "font-medium text-primary-foreground/80 hover:text-primary-foreground"}`}><Heart className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Избранное</Link>
                     <Link to="/messages" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname.startsWith("/messages") ? "font-semibold text-primary-foreground" : "font-medium text-primary-foreground/80 hover:text-primary-foreground"}`}><MessageSquare className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Сообщения</Link>
                   </nav>
@@ -240,7 +320,7 @@ const Header = () => {
                   <SearchDropdown inputClassName="bg-secondary" />
                 </div>
                 <nav className="flex items-center gap-5 flex-shrink-0">
-                  <Link to="/categories" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname === "/categories" || location.pathname === "/catalog" ? "font-semibold text-foreground" : "font-medium text-muted-foreground hover:text-foreground"}`}><LayoutGrid className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Категории</Link>
+                  <Link to="/categories" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname === "/categories" || location.pathname === CATALOG_PATH ? "font-semibold text-foreground" : "font-medium text-muted-foreground hover:text-foreground"}`}><LayoutGrid className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Категории</Link>
                   <Link to="/favorites" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname === "/favorites" ? "font-semibold text-foreground" : "font-medium text-muted-foreground hover:text-foreground"}`}><Heart className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Избранное</Link>
                   <Link to="/messages" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname.startsWith("/messages") ? "font-semibold text-foreground" : "font-medium text-muted-foreground hover:text-foreground"}`}><MessageSquare className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Сообщения</Link>
                 </nav>
@@ -251,8 +331,17 @@ const Header = () => {
         </div>
       </div>
     </header>
-    <MobileMenu open={menuOpen} onOpenChange={setMenuOpen} />
-    <CitySelector open={cityOpen} onOpenChange={setCityOpen} city={city} onSelect={selectCity} />
+    <MobileMenu
+      open={menuOpen}
+      onOpenChange={setMenuOpen}
+    />
+      <CitySelector
+        open={cityOpen}
+        onOpenChange={setCityOpen}
+        city={city}
+        onSelect={handleCitySelect}
+        hasExplicitSelection={hasExplicitSelection}
+      />
     </>
   );
 };

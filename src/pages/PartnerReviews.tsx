@@ -1,392 +1,388 @@
-import { useMemo, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Star, ChevronDown, SlidersHorizontal, ThumbsUp, MoreHorizontal, Flag } from "lucide-react";
-import { Drawer, DrawerContent } from "@/components/ui/drawer";
+import { FormEvent, useEffect, useMemo, useState } from "react";
+import { ChevronDown, Flag, Star, ThumbsUp } from "lucide-react";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
-import { projects as allProjects, makersById } from "@/data/projects";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import Seo from "@/components/Seo";
+import SiteBreadcrumbs, { siteBreadcrumbPageContainerClassName } from "@/components/SiteBreadcrumbs";
 import {
-  formatReviewCount,
-  getPartnerReviews,
-  getPartnerReviewSummary,
-} from "@/data/partnerReviews";
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Textarea } from "@/components/ui/textarea";
+import { makersById, projects } from "@/data/projects";
+import { getPartnerReviews, getPartnerReviewSummary } from "@/data/partnerReviews";
+import { buildCanonicalUrl } from "@/lib/seo";
+import NotFound from "@/pages/NotFound";
+import {
+  MANUFACTURERS_PATH,
+  getManufacturerPath,
+  getManufacturerReviewsPath,
+  getProjectPath,
+} from "@/lib/siteRoutes";
 
-const partnerMakerIds: Record<string, string> = { "1": "platforma" };
+const LEGACY_PARTNER_IDS: Record<string, string> = { "1": "platforma" };
+
+const SORT_OPTIONS = [
+  { value: "new", label: "Сначала новые" },
+  { value: "old", label: "Сначала старые" },
+  { value: "high", label: "С высокой оценкой" },
+  { value: "low", label: "С низкой оценкой" },
+] as const;
+
+const RATING_OPTIONS = [
+  { value: 0, label: "Все оценки" },
+  { value: 5, label: "5 звёзд" },
+  { value: 4, label: "4 звезды" },
+  { value: 3, label: "3 звезды" },
+  { value: 2, label: "2 звезды" },
+  { value: 1, label: "1 звезда" },
+] as const;
+
+const REPORT_REASONS = [
+  "Спам или реклама",
+  "Оскорбления или запрещённый контент",
+  "Недостоверная информация",
+  "Опубликованы личные данные",
+  "Другое",
+] as const;
+
+type SortKey = (typeof SORT_OPTIONS)[number]["value"];
+
+const REVIEW_MONTHS: Record<string, number> = {
+  января: 0,
+  февраля: 1,
+  марта: 2,
+  апреля: 3,
+  мая: 4,
+  июня: 5,
+  июля: 6,
+  августа: 7,
+  сентября: 8,
+  октября: 9,
+  ноября: 10,
+  декабря: 11,
+};
+
+const getReviewDateValue = (value: string) => {
+  const match = value.toLowerCase().match(/(\d{1,2})\s+([а-яё]+)(?:\s+(\d{4}))?/i);
+  if (!match) return 0;
+  const month = REVIEW_MONTHS[match[2]];
+  if (month === undefined) return 0;
+  const year = match[3] ? Number(match[3]) : new Date().getFullYear();
+  return new Date(year, month, Number(match[1])).getTime();
+};
+
+const Stars = ({ value, size = 18 }: { value: number; size?: number }) => (
+  <span className="inline-flex items-center gap-1" aria-label={`Оценка ${value} из 5`}>
+    {[1, 2, 3, 4, 5].map((star) => (
+      <Star
+        key={star}
+        className={star <= Math.round(value) ? "fill-primary text-primary" : "fill-[#dfe5f5] text-[#dfe5f5]"}
+        style={{ width: size, height: size }}
+        strokeWidth={0}
+        aria-hidden
+      />
+    ))}
+  </span>
+);
 
 const PartnerReviews = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
   const { id } = useParams();
-  const makerId = (id && (partnerMakerIds[id] ?? (makersById[id] ? id : undefined))) || "platforma";
-  const summary = makersById[makerId];
-
+  const location = useLocation();
+  const navigate = useNavigate();
+  const makerId = id ? LEGACY_PARTNER_IDS[id] ?? id : "platforma";
+  const maker = makersById[makerId];
+  const canonicalPath = getManufacturerReviewsPath(makerId);
   const makerProjects = useMemo(
-    () => allProjects.filter((p) => p.maker.id === makerId),
-    [makerId]
+    () => projects.filter((project) => project.maker.id === makerId),
+    [makerId],
+  );
+  const reviewTemplates = useMemo(() => getPartnerReviews(makerId), [makerId]);
+  const reviewSummary = getPartnerReviewSummary(makerId);
+
+  useEffect(() => {
+    if (!maker || location.pathname === canonicalPath) return;
+    navigate(`${canonicalPath}${location.search}${location.hash}`, { replace: true });
+  }, [canonicalPath, location.hash, location.pathname, location.search, maker, navigate]);
+
+  const reviews = useMemo(
+    () => reviewTemplates.map((review, index) => ({
+      ...review,
+      project: makerProjects[index % Math.max(makerProjects.length, 1)],
+      sourceIndex: index,
+      dateValue: getReviewDateValue(review.when),
+    })),
+    [makerProjects, reviewTemplates],
   );
 
-  const reviews = useMemo(() => {
-    if (makerProjects.length === 0) return [];
-    const templates = getPartnerReviews(makerId);
-    return templates.map((tpl, i) => {
-      const project = makerProjects[i % makerProjects.length];
-      return { ...tpl, project };
-    });
-  }, [makerProjects, makerId]);
-
-
-  const { totalCount } = getPartnerReviewSummary(makerId);
-  const ratingAvg = useMemo(() => {
-    if (reviews.length === 0) return 0;
-    return reviews.reduce((s, r) => s + r.stars, 0) / reviews.length;
-  }, [reviews]);
-
-  const sortOptions = [
-    { value: "new", label: "Сначала новые" },
-    { value: "old", label: "Сначала старые" },
-    { value: "high", label: "С высоким рейтингом" },
-    { value: "low", label: "С низким рейтингом" },
-  ] as const;
-  const ratingOptions = [
-    { value: 0, label: "Все оценки" },
-    { value: 5, label: "Только 5 звёзд" },
-    { value: 4, label: "Только 4 звезды" },
-    { value: 3, label: "Только 3 звезды" },
-    { value: 2, label: "Только 2 звезды" },
-    { value: 1, label: "Только 1 звезда" },
-  ] as const;
-
-  const [sortKey, setSortKey] = useState<"new" | "old" | "high" | "low">("new");
-  const [ratingFilter, setRatingFilter] = useState<number>(0);
-  const [sortOpen, setSortOpen] = useState(false);
-  const [ratingOpen, setRatingOpen] = useState(false);
-
-  const sortLabel = sortOptions.find((o) => o.value === sortKey)?.label ?? "Сначала новые";
-  const ratingLabel = ratingOptions.find((o) => o.value === ratingFilter)?.label ?? "Все оценки";
+  const [sortKey, setSortKey] = useState<SortKey>("new");
+  const [ratingFilter, setRatingFilter] = useState(0);
+  const [helpful, setHelpful] = useState<Record<number, boolean>>({});
+  const [reportFor, setReportFor] = useState<number | null>(null);
+  const [reportReason, setReportReason] = useState("");
+  const [reportComment, setReportComment] = useState("");
 
   const displayedReviews = useMemo(() => {
-    const withIndex = reviews.map((r, i) => ({ r, i }));
-    const filtered = ratingFilter === 0 ? withIndex : withIndex.filter(({ r }) => r.stars === ratingFilter);
-    const sorted = [...filtered].sort((a, b) => {
-      switch (sortKey) {
-        case "new": return a.i - b.i;
-        case "old": return b.i - a.i;
-        case "high": return b.r.stars - a.r.stars || a.i - b.i;
-        case "low": return a.r.stars - b.r.stars || a.i - b.i;
-      }
+    const filtered = ratingFilter === 0
+      ? reviews
+      : reviews.filter((review) => review.stars === ratingFilter);
+
+    return [...filtered].sort((first, second) => {
+      if (sortKey === "old") return first.dateValue - second.dateValue;
+      if (sortKey === "high") return second.stars - first.stars || second.dateValue - first.dateValue;
+      if (sortKey === "low") return first.stars - second.stars || second.dateValue - first.dateValue;
+      return second.dateValue - first.dateValue;
     });
-    return sorted.map(({ r }) => r);
-  }, [reviews, sortKey, ratingFilter]);
+  }, [ratingFilter, reviews, sortKey]);
 
-  const [helpful, setHelpful] = useState<Record<number, boolean>>({});
-  const toggleHelpful = (i: number) =>
-    setHelpful((h) => ({ ...h, [i]: !h[i] }));
+  if (!maker || makerProjects.length === 0) return <NotFound />;
 
-  const [reportFor, setReportFor] = useState<number | null>(null);
-  const reportReasons = [
-    "Спам или реклама",
-    "Оскорбления или язык вражды",
-    "Недостоверная информация",
-    "Личные данные",
-    "Другое",
-  ];
+  const seoDescription = reviewSummary.hasReviews
+    ? `${reviewSummary.reviewsLabel} о производителе ${maker.name}. Средняя оценка — ${reviewSummary.rating.toFixed(1).replace(".", ",")} из 5.`
+    : `Отзывы о производителе ${maker.name} на многоместа.рф.`;
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Главная", item: buildCanonicalUrl("/") },
+      { "@type": "ListItem", position: 2, name: "Производители", item: buildCanonicalUrl(MANUFACTURERS_PATH) },
+      { "@type": "ListItem", position: 3, name: maker.name, item: buildCanonicalUrl(getManufacturerPath(makerId)) },
+      { "@type": "ListItem", position: 4, name: "Отзывы", item: buildCanonicalUrl(canonicalPath) },
+    ],
+  };
 
-  const handleBack = () => {
-    if ((location.state as { returnToMenu?: boolean } | null)?.returnToMenu) {
-      navigate(`/partner/${id}`, { state: { openMenu: true } });
-    }
-    else if (window.history.length > 1) navigate(-1);
-    else navigate(`/partner/${id}`);
+  const reportedReview = reportFor === null
+    ? undefined
+    : reviews.find((review) => review.sourceIndex === reportFor);
+
+  const handleReportOpenChange = (open: boolean) => {
+    if (open) return;
+    setReportFor(null);
+    setReportReason("");
+    setReportComment("");
+  };
+
+  const submitReport = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!reportReason) return;
+
+    const subject = `Жалоба на отзыв о ${maker.name}`;
+    const body = [
+      `Компания: ${maker.name}`,
+      reportedReview ? `Отзыв: ${reportedReview.title}` : "",
+      `Причина: ${reportReason}`,
+      reportComment.trim() ? `Комментарий: ${reportComment.trim()}` : "",
+      `Страница: ${window.location.href}`,
+    ].filter(Boolean).join("\n");
+
+    window.location.href = `mailto:hello@mnogomesta.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    toast.info("Откроем почтовое приложение с заполненной жалобой");
+    handleReportOpenChange(false);
   };
 
   return (
-    <div
-      className="min-h-screen pb-[max(env(safe-area-inset-bottom),12px)] text-white"
-      style={{ background: "hsl(0 0% 8%)" }}
-    >
-      {/* Sticky header */}
-      <div
-        className="sticky top-0 z-30"
-        style={{
-          background: "hsl(0 0% 8% / 0.55)",
-          backdropFilter: "blur(32px) saturate(160%)",
-          WebkitBackdropFilter: "blur(32px) saturate(160%)",
-        }}
-      >
-        <div className="px-3 pt-[max(env(safe-area-inset-top),12px)] pb-3 flex items-center gap-3">
-          <button
-            onClick={handleBack}
-            className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
-            style={{ background: "hsl(0 0% 100% / 0.12)" }}
-            aria-label="Назад"
-          >
-            <ArrowLeft className="w-[18px] h-[18px] text-white" strokeWidth={1.8} />
-          </button>
-          <div className="min-w-0">
-            <h1 className="text-[17px] font-semibold text-white leading-tight truncate">
-              Отзывы о {summary?.name ?? "компании"}
-            </h1>
-          </div>
-        </div>
-      </div>
+    <div className="min-h-screen bg-secondary font-sans">
+      <Seo
+        title={`Отзывы о ${maker.name} | многоместа.рф`}
+        description={seoDescription}
+        canonicalPath={canonicalPath}
+        jsonLd={breadcrumbJsonLd}
+      />
 
-      <div className="px-3 pt-2 space-y-3">
-        {/* Summary card */}
-        <section className="rounded-2xl p-5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
-          <div className="flex items-end justify-between gap-3">
+      <main className="bg-white dark:bg-background">
+        <Header variant="home" />
+
+        <div className={`${siteBreadcrumbPageContainerClassName} pb-16 sm:pb-20`}>
+          <SiteBreadcrumbs
+            items={[
+              { label: "Главная", to: "/" },
+              { label: "Производители", to: MANUFACTURERS_PATH },
+              { label: maker.name, to: getManufacturerPath(makerId) },
+              { label: "Отзывы" },
+            ]}
+          />
+
+          <header className="grid items-end gap-6 md:grid-cols-[minmax(0,1fr)_auto] md:gap-12">
             <div>
-              <div className="text-[34px] font-bold leading-none text-white">
-                {(ratingAvg || 0).toFixed(1).replace(".", ",")}
+              <h1 className="text-[36px] font-semibold leading-[1.04] tracking-[-0.045em] text-[#342d27] sm:text-[48px] lg:text-[58px] dark:text-foreground">
+                Отзывы о {maker.name}
+              </h1>
+            </div>
+
+            {reviewSummary.hasReviews && (
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 md:justify-end md:pb-1" aria-label={`Средняя оценка ${reviewSummary.rating.toFixed(1)} из 5`}>
+                <span className="text-[40px] font-semibold leading-none tracking-[-0.04em] text-[#342d27] sm:text-[48px] dark:text-foreground">
+                  {reviewSummary.rating.toFixed(1).replace(".", ",")}
+                </span>
+                <Stars value={reviewSummary.rating} size={20} />
+                <span className="text-[15px] text-[#717b8e]">{reviewSummary.reviewsLabel}</span>
+              </div>
+            )}
+          </header>
+
+          {reviewSummary.hasReviews ? (
+            <>
+              <div className="mt-9 flex flex-wrap gap-3 sm:mt-12" aria-label="Фильтры отзывов">
+                <label className="relative min-w-[210px] flex-1 sm:max-w-[250px]">
+                  <span className="sr-only">Сортировка отзывов</span>
+                  <select
+                    value={sortKey}
+                    onChange={(event) => setSortKey(event.target.value as SortKey)}
+                    className="min-h-11 w-full appearance-none rounded-[3px] border border-[#dfe5f5] bg-white px-3.5 pr-10 text-[14px] font-medium text-[#342d27] outline-none transition-colors hover:border-primary/45 focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-border dark:bg-background dark:text-foreground"
+                  >
+                    {SORT_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+                  </select>
+                  <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#717b8e]" strokeWidth={1.8} aria-hidden />
+                </label>
+
+                <label className="relative min-w-[180px] flex-1 sm:max-w-[220px]">
+                  <span className="sr-only">Фильтр по оценке</span>
+                  <select
+                    value={ratingFilter}
+                    onChange={(event) => setRatingFilter(Number(event.target.value))}
+                    className="min-h-11 w-full appearance-none rounded-[3px] border border-[#dfe5f5] bg-white px-3.5 pr-10 text-[14px] font-medium text-[#342d27] outline-none transition-colors hover:border-primary/45 focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-border dark:bg-background dark:text-foreground"
+                  >
+                    {RATING_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+                  </select>
+                  <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#717b8e]" strokeWidth={1.8} aria-hidden />
+                </label>
               </div>
 
-              <div className="flex items-center gap-0.5 mt-2">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star
-                    key={i}
-                    className={`w-4 h-4 ${
-                      i <= Math.round(ratingAvg)
-                        ? "fill-white text-white"
-                        : "fill-white/20 text-white/20"
-                    }`}
-                    strokeWidth={0}
-                  />
-                ))}
-              </div>
-              <div className="text-[13px] text-white/70 mt-1.5">
-                {reviews.length > 0 ? formatReviewCount(totalCount) : "отзывов пока нет"}
-              </div>
-            </div>
-            <div className="flex-1 max-w-[200px] space-y-1">
-              {[5, 4, 3, 2, 1].map((star) => {
-                const count = reviews.filter((r) => r.stars === star).length;
-                const pct = totalCount ? (count / totalCount) * 100 : 0;
+              {displayedReviews.length > 0 ? (
+                <section className="mt-10 grid items-start gap-x-12 gap-y-14 sm:mt-12 md:grid-cols-2 lg:gap-x-20 lg:gap-y-16" aria-label="Отзывы покупателей">
+                  {displayedReviews.map((review) => (
+                    <article key={`${review.title}-${review.name}`} className="flex min-h-full flex-col">
+                      <Stars value={review.stars} size={15} />
+                      <h2 className="mt-4 text-[20px] font-semibold leading-snug tracking-[-0.015em] text-[#342d27] sm:text-[22px] dark:text-foreground">
+                        {review.title}
+                      </h2>
+                      <p className="mt-3 text-[16px] leading-[1.7] text-[#5f5b57] dark:text-muted-foreground">
+                        {review.body}
+                      </p>
+
+                      <div className="mt-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] text-[#717b8e]">
+                        <span>{review.name}</span>
+                        <span aria-hidden>·</span>
+                        <span>{review.when}</span>
+                        {review.project && (
+                          <>
+                            <span aria-hidden>·</span>
+                            <Link to={getProjectPath(review.project)} className="font-medium text-[#342d27] transition-colors hover:text-primary dark:text-foreground">
+                              {review.project.name}
+                            </Link>
+                          </>
+                        )}
+                      </div>
+
+                      <div className="mt-5 flex flex-wrap items-center gap-5 text-[13px]">
+                        <button
+                          type="button"
+                          onClick={() => setHelpful((current) => ({ ...current, [review.sourceIndex]: !current[review.sourceIndex] }))}
+                          className={`inline-flex min-h-11 items-center gap-2 rounded-[3px] transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 ${helpful[review.sourceIndex] ? "text-primary" : "text-[#717b8e]"}`}
+                          aria-pressed={Boolean(helpful[review.sourceIndex])}
+                        >
+                          <ThumbsUp className="h-4 w-4" strokeWidth={1.7} aria-hidden />
+                          Полезно
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setReportFor(review.sourceIndex)}
+                          className="inline-flex min-h-11 items-center gap-2 rounded-[3px] text-[#717b8e] transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+                        >
+                          <Flag className="h-4 w-4" strokeWidth={1.7} aria-hidden />
+                          Пожаловаться
+                        </button>
+                      </div>
+                    </article>
+                  ))}
+                </section>
+              ) : (
+                <div className="mt-10 rounded-[3px] bg-secondary px-5 py-8 text-[15px] text-[#717b8e]">
+                  Отзывов с такой оценкой пока нет.
+                </div>
+              )}
+            </>
+          ) : (
+            <section className="mt-10 rounded-[3px] bg-secondary px-5 py-10 sm:px-8 sm:py-12">
+              <h2 className="text-[24px] font-semibold tracking-[-0.025em] text-[#342d27] dark:text-foreground">Отзывов пока нет</h2>
+              <p className="mt-2 max-w-[560px] text-[15px] leading-relaxed text-[#717b8e]">
+                Когда появятся отзывы о компании, мы покажем их на этой странице.
+              </p>
+            </section>
+          )}
+        </div>
+      </main>
+
+      <Footer />
+
+      <Dialog open={reportFor !== null} onOpenChange={handleReportOpenChange}>
+        <DialogContent className="max-h-[90dvh] w-[calc(100%-24px)] max-w-[560px] overflow-y-auto rounded-[3px] border-[#dfe5f5] bg-white p-5 shadow-xl sm:p-7 dark:border-border dark:bg-background">
+          <DialogHeader className="pr-8 text-left">
+            <DialogTitle className="text-[24px] font-semibold leading-tight tracking-[-0.025em] text-[#342d27] dark:text-foreground">
+              Пожаловаться на отзыв
+            </DialogTitle>
+            <DialogDescription className="pt-2 text-[14px] leading-relaxed text-[#717b8e]">
+              Выберите причину. Мы проверим отзыв о компании «{maker.name}».
+            </DialogDescription>
+          </DialogHeader>
+
+          <form onSubmit={submitReport} className="mt-2">
+            <RadioGroup value={reportReason} onValueChange={setReportReason} aria-label="Причина жалобы" className="gap-1">
+              {REPORT_REASONS.map((reason, index) => {
+                const reasonId = `review-report-reason-${index}`;
                 return (
-                  <div key={star} className="flex items-center gap-2">
-                    <span className="text-[11px] text-white/70 w-2">{star}</span>
-                    <div className="flex-1 h-1.5 rounded-xl overflow-hidden" style={{ background: "hsl(0 0% 100% / 0.12)" }}>
-                      <div
-                        className="h-full bg-white/80"
-                        style={{ width: `${pct}%` }}
-                      />
-                    </div>
-                  </div>
+                  <Label
+                    key={reason}
+                    htmlFor={reasonId}
+                    className="group flex min-h-11 cursor-pointer items-center gap-3 rounded-[3px] px-2.5 py-2.5 text-[15px] font-normal leading-snug text-[#342d27] transition-colors hover:bg-secondary focus-within:bg-secondary dark:text-foreground"
+                  >
+                    <RadioGroupItem id={reasonId} value={reason} className="h-5 w-5 shrink-0 border-[#9aa4b7]" />
+                    <span>{reason}</span>
+                  </Label>
                 );
               })}
-            </div>
-          </div>
-        </section>
+            </RadioGroup>
 
-        {reviews.length > 0 ? (
-          <>
-            {/* Filter chips */}
-            <div className="flex items-center gap-2 overflow-x-auto -mx-3 px-3 scrollbar-hide">
-              <button
-                onClick={() => setSortOpen(true)}
-                className="shrink-0 h-9 px-3.5 rounded-xl flex items-center gap-1.5 text-[14px] text-white"
-                style={{ background: "hsl(0 0% 100% / 0.08)" }}
-              >
-                {sortLabel}
-                <ChevronDown className="w-4 h-4" strokeWidth={1.8} />
-              </button>
-              <button
-                onClick={() => setRatingOpen(true)}
-                className="shrink-0 h-9 px-3.5 rounded-xl flex items-center gap-1.5 text-[14px] text-white"
-                style={{ background: "hsl(0 0% 100% / 0.08)" }}
-              >
-                {ratingLabel}
-                <ChevronDown className="w-4 h-4" strokeWidth={1.8} />
-              </button>
+            <div className="mt-5">
+              <Label htmlFor="review-report-comment" className="text-[14px] font-medium text-[#342d27] dark:text-foreground">
+                Комментарий <span className="font-normal text-[#717b8e]">(необязательно)</span>
+              </Label>
+              <Textarea
+                id="review-report-comment"
+                value={reportComment}
+                onChange={(event) => setReportComment(event.target.value)}
+                maxLength={800}
+                placeholder="Расскажите подробнее, что не так"
+                className="mt-2 min-h-[104px] resize-y rounded-[3px] border-[#dfe5f5] bg-white px-3 py-3 text-[16px] text-[#342d27] focus-visible:ring-primary/30 focus-visible:ring-offset-0 dark:border-border dark:bg-background dark:text-foreground"
+              />
             </div>
 
-            {/* Reviews list */}
-            <div className="space-y-3">
-              {displayedReviews.map((r, idx) => (
-            <article key={idx} className="rounded-2xl p-4" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
-              <div className="flex items-start gap-3">
-                <div className="w-[72px] h-[72px] rounded-xl overflow-hidden shrink-0" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
-                  {r.project.gallery[0]?.image && (
-                    <img
-                      src={r.project.gallery[0].image}
-                      alt=""
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  )}
-                </div>
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="flex items-center gap-0.5">
-                      {[1, 2, 3, 4, 5].map((i) => (
-                        <Star
-                          key={i}
-                          className={`w-3.5 h-3.5 ${
-                            i <= r.stars
-                              ? "fill-white text-white"
-                              : "fill-white/20 text-white/20"
-                          }`}
-                          strokeWidth={0}
-                        />
-                      ))}
-                    </div>
-                    <button
-                      onClick={() => setReportFor(idx)}
-                      className="w-7 h-7 -mt-1 -mr-1 flex items-center justify-center text-white/60"
-                      aria-label="Действия"
-                    >
-                      <MoreHorizontal className="w-4 h-4" />
-                    </button>
-                  </div>
-                  <div className="text-[13px] text-white/70 mt-1">
-                    {r.name} · {r.when}
-                  </div>
-                  <div className="text-[14px] text-white/90 mt-0.5 truncate">
-                    {r.project.name}
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-3 text-[15px] font-semibold text-white">
-                {r.title}
-              </div>
-              <p className="mt-1 text-[14px] text-white/85 leading-snug">
-                {r.body}
-              </p>
-
-              <div className="mt-3 flex items-center justify-between">
-                <button
-                  type="button"
-                  onClick={() => toggleHelpful(idx)}
-                  aria-pressed={!!helpful[idx]}
-                  className={`flex items-center gap-1.5 text-[13px] transition-colors ${
-                    helpful[idx] ? "text-white" : "text-white/70"
-                  }`}
-                >
-                  <ThumbsUp
-                    className="w-4 h-4"
-                    strokeWidth={1.8}
-                    fill={helpful[idx] ? "currentColor" : "none"}
-                  />
-                  Полезно{helpful[idx] ? " · 1" : ""}
-                </button>
-                <a
-                  href={summary?.siteUrl ?? "#"}
-                  target="_blank"
-                  rel="noopener noreferrer nofollow sponsored"
-                  className="text-[12px] text-white/55"
-                >
-                  {summary?.siteUrl ? new URL(summary.siteUrl).hostname.replace(/^www\./, "") : ""}
-                </a>
-              </div>
-            </article>
-              ))}
+            <div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+              <button
+                type="button"
+                onClick={() => handleReportOpenChange(false)}
+                className="min-h-11 rounded-[3px] px-5 text-[14px] font-medium text-[#342d27] transition-colors hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground"
+              >
+                Отмена
+              </button>
+              <button
+                type="submit"
+                disabled={!reportReason}
+                className="min-h-11 rounded-[3px] bg-primary px-5 text-[14px] font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-45"
+              >
+                Отправить
+              </button>
             </div>
-          </>
-        ) : (
-          <section className="rounded-2xl p-5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
-            <h2 className="text-[20px] font-semibold text-white">Отзывов пока нет</h2>
-            <p className="mt-2 text-[14px] leading-snug text-white/70">
-              Здесь появятся только подтвержденные отзывы из публичных источников.
-            </p>
-          </section>
-        )}
-      </div>
-
-      {/* Sort drawer */}
-      <Drawer open={sortOpen} onOpenChange={setSortOpen}>
-        <DrawerContent
-          className="mx-0 rounded-t-[20px] p-0 border-0 text-white"
-          style={{
-            background: "hsl(0 0% 8% / 0.55)",
-            backdropFilter: "blur(32px) saturate(160%)",
-            WebkitBackdropFilter: "blur(32px) saturate(160%)",
-          }}
-        >
-          <div className="px-3 pt-5 pb-3">
-            <h3 className="text-[20px] font-semibold text-white px-1">Сортировка</h3>
-          </div>
-          <div className="px-3 pb-6 flex flex-col gap-2">
-            {sortOptions.map((option) => (
-              <button
-                key={option.value}
-                onClick={() => { setSortKey(option.value); setSortOpen(false); }}
-                className="w-full flex items-center gap-3 px-4 py-4 text-left rounded-2xl"
-                style={{ background: "hsl(0 0% 100% / 0.08)" }}
-              >
-                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${sortKey === option.value ? "border-primary" : "border-white/30"}`}>
-                  {sortKey === option.value && <div className="w-3 h-3 rounded-full bg-primary" />}
-                </div>
-                <span className="text-[16px] text-white">{option.label}</span>
-              </button>
-            ))}
-          </div>
-        </DrawerContent>
-      </Drawer>
-
-      {/* Rating filter drawer */}
-      <Drawer open={ratingOpen} onOpenChange={setRatingOpen}>
-        <DrawerContent
-          className="mx-0 rounded-t-[20px] p-0 border-0 text-white"
-          style={{
-            background: "hsl(0 0% 8% / 0.55)",
-            backdropFilter: "blur(32px) saturate(160%)",
-            WebkitBackdropFilter: "blur(32px) saturate(160%)",
-          }}
-        >
-          <div className="px-3 pt-5 pb-3">
-            <h3 className="text-[20px] font-semibold text-white px-1">Оценка</h3>
-          </div>
-          <div className="px-3 pb-6 flex flex-col gap-2">
-            {ratingOptions.map((option) => (
-              <button
-                key={option.value}
-                onClick={() => { setRatingFilter(option.value); setRatingOpen(false); }}
-                className="w-full flex items-center gap-3 px-4 py-4 text-left rounded-2xl"
-                style={{ background: "hsl(0 0% 100% / 0.08)" }}
-              >
-                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${ratingFilter === option.value ? "border-primary" : "border-white/30"}`}>
-                  {ratingFilter === option.value && <div className="w-3 h-3 rounded-full bg-primary" />}
-                </div>
-                <span className="text-[16px] text-white">{option.label}</span>
-              </button>
-            ))}
-          </div>
-        </DrawerContent>
-      </Drawer>
-
-      {/* Report drawer */}
-      <Drawer open={reportFor !== null} onOpenChange={(o) => !o && setReportFor(null)}>
-        <DrawerContent
-          className="mx-0 rounded-t-[20px] p-0 border-0 text-white"
-          style={{
-            background: "hsl(0 0% 8% / 0.55)",
-            backdropFilter: "blur(32px) saturate(160%)",
-            WebkitBackdropFilter: "blur(32px) saturate(160%)",
-          }}
-        >
-          <div className="px-3 pt-5 pb-3">
-            <h3 className="text-[20px] font-semibold text-white px-1 flex items-center gap-2">
-              <Flag className="w-5 h-5" strokeWidth={1.8} />
-              Пожаловаться на отзыв
-            </h3>
-            <p className="text-[13px] text-white/60 px-1 mt-1">Выберите причину — мы проверим в течение 24 часов</p>
-          </div>
-          <div className="px-3 pb-6 flex flex-col gap-2">
-            {reportReasons.map((reason) => (
-              <button
-                key={reason}
-                onClick={() => {
-                  setReportFor(null);
-                  toast.success("Жалоба отправлена");
-                }}
-                className="w-full text-left px-4 py-4 rounded-2xl text-[16px] text-white"
-                style={{ background: "hsl(0 0% 100% / 0.08)" }}
-              >
-                {reason}
-              </button>
-            ))}
-          </div>
-        </DrawerContent>
-      </Drawer>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

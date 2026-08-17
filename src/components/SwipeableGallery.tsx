@@ -11,19 +11,13 @@ interface SwipeableGalleryProps {
   fits?: ("cover" | "contain")[];
   /** Per-image object-position (CSS), например "left center" — для широких фото. По умолчанию "center". */
   objectPositions?: (string | undefined)[];
-  /** Включить blur-фон под фото с fit="contain". true для всех или массив per-image. По умолчанию false. */
-  blurBackground?: boolean | boolean[];
-  /** Бесшовное продолжение краёв (растянутая полоска + маска вместо обычного blur). true для всех или массив. */
-  edgeBleed?: boolean | boolean[];
   children?: React.ReactNode;
 }
 
 const SWIPE_THRESHOLD_RATIO = 0.18; // 18% ширины — чтобы засчитать смену слайда
 const SWIPE_VELOCITY = 0.45; // px/ms — быстрый флик тоже листает
 
-const SwipeableGallery = ({ images, alt, height = "h-[200px]", priority = false, fits, objectPositions, blurBackground = false, edgeBleed = false, children }: SwipeableGalleryProps) => {
-  const blurAt = (i: number) => Array.isArray(blurBackground) ? !!blurBackground[i] : !!blurBackground;
-  const edgeAt = (i: number) => Array.isArray(edgeBleed) ? !!edgeBleed[i] : !!edgeBleed;
+const SwipeableGallery = ({ images, alt, height = "h-[200px]", priority = false, fits, objectPositions, children }: SwipeableGalleryProps) => {
   const [current, setCurrent] = useState(0);
   const [loadedSlides, setLoadedSlides] = useState<Set<number>>(() => new Set([0]));
   const [dragX, setDragX] = useState(0);
@@ -167,7 +161,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", priority = false,
   return (
     <div
       ref={containerRef}
-      className={`relative ${height} overflow-hidden select-none rounded-[3px] bg-muted`}
+      className={`relative ${height} overflow-hidden select-none rounded-[3px] bg-secondary`}
       onMouseMove={!isMobile ? onMouseMove : undefined}
       onMouseLeave={!isMobile ? onMouseLeave : undefined}
     >
@@ -183,81 +177,12 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", priority = false,
           {images.map((src, i) => {
             const fit = fits?.[i] ?? "cover";
             const shouldLoad = loadedSlides.has(i);
-            const showEdge = edgeAt(i) && fit === "contain";
-            const showBlur = !showEdge && blurAt(i) && fit === "contain";
             return (
               <div
                 key={i}
-                className="relative h-full flex-shrink-0 overflow-hidden bg-muted"
+                className="relative h-full flex-shrink-0 overflow-hidden bg-secondary"
                 style={{ width: `${100 / count}%` }}
               >
-                {shouldLoad && showBlur && (
-                  <>
-                    <img
-                      src={src}
-                      alt=""
-                      aria-hidden="true"
-                      className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                      style={{ filter: "blur(16px)", transform: "scale(1.08)" }}
-                      loading="lazy"
-                      decoding="async"
-                      draggable={false}
-                    />
-                    <div className="absolute inset-0 bg-black/10 pointer-events-none" />
-                  </>
-                )}
-                {shouldLoad && showEdge && (
-                  <>
-                    <div
-                      className="absolute overflow-hidden pointer-events-none z-10"
-                      style={{
-                        top: "-4%",
-                        left: "-7%",
-                        right: "-7%",
-                        height: "24%",
-                      }}
-                    >
-                      <div
-                        className="absolute inset-0"
-                        style={{
-                          top: "-18%",
-                          left: "-10%",
-                          right: "-10%",
-                          bottom: "-18%",
-                          backgroundImage: `url(${src})`,
-                          backgroundRepeat: "no-repeat",
-                          backgroundPosition: "top center",
-                          backgroundSize: "114% 5000%",
-                          filter: "blur(10px)",
-                        }}
-                      />
-                    </div>
-                    <div
-                      className="absolute overflow-hidden pointer-events-none z-10"
-                      style={{
-                        bottom: "-4%",
-                        left: "-7%",
-                        right: "-7%",
-                        height: "24%",
-                      }}
-                    >
-                      <div
-                        className="absolute inset-0"
-                        style={{
-                          top: "-18%",
-                          left: "-10%",
-                          right: "-10%",
-                          bottom: "-18%",
-                          backgroundImage: `url(${src})`,
-                          backgroundRepeat: "no-repeat",
-                          backgroundPosition: "bottom center",
-                          backgroundSize: "114% 5000%",
-                          filter: "blur(10px)",
-                        }}
-                      />
-                    </div>
-                  </>
-                )}
                 {shouldLoad ? (
                   <img
                     src={src}
@@ -269,7 +194,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", priority = false,
                     draggable={false}
                   />
                 ) : (
-                  <div className="relative w-full h-full bg-muted" aria-hidden="true" />
+                  <div className="relative w-full h-full bg-secondary" aria-hidden="true" />
                 )}
               </div>
             );
@@ -280,81 +205,12 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", priority = false,
           const fit = fits?.[i] ?? "cover";
           const isActive = i === current;
           const shouldLoad = loadedSlides.has(i);
-          const showEdge = shouldLoad && edgeAt(i) && fit === "contain" && isActive;
-          const showBlur = shouldLoad && !showEdge && blurAt(i) && fit === "contain" && isActive;
           return (
             <div
               key={i}
-              className="absolute inset-0 overflow-hidden bg-muted"
+              className="absolute inset-0 overflow-hidden bg-secondary"
               style={{ zIndex: isActive ? 2 : 1, opacity: isActive ? 1 : 0 }}
             >
-              {showBlur && (
-                <>
-                  <img
-                    src={src}
-                    alt=""
-                    aria-hidden="true"
-                    className="absolute inset-0 w-full h-full object-cover"
-                    style={{ filter: "blur(16px)", transform: "scale(1.08)" }}
-                    loading="lazy"
-                    decoding="async"
-                    draggable={false}
-                  />
-                  <div className="absolute inset-0 bg-black/10" />
-                </>
-              )}
-              {showEdge && (
-                <>
-                  <div
-                    className="absolute overflow-hidden pointer-events-none z-10"
-                    style={{
-                      top: "-4%",
-                      left: "-7%",
-                      right: "-7%",
-                      height: "24%",
-                    }}
-                  >
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        top: "-18%",
-                        left: "-10%",
-                        right: "-10%",
-                        bottom: "-18%",
-                        backgroundImage: `url(${src})`,
-                        backgroundRepeat: "no-repeat",
-                        backgroundPosition: "top center",
-                        backgroundSize: "114% 5000%",
-                        filter: "blur(10px)",
-                      }}
-                    />
-                  </div>
-                  <div
-                    className="absolute overflow-hidden pointer-events-none z-10"
-                    style={{
-                      bottom: "-4%",
-                      left: "-7%",
-                      right: "-7%",
-                      height: "24%",
-                    }}
-                  >
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        top: "-18%",
-                        left: "-10%",
-                        right: "-10%",
-                        bottom: "-18%",
-                        backgroundImage: `url(${src})`,
-                        backgroundRepeat: "no-repeat",
-                        backgroundPosition: "bottom center",
-                        backgroundSize: "114% 5000%",
-                        filter: "blur(10px)",
-                      }}
-                    />
-                  </div>
-                </>
-              )}
               {shouldLoad ? (
                 <img
                   src={src}
@@ -366,7 +222,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", priority = false,
                   draggable={false}
                 />
               ) : (
-                <div className="relative w-full h-full bg-muted" aria-hidden="true" />
+                <div className="relative w-full h-full bg-secondary" aria-hidden="true" />
               )}
             </div>
           );

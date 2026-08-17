@@ -1,35 +1,64 @@
-const articles = [
-  { title: "Как выбрать модульный дом", tag: "Гайд", readTime: "5 мин", gradient: "from-[#E8F0FE] to-[#D2E3FC]" },
-  { title: "Сколько стоит баня под ключ", tag: "Цены", readTime: "3 мин", gradient: "from-[#FEF3E2] to-[#FDDCB5]" },
-  { title: "Глэмпинг как бизнес", tag: "Бизнес", readTime: "7 мин", gradient: "from-[#E6F4EA] to-[#CEEAD6]" },
-  { title: "Фундамент для модульного дома", tag: "Советы", readTime: "4 мин", gradient: "from-[#F3E8FD] to-[#E4D0F8]" },
-];
+import { Link } from "react-router-dom";
+import { ChevronRight } from "lucide-react";
+import { homeArticles } from "@/data/articles";
 
-const ArticlesSection = () => {
-  return (
-    <section>
-      <div className="px-4 md:px-6 py-5 md:py-7">
-        <div className="flex items-baseline justify-between mb-3 md:mb-4">
-          <h2 className="text-[17px] md:text-lg font-medium text-foreground">Полезные статьи</h2>
-          <a href="#" className="text-[14px] md:text-[13px] font-light text-primary hover:underline shrink-0 inline-flex items-center gap-1">
-            Все статьи <span className="text-[12px]">›</span>
-          </a>
-        </div>
-
-        <div className="grid grid-cols-2 gap-2.5">
-          {articles.map((a) => (
-            <button key={a.title} className={`bg-gradient-to-br ${a.gradient} rounded-xl p-4 text-left transition-opacity hover:opacity-80`}>
-              <span className="inline-block text-[10px] font-medium text-foreground/60 bg-background/60 rounded px-1.5 py-0.5 mb-2">
-                {a.tag}
-              </span>
-              <div className="text-[13px] font-medium text-foreground leading-snug mb-1.5">{a.title}</div>
-              <div className="text-[11px] font-light text-foreground/50">{a.readTime} чтения</div>
-            </button>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+type ArticlesSectionProps = {
+  showHeader?: boolean;
+  className?: string;
 };
+
+const ArticlesSection = ({ showHeader = true, className = "" }: ArticlesSectionProps) => (
+  <section className={`mx-auto w-full max-w-[1400px] px-4 pb-8 pt-12 sm:px-8 sm:pb-12 sm:pt-16 lg:px-12 ${className}`}>
+    {showHeader && (
+      <div className="mb-4 flex items-center justify-between gap-3 sm:mb-5">
+        <h2 className="min-w-0 text-[18px] font-semibold tracking-normal text-[#342d27] dark:text-foreground md:text-[22px]">
+          Журнал
+        </h2>
+        <Link
+          to="/articles"
+          className="inline-flex min-h-11 shrink-0 items-center gap-1 text-[15px] font-medium tracking-normal text-[#342d27] transition-colors duration-200 hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground md:text-[16px]"
+        >
+          Все материалы
+          <ChevronRight className="h-[15px] w-[15px] md:h-4 md:w-4" strokeWidth={1.8} aria-hidden />
+        </Link>
+      </div>
+    )}
+
+    <div className="grid grid-cols-2 gap-x-3 gap-y-8 sm:grid-cols-3 sm:gap-5 lg:gap-8">
+      {homeArticles.map((article) => (
+        <Link
+          key={article.slug}
+          to={`/articles#${article.slug}`}
+          className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+        >
+          <span className="relative flex aspect-[1.45/1] items-center justify-center overflow-hidden rounded-[3px] bg-[#f6f7fa] dark:bg-secondary">
+            <img
+              src={article.image}
+              alt=""
+              width={256}
+              height={256}
+              loading="lazy"
+              decoding="async"
+              className="h-[72%] w-[72%] object-contain transition-transform duration-300 group-hover:scale-[1.035]"
+            />
+            <span className="absolute left-3 top-3 text-[10px] font-medium tracking-normal text-primary md:text-[11px]">
+              {article.category}
+            </span>
+          </span>
+
+          <span className="mt-4 block text-[20px] font-medium leading-[1.08] tracking-[-0.015em] text-[#342d27] transition-colors group-hover:text-primary dark:text-foreground md:text-[24px]">
+            {article.title}
+          </span>
+          <span className="mt-2 block max-w-[410px] text-[12px] leading-relaxed text-muted-foreground md:text-[13px]">
+            {article.description}
+          </span>
+          <span className="mt-3 block text-[10px] font-normal tracking-normal text-muted-foreground md:text-[11px]">
+            {article.readTime} чтения
+          </span>
+        </Link>
+      ))}
+    </div>
+  </section>
+);
 
 export default ArticlesSection;

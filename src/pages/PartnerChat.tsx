@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, Send, Check, BookOpen, MapPin, Layers } from "lucide-react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import partnerIcon from "@/assets/partner-icon.webp";
 import PartnerDrawer from "@/components/PartnerDrawer";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useMessagesNavigation } from "@/contexts/MessagesNavigationContext";
 
 interface Message {
   id: number;
@@ -26,7 +27,7 @@ const REGIONS = ["Москва и МО", "Санкт-Петербург и ЛО"
 const PROJECT_COUNTS = ["1–5 проектов", "6–15 проектов", "16–30 проектов", "30+ проектов"];
 
 const PartnerChat = () => {
-  const navigate = useNavigate();
+  const { backFromChat } = useMessagesNavigation();
   const [searchParams] = useSearchParams();
   const isMobile = useIsMobile();
   const [messages, setMessages] = useState<Message[]>([]);
@@ -68,7 +69,7 @@ const PartnerChat = () => {
         ].filter(Boolean).join("\n");
 
         setMessages([
-          { id: 1, text: "Здравствуйте! Рады, что вы заинтересовались размещением на маркетплейсе модульных домов.", fromBot: true, time: now() },
+          { id: 1, text: "Здравствуйте! Рады, что вы заинтересовались размещением на платформе модульных домов.", fromBot: true, time: now() },
           { id: 2, text: "Вот данные из вашей заявки:", fromBot: true, time: now() },
           { id: 3, text: summaryText, fromBot: false, time: now() },
         ]);
@@ -82,7 +83,7 @@ const PartnerChat = () => {
     }
 
     setMessages([
-      { id: 1, text: "Здравствуйте! Рады, что вы заинтересовались размещением на маркетплейсе модульных домов.", fromBot: true, time: now() },
+      { id: 1, text: "Здравствуйте! Рады, что вы заинтересовались размещением на платформе модульных домов.", fromBot: true, time: now() },
       { id: 2, text: "Мы помогаем производителям получать целевые заявки от покупателей, которые уже выбрали модульный дом. 1200+ покупателей в месяц, 1 980 ₽ за заявку.", fromBot: true, time: now(),
         buttons: [{ label: "Изучить материалы", icon: <BookOpen className="w-3.5 h-3.5" />, action: "open_drawer" }],
       },
@@ -215,7 +216,12 @@ const PartnerChat = () => {
       <div className="min-h-screen bg-card font-sans flex flex-col">
         <div className="sticky top-0 z-40 bg-card shadow-sm">
           <div className="flex items-center gap-3 px-4 h-14">
-            <button onClick={() => navigate("/messages")} className="text-foreground">
+            <button
+              type="button"
+              onClick={backFromChat}
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] text-foreground transition-colors active:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+              aria-label="Назад"
+            >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <div className="w-11 h-11 shrink-0 rounded-xl bg-muted flex items-center justify-center overflow-hidden">

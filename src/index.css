@@ -55,7 +55,7 @@
     --popover-foreground: 0 0% 95%;
     --primary: 222 82% 65%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 20% 15%;
+    --secondary: 220 5% 14%;
     --secondary-foreground: 0 0% 95%;
     --muted: 220 15% 15%;
     --muted-foreground: 220 10% 55%;
@@ -88,6 +88,28 @@
   }
 }
 
+html.dark {
+  color-scheme: dark;
+}
+
+/* Legacy editorial surfaces still use the original palette tokens directly.
+   These mappings keep them readable while the theme is dark. */
+html.dark :where([class*="text-[#342d27]"], [class*="text-[#171614]"], [class*="text-[#3a332d]"]) {
+  color: hsl(var(--foreground));
+}
+
+html.dark :where([class*="text-[#595653]"], [class*="text-[#717b8e]"], [class*="text-[#85827e]"], [class*="text-[#94918d]"]) {
+  color: hsl(var(--muted-foreground));
+}
+
+html.dark :where(.bg-white, [class*="bg-[#f6f7fa]"], [class*="bg-[#f5f7ff]"], [class*="bg-[#f8faff]"]) {
+  background-color: hsl(var(--card));
+}
+
+html.dark :where([class*="border-[#dfe5f5]"], [class*="border-[#e4e4e2]"], [class*="border-[#d7d7d4]"], [class*="border-[#bcb9b5]"]) {
+  border-color: hsl(var(--border));
+}
+
 /* Scrollbar hide utility */
 .scrollbar-hide {
   -ms-overflow-style: none;
@@ -95,6 +117,8 @@
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+  width: 0;
+  height: 0;
 }
 
 /* Primary CTA button */

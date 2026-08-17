@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { projects } from "@/data/projects";
+import { allProjects, projects } from "@/data/projects";
 
 const expectedMakerIds = [
   "azbuka-doma",
@@ -13,7 +13,7 @@ const expectedMakerIds = [
 ];
 
 describe("regional partner batch", () => {
-  const batch = projects.filter((project) => project.id >= 197 && project.id <= 236);
+  const batch = allProjects.filter((project) => project.id >= 197 && project.id <= 236);
 
   it("contains 40 projects with unique sequential ids", () => {
     expect(batch).toHaveLength(40);
@@ -33,5 +33,10 @@ describe("regional partner batch", () => {
       expect(project.city).toBeTruthy();
       expect(project.floors).toBeGreaterThan(0);
     });
+  });
+
+  it("keeps frame projects in source data but excludes them from the public catalog", () => {
+    expect(allProjects.some((project) => project.technology === "Каркасный")).toBe(true);
+    expect(projects.some((project) => project.technology === "Каркасный")).toBe(false);
   });
 });

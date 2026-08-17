@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import MobileTabBar from "@/components/MobileTabBar";
 
 type Request = {
   id: string;
@@ -133,7 +132,6 @@ const Requests = () => {
         </TabsContent>
       </Tabs>
 
-      <MobileTabBar />
     </div>
   );
 };

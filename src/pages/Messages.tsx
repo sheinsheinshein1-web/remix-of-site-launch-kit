@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
-import { Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import MobileTabBar from "@/components/MobileTabBar";
+import { ArrowLeft } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import supportIcon from "@/assets/support-icon.webp";
-import partnerIcon from "@/assets/partner-icon.webp";
+import SupportAvatar from "@/components/chat/SupportAvatar";
 import { getCompanyChats, type CompanyChatEntry } from "@/lib/companyChats";
-import PartnerDrawer from "@/components/PartnerDrawer";
 import Seo from "@/components/Seo";
+import { useMessagesNavigation } from "@/contexts/MessagesNavigationContext";
 
 const Messages = () => {
   const navigate = useNavigate();
+  const { exitMessages } = useMessagesNavigation();
   const isMobile = useIsMobile();
   const [companyChats, setCompanyChats] = useState<CompanyChatEntry[]>([]);
 
@@ -24,32 +23,32 @@ const Messages = () => {
   }
 
   return (
-    <div className="h-screen bg-muted font-sans flex flex-col">
+    <div className="flex h-dvh flex-col bg-background font-sans">
       <Seo title="Сообщения — многоместа.рф" description="Чаты с поддержкой и партнёрами." canonicalPath="/messages" noIndex />
-        <div className="sticky top-0 z-40 bg-background rounded-b-2xl shadow-sm shrink-0 pt-[env(safe-area-inset-top)]">
-          <div className="flex items-center justify-center h-14">
-          <h1 className="text-base font-semibold text-foreground">Сообщения</h1>
+      <header className="shrink-0 border-b border-border bg-background pt-[env(safe-area-inset-top)]">
+        <div className="flex h-16 items-center px-4">
+          <button
+            type="button"
+            onClick={exitMessages}
+            className="mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] text-foreground transition-colors active:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+            aria-label="Вернуться на сайт"
+          >
+            <ArrowLeft className="h-5 w-5" strokeWidth={1.8} aria-hidden />
+          </button>
+          <h1 className="text-[22px] font-semibold tracking-[-0.02em] text-foreground">Сообщения</h1>
         </div>
-      </div>
-      <div className="mt-2 bg-card rounded-2xl flex-1 flex flex-col overflow-hidden mx-0">
+      </header>
+      <main className="flex flex-1 flex-col overflow-y-auto bg-background">
         {/* Support */}
         <button
           onClick={() => navigate("/messages/support")}
-          className="w-full px-4 py-3.5 flex items-center gap-3 text-left active:bg-muted/50 hover:bg-muted/30 transition-colors shrink-0"
+          className="flex min-h-[80px] w-full shrink-0 items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-secondary active:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/30"
         >
-          <div className="w-14 h-14 shrink-0 rounded-2xl bg-muted flex items-center justify-center overflow-hidden">
-            <img src={supportIcon} alt="Поддержка" className="w-12 h-12 object-contain" loading="eager" decoding="sync" />
-          </div>
+          <SupportAvatar size="lg" />
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-1">
-              <span className="font-semibold text-[15px] text-foreground">Поддержка Много места</span>
-              <span className="w-3 h-3 rounded-full bg-primary/70 flex items-center justify-center shrink-0">
-                <Check className="w-1.5 h-1.5 text-primary-foreground" strokeWidth={3} />
-              </span>
-            </div>
-            <p className="text-[13px] text-muted-foreground mt-0.5 truncate">Сообщение</p>
+            <span className="block truncate text-[15px] font-semibold text-foreground">Поддержка Много места</span>
+            <p className="mt-0.5 truncate text-[13px] text-muted-foreground">Ответим на вопросы о сервисе</p>
           </div>
-          <span className="text-[12px] text-muted-foreground shrink-0">19:05</span>
         </button>
 
         {/* Чат "Стать партнером" временно скрыт */}
@@ -62,10 +61,10 @@ const Messages = () => {
               <div className="h-px bg-border mx-4" />
               <button
                 onClick={() => navigate(`/messages/company?company=${encodeURIComponent(chat.company)}&project=${encodeURIComponent(chat.project)}&projectId=${chat.projectId}`)}
-                className="w-full px-4 py-3.5 flex items-center gap-3 text-left active:bg-muted/50 hover:bg-muted/30 transition-colors shrink-0"
+                className="flex min-h-[80px] w-full shrink-0 items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-secondary active:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/30"
               >
-                <div className="w-14 h-14 shrink-0 rounded-2xl bg-foreground flex items-center justify-center">
-                  <span className="text-[14px] font-bold text-background">{initials}</span>
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[3px] bg-secondary text-foreground">
+                  <span className="text-[13px] font-semibold">{initials}</span>
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-1">
@@ -78,10 +77,7 @@ const Messages = () => {
             </div>
           );
         })}
-
-        <div className="flex-1" />
-      </div>
-      <MobileTabBar />
+      </main>
     </div>
   );
 };

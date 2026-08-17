@@ -3,7 +3,6 @@ import {
   ChevronRight, Bell, Heart, Crown,
   Cog, Headset, HelpCircle, Info, Search
 } from "lucide-react";
-import MobileTabBar from "@/components/MobileTabBar";
 import Seo from "@/components/Seo";
 import { useIsMobile } from "@/hooks/use-mobile";
 import svcCalculator from "@/assets/svc-calculator.webp";
@@ -77,7 +76,6 @@ const Profile = () => {
         </div>
 
 
-        <MobileTabBar />
       </div>
     );
   }
@@ -233,7 +231,6 @@ const Profile = () => {
         Выйти из аккаунта
       </button>
 
-      <MobileTabBar />
     </div>
   );
 };

@@ -1,8 +1,9 @@
 import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, Send, Check, RotateCcw } from "lucide-react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { saveCompanyChatEntry } from "@/lib/companyChats";
+import { useMessagesNavigation } from "@/contexts/MessagesNavigationContext";
 
 /* ─── Types ─── */
 interface ProjectCardData {
@@ -116,7 +117,7 @@ const RENTAL_CHIPS = ["Моя аренда", "Земля родственник�
 
 /* ─── Component ─── */
 const CompanyChat = forwardRef<HTMLDivElement>((_, ref) => {
-  const navigate = useNavigate();
+  const { backFromChat } = useMessagesNavigation();
   const isMobile = useIsMobile();
   const [searchParams] = useSearchParams();
   const companyName = searchParams.get("company") || "Производитель";
@@ -619,7 +620,12 @@ const CompanyChat = forwardRef<HTMLDivElement>((_, ref) => {
       <div ref={ref} className="h-[100dvh] bg-card font-sans flex flex-col overflow-hidden">
         <div className="shrink-0 bg-card shadow-sm pt-[env(safe-area-inset-top)]">
           <div className="flex items-center gap-3 px-4 h-14">
-            <button onClick={() => (projectId ? navigate(`/project/${projectId}`) : navigate(-1))} className="text-foreground">
+            <button
+              type="button"
+              onClick={backFromChat}
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] text-foreground transition-colors active:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+              aria-label="Назад"
+            >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <div className="w-11 h-11 shrink-0 rounded-xl bg-foreground flex items-center justify-center">

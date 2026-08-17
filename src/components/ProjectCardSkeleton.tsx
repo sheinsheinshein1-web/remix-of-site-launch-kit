@@ -8,9 +8,10 @@ const ProjectCardSkeleton = ({ height = "h-[260px]" }: ProjectCardSkeletonProps)
   return (
     <div className="overflow-hidden" aria-hidden="true">
       <Skeleton className={`${height} w-full rounded-[14px]`} />
-      <div className="px-[10px] pt-1 pb-1 space-y-[6px] mt-1">
-        <Skeleton className="h-[12px] w-[60%] rounded-md" />
-        <Skeleton className="h-[10px] w-[80%] rounded-md" />
+      <div className="space-y-1.5 px-1 pb-1.5 pt-2">
+        <Skeleton className="h-[14px] w-[58%] rounded-md" />
+        <Skeleton className="h-[12px] w-[76%] rounded-md" />
+        <Skeleton className="h-[10px] w-[64%] rounded-md" />
       </div>
     </div>
   );

@@ -18,6 +18,11 @@ import {
   makersById,
 } from "@/data/projects";
 import { getPartnerReviews, getPartnerReviewSummary } from "@/data/partnerReviews";
+import {
+  CATALOG_PATH,
+  getManufacturerPath,
+  getManufacturerReviewsPath,
+} from "@/lib/siteRoutes";
 
 const wordForm = (n: number, forms: [string, string, string]) => {
   const m = Math.abs(n) % 100;
@@ -208,7 +213,7 @@ const Partner = () => {
 
   const handleBack = () => {
     if (window.history.length > 1) navigate(-1);
-    else navigate("/catalog");
+    else navigate(CATALOG_PATH);
   };
 
   const onShare = async () => {
@@ -301,7 +306,7 @@ const Partner = () => {
         </h1>
         <button
           type="button"
-          onClick={() => navigate(`/partner/${id}/reviews`, { state: { returnToMenu: true } })}
+          onClick={() => navigate(getManufacturerReviewsPath(id ?? makerId), { state: { returnToMenu: true } })}
           className="mt-3 inline-flex items-center gap-1.5 text-[13px] text-background px-3 py-1.5 rounded-xl bg-white/15 backdrop-blur-md active:bg-white/25 transition-colors"
           aria-label="Открыть отзывы"
         >
@@ -404,7 +409,7 @@ const Partner = () => {
       <Seo
         title={seoTitle}
         description={seoDescription}
-        canonicalPath={`/partner/${makerId}`}
+        canonicalPath={getManufacturerPath(makerId)}
         image={heroImage}
         jsonLd={partnerJsonLd}
       />
@@ -490,7 +495,7 @@ const Partner = () => {
                   {arr.map((g) => (
                     <button
                       key={g.label}
-                      onClick={() => navigate(`/catalog?maker=${makerId}&badge=${encodeURIComponent(g.label)}`)}
+                      onClick={() => navigate(`${CATALOG_PATH}?maker=${makerId}&badge=${encodeURIComponent(g.label)}`)}
                       className="shrink-0 w-[200px] text-left"
                     >
                       <div className="aspect-square rounded-2xl overflow-hidden bg-secondary">
@@ -668,7 +673,7 @@ const Partner = () => {
               <section className="rounded-2xl p-5" style={{ background: "hsl(0 0% 100% / 0.08)" }}>
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-[22px] font-bold">Отзывы</h3>
-                  <button onClick={() => navigate(`/partner/${id}/reviews`, { state: { returnToMenu: true } })} className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center" aria-label="Все отзывы">
+                  <button onClick={() => navigate(getManufacturerReviewsPath(id ?? makerId), { state: { returnToMenu: true } })} className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center" aria-label="Все отзывы">
                     <ArrowUpRight className="w-4 h-4 text-white" strokeWidth={1.8} />
                   </button>
                 </div>

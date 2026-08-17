@@ -1,45 +1,21 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Building2, ArrowLeft, ChevronDown } from "lucide-react";
-
-const activityTypes = [
-  "Модульные дома",
-  "Дачные домики",
-  "Двухэтажные дома",
-  "Студии",
-  "Гостевые дома",
-  "Бани и сауны",
-  "Бани-бочки",
-  "Купели и чаны",
-  "Беседки",
-  "Террасы",
-  "Барбекю-зоны",
-  "Глэмпинг",
-  "Магазины",
-  "Офисы",
-  "Мастерские",
-  "Гостиницы",
-  "Кафе и рестораны",
-  "Бытовки",
-  "Гаражи",
-  "Навесы",
-  "Заборы",
-  "Септики",
-  "Скважины",
-  "Другое",
-];
+import { ArrowLeft, ChevronDown } from "lucide-react";
+import { partnerInterestOptions } from "@/data/partnerProgram";
 
 interface PartnerApplicationFormProps {
   onBack: () => void;
   variant?: "page" | "drawer";
+  initialInterest?: string;
 }
 
-const PartnerApplicationForm = ({ onBack, variant = "page" }: PartnerApplicationFormProps) => {
+const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = "" }: PartnerApplicationFormProps) => {
   const navigate = useNavigate();
   const [form, setForm] = useState({
     companyName: "",
     inn: "",
-    activityType: "",
+    activityType: "Модульные дома",
+    interest: initialInterest,
     website: "",
     contactName: "",
     phone: "",
@@ -56,7 +32,7 @@ const PartnerApplicationForm = ({ onBack, variant = "page" }: PartnerApplication
     if (!form.companyName.trim()) e.companyName = "Укажите название компании";
     if (!form.inn.trim()) e.inn = "Укажите ИНН";
     else if (!/^\d{10}$|^\d{12}$/.test(form.inn.trim())) e.inn = "ИНН должен содержать 10 или 12 цифр";
-    if (!form.activityType) e.activityType = "Выберите вид деятельности";
+    if (!form.interest) e.interest = "Выберите интересующий формат";
     if (!form.contactName.trim()) e.contactName = "Укажите контактное лицо";
     if (!form.phone.trim()) e.phone = "Укажите телефон";
     else if (form.phone.replace(/\D/g, "").length < 10) e.phone = "Введите корректный номер";
@@ -64,7 +40,8 @@ const PartnerApplicationForm = ({ onBack, variant = "page" }: PartnerApplication
     return Object.keys(e).length === 0;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event?: React.FormEvent<HTMLFormElement>) => {
+    event?.preventDefault();
     if (!validate()) return;
     const submittedAt = new Date().toISOString();
     // Save to localStorage for now
@@ -84,6 +61,7 @@ const PartnerApplicationForm = ({ onBack, variant = "page" }: PartnerApplication
       `Компания: ${form.companyName}\n` +
       `ИНН: ${form.inn}\n` +
       `Вид деятельности: ${form.activityType}\n` +
+      `Интересует: ${form.interest}\n` +
       (form.website ? `Сайт: ${form.website}\n` : "") +
       `Контактное лицо: ${form.contactName}\n` +
       `Телефон: ${form.phone}\n` +
@@ -102,28 +80,25 @@ const PartnerApplicationForm = ({ onBack, variant = "page" }: PartnerApplication
   };
 
   const inputClass = (field: string) =>
-    `w-full h-12 px-4 rounded-xl border text-[14px] text-foreground bg-secondary outline-none transition-colors ${
-      errors[field] ? "border-red-400 focus:border-red-500" : "border-border focus:border-primary"
+    `h-12 w-full rounded-[3px] border bg-background px-4 text-[14px] text-foreground outline-none transition-colors ${
+      errors[field] ? "border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/10" : "border-border focus:border-primary focus:ring-2 focus:ring-primary/10"
     }`;
 
   const inputStyle = { fontSize: "16px" } as const;
 
   return (
-    <div className={variant === "drawer" ? "px-4 py-5" : ""}>
+    <form className={variant === "drawer" ? "px-4 py-5" : ""} onSubmit={handleSubmit} noValidate>
       {/* Header */}
-      <div className="flex items-center gap-3 mb-6">
-        <button onClick={onBack} className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center shrink-0 hover:bg-border transition-colors">
-          <ArrowLeft className="w-4 h-4 text-foreground" />
-        </button>
+      <div className={variant === "drawer" ? "mb-6 flex items-center gap-3" : "mb-6"}>
+        {variant === "drawer" && (
+          <button type="button" onClick={onBack} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30" aria-label="Вернуться к информации для производителей">
+            <ArrowLeft className="h-4 w-4 text-foreground" />
+          </button>
+        )}
         <div>
-          <h2 className="text-[20px] font-extrabold text-foreground leading-tight">Заявка на подключение</h2>
+          <h2 className="text-[24px] font-semibold leading-tight text-foreground md:text-[30px]">Заявка для производителя</h2>
           <p className="text-[13px] text-muted-foreground">Заполните данные о компании</p>
         </div>
-      </div>
-
-      {/* Icon */}
-      <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-5">
-        <Building2 className="w-7 h-7 text-primary" />
       </div>
 
       {/* Form */}
@@ -139,8 +114,11 @@ const PartnerApplicationForm = ({ onBack, variant = "page" }: PartnerApplication
             className={inputClass("companyName")}
             maxLength={200}
             style={inputStyle}
+            autoComplete="organization"
+            aria-invalid={Boolean(errors.companyName)}
+            aria-describedby={errors.companyName ? "partner-company-error" : undefined}
           />
-          {errors.companyName && <p className="text-[12px] text-red-500 mt-1">{errors.companyName}</p>}
+          {errors.companyName && <p id="partner-company-error" role="alert" className="mt-1 text-[12px] text-red-500">{errors.companyName}</p>}
         </div>
 
         {/* INN */}
@@ -154,28 +132,31 @@ const PartnerApplicationForm = ({ onBack, variant = "page" }: PartnerApplication
             className={inputClass("inn")}
             inputMode="numeric"
             style={inputStyle}
+            aria-invalid={Boolean(errors.inn)}
+            aria-describedby={errors.inn ? "partner-inn-error" : undefined}
           />
-          {errors.inn && <p className="text-[12px] text-red-500 mt-1">{errors.inn}</p>}
+          {errors.inn && <p id="partner-inn-error" role="alert" className="mt-1 text-[12px] text-red-500">{errors.inn}</p>}
         </div>
 
-        {/* Activity type */}
         <div>
-          <label className="text-[13px] font-medium text-foreground mb-1.5 block">Вид деятельности *</label>
+          <label className="text-[13px] font-medium text-foreground mb-1.5 block">Что вас интересует *</label>
           <div className="relative">
             <select
-              value={form.activityType}
-              onChange={(e) => update("activityType", e.target.value)}
-              className={`${inputClass("activityType")} appearance-none pr-10 ${!form.activityType ? "text-muted-foreground" : ""}`}
+              value={form.interest}
+              onChange={(e) => update("interest", e.target.value)}
+              className={`${inputClass("interest")} appearance-none pr-10 ${!form.interest ? "text-muted-foreground" : ""}`}
               style={inputStyle}
+              aria-invalid={Boolean(errors.interest)}
+              aria-describedby={errors.interest ? "partner-interest-error" : undefined}
             >
-              <option value="" disabled>Выберите вид деятельности</option>
-              {activityTypes.map((type) => (
-                <option key={type} value={type}>{type}</option>
+              <option value="" disabled>Выберите формат</option>
+              {partnerInterestOptions.map((option) => (
+                <option key={option} value={option}>{option}</option>
               ))}
             </select>
             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
           </div>
-          {errors.activityType && <p className="text-[12px] text-red-500 mt-1">{errors.activityType}</p>}
+          {errors.interest && <p id="partner-interest-error" role="alert" className="mt-1 text-[12px] text-red-500">{errors.interest}</p>}
         </div>
 
         <div>
@@ -188,6 +169,7 @@ const PartnerApplicationForm = ({ onBack, variant = "page" }: PartnerApplication
             className={inputClass("website")}
             maxLength={300}
             style={inputStyle}
+            autoComplete="url"
           />
         </div>
 
@@ -202,8 +184,11 @@ const PartnerApplicationForm = ({ onBack, variant = "page" }: PartnerApplication
             className={inputClass("contactName")}
             maxLength={100}
             style={inputStyle}
+            autoComplete="name"
+            aria-invalid={Boolean(errors.contactName)}
+            aria-describedby={errors.contactName ? "partner-contact-error" : undefined}
           />
-          {errors.contactName && <p className="text-[12px] text-red-500 mt-1">{errors.contactName}</p>}
+          {errors.contactName && <p id="partner-contact-error" role="alert" className="mt-1 text-[12px] text-red-500">{errors.contactName}</p>}
         </div>
 
         {/* Phone */}
@@ -217,15 +202,18 @@ const PartnerApplicationForm = ({ onBack, variant = "page" }: PartnerApplication
             className={inputClass("phone")}
             maxLength={20}
             style={inputStyle}
+            autoComplete="tel"
+            aria-invalid={Boolean(errors.phone)}
+            aria-describedby={errors.phone ? "partner-phone-error" : undefined}
           />
-          {errors.phone && <p className="text-[12px] text-red-500 mt-1">{errors.phone}</p>}
+          {errors.phone && <p id="partner-phone-error" role="alert" className="mt-1 text-[12px] text-red-500">{errors.phone}</p>}
         </div>
       </div>
 
       {/* Submit */}
       <button
-        onClick={handleSubmit}
-        className="w-full h-[52px] bg-primary text-primary-foreground rounded-xl text-[15px] font-bold hover:opacity-90 transition-opacity mt-6"
+        type="submit"
+        className="mt-6 h-[52px] w-full rounded-[3px] bg-primary text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
       >
         Отправить заявку
       </button>
@@ -233,7 +221,7 @@ const PartnerApplicationForm = ({ onBack, variant = "page" }: PartnerApplication
       <p className="text-[11px] text-muted-foreground text-center mt-3 leading-relaxed">
         Нажимая «Отправить заявку», вы соглашаетесь с условиями использования сервиса
       </p>
-    </div>
+    </form>
   );
 };
 

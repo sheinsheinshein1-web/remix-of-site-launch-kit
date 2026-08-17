@@ -13,5 +13,4 @@ export function navigateWithTransition(
   }
   e.preventDefault();
   navigate(path);
-  window.scrollTo(0, 0);
 }

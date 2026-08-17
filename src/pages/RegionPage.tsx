@@ -1,9 +1,12 @@
-import { Link, Navigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { ChevronRight, Star } from "lucide-react";
+import { Link, Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
 import Header from "@/components/Header";
+import ManufacturerName from "@/components/ManufacturerName";
+import SiteBreadcrumbs, { siteBreadcrumbPageContainerClassName } from "@/components/SiteBreadcrumbs";
 import Footer from "@/components/Footer";
-import MobileTabBar from "@/components/MobileTabBar";
-import ProjectCard from "@/components/ProjectCard";
 import Seo from "@/components/Seo";
+import Catalog from "@/pages/Catalog";
 import { regionsBySlug } from "@/data/regions";
 import { projects, makersById } from "@/data/projects";
 import { compareProjectTechnologyPriority } from "@/lib/projectPriority";
@@ -14,59 +17,113 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { buildSiteUrl } from "@/lib/seo";
+import { getManufacturerRatingSummary } from "@/data/manufacturerRatings";
+import { getCityDisplayName } from "@/lib/cityDisplay";
+import { isProjectAvailableInGeo } from "@/lib/geoSelection";
+import {
+  CATALOG_PATH,
+  MANUFACTURERS_PATH,
+  REGIONS_PATH,
+  getManufacturerPath,
+  getProjectPath,
+  getRegionPath,
+} from "@/lib/siteRoutes";
+
+const MAKERS_PREVIEW_LIMIT = 6;
+
+const extractParagraphs = (html: string) => html.match(/<p>[\s\S]*?<\/p>/g) ?? [];
 
 const RegionPage = () => {
   const { slug = "" } = useParams<{ slug: string }>();
   const region = regionsBySlug[slug];
+  const location = useLocation();
+  const navigate = useNavigate();
+  const canonicalPath = region ? getRegionPath(region.slug) : "";
+
+  useEffect(() => {
+    if (!region || location.pathname === canonicalPath) return;
+    navigate(`${canonicalPath}${location.search}${location.hash}`, { replace: true });
+  }, [canonicalPath, location.hash, location.pathname, location.search, navigate, region]);
 
   if (!region) {
-    return <Navigate to="/catalog" replace />;
+    return <Navigate to={CATALOG_PATH} replace />;
   }
 
-  const regionCityValues = region.cityValues ?? [region.cityValue];
+  const baseRegion = region.baseRegionSlug ? regionsBySlug[region.baseRegionSlug] : region;
+  const isDerivedRegion = Boolean(region.deliveryCity || region.deliveryArea);
   const regionProjects = projects
-    .filter((p) => regionCityValues.includes(p.city))
+    .filter((project) => (
+      isProjectAvailableInGeo(project.city, region.slug, project.deliveryRegionSlugs)
+      && (!region.technologyValue || project.technology === region.technologyValue)
+    ))
     .sort(compareProjectTechnologyPriority);
 
-  // Уникальные производители в регионе
-  const makerIds = Array.from(new Set(regionProjects.map((p) => p.maker.id).filter(Boolean) as string[]));
-  const regionMakers = makerIds.map((id) => makersById[id]).filter(Boolean);
+  const makerIds = Array.from(new Set(regionProjects.map((project) => project.maker.id).filter(Boolean) as string[]));
+  const regionMakers = makerIds
+    .map((id) => makersById[id])
+    .filter(Boolean)
+    .map((maker) => ({
+      ...maker,
+      projectsCount: regionProjects.filter((project) => project.maker.id === maker.id).length,
+      reviewSummary: getManufacturerRatingSummary(maker.id),
+    }))
+    .sort((a, b) => {
+      if (a.reviewSummary.hasReviews !== b.reviewSummary.hasReviews) {
+        return Number(b.reviewSummary.hasReviews) - Number(a.reviewSummary.hasReviews);
+      }
+      if (a.reviewSummary.rating !== b.reviewSummary.rating) {
+        return b.reviewSummary.rating - a.reviewSummary.rating;
+      }
+      if (a.reviewSummary.totalCount !== b.reviewSummary.totalCount) {
+        return b.reviewSummary.totalCount - a.reviewSummary.totalCount;
+      }
+      return b.projectsCount - a.projectsCount || a.name.localeCompare(b.name, "ru");
+    });
 
-  const canonicalPath = `/region/${region.slug}`;
+  const previewMakers = regionMakers.slice(0, MAKERS_PREVIEW_LIMIT);
+  const manufacturerParams = new URLSearchParams({ region: region.cityValue });
+  if (region.technologyValue) manufacturerParams.set("tech", region.technologyValue);
+  const manufacturersHref = `${MANUFACTURERS_PATH}?${manufacturerParams.toString()}`;
+  const introParagraphs = extractParagraphs(region.introHtml);
+  const shortIntroHtml = introParagraphs[0] ?? region.description;
+  const seoTextHtml = introParagraphs.slice(1).join("");
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Главная", item: buildSiteUrl("/") },
-      { "@type": "ListItem", position: 2, name: "Каталог", item: buildSiteUrl("/catalog") },
-      { "@type": "ListItem", position: 3, name: region.name, item: buildSiteUrl(canonicalPath) },
+      { "@type": "ListItem", position: 2, name: "Регионы", item: buildSiteUrl(REGIONS_PATH) },
+      ...(isDerivedRegion && baseRegion
+        ? [{ "@type": "ListItem", position: 3, name: baseRegion.name, item: buildSiteUrl(getRegionPath(baseRegion.slug)) }]
+        : []),
+      { "@type": "ListItem", position: isDerivedRegion ? 4 : 3, name: region.name, item: buildSiteUrl(canonicalPath) },
     ],
   };
 
   const faqLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: region.faq.map((f) => ({
+    mainEntity: region.faq.map((item) => ({
       "@type": "Question",
-      name: f.question,
-      acceptedAnswer: { "@type": "Answer", text: f.answer },
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
     })),
   };
 
   const itemListLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    itemListElement: regionProjects.slice(0, 20).map((p, i) => ({
+    itemListElement: regionProjects.map((project, index) => ({
       "@type": "ListItem",
-      position: i + 1,
-      url: buildSiteUrl(`/project/${p.id}`),
-      name: p.name,
+      position: index + 1,
+      url: buildSiteUrl(getProjectPath(project)),
+      name: project.name,
     })),
   };
 
   return (
-    <div className="min-h-screen bg-secondary font-sans pb-16 md:pb-0">
+    <div className="min-h-screen bg-secondary font-sans">
       <Seo
         title={region.title}
         description={region.description}
@@ -74,95 +131,121 @@ const RegionPage = () => {
         jsonLd={[breadcrumbLd, faqLd, itemListLd]}
       />
 
-      <div className="max-w-[1400px] mx-auto bg-background md:rounded-b-2xl">
-        <Header />
+      <main className="bg-background">
+        <Header variant="home" />
 
-        <div className="px-3 md:px-8 pt-[64px] md:pt-[100px] pb-6">
-          {/* Breadcrumbs */}
-          <nav aria-label="breadcrumb" className="text-[13px] text-muted-foreground mb-4 flex flex-wrap items-center gap-1.5">
-            <Link to="/" className="hover:text-foreground transition-colors">Главная</Link>
-            <span aria-hidden>/</span>
-            <Link to="/catalog" className="hover:text-foreground transition-colors">Каталог</Link>
-            <span aria-hidden>/</span>
-            <span className="text-foreground">{region.name}</span>
-          </nav>
-
-          {/* H1 */}
-          <h1 className="text-2xl md:text-4xl font-semibold text-foreground mb-4 leading-tight">
-            {region.h1}
-          </h1>
-
-          {/* Intro text */}
-          <div
-            className="prose prose-sm md:prose-base max-w-3xl text-foreground/80 [&_p]:mb-3"
-            dangerouslySetInnerHTML={{ __html: region.introHtml }}
+        <div className={`${siteBreadcrumbPageContainerClassName} pb-16 sm:pb-20`}>
+          <SiteBreadcrumbs
+            items={[
+              { label: "Главная", to: "/" },
+              { label: "Регионы", to: REGIONS_PATH },
+              ...(isDerivedRegion && baseRegion ? [{ label: baseRegion.name, to: getRegionPath(baseRegion.slug) }] : []),
+              { label: region.name },
+            ]}
           />
-        </div>
 
-        {/* Projects grid */}
-        <div className="px-3 md:px-8 pb-6">
-          <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
-            Проекты {region.namePrepositional} — {regionProjects.length}
-          </h2>
-          {regionProjects.length === 0 ? (
-            <div className="text-muted-foreground text-sm">Скоро добавим проекты для этого региона.</div>
-          ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-              {regionProjects.map((p) => (
-                <ProjectCard key={p.id} projectId={p.id} />
+          <section className="max-w-[900px]" aria-labelledby="region-heading">
+            <h1 id="region-heading" className="text-[30px] font-semibold leading-[1.08] tracking-[-0.025em] text-[#342d27] md:text-[46px] dark:text-foreground">
+              {region.h1}
+            </h1>
+            <div
+              className="mt-5 text-[15px] leading-[1.72] text-[#595653] md:mt-6 md:text-[17px] dark:text-muted-foreground [&_p]:m-0"
+              dangerouslySetInnerHTML={{ __html: shortIntroHtml }}
+            />
+          </section>
+
+          <section className="mt-10 md:mt-14" aria-label={`Каталог проектов ${region.namePrepositional}`}>
+            <Catalog
+              embedded
+              lockedRegion={region.cityValue}
+              lockedRegionLabel={region.catalogRegionLabel}
+              lockedRegionPrepositional={region.deliveryCity ? region.namePrepositional : undefined}
+              lockedTechnology={region.technologyValue}
+            />
+          </section>
+
+          {regionMakers.length > 0 && (
+            <section className="mt-4 md:mt-8" aria-labelledby="region-makers-heading">
+              <div className="flex items-center justify-between gap-4">
+                <h2 id="region-makers-heading" className="text-[26px] font-semibold tracking-[-0.025em] text-[#342d27] md:text-[32px] dark:text-foreground">
+                  {region.deliveryCity ? `Производители с доставкой ${region.namePrepositional}` : `Производители ${region.namePrepositional}`}
+                </h2>
+                <Link
+                  to={manufacturersHref}
+                  className="inline-flex min-h-11 shrink-0 items-center gap-1 text-[14px] font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:text-[16px] dark:text-foreground"
+                >
+                  Все производители
+                  <ChevronRight className="h-4 w-4" strokeWidth={1.8} aria-hidden />
+                </Link>
+              </div>
+              <div className="mt-6 grid sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3 lg:gap-x-10">
+                {previewMakers.map((maker) => (
+                  <Link
+                    key={maker.id}
+                    to={getManufacturerPath(maker.id)}
+                    className="group -mx-3 flex min-h-[76px] items-center gap-3 rounded-[4px] px-3 py-3 transition-colors duration-200 hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:min-h-[80px]"
+                    aria-label={`${maker.name}: ${maker.reviewSummary.rating.toFixed(1)} из 5, ${maker.reviewSummary.hasReviews ? maker.reviewSummary.reviewsLabel : "отзывов пока нет"}`}
+                  >
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[3px] border border-border bg-white text-[10px] font-semibold uppercase tracking-[0.08em] text-[#342d27]">
+                      {maker.logo ? <img src={maker.logo} alt="" width={40} height={40} className="h-full w-full object-contain p-1.5" loading="lazy" decoding="async" /> : maker.initials}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <ManufacturerName
+                        makerId={maker.id}
+                        name={maker.name}
+                        className="w-full"
+                        nameClassName="text-[15px] font-medium leading-tight text-[#342d27] transition-colors duration-200 group-hover:text-primary md:text-[16px] dark:text-foreground"
+                      />
+                      <span className="mt-1 block text-[13px] text-muted-foreground md:text-[14px]">{getCityDisplayName(maker.city)}</span>
+                    </span>
+                    <span className="shrink-0 text-right">
+                      <span className="flex items-center justify-end gap-1 text-[14px] font-medium tabular-nums text-[#342d27] md:text-[15px] dark:text-foreground">
+                        <Star className={`h-3 w-3 ${maker.reviewSummary.hasReviews ? "fill-primary text-primary" : "text-muted-foreground/55"}`} strokeWidth={1.6} aria-hidden />
+                        {maker.reviewSummary.rating.toFixed(1).replace(".", ",")}
+                      </span>
+                      <span className="mt-1 block text-[12px] text-muted-foreground md:text-[13px]">
+                        {maker.reviewSummary.hasReviews ? maker.reviewSummary.reviewsLabel : "Нет отзывов"}
+                      </span>
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
+          <section className="mt-16 max-w-[900px] md:mt-24" aria-labelledby="region-faq-heading">
+            <h2 id="region-faq-heading" className="text-[26px] font-semibold tracking-[-0.025em] text-[#342d27] md:text-[32px] dark:text-foreground">
+              Часто задаваемые вопросы
+            </h2>
+            <Accordion type="single" collapsible className="mt-6">
+              {region.faq.map((item, index) => (
+                <AccordionItem key={item.question} value={`faq-${index}`} className="border-b border-[#dfe5f5]">
+                  <AccordionTrigger className="min-h-[68px] py-4 text-left text-[15px] font-medium text-[#342d27] transition-colors hover:text-primary hover:no-underline md:text-[16px] dark:text-foreground">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="max-w-[760px] pb-5 text-[14px] leading-relaxed text-[#595653] md:text-[15px] dark:text-muted-foreground">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
               ))}
-            </div>
+            </Accordion>
+          </section>
+
+          {seoTextHtml && (
+            <section className="mt-16 max-w-[900px] md:mt-24" aria-labelledby="region-seo-heading">
+              <h2 id="region-seo-heading" className="text-[26px] font-semibold tracking-[-0.025em] text-[#342d27] md:text-[32px] dark:text-foreground">
+                О строительстве домов {region.namePrepositional}
+              </h2>
+              <div
+                className="mt-6 space-y-4 text-[15px] leading-[1.72] text-[#595653] md:text-[17px] dark:text-muted-foreground [&_p]:m-0"
+                dangerouslySetInnerHTML={{ __html: seoTextHtml }}
+              />
+            </section>
           )}
         </div>
-
-        {/* Manufacturers in the region */}
-        {regionMakers.length > 0 && (
-          <div className="px-3 md:px-8 pb-6">
-            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
-              Производители {region.namePrepositional}
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {regionMakers.map((m) => (
-                <Link
-                  key={m.id}
-                  to={`/partner/${m.id}`}
-                  className="flex items-center gap-3 p-3 rounded-xl bg-secondary hover:bg-muted transition-colors"
-                >
-                  {m.logo ? (
-                    <img src={m.logo} alt={m.name} className="w-10 h-10 rounded-lg object-contain bg-background" loading="lazy" />
-                  ) : (
-                    <div className="w-10 h-10 rounded-lg bg-background flex items-center justify-center text-xs font-semibold text-foreground/70">
-                      {m.initials}
-                    </div>
-                  )}
-                  <div className="min-w-0">
-                    <div className="text-sm font-medium text-foreground truncate">{m.name}</div>
-                    <div className="text-[12px] text-muted-foreground">Перейти к производителю</div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* FAQ */}
-        <div className="px-3 md:px-8 pb-10">
-          <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
-            Вопросы и ответы {region.namePrepositional}
-          </h2>
-          <Accordion type="single" collapsible className="max-w-3xl">
-            {region.faq.map((f, i) => (
-              <AccordionItem key={i} value={`faq-${i}`}>
-                <AccordionTrigger className="text-left text-foreground">{f.question}</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">{f.answer}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </div>
+      </main>
 
       <Footer />
-      <MobileTabBar />
     </div>
   );
 };

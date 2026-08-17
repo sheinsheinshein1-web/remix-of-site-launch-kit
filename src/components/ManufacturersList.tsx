@@ -1,10 +1,13 @@
 import { Factory } from "lucide-react";
 import { manufacturers as makers } from "@/data/projects";
 import { useCity } from "@/components/CitySelector";
+import { isSameCityRegion } from "@/lib/cityDisplay";
+import { getGeoSelectionCityValue } from "@/lib/geoSelection";
 
 const ManufacturersList = () => {
   const { city } = useCity();
-  const filtered = makers.filter((m) => m.location === city);
+  const selectedCityValue = getGeoSelectionCityValue(city);
+  const filtered = makers.filter((maker) => isSameCityRegion(maker.location, selectedCityValue));
   const list = filtered.length > 0 ? filtered : makers;
   return (
     <section>
