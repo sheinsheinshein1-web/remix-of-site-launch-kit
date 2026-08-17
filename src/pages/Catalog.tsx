@@ -538,7 +538,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
 
       {/* Mobile search, view and sorting */}
       <div className="sticky top-[50px] z-40 bg-background md:hidden">
-        <div className={`${embedded ? "" : "px-4 sm:px-8"} py-3`}>
+        <div className={`${embedded ? "" : "px-0 py-3"}`} >
           <div className="flex min-w-0 items-center gap-2">
             <SearchDropdown
               className="min-w-0 flex-1"
@@ -920,7 +920,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
       </div>
 
       {/* Mobile content */}
-      <div className={`${embedded ? "" : "px-4 sm:px-8 lg:px-10 xl:px-12"} w-full pb-12 pt-5 md:hidden`}>
+      <div className={`${embedded ? "" : "px-0 lg:px-10 xl:px-12"} w-full pb-12 pt-5 md:hidden`}>
         <div>
           <div className="mb-4 flex items-center justify-between">
             <p className="text-[14px] text-muted-foreground">
