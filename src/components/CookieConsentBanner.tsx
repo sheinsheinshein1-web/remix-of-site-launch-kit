@@ -28,8 +28,7 @@ const CookieConsentBanner = () => {
 
   return (
     <aside
-      role="dialog"
-      aria-modal="false"
+      role="region"
       aria-labelledby="cookie-consent-title"
       aria-describedby="cookie-consent-description"
       className="fixed inset-x-0 bottom-0 z-[80] px-3 pb-[calc(env(safe-area-inset-bottom)+12px)] sm:px-6 sm:pb-5"
