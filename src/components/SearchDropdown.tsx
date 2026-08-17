@@ -680,6 +680,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
                   ref={mobileInputRef}
                   type="search"
                   enterKeyHint="search"
+                  inputMode="search"
                   value={query}
                   onChange={(e) => updateQuery(e.target.value)}
                   onKeyDown={(e) => {
@@ -777,6 +778,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
                     ref={mobileInputRef}
                     type="search"
                     enterKeyHint="search"
+                    inputMode="search"
                     value={query}
                     onChange={(e) => updateQuery(e.target.value)}
                     onKeyDown={(e) => {
@@ -868,7 +870,9 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
       <div className="hidden md:flex items-center gap-0 relative">
         <input
           ref={inputRef}
-          type="text"
+          type="search"
+          inputMode="search"
+          enterKeyHint="search"
           value={query}
           onChange={(e) => updateQuery(e.target.value)}
           onFocus={() => setFocused(true)}

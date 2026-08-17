@@ -92,6 +92,9 @@ const HeroSection = () => {
             <input
               id="hero-search"
               value={query}
+              type="search"
+              inputMode="search"
+              enterKeyHint="search"
               onChange={(event) => setQuery(event.target.value)}
               onFocus={() => setSearchFocused(true)}
               onBlur={() => window.setTimeout(() => setSearchFocused(false), 120)}
@@ -101,7 +104,7 @@ const HeroSection = () => {
                   runSearch();
                 }
               }}
-              className="min-h-14 w-full min-w-0 rounded-[3px] border border-[#d7d7d4] bg-white py-0 pl-4 pr-[122px] text-[14px] tracking-normal text-[#342d27] outline-none transition-colors placeholder:text-[#94918d] focus:border-primary md:min-h-16 md:pl-6 md:pr-[182px] md:text-[18px]"
+              className="min-h-14 w-full min-w-0 rounded-[3px] border border-[#d7d7d4] bg-white py-0 pl-4 pr-[122px] text-[16px] tracking-normal text-[#342d27] outline-none transition-colors placeholder:text-[#94918d] focus:border-primary md:min-h-16 md:pl-6 md:pr-[182px] md:text-[18px]"
               placeholder="Производитель, модель или регион"
             />
             <button
