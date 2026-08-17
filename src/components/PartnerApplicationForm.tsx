@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowLeft, Check, ChevronDown } from "lucide-react";
 import { partnerInterestOptions } from "@/data/partnerProgram";
+import { submitPartnerApplication } from "@/lib/partnerApplication";
 
 interface PartnerApplicationFormProps {
   onBack: () => void;
@@ -10,21 +11,27 @@ interface PartnerApplicationFormProps {
 }
 
 const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = "" }: PartnerApplicationFormProps) => {
-  const navigate = useNavigate();
   const [form, setForm] = useState({
     companyName: "",
     inn: "",
-    activityType: "Модульные дома",
+    activityType: "Модульные дома" as const,
     interest: initialInterest,
     website: "",
     contactName: "",
     phone: "",
+    fax: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitState, setSubmitState] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [submitError, setSubmitError] = useState("");
 
   const update = (field: string, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: "" }));
+    if (submitState === "error") {
+      setSubmitState("idle");
+      setSubmitError("");
+    }
   };
 
   const validate = () => {
@@ -40,43 +47,23 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
     return Object.keys(e).length === 0;
   };
 
-  const handleSubmit = (event?: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event?: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
-    if (!validate()) return;
-    const submittedAt = new Date().toISOString();
-    // Save to localStorage for now
-    localStorage.setItem("partner_application", JSON.stringify({ ...form, submittedAt }));
+    if (!validate() || submitState === "submitting") return;
 
-    // Отправка уведомления в Telegram через тот же мост, что и поддержка
-    const API = "https://sheinsheinshein1-web-chat-telegram-bridge-77c4.twc1.net";
-    const sessionKey = "partner_application_session";
-    let session = localStorage.getItem(sessionKey);
-    if (!session) {
-      session = `partner_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
-      localStorage.setItem(sessionKey, session);
+    setSubmitState("submitting");
+    setSubmitError("");
+
+    try {
+      await submitPartnerApplication({
+        ...form,
+        sourceUrl: window.location.href,
+      });
+      setSubmitState("success");
+    } catch {
+      setSubmitState("error");
+      setSubmitError("Не удалось отправить заявку. Проверьте соединение и попробуйте ещё раз.");
     }
-
-    const text =
-      `🆕 Новая заявка на партнёрство\n\n` +
-      `Компания: ${form.companyName}\n` +
-      `ИНН: ${form.inn}\n` +
-      `Вид деятельности: ${form.activityType}\n` +
-      `Интересует: ${form.interest}\n` +
-      (form.website ? `Сайт: ${form.website}\n` : "") +
-      `Контактное лицо: ${form.contactName}\n` +
-      `Телефон: ${form.phone}\n` +
-      `Время: ${new Date(submittedAt).toLocaleString("ru-RU")}`;
-
-    // fire-and-forget — не блокируем переход в чат
-    fetch(`${API}/send`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ session, text }),
-    }).catch(() => {
-      // сеть недоступна — заявка уже сохранена локально
-    });
-
-    navigate("/messages/partner?start=1");
   };
 
   const inputClass = (field: string) =>
@@ -85,6 +72,27 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
     }`;
 
   const inputStyle = { fontSize: "16px" } as const;
+
+  if (submitState === "success") {
+    return (
+      <div className={variant === "drawer" ? "px-4 py-5" : ""} role="status" aria-live="polite">
+        <div className="flex h-11 w-11 items-center justify-center rounded-[3px] bg-primary text-primary-foreground">
+          <Check className="h-5 w-5" aria-hidden="true" />
+        </div>
+        <h2 className="mt-5 text-[24px] font-semibold leading-tight text-foreground md:text-[30px]">Заявка отправлена</h2>
+        <p className="mt-2 max-w-[480px] text-[15px] leading-relaxed text-muted-foreground">
+          Мы получили данные компании. Менеджер свяжется с вами по указанному телефону.
+        </p>
+        <button
+          type="button"
+          onClick={onBack}
+          className="mt-6 min-h-11 rounded-[3px] bg-secondary px-5 text-[14px] font-medium text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+        >
+          Вернуться к размещению
+        </button>
+      </div>
+    );
+  }
 
   return (
     <form className={variant === "drawer" ? "px-4 py-5" : ""} onSubmit={handleSubmit} noValidate>
@@ -103,10 +111,23 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
 
       {/* Form */}
       <div className="flex flex-col gap-4">
+        <div className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+          <label htmlFor="partner-fax">Факс</label>
+          <input
+            id="partner-fax"
+            type="text"
+            name="fax"
+            value={form.fax}
+            onChange={(event) => update("fax", event.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
         {/* Company name */}
         <div>
-          <label className="text-[13px] font-medium text-foreground mb-1.5 block">Название компании *</label>
+          <label htmlFor="partner-company-name" className="text-[13px] font-medium text-foreground mb-1.5 block">Название компании *</label>
           <input
+            id="partner-company-name"
             type="text"
             placeholder='ООО "Модульные решения"'
             value={form.companyName}
@@ -123,8 +144,9 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
 
         {/* INN */}
         <div>
-          <label className="text-[13px] font-medium text-foreground mb-1.5 block">ИНН *</label>
+          <label htmlFor="partner-inn" className="text-[13px] font-medium text-foreground mb-1.5 block">ИНН *</label>
           <input
+            id="partner-inn"
             type="text"
             placeholder="1234567890"
             value={form.inn}
@@ -139,9 +161,10 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
         </div>
 
         <div>
-          <label className="text-[13px] font-medium text-foreground mb-1.5 block">Что вас интересует *</label>
+          <label htmlFor="partner-interest" className="text-[13px] font-medium text-foreground mb-1.5 block">Что вас интересует *</label>
           <div className="relative">
             <select
+              id="partner-interest"
               value={form.interest}
               onChange={(e) => update("interest", e.target.value)}
               className={`${inputClass("interest")} appearance-none pr-10 ${!form.interest ? "text-muted-foreground" : ""}`}
@@ -160,8 +183,9 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
         </div>
 
         <div>
-          <label className="text-[13px] font-medium text-foreground mb-1.5 block">Сайт компании</label>
+          <label htmlFor="partner-website" className="text-[13px] font-medium text-foreground mb-1.5 block">Сайт компании</label>
           <input
+            id="partner-website"
             type="url"
             placeholder="https://example.ru"
             value={form.website}
@@ -175,8 +199,9 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
 
         {/* Contact name */}
         <div>
-          <label className="text-[13px] font-medium text-foreground mb-1.5 block">Контактное лицо *</label>
+          <label htmlFor="partner-contact-name" className="text-[13px] font-medium text-foreground mb-1.5 block">Контактное лицо *</label>
           <input
+            id="partner-contact-name"
             type="text"
             placeholder="Иван Петров"
             value={form.contactName}
@@ -193,8 +218,9 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
 
         {/* Phone */}
         <div>
-          <label className="text-[13px] font-medium text-foreground mb-1.5 block">Телефон *</label>
+          <label htmlFor="partner-phone" className="text-[13px] font-medium text-foreground mb-1.5 block">Телефон *</label>
           <input
+            id="partner-phone"
             type="tel"
             placeholder="+7 (999) 123-45-67"
             value={form.phone}
@@ -213,13 +239,23 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
       {/* Submit */}
       <button
         type="submit"
-        className="mt-6 h-[52px] w-full rounded-[3px] bg-primary text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        disabled={submitState === "submitting"}
+        className="mt-6 h-[52px] w-full rounded-[3px] bg-primary text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-wait disabled:opacity-70"
       >
-        Отправить заявку
+        {submitState === "submitting" ? "Отправляем…" : submitState === "error" ? "Повторить отправку" : "Отправить заявку"}
       </button>
 
+      {submitError && (
+        <p className="mt-3 text-center text-[13px] leading-relaxed text-red-500" role="alert">
+          {submitError}
+        </p>
+      )}
+
       <p className="text-[11px] text-muted-foreground text-center mt-3 leading-relaxed">
-        Нажимая «Отправить заявку», вы соглашаетесь с условиями использования сервиса
+        Нажимая «Отправить заявку», вы соглашаетесь с{" "}
+        <Link to="/legal/terms" className="text-foreground transition-colors hover:text-primary">условиями использования сервиса</Link>
+        {" "}и{" "}
+        <Link to="/legal/privacy" className="text-foreground transition-colors hover:text-primary">политикой обработки персональных данных</Link>
       </p>
     </form>
   );

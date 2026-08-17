@@ -59,7 +59,14 @@ const PartnerFeatureSection = ({
           </button>
         ) : null}
       </div>
-      <div className={cn("min-w-0 xl:flex xl:items-center", reverse && "xl:order-1")}>
+      <div
+        className={cn(
+          "min-w-0 xl:flex xl:items-center",
+          reverse
+            ? "xl:order-1 xl:[&_.partner-platform-screenshot]:justify-start xl:[&_.partner-platform-screenshot]:pl-0 xl:[&_.partner-platform-screenshot-image]:-translate-x-[2.5%]"
+            : "xl:[&_.partner-platform-screenshot]:justify-end xl:[&_.partner-platform-screenshot]:pr-0 xl:[&_.partner-platform-screenshot-image]:translate-x-[2.5%]",
+        )}
+      >
         <div className="w-full">
           {visual}
         </div>

@@ -80,7 +80,7 @@ const HeroSection = () => {
         <div className="mx-auto flex min-h-[500px] w-full max-w-[1400px] flex-col justify-center px-4 py-14 sm:px-8 sm:py-16 md:min-h-[560px] lg:px-12">
           <h1 className="max-w-[1120px] text-[34px] font-semibold leading-[1.03] tracking-[-0.035em] text-[#171614] sm:text-[44px] md:text-[56px] lg:text-[64px]">
             Модульные дома России<br />
-            в одном месте
+            на одной платформе
           </h1>
 
           <p className="mt-6 max-w-[940px] text-[15px] font-normal leading-relaxed text-[#595653] md:mt-8 md:text-[20px]">

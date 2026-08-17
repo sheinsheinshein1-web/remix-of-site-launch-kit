@@ -41,6 +41,7 @@ const RegionPage = lazy(() => import("./pages/RegionPage.tsx"));
 const Regions = lazy(() => import("./pages/Regions.tsx"));
 const Manufacturers = lazy(() => import("./pages/Manufacturers.tsx"));
 const Articles = lazy(() => import("./pages/Articles.tsx"));
+const ArticleDetail = lazy(() => import("./pages/ArticleDetail.tsx"));
 const IpModul = lazy(() => import("./pages/IpModul.tsx"));
 const RusModul = lazy(() => import("./pages/RusModul.tsx"));
 
@@ -197,6 +198,7 @@ const AppRoutes = () => (
         <Route path={MANUFACTURERS_PATH} element={<Manufacturers />} />
         <Route path="/manufacturers" element={<RedirectWithLocation to={MANUFACTURERS_PATH} />} />
         <Route path="/articles" element={<Articles />} />
+        <Route path="/articles/:slug" element={<ArticleDetail />} />
         <Route path="/ip-modul" element={<IpModul />} />
         <Route path="/rusmodul" element={<RusModul />} />
         <Route path="/lab" element={<Lab />} />
