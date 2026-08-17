@@ -92,6 +92,20 @@ html.dark {
   color-scheme: dark;
 }
 
+@media (max-width: 768px) {
+  html,
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
 /* Legacy editorial surfaces still use the original palette tokens directly.
    These mappings keep them readable while the theme is dark. */
 html.dark :where([class*="text-[#342d27]"], [class*="text-[#171614]"], [class*="text-[#3a332d]"]) {

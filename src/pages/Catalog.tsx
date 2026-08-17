@@ -668,15 +668,15 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
                   return <div key={i} className={`flex-1 rounded-t-sm ${active ? "bg-primary" : "bg-border"}`} style={{ height: `${h}%` }} />;
                 })}
               </div>
-              <div className="relative h-6 mb-2">
+              <div className="relative h-6 mb-2 touch-none">
                 <div className="absolute top-[11px] left-0 right-0 h-1 bg-border rounded-full" />
                 <div className="absolute top-[11px] h-1 bg-primary rounded-full" style={{ left: `${(filterPriceMinVal / PRICE_MAX) * 100}%`, right: `${100 - (filterPriceMaxVal / PRICE_MAX) * 100}%` }} />
                 <input type="range" min={PRICE_MIN} max={PRICE_MAX} step={50000} value={filterPriceMinVal}
                   onChange={e => { const v = Math.min(Number(e.target.value), filterPriceMaxVal - 50000); setFilterPriceMinVal(v); }}
-                  className="absolute top-0 left-0 w-full h-6 appearance-none bg-transparent pointer-events-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-background [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-pointer" />
+                  className="touch-none absolute top-0 left-0 w-full h-6 appearance-none bg-transparent pointer-events-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-background [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-pointer" />
                 <input type="range" min={PRICE_MIN} max={PRICE_MAX} step={50000} value={filterPriceMaxVal}
                   onChange={e => { const v = Math.max(Number(e.target.value), filterPriceMinVal + 50000); setFilterPriceMaxVal(v); }}
-                  className="absolute top-0 left-0 w-full h-6 appearance-none bg-transparent pointer-events-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-background [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-pointer" />
+                  className="touch-none absolute top-0 left-0 w-full h-6 appearance-none bg-transparent pointer-events-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-background [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-pointer" />
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <input value={filterPriceMinVal.toLocaleString("ru-RU")} onChange={e => setFilterPriceMinVal(parseInt(e.target.value.replace(/\D/g, "")) || 0)} className="text-[12px] bg-secondary rounded-[4px] px-2.5 py-2 text-foreground outline-none" />
@@ -1012,15 +1012,15 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
                   return <div key={i} className={`flex-1 rounded-t-sm ${active ? "bg-primary" : "bg-border"}`} style={{ height: `${h}%` }} />;
                 })}
               </div>
-              <div className="relative h-6 mb-2.5">
+              <div className="relative h-6 mb-2.5 touch-none">
                 <div className="absolute top-[11px] left-0 right-0 h-1 bg-border rounded-full" />
                 <div className="absolute top-[11px] h-1 bg-primary rounded-full" style={{ left: `${(filterPriceMinVal / PRICE_MAX) * 100}%`, right: `${100 - (filterPriceMaxVal / PRICE_MAX) * 100}%` }} />
                 <input type="range" min={PRICE_MIN} max={PRICE_MAX} step={50000} value={filterPriceMinVal}
                   onChange={e => { const v = Math.min(Number(e.target.value), filterPriceMaxVal - 50000); setFilterPriceMinVal(v); }}
-                  className="absolute top-0 left-0 w-full h-6 appearance-none bg-transparent pointer-events-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-background [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-pointer" />
+                  className="touch-none absolute top-0 left-0 w-full h-6 appearance-none bg-transparent pointer-events-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-background [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-pointer" />
                 <input type="range" min={PRICE_MIN} max={PRICE_MAX} step={50000} value={filterPriceMaxVal}
                   onChange={e => { const v = Math.max(Number(e.target.value), filterPriceMinVal + 50000); setFilterPriceMaxVal(v); }}
-                  className="absolute top-0 left-0 w-full h-6 appearance-none bg-transparent pointer-events-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-background [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-pointer" />
+                  className="touch-none absolute top-0 left-0 w-full h-6 appearance-none bg-transparent pointer-events-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-background [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-pointer" />
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <input value={filterPriceMinVal.toLocaleString("ru-RU")} onChange={e => setFilterPriceMinVal(parseInt(e.target.value.replace(/\D/g, "")) || 0)} className="rounded-[4px] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none focus:border-primary" />

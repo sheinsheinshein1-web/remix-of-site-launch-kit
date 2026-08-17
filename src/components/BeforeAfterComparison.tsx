@@ -66,7 +66,7 @@ const BeforeAfterComparison = ({
         max="92"
         value={position}
         onChange={(event) => setPosition(Number(event.target.value))}
-        className="absolute inset-0 h-full w-full cursor-col-resize opacity-0"
+        className="touch-none absolute inset-0 h-full w-full cursor-col-resize opacity-0"
         aria-valuetext={`${position}% исходного изображения`}
       />
     </figure>

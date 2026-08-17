@@ -670,7 +670,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
         </div>
 
         {/* Render outside sticky/header stacking contexts so the search always covers the site header. */}
-        {createPortal(<div className="fixed inset-0 z-[200] bg-background flex flex-col">
+        {createPortal(<div className="fixed inset-0 z-[200] bg-background flex flex-col h-[100dvh] max-h-[100dvh]">
           {/* Top bar with search + cancel */}
           <div className="shrink-0 px-3 pt-[max(env(safe-area-inset-top),10px)] pb-2 bg-background border-b border-border/30">
             <div className="flex items-center gap-2">
@@ -768,7 +768,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
           <Search className="w-[18px] h-[18px] text-muted-foreground" />
         </button>
         {mobileOpen && (
-          <div className="fixed inset-0 z-[200] bg-background flex flex-col">
+          <div className="fixed inset-0 z-[200] bg-background flex flex-col h-[100dvh] max-h-[100dvh]">
             <div className="shrink-0 px-3 pt-[max(env(safe-area-inset-top),10px)] pb-2 bg-background border-b border-border/30">
               <div className="flex items-center gap-2">
                 <div className="relative flex-1">

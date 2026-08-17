@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Mail, MessageCircle, Send } from "lucide-react";
+import { ArrowUpRight, Mail, Send } from "lucide-react";
 import logoColor from "@/assets/logo-mnogo-mesta.png";
 import { FRAME_VS_MODULAR_ARTICLE_PATH } from "@/data/articles";
 import { regions } from "@/data/regions";
@@ -63,7 +63,6 @@ const serviceLinks: FooterItem[] = [
 
 const socialLinks = [
   { label: "Telegram", href: "https://t.me/mnogomesta", icon: Send },
-  { label: "ВКонтакте", href: "https://vk.com/mnogomesta", icon: MessageCircle },
   { label: "Дзен", href: "https://dzen.ru/mnogomesta", icon: ArrowUpRight },
 ];
 

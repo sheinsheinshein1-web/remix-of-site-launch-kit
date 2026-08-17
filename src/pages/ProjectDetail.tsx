@@ -491,7 +491,7 @@ const ProjectDetail = () => {
 
           <section aria-label="Фотографии проекта" className="min-w-0">
             <div className="relative md:hidden">
-              <div ref={galleryWrapRef} className="overflow-hidden bg-secondary">
+              <div ref={galleryWrapRef} className="touch-pan-y overflow-hidden bg-secondary">
                 <div
                   ref={sliderRef}
                   className="flex transition-transform duration-300 ease-out motion-reduce:transition-none"
