@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import { createPortal } from "react-dom";
+import { flushSync } from "react-dom";
 import { Search, X, Home, Factory, FileText, LayoutGrid, ArrowRight, ChevronRight, Clock, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { makersById, projects as dataProjects } from "@/data/projects";
@@ -358,21 +359,44 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const mobileInputRef = useRef<HTMLInputElement>(null);
+  const previousBodyOverflowRef = useRef<string>("");
+  const previousHtmlOverflowRef = useRef<string>("");
+  const bodyScrollLockedRef = useRef(false);
+  const openFrameRef = useRef<number | null>(null);
 
   const showDropdown = focused && query.length > 0;
 
   // Lock body scroll when mobile fullscreen is open
   useEffect(() => {
     if (mobileOpen) {
+      previousBodyOverflowRef.current = document.body.style.overflow;
+      previousHtmlOverflowRef.current = document.documentElement.style.overflow;
+      bodyScrollLockedRef.current = true;
       document.body.style.overflow = "hidden";
-      return () => { document.body.style.overflow = ""; };
+      document.documentElement.style.overflow = "hidden";
+      return () => {
+        if (bodyScrollLockedRef.current) {
+          document.body.style.overflow = previousBodyOverflowRef.current;
+          if (previousHtmlOverflowRef.current) {
+            document.documentElement.style.overflow = previousHtmlOverflowRef.current;
+          } else {
+            document.documentElement.style.removeProperty("overflow");
+          }
+          bodyScrollLockedRef.current = false;
+        }
+      };
     }
   }, [mobileOpen]);
 
   // Auto-focus mobile input when opened
   useEffect(() => {
     if (mobileOpen) {
-      setTimeout(() => mobileInputRef.current?.focus(), 50);
+      const frame = requestAnimationFrame(() => {
+        mobileInputRef.current?.focus();
+      });
+      return () => {
+        cancelAnimationFrame(frame);
+      };
     }
   }, [mobileOpen]);
 
@@ -526,6 +550,40 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
     onFocusChange?.(focused || mobileOpen);
   }, [focused, mobileOpen, onFocusChange]);
 
+  const restoreBodyScrollLock = () => {
+    if (!bodyScrollLockedRef.current) return;
+    if (previousBodyOverflowRef.current) {
+      document.body.style.overflow = previousBodyOverflowRef.current;
+    } else {
+      document.body.style.removeProperty("overflow");
+    }
+    if (previousHtmlOverflowRef.current) {
+      document.documentElement.style.overflow = previousHtmlOverflowRef.current;
+    } else {
+      document.documentElement.style.removeProperty("overflow");
+    }
+    bodyScrollLockedRef.current = false;
+    previousBodyOverflowRef.current = "";
+    previousHtmlOverflowRef.current = "";
+  };
+
+  const deactivateMobileSearch = (afterClose?: () => void) => {
+    inputRef.current?.blur();
+    mobileInputRef.current?.blur();
+    if (openFrameRef.current !== null) {
+      cancelAnimationFrame(openFrameRef.current);
+      openFrameRef.current = null;
+    }
+    flushSync(() => {
+      restoreBodyScrollLock();
+      setFocused(false);
+      setMobileOpen(false);
+    });
+    if (afterClose) {
+      openFrameRef.current = requestAnimationFrame(afterClose);
+    }
+  };
+
   const handleSelect = (path: string) => {
     if (query.trim()) {
       const updated = [query.trim(), ...searchHistory.filter(h => h !== query.trim())].slice(0, 10);
@@ -533,9 +591,9 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
       localStorage.setItem("search_history", JSON.stringify(updated));
     }
     updateQuery("");
-    setFocused(false);
-    setMobileOpen(false);
-    navigate(path);
+    deactivateMobileSearch(() => {
+      navigate(path);
+    });
   };
 
   const clearHistory = () => {
@@ -544,9 +602,8 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
   };
 
   const handleMobileClose = () => {
-    setMobileOpen(false);
+    deactivateMobileSearch();
     updateQuery("");
-    setFocused(false);
   };
 
   // Get matching quick suggestion chips based on current query
