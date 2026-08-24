@@ -3,7 +3,7 @@ import { ChevronsLeftRight } from "lucide-react";
 
 const MIN_POSITION = 8;
 const MAX_POSITION = 92;
-const DIRECTION_THRESHOLD = 6;
+const DIRECTION_THRESHOLD = 3;
 
 type PointerGesture = {
   pointerId: number;
@@ -54,9 +54,9 @@ const BeforeAfterComparison = ({
 
     gestureRef.current = gesture;
     inputRef.current?.focus({ preventScroll: true });
+    event.currentTarget.setPointerCapture(event.pointerId);
 
     if (gesture.mode === "dragging") {
-      event.currentTarget.setPointerCapture(event.pointerId);
       updatePosition(event.clientX, event.currentTarget);
       event.preventDefault();
     }
@@ -73,12 +73,14 @@ const BeforeAfterComparison = ({
       if (Math.max(Math.abs(deltaX), Math.abs(deltaY)) < DIRECTION_THRESHOLD) return;
 
       if (Math.abs(deltaY) >= Math.abs(deltaX)) {
+        if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+          event.currentTarget.releasePointerCapture(event.pointerId);
+        }
         gestureRef.current = null;
         return;
       }
 
       gesture.mode = "dragging";
-      event.currentTarget.setPointerCapture(event.pointerId);
     }
 
     updatePosition(event.clientX, event.currentTarget);
@@ -89,7 +91,9 @@ const BeforeAfterComparison = ({
     const gesture = gestureRef.current;
     if (!gesture || gesture.pointerId !== event.pointerId) return;
 
-    if (!cancelled) updatePosition(event.clientX, event.currentTarget);
+    if (!cancelled && gesture.mode === "dragging") {
+      updatePosition(event.clientX, event.currentTarget);
+    }
     if (event.currentTarget.hasPointerCapture(event.pointerId)) {
       event.currentTarget.releasePointerCapture(event.pointerId);
     }
@@ -124,11 +128,11 @@ const BeforeAfterComparison = ({
       </span>
 
       <div
-        className="pointer-events-none absolute inset-y-0 w-px bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.16)]"
+        className="pointer-events-none absolute inset-y-0 z-20 w-px bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.16)]"
         style={{ left: `${position}%` }}
         aria-hidden
       >
-        <span className="absolute left-1/2 top-1/2 flex h-12 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[3px] bg-white text-[#342d27] shadow-[0_6px_20px_rgba(0,0,0,0.18)]">
+        <span className="absolute left-1/2 top-1/2 flex h-14 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[3px] bg-white text-[#342d27] shadow-[0_6px_20px_rgba(0,0,0,0.18)] sm:h-12 sm:w-9">
           <ChevronsLeftRight className="h-4 w-4" strokeWidth={1.7} />
         </span>
       </div>
@@ -146,11 +150,15 @@ const BeforeAfterComparison = ({
         aria-valuetext={`${position}% исходного изображения`}
       />
       <div
+        data-before-after-touch-area
         className="absolute inset-0 z-10 cursor-col-resize touch-pan-y select-none"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={(event) => finishPointerGesture(event)}
         onPointerCancel={(event) => finishPointerGesture(event, true)}
+        onLostPointerCapture={() => {
+          gestureRef.current = null;
+        }}
         aria-hidden
       />
     </figure>
