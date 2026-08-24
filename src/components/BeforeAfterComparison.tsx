@@ -159,7 +159,8 @@ const BeforeAfterComparison = ({
       />
       <div
         data-before-after-touch-area
-        className="absolute inset-x-0 top-1/2 z-30 h-24 -translate-y-1/2 cursor-col-resize touch-pan-y select-none sm:h-20"
+        className="absolute inset-y-0 z-30 w-20 -translate-x-1/2 cursor-col-resize touch-pan-y select-none sm:w-16"
+        style={{ left: `${position}%` }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={(event) => finishPointerGesture(event)}

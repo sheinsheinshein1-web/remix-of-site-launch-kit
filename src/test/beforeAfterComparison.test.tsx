@@ -60,11 +60,12 @@ const renderComparison = () => {
 };
 
 describe("BeforeAfterComparison", () => {
-  it("keeps the drag layer limited to a middle band instead of covering the image", () => {
+  it("keeps a large mobile hit area centered on the divider without covering the whole image", () => {
     const { touchArea } = renderComparison();
 
-    expect(touchArea).toHaveClass("inset-x-0", "h-24", "touch-pan-y");
+    expect(touchArea).toHaveClass("inset-y-0", "w-20", "touch-pan-y");
     expect(touchArea).not.toHaveClass("inset-0");
+    expect(touchArea).toHaveStyle({ left: "52%" });
   });
 
   it("captures a horizontal drag and keeps tracking it at the image edge", () => {
