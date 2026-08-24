@@ -42,7 +42,7 @@ const CookieConsentBanner = () => {
             Мы используем необходимые cookie и похожие технологии, чтобы сайт работал и запоминал настройки. С вашего согласия сможем подключать аналитику для улучшения сервиса.
           </p>
           <Link
-            to="/legal/cookies"
+            to="/legal/cookies/"
             className="mt-2 inline-flex min-h-11 items-center text-[13px] font-medium text-foreground transition-colors hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:min-h-9 md:text-[14px]"
           >
             Подробнее об использовании cookie

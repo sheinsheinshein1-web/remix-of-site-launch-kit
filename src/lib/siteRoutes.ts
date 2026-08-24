@@ -4,9 +4,9 @@ type ProjectRouteInput = Pick<Project, "id" | "name" | "area" | "area_m2" | "tec
   maker: Pick<Project["maker"], "id" | "name">;
 };
 
-export const CATALOG_PATH = "/modulnye-doma";
-export const MANUFACTURERS_PATH = "/proizvoditeli";
-export const REGIONS_PATH = "/regiony-dostavki";
+export const CATALOG_PATH = "/modulnye-doma/";
+export const MANUFACTURERS_PATH = "/proizvoditeli/";
+export const REGIONS_PATH = "/regiony-dostavki/";
 
 const transliterationMap: Record<string, string> = {
   а: "a", б: "b", в: "v", г: "g", д: "d", е: "e", ё: "e", ж: "zh", з: "z",
@@ -47,13 +47,13 @@ export const getProjectSlug = (
 
 export const getProjectPath = (
   project: ProjectRouteInput,
-) => `/${getProjectCategorySlug(project.technology)}/proekty/${getProjectSlug(project)}`;
+) => `/${getProjectCategorySlug(project.technology)}/proekty/${getProjectSlug(project)}/`;
 
 export const getProjectIdFromRouteParam = (value = "") => {
   const match = value.match(/(?:^|-)(\d+)$/);
   return match ? Number(match[1]) : Number.NaN;
 };
 
-export const getRegionPath = (slug: string) => `/modulnye-doma/${slug}`;
-export const getManufacturerPath = (makerId: string) => `${MANUFACTURERS_PATH}/${makerId}`;
-export const getManufacturerReviewsPath = (makerId: string) => `${getManufacturerPath(makerId)}/otzyvy`;
+export const getRegionPath = (slug: string) => `/modulnye-doma/${slug}/`;
+export const getManufacturerPath = (makerId: string) => `${MANUFACTURERS_PATH}${makerId}/`;
+export const getManufacturerReviewsPath = (makerId: string) => `${getManufacturerPath(makerId)}otzyvy/`;

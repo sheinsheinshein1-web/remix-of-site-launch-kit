@@ -170,8 +170,8 @@ const Header = ({ variant = "default", onPartnerCta }: HeaderProps) => {
                 </button>
               ) : variant !== "partner" ? (
                 <Link
-                  to="/partner"
-                  aria-current={location.pathname === "/partner" ? "page" : undefined}
+                  to="/partner/"
+                  aria-current={location.pathname === "/partner/" ? "page" : undefined}
                   className="inline-flex h-11 items-center whitespace-nowrap rounded-[3px] bg-primary px-6 text-[14px] font-semibold tracking-normal text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
                   Для производителей
@@ -293,7 +293,7 @@ const Header = ({ variant = "default", onPartnerCta }: HeaderProps) => {
 
                 <div className="flex items-center gap-6">
                   <nav className="flex items-center gap-6">
-                    <Link to="/categories" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname === "/categories" || location.pathname === CATALOG_PATH ? "font-semibold text-primary-foreground" : "font-medium text-primary-foreground/80 hover:text-primary-foreground"}`}><LayoutGrid className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Категории</Link>
+                    <Link to="/categories/" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname === "/categories/" || location.pathname === CATALOG_PATH ? "font-semibold text-primary-foreground" : "font-medium text-primary-foreground/80 hover:text-primary-foreground"}`}><LayoutGrid className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Категории</Link>
                     <Link to="/favorites" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname === "/favorites" ? "font-semibold text-primary-foreground" : "font-medium text-primary-foreground/80 hover:text-primary-foreground"}`}><Heart className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Избранное</Link>
                     <Link to="/messages" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname.startsWith("/messages") ? "font-semibold text-primary-foreground" : "font-medium text-primary-foreground/80 hover:text-primary-foreground"}`}><MessageSquare className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Сообщения</Link>
                   </nav>
@@ -320,7 +320,7 @@ const Header = ({ variant = "default", onPartnerCta }: HeaderProps) => {
                   <SearchDropdown inputClassName="bg-secondary" />
                 </div>
                 <nav className="flex items-center gap-5 flex-shrink-0">
-                  <Link to="/categories" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname === "/categories" || location.pathname === CATALOG_PATH ? "font-semibold text-foreground" : "font-medium text-muted-foreground hover:text-foreground"}`}><LayoutGrid className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Категории</Link>
+                  <Link to="/categories/" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname === "/categories/" || location.pathname === CATALOG_PATH ? "font-semibold text-foreground" : "font-medium text-muted-foreground hover:text-foreground"}`}><LayoutGrid className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Категории</Link>
                   <Link to="/favorites" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname === "/favorites" ? "font-semibold text-foreground" : "font-medium text-muted-foreground hover:text-foreground"}`}><Heart className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Избранное</Link>
                   <Link to="/messages" className={`text-[15px] transition-colors flex items-center gap-1.5 ${location.pathname.startsWith("/messages") ? "font-semibold text-foreground" : "font-medium text-muted-foreground hover:text-foreground"}`}><MessageSquare className="w-[18px] h-[18px] fill-current" strokeWidth={1.5} />Сообщения</Link>
                 </nav>

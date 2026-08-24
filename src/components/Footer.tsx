@@ -13,7 +13,7 @@ type FooterGroup = { title: string; links: FooterItem[] };
 
 const catalogLinks: FooterItem[] = [
   { label: "Все проекты домов", path: CATALOG_PATH },
-  { label: "Все категории", path: "/categories" },
+  { label: "Все категории", path: "/categories/" },
   { label: "Модульные дома", path: `${CATALOG_PATH}?tech=Модульный дом` },
   { label: "Дома до 2 млн ₽", path: `${CATALOG_PATH}?maxPrice=2000000` },
   { label: "Дома до 3 млн ₽", path: `${CATALOG_PATH}?maxPrice=3000000` },
@@ -41,15 +41,15 @@ const buyerLinks: FooterItem[] = [
 ];
 
 const materialLinks: FooterItem[] = [
-  { label: "Журнал", path: "/articles" },
-  { label: "Как выбрать дом", path: "/articles/kak-vybrat-modulnyy-dom" },
-  { label: "Из чего складывается цена", path: "/articles/iz-chego-skladyvaetsya-tsena" },
+  { label: "Журнал", path: "/articles/" },
+  { label: "Как выбрать дом", path: "/articles/kak-vybrat-modulnyy-dom/" },
+  { label: "Из чего складывается цена", path: "/articles/iz-chego-skladyvaetsya-tsena/" },
   { label: "Каркасный или модульный дом", path: FRAME_VS_MODULAR_ARTICLE_PATH },
 ];
 
 const manufacturerLinks: FooterItem[] = [
   { label: "Производители", path: MANUFACTURERS_PATH },
-  { label: "Разместить проекты", path: "/partner" },
+  { label: "Разместить проекты", path: "/partner/" },
   { label: "Войти в кабинет", path: "/profile?mode=login" },
   { label: "Поддержка производителей", path: "/messages/partner" },
 ];
@@ -134,7 +134,7 @@ const Footer = () => (
       <div className="mt-7 flex flex-col gap-3 text-[12px] text-foreground/50 sm:flex-row sm:items-center sm:justify-between md:text-[13px]">
         <p>© многоместа.рф, {new Date().getFullYear()}</p>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-          <Link to="/legal" className="transition-colors hover:text-primary">Юридическая информация</Link>
+          <Link to="/legal/" className="transition-colors hover:text-primary">Юридическая информация</Link>
           <button type="button" onClick={openCookieSettings} className="transition-colors hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
             Настройки cookie
           </button>

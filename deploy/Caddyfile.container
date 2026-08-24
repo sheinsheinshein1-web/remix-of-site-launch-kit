@@ -17,6 +17,9 @@
 	header /sitemap.xml Cache-Control "public, max-age=3600"
 	header /manifest.webmanifest Cache-Control "public, max-age=86400"
 
+	# Permanent server-side redirects from legacy routes to canonical SEO URLs.
+	import /srv/legacy-redirects.caddy
+
 	@static path /assets/* /icons/* /og/* /favicon.ico /robots.txt /sitemap.xml /manifest.webmanifest /placeholder.svg
 	handle @static {
 		file_server

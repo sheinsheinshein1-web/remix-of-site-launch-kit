@@ -18,7 +18,7 @@ const Articles = () => (
     <Seo
       title="Журнал о модульных домах — многоместа.рф"
       description="Практические материалы о выборе модульного дома, расчёте стоимости и работе с производителями."
-      canonicalPath="/articles"
+      canonicalPath="/articles/"
     />
     <main className="bg-background">
       <Header variant="home" />

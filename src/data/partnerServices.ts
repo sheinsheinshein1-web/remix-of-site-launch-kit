@@ -18,7 +18,7 @@ export type PartnerService = {
 export const partnerServices = {
   freePlacement: {
     id: "free-placement",
-    path: "/partner/free-placement",
+    path: "/partner/free-placement/",
     breadcrumbLabel: "Бесплатное размещение",
     interest: "Бесплатное размещение",
     seoTitle: "Бесплатное размещение проектов модульных домов | многоместа.рф",
@@ -62,7 +62,7 @@ export const partnerServices = {
   },
   salesCommission: {
     id: "sales-commission",
-    path: "/partner/sales-commission",
+    path: "/partner/sales-commission/",
     breadcrumbLabel: "Работа за результат",
     interest: "Работа за процент со сделки",
     seoTitle: "Продажи модульных домов с оплатой за результат | многоместа.рф",
@@ -116,7 +116,7 @@ export const partnerServices = {
   },
   manufacturerWebsite: {
     id: "manufacturer-website",
-    path: "/partner/manufacturer-website",
+    path: "/partner/manufacturer-website/",
     breadcrumbLabel: "Сайт производителя",
     interest: "Сайт производителя",
     seoTitle: "Сайт производителя модульных домов | многоместа.рф",
@@ -165,7 +165,7 @@ export const partnerServices = {
   },
   renderings: {
     id: "renderings",
-    path: "/partner/renderings",
+    path: "/partner/renderings/",
     breadcrumbLabel: "Художественные рендеры",
     interest: "Художественные рендеры",
     seoTitle: "Художественные рендеры проектов модульных домов | многоместа.рф",
@@ -214,7 +214,7 @@ export const partnerServices = {
   },
   businessPlacement: {
     id: "business-placement",
-    path: "/partner/business-placement",
+    path: "/partner/business-placement/",
     breadcrumbLabel: "Раздел «Бизнес»",
     interest: "Размещение в разделе «Бизнес»",
     seoTitle: "Размещение проектов для бизнеса — производителям | многоместа.рф",

@@ -11,7 +11,7 @@ const Legal = () => (
     <Seo
       title="Юридическая информация — многоместа.рф"
       description="Правила размещения, пользовательское соглашение, политика обработки персональных данных и информация о cookie платформы многоместа.рф."
-      canonicalPath="/legal"
+      canonicalPath="/legal/"
     />
 
     <main className="bg-background">

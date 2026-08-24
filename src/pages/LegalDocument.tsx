@@ -10,7 +10,7 @@ const LegalDocument = () => {
   const document = getLegalDocument(slug);
 
   if (!document) {
-    return <Navigate to="/legal" replace />;
+    return <Navigate to="/legal/" replace />;
   }
 
   const parsed = parseLegalDocument(document.source);
@@ -29,7 +29,7 @@ const LegalDocument = () => {
           <SiteBreadcrumbs
             items={[
               { label: "Главная", to: "/" },
-              { label: "Юридическая информация", to: "/legal" },
+              { label: "Юридическая информация", to: "/legal/" },
               { label: document.navigationTitle },
             ]}
           />

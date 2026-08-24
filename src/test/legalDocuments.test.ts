@@ -10,10 +10,10 @@ describe("legal documents registry", () => {
       "cookies",
     ]);
     expect(legalDocuments.map((document) => document.path)).toEqual([
-      "/legal/rules",
-      "/legal/terms",
-      "/legal/privacy",
-      "/legal/cookies",
+      "/legal/rules/",
+      "/legal/terms/",
+      "/legal/privacy/",
+      "/legal/cookies/",
     ]);
   });
 

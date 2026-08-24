@@ -166,7 +166,7 @@ const ArticleDetail = () => {
     return <FrameVsModularArticle />;
   }
 
-  return <Navigate to="/articles" replace />;
+  return <Navigate to="/articles/" replace />;
 };
 
 export default ArticleDetail;

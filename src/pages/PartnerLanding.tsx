@@ -52,7 +52,7 @@ const breadcrumbJsonLd = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Главная", item: buildCanonicalUrl("/") },
-    { "@type": "ListItem", position: 2, name: "Производителям", item: buildCanonicalUrl("/partner") },
+    { "@type": "ListItem", position: 2, name: "Производителям", item: buildCanonicalUrl("/partner/") },
   ],
 };
 
@@ -86,14 +86,14 @@ const PartnerLanding = () => {
         <Seo
           title="Заявка на бесплатное размещение — многоместа.рф"
           description="Оставьте заявку на бесплатное размещение проектов модульных домов на многоместа.рф."
-          canonicalPath="/partner"
+          canonicalPath="/partner/"
           noIndex
         />
         <Header variant="partner" />
         <PartnerApplicationContent
           breadcrumbItems={[
             { label: "Главная", to: "/" },
-            { label: "Производителям", to: "/partner", onClick: closeForm },
+            { label: "Производителям", to: "/partner/", onClick: closeForm },
             { label: "Заявка" },
           ]}
           initialInterest={initialInterest}
@@ -112,7 +112,7 @@ const PartnerLanding = () => {
       <Seo
         title="Размещение проектов модульных домов для производителей | многоместа.рф"
         description="Получайте трафик и обращения по проектам модульных домов без платы за размещение. Вознаграждение 5% начисляется только после состоявшейся сделки."
-        canonicalPath="/partner"
+        canonicalPath="/partner/"
         jsonLd={[breadcrumbJsonLd, faqJsonLd]}
       />
       <Header variant="partner" onPartnerCta={() => openFormWithInterest("Бесплатное размещение")} />

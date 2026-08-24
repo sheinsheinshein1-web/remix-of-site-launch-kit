@@ -129,7 +129,7 @@ const queryClient = new QueryClient();
 
 const AssetPreloader = () => {
   const { pathname } = useLocation();
-  const shouldPreload = pathname === "/" || pathname === "/categories" || pathname === CATALOG_PATH || pathname.includes("/proekty/");
+  const shouldPreload = pathname === "/" || pathname === "/categories/" || pathname === CATALOG_PATH || pathname.includes("/proekty/");
 
   useEffect(() => {
     if (!shouldPreload) return;
@@ -190,7 +190,7 @@ const AppRoutes = () => (
         <Route path="/operator" element={<OperatorChat />} />
         <Route path="/legal" element={<Legal />} />
         <Route path="/legal/:slug" element={<LegalDocument />} />
-        <Route path="/privacy" element={<Navigate to="/legal/privacy" replace />} />
+        <Route path="/privacy" element={<Navigate to="/legal/privacy/" replace />} />
         <Route path="/modulnye-doma/:slug" element={<RegionPage />} />
         <Route path="/region/:slug" element={<RegionPage />} />
         <Route path={REGIONS_PATH} element={<Regions />} />

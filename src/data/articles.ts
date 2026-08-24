@@ -17,9 +17,9 @@ export type JournalArticle = {
   seoDescription?: string;
 };
 
-export const HOW_TO_CHOOSE_MODULAR_HOUSE_PATH = "/articles/kak-vybrat-modulnyy-dom";
-export const COST_BREAKDOWN_ARTICLE_PATH = "/articles/iz-chego-skladyvaetsya-tsena";
-export const FRAME_VS_MODULAR_ARTICLE_PATH = "/articles/karkasnyy-ili-modulnyy-dom";
+export const HOW_TO_CHOOSE_MODULAR_HOUSE_PATH = "/articles/kak-vybrat-modulnyy-dom/";
+export const COST_BREAKDOWN_ARTICLE_PATH = "/articles/iz-chego-skladyvaetsya-tsena/";
+export const FRAME_VS_MODULAR_ARTICLE_PATH = "/articles/karkasnyy-ili-modulnyy-dom/";
 
 export const homeArticles: JournalArticle[] = [
   {

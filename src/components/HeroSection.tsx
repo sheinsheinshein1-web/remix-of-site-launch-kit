@@ -161,7 +161,7 @@ const HeroSection = () => {
             <button
               key={stat.label}
               type="button"
-              onClick={() => navigate(index === 1 ? "/partner" : CATALOG_PATH)}
+              onClick={() => navigate(index === 1 ? "/partner/" : CATALOG_PATH)}
               className="group flex min-h-[88px] flex-col items-start justify-center gap-1.5 border-b border-r border-[#dfe5f5] px-5 text-left font-sans transition-colors last:border-r-0 hover:bg-white/70 dark:hover:bg-primary/10 md:min-h-[104px] md:gap-2 md:border-b-0 md:px-9 lg:px-12"
             >
               <span className="block text-[24px] font-medium leading-none tracking-[-0.02em] text-[#3a332d] transition-colors group-hover:text-primary md:text-[30px]">

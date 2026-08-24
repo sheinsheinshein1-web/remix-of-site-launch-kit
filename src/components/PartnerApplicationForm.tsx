@@ -253,9 +253,9 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
 
       <p className="text-[11px] text-muted-foreground text-center mt-3 leading-relaxed">
         Нажимая «Отправить заявку», вы соглашаетесь с{" "}
-        <Link to="/legal/terms" className="text-foreground transition-colors hover:text-primary">условиями использования сервиса</Link>
+        <Link to="/legal/terms/" className="text-foreground transition-colors hover:text-primary">условиями использования сервиса</Link>
         {" "}и{" "}
-        <Link to="/legal/privacy" className="text-foreground transition-colors hover:text-primary">политикой обработки персональных данных</Link>
+        <Link to="/legal/privacy/" className="text-foreground transition-colors hover:text-primary">политикой обработки персональных данных</Link>
       </p>
     </form>
   );

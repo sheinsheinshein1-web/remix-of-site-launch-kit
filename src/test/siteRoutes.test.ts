@@ -13,11 +13,11 @@ import {
 
 describe("публичные SEO-адреса", () => {
   it("использует тематические адреса для основных разделов", () => {
-    expect(CATALOG_PATH).toBe("/modulnye-doma");
-    expect(MANUFACTURERS_PATH).toBe("/proizvoditeli");
-    expect(REGIONS_PATH).toBe("/regiony-dostavki");
-    expect(getRegionPath("moskva")).toBe("/modulnye-doma/moskva");
-    expect(getManufacturerPath("cubber")).toBe("/proizvoditeli/cubber");
+    expect(CATALOG_PATH).toBe("/modulnye-doma/");
+    expect(MANUFACTURERS_PATH).toBe("/proizvoditeli/");
+    expect(REGIONS_PATH).toBe("/regiony-dostavki/");
+    expect(getRegionPath("moskva")).toBe("/modulnye-doma/moskva/");
+    expect(getManufacturerPath("cubber")).toBe("/proizvoditeli/cubber/");
   });
 
   it("формирует читаемый и стабильный адрес проекта", () => {
@@ -25,10 +25,10 @@ describe("публичные SEO-адреса", () => {
     const wideHouse = projects.find((project) => project.id === 32);
 
     expect(cubber65 && getProjectPath(cubber65)).toBe(
-      "/modulnye-doma/proekty/cubber-house-65-67-m2-379",
+      "/modulnye-doma/proekty/cubber-house-65-67-m2-379/",
     );
     expect(wideHouse && getProjectPath(wideHouse)).toBe(
-      "/modulnye-doma/proekty/platforma-wide-house-46-m2-32",
+      "/modulnye-doma/proekty/platforma-wide-house-46-m2-32/",
     );
   });
 

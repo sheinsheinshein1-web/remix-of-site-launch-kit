@@ -53,13 +53,13 @@ const PartnerDetailLanding = ({
 
   const breadcrumbItems = [
     { label: "Главная", to: "/" },
-    { label: "Производителям", to: "/partner" },
+    { label: "Производителям", to: "/partner/" },
     { label: service.breadcrumbLabel },
   ];
 
   const applicationBreadcrumbItems = [
     { label: "Главная", to: "/" },
-    { label: "Производителям", to: "/partner" },
+    { label: "Производителям", to: "/partner/" },
     { label: service.breadcrumbLabel, to: service.path, onClick: closeForm },
     { label: "Заявка" },
   ];
@@ -100,7 +100,7 @@ const PartnerDetailLanding = ({
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Главная", item: buildCanonicalUrl("/") },
-      { "@type": "ListItem", position: 2, name: "Производителям", item: buildCanonicalUrl("/partner") },
+      { "@type": "ListItem", position: 2, name: "Производителям", item: buildCanonicalUrl("/partner/") },
       { "@type": "ListItem", position: 3, name: service.breadcrumbLabel, item: buildCanonicalUrl(service.path) },
     ],
   };

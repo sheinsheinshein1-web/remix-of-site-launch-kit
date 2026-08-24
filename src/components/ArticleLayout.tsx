@@ -56,7 +56,7 @@ const ArticleLayout = ({ article, toc, children }: ArticleLayoutProps) => {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Главная", item: buildCanonicalUrl("/") },
-      { "@type": "ListItem", position: 2, name: "Журнал", item: buildCanonicalUrl("/articles") },
+      { "@type": "ListItem", position: 2, name: "Журнал", item: buildCanonicalUrl("/articles/") },
       { "@type": "ListItem", position: 3, name: article.title, item: canonicalUrl },
     ],
   };
@@ -79,7 +79,7 @@ const ArticleLayout = ({ article, toc, children }: ArticleLayoutProps) => {
           <SiteBreadcrumbs
             items={[
               { label: "Главная", to: "/" },
-              { label: "Журнал", to: "/articles" },
+              { label: "Журнал", to: "/articles/" },
               { label: article.title },
             ]}
           />

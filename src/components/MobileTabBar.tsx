@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const tabs = [
   { icon: Home, path: "/" },
-  { icon: LayoutGrid, path: "/categories" },
+  { icon: LayoutGrid, path: "/categories/" },
   { icon: Heart, path: "/favorites" },
   { icon: MessageCircle, path: "/messages" },
 ];

@@ -80,6 +80,6 @@ export const siteNavigation: SiteNavigationEntry[] = [
   {
     type: "link",
     label: "Журнал",
-    path: "/articles",
+    path: "/articles/",
   },
 ];

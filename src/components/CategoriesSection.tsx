@@ -68,7 +68,7 @@ const CategoriesSection = () => {
                 <CategoryCard
                   key={cat.name}
                   cat={cat}
-                  onClick={() => navigate("/partner")}
+                  onClick={() => navigate("/partner/")}
                 />
               );
             }
@@ -78,7 +78,7 @@ const CategoriesSection = () => {
                 cat={cat}
                 onClick={() => {
                   if (cat.tag) return;
-                  navigate(cat.isAll ? "/categories" : CATALOG_PATH);
+                  navigate(cat.isAll ? "/categories/" : CATALOG_PATH);
                 }}
               />
             );

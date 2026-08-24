@@ -7,7 +7,7 @@ export type LegalDocumentSlug = "rules" | "terms" | "privacy" | "cookies";
 
 export type LegalDocument = {
   slug: LegalDocumentSlug;
-  path: `/legal/${LegalDocumentSlug}`;
+  path: `/legal/${LegalDocumentSlug}/`;
   navigationTitle: string;
   title: string;
   subtitle: string;
@@ -32,7 +32,7 @@ export type ParsedLegalDocument = {
 export const legalDocuments: LegalDocument[] = [
   {
     slug: "rules",
-    path: "/legal/rules",
+    path: "/legal/rules/",
     navigationTitle: "Правила размещения справочной информации",
     title: "Правила размещения справочной информации",
     subtitle: "О компаниях и проектах на платформе многоместа.рф",
@@ -41,7 +41,7 @@ export const legalDocuments: LegalDocument[] = [
   },
   {
     slug: "terms",
-    path: "/legal/terms",
+    path: "/legal/terms/",
     navigationTitle: "Пользовательское соглашение",
     title: "Пользовательское соглашение",
     subtitle: "Об использовании платформы многоместа.рф",
@@ -50,7 +50,7 @@ export const legalDocuments: LegalDocument[] = [
   },
   {
     slug: "privacy",
-    path: "/legal/privacy",
+    path: "/legal/privacy/",
     navigationTitle: "Политика обработки персональных данных",
     title: "Политика обработки персональных данных",
     subtitle: "На платформе многоместа.рф",
@@ -59,7 +59,7 @@ export const legalDocuments: LegalDocument[] = [
   },
   {
     slug: "cookies",
-    path: "/legal/cookies",
+    path: "/legal/cookies/",
     navigationTitle: "Использование файлов cookie",
     title: "Использование файлов cookie",
     subtitle: "Необходимые и аналитические технологии платформы многоместа.рф",

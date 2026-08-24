@@ -13,7 +13,7 @@ const AllCategoriesPage = () => (
     <Seo
       title="Категории проектов домов | многоместа.рф"
       description="Категории проектов модульных домов: барнхаусы, мини-дома, дома для ПМЖ, дачи и проекты с террасой."
-      canonicalPath="/categories"
+      canonicalPath="/categories/"
       jsonLd={[
         {
           "@context": "https://schema.org",
@@ -21,7 +21,7 @@ const AllCategoriesPage = () => (
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Главная", item: buildSiteUrl("/") },
             { "@type": "ListItem", position: 2, name: "Проекты", item: buildSiteUrl(CATALOG_PATH) },
-            { "@type": "ListItem", position: 3, name: "Категории", item: buildSiteUrl("/categories") },
+            { "@type": "ListItem", position: 3, name: "Категории", item: buildSiteUrl("/categories/") },
           ],
         },
         {

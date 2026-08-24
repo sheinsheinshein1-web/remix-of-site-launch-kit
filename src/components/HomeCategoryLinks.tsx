@@ -9,7 +9,7 @@ const HomeCategoryLinks = () => (
         Категории
       </h2>
       <Link
-        to="/categories"
+        to="/categories/"
         className="inline-flex min-h-11 shrink-0 items-center gap-1 text-[15px] font-medium tracking-normal text-[#342d27] transition-colors duration-200 hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:text-[16px]"
       >
         Все категории

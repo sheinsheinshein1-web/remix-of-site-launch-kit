@@ -176,7 +176,7 @@ const MobileMenu = ({ open, onOpenChange, onPartnerCta, hidePartnerCta = false }
               </button>
             ) : (
               <Link
-                to="/partner"
+                to="/partner/"
                 onClick={closeMenu}
                 className="flex min-h-12 w-full items-center justify-center rounded-[3px] bg-primary px-3 text-center text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >

@@ -699,7 +699,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
         <div className="px-4 pt-2 pb-3">
           <div className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide mb-2">Журнал</div>
           {results.articles.map((a) => (
-            <button key={a.title} onClick={() => handleSelect("/categories")} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
+            <button key={a.title} onClick={() => handleSelect("/categories/")} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
               <div className="w-8 h-8 rounded-[3px] bg-secondary flex items-center justify-center shrink-0"><FileText className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} /></div>
               <div className="flex-1 text-left min-w-0">
                 <div className="text-[14px] text-foreground">{a.title}</div>
