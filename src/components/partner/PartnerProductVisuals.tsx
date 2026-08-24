@@ -26,9 +26,10 @@ type PlatformScreenshotProps = {
   src: string;
   alt: string;
   layout?: PartnerVisualLayout;
+  imageClassName?: string;
 };
 
-const PlatformScreenshot = ({ src, alt, layout = "feature" }: PlatformScreenshotProps) => (
+const PlatformScreenshot = ({ src, alt, layout = "feature", imageClassName }: PlatformScreenshotProps) => (
   <div className={`partner-platform-screenshot flex items-center justify-center overflow-hidden rounded-[3px] bg-[#eef0f4] p-3 sm:p-5 md:p-7 dark:bg-secondary ${layout === "hero" ? "aspect-square sm:aspect-[16/10]" : "aspect-square"}`}>
     <img
       src={src}
@@ -37,7 +38,10 @@ const PlatformScreenshot = ({ src, alt, layout = "feature" }: PlatformScreenshot
       height={2648}
       className={cn(
         "partner-platform-screenshot-image flex-none rounded-[3px] object-contain object-center",
-        layout === "hero" ? "h-full w-full" : "h-[82%] w-auto max-w-none",
+        layout === "hero"
+          ? "h-full w-full scale-[1.06] translate-y-[2.5%]"
+          : "h-[82%] w-auto max-w-none",
+        imageClassName,
       )}
       loading="lazy"
       decoding="async"
@@ -58,6 +62,7 @@ export const PartnerProfilePreview = (_props: ProjectVisualProps) => (
   <PlatformScreenshot
     src={manufacturerScreenshot}
     alt="Страница производителя Платформа на сервисе Много места"
+    imageClassName="!-translate-x-[3%] !scale-[1.07]"
   />
 );
 
