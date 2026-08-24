@@ -19,6 +19,8 @@ type PartnerApplicationResponse = {
 
 const RESPONSE_SOURCE = "mnogomesta-partner-application";
 const RESPONSE_TIMEOUT_MS = 20_000;
+const DEFAULT_PARTNER_APPLICATION_URL =
+  "https://script.google.com/macros/s/AKfycbwwnFFz4HGe99gCfboyq-niMp5JwQU5a9fsnEmyHD_57YG7PmdC-Fvz5ClD8s_4bdHT/exec";
 
 const createRequestId = () => {
   if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
@@ -30,7 +32,7 @@ const createRequestId = () => {
 
 export const submitPartnerApplication = (
   payload: PartnerApplicationPayload,
-  endpoint = import.meta.env.VITE_PARTNER_APPLICATION_URL,
+  endpoint = import.meta.env.VITE_PARTNER_APPLICATION_URL || DEFAULT_PARTNER_APPLICATION_URL,
 ) => {
   if (!endpoint) {
     return Promise.reject(new Error("Форма пока не подключена к обработчику заявок"));
