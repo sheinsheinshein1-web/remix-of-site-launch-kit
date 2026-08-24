@@ -34,8 +34,10 @@ const renderComparison = () => {
   const touchArea = result.container.querySelector<HTMLDivElement>("[data-before-after-touch-area]");
 
   if (!touchArea) throw new Error("Touch area is missing");
+  const figure = touchArea.parentElement;
+  if (!figure) throw new Error("Comparison figure is missing");
 
-  Object.defineProperty(touchArea, "getBoundingClientRect", {
+  Object.defineProperty(figure, "getBoundingClientRect", {
     value: () => ({
       x: 0,
       y: 0,
@@ -58,7 +60,14 @@ const renderComparison = () => {
 };
 
 describe("BeforeAfterComparison", () => {
-  it("captures a touch immediately and keeps dragging at the image edge", () => {
+  it("keeps the drag layer limited to a middle band instead of covering the image", () => {
+    const { touchArea } = renderComparison();
+
+    expect(touchArea).toHaveClass("inset-x-0", "h-24", "touch-pan-y");
+    expect(touchArea).not.toHaveClass("inset-0");
+  });
+
+  it("captures a horizontal drag and keeps tracking it at the image edge", () => {
     const { touchArea } = renderComparison();
 
     fireEvent.pointerDown(touchArea, {
@@ -67,6 +76,16 @@ describe("BeforeAfterComparison", () => {
       isPrimary: true,
       clientX: 52,
       clientY: 50,
+    });
+
+    expect(touchArea.setPointerCapture).not.toHaveBeenCalled();
+
+    fireEvent.pointerMove(touchArea, {
+      pointerId: 7,
+      pointerType: "touch",
+      isPrimary: true,
+      clientX: 70,
+      clientY: 51,
     });
 
     expect(touchArea.setPointerCapture).toHaveBeenCalledWith(7);
@@ -82,7 +101,7 @@ describe("BeforeAfterComparison", () => {
     expect(screen.getByRole("slider")).toHaveValue("92");
   });
 
-  it("releases a vertical gesture so the page can keep scrolling", () => {
+  it("does not capture a vertical or ambiguous diagonal gesture so the page can keep scrolling", () => {
     const { touchArea } = renderComparison();
 
     fireEvent.pointerDown(touchArea, {
@@ -96,11 +115,12 @@ describe("BeforeAfterComparison", () => {
       pointerId: 9,
       pointerType: "touch",
       isPrimary: true,
-      clientX: 53,
-      clientY: 70,
+      clientX: 58,
+      clientY: 56,
     });
 
-    expect(touchArea.releasePointerCapture).toHaveBeenCalledWith(9);
+    expect(touchArea.setPointerCapture).not.toHaveBeenCalled();
+    expect(touchArea.releasePointerCapture).not.toHaveBeenCalled();
     expect(screen.getByRole("slider")).toHaveValue("52");
   });
 });

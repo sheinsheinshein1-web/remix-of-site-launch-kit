@@ -4,6 +4,7 @@ import { ChevronsLeftRight } from "lucide-react";
 const MIN_POSITION = 8;
 const MAX_POSITION = 92;
 const DIRECTION_THRESHOLD = 3;
+const HORIZONTAL_INTENT_RATIO = 1.35;
 
 type PointerGesture = {
   pointerId: number;
@@ -34,10 +35,13 @@ const BeforeAfterComparison = ({
   const [position, setPosition] = useState(52);
   const inputId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
+  const figureRef = useRef<HTMLElement>(null);
   const gestureRef = useRef<PointerGesture | null>(null);
 
-  const updatePosition = (clientX: number, target: HTMLDivElement) => {
-    const bounds = target.getBoundingClientRect();
+  const updatePosition = (clientX: number) => {
+    const bounds = figureRef.current?.getBoundingClientRect();
+    if (!bounds || bounds.width === 0) return;
+
     const nextPosition = ((clientX - bounds.left) / bounds.width) * 100;
     setPosition(Math.min(MAX_POSITION, Math.max(MIN_POSITION, nextPosition)));
   };
@@ -53,11 +57,11 @@ const BeforeAfterComparison = ({
     };
 
     gestureRef.current = gesture;
-    inputRef.current?.focus({ preventScroll: true });
-    event.currentTarget.setPointerCapture(event.pointerId);
 
     if (gesture.mode === "dragging") {
-      updatePosition(event.clientX, event.currentTarget);
+      inputRef.current?.focus({ preventScroll: true });
+      event.currentTarget.setPointerCapture(event.pointerId);
+      updatePosition(event.clientX);
       event.preventDefault();
     }
   };
@@ -72,18 +76,22 @@ const BeforeAfterComparison = ({
 
       if (Math.max(Math.abs(deltaX), Math.abs(deltaY)) < DIRECTION_THRESHOLD) return;
 
-      if (Math.abs(deltaY) >= Math.abs(deltaX)) {
-        if (event.currentTarget.hasPointerCapture(event.pointerId)) {
-          event.currentTarget.releasePointerCapture(event.pointerId);
-        }
+      const horizontalDistance = Math.abs(deltaX);
+      const verticalDistance = Math.abs(deltaY);
+
+      // A finger rarely travels in a perfectly straight line. Prefer page
+      // scrolling for ambiguous diagonal gestures and activate the comparison
+      // only when the user is clearly dragging horizontally.
+      if (horizontalDistance < verticalDistance * HORIZONTAL_INTENT_RATIO) {
         gestureRef.current = null;
         return;
       }
 
       gesture.mode = "dragging";
+      event.currentTarget.setPointerCapture(event.pointerId);
     }
 
-    updatePosition(event.clientX, event.currentTarget);
+    updatePosition(event.clientX);
     event.preventDefault();
   };
 
@@ -92,7 +100,7 @@ const BeforeAfterComparison = ({
     if (!gesture || gesture.pointerId !== event.pointerId) return;
 
     if (!cancelled && gesture.mode === "dragging") {
-      updatePosition(event.clientX, event.currentTarget);
+      updatePosition(event.clientX);
     }
     if (event.currentTarget.hasPointerCapture(event.pointerId)) {
       event.currentTarget.releasePointerCapture(event.pointerId);
@@ -101,7 +109,7 @@ const BeforeAfterComparison = ({
   };
 
   return (
-    <figure className={`group relative aspect-[4/3] w-full overflow-hidden rounded-[3px] bg-[#e9ebef] focus-within:ring-2 focus-within:ring-primary/35 ${layout === "hero" ? "xl:aspect-[16/10]" : "xl:aspect-square"}`}>
+    <figure ref={figureRef} className={`group relative aspect-[4/3] w-full overflow-hidden rounded-[3px] bg-[#e9ebef] focus-within:ring-2 focus-within:ring-primary/35 ${layout === "hero" ? "xl:aspect-[16/10]" : "xl:aspect-square"}`}>
       <img
         src={afterSrc}
         alt={afterAlt}
@@ -151,7 +159,7 @@ const BeforeAfterComparison = ({
       />
       <div
         data-before-after-touch-area
-        className="absolute inset-0 z-10 cursor-col-resize touch-pan-y select-none"
+        className="absolute inset-x-0 top-1/2 z-30 h-24 -translate-y-1/2 cursor-col-resize touch-pan-y select-none sm:h-20"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={(event) => finishPointerGesture(event)}
