@@ -29,7 +29,10 @@ RUN apk add --no-cache ca-certificates wget
 COPY --from=caddy-runtime /usr/bin/caddy /usr/bin/caddy
 
 COPY deploy/Caddyfile.container /etc/caddy/Caddyfile
+COPY deploy/start-container.sh /usr/local/bin/start-container
 COPY --from=build /app/dist /srv
+
+RUN chmod +x /usr/local/bin/start-container
 
 EXPOSE 8080
 
@@ -40,5 +43,14 @@ RUN caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile \
     && wget -q -O - http://127.0.0.1:8080/health | grep -qx ok \
     && caddy stop
 
-ENTRYPOINT ["caddy"]
-CMD ["run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
+# Dockerfile health checks take precedence over any stale path saved in the
+# Timeweb panel. This probes the same endpoint already verified at image-build
+# time and therefore measures only whether the static server is alive.
+HEALTHCHECK --interval=5s --timeout=3s --start-period=3s --retries=6 \
+    CMD wget -q -O /dev/null http://127.0.0.1:8080/health || exit 1
+
+# Keep the actual server command in ENTRYPOINT. App Platform may retain a
+# custom start command from an older deployment and use it to replace CMD;
+# the wrapper deliberately ignores such stale arguments and always leaves
+# Caddy as PID 1.
+ENTRYPOINT ["/usr/local/bin/start-container"]

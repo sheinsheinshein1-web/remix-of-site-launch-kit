@@ -17,10 +17,11 @@
 	header /sitemap.xml Cache-Control "public, max-age=3600"
 	header /manifest.webmanifest Cache-Control "public, max-age=86400"
 
-	# Timeweb checks this endpoint inside the container. Keep it as the first
-	# mutually exclusive handler so the catch-all public route cannot turn it
-	# into the shared 404 response after Caddy sorts directives.
-	handle /health {
+	# Timeweb checks this endpoint inside the container. Accept the normalized
+	# path and the trailing-slash variant because either can be saved in the
+	# App Platform settings.
+	@health path /health /health/
+	handle @health {
 		respond "ok" 200
 	}
 
