@@ -33,6 +33,13 @@ COPY --from=build /app/dist /srv
 
 EXPOSE 8080
 
+# Fail the image build before deployment if Caddy cannot load the production
+# config or if Timeweb's health endpoint is shadowed by another route.
+RUN caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile \
+    && caddy start --config /etc/caddy/Caddyfile --adapter caddyfile \
+    && wget -q -O - http://127.0.0.1:8080/health | grep -qx ok \
+    && caddy stop
+
 HEALTHCHECK --interval=10s --timeout=3s --start-period=10s --retries=12 \
 	CMD wget -q -O /dev/null http://127.0.0.1:8080/health || exit 1
 
