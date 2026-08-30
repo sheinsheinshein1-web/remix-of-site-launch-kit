@@ -17,6 +17,10 @@
 	header /sitemap.xml Cache-Control "public, max-age=3600"
 	header /manifest.webmanifest Cache-Control "public, max-age=86400"
 
+	# Timeweb checks this endpoint inside the container. Keep it independent
+	# from prerendered files and client-side routing.
+	respond /health 200
+
 	# Permanent server-side redirects from legacy routes to canonical SEO URLs.
 	import /srv/legacy-redirects.caddy
 
