@@ -40,8 +40,5 @@ RUN caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile \
     && wget -q -O - http://127.0.0.1:8080/health | grep -qx ok \
     && caddy stop
 
-HEALTHCHECK --interval=10s --timeout=3s --start-period=10s --retries=12 \
-	CMD wget -q -O /dev/null http://127.0.0.1:8080/health || exit 1
-
 ENTRYPOINT ["caddy"]
 CMD ["run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
