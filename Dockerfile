@@ -43,11 +43,10 @@ RUN caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile \
     && wget -q -O - http://127.0.0.1:8080/health | grep -qx ok \
     && caddy stop
 
-# Dockerfile health checks take precedence over any stale path saved in the
-# Timeweb panel. This probes the same endpoint already verified at image-build
-# time and therefore measures only whether the static server is alive.
-HEALTHCHECK --interval=5s --timeout=3s --start-period=3s --retries=6 \
-    CMD wget -q -O /dev/null http://127.0.0.1:8080/health || exit 1
+# Runtime health is checked by Timeweb App Platform using the /health path
+# configured in the application settings. Keep the image free of HEALTHCHECK:
+# for Dockerfile deployments it overrides the panel setting, while Timeweb's
+# own probe is the check that controls whether a deployment becomes active.
 
 # Keep the actual server command in ENTRYPOINT. App Platform may retain a
 # custom start command from an older deployment and use it to replace CMD;
