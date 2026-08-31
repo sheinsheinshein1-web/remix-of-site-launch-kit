@@ -63,7 +63,7 @@ const HeroSection = () => {
           src={mobileHeroImage}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover object-center md:hidden"
+          className="absolute inset-x-0 top-0 h-[760px] w-full object-cover object-center sm:bottom-0 sm:h-full md:hidden"
           loading="eager"
           fetchPriority="high"
           decoding="async"
@@ -80,7 +80,7 @@ const HeroSection = () => {
         <div className="pointer-events-none absolute inset-0 hidden bg-[#07110a]/20 md:block" aria-hidden="true" />
         {HERO_BLUR_ENABLED && (
           <div
-            className="pointer-events-none absolute inset-0 md:hidden"
+            className="pointer-events-none absolute inset-x-0 -top-[60px] h-[760px] sm:bottom-0 sm:top-0 sm:h-auto md:hidden"
             style={{
               background: "linear-gradient(180deg, rgba(20, 34, 23, 0.02) 0%, rgba(16, 29, 20, 0.1) 52%, rgba(10, 22, 14, 0.32) 100%)",
               backdropFilter: "blur(18px) brightness(0.69) saturate(0.86)",
@@ -117,7 +117,7 @@ const HeroSection = () => {
             </div>
           </div>
         )}
-        <div className="relative z-10 mx-auto flex min-h-[760px] w-full max-w-[1400px] flex-col justify-end px-4 py-12 sm:px-8 sm:py-16 md:min-h-[640px] md:items-center md:justify-center lg:min-h-[680px] lg:px-12">
+        <div className="relative z-10 mx-auto flex min-h-[700px] w-full max-w-[1400px] flex-col justify-end px-4 py-12 sm:min-h-[760px] sm:px-8 sm:py-16 md:min-h-[640px] md:items-center md:justify-center lg:min-h-[680px] lg:px-12">
           <div className="w-full md:max-w-[900px] md:text-center">
             <h1 className="max-w-[1120px] text-[34px] font-semibold leading-[1.03] tracking-[-0.035em] text-white sm:text-[44px] md:mx-auto md:text-[56px] lg:text-[64px]">
               Найдите свой<br />

@@ -381,15 +381,15 @@ const ManufacturerProfile = () => {
                             aria-selected={isActive}
                             aria-controls="manufacturer-projects-panel"
                             onClick={() => setPlatformaProjectType(type)}
-                            className={`flex min-h-11 shrink-0 items-center gap-2 text-[25px] font-semibold leading-none tracking-[-0.03em] transition-colors sm:text-[28px] md:gap-3 md:text-[36px] ${
+                            className={`group flex min-h-11 shrink-0 items-center gap-2 text-[25px] font-semibold leading-none tracking-[-0.03em] transition-colors hover:text-primary focus-visible:text-primary dark:hover:text-primary dark:focus-visible:text-primary sm:text-[28px] md:gap-3 md:text-[36px] ${
                               isActive
                                 ? "text-[#342d27] dark:text-foreground"
-                                : "text-[#9a9691] hover:text-[#625d58] focus-visible:text-[#625d58] dark:text-foreground/45 dark:hover:text-foreground/75"
+                                : "text-[#9a9691] dark:text-foreground/45"
                             } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-4`}
                           >
                             <span>{label}</span>
                             <span
-                              className={`tabular-nums ${isActive ? "text-[#746f6a] dark:text-foreground/65" : "text-current"}`}
+                              className={`tabular-nums transition-colors group-hover:text-primary group-focus-visible:text-primary ${isActive ? "text-[#746f6a] dark:text-foreground/65" : "text-current"}`}
                               aria-label={`Количество: ${count}`}
                             >
                               {count.toLocaleString("ru-RU")}
