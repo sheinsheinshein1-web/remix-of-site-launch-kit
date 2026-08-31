@@ -76,7 +76,7 @@ const MobileExpandableText = ({ text, contentId, className }: MobileExpandableTe
         <button
           type="button"
           onClick={() => setExpanded((current) => !current)}
-          className="mt-2 inline-flex min-h-11 items-center gap-1 text-[15px] font-medium text-[#342d27] transition-colors duration-200 hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:hidden dark:text-foreground"
+          className="mt-2 inline-flex min-h-11 items-center gap-1 text-[15px] font-medium text-[#342d27] transition-colors duration-200 hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:hidden dark:text-foreground"
           aria-expanded={expanded}
           aria-controls={contentId}
         >

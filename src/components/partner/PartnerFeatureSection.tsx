@@ -43,7 +43,7 @@ const PartnerFeatureSection = ({
         {actionHref ? (
           <Link
             to={actionHref}
-            className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-[3px] text-[15px] font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground dark:hover:text-primary"
+            className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-[var(--radius)] text-[15px] font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground dark:hover:text-primary"
           >
             {actionLabel}
             <ChevronRight className="h-4 w-4" strokeWidth={1.6} aria-hidden />
@@ -52,7 +52,7 @@ const PartnerFeatureSection = ({
           <button
             type="button"
             onClick={onApply}
-            className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-[3px] text-[15px] font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground dark:hover:text-primary"
+            className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-[var(--radius)] text-[15px] font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground dark:hover:text-primary"
           >
             {actionLabel}
             <ChevronRight className="h-4 w-4" strokeWidth={1.6} aria-hidden />

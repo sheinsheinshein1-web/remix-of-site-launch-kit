@@ -700,7 +700,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
           <div className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide mb-2">Журнал</div>
           {results.articles.map((a) => (
             <button key={a.title} onClick={() => handleSelect("/categories/")} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
-              <div className="w-8 h-8 rounded-[3px] bg-secondary flex items-center justify-center shrink-0"><FileText className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} /></div>
+              <div className="w-8 h-8 rounded-[var(--radius)] bg-secondary flex items-center justify-center shrink-0"><FileText className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} /></div>
               <div className="flex-1 text-left min-w-0">
                 <div className="text-[14px] text-foreground">{a.title}</div>
                 <div className="text-[12px] text-muted-foreground">{a.tag}</div>
@@ -723,7 +723,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
       <>
         {/* Placeholder to keep header layout */}
         <div className={`relative ${className}`}>
-          <div className="w-full h-12 rounded-[3px]" />
+          <div className="w-full h-12 rounded-[var(--radius)]" />
         </div>
 
         {/* Render outside sticky/header stacking contexts so the search always covers the site header. */}
@@ -747,7 +747,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
                   }}
                   placeholder="Поиск на многоместа.рф"
                   autoFocus
-                  className="w-full h-11 pl-9 pr-9 rounded-[3px] text-[16px] font-light text-foreground placeholder:text-muted-foreground focus:outline-none bg-secondary"
+                  className="w-full h-11 pl-9 pr-9 rounded-[var(--radius)] text-[16px] font-light text-foreground placeholder:text-muted-foreground focus:outline-none bg-secondary"
                 />
                 {query && (
                   <button
@@ -820,7 +820,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
     return (
       <>
         <button
-          className="md:hidden w-9 h-9 rounded-[3px] bg-secondary flex items-center justify-center"
+          className="md:hidden w-9 h-9 rounded-[var(--radius)] bg-secondary flex items-center justify-center"
           onClick={() => setMobileOpen(true)}
         >
           <Search className="w-[18px] h-[18px] text-muted-foreground" />
@@ -845,7 +845,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
                     }}
                     placeholder="Поиск на многоместа.рф"
                     autoFocus
-                    className="w-full h-11 pl-9 pr-9 rounded-[3px] text-[16px] font-light text-foreground placeholder:text-muted-foreground focus:outline-none bg-secondary"
+                    className="w-full h-11 pl-9 pr-9 rounded-[var(--radius)] text-[16px] font-light text-foreground placeholder:text-muted-foreground focus:outline-none bg-secondary"
                   />
                   {query && (
                     <button
@@ -901,7 +901,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
 
       {/* Mobile: tap opens fullscreen */}
       <button
-        className={`md:hidden w-full h-12 pl-9 ${showFilterButton ? "pr-12" : "pr-9"} rounded-[3px] text-[16px] font-light text-left focus:outline-none truncate ${query ? "text-foreground" : "text-muted-foreground"} ${inputClassName}`}
+        className={`md:hidden w-full h-12 pl-9 ${showFilterButton ? "pr-12" : "pr-9"} rounded-[var(--radius)] text-[16px] font-light text-left focus:outline-none truncate ${query ? "text-foreground" : "text-muted-foreground"} ${inputClassName}`}
         onClick={() => setMobileOpen(true)}
         aria-label="Открыть поиск"
       >
@@ -939,12 +939,12 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
             }
           }}
           placeholder="Поиск на многоместа.рф"
-          className={`w-full h-12 pl-9 pr-24 rounded-[3px] text-[16px] font-light text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/30 ${inputClassName}`}
+          className={`w-full h-12 pl-9 pr-24 rounded-[var(--radius)] text-[16px] font-light text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/30 ${inputClassName}`}
         />
         {query && (
           <button
             onClick={() => { updateQuery(""); }}
-            className="absolute right-[96px] top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-[3px] bg-transparent text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+            className="absolute right-[96px] top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-[var(--radius)] bg-transparent text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
             aria-label="Очистить поиск"
           >
             <X className="h-4 w-4" strokeWidth={1.7} />
@@ -956,7 +956,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
               handleSelect(buildCatalogUrl({ q: query.trim() }));
             }
           }}
-          className="absolute right-1.5 top-1/2 z-10 h-9 -translate-y-1/2 rounded-[3px] bg-primary px-5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          className="absolute right-1.5 top-1/2 z-10 h-9 -translate-y-1/2 rounded-[var(--radius)] bg-primary px-5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
         >
           Найти
         </button>
@@ -964,7 +964,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
 
       {/* Desktop dropdown */}
       {showDropdown && (
-        <div className="hidden md:block absolute top-full left-0 right-0 mt-1 bg-card rounded-[3px] shadow-lg border border-border max-h-[60vh] overflow-y-auto z-50">
+        <div className="hidden md:block absolute top-full left-0 right-0 mt-1 bg-card rounded-[var(--radius)] shadow-lg border border-border max-h-[60vh] overflow-y-auto z-50">
           {renderResults()}
         </div>
       )}

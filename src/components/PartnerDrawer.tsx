@@ -242,7 +242,7 @@ const PartnerDrawer = ({ children, drawerOpen, onDrawerOpenChange }: PartnerDraw
   return (
     <Drawer open={open} onOpenChange={(v) => { if (!v) setShowForm(false); setOpen(v); }} shouldScaleBackground={false} handleOnly>
       {children && <DrawerTrigger asChild>{children}</DrawerTrigger>}
-      <DrawerContent className="!mt-0 h-[98vh] w-full max-h-[98vh] max-w-full overflow-x-hidden outline-none rounded-t-[28px] border-0 bg-secondary [&>div:first-child]:!hidden [&>div:first-child]:!h-0 [&>div:first-child]:!m-0 [&>div:first-child]:!p-0">
+      <DrawerContent className="!mt-0 h-[98vh] w-full max-h-[98vh] max-w-full overflow-x-hidden outline-none rounded-t-[var(--radius)] border-0 bg-secondary [&>div:first-child]:!hidden [&>div:first-child]:!h-0 [&>div:first-child]:!m-0 [&>div:first-child]:!p-0">
         <div className="h-full min-w-0 overflow-y-auto overflow-x-hidden pb-[calc(80px+env(safe-area-inset-bottom))]">
           {showForm ? (
             <div className="min-h-full overflow-x-hidden bg-background pt-6">

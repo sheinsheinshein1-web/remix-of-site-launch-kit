@@ -52,8 +52,8 @@ const ManufacturersList = () => {
 };
 
 const MakerCardMobile = ({ name, location, count }: { name: string; location: string; count: string }) => (
-  <div className="shrink-0 w-[140px] bg-secondary rounded-[10px] p-3 cursor-pointer">
-    <div className="w-[30px] h-[30px] rounded-[7px] bg-background flex items-center justify-center mb-2">
+  <div className="shrink-0 w-[140px] bg-secondary rounded-[var(--radius)] p-3 cursor-pointer">
+    <div className="w-[30px] h-[30px] rounded-[var(--radius)] bg-background flex items-center justify-center mb-2">
       <Factory className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} />
     </div>
     <div className="text-[12px] font-medium text-foreground mb-0.5">{name}</div>

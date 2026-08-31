@@ -164,7 +164,7 @@ const Header = ({ variant = "default", onPartnerCta }: HeaderProps) => {
                 <button
                   type="button"
                   onClick={onPartnerCta}
-                  className="inline-flex h-11 items-center whitespace-nowrap rounded-[3px] bg-primary px-6 text-[14px] font-semibold tracking-normal text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  className="inline-flex h-11 items-center whitespace-nowrap rounded-[var(--radius)] bg-primary px-6 text-[14px] font-semibold tracking-normal text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
                   Разместиться бесплатно
                 </button>
@@ -172,7 +172,7 @@ const Header = ({ variant = "default", onPartnerCta }: HeaderProps) => {
                 <Link
                   to="/partner/"
                   aria-current={location.pathname === "/partner/" ? "page" : undefined}
-                  className="inline-flex h-11 items-center whitespace-nowrap rounded-[3px] bg-primary px-6 text-[14px] font-semibold tracking-normal text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  className="inline-flex h-11 items-center whitespace-nowrap rounded-[var(--radius)] bg-primary px-6 text-[14px] font-semibold tracking-normal text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
                   Для производителей
                 </Link>

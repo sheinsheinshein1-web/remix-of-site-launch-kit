@@ -32,7 +32,6 @@ const baseProjects = projects.map((p) => ({
 
 const PAGE_SIZE = 8;
 const FEATURED_PREVIEW_SIZE = 6;
-const FEATURED_MOBILE_VISIBLE_SIZE = 3;
 const PAGE_PARAM = "page";
 
 // Mulberry32 — детерминированный PRNG
@@ -282,10 +281,14 @@ const FeaturedProjects = () => {
             <div className="text-[13px] font-light text-muted-foreground">Выберите другой город в шапке, чтобы увидеть подборку</div>
           </div>
         )}
-        <div className={`grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 gap-y-3 md:gap-2 md:mt-0 ${isEmpty ? "hidden" : ""}`}>
-          {items.map(({ project, key }, index) => (
-            <div key={key} className={index >= FEATURED_MOBILE_VISIBLE_SIZE ? "hidden md:block" : undefined}>
-              <ProjectCard projectId={project.id} height="aspect-[5/4] h-auto" onCardClick={handleCardClick} />
+        <div className={`grid grid-flow-row-dense grid-cols-2 gap-x-[2px] gap-y-6 md:grid-cols-3 md:gap-2 md:mt-0 ${isEmpty ? "hidden" : ""}`}>
+          {items.map(({ project, key }) => (
+            <div key={key}>
+              <ProjectCard
+                projectId={project.id}
+                height="aspect-[5/4] h-auto"
+                onCardClick={handleCardClick}
+              />
             </div>
           ))}
           {isLoadingMore &&

@@ -246,7 +246,7 @@ const CitySelector = ({
       type="button"
       onClick={() => handleSelect(ALL_REGIONS_GEO_SLUG)}
       aria-current={hasExplicitSelection && city === ALL_REGIONS_GEO_SLUG ? "true" : undefined}
-      className={`my-0.5 flex min-h-[60px] w-full cursor-pointer items-center rounded-[3px] px-3 py-2.5 text-left transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 ${
+      className={`my-0.5 flex min-h-[60px] w-full cursor-pointer items-center rounded-[var(--radius)] px-3 py-2.5 text-left transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 ${
         hasExplicitSelection && city === ALL_REGIONS_GEO_SLUG
           ? "bg-[#f2f3f7] text-primary"
           : "text-[#342d27] hover:bg-[#f2f3f7] hover:text-primary"
@@ -271,7 +271,7 @@ const CitySelector = ({
         <button
           type="button"
           onClick={() => onOpenChange(false)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-[3px] border border-transparent text-[#667085] transition-colors hover:border-[#dfe5f5] hover:bg-[#f8faff] hover:text-[#342d27] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-[var(--radius)] border border-transparent text-[#667085] transition-colors hover:border-[#dfe5f5] hover:bg-[#f8faff] hover:text-[#342d27] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
           aria-label="Закрыть выбор города"
         >
           <X className="h-[18px] w-[18px]" strokeWidth={1.6} />
@@ -284,7 +284,7 @@ const CitySelector = ({
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Поиск города"
-            className="h-12 w-full rounded-[3px] border border-[#dfe5f5] bg-[#f8faff] pl-11 pr-4 text-[16px] text-[#342d27] placeholder:text-[#7e879a] focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/15 md:text-[14px]"
+            className="h-12 w-full rounded-[var(--radius)] border border-[#dfe5f5] bg-[#f8faff] pl-11 pr-4 text-[16px] text-[#342d27] placeholder:text-[#7e879a] focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/15 md:text-[14px]"
           />
         </div>
       </div>
@@ -300,7 +300,7 @@ const CitySelector = ({
                 type="button"
                 onClick={() => handleSelect(region.slug)}
                 aria-current={region.slug === city ? "true" : undefined}
-                className={`my-0.5 flex min-h-[60px] w-full cursor-pointer items-center gap-3 rounded-[3px] px-3 py-2.5 text-left transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 ${
+                className={`my-0.5 flex min-h-[60px] w-full cursor-pointer items-center gap-3 rounded-[var(--radius)] px-3 py-2.5 text-left transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 ${
                   region.slug === city
                     ? "bg-[#f2f3f7] text-primary"
                     : "text-[#342d27] hover:bg-[#f2f3f7] hover:text-primary"
@@ -326,13 +326,13 @@ const CitySelector = ({
 
               return (
                 <section key={group.slug} aria-labelledby={`${panelId}-title`}>
-                  <div className={`flex min-h-[64px] items-stretch rounded-[3px] transition-colors duration-150 ${isGroupSelected ? "bg-[#f2f3f7]" : "hover:bg-[#f8faff]"}`}>
+                  <div className={`flex min-h-[64px] items-stretch rounded-[var(--radius)] transition-colors duration-150 ${isGroupSelected ? "bg-[#f2f3f7]" : "hover:bg-[#f8faff]"}`}>
                     <button
                       id={`${panelId}-title`}
                       type="button"
                       onClick={() => handleSelect(group.region.slug)}
                       aria-current={isGroupSelected ? "true" : undefined}
-                      className={`min-w-0 flex-1 cursor-pointer rounded-l-[3px] px-3 py-2.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/30 ${isGroupSelected ? "text-primary" : "text-[#342d27] hover:text-primary"}`}
+                      className={`min-w-0 flex-1 cursor-pointer rounded-l-[var(--radius)] px-3 py-2.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/30 ${isGroupSelected ? "text-primary" : "text-[#342d27] hover:text-primary"}`}
                     >
                       <span className="block text-[15px] font-medium leading-tight md:text-[16px]">{group.label}</span>
                       <span className={`mt-1 block text-[12px] font-normal leading-tight ${isGroupSelected ? "text-primary/70" : "text-[#667085]"}`}>
@@ -346,7 +346,7 @@ const CitySelector = ({
                         aria-label={`${isExpanded ? "Скрыть" : "Показать"} города доставки: ${group.label}`}
                         aria-expanded={isExpanded}
                         aria-controls={panelId}
-                        className="flex min-h-11 w-12 shrink-0 cursor-pointer items-center justify-center rounded-r-[3px] text-[#667085] transition-colors duration-150 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/30"
+                        className="flex min-h-11 w-12 shrink-0 cursor-pointer items-center justify-center rounded-r-[var(--radius)] text-[#667085] transition-colors duration-150 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/30"
                       >
                         <ChevronDown className={`h-[18px] w-[18px] transition-transform duration-200 motion-reduce:transition-none ${isExpanded ? "rotate-180" : ""}`} strokeWidth={1.7} aria-hidden />
                       </button>
@@ -364,7 +364,7 @@ const CitySelector = ({
                             type="button"
                             onClick={() => handleSelect(region.slug)}
                             aria-current={isSelected ? "true" : undefined}
-                            className={`my-0.5 flex min-h-[56px] w-full cursor-pointer items-center gap-3 rounded-[3px] px-3 py-2 text-left transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 ${
+                            className={`my-0.5 flex min-h-[56px] w-full cursor-pointer items-center gap-3 rounded-[var(--radius)] px-3 py-2 text-left transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 ${
                               isSelected
                                 ? "bg-[#f2f3f7] text-primary"
                                 : "text-[#342d27] hover:bg-[#f2f3f7] hover:text-primary"
@@ -394,7 +394,7 @@ const CitySelector = ({
               type="button"
               onClick={() => handleSelect(region.slug)}
               aria-current={region.slug === city ? "true" : undefined}
-              className={`my-0.5 flex min-h-[60px] w-full cursor-pointer items-center gap-3 rounded-[3px] px-4 py-2.5 text-left transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 ${
+              className={`my-0.5 flex min-h-[60px] w-full cursor-pointer items-center gap-3 rounded-[var(--radius)] px-4 py-2.5 text-left transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 ${
                 region.slug === city
                   ? "bg-[#f2f3f7] text-primary"
                   : "text-[#342d27] hover:bg-[#f2f3f7] hover:text-primary"
@@ -416,7 +416,7 @@ const CitySelector = ({
   if (isMobile) {
     return (
       <Drawer open={open} onOpenChange={onOpenChange}>
-        <DrawerContent className="mx-0 h-[82dvh] max-h-[82dvh] rounded-t-[3px] border-[#dfe5f5] p-0" onOpenAutoFocus={(e) => e.preventDefault()}>
+        <DrawerContent className="mx-0 h-[82dvh] max-h-[82dvh] rounded-t-[var(--radius)] border-[#dfe5f5] p-0" onOpenAutoFocus={(e) => e.preventDefault()}>
           {content}
         </DrawerContent>
       </Drawer>
@@ -428,7 +428,7 @@ const CitySelector = ({
   return (
     <>
       <div className="fixed inset-0 z-[70] bg-[#17213b]/35 backdrop-blur-[1px]" onClick={() => onOpenChange(false)} />
-      <div className="fixed left-1/2 top-1/2 z-[70] max-h-[78vh] w-[480px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[3px] border border-[#dfe5f5] bg-white shadow-[0_28px_80px_rgba(28,38,66,0.22)]">
+      <div className="fixed left-1/2 top-1/2 z-[70] max-h-[78vh] w-[480px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[var(--radius)] border border-[#dfe5f5] bg-white shadow-[0_28px_80px_rgba(28,38,66,0.22)]">
         {content}
       </div>
     </>

@@ -115,6 +115,10 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
   const [searchParams, setSearchParams] = useSearchParams();
   const [catalogSearch, setCatalogSearch] = useState(searchParams.get("q") || "");
   const { activeCategory, shouldNoIndex, canonicalPath } = resolveCatalogSeoState(searchParams, allCategoryLinks);
+  const typeFilter = searchParams.get("type") ?? "";
+  const techFilter = lockedTechnology ?? searchParams.get("tech") ?? "";
+  const effectiveObjectType = typeFilter || (activeCategory?.title === "Модульные дома" ? "house" : "");
+  const selectedObjectType = effectiveObjectType === "bath" ? "bath" : effectiveObjectType === "house" ? "house" : "all";
   const catalogTitle = activeCategory?.title ?? "Проекты домов";
   const catalogDescription = activeCategory
     ? `${activeCategory.caption}. Сравнивайте цены, планировки и характеристики проектов с доставкой в ваш регион.`
@@ -163,6 +167,15 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
     resetAllFilters();
     setCatalogSearch("");
     setSearchParams({}, { replace: true });
+  };
+
+  const setObjectTypeFilter = (value: "all" | "house" | "bath") => {
+    const next = new URLSearchParams(searchParams);
+    next.delete("type");
+    next.delete("tech");
+    if (value === "house") next.set("tech", "Модульный дом");
+    if (value === "bath") next.set("type", "bath");
+    setSearchParams(next);
   };
 
   const sortOptions = [
@@ -322,7 +335,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
     }
   };
 
-  const hasActiveFilters = filterPriceMinVal !== 500000 || filterPriceMaxVal !== 15000000 || filterAreaMin !== "" || filterAreaMax !== "" || filterBedrooms.size > 0 || filterBathrooms.size > 0 || filterSuitableFor.size > 0 || filterMoveIn.size > 0 || filterFloors.size > 0 || filterKit.size > 0 || filterInsulation.size > 0 || filterFeatures.size > 0 || filterStyle.size > 0 || filterLandType.size > 0 || filterExtras.size > 0 || filterMaker !== "";
+  const hasActiveFilters = filterPriceMinVal !== 500000 || filterPriceMaxVal !== 15000000 || filterAreaMin !== "" || filterAreaMax !== "" || filterBedrooms.size > 0 || filterBathrooms.size > 0 || filterSuitableFor.size > 0 || filterMoveIn.size > 0 || filterFloors.size > 0 || filterKit.size > 0 || filterInsulation.size > 0 || filterFeatures.size > 0 || filterStyle.size > 0 || filterLandType.size > 0 || filterExtras.size > 0 || filterMaker !== "" || effectiveObjectType !== "";
 
   const priceNum = (s: string) => parseInt(s.replace(/\D/g, ""), 10);
   const areaNum = (s: string) => parseFloat(s.replace(/[^\d.]/g, ""));
@@ -379,13 +392,18 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
     setFiltersOpen(false);
     window.setTimeout(() => setCitySelectorOpen(true), 180);
   };
+  const matchesObjectType = (item: (typeof catalogItems)[number]) => {
+    if (effectiveObjectType === "bath") return item.productType === "bath" || item.productType === "house-bath";
+    if (effectiveObjectType === "house") return item.productType !== "bath";
+    return true;
+  };
   const availableCatalogMakers = catalogMakers.filter((maker) =>
     catalogItems.some((item) => (
       item.maker === maker
+      && matchesObjectType(item)
       && isProjectAvailableInGeo(item.city, effectiveCity, item.deliveryRegionSlugs)
     )),
   );
-  const techFilter = lockedTechnology ?? searchParams.get("tech") ?? "";
   const filteredItems = catalogItems.filter(item => {
     // Без запроса сохраняем регион из шапки. Текстовый поиск работает по всему
     // каталогу, иначе производителя или модель из другого региона невозможно найти.
@@ -394,6 +412,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
       && !isProjectAvailableInGeo(item.city, effectiveCity, item.deliveryRegionSlugs)
     ) return false;
     if (filterMaker && item.maker !== filterMaker) return false;
+    if (!matchesObjectType(item)) return false;
     // Технология строительства из URL (?tech=Модульный дом / Каркасный / Префаб)
     if (techFilter && item.technology !== techFilter) return false;
     if (catalogSearchTerms.length > 0) {
@@ -542,30 +561,30 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
           <div className="flex min-w-0 items-center gap-2">
             <SearchDropdown
               className="min-w-0 flex-1"
-              inputClassName="!rounded-[3px] border border-border bg-background font-normal"
+              inputClassName="!rounded-[var(--radius)] border border-border bg-background font-normal"
               initialQuery={catalogSearch}
               onQueryChange={setCatalogSearch}
               showFilterButton
               onFilterClick={() => setFiltersOpen(true)}
               hasActiveFilters={hasActiveFilters}
             />
-            <div className="flex h-12 shrink-0 items-center rounded-[4px] border border-border bg-background p-0.5">
+            <div className="flex h-12 shrink-0 items-center rounded-[var(--radius)] border border-border bg-background p-0.5">
               <button
                 onClick={() => setViewMode("list")}
-                className={`flex h-11 w-11 items-center justify-center rounded-[3px] ${viewMode === "list" ? "bg-secondary" : ""}`}
+                className={`flex h-11 w-11 items-center justify-center rounded-[var(--radius)] ${viewMode === "list" ? "bg-secondary" : ""}`}
                 aria-label="Показать списком"
               >
                 <ListIcon active={viewMode === "list"} />
               </button>
               <button
                 onClick={() => setViewMode("grid")}
-                className={`flex h-11 w-11 items-center justify-center rounded-[3px] ${viewMode === "grid" ? "bg-secondary" : ""}`}
+                className={`flex h-11 w-11 items-center justify-center rounded-[var(--radius)] ${viewMode === "grid" ? "bg-secondary" : ""}`}
                 aria-label="Показать сеткой"
               >
                 <GridIcon active={viewMode === "grid"} />
               </button>
             </div>
-            <label className="relative flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center rounded-[4px] border border-border bg-background" aria-label="Сортировать проекты">
+            <label className="relative flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center rounded-[var(--radius)] border border-border bg-background" aria-label="Сортировать проекты">
               <ArrowUpDown className="h-5 w-5 text-muted-foreground" strokeWidth={2.5} />
               <select
                 value={sortBy}
@@ -587,7 +606,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
         <div className="mb-8 pb-7">
           <SearchDropdown
             className="w-full"
-            inputClassName="!rounded-[3px] border border-border bg-background font-normal"
+            inputClassName="!rounded-[var(--radius)] border border-border bg-background font-normal"
             initialQuery={catalogSearch}
             onQueryChange={setCatalogSearch}
           />
@@ -613,19 +632,42 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
                 )}
               </div>
               {lockedRegion ? (
-                <div className="flex min-h-11 w-full items-center rounded-[4px] border border-border bg-background px-3 text-[13px] text-foreground">
+                <div className="flex min-h-11 w-full items-center rounded-[var(--radius)] border border-border bg-background px-3 text-[13px] text-foreground">
                   {effectiveCityLabel}
                 </div>
               ) : (
                 <button
                   type="button"
                   onClick={() => setCitySelectorOpen(true)}
-                  className="flex min-h-11 w-full items-center justify-between rounded-[4px] border border-border bg-background px-3 text-left text-[13px] text-foreground transition-colors hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20"
+                  className="flex min-h-11 w-full items-center justify-between rounded-[var(--radius)] border border-border bg-background px-3 text-left text-[13px] text-foreground transition-colors hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20"
                 >
                   <span>{effectiveCityLabel}</span>
                   <ChevronRight className="h-4 w-4 shrink-0" strokeWidth={1.7} aria-hidden />
                 </button>
               )}
+            </div>
+
+            <div className="mb-5">
+              <div className="mb-3 text-[13px] font-semibold text-foreground">Тип объекта</div>
+              <div className="flex flex-wrap gap-1.5">
+                {([
+                  ["all", "Все"],
+                  ["house", "Дома"],
+                  ["bath", "Бани"],
+                ] as const).map(([value, label]) => (
+                  <button
+                    key={value}
+                    type="button"
+                    onClick={() => setObjectTypeFilter(value)}
+                    aria-pressed={selectedObjectType === value}
+                    className={`min-h-9 rounded-[var(--radius)] px-3 text-[12px] transition-colors ${
+                      selectedObjectType === value ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Подходит для */}
@@ -634,7 +676,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-1.5">
                 {["Постоянное проживание", "Выходные / дача", "Сдача в аренду", "Гостевой дом", "Для семьи", "Для одного / пары"].map(c => (
                   <button key={c} onClick={() => applySuitablePreset(c)}
-                    className={`rounded-none px-3 py-[6px] text-[12px] transition-colors ${
+                    className={`rounded-[var(--radius)] px-3 py-[6px] text-[12px] transition-colors ${
                       filterSuitableFor.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -648,7 +690,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
                   id="catalog-maker-desktop"
                   value={filterMaker}
                   onChange={(event) => setFilterMaker(event.target.value)}
-                  className="h-11 w-full cursor-pointer appearance-none rounded-[4px] border border-border bg-background pl-3 pr-12 text-[13px] text-foreground outline-none transition-colors focus:border-primary"
+                  className="h-11 w-full cursor-pointer appearance-none rounded-[var(--radius)] border border-border bg-background pl-3 pr-12 text-[13px] text-foreground outline-none transition-colors focus:border-primary"
                 >
                   <option value="">Все производители</option>
                   {availableCatalogMakers.map((maker) => <option key={maker} value={maker}>{maker.split(" · ")[0]}</option>)}
@@ -679,8 +721,8 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
                   className="touch-none absolute top-0 left-0 w-full h-6 appearance-none bg-transparent pointer-events-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-background [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-pointer" />
               </div>
               <div className="grid grid-cols-2 gap-2">
-                <input value={filterPriceMinVal.toLocaleString("ru-RU")} onChange={e => setFilterPriceMinVal(parseInt(e.target.value.replace(/\D/g, "")) || 0)} className="text-[12px] bg-secondary rounded-[4px] px-2.5 py-2 text-foreground outline-none" />
-                <input value={filterPriceMaxVal.toLocaleString("ru-RU")} onChange={e => setFilterPriceMaxVal(parseInt(e.target.value.replace(/\D/g, "")) || 0)} className="text-[12px] bg-secondary rounded-[4px] px-2.5 py-2 text-foreground outline-none" />
+                <input value={filterPriceMinVal.toLocaleString("ru-RU")} onChange={e => setFilterPriceMinVal(parseInt(e.target.value.replace(/\D/g, "")) || 0)} className="text-[12px] bg-secondary rounded-[var(--radius)] px-2.5 py-2 text-foreground outline-none" />
+                <input value={filterPriceMaxVal.toLocaleString("ru-RU")} onChange={e => setFilterPriceMaxVal(parseInt(e.target.value.replace(/\D/g, "")) || 0)} className="text-[12px] bg-secondary rounded-[var(--radius)] px-2.5 py-2 text-foreground outline-none" />
               </div>
             </div>
 
@@ -688,8 +730,8 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
             <div className="mb-5">
               <div className="mb-3 text-[13px] font-semibold text-foreground">Площадь, м²</div>
               <div className="grid grid-cols-2 gap-2">
-                <input value={filterAreaMin} onChange={e => setFilterAreaMin(e.target.value)} placeholder="от" className="text-[12px] bg-secondary rounded-[4px] px-2.5 py-2 text-foreground placeholder:text-muted-foreground outline-none" />
-                <input value={filterAreaMax} onChange={e => setFilterAreaMax(e.target.value)} placeholder="до" className="text-[12px] bg-secondary rounded-[4px] px-2.5 py-2 text-foreground placeholder:text-muted-foreground outline-none" />
+                <input value={filterAreaMin} onChange={e => setFilterAreaMin(e.target.value)} placeholder="от" className="text-[12px] bg-secondary rounded-[var(--radius)] px-2.5 py-2 text-foreground placeholder:text-muted-foreground outline-none" />
+                <input value={filterAreaMax} onChange={e => setFilterAreaMax(e.target.value)} placeholder="до" className="text-[12px] bg-secondary rounded-[var(--radius)] px-2.5 py-2 text-foreground placeholder:text-muted-foreground outline-none" />
               </div>
             </div>
 
@@ -699,7 +741,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-1.5">
                 {["до 2 недель", "2–4 недели", "1–2 месяца"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterMoveIn, c)}
-                    className={`text-[12px] rounded-[4px] px-3 py-[6px] transition-colors ${
+                    className={`text-[12px] rounded-[var(--radius)] px-3 py-[6px] transition-colors ${
                       filterMoveIn.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -712,7 +754,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-1.5 mb-3">
                 {["Студия", "1", "2", "3+"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterBedrooms, c)}
-                    className={`text-[12px] rounded-[4px] px-3 py-[6px] transition-colors ${
+                    className={`text-[12px] rounded-[var(--radius)] px-3 py-[6px] transition-colors ${
                       filterBedrooms.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -721,7 +763,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-1.5 mb-3">
                 {["1", "2+"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterBathrooms, c)}
-                    className={`text-[12px] rounded-[4px] px-3 py-[6px] transition-colors ${
+                    className={`text-[12px] rounded-[var(--radius)] px-3 py-[6px] transition-colors ${
                       filterBathrooms.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -730,7 +772,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-1.5">
                 {["1", "2"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterFloors, c)}
-                    className={`text-[12px] rounded-[4px] px-3 py-[6px] transition-colors ${
+                    className={`text-[12px] rounded-[var(--radius)] px-3 py-[6px] transition-colors ${
                       filterFloors.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -743,7 +785,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-1.5">
                 {PUBLIC_TECHNOLOGY_OPTIONS.map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterKit, c)} aria-pressed={techFilter === c || filterKit.has(c)}
-                    className={`text-[12px] rounded-[4px] px-3 py-[6px] transition-colors ${
+                    className={`text-[12px] rounded-[var(--radius)] px-3 py-[6px] transition-colors ${
                       techFilter === c || filterKit.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -756,7 +798,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-1.5">
                 {["Базовая", "С отделкой", "Под ключ"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterKit, c)}
-                    className={`text-[12px] rounded-[4px] px-3 py-[6px] transition-colors ${
+                    className={`text-[12px] rounded-[var(--radius)] px-3 py-[6px] transition-colors ${
                       filterKit.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -769,7 +811,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-1.5">
                 {["до −20°C", "до −30°C", "до −40°C"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterInsulation, c)}
-                    className={`text-[12px] rounded-[4px] px-3 py-[6px] transition-colors ${
+                    className={`text-[12px] rounded-[var(--radius)] px-3 py-[6px] transition-colors ${
                       filterInsulation.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -782,7 +824,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-1.5">
                 {["Терраса", "Панорамные окна", "Второй свет", "Антресоль", "Сауна"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterFeatures, c)}
-                    className={`text-[12px] rounded-[4px] px-3 py-[6px] transition-colors ${
+                    className={`text-[12px] rounded-[var(--radius)] px-3 py-[6px] transition-colors ${
                       filterFeatures.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -795,7 +837,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-1.5">
                 {["A-Frame", "Барнхаус", "Скандинавский", "Минимализм / Loft", "Классический"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterStyle, c)}
-                    className={`text-[12px] rounded-[4px] px-3 py-[6px] transition-colors ${
+                    className={`text-[12px] rounded-[var(--radius)] px-3 py-[6px] transition-colors ${
                       filterStyle.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -808,7 +850,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-1.5">
                 {["3–6 соток", "6–10 соток", "от 10 соток"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterLandType, c)}
-                    className={`text-[12px] rounded-[4px] px-3 py-[6px] transition-colors ${
+                    className={`text-[12px] rounded-[var(--radius)] px-3 py-[6px] transition-colors ${
                       filterLandType.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -821,7 +863,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-1.5">
                 {["Фото реальных домов", "Рейтинг 4.5+", "Есть шоурум", "Рассрочка"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterExtras, c === "Есть шоурум" ? "Есть шоурум и выставочные дома" : c)}
-                    className={`text-[12px] rounded-[4px] px-3 py-[6px] transition-colors ${
+                    className={`text-[12px] rounded-[var(--radius)] px-3 py-[6px] transition-colors ${
                       filterExtras.has(c === "Есть шоурум" ? "Есть шоурум и выставочные дома" : c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -839,7 +881,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
                 Найдено: <span className="font-medium text-foreground">{sortedItems.length} {pluralizeProjects(sortedItems.length)}</span>
                 {catalogSearchTerms.length === 0 && <> {selectedRegionPrepositional}</>}
               </span>
-              <div className="relative inline-flex h-11 cursor-pointer items-center gap-2 rounded-[4px] border border-border bg-background px-4">
+              <div className="relative inline-flex h-11 cursor-pointer items-center gap-2 rounded-[var(--radius)] border border-border bg-background px-4">
                 <span className="text-[14px] font-medium text-foreground">
                   {sortOptions.find(o => o.value === sortBy)?.label ?? "Сортировка"}
                 </span>
@@ -854,17 +896,17 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
                 </select>
               </div>
             </div>
-            <div className="flex h-11 items-center rounded-[4px] border border-border bg-background p-1">
+            <div className="flex h-11 items-center rounded-[var(--radius)] border border-border bg-background p-1">
               <button
                 onClick={() => setViewMode("grid")}
-                className={`flex h-9 w-9 items-center justify-center rounded-[3px] ${viewMode === "grid" ? "bg-secondary" : ""}`}
+                className={`flex h-9 w-9 items-center justify-center rounded-[var(--radius)] ${viewMode === "grid" ? "bg-secondary" : ""}`}
                 aria-label="Показать сеткой"
               >
                 <GridIcon active={viewMode === "grid"} />
               </button>
               <button
                 onClick={() => setViewMode("list")}
-                className={`flex h-9 w-9 items-center justify-center rounded-[3px] ${viewMode === "list" ? "bg-secondary" : ""}`}
+                className={`flex h-9 w-9 items-center justify-center rounded-[var(--radius)] ${viewMode === "list" ? "bg-secondary" : ""}`}
                 aria-label="Показать списком"
               >
                 <ListIcon active={viewMode === "list"} />
@@ -881,7 +923,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <button
                 type="button"
                 onClick={clearCatalogFilters}
-                className="mt-5 min-h-11 rounded-[4px] border border-border px-5 text-[14px] font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+                className="mt-5 min-h-11 rounded-[var(--radius)] border border-border px-5 text-[14px] font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
               >
                 Сбросить фильтры
               </button>
@@ -965,7 +1007,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
 
       {/* Mobile Filter Sheet */}
       <Drawer open={filtersOpen} onOpenChange={setFiltersOpen}>
-        <DrawerContent className="mx-0 flex max-h-[90vh] flex-col rounded-t-[8px] p-0 font-sans [&>div:first-child]:hidden">
+        <DrawerContent className="mx-0 flex max-h-[90vh] flex-col rounded-t-[var(--radius)] p-0 font-sans [&>div:first-child]:hidden">
           {/* Scrollable filter sections */}
           <div className="flex-1 overflow-y-auto">
 
@@ -985,7 +1027,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
                     type="button"
                     onClick={() => setFiltersOpen(false)}
                     aria-label="Закрыть фильтры"
-                    className="flex h-11 w-11 items-center justify-center rounded-[4px] text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20"
+                    className="flex h-11 w-11 items-center justify-center rounded-[var(--radius)] text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20"
                   >
                     <X className="h-5 w-5" strokeWidth={1.7} aria-hidden />
                   </button>
@@ -994,9 +1036,32 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-2">
                 {["Постоянное проживание", "Выходные / дача", "Сдача в аренду", "Гостевой дом", "Для семьи", "Для одного / пары"].map(c => (
                   <button key={c} onClick={() => applySuitablePreset(c)}
-                    className={`text-[13px] rounded-[4px] px-3.5 py-[7px] transition-colors ${
+                    className={`text-[13px] rounded-[var(--radius)] px-3.5 py-[7px] transition-colors ${
                       filterSuitableFor.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
+                ))}
+              </div>
+            </div>
+
+            <div className="border-b border-border/50 px-5 py-3.5">
+              <div className="mb-2.5 text-[13px] font-semibold text-foreground">Тип объекта</div>
+              <div className="flex flex-wrap gap-2">
+                {([
+                  ["all", "Все"],
+                  ["house", "Дома"],
+                  ["bath", "Бани"],
+                ] as const).map(([value, label]) => (
+                  <button
+                    key={value}
+                    type="button"
+                    onClick={() => setObjectTypeFilter(value)}
+                    aria-pressed={selectedObjectType === value}
+                    className={`min-h-9 rounded-[var(--radius)] px-3.5 text-[13px] transition-colors ${
+                      selectedObjectType === value ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
+                    }`}
+                  >
+                    {label}
+                  </button>
                 ))}
               </div>
             </div>
@@ -1023,8 +1088,8 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
                   className="touch-none absolute top-0 left-0 w-full h-6 appearance-none bg-transparent pointer-events-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-background [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-pointer" />
               </div>
               <div className="grid grid-cols-2 gap-2">
-                <input value={filterPriceMinVal.toLocaleString("ru-RU")} onChange={e => setFilterPriceMinVal(parseInt(e.target.value.replace(/\D/g, "")) || 0)} className="rounded-[4px] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none focus:border-primary" />
-                <input value={filterPriceMaxVal.toLocaleString("ru-RU")} onChange={e => setFilterPriceMaxVal(parseInt(e.target.value.replace(/\D/g, "")) || 0)} className="rounded-[4px] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none focus:border-primary" />
+                <input value={filterPriceMinVal.toLocaleString("ru-RU")} onChange={e => setFilterPriceMinVal(parseInt(e.target.value.replace(/\D/g, "")) || 0)} className="rounded-[var(--radius)] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none focus:border-primary" />
+                <input value={filterPriceMaxVal.toLocaleString("ru-RU")} onChange={e => setFilterPriceMaxVal(parseInt(e.target.value.replace(/\D/g, "")) || 0)} className="rounded-[var(--radius)] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none focus:border-primary" />
               </div>
             </div>
 
@@ -1032,18 +1097,18 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
             <div className="px-5 py-3.5 border-b border-border/50">
               <div className="mb-2.5 text-[13px] font-semibold text-foreground">Площадь, м²</div>
               <div className="grid grid-cols-2 gap-2 mb-3">
-                <input value={filterAreaMin} onChange={e => setFilterAreaMin(e.target.value)} placeholder="от" className="rounded-[4px] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
-                <input value={filterAreaMax} onChange={e => setFilterAreaMax(e.target.value)} placeholder="до" className="rounded-[4px] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
+                <input value={filterAreaMin} onChange={e => setFilterAreaMin(e.target.value)} placeholder="от" className="rounded-[var(--radius)] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
+                <input value={filterAreaMax} onChange={e => setFilterAreaMax(e.target.value)} placeholder="до" className="rounded-[var(--radius)] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
               </div>
               <div className="mb-2.5 mt-1 text-[13px] font-semibold text-foreground">Размеры, м</div>
               <div className="grid grid-cols-2 gap-2 mb-3">
-                <input placeholder="Длина" className="rounded-[4px] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
-                <input placeholder="Ширина" className="rounded-[4px] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
+                <input placeholder="Длина" className="rounded-[var(--radius)] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
+                <input placeholder="Ширина" className="rounded-[var(--radius)] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
               </div>
               <div className="mb-2.5 text-[13px] font-semibold text-foreground">Высота потолков, м</div>
               <div className="grid grid-cols-2 gap-2 mb-3">
-                <input placeholder="от" className="rounded-[4px] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
-                <input placeholder="до" className="rounded-[4px] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
+                <input placeholder="от" className="rounded-[var(--radius)] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
+                <input placeholder="до" className="rounded-[var(--radius)] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
               </div>
             </div>
 
@@ -1053,7 +1118,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-2">
                 {["до 2 недель", "2–4 недели", "1–2 месяца"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterMoveIn, c)}
-                    className={`text-[13px] rounded-[4px] px-3.5 py-[7px] transition-colors ${
+                    className={`text-[13px] rounded-[var(--radius)] px-3.5 py-[7px] transition-colors ${
                       filterMoveIn.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -1066,7 +1131,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-2 mb-3">
                 {["Студия", "1", "2", "3+"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterBedrooms, c)}
-                    className={`text-[13px] rounded-[4px] px-3.5 py-[7px] transition-colors ${
+                    className={`text-[13px] rounded-[var(--radius)] px-3.5 py-[7px] transition-colors ${
                       filterBedrooms.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -1075,7 +1140,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-2 mb-3">
                 {["1", "2+"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterBathrooms, c)}
-                    className={`text-[13px] rounded-[4px] px-3.5 py-[7px] transition-colors ${
+                    className={`text-[13px] rounded-[var(--radius)] px-3.5 py-[7px] transition-colors ${
                       filterBathrooms.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -1084,7 +1149,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-2">
                 {["1", "2"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterFloors, c)}
-                    className={`text-[13px] rounded-[4px] px-3.5 py-[7px] transition-colors ${
+                    className={`text-[13px] rounded-[var(--radius)] px-3.5 py-[7px] transition-colors ${
                       filterFloors.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -1097,7 +1162,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-2">
                 {PUBLIC_TECHNOLOGY_OPTIONS.map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterKit, c)} aria-pressed={techFilter === c || filterKit.has(c)}
-                    className={`text-[13px] rounded-[4px] px-3.5 py-[7px] transition-colors ${
+                    className={`text-[13px] rounded-[var(--radius)] px-3.5 py-[7px] transition-colors ${
                       techFilter === c || filterKit.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -1110,7 +1175,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-2">
                 {["Базовая", "С отделкой", "Под ключ"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterKit, c)}
-                    className={`text-[13px] rounded-[4px] px-3.5 py-[7px] transition-colors ${
+                    className={`text-[13px] rounded-[var(--radius)] px-3.5 py-[7px] transition-colors ${
                       filterKit.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -1123,7 +1188,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-2">
                 {["до −20°C", "до −30°C", "до −40°C"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterInsulation, c)}
-                    className={`text-[13px] rounded-[4px] px-3.5 py-[7px] transition-colors ${
+                    className={`text-[13px] rounded-[var(--radius)] px-3.5 py-[7px] transition-colors ${
                       filterInsulation.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -1136,7 +1201,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-2">
                 {["Терраса", "Панорамные окна", "Второй свет", "Антресоль", "Сауна"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterFeatures, c)}
-                    className={`text-[13px] rounded-[4px] px-3.5 py-[7px] transition-colors ${
+                    className={`text-[13px] rounded-[var(--radius)] px-3.5 py-[7px] transition-colors ${
                       filterFeatures.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -1149,7 +1214,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-2">
                 {["A-Frame", "Барнхаус", "Скандинавский", "Минимализм / Loft", "Классический"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterStyle, c)}
-                    className={`text-[13px] rounded-[4px] px-3.5 py-[7px] transition-colors ${
+                    className={`text-[13px] rounded-[var(--radius)] px-3.5 py-[7px] transition-colors ${
                       filterStyle.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -1162,7 +1227,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-2 mb-3">
                 {["3–6 соток", "6–10 соток", "от 10 соток"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterLandType, c)}
-                    className={`text-[13px] rounded-[4px] px-3.5 py-[7px] transition-colors ${
+                    className={`text-[13px] rounded-[var(--radius)] px-3.5 py-[7px] transition-colors ${
                       filterLandType.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -1173,14 +1238,14 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
             <div className="px-5 py-3.5 border-b border-border/50">
               <div className="mb-2.5 text-[13px] font-semibold text-foreground">Регион доставки</div>
               {lockedRegion ? (
-                <div className="mb-3 flex min-h-11 w-full items-center rounded-[4px] border border-border bg-background px-3.5 py-2.5 text-[13px] text-foreground">
+                <div className="mb-3 flex min-h-11 w-full items-center rounded-[var(--radius)] border border-border bg-background px-3.5 py-2.5 text-[13px] text-foreground">
                   {effectiveCityLabel}
                 </div>
               ) : (
                 <button
                   type="button"
                   onClick={openCitySelectorFromMobileFilters}
-                  className="mb-3 flex min-h-11 w-full items-center justify-between rounded-[4px] border border-border bg-background px-3.5 py-2.5 text-left transition-colors hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20"
+                  className="mb-3 flex min-h-11 w-full items-center justify-between rounded-[var(--radius)] border border-border bg-background px-3.5 py-2.5 text-left transition-colors hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20"
                 >
                   <span className="text-[13px] text-foreground">{effectiveCityLabel}</span>
                   <ChevronRight className="h-4 w-4 shrink-0" strokeWidth={1.7} aria-hidden />
@@ -1192,7 +1257,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
                   id="catalog-maker-mobile"
                   value={filterMaker}
                   onChange={(event) => setFilterMaker(event.target.value)}
-                  className="h-11 w-full cursor-pointer appearance-none rounded-[4px] border border-border bg-background pl-3.5 pr-12 text-[13px] text-foreground outline-none focus:border-primary"
+                  className="h-11 w-full cursor-pointer appearance-none rounded-[var(--radius)] border border-border bg-background pl-3.5 pr-12 text-[13px] text-foreground outline-none focus:border-primary"
                 >
                   <option value="">Все производители</option>
                   {availableCatalogMakers.map((maker) => <option key={maker} value={maker}>{maker.split(" · ")[0]}</option>)}
@@ -1207,7 +1272,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="flex flex-wrap gap-2">
                 {["Фото реальных домов", "Рейтинг 4.5+", "Есть шоурум и выставочные дома", "Рассрочка"].map(c => (
                   <button key={c} onClick={() => toggleInSet(setFilterExtras, c)}
-                    className={`text-[13px] rounded-[4px] px-3.5 py-[7px] transition-colors ${
+                    className={`text-[13px] rounded-[var(--radius)] px-3.5 py-[7px] transition-colors ${
                       filterExtras.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
@@ -1220,7 +1285,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
           <div className="px-5 pt-3 pb-[calc(16px+env(safe-area-inset-bottom))] border-t border-border bg-background">
             <button
               onClick={() => setFiltersOpen(false)}
-              className="w-full rounded-[4px] bg-primary py-4 text-[15px] font-medium text-primary-foreground"
+              className="w-full rounded-[var(--radius)] bg-primary py-4 text-[15px] font-medium text-primary-foreground"
             >
               Показать {filteredItems.length} {pluralizeProjects(filteredItems.length)}
             </button>

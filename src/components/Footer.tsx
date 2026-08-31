@@ -72,7 +72,7 @@ const FooterNavigationGroup = ({ title, links }: FooterGroup) => {
       <h2 className="text-[12px] font-medium leading-snug text-muted-foreground sm:text-[13px]">{title}</h2>
       <nav aria-label={title} className="mt-3 flex flex-col items-start lg:mt-4">
         {links.map((item) => (
-          <Link key={`${item.label}-${item.path}`} to={item.path} className="inline-flex min-h-11 items-center text-[14px] leading-snug text-foreground/80 transition-colors hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 lg:min-h-9 lg:text-[15px]">
+          <Link key={`${item.label}-${item.path}`} to={item.path} className="inline-flex min-h-11 items-center text-[14px] leading-snug text-foreground/80 transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 lg:min-h-9 lg:text-[15px]">
             {item.label}
           </Link>
         ))}
@@ -86,19 +86,19 @@ const Footer = () => (
     <div className="mx-auto w-full max-w-[1400px] px-4 pb-7 pt-10 sm:px-8 md:pb-9 md:pt-14 lg:px-12 lg:pt-16">
       <div className="grid grid-cols-2 gap-x-6 gap-y-12 sm:gap-x-10 lg:grid-cols-[1.25fr_1fr_1fr_1fr_1fr] lg:gap-x-10 lg:gap-y-0 xl:gap-x-14">
         <section className="col-span-2 max-w-[420px] lg:col-span-1 lg:max-w-[340px]">
-          <Link to="/" className="inline-flex rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
+          <Link to="/" className="inline-flex rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
             <img src={logoColor} alt="Много места" className="h-[22px] w-auto dark:brightness-0 dark:invert md:h-[23px]" loading="lazy" decoding="async" />
           </Link>
           <p className="mt-5 text-[14px] leading-relaxed text-foreground/65 md:text-[15px]">
             Платформа для выбора модульных домов с доставкой по России.
           </p>
-          <a href="mailto:hello@mnogomesta.com" className="mt-4 inline-flex min-h-11 items-center gap-2 text-[14px] font-medium text-foreground/85 transition-colors hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:text-[15px]">
+          <a href="mailto:hello@mnogomesta.com" className="mt-4 inline-flex min-h-11 items-center gap-2 text-[14px] font-medium text-foreground/85 transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:text-[15px]">
             <Mail className="h-4 w-4 text-muted-foreground" strokeWidth={1.8} aria-hidden />
             hello@mnogomesta.com
           </a>
           <nav aria-label="Социальные сети" className="mt-3 flex items-center gap-2">
             {socialLinks.map(({ label, href, icon: Icon }) => (
-              <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label} className="inline-flex h-11 w-11 items-center justify-center rounded-[3px] text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
+              <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label} className="inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius)] text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
                 <Icon className="h-[18px] w-[18px]" strokeWidth={1.7} aria-hidden />
               </a>
             ))}
@@ -135,7 +135,7 @@ const Footer = () => (
         <p>© многоместа.рф, {new Date().getFullYear()}</p>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
           <Link to="/legal/" className="transition-colors hover:text-primary">Юридическая информация</Link>
-          <button type="button" onClick={openCookieSettings} className="transition-colors hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
+          <button type="button" onClick={openCookieSettings} className="transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
             Настройки cookie
           </button>
           <Link to="/messages/support" className="transition-colors hover:text-primary">Обратная связь</Link>

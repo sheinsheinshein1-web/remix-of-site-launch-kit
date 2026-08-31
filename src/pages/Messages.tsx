@@ -30,7 +30,7 @@ const Messages = () => {
           <button
             type="button"
             onClick={exitMessages}
-            className="mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] text-foreground transition-colors active:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+            className="mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius)] text-foreground transition-colors active:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
             aria-label="Вернуться на сайт"
           >
             <ArrowLeft className="h-5 w-5" strokeWidth={1.8} aria-hidden />
@@ -63,7 +63,7 @@ const Messages = () => {
                 onClick={() => navigate(`/messages/company?company=${encodeURIComponent(chat.company)}&project=${encodeURIComponent(chat.project)}&projectId=${chat.projectId}`)}
                 className="flex min-h-[80px] w-full shrink-0 items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-secondary active:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/30"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[3px] bg-secondary text-foreground">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[var(--radius)] bg-secondary text-foreground">
                   <span className="text-[13px] font-semibold">{initials}</span>
                 </div>
                 <div className="flex-1 min-w-0">

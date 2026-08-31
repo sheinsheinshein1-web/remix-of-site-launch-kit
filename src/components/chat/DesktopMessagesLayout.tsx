@@ -40,7 +40,7 @@ const DesktopMessagesLayout = () => {
           <button
             type="button"
             onClick={exitMessages}
-            className="inline-flex min-h-11 items-center gap-2 rounded-[3px] px-2 text-[14px] font-medium text-foreground transition-colors hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+            className="inline-flex min-h-11 items-center gap-2 rounded-[var(--radius)] px-2 text-[14px] font-medium text-foreground transition-colors hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
             aria-label="Вернуться на сайт"
           >
             <ArrowLeft className="h-[18px] w-[18px]" strokeWidth={1.7} aria-hidden />
@@ -64,7 +64,7 @@ const DesktopMessagesLayout = () => {
                     <button
                       key={chat.id}
                       onClick={() => navigate(chat.href)}
-                      className={`flex min-h-[72px] w-full items-center gap-3 rounded-[3px] px-3 py-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/30 ${
+                      className={`flex min-h-[72px] w-full items-center gap-3 rounded-[var(--radius)] px-3 py-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/30 ${
                         isActive ? "bg-secondary" : "hover:bg-secondary/70"
                       }`}
                       aria-current={isActive ? "page" : undefined}
@@ -87,12 +87,12 @@ const DesktopMessagesLayout = () => {
                     <button
                       key={chat.company}
                       onClick={() => navigate(href)}
-                      className={`flex min-h-[72px] w-full items-center gap-3 rounded-[3px] px-3 py-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/30 ${
+                      className={`flex min-h-[72px] w-full items-center gap-3 rounded-[var(--radius)] px-3 py-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/30 ${
                         isActive ? "bg-secondary" : "hover:bg-secondary/70"
                       }`}
                       aria-current={isActive ? "page" : undefined}
                     >
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[3px] bg-secondary text-foreground">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[var(--radius)] bg-secondary text-foreground">
                         <span className="text-[12px] font-semibold">{initials}</span>
                       </div>
                       <div className="flex-1 min-w-0">
@@ -109,7 +109,7 @@ const DesktopMessagesLayout = () => {
             </aside>
 
             {/* Right area - active chat or placeholder */}
-            <section className="flex min-h-0 min-w-0 flex-col overflow-hidden rounded-[3px] border border-border bg-background" aria-label="Переписка">
+            <section className="flex min-h-0 min-w-0 flex-col overflow-hidden rounded-[var(--radius)] border border-border bg-background" aria-label="Переписка">
               {hasActiveChat ? (
                 <Outlet />
               ) : (

@@ -168,7 +168,7 @@ const Manufacturers = () => {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Название или технология"
-                className="h-12 w-full rounded-[4px] border border-[#d8deed] bg-white pl-11 pr-11 text-[15px] text-[#342d27] outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/10 dark:text-foreground"
+                className="h-12 w-full rounded-[var(--radius)] border border-[#d8deed] bg-white pl-11 pr-11 text-[15px] text-[#342d27] outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/10 dark:text-foreground"
               />
               {query && (
                 <button type="button" onClick={() => setQuery("")} className="absolute right-0 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center text-[#342d27]/45 transition-colors hover:text-[#342d27]" aria-label="Очистить поиск">
@@ -180,7 +180,7 @@ const Manufacturers = () => {
             <button
               type="button"
               onClick={() => setRegionSelectorOpen(true)}
-              className="relative flex h-12 w-full cursor-pointer items-center rounded-[4px] border border-[#d8deed] bg-white pl-4 pr-12 text-left text-[15px] text-[#342d27] outline-none transition-colors hover:border-primary/50 hover:text-primary focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/10"
+              className="relative flex h-12 w-full cursor-pointer items-center rounded-[var(--radius)] border border-[#d8deed] bg-white pl-4 pr-12 text-left text-[15px] text-[#342d27] outline-none transition-colors hover:border-primary/50 hover:text-primary focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/10"
               aria-label={`Регион доставки: ${regionLabel}`}
             >
               <span className="truncate">{regionLabel}</span>
@@ -189,7 +189,7 @@ const Manufacturers = () => {
 
             <label className="relative block">
               <span className="sr-only">Технология производства</span>
-              <select value={technology} onChange={(event) => setTechnology(event.target.value)} className="h-12 w-full cursor-pointer appearance-none rounded-[4px] border border-[#d8deed] bg-white pl-4 pr-12 text-[15px] text-[#342d27] outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/10">
+              <select value={technology} onChange={(event) => setTechnology(event.target.value)} className="h-12 w-full cursor-pointer appearance-none rounded-[var(--radius)] border border-[#d8deed] bg-white pl-4 pr-12 text-[15px] text-[#342d27] outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/10">
                 <option value="all">Все технологии</option>
                 {technologies.map((item) => <option key={item} value={item}>{item}</option>)}
               </select>
@@ -198,7 +198,7 @@ const Manufacturers = () => {
 
             <label className="relative block">
               <span className="sr-only">Сортировка</span>
-              <select value={sortBy} onChange={(event) => setSortBy(event.target.value as SortValue)} className="h-12 w-full cursor-pointer appearance-none rounded-[4px] border border-[#d8deed] bg-white pl-4 pr-12 text-[15px] text-[#342d27] outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/10">
+              <select value={sortBy} onChange={(event) => setSortBy(event.target.value as SortValue)} className="h-12 w-full cursor-pointer appearance-none rounded-[var(--radius)] border border-[#d8deed] bg-white pl-4 pr-12 text-[15px] text-[#342d27] outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/10">
                 <option value="rating">Сначала по рейтингу</option>
                 <option value="projects">Больше проектов</option>
                 <option value="name">По алфавиту</option>

@@ -1,4 +1,5 @@
 import catDacha from "@/assets/cat-dacha.webp";
+import catBaths from "@/assets/cat-baths.webp";
 import catDachaModular from "@/assets/cat-dacha-modular.webp";
 import catGuestModular from "@/assets/cat-guest-modular.webp";
 import catHousesModular from "@/assets/cat-houses-modular.webp";
@@ -28,6 +29,12 @@ export const categoryLinks: CategoryLink[] = [
     caption: "Готовые проекты заводской сборки",
     href: `${CATALOG_PATH}?tech=Модульный дом`,
     image: catHousesModular,
+  },
+  {
+    title: "Модульные бани",
+    caption: "Готовые бани заводской сборки",
+    href: `${CATALOG_PATH}?type=bath`,
+    image: catBaths,
   },
   {
     title: "Барнхаусы",

@@ -33,7 +33,7 @@ const Legal = () => (
             <Link
               key={document.slug}
               to={document.path}
-              className="group grid min-h-11 gap-2 rounded-[2px] text-[#342d27] transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-8"
+              className="group grid min-h-11 gap-2 rounded-[var(--radius)] text-[#342d27] transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-8"
             >
               <span>
                 <span className="block text-[19px] font-medium leading-snug md:text-[24px]">

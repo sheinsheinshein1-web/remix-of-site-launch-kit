@@ -44,6 +44,9 @@ const Articles = lazy(() => import("./pages/Articles.tsx"));
 const ArticleDetail = lazy(() => import("./pages/ArticleDetail.tsx"));
 const IpModul = lazy(() => import("./pages/IpModul.tsx"));
 const RusModul = lazy(() => import("./pages/RusModul.tsx"));
+const Platforma = lazy(() => import("./pages/Platforma.tsx"));
+const PlatformaTemplatePreview = lazy(() => import("./pages/PlatformaTemplatePreview.tsx"));
+const TrafficArchitecture = lazy(() => import("./pages/TrafficArchitecture.tsx"));
 
 import avatar3d from "@/assets/avatar-3d.webp";
 import heart3d from "@/assets/heart-3d.webp";
@@ -201,6 +204,9 @@ const AppRoutes = () => (
         <Route path="/articles/:slug" element={<ArticleDetail />} />
         <Route path="/ip-modul" element={<IpModul />} />
         <Route path="/rusmodul" element={<RusModul />} />
+        <Route path="/platforma/*" element={<Platforma />} />
+        <Route path="/platforma-preview" element={<PlatformaTemplatePreview />} />
+        <Route path="/traffic-map" element={<TrafficArchitecture />} />
         <Route path="/lab" element={<Lab />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

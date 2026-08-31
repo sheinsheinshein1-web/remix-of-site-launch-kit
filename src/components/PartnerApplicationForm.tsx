@@ -67,7 +67,7 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
   };
 
   const inputClass = (field: string) =>
-    `h-12 w-full rounded-[3px] border bg-background px-4 text-[14px] text-foreground outline-none transition-colors ${
+    `h-12 w-full rounded-[var(--radius)] border bg-background px-4 text-[14px] text-foreground outline-none transition-colors ${
       errors[field] ? "border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/10" : "border-border focus:border-primary focus:ring-2 focus:ring-primary/10"
     }`;
 
@@ -76,7 +76,7 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
   if (submitState === "success") {
     return (
       <div className={variant === "drawer" ? "px-4 py-5" : ""} role="status" aria-live="polite">
-        <div className="flex h-11 w-11 items-center justify-center rounded-[3px] bg-primary text-primary-foreground">
+        <div className="flex h-11 w-11 items-center justify-center rounded-[var(--radius)] bg-primary text-primary-foreground">
           <Check className="h-5 w-5" aria-hidden="true" />
         </div>
         <h2 className="mt-5 text-[24px] font-semibold leading-tight text-foreground md:text-[30px]">Заявка отправлена</h2>
@@ -86,7 +86,7 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
         <button
           type="button"
           onClick={onBack}
-          className="mt-6 min-h-11 rounded-[3px] bg-secondary px-5 text-[14px] font-medium text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+          className="mt-6 min-h-11 rounded-[var(--radius)] bg-secondary px-5 text-[14px] font-medium text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
         >
           Вернуться к размещению
         </button>
@@ -99,7 +99,7 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
       {/* Header */}
       <div className={variant === "drawer" ? "mb-6 flex items-center gap-3" : "mb-6"}>
         {variant === "drawer" && (
-          <button type="button" onClick={onBack} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30" aria-label="Вернуться к информации для производителей">
+          <button type="button" onClick={onBack} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius)] text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30" aria-label="Вернуться к информации для производителей">
             <ArrowLeft className="h-4 w-4 text-foreground" />
           </button>
         )}
@@ -240,7 +240,7 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
       <button
         type="submit"
         disabled={submitState === "submitting"}
-        className="mt-6 h-[52px] w-full rounded-[3px] bg-primary text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-wait disabled:opacity-70"
+        className="mt-6 h-[52px] w-full rounded-[var(--radius)] bg-primary text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-wait disabled:opacity-70"
       >
         {submitState === "submitting" ? "Отправляем…" : submitState === "error" ? "Повторить отправку" : "Отправить заявку"}
       </button>

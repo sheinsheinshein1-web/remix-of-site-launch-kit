@@ -23,10 +23,10 @@ const CTASection = () => {
 
         {/* Mobile: two stacked buttons */}
         <div className="flex flex-col gap-2 md:hidden">
-          <button className="w-full bg-primary text-primary-foreground text-[14px] font-normal rounded-[10px] py-3.5 hover:opacity-90 transition-opacity">
+          <button className="w-full bg-primary text-primary-foreground text-[14px] font-normal rounded-[var(--radius)] py-3.5 hover:opacity-90 transition-opacity">
             Получить подборку
           </button>
-          <button className="w-full text-[13px] font-light text-muted-foreground border border-border rounded-[10px] py-3 hover:border-primary hover:text-primary transition-colors">
+          <button className="w-full text-[13px] font-light text-muted-foreground border border-border rounded-[var(--radius)] py-3 hover:border-primary hover:text-primary transition-colors">
             Как рассчитать стоимость
           </button>
         </div>

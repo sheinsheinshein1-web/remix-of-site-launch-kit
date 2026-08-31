@@ -109,7 +109,7 @@ const BeforeAfterComparison = ({
   };
 
   return (
-    <figure ref={figureRef} className={`group relative aspect-[4/3] w-full overflow-hidden rounded-[3px] bg-[#e9ebef] focus-within:ring-2 focus-within:ring-primary/35 ${layout === "hero" ? "xl:aspect-[16/10]" : "xl:aspect-square"}`}>
+    <figure ref={figureRef} className={`group relative aspect-[4/3] w-full overflow-hidden rounded-[var(--radius)] bg-[#e9ebef] focus-within:ring-2 focus-within:ring-primary/35 ${layout === "hero" ? "xl:aspect-[16/10]" : "xl:aspect-square"}`}>
       <img
         src={afterSrc}
         alt={afterAlt}
@@ -128,10 +128,10 @@ const BeforeAfterComparison = ({
         draggable={false}
       />
 
-      <span className="absolute left-3 top-3 rounded-[3px] bg-[#171614]/78 px-2.5 py-1.5 text-[12px] font-medium text-white">
+      <span className="absolute left-3 top-3 rounded-[var(--radius)] bg-[#171614]/78 px-2.5 py-1.5 text-[12px] font-medium text-white">
         {beforeLabel}
       </span>
-      <span className="absolute right-3 top-3 rounded-[3px] bg-[#171614]/78 px-2.5 py-1.5 text-[12px] font-medium text-white">
+      <span className="absolute right-3 top-3 rounded-[var(--radius)] bg-[#171614]/78 px-2.5 py-1.5 text-[12px] font-medium text-white">
         {afterLabel}
       </span>
 
@@ -140,7 +140,7 @@ const BeforeAfterComparison = ({
         style={{ left: `${position}%` }}
         aria-hidden
       >
-        <span className="absolute left-1/2 top-1/2 flex h-14 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[3px] bg-white text-[#342d27] shadow-[0_6px_20px_rgba(0,0,0,0.18)] sm:h-12 sm:w-9">
+        <span className="absolute left-1/2 top-1/2 flex h-14 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[var(--radius)] bg-white text-[#342d27] shadow-[0_6px_20px_rgba(0,0,0,0.18)] sm:h-12 sm:w-9">
           <ChevronsLeftRight className="h-4 w-4" strokeWidth={1.7} />
         </span>
       </div>

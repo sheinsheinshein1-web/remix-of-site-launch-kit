@@ -17,9 +17,9 @@ import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import { buildAssetUrl, buildSiteUrl, SITE_URL } from "@/lib/seo";
 import { homeFaq } from "@/data/homeFaq";
-import { ChevronRight } from "lucide-react";
-import { Link } from "react-router-dom";
 import { CATALOG_PATH } from "@/lib/siteRoutes";
+import { projects } from "@/data/projects";
+import HomeSectionTitle from "@/components/HomeSectionTitle";
 
 const homeJsonLd = [
   {
@@ -82,14 +82,8 @@ const Index = () => {
         <Header />
         <HeroSection />
         <div className="mx-auto w-full max-w-[1400px] px-4 pt-10 sm:px-8 sm:pt-16 lg:px-12">
-          <div className="mb-4 flex items-center justify-between gap-3 sm:mb-5">
-            <h2 className="min-w-0 text-[18px] font-semibold tracking-normal text-[#342d27] md:text-[22px]">
-              Проекты
-            </h2>
-            <Link to={CATALOG_PATH} className="inline-flex min-h-11 shrink-0 items-center gap-1 text-[15px] font-medium tracking-normal text-[#342d27] transition-colors duration-200 hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:text-[16px]">
-              Все проекты
-              <ChevronRight className="h-[15px] w-[15px] md:h-4 md:w-4" strokeWidth={1.8} aria-hidden />
-            </Link>
+          <div className="mb-4 sm:mb-5">
+            <HomeSectionTitle title="Все проекты" count={projects.length} to={CATALOG_PATH} />
           </div>
         </div>
         <div className="mx-auto w-full max-w-[1400px] px-4 pb-2 pt-0 sm:px-8 lg:px-12">

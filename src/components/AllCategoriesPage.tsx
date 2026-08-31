@@ -55,7 +55,7 @@ const AllCategoriesPage = () => (
         </div>
 
         <div className="mt-7 max-w-[860px] md:mt-9">
-          <SearchDropdown inputClassName="border border-[#dfe5f5] bg-[#f8faff] rounded-[3px]" />
+          <SearchDropdown inputClassName="border border-[#dfe5f5] bg-[#f8faff] rounded-[var(--radius)]" />
         </div>
 
         <section className="mt-10 md:mt-14" aria-labelledby="all-categories-heading">

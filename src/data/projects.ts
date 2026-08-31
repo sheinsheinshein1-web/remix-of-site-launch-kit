@@ -55,6 +55,25 @@ import bear86_2 from "@/assets/bear86-2.webp";
 import bear86_3 from "@/assets/bear86-3.webp";
 import bear86Plan3d from "@/assets/bear86-plan-3d.webp";
 import bear86Plan from "@/assets/bear86-plan.webp";
+import bear134_1 from "@/assets/bear134-1.webp";
+import bear134_2 from "@/assets/bear134-2.webp";
+import bear134Plan3d from "@/assets/bear134-plan-3d.webp";
+import bear134Plan from "@/assets/bear134-plan.webp";
+import vast140_1 from "@/assets/vast140-1.webp";
+import vast140_2 from "@/assets/vast140-2.webp";
+import vast140Plan3d from "@/assets/vast140-plan-3d.webp";
+import vast140Plan from "@/assets/vast140-plan.webp";
+import bear168_1 from "@/assets/bear168-1.webp";
+import bear168_2 from "@/assets/bear168-2.webp";
+import bear168Plan3d from "@/assets/bear168-plan-3d.webp";
+import bear168Plan from "@/assets/bear168-plan.webp";
+import platformaBathhouse1 from "@/assets/platforma-baths/bathhouse-01.webp";
+import platformaBathhousePlan from "@/assets/platforma-baths/bathhouse-plan.png";
+import platformaBathhouseSpa1 from "@/assets/platforma-baths/bathhouse-spa-01.webp";
+import platformaBathhouseSpa2 from "@/assets/platforma-baths/bathhouse-spa-02.webp";
+import platformaBathhouseSpa3 from "@/assets/platforma-baths/bathhouse-spa-03.webp";
+import platformaBathhouseSpa4 from "@/assets/platforma-baths/bathhouse-spa-04.webp";
+import platformaBathhouseSpaPlan from "@/assets/platforma-baths/bathhouse-spa-plan.png";
 
 // Bygge
 import patio1 from "@/assets/patio-2.webp";
@@ -1489,6 +1508,12 @@ export type Project = {
   /** Точные регионы доставки из src/data/regions.ts; без поля используется зона базового региона производства. */
   deliveryRegionSlugs?: string[];
   maker: Maker;
+  /** Тип объекта для разделения домов, бань и комбинированных проектов. */
+  productType?: "house" | "bath" | "house-bath";
+  dimensions?: string;
+  steamRoomArea?: string;
+  steamRoomFinish?: string;
+  floorFinish?: string;
   description: string;
   descriptionLong: string;
   gallery: GalleryItem[];
@@ -2112,6 +2137,23 @@ const RUSMODUL_SPB: Maker = {
 export const allProjects: Project[] = [
   // ── Платформа · Екатеринбург ────────────────────────────────────────────
   {
+    id: 31, name: "Twin House", badge: "Дом и баня", price: "3 102 000 ₽",
+    area: "75 м²", beds: 1, baths: 1, floors: 1, term: "60 д.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Екатеринбург", maker: PLATFORMA, productType: "house-bath",
+    description: "Комплекс из жилого дома, модульной бани и большой общей террасы. Кухня-гостиная, спальня, санузел, парная и зона отдыха.",
+    descriptionLong: "Twin House объединяет жилой модуль и баню общей террасой площадью 31,55 м². В доме предусмотрены кухня-гостиная, спальня и санузел; в бане — отдельная парная и зона отдыха. Жилая площадь — 26,85 м², высота потолка — 2,7 м.",
+    gallery: [
+      { image: "https://optim.tildacdn.com/stor6130-3934-4462-a637-643936306363/-/resize/1600x1200/-/format/webp/34561865.jpg.webp", type: "photo" },
+      { image: "https://optim.tildacdn.com/tild6235-6339-4532-b938-366338323235/-/format/webp/23878263jpg.webp", type: "photo" },
+      { image: "https://optim.tildacdn.com/tild3961-3064-4835-b364-303536373336/-/format/webp/96045897jpg.webp", type: "photo" },
+    ],
+    likes: 0, rating: 0,
+    suitableFor: ["Постоянное проживание", "Для одного / пары", "Выходные / дача", "Гостевой дом"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Сауна", "Терраса", "Панорамные окна"], style: "Скандинавский", landSize: "6–10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
     id: 32, name: "Wide House", badge: "Жилой дом", price: "5 480 000 ₽",
     area: "46,4 м²", beds: 2, baths: 1, floors: 1, term: "30 д.",
     rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург", maker: PLATFORMA,
@@ -2202,6 +2244,101 @@ export const allProjects: Project[] = [
     technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
     features: ["Терраса", "Панорамные окна"], style: "Скандинавский", landSize: "6–10 соток",
     hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 37, name: "Bear House 134", badge: "Жилой дом", price: "8 762 000 ₽",
+    area: "110 м²", beds: 2, baths: 2, floors: 1, term: "60 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург", maker: PLATFORMA,
+    description: "Семейный модульный дом с мастер-спальней, двумя санузлами, светлой кухней-гостиной и двумя террасами.",
+    descriptionLong: "Bear House 134 — семейный дом площадью 110 м². Планировка включает две спальни, два санузла, гардеробную, кухню 9,53 м², гостиную 20,20 м² и две террасы площадью 13,5 и 8 м². Панорамное остекление объединяет общие помещения с участком, высота потолка — 2,8 м.",
+    gallery: [
+      { image: bear134_1, type: "photo" },
+      { image: bear134_2, type: "photo" },
+      { image: bear134Plan3d, type: "plan", fit: "contain" },
+      { image: bear134Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 0, rating: 0,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Терраса", "Панорамные окна", "Гардеробная"], style: "Скандинавский", landSize: "от 10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 38, name: "Vast House 140", badge: "Жилой дом", price: "8 077 600 ₽",
+    area: "114,9 м²", beds: 5, baths: 2, floors: 1, term: "60 д.",
+    rooms: "5 спален", purpose: "ИЖС / СНТ", city: "Екатеринбург", maker: PLATFORMA,
+    description: "Просторный модульный дом для большой семьи с пятью спальнями, двумя санузлами и большой кухней-гостиной.",
+    descriptionLong: "Vast House 140 — семейный дом площадью 114,9 м². В нём предусмотрены пять спален, два санузла, кухня 18,10 м² и просторная гостиная 23,76 м². Проект допускает дальнейшее расширение дополнительными модулями; высота потолка — 2,7 м.",
+    gallery: [
+      { image: vast140_1, type: "photo" },
+      { image: vast140_2, type: "photo" },
+      { image: vast140Plan3d, type: "plan", fit: "contain" },
+      { image: vast140Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 0, rating: 0,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Панорамные окна", "Возможность расширения"], style: "Скандинавский", landSize: "от 10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 39, name: "Bear House 168", badge: "Жилой дом", price: "12 110 400 ₽",
+    area: "146,4 м²", beds: 3, baths: 3, floors: 1, term: "60 д.",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург", maker: PLATFORMA,
+    description: "Большой семейный дом с тремя спальнями, тремя санузлами, гардеробной, кладовой и кухней-гостиной с камином.",
+    descriptionLong: "Bear House 168 — модульный дом площадью 146,4 м². Три изолированные спальни, три санузла, гардеробная, кладовая и большая кухня-гостиная с камином распределены по отдельным функциональным зонам. Жилая площадь — 113,4 м², две террасы — 11,1 и 10,56 м², высота потолка — 2,8 м.",
+    gallery: [
+      { image: bear168_1, type: "photo" },
+      { image: bear168_2, type: "photo" },
+      { image: bear168Plan3d, type: "plan", fit: "contain" },
+      { image: bear168Plan, type: "plan", fit: "contain" },
+    ],
+    likes: 0, rating: 0,
+    suitableFor: ["Постоянное проживание", "Для семьи"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    features: ["Камин", "Терраса", "Гардеробная", "Кладовая"], style: "Скандинавский", landSize: "от 10 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 437, name: "Bathhouse", badge: "Модульная баня", price: "1 000 000 ₽",
+    area: "18 м²", area_m2: 18, beds: 0, baths: 0, floors: 1, term: "по запросу",
+    rooms: "Парная, душевая, комната отдыха", purpose: "Баня / загородный отдых", city: "Екатеринбург",
+    maker: { ...PLATFORMA, siteUrl: "https://platforma-modul.ru/bathhouse" }, productType: "bath",
+    dimensions: "6,5 × 2,66 × 3 м", steamRoomFinish: "Вагонка из кедра", floorFinish: "Керамогранит, тёплый пол",
+    description: "Готовая модульная баня с парной, душевой и комнатой отдыха. Производится в цехе, доставляется на участок и устанавливается за один день.",
+    descriptionLong: "Bathhouse — готовая модульная баня площадью 18 м². Внутри предусмотрены жаркая парная с отделкой вагонкой из кедра, душевая и отдельная комната отдыха. Пол выполнен из керамогранита и оборудован подогревом. Баню собирают на производстве, привозят на участок и устанавливают за один день.",
+    gallery: [
+      { image: platformaBathhouse1, type: "photo" },
+      { image: platformaBathhousePlan, type: "plan", fit: "contain" },
+    ],
+    likes: 0, rating: 0,
+    suitableFor: ["Выходные / дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "по запросу",
+    features: ["Модульная баня", "Парная", "Душевая", "Комната отдыха", "Тёплый пол", "Кедр"],
+    style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
+  },
+  {
+    id: 438, name: "Bathhouse Spa", badge: "Модульная баня", price: "1 000 000 ₽",
+    area: "14,1 м²", area_m2: 14.1, beds: 0, baths: 0, floors: 1, term: "по запросу",
+    rooms: "Парная, крытая терраса, купель", purpose: "Баня / загородный отдых", city: "Екатеринбург",
+    maker: { ...PLATFORMA, siteUrl: "https://platforma-modul.ru/bathhousespa" }, productType: "bath",
+    dimensions: "6 × 2,35 × 3,012 м", steamRoomArea: "4 м²", steamRoomFinish: "Липа", floorFinish: "Лиственница",
+    description: "Модульная баня с парной и крытой террасой для купели. Печь с нержавеющей каменкой входит в стоимость, купель с подогревом доступна как опция.",
+    descriptionLong: "Bathhouse Spa — готовая модульная баня общей площадью застройки 14,1 м². Парная площадью 4 м² отделана липой; пол выполнен из лиственницы. На крытой террасе предусмотрено место для купели. Печь с нержавеющей каменкой входит в стоимость, купель с подогревом доступна дополнительно.",
+    gallery: [
+      { image: platformaBathhouseSpa1, type: "photo" },
+      { image: platformaBathhouseSpa2, type: "photo" },
+      { image: platformaBathhouseSpa3, type: "photo" },
+      { image: platformaBathhouseSpa4, type: "photo" },
+      { image: platformaBathhouseSpaPlan, type: "plan", fit: "contain" },
+    ],
+    likes: 0, rating: 0,
+    suitableFor: ["Выходные / дача"],
+    technology: "Модульный дом", completion: "Под ключ", insulation: "по запросу",
+    features: ["Модульная баня", "Парная", "Крытая терраса", "Купель", "Печь", "Липа", "Лиственница"],
+    style: "Современный", landSize: "3–6 соток",
+    hasRealPhotos: false, hasShowroom: true, hasInstallment: true,
   },
   // ── Bygge · Екатеринбург ────────────────────────────────────────────────
   {
@@ -8808,6 +8945,7 @@ export const catalogItems = projects.map((p) => ({
   id: p.id,
   badge: p.badge,
   maker: `${p.maker.name} · ${p.city}`,
+  productType: p.productType ?? "house",
   name: p.name,
   price: p.price,
   area: p.area,

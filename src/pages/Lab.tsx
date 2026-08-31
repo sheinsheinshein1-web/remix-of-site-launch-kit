@@ -98,7 +98,7 @@ const Lab = () => {
           style={{
             background:
               "linear-gradient(135deg, #0A4FE8 0%, #1F6BFF 55%, #0C8FD0 100%)",
-            borderRadius: 28,
+            borderRadius: "var(--radius)",
             boxShadow: "0 18px 40px -16px rgba(10,79,232,0.55)",
           }}
         >
@@ -199,7 +199,7 @@ const Lab = () => {
           <div
             key={s.l}
             className="p-3"
-            style={{ ...GLASS, borderRadius: 20 }}
+            style={{ ...GLASS, borderRadius: "var(--radius)" }}
           >
             <div
               className="text-[22px] leading-none text-white"
@@ -244,11 +244,11 @@ const Lab = () => {
           <div
             key={p.name}
             className="overflow-hidden p-1.5"
-            style={{ ...GLASS, borderRadius: 22 }}
+            style={{ ...GLASS, borderRadius: "var(--radius)" }}
           >
             <div
               className="relative overflow-hidden"
-              style={{ borderRadius: 16, aspectRatio: "1 / 1.05" }}
+              style={{ borderRadius: "var(--radius)", aspectRatio: "1 / 1.05" }}
             >
               <img
                 src={p.img}
@@ -293,7 +293,7 @@ const Lab = () => {
       <section className="mt-4 px-3 grid grid-cols-5 gap-3">
         <div
           className="col-span-3 relative p-4 overflow-hidden"
-          style={{ ...GLASS, borderRadius: 24, minHeight: 150 }}
+          style={{ ...GLASS, borderRadius: "var(--radius)", minHeight: 150 }}
         >
           <span
             className="text-[10px] uppercase tracking-[0.12em] px-2 py-0.5"
@@ -337,7 +337,7 @@ const Lab = () => {
 
         <div
           className="col-span-2 p-4 flex flex-col justify-between"
-          style={{ ...GLASS, borderRadius: 24, minHeight: 150 }}
+          style={{ ...GLASS, borderRadius: "var(--radius)", minHeight: 150 }}
         >
           <span
             className="absolute top-3 right-3 w-7 h-7 flex items-center justify-center"

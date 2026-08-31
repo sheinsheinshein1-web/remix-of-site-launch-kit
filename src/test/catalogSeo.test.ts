@@ -17,6 +17,13 @@ describe("resolveCatalogSeoState", () => {
     expect(state.canonicalPath).toBe("/modulnye-doma/?minArea=50&maxArea=80");
   });
 
+  it("keeps the modular baths catalog indexable", () => {
+    const state = resolveCatalogSeoState(new URLSearchParams("type=bath"), allCategoryLinks);
+    expect(state.shouldNoIndex).toBe(false);
+    expect(state.activeCategory?.title).toBe("Модульные бани");
+    expect(state.canonicalPath).toBe("/modulnye-doma/?type=bath");
+  });
+
   it("noindexes extra filters and canonicals them to the matching category", () => {
     const state = resolveCatalogSeoState(new URLSearchParams("q=терраса&beds=2"), allCategoryLinks);
     expect(state.shouldNoIndex).toBe(true);

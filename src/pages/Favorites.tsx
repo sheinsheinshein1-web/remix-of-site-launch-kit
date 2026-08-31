@@ -111,7 +111,7 @@ const Favorites = () => {
               </p>
               <Link
                 to={CATALOG_PATH}
-                className="mt-7 inline-flex min-h-12 items-center justify-center rounded-[3px] bg-primary px-6 text-[15px] font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="mt-7 inline-flex min-h-12 items-center justify-center rounded-[var(--radius)] bg-primary px-6 text-[15px] font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 Смотреть проекты
               </Link>
@@ -127,13 +127,13 @@ const Favorites = () => {
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}
                     placeholder="Проект или производитель"
-                    className="h-12 w-full rounded-[3px] border border-border bg-background pl-11 pr-11 text-[16px] text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/10 md:text-[15px]"
+                    className="h-12 w-full rounded-[var(--radius)] border border-border bg-background pl-11 pr-11 text-[16px] text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/10 md:text-[15px]"
                   />
                   {query && (
                     <button
                       type="button"
                       onClick={() => setQuery("")}
-                      className="absolute right-0 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-[3px] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+                      className="absolute right-0 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-[var(--radius)] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
                       aria-label="Очистить поиск"
                     >
                       <X className="h-4 w-4" strokeWidth={1.7} aria-hidden />
@@ -147,7 +147,7 @@ const Favorites = () => {
                     <select
                       value={sortBy}
                       onChange={(event) => setSortBy(event.target.value as SortValue)}
-                      className="h-12 w-full cursor-pointer appearance-none rounded-[3px] border border-border bg-background pl-4 pr-12 text-[15px] text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/10"
+                      className="h-12 w-full cursor-pointer appearance-none rounded-[var(--radius)] border border-border bg-background pl-4 pr-12 text-[15px] text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/10"
                     >
                       {sortOptions.map((option) => (
                         <option key={option.value} value={option.value}>{option.label}</option>

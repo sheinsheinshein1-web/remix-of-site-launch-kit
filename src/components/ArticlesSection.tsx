@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { ChevronRight } from "lucide-react";
 import { homeArticles } from "@/data/articles";
+import HomeSectionTitle from "@/components/HomeSectionTitle";
 
 type ArticlesSectionProps = {
   showHeader?: boolean;
@@ -10,17 +10,8 @@ type ArticlesSectionProps = {
 const ArticlesSection = ({ showHeader = true, className = "" }: ArticlesSectionProps) => (
   <section className={`mx-auto w-full max-w-[1400px] px-4 pb-8 pt-12 sm:px-8 sm:pb-12 sm:pt-16 lg:px-12 ${className}`}>
     {showHeader && (
-      <div className="mb-4 flex items-center justify-between gap-3 sm:mb-5">
-        <h2 className="min-w-0 text-[18px] font-semibold tracking-normal text-[#342d27] dark:text-foreground md:text-[22px]">
-          Журнал
-        </h2>
-        <Link
-          to="/articles/"
-          className="inline-flex min-h-11 shrink-0 items-center gap-1 text-[15px] font-medium tracking-normal text-[#342d27] transition-colors duration-200 hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground md:text-[16px]"
-        >
-          Все материалы
-          <ChevronRight className="h-[15px] w-[15px] md:h-4 md:w-4" strokeWidth={1.8} aria-hidden />
-        </Link>
+      <div className="mb-4 sm:mb-5">
+        <HomeSectionTitle title="Все материалы" count={homeArticles.length} to="/articles/" />
       </div>
     )}
 
@@ -31,7 +22,7 @@ const ArticlesSection = ({ showHeader = true, className = "" }: ArticlesSectionP
           to={article.path}
           className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
         >
-          <span className="relative flex aspect-[1.45/1] items-center justify-center overflow-hidden rounded-[3px] bg-[#f6f7fa] dark:bg-secondary">
+          <span className="relative flex aspect-[1.45/1] items-center justify-center overflow-hidden rounded-[var(--radius)] bg-[#f6f7fa] dark:bg-secondary">
             <img
               src={article.image}
               alt=""

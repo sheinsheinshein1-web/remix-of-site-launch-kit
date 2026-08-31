@@ -39,7 +39,7 @@ const ProjectReportDialog = ({
         <span>Этот проект принадлежит вашей компании? </span>
         <Link
           to={`/messages/support?topic=claim-project&project=${projectId}`}
-          className="inline-flex min-h-11 items-center font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground"
+          className="inline-flex min-h-11 items-center font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground"
         >
           Подтвердить профиль
         </Link>

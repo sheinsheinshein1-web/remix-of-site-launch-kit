@@ -34,7 +34,8 @@
     --input: 220 15% 90%;
     --ring: 245 58% 42%;
 
-    --radius: 0.25rem;
+    /* Единый радиус интерфейса: карточки, кнопки, поля, чипы и hover-плашки. */
+    --radius: 5px;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;

@@ -43,13 +43,13 @@ const NotFound = () => {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
                   to={CATALOG_PATH}
-                  className="inline-flex min-h-12 items-center justify-center rounded-[3px] bg-primary px-6 text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  className="inline-flex min-h-12 items-center justify-center rounded-[var(--radius)] bg-primary px-6 text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
                   Перейти в каталог
                 </Link>
                 <Link
                   to="/"
-                  className="inline-flex min-h-12 items-center justify-center rounded-[3px] border border-border bg-background px-6 text-[15px] font-semibold text-foreground transition-colors hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+                  className="inline-flex min-h-12 items-center justify-center rounded-[var(--radius)] border border-border bg-background px-6 text-[15px] font-semibold text-foreground transition-colors hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
                 >
                   На главную
                 </Link>

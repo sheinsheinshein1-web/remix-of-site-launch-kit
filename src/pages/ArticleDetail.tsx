@@ -142,7 +142,7 @@ const HowToChooseModularHouse = () => {
       <section id="projects" className={sectionClassName}>
         <h2 className={headingClassName}>Посмотреть проекты</h2>
         <p className={paragraphClassName}>В каталоге многоместа.рф собраны 352 проекта модульных и каркасных домов с ценами, планировками, комплектацией и городами доставки. Фильтры сужают список по площади, числу спален, бюджету и региону.</p>
-        <Button asChild size="lg" className="mt-7 min-h-12 rounded-[3px] px-7 text-[15px]">
+        <Button asChild size="lg" className="mt-7 min-h-12 rounded-[var(--radius)] px-7 text-[15px]">
           <Link to={CATALOG_PATH}>Смотреть каталог домов</Link>
         </Button>
         <p className={paragraphClassName}>Если проект уже нашёлся, отправьте запрос из его карточки: производитель ответит расчётом по выбранной модели.</p>

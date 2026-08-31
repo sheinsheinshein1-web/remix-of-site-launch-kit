@@ -58,6 +58,7 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
     : [];
   const images = singleImage ? cardImages.slice(0, 1) : cardImages;
   const liked = isFavorite(project.id);
+  const isBathProject = project.productType === "bath";
   const likesCount = project.likes + (liked ? 1 : 0);
   const projectHref = getProjectPath(project);
   const displayPrice = /^(?:от(?:\s|$)|по запросу(?:\s|$))/i.test(project.price.trim())
@@ -105,7 +106,7 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
           <div className="absolute top-2 right-2 z-10">
             <button
               onClick={handleFavToggle}
-              className="flex items-center gap-1 rounded-[3px] bg-foreground/40 px-2 py-[4px] backdrop-blur-md"
+              className="flex items-center gap-1 rounded-[var(--radius)] bg-foreground/40 px-2 py-[4px] backdrop-blur-md"
               aria-label="В избранное"
             >
               <Heart
@@ -127,7 +128,9 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
           </div>
 
           <p className="mt-2 text-[13px] font-medium leading-snug tracking-normal text-[#595653] md:text-[14px]">
-            {project.area} · {project.beds} {wordForm(project.beds, ["спальня", "спальни", "спален"])} · {project.baths} {wordForm(project.baths, ["санузел", "санузла", "санузлов"])} · {project.floors} {wordForm(project.floors, ["этаж", "этажа", "этажей"])}
+            {isBathProject
+              ? `${project.area} · парная · под ключ · ${project.floors} ${wordForm(project.floors, ["этаж", "этажа", "этажей"])}`
+              : `${project.area} · ${project.beds} ${wordForm(project.beds, ["спальня", "спальни", "спален"])} · ${project.baths} ${wordForm(project.baths, ["санузел", "санузла", "санузлов"])} · ${project.floors} ${wordForm(project.floors, ["этаж", "этажа", "этажей"])}`}
           </p>
         </div>
       </a>

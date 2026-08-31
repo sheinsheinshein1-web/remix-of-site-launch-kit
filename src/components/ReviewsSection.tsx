@@ -70,7 +70,7 @@ const ReviewCard = ({
   initials: string; name: string; location: string; rating: number;
   project: string; text: string; tag?: string; color: string; mobile?: boolean;
 }) => (
-  <div className={`flex flex-col gap-2 md:gap-4 ${mobile ? "" : "border border-border rounded-[10px] p-6 bg-background"}`}>
+  <div className={`flex flex-col gap-2 md:gap-4 ${mobile ? "" : "border border-border rounded-[var(--radius)] p-6 bg-background"}`}>
     <div className="flex items-center gap-2 md:gap-3">
       <div className={`w-[34px] h-[34px] md:w-10 md:h-10 rounded-full flex items-center justify-center text-[12px] md:text-sm font-medium shrink-0 ${color}`}>
         {initials}

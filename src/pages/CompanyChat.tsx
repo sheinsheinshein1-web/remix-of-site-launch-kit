@@ -604,7 +604,7 @@ const CompanyChat = forwardRef<HTMLDivElement>((_, ref) => {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1.5">
             <p className="text-sm font-semibold text-foreground leading-tight truncate">{companyName}</p>
-            <span className="w-4 h-4 rounded-[6px] bg-primary/15 flex items-center justify-center shrink-0">
+            <span className="w-4 h-4 rounded-[var(--radius)] bg-primary/15 flex items-center justify-center shrink-0">
               <Check className="w-2.5 h-2.5 text-primary" strokeWidth={3} />
             </span>
           </div>
@@ -623,7 +623,7 @@ const CompanyChat = forwardRef<HTMLDivElement>((_, ref) => {
             <button
               type="button"
               onClick={backFromChat}
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] text-foreground transition-colors active:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius)] text-foreground transition-colors active:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
               aria-label="Назад"
             >
               <ChevronLeft className="w-6 h-6" />

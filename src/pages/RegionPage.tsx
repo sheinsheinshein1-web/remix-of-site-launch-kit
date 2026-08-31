@@ -166,27 +166,24 @@ const RegionPage = () => {
 
           {regionMakers.length > 0 && (
             <section className="mt-4 md:mt-8" aria-labelledby="region-makers-heading">
-              <div className="flex items-center justify-between gap-4">
-                <h2 id="region-makers-heading" className="text-[26px] font-semibold tracking-[-0.025em] text-[#342d27] md:text-[32px] dark:text-foreground">
-                  {region.deliveryCity ? `Производители с доставкой ${region.namePrepositional}` : `Производители ${region.namePrepositional}`}
-                </h2>
+              <h2 id="region-makers-heading" className="text-[26px] font-semibold tracking-[-0.025em] md:text-[32px]">
                 <Link
                   to={manufacturersHref}
-                  className="inline-flex min-h-11 shrink-0 items-center gap-1 text-[14px] font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:text-[16px] dark:text-foreground"
+                  className="group inline-flex min-h-11 items-center gap-2 text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground"
                 >
-                  Все производители
-                  <ChevronRight className="h-4 w-4" strokeWidth={1.8} aria-hidden />
+                  <span>Все производители {region.namePrepositional}</span>
+                  <ChevronRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none md:h-6 md:w-6" strokeWidth={1.8} aria-hidden />
                 </Link>
-              </div>
+              </h2>
               <div className="mt-6 grid sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3 lg:gap-x-10">
                 {previewMakers.map((maker) => (
                   <Link
                     key={maker.id}
                     to={getManufacturerPath(maker.id)}
-                    className="group -mx-3 flex min-h-[76px] items-center gap-3 rounded-[4px] px-3 py-3 transition-colors duration-200 hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:min-h-[80px]"
+                    className="group -mx-3 flex min-h-[76px] items-center gap-3 rounded-[var(--radius)] px-3 py-3 transition-colors duration-200 hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:min-h-[80px]"
                     aria-label={`${maker.name}: ${maker.reviewSummary.rating.toFixed(1)} из 5, ${maker.reviewSummary.hasReviews ? maker.reviewSummary.reviewsLabel : "отзывов пока нет"}`}
                   >
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[3px] border border-border bg-white text-[10px] font-semibold uppercase tracking-[0.08em] text-[#342d27]">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[var(--radius)] border border-border bg-white text-[10px] font-semibold uppercase tracking-[0.08em] text-[#342d27]">
                       {maker.logo ? <img src={maker.logo} alt="" width={40} height={40} className="h-full w-full object-contain p-1.5" loading="lazy" decoding="async" /> : maker.initials}
                     </span>
                     <span className="min-w-0 flex-1">

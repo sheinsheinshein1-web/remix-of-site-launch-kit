@@ -19,7 +19,7 @@ type MobileLink = {
 
 const informationLinks: MobileLink[] = [
   { label: "Поддержка", path: "/messages/support" },
-  { label: "Контакты", path: "mailto:hello@mnogomesta.com" },
+  { label: "Обратная связь", path: "/messages/support" },
 ];
 
 type LinkSectionProps = {
@@ -35,7 +35,7 @@ const LinkSection = ({ items, onNavigate }: LinkSectionProps) => (
           key={item.label}
           to={item.path}
           onClick={onNavigate}
-          className="group -mx-3 flex min-h-14 items-center justify-between gap-4 rounded-[4px] px-3 py-2 text-[17px] font-semibold text-foreground transition-colors duration-200 hover:bg-secondary hover:text-primary active:bg-secondary active:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+          className="group -mx-3 flex min-h-14 items-center justify-between gap-4 rounded-[var(--radius)] px-3 py-2 text-[17px] font-semibold text-foreground transition-colors duration-200 hover:bg-secondary hover:text-primary active:bg-secondary active:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
         >
           <span>{item.label}</span>
           <ChevronRight
@@ -130,7 +130,7 @@ const MobileMenu = ({ open, onOpenChange, onPartnerCta, hidePartnerCta = false }
                   <button
                     type="button"
                     onClick={() => setOpenNavigationSection(expanded ? null : section.label)}
-                    className={`-mx-3 flex min-h-14 w-[calc(100%+1.5rem)] items-center justify-between gap-4 rounded-[4px] px-3 py-2 text-left text-[17px] font-semibold transition-colors duration-200 hover:bg-secondary hover:text-primary active:bg-secondary active:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 ${
+                    className={`-mx-3 flex min-h-14 w-[calc(100%+1.5rem)] items-center justify-between gap-4 rounded-[var(--radius)] px-3 py-2 text-left text-[17px] font-semibold transition-colors duration-200 hover:bg-secondary hover:text-primary active:bg-secondary active:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 ${
                       expanded ? "bg-secondary text-primary" : "text-foreground"
                     }`}
                     aria-expanded={expanded}
@@ -151,7 +151,7 @@ const MobileMenu = ({ open, onOpenChange, onPartnerCta, hidePartnerCta = false }
                           key={item.label}
                           to={item.path}
                           onClick={closeMenu}
-                          className="-mx-3 flex min-h-11 w-[calc(100%+1.5rem)] items-center rounded-[3px] px-3 py-2 text-[15px] leading-snug text-muted-foreground transition-colors duration-200 hover:bg-secondary hover:text-primary active:bg-secondary active:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+                          className="-mx-3 flex min-h-11 w-[calc(100%+1.5rem)] items-center rounded-[var(--radius)] px-3 py-2 text-[15px] leading-snug text-muted-foreground transition-colors duration-200 hover:bg-secondary hover:text-primary active:bg-secondary active:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
                         >
                           {item.label}
                         </Link>
@@ -170,7 +170,7 @@ const MobileMenu = ({ open, onOpenChange, onPartnerCta, hidePartnerCta = false }
               <button
                 type="button"
                 onClick={handlePartnerCta}
-                className="flex min-h-12 w-full items-center justify-center rounded-[3px] bg-primary px-3 text-center text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="flex min-h-12 w-full items-center justify-center rounded-[var(--radius)] bg-primary px-3 text-center text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 Разместиться бесплатно
               </button>
@@ -178,7 +178,7 @@ const MobileMenu = ({ open, onOpenChange, onPartnerCta, hidePartnerCta = false }
               <Link
                 to="/partner/"
                 onClick={closeMenu}
-                className="flex min-h-12 w-full items-center justify-center rounded-[3px] bg-primary px-3 text-center text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="flex min-h-12 w-full items-center justify-center rounded-[var(--radius)] bg-primary px-3 text-center text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 Для производителей
               </Link>

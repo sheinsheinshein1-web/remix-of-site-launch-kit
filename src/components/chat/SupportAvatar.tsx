@@ -19,7 +19,7 @@ const iconClasses = {
 
 const SupportAvatar = ({ size = "md", className = "" }: SupportAvatarProps) => (
   <div
-    className={`${sizeClasses[size]} flex shrink-0 items-center justify-center rounded-[3px] bg-secondary text-primary ${className}`}
+    className={`${sizeClasses[size]} flex shrink-0 items-center justify-center rounded-[var(--radius)] bg-secondary text-primary ${className}`}
     aria-hidden="true"
   >
     <MessageCircle className={iconClasses[size]} strokeWidth={1.8} />

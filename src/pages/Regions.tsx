@@ -103,7 +103,7 @@ const Regions = () => {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Город или регион"
-                className="h-12 w-full rounded-[3px] border border-[#d8deed] bg-white pl-11 pr-11 text-[15px] text-[#342d27] outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/10 dark:text-foreground"
+                className="h-12 w-full rounded-[var(--radius)] border border-[#d8deed] bg-white pl-11 pr-11 text-[15px] text-[#342d27] outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/10 dark:text-foreground"
               />
               {query && (
                 <button type="button" onClick={() => setQuery("")} className="absolute right-0 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center text-[#342d27]/45 transition-colors hover:text-[#342d27]" aria-label="Очистить поиск">
@@ -114,7 +114,7 @@ const Regions = () => {
 
             <label className="relative block">
               <span className="sr-only">Сортировка регионов</span>
-              <select value={sortBy} onChange={(event) => setSortBy(event.target.value as SortValue)} className="h-12 w-full cursor-pointer appearance-none rounded-[3px] border border-[#d8deed] bg-white pl-4 pr-12 text-[15px] text-[#342d27] outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/10">
+              <select value={sortBy} onChange={(event) => setSortBy(event.target.value as SortValue)} className="h-12 w-full cursor-pointer appearance-none rounded-[var(--radius)] border border-[#d8deed] bg-white pl-4 pr-12 text-[15px] text-[#342d27] outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/10">
                 <option value="projects">Больше проектов</option>
                 <option value="name">По алфавиту</option>
               </select>
@@ -141,7 +141,7 @@ const Regions = () => {
                         key={city.slug}
                         to={getRegionPath(city.slug)}
                         aria-label={`${city.name}: ${group.projectsCount} ${plural(group.projectsCount, ["проект", "проекта", "проектов"])} от ${group.makersCount} ${plural(group.makersCount, ["производителя", "производителей", "производителей"])}`}
-                        className="group -mx-3 flex min-h-[86px] flex-col justify-center rounded-[3px] px-3 py-3 transition-colors duration-200 hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+                        className="group -mx-3 flex min-h-[86px] flex-col justify-center rounded-[var(--radius)] px-3 py-3 transition-colors duration-200 hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
                       >
                         <span className="block text-[16px] font-medium leading-tight text-[#342d27] transition-colors duration-200 group-hover:text-primary md:text-[18px]">
                           {city.name}

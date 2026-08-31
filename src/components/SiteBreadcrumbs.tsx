@@ -34,7 +34,7 @@ const SiteBreadcrumbs = ({ items, className = "", spacing = "page" }: SiteBreadc
             <Link
               to={item.to}
               onClick={item.onClick}
-              className="whitespace-nowrap transition-colors hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+              className="whitespace-nowrap transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
             >
               {item.label}
             </Link>

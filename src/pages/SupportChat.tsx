@@ -4,8 +4,8 @@ import Seo from "@/components/Seo";
 import SupportAvatar from "@/components/chat/SupportAvatar";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useMessagesNavigation } from "@/contexts/MessagesNavigationContext";
+import { getSupportSessionId, sendSupportMessage, SUPPORT_CHAT_API } from "@/lib/supportChat";
 
-const API = "https://sheinsheinshein1-web-chat-telegram-bridge-77c4.twc1.net";
 const STORAGE_KEY_PREFIX = "support_chat_messages";
 const STORAGE_TTL = 7 * 24 * 60 * 60 * 1000;
 
@@ -33,16 +33,6 @@ const quickActions = [
   "Работа сервиса",
   "Другой вопрос",
 ];
-
-function getSessionId(): string {
-  const key = "support_chat_session";
-  let id = localStorage.getItem(key);
-  if (!id) {
-    id = `s_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
-    localStorage.setItem(key, id);
-  }
-  return id;
-}
 
 function formatTime(ts?: number): string {
   const d = ts ? new Date(ts) : new Date();
@@ -97,7 +87,7 @@ function mergeMessages(current: Message[], incoming: Message[]): Message[] {
 const SupportChat = () => {
   const { backFromChat } = useMessagesNavigation();
   const isMobile = useIsMobile();
-  const sessionId = useRef(getSessionId());
+  const sessionId = useRef(getSupportSessionId());
   const [messages, setMessages] = useState<Message[]>(() => loadStoredMessages(sessionId.current));
   const [input, setInput] = useState("");
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -108,7 +98,7 @@ const SupportChat = () => {
 
   // SSE — слушаем ответы оператора
   useEffect(() => {
-    const es = new EventSource(`${API}/listen?session=${sessionId.current}`);
+    const es = new EventSource(`${SUPPORT_CHAT_API}/listen?session=${sessionId.current}`);
 
     es.onmessage = (e) => {
       const data = JSON.parse(e.data);
@@ -152,11 +142,7 @@ const SupportChat = () => {
     setInput("");
 
     try {
-      await fetch(`${API}/send`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ session: sessionId.current, text }),
-      });
+      await sendSupportMessage(text);
     } catch {
       // сеть недоступна — сообщение уже показано локально
     }
@@ -171,7 +157,7 @@ const SupportChat = () => {
           <button
             type="button"
             onClick={backFromChat}
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] text-foreground transition-colors hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius)] text-foreground transition-colors hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
             aria-label="Назад"
           >
             <ArrowLeft className="h-5 w-5" strokeWidth={1.8} aria-hidden />
@@ -191,7 +177,7 @@ const SupportChat = () => {
       {messages.map((msg) => (
         <div key={msg.id} className={`flex ${msg.fromSupport ? "justify-start" : "justify-end"}`}>
           <div
-            className={`max-w-[88%] rounded-[3px] px-4 py-3 sm:max-w-[72%] lg:max-w-[680px] ${
+            className={`max-w-[88%] rounded-[var(--radius)] px-4 py-3 sm:max-w-[72%] lg:max-w-[680px] ${
               msg.fromSupport
                 ? "bg-secondary text-foreground"
                 : "bg-primary text-primary-foreground"
@@ -212,7 +198,7 @@ const SupportChat = () => {
               key={action}
               type="button"
               onClick={() => handleQuickAction(action)}
-              className="min-h-11 rounded-[3px] border border-border bg-background px-3.5 py-2 text-[13px] font-medium text-foreground transition-colors hover:border-primary/25 hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+              className="min-h-11 rounded-[var(--radius)] border border-border bg-background px-3.5 py-2 text-[13px] font-medium text-foreground transition-colors hover:border-primary/25 hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
             >
               {action}
             </button>
@@ -239,12 +225,12 @@ const SupportChat = () => {
           onChange={(event) => setInput(event.target.value)}
           placeholder="Введите сообщение"
           autoComplete="off"
-          className="h-12 min-w-0 flex-1 rounded-[3px] border border-input bg-background px-4 text-[16px] text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+          className="h-12 min-w-0 flex-1 rounded-[var(--radius)] border border-input bg-background px-4 text-[16px] text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
         />
         <button
           type="submit"
           disabled={!input.trim()}
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[3px] bg-primary text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40"
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[var(--radius)] bg-primary text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-40"
           aria-label="Отправить сообщение"
         >
           <Send className="h-5 w-5" strokeWidth={1.8} aria-hidden />

@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useMemo, useState } from "react";
 import { ChevronDown, Flag, Star, ThumbsUp } from "lucide-react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
+import { sendSupportMessage } from "@/lib/supportChat";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Seo from "@/components/Seo";
@@ -128,6 +129,7 @@ const PartnerReviews = () => {
   const [reportFor, setReportFor] = useState<number | null>(null);
   const [reportReason, setReportReason] = useState("");
   const [reportComment, setReportComment] = useState("");
+  const [reportSending, setReportSending] = useState(false);
 
   const displayedReviews = useMemo(() => {
     const filtered = ratingFilter === 0
@@ -169,9 +171,9 @@ const PartnerReviews = () => {
     setReportComment("");
   };
 
-  const submitReport = (event: FormEvent<HTMLFormElement>) => {
+  const submitReport = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!reportReason) return;
+    if (!reportReason || reportSending) return;
 
     const subject = `Жалоба на отзыв о ${maker.name}`;
     const body = [
@@ -182,9 +184,16 @@ const PartnerReviews = () => {
       `Страница: ${window.location.href}`,
     ].filter(Boolean).join("\n");
 
-    window.location.href = `mailto:hello@mnogomesta.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    toast.info("Откроем почтовое приложение с заполненной жалобой");
-    handleReportOpenChange(false);
+    setReportSending(true);
+    try {
+      await sendSupportMessage(`${subject}\n${body}`);
+      toast.success("Жалоба отправлена оператору поддержки");
+      handleReportOpenChange(false);
+    } catch {
+      toast.error("Не удалось отправить жалобу. Попробуйте ещё раз");
+    } finally {
+      setReportSending(false);
+    }
   };
 
   return (
@@ -235,7 +244,7 @@ const PartnerReviews = () => {
                   <select
                     value={sortKey}
                     onChange={(event) => setSortKey(event.target.value as SortKey)}
-                    className="min-h-11 w-full appearance-none rounded-[3px] border border-[#dfe5f5] bg-white px-3.5 pr-10 text-[14px] font-medium text-[#342d27] outline-none transition-colors hover:border-primary/45 focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-border dark:bg-background dark:text-foreground"
+                    className="min-h-11 w-full appearance-none rounded-[var(--radius)] border border-[#dfe5f5] bg-white px-3.5 pr-10 text-[14px] font-medium text-[#342d27] outline-none transition-colors hover:border-primary/45 focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-border dark:bg-background dark:text-foreground"
                   >
                     {SORT_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
                   </select>
@@ -247,7 +256,7 @@ const PartnerReviews = () => {
                   <select
                     value={ratingFilter}
                     onChange={(event) => setRatingFilter(Number(event.target.value))}
-                    className="min-h-11 w-full appearance-none rounded-[3px] border border-[#dfe5f5] bg-white px-3.5 pr-10 text-[14px] font-medium text-[#342d27] outline-none transition-colors hover:border-primary/45 focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-border dark:bg-background dark:text-foreground"
+                    className="min-h-11 w-full appearance-none rounded-[var(--radius)] border border-[#dfe5f5] bg-white px-3.5 pr-10 text-[14px] font-medium text-[#342d27] outline-none transition-colors hover:border-primary/45 focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-border dark:bg-background dark:text-foreground"
                   >
                     {RATING_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
                   </select>
@@ -285,7 +294,7 @@ const PartnerReviews = () => {
                         <button
                           type="button"
                           onClick={() => setHelpful((current) => ({ ...current, [review.sourceIndex]: !current[review.sourceIndex] }))}
-                          className={`inline-flex min-h-11 items-center gap-2 rounded-[3px] transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 ${helpful[review.sourceIndex] ? "text-primary" : "text-[#717b8e]"}`}
+                          className={`inline-flex min-h-11 items-center gap-2 rounded-[var(--radius)] transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 ${helpful[review.sourceIndex] ? "text-primary" : "text-[#717b8e]"}`}
                           aria-pressed={Boolean(helpful[review.sourceIndex])}
                         >
                           <ThumbsUp className="h-4 w-4" strokeWidth={1.7} aria-hidden />
@@ -294,7 +303,7 @@ const PartnerReviews = () => {
                         <button
                           type="button"
                           onClick={() => setReportFor(review.sourceIndex)}
-                          className="inline-flex min-h-11 items-center gap-2 rounded-[3px] text-[#717b8e] transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+                          className="inline-flex min-h-11 items-center gap-2 rounded-[var(--radius)] text-[#717b8e] transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
                         >
                           <Flag className="h-4 w-4" strokeWidth={1.7} aria-hidden />
                           Пожаловаться
@@ -304,13 +313,13 @@ const PartnerReviews = () => {
                   ))}
                 </section>
               ) : (
-                <div className="mt-10 rounded-[3px] bg-secondary px-5 py-8 text-[15px] text-[#717b8e]">
+                <div className="mt-10 rounded-[var(--radius)] bg-secondary px-5 py-8 text-[15px] text-[#717b8e]">
                   Отзывов с такой оценкой пока нет.
                 </div>
               )}
             </>
           ) : (
-            <section className="mt-10 rounded-[3px] bg-secondary px-5 py-10 sm:px-8 sm:py-12">
+            <section className="mt-10 rounded-[var(--radius)] bg-secondary px-5 py-10 sm:px-8 sm:py-12">
               <h2 className="text-[24px] font-semibold tracking-[-0.025em] text-[#342d27] dark:text-foreground">Отзывов пока нет</h2>
               <p className="mt-2 max-w-[560px] text-[15px] leading-relaxed text-[#717b8e]">
                 Когда появятся отзывы о компании, мы покажем их на этой странице.
@@ -323,7 +332,7 @@ const PartnerReviews = () => {
       <Footer />
 
       <Dialog open={reportFor !== null} onOpenChange={handleReportOpenChange}>
-        <DialogContent className="max-h-[90dvh] w-[calc(100%-24px)] max-w-[560px] overflow-y-auto rounded-[3px] border-[#dfe5f5] bg-white p-5 shadow-xl sm:p-7 dark:border-border dark:bg-background">
+        <DialogContent className="max-h-[90dvh] w-[calc(100%-24px)] max-w-[560px] overflow-y-auto rounded-[var(--radius)] border-[#dfe5f5] bg-white p-5 shadow-xl sm:p-7 dark:border-border dark:bg-background">
           <DialogHeader className="pr-8 text-left">
             <DialogTitle className="text-[24px] font-semibold leading-tight tracking-[-0.025em] text-[#342d27] dark:text-foreground">
               Пожаловаться на отзыв
@@ -341,7 +350,7 @@ const PartnerReviews = () => {
                   <Label
                     key={reason}
                     htmlFor={reasonId}
-                    className="group flex min-h-11 cursor-pointer items-center gap-3 rounded-[3px] px-2.5 py-2.5 text-[15px] font-normal leading-snug text-[#342d27] transition-colors hover:bg-secondary focus-within:bg-secondary dark:text-foreground"
+                    className="group flex min-h-11 cursor-pointer items-center gap-3 rounded-[var(--radius)] px-2.5 py-2.5 text-[15px] font-normal leading-snug text-[#342d27] transition-colors hover:bg-secondary focus-within:bg-secondary dark:text-foreground"
                   >
                     <RadioGroupItem id={reasonId} value={reason} className="h-5 w-5 shrink-0 border-[#9aa4b7]" />
                     <span>{reason}</span>
@@ -360,7 +369,7 @@ const PartnerReviews = () => {
                 onChange={(event) => setReportComment(event.target.value)}
                 maxLength={800}
                 placeholder="Расскажите подробнее, что не так"
-                className="mt-2 min-h-[104px] resize-y rounded-[3px] border-[#dfe5f5] bg-white px-3 py-3 text-[16px] text-[#342d27] focus-visible:ring-primary/30 focus-visible:ring-offset-0 dark:border-border dark:bg-background dark:text-foreground"
+                className="mt-2 min-h-[104px] resize-y rounded-[var(--radius)] border-[#dfe5f5] bg-white px-3 py-3 text-[16px] text-[#342d27] focus-visible:ring-primary/30 focus-visible:ring-offset-0 dark:border-border dark:bg-background dark:text-foreground"
               />
             </div>
 
@@ -368,16 +377,16 @@ const PartnerReviews = () => {
               <button
                 type="button"
                 onClick={() => handleReportOpenChange(false)}
-                className="min-h-11 rounded-[3px] px-5 text-[14px] font-medium text-[#342d27] transition-colors hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground"
+                className="min-h-11 rounded-[var(--radius)] px-5 text-[14px] font-medium text-[#342d27] transition-colors hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground"
               >
                 Отмена
               </button>
               <button
                 type="submit"
-                disabled={!reportReason}
-                className="min-h-11 rounded-[3px] bg-primary px-5 text-[14px] font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-45"
+                disabled={!reportReason || reportSending}
+                className="min-h-11 rounded-[var(--radius)] bg-primary px-5 text-[14px] font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-45"
               >
-                Отправить
+                {reportSending ? "Отправляем…" : "Отправить"}
               </button>
             </div>
           </form>

@@ -24,7 +24,7 @@ const ThemeToggle = ({ variant = "default" }: { variant?: "default" | "dark" }) 
     <div
       role="radiogroup"
       aria-label="Цветовая тема"
-      className={`grid w-full max-w-[390px] grid-cols-3 gap-1 justify-self-start rounded-[3px] border p-1 ${
+      className={`grid w-full max-w-[390px] grid-cols-3 gap-1 justify-self-start rounded-[var(--radius)] border p-1 ${
         variant === "dark" ? "border-white/15 bg-white/5" : "border-border bg-background"
       }`}
     >
@@ -38,7 +38,7 @@ const ThemeToggle = ({ variant = "default" }: { variant?: "default" | "dark" }) 
             role="radio"
             aria-checked={selected}
             onClick={() => setTheme(value)}
-            className={`inline-flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-[3px] px-1.5 text-[12px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 sm:gap-2 sm:px-3 sm:text-[13px] ${
+            className={`inline-flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-[var(--radius)] px-1.5 text-[12px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 sm:gap-2 sm:px-3 sm:text-[13px] ${
               selected
                 ? variant === "dark"
                   ? "bg-white/10 text-white"

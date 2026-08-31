@@ -97,7 +97,7 @@ const ArticleLayout = ({ article, toc, children }: ArticleLayoutProps) => {
               </p>
             </header>
 
-            <figure className="mt-8 overflow-hidden rounded-[3px] bg-[#f6f7fa] sm:mt-10">
+            <figure className="mt-8 overflow-hidden rounded-[var(--radius)] bg-[#f6f7fa] sm:mt-10">
               <img
                 src={coverImage}
                 alt="Модульный дом на участке"

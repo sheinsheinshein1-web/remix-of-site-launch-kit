@@ -26,6 +26,7 @@ import { compareProjectTechnologyPriority, compareWithProjectPriority } from "@/
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { toast } from "sonner";
+import ManufacturerReportDialog from "@/components/ManufacturerReportDialog";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import {
   projects as allProjects,
@@ -363,8 +364,6 @@ const Partner = () => {
   };
 
   const cleanSiteUrl = partner.siteUrl.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
-  const violationMailto = `mailto:inadvert@yandex.ru?subject=${encodeURIComponent("Сообщение о нарушении прав")}&body=${encodeURIComponent(`Карточка производителя: https://многоместа.рф${getManufacturerPath(makerId)}\nВаша компания: \nКомментарий: `)}`;
-
   const { rating, reviewsLabel, hasReviews } = getPartnerReviewSummary(makerId);
   const reviewPreviews = getPartnerReviews(makerId).slice(0, 4);
 
@@ -761,7 +760,7 @@ const Partner = () => {
       {/* Sort Drawer — как в каталоге */}
       <Drawer open={sortOpen} onOpenChange={setSortOpen}>
         <DrawerContent
-          className="mx-0 rounded-t-[20px] p-0 border-0 text-white"
+          className="mx-0 rounded-t-[var(--radius)] p-0 border-0 text-white"
           style={{
             background: "hsl(0 0% 8% / 0.55)",
             backdropFilter: "blur(32px) saturate(160%)",
@@ -935,13 +934,16 @@ const Partner = () => {
               )}
 
               {/* Report */}
-              <button
-                className="w-full flex items-center justify-between px-5 py-4 rounded-2xl"
-                style={{ background: "hsl(0 0% 100% / 0.08)" }}
-              >
-                <span className="text-[15px] font-medium text-white">Пожаловаться</span>
-                <AlertCircle className="w-5 h-5 text-white/80" strokeWidth={1.6} />
-              </button>
+              <ManufacturerReportDialog manufacturerName={partner.name}>
+                <button
+                  type="button"
+                  className="w-full flex items-center justify-between px-5 py-4 rounded-2xl"
+                  style={{ background: "hsl(0 0% 100% / 0.08)" }}
+                >
+                  <span className="text-[15px] font-medium text-white">Пожаловаться</span>
+                  <AlertCircle className="w-5 h-5 text-white/80" strokeWidth={1.6} />
+                </button>
+              </ManufacturerReportDialog>
 
               <p className="text-[11px] leading-snug text-white/50 px-1 pt-1">
                 Все проекты и торговые знаки принадлежат компании {partner.name}. Информация собрана из открытых источников и приведена в ознакомительных целях.

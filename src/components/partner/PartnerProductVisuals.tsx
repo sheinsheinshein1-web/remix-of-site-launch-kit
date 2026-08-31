@@ -30,14 +30,14 @@ type PlatformScreenshotProps = {
 };
 
 const PlatformScreenshot = ({ src, alt, layout = "feature", imageClassName }: PlatformScreenshotProps) => (
-  <div className={`partner-platform-screenshot flex items-center justify-center overflow-hidden rounded-[3px] bg-[#eef0f4] p-3 sm:p-5 md:p-7 dark:bg-secondary ${layout === "hero" ? "aspect-square sm:aspect-[16/10]" : "aspect-square"}`}>
+  <div className={`partner-platform-screenshot flex items-center justify-center overflow-hidden rounded-[var(--radius)] bg-[#eef0f4] p-3 sm:p-5 md:p-7 dark:bg-secondary ${layout === "hero" ? "aspect-square sm:aspect-[16/10]" : "aspect-square"}`}>
     <img
       src={src}
       alt={alt}
       width={4486}
       height={2648}
       className={cn(
-        "partner-platform-screenshot-image flex-none rounded-[3px] object-contain object-center",
+        "partner-platform-screenshot-image flex-none rounded-[var(--radius)] object-contain object-center",
         layout === "hero"
           ? "h-full w-full scale-[1.06] translate-y-[2.5%]"
           : "h-[82%] w-auto max-w-none",
@@ -87,8 +87,8 @@ const crmRows = [
 ];
 
 export const PartnerCrmPreview = ({ layout = "feature" }: { layout?: PartnerVisualLayout }) => (
-  <div className={`rounded-[3px] bg-[#eef0f4] p-3 sm:p-5 md:p-7 dark:bg-secondary ${getVisualLayoutClassName(layout)}`}>
-    <div className="w-full rounded-[3px] bg-white p-5 sm:p-7 dark:bg-card">
+  <div className={`rounded-[var(--radius)] bg-[#eef0f4] p-3 sm:p-5 md:p-7 dark:bg-secondary ${getVisualLayoutClassName(layout)}`}>
+    <div className="w-full rounded-[var(--radius)] bg-white p-5 sm:p-7 dark:bg-card">
       <div className="flex items-start justify-between gap-5">
         <div>
           <p className="text-[18px] font-semibold text-[#342d27] md:text-[22px] dark:text-foreground">Обращения из Много места</p>
@@ -98,7 +98,7 @@ export const PartnerCrmPreview = ({ layout = "feature" }: { layout?: PartnerVisu
       </div>
       <div className="mt-7 space-y-3">
         {crmRows.map(([stage, project, time], index) => (
-          <div key={stage} className="grid grid-cols-[minmax(0,1fr)_auto] gap-4 rounded-[3px] bg-[#f4f5f7] p-4 dark:bg-secondary">
+          <div key={stage} className="grid grid-cols-[minmax(0,1fr)_auto] gap-4 rounded-[var(--radius)] bg-[#f4f5f7] p-4 dark:bg-secondary">
             <div className="min-w-0">
               <p className="text-[14px] font-medium text-[#342d27] dark:text-foreground">{stage}</p>
               <p className="mt-1 truncate text-[12px] text-muted-foreground">{project} · Москва</p>
@@ -120,8 +120,8 @@ export const PartnerCrmPreview = ({ layout = "feature" }: { layout?: PartnerVisu
 );
 
 export const PartnerLeadPreview = () => (
-  <div className={`rounded-[3px] bg-[#eef0f4] p-3 sm:p-5 md:p-7 dark:bg-secondary ${largeVisualClassName}`}>
-    <div className="w-full rounded-[3px] bg-white p-5 sm:p-7 dark:bg-card">
+  <div className={`rounded-[var(--radius)] bg-[#eef0f4] p-3 sm:p-5 md:p-7 dark:bg-secondary ${largeVisualClassName}`}>
+    <div className="w-full rounded-[var(--radius)] bg-white p-5 sm:p-7 dark:bg-card">
       <div className="flex items-start justify-between gap-5">
         <div>
           <p className="text-[18px] font-semibold text-[#342d27] md:text-[22px] dark:text-foreground">Новое обращение</p>
@@ -147,7 +147,7 @@ export const PartnerLeadPreview = () => (
           <dd className="mt-1 text-[14px] font-medium text-[#342d27] dark:text-foreground">многоместа.рф / проект</dd>
         </div>
       </dl>
-      <div className="mt-7 rounded-[3px] bg-[#f4f5f7] p-4 dark:bg-secondary">
+      <div className="mt-7 rounded-[var(--radius)] bg-[#f4f5f7] p-4 dark:bg-secondary">
         <p className="text-[11px] text-muted-foreground">Запрос покупателя</p>
         <p className="mt-2 text-[13px] leading-relaxed text-[#342d27] dark:text-foreground">Нужен расчёт комплектации с доставкой и сборкой. Планируем строительство осенью.</p>
       </div>
@@ -163,8 +163,8 @@ const dealHistoryRows = [
 ];
 
 export const PartnerDealHistoryPreview = () => (
-  <div className={`rounded-[3px] bg-[#eef0f4] p-3 sm:p-5 md:p-7 dark:bg-secondary ${largeVisualClassName}`}>
-    <div className="w-full rounded-[3px] bg-white p-5 sm:p-7 dark:bg-card">
+  <div className={`rounded-[var(--radius)] bg-[#eef0f4] p-3 sm:p-5 md:p-7 dark:bg-secondary ${largeVisualClassName}`}>
+    <div className="w-full rounded-[var(--radius)] bg-white p-5 sm:p-7 dark:bg-card">
       <div className="flex items-start justify-between gap-5">
         <div>
           <p className="text-[18px] font-semibold text-[#342d27] md:text-[22px] dark:text-foreground">История сделки</p>
@@ -183,7 +183,7 @@ export const PartnerDealHistoryPreview = () => (
           </li>
         ))}
       </ol>
-      <div className="mt-6 flex items-center justify-between gap-5 rounded-[3px] bg-[#f4f5f7] p-4 dark:bg-secondary">
+      <div className="mt-6 flex items-center justify-between gap-5 rounded-[var(--radius)] bg-[#f4f5f7] p-4 dark:bg-secondary">
         <div>
           <p className="text-[11px] text-muted-foreground">Ответственный</p>
           <p className="mt-1 text-[13px] font-medium text-[#342d27] dark:text-foreground">Менеджер производителя</p>
@@ -195,8 +195,8 @@ export const PartnerDealHistoryPreview = () => (
 );
 
 export const PartnerCommissionPreview = () => (
-  <div className={`rounded-[3px] bg-[#eef0f4] p-3 sm:p-5 md:p-7 dark:bg-secondary ${largeVisualClassName}`}>
-    <div className="w-full rounded-[3px] bg-white p-5 sm:p-7 dark:bg-card">
+  <div className={`rounded-[var(--radius)] bg-[#eef0f4] p-3 sm:p-5 md:p-7 dark:bg-secondary ${largeVisualClassName}`}>
+    <div className="w-full rounded-[var(--radius)] bg-white p-5 sm:p-7 dark:bg-card">
       <p className="text-[18px] font-semibold text-[#342d27] md:text-[22px] dark:text-foreground">Расчёт по состоявшейся сделке</p>
       <p className="mt-1 text-[12px] text-muted-foreground md:text-[13px]">Условия зафиксированы в договоре до запуска</p>
       <dl className="mt-8 space-y-5">
@@ -215,14 +215,14 @@ export const PartnerCommissionPreview = () => (
           </div>
         </div>
       </dl>
-      <p className="mt-8 rounded-[3px] bg-[#f4f5f7] p-4 text-[12px] leading-relaxed text-muted-foreground dark:bg-secondary">Демонстрационный расчёт при вознаграждении 5%. В договоре фиксируется порядок подтверждения состоявшейся сделки.</p>
+      <p className="mt-8 rounded-[var(--radius)] bg-[#f4f5f7] p-4 text-[12px] leading-relaxed text-muted-foreground dark:bg-secondary">Демонстрационный расчёт при вознаграждении 5%. В договоре фиксируется порядок подтверждения состоявшейся сделки.</p>
     </div>
   </div>
 );
 
 export const PartnerRenderingEstimatePreview = () => (
-  <div className={`rounded-[3px] bg-[#eef0f4] p-3 sm:p-5 md:p-7 dark:bg-secondary ${largeVisualClassName}`}>
-    <div className="w-full rounded-[3px] bg-white p-5 sm:p-7 dark:bg-card">
+  <div className={`rounded-[var(--radius)] bg-[#eef0f4] p-3 sm:p-5 md:p-7 dark:bg-secondary ${largeVisualClassName}`}>
+    <div className="w-full rounded-[var(--radius)] bg-white p-5 sm:p-7 dark:bg-card">
       <div className="flex items-start justify-between gap-5">
         <div>
           <p className="text-[18px] font-semibold text-[#342d27] md:text-[22px] dark:text-foreground">Полная визуальная линейка</p>
@@ -244,7 +244,7 @@ export const PartnerRenderingEstimatePreview = () => (
           <dd className="text-[14px] font-medium text-[#342d27] dark:text-foreground">готовые форматы</dd>
         </div>
       </dl>
-      <div className="mt-7 rounded-[3px] bg-[#f4f5f7] p-4 dark:bg-secondary">
+      <div className="mt-7 rounded-[var(--radius)] bg-[#f4f5f7] p-4 dark:bg-secondary">
         <p className="text-[11px] text-muted-foreground">Стоимость</p>
         <p className="mt-2 text-[26px] font-semibold tabular-nums tracking-[-0.025em] text-[#342d27] md:text-[30px] dark:text-foreground">{partnerCommercialTerms.renderingPrice}</p>
         <p className="mt-2 text-[12px] leading-relaxed text-muted-foreground">за проект. Общую стоимость оформления всей линейки фиксируем до начала работы.</p>
@@ -261,10 +261,10 @@ export const PartnerWebsitePreview = ({
   const project = projects[0];
 
   return (
-    <div className={`rounded-[3px] bg-[#e8ebf0] p-3 sm:p-5 md:p-7 dark:bg-secondary ${getVisualLayoutClassName(layout)}`}>
-      <div className="w-full overflow-hidden rounded-[3px] bg-white dark:bg-card">
+    <div className={`rounded-[var(--radius)] bg-[#e8ebf0] p-3 sm:p-5 md:p-7 dark:bg-secondary ${getVisualLayoutClassName(layout)}`}>
+      <div className="w-full overflow-hidden rounded-[var(--radius)] bg-white dark:bg-card">
         <div className="flex h-10 items-center gap-3 bg-[#f4f5f7] px-4 text-[11px] text-muted-foreground dark:bg-secondary">
-          <span className="h-2 w-2 rounded-[2px] bg-[#b7bdc8]" aria-hidden />
+          <span className="h-2 w-2 rounded-[var(--radius)] bg-[#b7bdc8]" aria-hidden />
           <span className="truncate">{maker.id}.дома.рф</span>
         </div>
         <div className="p-5 sm:p-7">
@@ -274,11 +274,11 @@ export const PartnerWebsitePreview = ({
           </div>
           {project && (
             <div className="mt-6 grid gap-5 sm:grid-cols-[1.15fr_0.85fr] sm:items-center">
-              <img src={project.gallery[0]?.image} alt="" className="aspect-[4/3] w-full rounded-[3px] object-cover" loading="lazy" decoding="async" />
+              <img src={project.gallery[0]?.image} alt="" className="aspect-[4/3] w-full rounded-[var(--radius)] object-cover" loading="lazy" decoding="async" />
               <div>
                 <p className="text-[22px] font-semibold leading-tight text-[#342d27] md:text-[28px] dark:text-foreground">{project.name}</p>
                 <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">{project.area} · {project.rooms}. Производство {getCityPrepositionalName(maker.city)}, доставка по региону.</p>
-                <div className="mt-5 inline-flex min-h-10 items-center rounded-[3px] bg-primary px-4 text-[12px] font-medium text-white">Получить расчёт</div>
+                <div className="mt-5 inline-flex min-h-10 items-center rounded-[var(--radius)] bg-primary px-4 text-[12px] font-medium text-white">Получить расчёт</div>
               </div>
             </div>
           )}
@@ -293,8 +293,8 @@ export const PartnerBusinessPreview = ({
   maker,
   layout = "feature",
 }: ProjectVisualProps & { layout?: PartnerVisualLayout }) => (
-  <div className={`rounded-[3px] bg-[#1f242c] p-3 text-white sm:p-5 md:p-7 ${getVisualLayoutClassName(layout)}`}>
-    <div className="w-full rounded-[3px] bg-[#2a3039] p-5 sm:p-7">
+  <div className={`rounded-[var(--radius)] bg-[#1f242c] p-3 text-white sm:p-5 md:p-7 ${getVisualLayoutClassName(layout)}`}>
+    <div className="w-full rounded-[var(--radius)] bg-[#2a3039] p-5 sm:p-7">
       <div className="flex items-end justify-between gap-5">
         <div>
           <p className="text-[20px] font-semibold md:text-[24px]">Проекты для бизнеса</p>
@@ -305,7 +305,7 @@ export const PartnerBusinessPreview = ({
       <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
         {projects.slice(0, 3).map((project, index) => (
           <div key={project.id} className={index === 2 ? "hidden sm:block" : ""}>
-            <img src={project.gallery[0]?.image} alt="" className="aspect-[4/3] w-full rounded-[3px] object-cover" loading="lazy" decoding="async" />
+            <img src={project.gallery[0]?.image} alt="" className="aspect-[4/3] w-full rounded-[var(--radius)] object-cover" loading="lazy" decoding="async" />
             <p className="mt-2 truncate text-[12px] font-medium text-white">{project.name}</p>
             <p className="mt-1 text-[11px] text-white/50">{project.maker.name || maker.name}</p>
           </div>

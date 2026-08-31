@@ -7,13 +7,14 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
-  CircleHelp,
+  CircleAlert,
   Forward,
   Heart,
   Images,
   Layers,
   Maximize,
   Play,
+  Ruler,
   Star,
   X,
 } from "lucide-react";
@@ -148,7 +149,7 @@ const ProjectDetail = () => {
   }, [finishSwipe]);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 420);
+    const handleScroll = () => setScrolled(window.scrollY > 24);
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -174,12 +175,16 @@ const ProjectDetail = () => {
   const reviewSummary = getPartnerReviewSummary(makerId);
   const liked = isFavorite(project.id);
   const firstImage = project.gallery[0]?.image ?? "";
+  const isBathProject = project.productType === "bath";
+  const bathCatalogHref = `${CATALOG_PATH}?type=bath`;
   const priceLabel = /^(?:от(?:\s|$)|по запросу(?:\s|$))/i.test(project.price.trim())
     ? project.price
     : `от ${project.price}`;
-  const seoProjectType = project.technology.toLocaleLowerCase("ru").includes("префаб")
-    ? "Префаб-дом"
-    : "Модульный дом";
+  const seoProjectType = isBathProject
+    ? "Модульная баня"
+    : project.technology.toLocaleLowerCase("ru").includes("префаб")
+      ? "Префаб-дом"
+      : "Модульный дом";
   const seoTitle = `${seoProjectType} ${project.name}, ${project.area} от ${project.maker.name} | многоместа.рф`;
   const seoDescription = `${seoProjectType} ${project.name} площадью ${project.area} от ${project.maker.name}. Цена ${priceLabel}. ${project.description}`.slice(0, 160);
   const deliveryCityLabel = getGeoSelectionLabel(deliveryRegionSlug);
@@ -224,7 +229,7 @@ const ProjectDetail = () => {
           <button
             type="button"
             onClick={() => setDeliveryCityOpen(true)}
-            className="font-medium text-primary transition-colors hover:text-primary/75 focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+            className="font-medium text-primary transition-colors hover:text-primary/75 focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
           >
             Выбрать регион
           </button>
@@ -235,7 +240,7 @@ const ProjectDetail = () => {
           <button
             type="button"
             onClick={() => setDeliveryCityOpen(true)}
-            className="inline-flex items-center gap-0.5 font-medium text-primary underline decoration-primary/25 underline-offset-2 transition-colors hover:text-primary/75 hover:decoration-primary/60 focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+            className="inline-flex items-center gap-0.5 font-medium text-primary underline decoration-primary/25 underline-offset-2 transition-colors hover:text-primary/75 hover:decoration-primary/60 focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
             aria-label={`Выбрать регион доставки. Сейчас ${deliveryCityLabel}`}
           >
             {deliveryRegionAccusative}
@@ -248,7 +253,7 @@ const ProjectDetail = () => {
           <button
             type="button"
             onClick={() => setDeliveryCityOpen(true)}
-            className="font-medium text-primary transition-colors hover:text-primary/75 focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+            className="font-medium text-primary transition-colors hover:text-primary/75 focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
           >
             Выбрать другой регион
           </button>
@@ -294,17 +299,29 @@ const ProjectDetail = () => {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Главная", item: buildSiteUrl("/") },
-      { "@type": "ListItem", position: 2, name: "Проекты", item: buildSiteUrl(CATALOG_PATH) },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: isBathProject ? "Модульные бани" : "Проекты",
+        item: buildSiteUrl(isBathProject ? bathCatalogHref : CATALOG_PATH),
+      },
       { "@type": "ListItem", position: 3, name: project.name, item: buildSiteUrl(canonicalPath) },
     ],
   };
 
-  const specItems = [
-    { icon: Maximize, value: project.area, label: "Площадь" },
-    { icon: BedDouble, value: String(project.beds), label: wordForm(project.beds, ["Спальня", "Спальни", "Спален"]) },
-    { icon: Bath, value: String(project.baths), label: wordForm(project.baths, ["Санузел", "Санузла", "Санузлов"]) },
-    { icon: Layers, value: String(project.floors), label: wordForm(project.floors, ["Этаж", "Этажа", "Этажей"]) },
-  ];
+  const specItems = isBathProject
+    ? [
+        { icon: Maximize, value: project.area, label: "Площадь" },
+        { icon: Ruler, value: project.dimensions ?? "По запросу", label: "Габариты" },
+        { icon: Bath, value: project.steamRoomArea ?? "Есть", label: "Парная" },
+        { icon: Layers, value: String(project.floors), label: wordForm(project.floors, ["Этаж", "Этажа", "Этажей"]) },
+      ]
+    : [
+        { icon: Maximize, value: project.area, label: "Площадь" },
+        { icon: BedDouble, value: String(project.beds), label: wordForm(project.beds, ["Спальня", "Спальни", "Спален"]) },
+        { icon: Bath, value: String(project.baths), label: wordForm(project.baths, ["Санузел", "Санузла", "Санузлов"]) },
+        { icon: Layers, value: String(project.floors), label: wordForm(project.floors, ["Этаж", "Этажа", "Этажей"]) },
+      ];
   const rawProjectDescription = project.descriptionLong || project.description;
   const descriptionPrefix = `${project.name} — `;
   const unprefixedProjectDescription = rawProjectDescription.startsWith(descriptionPrefix)
@@ -312,13 +329,21 @@ const ProjectDetail = () => {
     : rawProjectDescription;
   const projectDescription = unprefixedProjectDescription.charAt(0).toUpperCase() + unprefixedProjectDescription.slice(1);
 
-  const detailRows = [
-    ["Технология", project.technology],
-    ["Утепление", project.insulation],
-    ["Срок строительства", "до 60 дней"],
-    ["Стиль", project.style],
-    ["Регион производства", getCityDisplayName(project.city)],
-  ];
+  const detailRows = isBathProject
+    ? [
+        ["Тип объекта", "Модульная баня"],
+        ["Габариты", project.dimensions ?? "По запросу"],
+        ["Отделка парной", project.steamRoomFinish ?? "По запросу"],
+        ["Пол", project.floorFinish ?? "По запросу"],
+        ["Регион производства", getCityDisplayName(project.city)],
+      ]
+    : [
+        ["Технология", project.technology],
+        ["Утепление", project.insulation],
+        ["Срок строительства", "до 60 дней"],
+        ["Стиль", project.style],
+        ["Регион производства", getCityDisplayName(project.city)],
+      ];
 
   const renderGalleryImage = (index: number, mobile = false) => {
     const item = project.gallery[index];
@@ -336,7 +361,7 @@ const ProjectDetail = () => {
         />
         {item.type === "video" && (
           <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
-            <span className="flex h-14 w-14 items-center justify-center rounded-[3px] bg-white/90 text-[#342d27] shadow-sm">
+            <span className="flex h-14 w-14 items-center justify-center rounded-[var(--radius)] bg-white/90 text-[#342d27] shadow-sm">
               <Play className="h-5 w-5 fill-current" aria-hidden />
             </span>
           </div>
@@ -366,7 +391,7 @@ const ProjectDetail = () => {
         key={index}
         type="button"
         onClick={() => { setActiveImage(index); setLightboxOpen(true); }}
-        className={`group relative isolate h-full min-h-0 w-full cursor-pointer overflow-hidden rounded-[3px] bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 ${primary ? "" : mosaicCellClass(previewIndex)}`}
+        className={`group relative isolate h-full min-h-0 w-full cursor-pointer overflow-hidden rounded-[var(--radius)] bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 ${primary ? "" : mosaicCellClass(previewIndex)}`}
         aria-label={`Открыть фотографию ${index + 1} из ${project.gallery.length}`}
       >
         <img
@@ -380,13 +405,13 @@ const ProjectDetail = () => {
         />
         {item.type === "video" && (
           <span className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
-            <span className="flex h-11 w-11 items-center justify-center rounded-[3px] bg-white/90 text-[#342d27] shadow-sm">
+            <span className="flex h-11 w-11 items-center justify-center rounded-[var(--radius)] bg-white/90 text-[#342d27] shadow-sm">
               <Play className="h-4 w-4 fill-current" aria-hidden />
             </span>
           </span>
         )}
         {showCount && (
-          <span className="absolute bottom-3 right-3 z-30 inline-flex min-h-9 items-center gap-1.5 rounded-[3px] bg-[#342d27]/90 px-3 text-[12px] font-medium text-white backdrop-blur-sm">
+          <span className="absolute bottom-3 right-3 z-30 inline-flex min-h-9 items-center gap-1.5 rounded-[var(--radius)] bg-[#342d27]/90 px-3 text-[12px] font-medium text-white backdrop-blur-sm">
             <Images className="h-4 w-4" strokeWidth={1.6} aria-hidden />
             {project.gallery.length} фото
           </span>
@@ -411,9 +436,9 @@ const ProjectDetail = () => {
     <button
       type="button"
       onClick={() => navigate(makerHref)}
-      className="group flex min-h-12 w-full items-center gap-3 rounded-[3px] bg-[#f1f4ff] px-3 py-2.5 text-left transition-colors hover:bg-[#e9efff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:bg-primary/10 dark:hover:bg-primary/15"
+      className="group flex min-h-12 w-full items-center gap-3 rounded-[var(--radius)] bg-[#f1f4ff] px-3 py-2.5 text-left transition-colors hover:bg-[#e9efff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:bg-primary/10 dark:hover:bg-primary/15"
     >
-      <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[3px] bg-white text-[11px] font-bold shadow-[0_0_0_1px_rgba(59,70,96,0.08)] dark:bg-card">
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[var(--radius)] bg-white text-[11px] font-bold shadow-[0_0_0_1px_rgba(59,70,96,0.08)] dark:bg-card">
         {project.maker.logo ? (
           <img src={project.maker.logo} alt="" className="h-full w-full object-cover" loading="lazy" />
         ) : (
@@ -453,37 +478,61 @@ const ProjectDetail = () => {
       />
       <Header variant="home" />
 
-      {isMobile && scrolled && (
-        <div className="fixed inset-x-0 top-[50px] z-40 bg-white dark:bg-background">
-          <div className="flex h-14 items-center gap-3 px-4">
-            <button
-              type="button"
-              onClick={() => navigate(-1)}
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] text-[#342d27] transition-colors hover:bg-[#f3f4f7] dark:text-foreground"
-              aria-label="Назад"
-            >
-              <ArrowLeft className="h-5 w-5" strokeWidth={1.6} aria-hidden />
-            </button>
-            <div className="min-w-0 flex-1">
-              <p className="truncate text-[14px] font-semibold">{project.name}</p>
-              <p className="text-[13px] text-primary">{priceLabel}</p>
-            </div>
-            <button
-              type="button"
-              onClick={handleToggleFavorite}
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] text-[#342d27] transition-colors hover:bg-[#f3f4f7] dark:text-foreground"
-              aria-label={liked ? "Удалить из избранного" : "Добавить в избранное"}
-            >
-              <Heart className={`h-5 w-5 ${liked ? "fill-red-500 text-red-500" : ""}`} strokeWidth={1.6} aria-hidden />
-            </button>
-          </div>
-        </div>
-      )}
-
       <main className="pt-[50px] md:pt-0">
+        <div className="sticky top-[50px] z-40 flex h-14 items-center gap-1 border-b border-[#e2e6ef] bg-white px-2 md:hidden dark:border-border dark:bg-background">
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius)] text-[#342d27] transition-colors hover:bg-[#f3f4f7] active:bg-[#edf1fb] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground dark:hover:bg-secondary"
+            aria-label="Назад"
+          >
+            <ArrowLeft className="h-5 w-5" strokeWidth={1.6} aria-hidden />
+          </button>
+          <div
+            className={`min-w-0 flex-1 px-1.5 transition-opacity duration-200 ${scrolled ? "opacity-100" : "opacity-0"}`}
+            aria-hidden={!scrolled}
+          >
+            <p className="truncate text-[14px] font-semibold">{project.name}</p>
+            <p className="text-[13px] text-primary">{priceLabel}</p>
+          </div>
+          <button
+            type="button"
+            onClick={handleShare}
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius)] text-[#342d27] transition-colors hover:bg-[#f3f4f7] active:bg-[#edf1fb] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground dark:hover:bg-secondary"
+            aria-label="Поделиться"
+          >
+            <Forward className="h-5 w-5" strokeWidth={1.6} aria-hidden />
+          </button>
+          <button
+            type="button"
+            onClick={handleToggleFavorite}
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius)] text-[#342d27] transition-colors hover:bg-[#f3f4f7] active:bg-[#edf1fb] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground dark:hover:bg-secondary"
+            aria-label={liked ? "Удалить из избранного" : "Добавить в избранное"}
+          >
+            <Heart className={`h-5 w-5 ${liked ? "fill-red-500 text-red-500" : ""}`} strokeWidth={1.6} aria-hidden />
+          </button>
+          <ProjectReportDialog
+            projectId={project.id}
+            projectName={project.name}
+            manufacturerName={project.maker.name}
+          >
+            <button
+              type="button"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius)] text-[#342d27] transition-colors hover:bg-[#f3f4f7] active:bg-[#edf1fb] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground dark:hover:bg-secondary"
+              aria-label="Пожаловаться на проект"
+            >
+              <CircleAlert className="h-5 w-5" strokeWidth={1.6} aria-hidden />
+            </button>
+          </ProjectReportDialog>
+        </div>
+
         <div className={`${siteBreadcrumbPageContainerClassName} hidden md:block`}>
           <SiteBreadcrumbs
-            items={[{ label: "Главная", to: "/" }, { label: "Проекты", to: CATALOG_PATH }, { label: project.name }]}
+            items={[
+              { label: "Главная", to: "/" },
+              { label: isBathProject ? "Модульные бани" : "Проекты", to: isBathProject ? bathCatalogHref : CATALOG_PATH },
+              { label: project.name },
+            ]}
           />
         </div>
 
@@ -502,50 +551,7 @@ const ProjectDetail = () => {
                   ))}
                 </div>
               </div>
-              <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-24 bg-gradient-to-b from-black/45 via-black/15 to-transparent" aria-hidden />
-              <div className="absolute left-3 top-3 z-30 flex gap-2">
-                <button
-                  type="button"
-                  onClick={() => navigate(-1)}
-                  className="flex h-11 w-11 items-center justify-center rounded-[3px] text-white transition-colors duration-150 hover:bg-black/15 active:bg-black/25 focus-visible:bg-black/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
-                  aria-label="Назад"
-                >
-                  <ArrowLeft className="h-5 w-5" strokeWidth={1.9} aria-hidden />
-                </button>
-              </div>
-              <div className="absolute right-3 top-3 z-30 flex gap-2">
-                <button
-                  type="button"
-                  onClick={handleShare}
-                  className="flex h-11 w-11 items-center justify-center rounded-[3px] text-white transition-colors duration-150 hover:bg-black/15 active:bg-black/25 focus-visible:bg-black/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
-                  aria-label="Поделиться"
-                >
-                  <Forward className="h-5 w-5" strokeWidth={1.9} aria-hidden />
-                </button>
-                <button
-                  type="button"
-                  onClick={handleToggleFavorite}
-                  className="flex h-11 w-11 items-center justify-center rounded-[3px] text-white transition-colors duration-150 hover:bg-black/15 active:bg-black/25 focus-visible:bg-black/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
-                  aria-label={liked ? "Удалить из избранного" : "Добавить в избранное"}
-                >
-                  <Heart className={`h-5 w-5 ${liked ? "fill-red-500 text-red-500" : ""}`} strokeWidth={1.9} aria-hidden />
-                </button>
-                <ProjectReportDialog
-                  projectId={project.id}
-                  projectName={project.name}
-                  manufacturerName={project.maker.name}
-                >
-                  <button
-                    type="button"
-                    className="flex h-11 items-center justify-center gap-1.5 rounded-[3px] px-2.5 text-[12px] font-medium text-white transition-colors duration-150 hover:bg-black/15 active:bg-black/25 focus-visible:bg-black/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
-                    aria-label="Пожаловаться на проект"
-                  >
-                    <CircleHelp className="h-[18px] w-[18px] shrink-0" strokeWidth={1.8} aria-hidden />
-                    Пожаловаться
-                  </button>
-                </ProjectReportDialog>
-              </div>
-              <span className="absolute bottom-3 right-3 z-30 rounded-[3px] bg-[#342d27]/75 px-2.5 py-1.5 text-[12px] font-medium text-white">
+              <span className="absolute bottom-3 right-3 z-30 rounded-[var(--radius)] bg-[#342d27]/75 px-2.5 py-1.5 text-[12px] font-medium text-white">
                 {activeImage + 1} / {project.gallery.length}
               </span>
             </div>
@@ -570,7 +576,7 @@ const ProjectDetail = () => {
                   <button
                     type="button"
                     onClick={handleShare}
-                    className="flex h-11 w-11 items-center justify-center rounded-[3px] bg-[#f6f7fa] text-[#595653] transition-colors hover:bg-[#edf1fb] hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:bg-secondary dark:text-muted-foreground"
+                    className="flex h-11 w-11 items-center justify-center rounded-[var(--radius)] bg-[#f6f7fa] text-[#595653] transition-colors hover:bg-[#edf1fb] hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:bg-secondary dark:text-muted-foreground"
                     aria-label="Поделиться"
                   >
                     <Forward className="h-5 w-5" strokeWidth={1.6} aria-hidden />
@@ -578,7 +584,7 @@ const ProjectDetail = () => {
                   <button
                     type="button"
                     onClick={handleToggleFavorite}
-                    className="flex h-11 w-11 items-center justify-center rounded-[3px] bg-[#f6f7fa] text-[#595653] transition-colors hover:bg-[#edf1fb] hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:bg-secondary dark:text-muted-foreground"
+                    className="flex h-11 w-11 items-center justify-center rounded-[var(--radius)] bg-[#f6f7fa] text-[#595653] transition-colors hover:bg-[#edf1fb] hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:bg-secondary dark:text-muted-foreground"
                     aria-label={liked ? "Удалить из избранного" : "Добавить в избранное"}
                   >
                     <Heart className={`h-5 w-5 ${liked ? "fill-red-500 text-red-500" : ""}`} strokeWidth={1.6} aria-hidden />
@@ -590,10 +596,10 @@ const ProjectDetail = () => {
                   >
                     <button
                       type="button"
-                      className="flex h-11 w-11 items-center justify-center gap-2 rounded-[3px] bg-[#f6f7fa] px-0 text-[13px] font-medium text-[#595653] transition-colors hover:bg-[#edf1fb] hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 xl:w-auto xl:px-3.5 dark:bg-secondary dark:text-muted-foreground"
+                      className="flex h-11 w-11 items-center justify-center gap-2 rounded-[var(--radius)] bg-[#f6f7fa] px-0 text-[13px] font-medium text-[#595653] transition-colors hover:bg-[#edf1fb] hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 xl:w-auto xl:px-3.5 dark:bg-secondary dark:text-muted-foreground"
                       aria-label="Пожаловаться на проект"
                     >
-                      <CircleHelp className="h-5 w-5 shrink-0" strokeWidth={1.6} aria-hidden />
+                      <CircleAlert className="h-5 w-5 shrink-0" strokeWidth={1.6} aria-hidden />
                       <span className="hidden xl:inline">Пожаловаться</span>
                     </button>
                   </ProjectReportDialog>
@@ -605,7 +611,7 @@ const ProjectDetail = () => {
                   {priceLabel}
                 </p>
                 {renderDeliveryMessage()}
-                {renderProjectAction("mt-4 hidden h-12 w-full max-w-[420px] items-center justify-center gap-2 rounded-[3px] bg-primary px-5 text-[15px] font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:flex")}
+                {renderProjectAction("mt-4 hidden h-12 w-full max-w-[420px] items-center justify-center gap-2 rounded-[var(--radius)] bg-primary px-5 text-[15px] font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:flex")}
               </div>
 
               <div className="mt-6 max-w-[560px] md:mt-7">{renderSpecs()}</div>
@@ -616,7 +622,7 @@ const ProjectDetail = () => {
                   {priceLabel}
                 </p>
                 {renderDeliveryMessage()}
-                {renderProjectAction("mt-4 flex min-h-12 w-full items-center justify-center rounded-[3px] bg-primary px-5 text-[15px] font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2")}
+                {renderProjectAction("mt-4 flex min-h-12 w-full items-center justify-center rounded-[var(--radius)] bg-primary px-5 text-[15px] font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2")}
               </div>
 
               <div className="mt-5 max-w-[620px] border-t border-[#e2e6ef] pt-5 lg:hidden dark:border-border">{renderMakerCard()}</div>
@@ -631,7 +637,7 @@ const ProjectDetail = () => {
                   className="mt-5 max-w-[760px] text-[16px] leading-[1.72] text-[#595653] dark:text-muted-foreground"
                 />
 
-                <ProjectRooms beds={project.beds} baths={project.baths} kitchens={project.kitchens} />
+                {!isBathProject && <ProjectRooms beds={project.beds} baths={project.baths} kitchens={project.kitchens} />}
 
                 <section className="mt-10" aria-labelledby="project-characteristics-heading">
                   <h3 id="project-characteristics-heading" className="text-[20px] font-semibold text-[#342d27] dark:text-foreground">Характеристики</h3>
@@ -650,7 +656,7 @@ const ProjectDetail = () => {
                     <button
                       type="button"
                       onClick={() => setDetailsExpanded((current) => !current)}
-                      className="mt-2 inline-flex min-h-11 items-center gap-1 text-[15px] font-medium text-[#342d27] transition-colors duration-200 hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:hidden dark:text-foreground"
+                      className="mt-2 inline-flex min-h-11 items-center gap-1 text-[15px] font-medium text-[#342d27] transition-colors duration-200 hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:hidden dark:text-foreground"
                       aria-expanded={detailsExpanded}
                       aria-controls="project-characteristics-content"
                     >
@@ -668,27 +674,35 @@ const ProjectDetail = () => {
                 {priceLabel}
               </p>
               {renderDeliveryMessage()}
-              {renderProjectAction("mt-5 flex h-12 w-full items-center justify-center gap-2 rounded-[3px] bg-primary px-5 text-center text-[15px] font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2")}
+              {renderProjectAction("mt-5 flex h-12 w-full items-center justify-center gap-2 rounded-[var(--radius)] bg-primary px-5 text-center text-[15px] font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2")}
               <div className="mt-5 border-t border-[#e2e6ef] pt-5 dark:border-border">{renderMakerCard()}</div>
             </aside>
           </div>
 
           <section className="mx-4 py-12 md:mx-0 md:py-16" aria-labelledby="other-projects-heading">
-            <div className="mb-8 flex items-end justify-between gap-4">
-              <div>
-                <h2 id="other-projects-heading" className="text-[26px] font-semibold tracking-[-0.025em] text-[#342d27] md:text-[32px] dark:text-foreground">
-                  {allRegionsSelected ? "Другие проекты" : `Другие проекты ${deliveryRegionPrepositional}`}
-                </h2>
-              </div>
-              <button
-                type="button"
-                onClick={() => navigate(deliveryRegionHref)}
-                className="hidden min-h-11 shrink-0 items-center gap-1 text-[15px] font-medium text-[#342d27] transition-colors duration-200 hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 sm:flex md:text-[16px]"
-              >
-                Все проекты <ChevronRight className="h-4 w-4" strokeWidth={1.8} aria-hidden />
-              </button>
+            <div className="mb-8">
+              <h2 id="other-projects-heading" className="text-[26px] font-semibold tracking-[-0.025em] md:text-[32px]">
+                <button
+                  type="button"
+                  onClick={() => navigate(isBathProject ? bathCatalogHref : deliveryRegionHref)}
+                  className="group inline-flex min-h-11 items-center gap-2 text-left text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground"
+                >
+                  <span>
+                  {isBathProject
+                    ? "Все модульные бани"
+                    : allRegionsSelected
+                      ? "Все проекты"
+                      : `Все проекты ${deliveryRegionPrepositional}`}
+                  </span>
+                  <ChevronRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none md:h-6 md:w-6" strokeWidth={1.8} aria-hidden />
+                </button>
+              </h2>
             </div>
-            <OtherProjectsFeed currentId={String(project.id)} deliveryRegion={deliveryRegionSlug} />
+            <OtherProjectsFeed
+              currentId={String(project.id)}
+              deliveryRegion={deliveryRegionSlug}
+              productType={isBathProject ? "bath" : "house"}
+            />
           </section>
         </div>
       </main>
@@ -700,7 +714,7 @@ const ProjectDetail = () => {
         onOpenChange={setDeliveryCityOpen}
         city={deliveryRegionSlug}
         onSelect={selectDeliveryRegion}
-        title="Куда доставить дом?"
+        title={isBathProject ? "Куда доставить баню?" : "Куда доставить дом?"}
         availableRegions={projectDeliveryRegions}
       />
 
@@ -725,12 +739,12 @@ const ProjectDetail = () => {
           <button
             type="button"
             onClick={(event) => { event.stopPropagation(); setLightboxOpen(false); }}
-            className="absolute right-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-[3px] bg-white/10 text-white transition-colors hover:bg-white/20"
+            className="absolute right-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-[var(--radius)] bg-white/10 text-white transition-colors hover:bg-white/20"
             aria-label="Закрыть"
           >
             <X className="h-5 w-5" aria-hidden />
           </button>
-          <span className="absolute left-4 top-4 z-20 rounded-[3px] bg-white/10 px-3 py-2 text-[12px] font-medium text-white">
+          <span className="absolute left-4 top-4 z-20 rounded-[var(--radius)] bg-white/10 px-3 py-2 text-[12px] font-medium text-white">
             {activeImage + 1} / {project.gallery.length}
           </span>
           <img
@@ -746,7 +760,7 @@ const ProjectDetail = () => {
                 type="button"
                 onClick={(event) => { event.stopPropagation(); setActiveImage((current) => Math.max(0, current - 1)); }}
                 disabled={activeImage === 0}
-                className="absolute left-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-[3px] bg-white/10 text-white transition-colors hover:bg-white/20 disabled:pointer-events-none disabled:opacity-25"
+                className="absolute left-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-[var(--radius)] bg-white/10 text-white transition-colors hover:bg-white/20 disabled:pointer-events-none disabled:opacity-25"
                 aria-label="Предыдущее изображение"
               >
                 <ChevronLeft className="h-6 w-6" aria-hidden />
@@ -755,7 +769,7 @@ const ProjectDetail = () => {
                 type="button"
                 onClick={(event) => { event.stopPropagation(); setActiveImage((current) => Math.min(project.gallery.length - 1, current + 1)); }}
                 disabled={activeImage === project.gallery.length - 1}
-                className="absolute right-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-[3px] bg-white/10 text-white transition-colors hover:bg-white/20 disabled:pointer-events-none disabled:opacity-25"
+                className="absolute right-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-[var(--radius)] bg-white/10 text-white transition-colors hover:bg-white/20 disabled:pointer-events-none disabled:opacity-25"
                 aria-label="Следующее изображение"
               >
                 <ChevronRight className="h-6 w-6" aria-hidden />

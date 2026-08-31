@@ -1,20 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useMemo, useState } from "react";
-import { manufacturers, projects } from "@/data/projects";
 import { parseSearchFilters } from "@/components/SearchDropdown";
-import { geoLocationCount } from "@/data/regions";
 import { CATALOG_PATH, getRegionPath } from "@/lib/siteRoutes";
 import { resolveGeoSelection, searchGeoSelections } from "@/lib/geoSelection";
+import mobileHeroImage from "@/assets/home-mobile-forest.jpg";
+import desktopHeroImage from "@/assets/home-desktop-village-sky.jpg";
 
-const pluralize = (count: number, one: string, few: string, many: string) => {
-  const absoluteCount = Math.abs(count) % 100;
-  const lastDigit = absoluteCount % 10;
-
-  if (absoluteCount > 10 && absoluteCount < 20) return many;
-  if (lastDigit === 1) return one;
-  if (lastDigit >= 2 && lastDigit <= 4) return few;
-  return many;
-};
+// Keep the mobile matte for text contrast; the old desktop diagonal can be restored independently.
+const HERO_BLUR_ENABLED = true;
+const DESKTOP_DIAGONAL_BLUR_ENABLED = false;
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -25,18 +19,6 @@ const HeroSection = () => {
     () => searchGeoSelections(query, 5),
     [query],
   );
-
-  const projectCount = projects.length;
-  const manufacturerCount = manufacturers.length;
-  const regionCount = geoLocationCount;
-  const technologyCount = new Set(projects.map((project) => project.technology)).size;
-
-  const stats = [
-    { value: String(projectCount), label: pluralize(projectCount, "проект дома", "проекта домов", "проектов домов") },
-    { value: String(manufacturerCount), label: pluralize(manufacturerCount, "производитель", "производителя", "производителей") },
-    { value: String(regionCount), label: pluralize(regionCount, "регион", "региона", "регионов") },
-    { value: String(technologyCount), label: pluralize(technologyCount, "технология", "технологии", "технологий") },
-  ];
 
   const runSearch = () => {
     const normalized = query.trim();
@@ -76,18 +58,80 @@ const HeroSection = () => {
 
   return (
     <section className="bg-[radial-gradient(circle_at_82%_20%,rgba(31,36,43,0.055)_0%,rgba(31,36,43,0.016)_30%,transparent_58%),linear-gradient(180deg,#ffffff_0%,#f3f4f6_100%)] pt-[50px] dark:bg-[radial-gradient(circle_at_82%_18%,rgba(255,255,255,0.045)_0%,rgba(255,255,255,0.012)_30%,transparent_58%),linear-gradient(180deg,#0f1115_0%,#181a1e_100%)] md:pt-[116px]">
-      <div className="border-b border-[#e4e4e2]">
-        <div className="mx-auto flex min-h-[500px] w-full max-w-[1400px] flex-col justify-center px-4 py-14 sm:px-8 sm:py-16 md:min-h-[560px] lg:px-12">
-          <h1 className="max-w-[1120px] text-[34px] font-semibold leading-[1.03] tracking-[-0.035em] text-[#171614] sm:text-[44px] md:text-[56px] lg:text-[64px]">
-            Модульные дома России<br />
-            на одной платформе
-          </h1>
+      <div className="relative overflow-hidden border-b border-[#e4e4e2]">
+        <img
+          src={mobileHeroImage}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover object-center md:hidden"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
+        <img
+          src={desktopHeroImage}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 hidden h-full w-full object-cover object-center md:block"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
+        <div className="pointer-events-none absolute inset-0 hidden bg-[#07110a]/20 md:block" aria-hidden="true" />
+        {HERO_BLUR_ENABLED && (
+          <div
+            className="pointer-events-none absolute inset-0 md:hidden"
+            style={{
+              background: "linear-gradient(180deg, rgba(20, 34, 23, 0.02) 0%, rgba(16, 29, 20, 0.1) 52%, rgba(10, 22, 14, 0.32) 100%)",
+              backdropFilter: "blur(18px) brightness(0.69) saturate(0.86)",
+              WebkitBackdropFilter: "blur(18px) brightness(0.69) saturate(0.86)",
+              maskImage: "linear-gradient(to bottom, transparent 25%, rgba(0, 0, 0, 0.38) 45%, black 68%)",
+              WebkitMaskImage: "linear-gradient(to bottom, transparent 25%, rgba(0, 0, 0, 0.38) 45%, black 68%)",
+            }}
+            aria-hidden="true"
+          />
+        )}
+        {DESKTOP_DIAGONAL_BLUR_ENABLED && (
+          <div
+            className="pointer-events-none absolute inset-0 hidden md:block"
+            style={{
+              maskImage: "linear-gradient(to bottom, transparent 12%, rgba(0, 0, 0, 0.28) 28%, black 48%)",
+              WebkitMaskImage: "linear-gradient(to bottom, transparent 12%, rgba(0, 0, 0, 0.28) 28%, black 48%)",
+            }}
+            aria-hidden="true"
+          >
+            <div
+              className="absolute inset-0"
+              style={{
+                maskImage: "linear-gradient(68deg, black 0%, black 46%, rgba(0, 0, 0, 0.82) 52%, transparent 66%)",
+                WebkitMaskImage: "linear-gradient(68deg, black 0%, black 46%, rgba(0, 0, 0, 0.82) 52%, transparent 66%)",
+              }}
+            >
+              <img
+                src={desktopHeroImage}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full scale-[1.035] object-cover object-center blur-[22px] brightness-[0.64] saturate-[0.86]"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,34,23,0.02)_0%,rgba(16,29,20,0.1)_52%,rgba(10,22,14,0.32)_100%)]" />
+            </div>
+          </div>
+        )}
+        <div className="relative z-10 mx-auto flex min-h-[760px] w-full max-w-[1400px] flex-col justify-end px-4 py-12 sm:px-8 sm:py-16 md:min-h-[640px] md:items-center md:justify-center lg:min-h-[680px] lg:px-12">
+          <div className="w-full md:max-w-[900px] md:text-center">
+            <h1 className="max-w-[1120px] text-[34px] font-semibold leading-[1.03] tracking-[-0.035em] text-white sm:text-[44px] md:mx-auto md:text-[56px] lg:text-[64px]">
+              Найдите свой<br />
+              модульный дом
+            </h1>
 
-          <p className="mt-6 max-w-[940px] text-[15px] font-normal leading-relaxed text-[#595653] md:mt-8 md:text-[20px]">
-            Каталог производителей домов с ценами, характеристиками и регионами доставки
-          </p>
+            <p className="mt-6 max-w-[940px] text-[15px] font-normal leading-relaxed text-white/85 md:mx-auto md:mt-8 md:text-[20px]">
+              Каталог производителей домов с ценами,
+              <br className="hidden md:block" />
+              <span className="md:hidden"> </span>
+              характеристиками и регионами доставки
+            </p>
 
-          <form onSubmit={submitSearch} className="relative mt-8 w-full md:mt-10">
+            <form onSubmit={submitSearch} className="relative mt-8 w-full md:mx-auto md:mt-10 md:max-w-[700px] lg:max-w-[720px]">
             <label className="sr-only" htmlFor="hero-search">Производитель, модель или регион</label>
             <input
               id="hero-search"
@@ -104,12 +148,12 @@ const HeroSection = () => {
                   runSearch();
                 }
               }}
-              className="min-h-14 w-full min-w-0 rounded-[3px] border border-[#d7d7d4] bg-white py-0 pl-4 pr-[122px] text-[16px] tracking-normal text-[#342d27] outline-none transition-colors placeholder:text-[#94918d] focus:border-primary md:min-h-16 md:pl-6 md:pr-[182px] md:text-[18px]"
+              className="min-h-14 w-full min-w-0 rounded-[var(--radius)] border border-[#d7d7d4] bg-white py-0 pl-4 pr-[122px] text-[16px] tracking-normal text-[#342d27] outline-none transition-colors placeholder:text-[#94918d] focus:border-primary md:min-h-16 md:pl-6 md:pr-[182px] md:text-[18px]"
               placeholder="Производитель, модель или регион"
             />
             <button
               type="submit"
-              className="absolute right-1.5 top-1/2 h-11 min-w-[108px] -translate-y-1/2 rounded-[3px] bg-primary px-6 text-[14px] font-medium tracking-normal text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:h-[52px] md:min-w-[160px] md:px-8 md:text-[17px]"
+              className="absolute right-1.5 top-1/2 h-11 min-w-[108px] -translate-y-1/2 rounded-[var(--radius)] bg-primary px-6 text-[14px] font-medium tracking-normal text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:h-[52px] md:min-w-[160px] md:px-8 md:text-[17px]"
             >
               Поиск
             </button>
@@ -118,7 +162,7 @@ const HeroSection = () => {
               <div
                 role="listbox"
                 aria-label="Найденные регионы доставки"
-                className="absolute left-0 right-0 top-[calc(100%+6px)] z-30 overflow-hidden rounded-[3px] border border-[#dfe5f5] bg-white py-1 shadow-[0_8px_24px_rgba(31,36,43,0.08)] dark:bg-background"
+                className="absolute left-0 right-0 top-[calc(100%+6px)] z-30 overflow-hidden rounded-[var(--radius)] border border-[#dfe5f5] bg-white py-1 shadow-[0_8px_24px_rgba(31,36,43,0.08)] dark:bg-background"
               >
                 {regionSuggestions.map((region) => (
                   <button
@@ -137,43 +181,25 @@ const HeroSection = () => {
                 ))}
               </div>
             )}
-          </form>
+            </form>
 
-          <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] text-[#595653] md:mt-6 md:text-[16px]">
-            <span>Популярное:</span>
-            {popularQueries.map((popularQuery) => (
-              <button
-                key={popularQuery.label}
-                type="button"
-                onClick={() => navigate(popularQuery.href)}
-                className="border-b border-[#bcb9b5] leading-snug transition-colors hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
-              >
-                {popularQuery.label}
-              </button>
-            ))}
+            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] text-white/80 md:mt-6 md:justify-center md:text-[16px]">
+              <span>Популярное:</span>
+              {popularQueries.map((popularQuery) => (
+                <button
+                  key={popularQuery.label}
+                  type="button"
+                  onClick={() => navigate(popularQuery.href)}
+                  className="border-b border-white/55 leading-snug transition-colors hover:border-white hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                >
+                  {popularQuery.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="border-b border-[#dfe5f5] bg-transparent">
-        <div className="mx-auto grid w-full max-w-[1400px] grid-cols-2 font-sans md:grid-cols-4">
-          {stats.map((stat, index) => (
-            <button
-              key={stat.label}
-              type="button"
-              onClick={() => navigate(index === 1 ? "/partner/" : CATALOG_PATH)}
-              className="group flex min-h-[88px] flex-col items-start justify-center gap-1.5 border-b border-r border-[#dfe5f5] px-5 text-left font-sans transition-colors last:border-r-0 hover:bg-white/70 dark:hover:bg-primary/10 md:min-h-[104px] md:gap-2 md:border-b-0 md:px-9 lg:px-12"
-            >
-              <span className="block text-[24px] font-medium leading-none tracking-[-0.02em] text-[#3a332d] transition-colors group-hover:text-primary md:text-[30px]">
-                {stat.value}
-              </span>
-              <span className="block text-[12px] font-medium tracking-normal text-[#717b8e] md:text-[14px]">
-                {stat.label}
-              </span>
-            </button>
-          ))}
-        </div>
-      </div>
     </section>
   );
 };

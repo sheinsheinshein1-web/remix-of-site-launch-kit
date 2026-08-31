@@ -41,13 +41,13 @@ const DesktopNavigation = ({ className = "", triggerClassName = "" }: DesktopNav
             section.align === "right" ? "right-0" : "left-0"
           } ${section.widthClassName}`}
         >
-          <div className="mt-1 rounded-[4px] border border-border bg-background p-2 shadow-[0_16px_45px_rgba(24,28,38,0.14)] dark:shadow-[0_18px_48px_rgba(0,0,0,0.34)]">
+          <div className="mt-1 rounded-[var(--radius)] border border-border bg-background p-2 shadow-[0_16px_45px_rgba(24,28,38,0.14)] dark:shadow-[0_18px_48px_rgba(0,0,0,0.34)]">
             <div className={`grid gap-0.5 ${section.columnsClassName ?? "grid-cols-1"}`}>
               {section.items.map((item) => (
                 <Link
                   key={item.label}
                   to={item.path}
-                  className="flex min-h-10 items-center rounded-[3px] px-3 py-2 text-[14px] font-normal leading-snug text-foreground transition-colors hover:bg-secondary hover:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none"
+                  className="flex min-h-10 items-center rounded-[var(--radius)] px-3 py-2 text-[14px] font-normal leading-snug text-foreground transition-colors hover:bg-secondary hover:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none"
                 >
                   {item.label}
                 </Link>

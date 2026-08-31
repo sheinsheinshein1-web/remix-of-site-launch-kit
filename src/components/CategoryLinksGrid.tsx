@@ -12,7 +12,7 @@ const CategoryLinksGrid = ({ eagerCount = 0, items = categoryLinks }: CategoryLi
       <Link
         key={item.title}
         to={item.href}
-        className="group relative flex min-h-[172px] flex-col overflow-hidden rounded-[3px] bg-[#f6f7fa] p-3 transition-colors duration-200 hover:bg-[#f0f3fb] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:bg-secondary dark:hover:bg-primary/10 md:min-h-[226px] md:p-5"
+        className="group relative flex min-h-[172px] flex-col overflow-hidden rounded-[var(--radius)] bg-[#f6f7fa] p-3 transition-colors duration-200 hover:bg-[#f0f3fb] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:bg-secondary dark:hover:bg-primary/10 md:min-h-[226px] md:p-5"
         aria-label={`${item.title}. ${item.caption}`}
       >
         <div className="relative z-10 max-w-[75%]">

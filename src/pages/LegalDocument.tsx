@@ -55,7 +55,7 @@ const LegalDocument = () => {
                 <a
                   key={section.id}
                   href={`#${section.id}`}
-                  className="block min-h-11 py-3 text-[14px] leading-snug text-[#342d27]/70 transition-colors hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-muted-foreground"
+                  className="block min-h-11 py-3 text-[14px] leading-snug text-[#342d27]/70 transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-muted-foreground"
                 >
                   {section.title}
                 </a>
@@ -71,7 +71,7 @@ const LegalDocument = () => {
                   <a
                     key={section.id}
                     href={`#${section.id}`}
-                    className="block py-2 text-[13px] leading-snug text-[#342d27]/58 transition-colors hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-muted-foreground"
+                    className="block py-2 text-[13px] leading-snug text-[#342d27]/58 transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-muted-foreground"
                   >
                     {section.title}
                   </a>

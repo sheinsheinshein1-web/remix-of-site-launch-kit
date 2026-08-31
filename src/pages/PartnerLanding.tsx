@@ -57,7 +57,7 @@ const breadcrumbJsonLd = {
 };
 
 const ctaClassName =
-  "min-h-12 rounded-[3px] px-6 text-[15px] font-semibold focus-visible:ring-primary focus-visible:ring-offset-2";
+  "min-h-12 rounded-[var(--radius)] px-6 text-[15px] font-semibold focus-visible:ring-primary focus-visible:ring-offset-2";
 
 const PartnerLanding = () => {
   const [showForm, setShowForm] = useState(false);

@@ -12,20 +12,24 @@ const RELATED_CARD_HEIGHT = "aspect-[4/3] h-auto md:h-[240px] md:aspect-auto";
 interface Props {
   currentId?: string;
   deliveryRegion: string;
+  productType?: "house" | "bath";
 }
 
-const OtherProjectsFeed = ({ currentId, deliveryRegion }: Props) => {
+const OtherProjectsFeed = ({ currentId, deliveryRegion, productType = "house" }: Props) => {
   const navigate = useNavigate();
 
   // Рекомендации следуют выбранному направлению доставки, а не региону производства проекта.
   const pool = useMemo(() => {
     const matchingProjects = allProjects
       .filter((p) => String(p.id) !== currentId)
+      .filter((p) => productType === "bath"
+        ? p.productType === "bath" || p.productType === "house-bath"
+        : p.productType !== "bath")
       .filter((p) => isProjectAvailableInGeo(p.city, deliveryRegion, p.deliveryRegionSlugs))
       .sort(compareProjectTechnologyPriority);
 
     return Array.from(new Map(matchingProjects.map((project) => [project.id, project])).values());
-  }, [currentId, deliveryRegion]);
+  }, [currentId, deliveryRegion, productType]);
 
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, projectId: number) => {

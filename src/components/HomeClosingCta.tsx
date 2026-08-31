@@ -14,13 +14,13 @@ const HomeClosingCta = () => (
       <div className="mt-8 flex w-full max-w-[520px] flex-col justify-center gap-3 sm:w-auto sm:max-w-none sm:flex-row md:mt-10">
         <Link
           to={CATALOG_PATH}
-          className="inline-flex min-h-12 items-center justify-center rounded-[3px] bg-primary px-6 text-[14px] font-medium text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+          className="inline-flex min-h-12 items-center justify-center rounded-[var(--radius)] bg-primary px-6 text-[14px] font-medium text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
         >
           Смотреть проекты
         </Link>
         <Link
           to={MANUFACTURERS_PATH}
-          className="inline-flex min-h-12 items-center justify-center rounded-[3px] border border-[#d7d7d4] bg-white px-6 text-[14px] font-medium text-[#342d27] transition-colors hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+          className="inline-flex min-h-12 items-center justify-center rounded-[var(--radius)] border border-[#d7d7d4] bg-white px-6 text-[14px] font-medium text-[#342d27] transition-colors hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
         >
           Смотреть производителей
         </Link>

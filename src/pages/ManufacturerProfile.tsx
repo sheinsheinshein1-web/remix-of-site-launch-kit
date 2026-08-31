@@ -80,6 +80,7 @@ const ManufacturerProfile = () => {
   const { id } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
+  const [platformaProjectType, setPlatformaProjectType] = useState<"houses" | "baths" | "business">("houses");
   const makerId = id ? LEGACY_PARTNER_IDS[id] ?? id : "platforma";
   const maker = makersById[makerId];
   const canonicalPath = getManufacturerPath(makerId);
@@ -90,6 +91,20 @@ const ManufacturerProfile = () => {
     () => projects.filter((project) => project.maker.id === makerId).sort(compareProjectTechnologyPriority),
     [makerId],
   );
+  const platformaBathProjects = makerProjects.filter((project) =>
+    project.productType === "bath" || project.productType === "house-bath",
+  );
+  const platformaHouseProjects = makerProjects.filter((project) => project.productType !== "bath");
+  // Платформа предлагает те же модели с адаптацией под коммерческий сценарий;
+  // отдельные карточки B2B-объектов появятся только вместе с отдельными исходными данными.
+  const platformaBusinessProjects = platformaHouseProjects;
+  const visibleMakerProjects = makerId === "platforma"
+    ? platformaProjectType === "baths"
+      ? platformaBathProjects
+      : platformaProjectType === "business"
+        ? platformaBusinessProjects
+        : platformaHouseProjects
+    : makerProjects;
 
   useEffect(() => {
     if (!maker || location.pathname === canonicalPath) return;
@@ -215,7 +230,7 @@ const ManufacturerProfile = () => {
           <div className="grid items-start gap-10 lg:grid-cols-[300px_minmax(0,1fr)] lg:gap-14 xl:grid-cols-[330px_minmax(0,1fr)] xl:gap-20">
             <aside className="self-start lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:overscroll-contain lg:pr-2 lg:[scrollbar-width:none] lg:[&::-webkit-scrollbar]:hidden" aria-label={`Профиль компании ${maker.name}`}>
               <div className="flex items-start gap-4 lg:block">
-                <div className={`flex h-[76px] w-[76px] shrink-0 items-center justify-center overflow-hidden rounded-[3px] border border-[#dfe5f5] text-[16px] font-semibold text-[#342d27] lg:h-24 lg:w-24 ${usesDarkLogoBackground(makerId) ? "bg-[#342d27]" : "bg-white"}`}>
+                <div className={`flex h-[76px] w-[76px] shrink-0 items-center justify-center overflow-hidden rounded-[var(--radius)] border border-[#dfe5f5] text-[16px] font-semibold text-[#342d27] lg:h-24 lg:w-24 ${usesDarkLogoBackground(makerId) ? "bg-[#342d27]" : "bg-white"}`}>
                   {maker.logo ? (
                     <img src={maker.logo} alt="" className="h-full w-full object-contain p-2.5" loading="eager" decoding="async" />
                   ) : (
@@ -239,7 +254,7 @@ const ManufacturerProfile = () => {
                   href={maker.siteUrl}
                   target="_blank"
                   rel="noopener noreferrer nofollow sponsored"
-                  className="mt-6 flex min-h-12 w-full items-center justify-center rounded-[3px] bg-primary px-5 text-center text-[15px] font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  className="mt-6 flex min-h-12 w-full items-center justify-center rounded-[var(--radius)] bg-primary px-5 text-center text-[15px] font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
                   Перейти на сайт
                 </a>
@@ -249,7 +264,7 @@ const ManufacturerProfile = () => {
                 <button
                   type="button"
                   onClick={handleShare}
-                  className="group flex min-h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-[3px] border border-[#dfe5f5] bg-white px-3 text-[14px] font-medium text-[#342d27] transition-colors hover:border-primary/25 hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:border-border dark:bg-background dark:text-foreground dark:hover:bg-secondary dark:hover:text-primary"
+                  className="group flex min-h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-[var(--radius)] border border-[#dfe5f5] bg-white px-3 text-[14px] font-medium text-[#342d27] transition-colors hover:border-primary/25 hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:border-border dark:bg-background dark:text-foreground dark:hover:bg-secondary dark:hover:text-primary"
                 >
                   <Forward className="h-4 w-4 shrink-0 text-[#717b8e] transition-colors group-hover:text-primary group-focus-visible:text-primary" strokeWidth={1.7} aria-hidden />
                   Поделиться
@@ -257,7 +272,7 @@ const ManufacturerProfile = () => {
                 <button
                   type="button"
                   onClick={handleToggleMakerFavorite}
-                  className="group flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] border border-[#dfe5f5] bg-white text-[#342d27] transition-colors hover:border-primary/25 hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:border-border dark:bg-background dark:text-foreground dark:hover:bg-secondary dark:hover:text-primary"
+                  className="group flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius)] border border-[#dfe5f5] bg-white text-[#342d27] transition-colors hover:border-primary/25 hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:border-border dark:bg-background dark:text-foreground dark:hover:bg-secondary dark:hover:text-primary"
                   aria-pressed={makerIsFavorite}
                   aria-label={makerIsFavorite ? "Удалить производителя из избранного" : "Добавить производителя в избранное"}
                 >
@@ -267,31 +282,31 @@ const ManufacturerProfile = () => {
 
               <div className="mt-5 space-y-1 text-[14px] text-[#595653] dark:text-muted-foreground">
                 {maker.phone && (
-                  <a href={`tel:${maker.phone.replace(/[^+\d]/g, "")}`} className="group flex min-h-11 w-full items-center gap-3 rounded-[3px] px-3 transition-colors hover:bg-secondary hover:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
+                  <a href={`tel:${maker.phone.replace(/[^+\d]/g, "")}`} className="group flex min-h-11 w-full items-center gap-3 rounded-[var(--radius)] px-3 transition-colors hover:bg-secondary hover:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
                     <Phone className="h-4 w-4 shrink-0 text-[#717b8e] transition-colors group-hover:text-primary group-focus-visible:text-primary" strokeWidth={1.7} aria-hidden />
                     {maker.phone}
                   </a>
                 )}
                 {maker.additionalPhones?.map((phone) => (
-                  <a key={phone} href={`tel:${phone.replace(/[^+\d]/g, "")}`} className="group flex min-h-11 w-full items-center gap-3 rounded-[3px] px-3 transition-colors hover:bg-secondary hover:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
+                  <a key={phone} href={`tel:${phone.replace(/[^+\d]/g, "")}`} className="group flex min-h-11 w-full items-center gap-3 rounded-[var(--radius)] px-3 transition-colors hover:bg-secondary hover:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
                     <Phone className="h-4 w-4 shrink-0 text-[#717b8e] transition-colors group-hover:text-primary group-focus-visible:text-primary" strokeWidth={1.7} aria-hidden />
                     {phone}
                   </a>
                 ))}
                 {maker.email && (
-                  <a href={`mailto:${maker.email}`} className="group flex min-h-11 w-full min-w-0 items-center gap-3 rounded-[3px] px-3 transition-colors hover:bg-secondary hover:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
+                  <a href={`mailto:${maker.email}`} className="group flex min-h-11 w-full min-w-0 items-center gap-3 rounded-[var(--radius)] px-3 transition-colors hover:bg-secondary hover:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
                     <Mail className="h-4 w-4 shrink-0 text-[#717b8e] transition-colors group-hover:text-primary group-focus-visible:text-primary" strokeWidth={1.7} aria-hidden />
                     <span className="min-w-0 truncate">{maker.email}</span>
                   </a>
                 )}
                 {telegramUrl && telegramLabel && (
-                  <a href={telegramUrl} target="_blank" rel="noopener noreferrer nofollow" className="group flex min-h-11 w-full items-center gap-3 rounded-[3px] px-3 transition-colors hover:bg-secondary hover:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
+                  <a href={telegramUrl} target="_blank" rel="noopener noreferrer nofollow" className="group flex min-h-11 w-full items-center gap-3 rounded-[var(--radius)] px-3 transition-colors hover:bg-secondary hover:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
                     <Send className="h-4 w-4 shrink-0 text-[#717b8e] transition-colors group-hover:text-primary group-focus-visible:text-primary" strokeWidth={1.7} aria-hidden />
                     {telegramLabel}
                   </a>
                 )}
                 {maker.siteUrl && siteLabel && (
-                  <a href={maker.siteUrl} target="_blank" rel="noopener noreferrer nofollow" className="group flex min-h-11 w-full min-w-0 items-center gap-3 rounded-[3px] px-3 transition-colors hover:bg-secondary hover:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
+                  <a href={maker.siteUrl} target="_blank" rel="noopener noreferrer nofollow" className="group flex min-h-11 w-full min-w-0 items-center gap-3 rounded-[var(--radius)] px-3 transition-colors hover:bg-secondary hover:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
                     <Globe className="h-4 w-4 shrink-0 text-[#717b8e] transition-colors group-hover:text-primary group-focus-visible:text-primary" strokeWidth={1.7} aria-hidden />
                     <span className="min-w-0 truncate">{siteLabel}</span>
                   </a>
@@ -299,7 +314,7 @@ const ManufacturerProfile = () => {
                 <ManufacturerReportDialog manufacturerName={maker.name}>
                   <button
                     type="button"
-                    className="group flex min-h-11 w-full items-center gap-3 rounded-[3px] px-3 text-left text-[14px] text-[#717b8e] transition-colors hover:bg-secondary hover:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+                    className="group flex min-h-11 w-full items-center gap-3 rounded-[var(--radius)] px-3 text-left text-[14px] text-[#717b8e] transition-colors hover:bg-secondary hover:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
                   >
                     <Flag className="h-4 w-4 shrink-0 transition-colors group-hover:text-primary group-focus-visible:text-primary" strokeWidth={1.7} aria-hidden />
                     Пожаловаться
@@ -339,15 +354,70 @@ const ManufacturerProfile = () => {
 
               </section>
 
-              <section id="projects" className="mt-16 scroll-mt-28 md:mt-24" aria-labelledby="manufacturer-projects-heading">
+              <section
+                id="projects"
+                className="mt-16 scroll-mt-28 md:mt-24"
+                aria-labelledby={makerId === "platforma" ? `manufacturer-projects-${platformaProjectType}-tab` : "manufacturer-projects-heading"}
+              >
                 <div className="mb-7 flex items-end justify-between gap-4">
-                  <div>
-                    <h2 id="manufacturer-projects-heading" className="text-[28px] font-semibold tracking-[-0.03em] text-[#342d27] md:text-[36px] dark:text-foreground">Проекты производителя</h2>
-                  </div>
+                  {makerId === "platforma" ? (
+                    <div
+                      className="flex min-w-0 max-w-full touch-pan-x items-baseline gap-4 overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:gap-5 md:overflow-visible md:overscroll-auto"
+                      role="tablist"
+                      aria-label="Тип проектов Платформы"
+                    >
+                      {([
+                        ["houses", "Дома", platformaHouseProjects.length],
+                        ["baths", "Бани", platformaBathProjects.length],
+                        ["business", "Для бизнеса", platformaBusinessProjects.length],
+                      ] as const).map(([type, label, count]) => {
+                        const isActive = platformaProjectType === type;
+                        return (
+                          <button
+                            key={type}
+                            id={`manufacturer-projects-${type}-tab`}
+                            type="button"
+                            role="tab"
+                            aria-selected={isActive}
+                            aria-controls="manufacturer-projects-panel"
+                            onClick={() => setPlatformaProjectType(type)}
+                            className={`flex min-h-11 shrink-0 items-center gap-2 text-[25px] font-semibold leading-none tracking-[-0.03em] transition-colors sm:text-[28px] md:gap-3 md:text-[36px] ${
+                              isActive
+                                ? "text-[#342d27] dark:text-foreground"
+                                : "text-[#9a9691] hover:text-[#625d58] focus-visible:text-[#625d58] dark:text-foreground/45 dark:hover:text-foreground/75"
+                            } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-4`}
+                          >
+                            <span>{label}</span>
+                            <span
+                              className={`tabular-nums ${isActive ? "text-[#746f6a] dark:text-foreground/65" : "text-current"}`}
+                              aria-label={`Количество: ${count}`}
+                            >
+                              {count.toLocaleString("ru-RU")}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="flex min-w-0 items-baseline gap-3">
+                      <h2 id="manufacturer-projects-heading" className="text-[28px] font-semibold tracking-[-0.03em] text-[#342d27] md:text-[36px] dark:text-foreground">Проекты производителя</h2>
+                      <span
+                        className="shrink-0 text-[28px] font-semibold leading-none tabular-nums tracking-[-0.03em] text-[#746f6a] md:text-[36px] dark:text-foreground/65"
+                        aria-label={`Количество проектов: ${makerProjects.length}`}
+                      >
+                        {makerProjects.length.toLocaleString("ru-RU")}
+                      </span>
+                    </div>
+                  )}
                 </div>
 
-                <div className="grid grid-cols-2 gap-x-[2px] gap-y-6 md:gap-x-4 md:gap-y-8">
-                  {makerProjects.map((project) => (
+                <div
+                  id="manufacturer-projects-panel"
+                  role={makerId === "platforma" ? "tabpanel" : undefined}
+                  aria-labelledby={makerId === "platforma" ? `manufacturer-projects-${platformaProjectType}-tab` : undefined}
+                  className="grid grid-cols-2 gap-x-[2px] gap-y-6 md:gap-x-4 md:gap-y-8"
+                >
+                  {visibleMakerProjects.map((project) => (
                     <ProjectCard
                       key={project.id}
                       projectId={project.id}
@@ -361,13 +431,13 @@ const ManufacturerProfile = () => {
                 <div>
                   <h2 id="manufacturer-production-heading" className="text-[28px] font-semibold tracking-[-0.03em] text-[#342d27] md:text-[36px] dark:text-foreground">Производство на карте</h2>
                   {maker.productionAddress && (
-                    <a href={yandexMapLink} target="_blank" rel="noopener noreferrer nofollow" className="mt-3 inline-flex min-h-11 items-center text-[14px] leading-relaxed text-[#595653] transition-colors hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:text-[15px] dark:text-muted-foreground">
+                    <a href={yandexMapLink} target="_blank" rel="noopener noreferrer nofollow" className="mt-3 inline-flex min-h-11 items-center text-[14px] leading-relaxed text-[#595653] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:text-[15px] dark:text-muted-foreground">
                       <span>{maker.productionAddress}</span>
                     </a>
                   )}
                 </div>
 
-                <div className="relative mt-7 min-h-[320px] overflow-hidden rounded-[3px] md:min-h-[440px]">
+                <div className="relative mt-7 min-h-[320px] overflow-hidden rounded-[var(--radius)] md:min-h-[440px]">
                   <iframe
                     src={mapEmbedUrl}
                     title={`Производство компании ${maker.name} на карте`}
@@ -414,7 +484,7 @@ const ManufacturerProfile = () => {
                           <p className="mt-3 text-[14px] leading-relaxed text-[#595653] dark:text-muted-foreground">
                             {getReviewExcerpt(review.body)}
                             {review.body.length > 190 && (
-                              <Link to={getManufacturerReviewsPath(makerId)} className="ml-1 whitespace-nowrap font-medium text-primary hover:underline focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
+                              <Link to={getManufacturerReviewsPath(makerId)} className="ml-1 whitespace-nowrap font-medium text-primary hover:underline focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
                                 Читать
                               </Link>
                             )}
@@ -423,16 +493,16 @@ const ManufacturerProfile = () => {
                         </article>
                       ))}
                     </div>
-                    <Link to={getManufacturerReviewsPath(makerId)} className="mt-10 inline-flex min-h-11 items-center gap-1 text-[15px] font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground">
+                    <Link to={getManufacturerReviewsPath(makerId)} className="mt-10 inline-flex min-h-11 items-center gap-1 text-[15px] font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground">
                       Все {reviewSummary.reviewsLabel} <ChevronRight className="h-4 w-4" strokeWidth={1.8} aria-hidden />
                     </Link>
                   </>
                 ) : (
-                  <div className="mt-7 flex min-h-[220px] flex-col items-center justify-center rounded-[3px] bg-secondary px-5 py-8 text-center">
+                  <div className="mt-7 flex min-h-[220px] flex-col items-center justify-center rounded-[var(--radius)] bg-secondary px-5 py-8 text-center">
                     <Star className="h-9 w-9 text-[#aab2c2]" strokeWidth={1.5} aria-hidden />
                     <h3 className="mt-5 text-[21px] font-semibold text-[#342d27] dark:text-foreground">Отзывов пока нет</h3>
                     <p className="mt-2 max-w-[470px] text-[14px] leading-relaxed text-[#717b8e]">Станьте первым, кто поделится опытом работы с компанией. Отзыв появится после проверки.</p>
-                    <Link to="/messages/support" className="mt-5 inline-flex min-h-11 items-center justify-center rounded-[3px] bg-primary px-5 text-[14px] font-medium text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                    <Link to="/messages/support" className="mt-5 inline-flex min-h-11 items-center justify-center rounded-[var(--radius)] bg-primary px-5 text-[14px] font-medium text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                       Оставить отзыв
                     </Link>
                   </div>
@@ -442,7 +512,7 @@ const ManufacturerProfile = () => {
               <div className="mt-16 text-[14px] text-[#717b8e] md:mt-24">
                 <div className="flex flex-wrap items-center gap-x-2">
                   <span>Представитель этой компании?</span>
-                  <Link to="/messages/support" className="inline-flex min-h-11 items-center font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground">
+                  <Link to="/messages/support" className="inline-flex min-h-11 items-center font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground">
                     Подтвердить профиль
                   </Link>
                 </div>
@@ -472,16 +542,24 @@ const ManufacturerProfile = () => {
           <div className="min-w-0">
             {otherRegionMakers.length > 0 && (
               <section className="mt-16 md:mt-24" aria-labelledby="related-manufacturers-heading">
-                <h2 id="related-manufacturers-heading" className="text-[28px] font-semibold tracking-[-0.03em] text-[#342d27] md:text-[36px] dark:text-foreground">Другие производители {cityPrepositionalName}</h2>
+                <h2 id="related-manufacturers-heading" className="min-w-0 text-[28px] font-semibold tracking-[-0.03em] md:text-[36px]">
+                  <Link
+                    to={regionManufacturersHref}
+                    className="group inline-flex min-h-11 items-center gap-2 text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground"
+                  >
+                    <span>Все производители {cityPrepositionalName}</span>
+                    <ChevronRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none md:h-6 md:w-6" strokeWidth={1.8} aria-hidden />
+                  </Link>
+                </h2>
                 <div className="mt-6 grid sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3 lg:gap-x-10">
                     {otherRegionMakersPreview.map((candidate) => (
                       <Link
                         key={candidate.id}
                         to={getManufacturerPath(candidate.id)}
                         aria-label={`${candidate.name}: ${candidate.reviewSummary.rating.toFixed(1)} из 5, ${candidate.reviewSummary.hasReviews ? candidate.reviewSummary.reviewsLabel : "отзывов пока нет"}`}
-                        className="group -mx-3 flex min-h-[76px] items-center gap-3 rounded-[4px] px-3 py-3 transition-colors duration-200 hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:min-h-[80px]"
+                        className="group -mx-3 flex min-h-[76px] items-center gap-3 rounded-[var(--radius)] px-3 py-3 transition-colors duration-200 hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:min-h-[80px]"
                       >
-                        <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[3px] border border-border bg-white text-[10px] font-semibold uppercase tracking-[0.08em] text-[#342d27]">
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[var(--radius)] border border-border bg-white text-[10px] font-semibold uppercase tracking-[0.08em] text-[#342d27]">
                           {candidate.logo ? (
                             <img src={candidate.logo} alt="" width={40} height={40} className="h-full w-full object-contain p-1.5" loading="lazy" decoding="async" />
                           ) : (
@@ -511,13 +589,6 @@ const ManufacturerProfile = () => {
                       </Link>
                     ))}
                 </div>
-                <Link
-                  to={regionManufacturersHref}
-                  className="mt-6 inline-flex min-h-11 items-center gap-1 text-[14px] font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:text-[15px] dark:text-foreground"
-                >
-                  Все производители
-                  <ChevronRight className="h-4 w-4" strokeWidth={1.8} aria-hidden />
-                </Link>
               </section>
             )}
           </div>

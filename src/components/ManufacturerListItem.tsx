@@ -25,11 +25,11 @@ const ManufacturerListItem = ({ makerId, className }: ManufacturerListItemProps)
       to={getManufacturerPath(makerId)}
       aria-label={`${maker.name}: ${reviewSummary.rating.toFixed(1)} из 5, ${reviewSummary.hasReviews ? reviewSummary.reviewsLabel : "отзывов пока нет"}; ${projectsLabel}`}
       className={cn(
-        "group -mx-3 flex min-h-[92px] items-center gap-3 rounded-[4px] px-3 py-4 transition-colors duration-200 hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30",
+        "group -mx-3 flex min-h-[92px] items-center gap-3 rounded-[var(--radius)] px-3 py-4 transition-colors duration-200 hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30",
         className,
       )}
     >
-      <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[3px] border border-border bg-white text-[11px] font-semibold uppercase tracking-[0.06em] text-[#342d27]">
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[var(--radius)] border border-border bg-white text-[11px] font-semibold uppercase tracking-[0.06em] text-[#342d27]">
         {maker.logo ? (
           <img src={maker.logo} alt="" width={44} height={44} loading="lazy" decoding="async" className="h-full w-full object-contain p-1" />
         ) : maker.initials}
