@@ -31,7 +31,8 @@ import VerifiedBadge from "@/components/VerifiedBadge";
 import NotFound from "@/pages/NotFound";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useFavorites } from "@/contexts/FavoritesContext";
-import { buildAssetUrl, buildSiteUrl } from "@/lib/seo";
+import { buildSiteUrl } from "@/lib/seo";
+import { buildProjectProductJsonLd } from "@/lib/projectStructuredData";
 import { getCityDisplayName } from "@/lib/cityDisplay";
 import {
   getGeoSelectionAccusative,
@@ -277,23 +278,11 @@ const ProjectDetail = () => {
     </button>
   );
 
-  const priceDigits = (project.price.match(/\d+/g) ?? []).join("");
-  const productJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: project.name,
-    description: project.descriptionLong || project.description,
-    brand: { "@type": "Brand", name: project.maker.name },
-    image: firstImage ? buildAssetUrl(firstImage) : undefined,
-    offers: priceDigits
-      ? {
-          "@type": "Offer",
-          priceCurrency: "RUB",
-          price: priceDigits,
-          url: buildSiteUrl(canonicalPath),
-        }
-      : undefined,
-  };
+  const productJsonLd = buildProjectProductJsonLd({
+    project,
+    canonicalPath,
+    image: firstImage,
+  });
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -474,7 +463,7 @@ const ProjectDetail = () => {
         canonicalPath={canonicalPath}
         type="product"
         image={firstImage}
-        jsonLd={[productJsonLd, breadcrumbJsonLd]}
+        jsonLd={productJsonLd ? [productJsonLd, breadcrumbJsonLd] : breadcrumbJsonLd}
       />
       <Header variant="home" />
 

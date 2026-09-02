@@ -123,6 +123,24 @@ const MobileMenu = ({ open, onOpenChange, onPartnerCta, hidePartnerCta = false }
       <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
         <nav aria-label="Основная навигация" className="space-y-1 px-5 py-2">
           {siteNavigation.map((section) => {
+            if (section.type === "link") {
+              return (
+                <Link
+                  key={section.label}
+                  to={section.path}
+                  onClick={closeMenu}
+                  className="group -mx-3 flex min-h-14 w-[calc(100%+1.5rem)] items-center justify-between gap-4 rounded-[var(--radius)] px-3 py-2 text-left text-[17px] font-semibold text-foreground transition-colors duration-200 hover:bg-secondary hover:text-primary active:bg-secondary active:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+                >
+                  <span>{section.label}</span>
+                  <ChevronRight
+                    className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary group-focus-visible:text-primary"
+                    strokeWidth={1.6}
+                    aria-hidden
+                  />
+                </Link>
+              );
+            }
+
             const expanded = openNavigationSection === section.label;
 
             return (
