@@ -18,11 +18,10 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png?v=3" />
     <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png?v=3" />
 
-    <!-- Fonts: preconnect + non-blocking stylesheet for fast FCP -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <!-- Critical assets are served locally to avoid third-party request chains. -->
+    <link rel="preload" href="/fonts/inter-cyrillic-300-700-v20.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/hero/home-mobile-768-v1.avif" as="image" type="image/avif" media="(max-width: 767px)" fetchpriority="high" />
+    <link rel="preload" href="/hero/home-desktop-1672-v1.avif" as="image" type="image/avif" media="(min-width: 768px)" fetchpriority="high" />
 
     <!-- SEO fallback styling: hidden visually but parseable by crawlers -->
     <style>

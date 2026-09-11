@@ -10,6 +10,7 @@ import { regionGroups } from "@/data/regions";
 import { REGIONS_PATH, getRegionPath } from "@/lib/siteRoutes";
 import { sortGeoItems } from "@/lib/geoOrder";
 import { isProjectAvailableInGeo } from "@/lib/geoSelection";
+import { staticPageSeo } from "@/lib/pageSeo";
 
 const plural = (count: number, forms: [string, string, string]) => {
   const mod10 = count % 10;
@@ -73,8 +74,8 @@ const Regions = () => {
   return (
     <div className="min-h-screen bg-secondary font-sans">
       <Seo
-        title="Модульные дома по регионам России — многоместа.рф"
-        description="Все регионы каталога многоместа.рф: проекты модульных домов, производители, цены, доставка и монтаж."
+        title={staticPageSeo.regions.title}
+        description={staticPageSeo.regions.description}
         canonicalPath={REGIONS_PATH}
       />
 

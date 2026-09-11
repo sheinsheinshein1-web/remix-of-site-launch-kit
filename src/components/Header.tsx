@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation, useNavigationType, Link } from "react-router-dom";
-import logoColor from "@/assets/logo-mnogo-mesta.png";
+import logoColor from "@/assets/logo-mnogo-mesta-430.webp";
 import logoIcon from "@/assets/logo-icon.svg";
 import logoMark from "@/assets/logo-mark.svg";
 import logoMarkWhite from "@/assets/logo-mark-white.svg";
@@ -17,9 +17,14 @@ import { CATALOG_PATH, getRegionPath } from "@/lib/siteRoutes";
 type HeaderProps = {
   variant?: "default" | "home" | "partner";
   onPartnerCta?: () => void;
+  marketplaceNavigationMode?: "reveal-on-scroll-up" | "top-only";
 };
 
-const Header = ({ variant = "default", onPartnerCta }: HeaderProps) => {
+const Header = ({
+  variant = "default",
+  onPartnerCta,
+  marketplaceNavigationMode = "reveal-on-scroll-up",
+}: HeaderProps) => {
   const navigate = useNavigate();
   const location = useLocation();
   const isHome = location.pathname === "/";
@@ -49,7 +54,8 @@ const Header = ({ variant = "default", onPartnerCta }: HeaderProps) => {
   const favoritesAriaLabel = favoriteCount > 0
     ? `Избранное, сохранено: ${favoriteCount}`
     : "Избранное";
-  const showMarketplaceNavigation = !scrolled || showCompactHeader;
+  const showMarketplaceNavigation = !scrolled
+    || (marketplaceNavigationMode === "reveal-on-scroll-up" && showCompactHeader);
 
   const handleCitySelect = (nextCity: string) => {
     const normalizedCity = normalizeGeoSelection(nextCity);
@@ -131,7 +137,7 @@ const Header = ({ variant = "default", onPartnerCta }: HeaderProps) => {
         <header className="fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-white text-[#342d27] dark:bg-background dark:text-foreground">
           <div className="mx-auto flex h-[50px] w-full max-w-[1400px] items-center px-4 md:h-[60px] md:px-9 lg:px-12">
             <Link to="/" className="flex items-center md:h-11">
-              <img src={logoColor} alt="Много места" className="h-[18px] w-auto dark:brightness-0 dark:invert md:h-[23px]" loading="eager" decoding="async" />
+              <img src={logoColor} alt="Много места" width={430} height={62} className="h-[18px] w-auto dark:brightness-0 dark:invert md:h-[23px]" loading="eager" decoding="async" />
             </Link>
 
             <button

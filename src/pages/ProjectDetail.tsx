@@ -24,15 +24,18 @@ import Footer from "@/components/Footer";
 import MobileExpandableText from "@/components/MobileExpandableText";
 import OtherProjectsFeed from "@/components/OtherProjectsFeed";
 import ProjectReportDialog from "@/components/ProjectReportDialog";
+import ProjectPriceQuiz from "@/components/ProjectPriceQuiz";
 import ProjectRooms from "@/components/ProjectRooms";
 import Seo from "@/components/Seo";
 import SiteBreadcrumbs, { siteBreadcrumbPageContainerClassName } from "@/components/SiteBreadcrumbs";
 import VerifiedBadge from "@/components/VerifiedBadge";
+import TrailingChevronLabel from "@/components/TrailingChevronLabel";
 import NotFound from "@/pages/NotFound";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { buildSiteUrl } from "@/lib/seo";
 import { buildProjectProductJsonLd } from "@/lib/projectStructuredData";
+import { buildProjectSeo } from "@/lib/pageSeo";
 import { getCityDisplayName } from "@/lib/cityDisplay";
 import {
   getGeoSelectionAccusative,
@@ -77,6 +80,7 @@ const ProjectDetail = () => {
   const [activeImage, setActiveImage] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [deliveryCityOpen, setDeliveryCityOpen] = useState(false);
+  const [priceQuizOpen, setPriceQuizOpen] = useState(false);
   const [detailsExpanded, setDetailsExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const galleryWrapRef = useRef<HTMLDivElement>(null);
@@ -170,6 +174,7 @@ const ProjectDetail = () => {
   if (!project) return <NotFound />;
 
   const makerId = project.maker.id ?? "";
+  const isPlatformaProject = makerId === "platforma";
   const canonicalPath = getProjectPath(project);
   const makerHref = getManufacturerPath(makerId);
   const verified = isVerifiedMaker(makerId);
@@ -181,13 +186,7 @@ const ProjectDetail = () => {
   const priceLabel = /^(?:от(?:\s|$)|по запросу(?:\s|$))/i.test(project.price.trim())
     ? project.price
     : `от ${project.price}`;
-  const seoProjectType = isBathProject
-    ? "Модульная баня"
-    : project.technology.toLocaleLowerCase("ru").includes("префаб")
-      ? "Префаб-дом"
-      : "Модульный дом";
-  const seoTitle = `${seoProjectType} ${project.name}, ${project.area} от ${project.maker.name} | многоместа.рф`;
-  const seoDescription = `${seoProjectType} ${project.name} площадью ${project.area} от ${project.maker.name}. Цена ${priceLabel}. ${project.description}`.slice(0, 160);
+  const projectSeo = buildProjectSeo(project);
   const deliveryCityLabel = getGeoSelectionLabel(deliveryRegionSlug);
   const deliveryRegionAccusative = getGeoSelectionAccusative(deliveryRegionSlug);
   const deliveryRegionPrepositional = getGeoSelectionPrepositional(deliveryRegionSlug);
@@ -263,7 +262,11 @@ const ProjectDetail = () => {
     </p>
   );
 
-  const renderProjectAction = (className: string) => deliveryAvailable ? (
+  const renderProjectAction = (className: string) => isPlatformaProject ? (
+    <button type="button" onClick={() => setPriceQuizOpen(true)} className={className}>
+      Рассчитать цену с доставкой
+    </button>
+  ) : deliveryAvailable ? (
     <a
       href={project.maker.siteUrl}
       target="_blank"
@@ -455,11 +458,17 @@ const ProjectDetail = () => {
     </button>
   );
 
+  const otherProjectsTitle = isBathProject
+    ? "Все модульные бани"
+    : allRegionsSelected
+      ? "Все проекты"
+      : `Все проекты ${deliveryRegionPrepositional}`;
+
   return (
     <div className="min-h-screen bg-white text-[#342d27] dark:bg-background dark:text-foreground">
       <Seo
-        title={seoTitle}
-        description={seoDescription}
+        title={projectSeo.title}
+        description={projectSeo.description}
         canonicalPath={canonicalPath}
         type="product"
         image={firstImage}
@@ -674,16 +683,9 @@ const ProjectDetail = () => {
                 <button
                   type="button"
                   onClick={() => navigate(isBathProject ? bathCatalogHref : deliveryRegionHref)}
-                  className="group inline-flex min-h-11 items-center gap-2 text-left text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground"
+                  className="group min-h-11 max-w-full text-left text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground"
                 >
-                  <span>
-                  {isBathProject
-                    ? "Все модульные бани"
-                    : allRegionsSelected
-                      ? "Все проекты"
-                      : `Все проекты ${deliveryRegionPrepositional}`}
-                  </span>
-                  <ChevronRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none md:h-6 md:w-6" strokeWidth={1.8} aria-hidden />
+                  <TrailingChevronLabel text={otherProjectsTitle} />
                 </button>
               </h2>
             </div>
@@ -706,6 +708,15 @@ const ProjectDetail = () => {
         title={isBathProject ? "Куда доставить баню?" : "Куда доставить дом?"}
         availableRegions={projectDeliveryRegions}
       />
+
+      {isPlatformaProject && (
+        <ProjectPriceQuiz
+          open={priceQuizOpen}
+          onOpenChange={setPriceQuizOpen}
+          project={project}
+          deliveryRegion={deliveryRegionSlug}
+        />
+      )}
 
       {lightboxOpen && (
         <div

@@ -17,6 +17,7 @@ import { getCityDisplayName } from "@/lib/cityDisplay";
 import { regions } from "@/data/regions";
 import { allCategoryLinks } from "@/data/categoryLinks";
 import { resolveCatalogSeoState } from "@/lib/catalogSeo";
+import { buildCatalogSeo } from "@/lib/pageSeo";
 import {
   getGeoSelectionCityValue,
   getGeoSelectionLabel,
@@ -119,10 +120,12 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
   const techFilter = lockedTechnology ?? searchParams.get("tech") ?? "";
   const effectiveObjectType = typeFilter || (activeCategory?.title === "Модульные дома" ? "house" : "");
   const selectedObjectType = effectiveObjectType === "bath" ? "bath" : effectiveObjectType === "house" ? "house" : "all";
-  const catalogTitle = activeCategory?.title ?? "Проекты домов";
-  const catalogDescription = activeCategory
-    ? `${activeCategory.caption}. Сравнивайте цены, планировки и характеристики проектов с доставкой в ваш регион.`
-    : "Сравнивайте цены, планировки и характеристики проектов с доставкой в ваш регион.";
+  const catalogTitle = activeCategory?.title ?? "Проекты модульных домов";
+  const catalogSeo = buildCatalogSeo({
+    categoryTitle: activeCategory?.title,
+    categoryCaption: activeCategory?.caption,
+  });
+  const catalogDescription = catalogSeo.description;
   const breadcrumbItems = [
     { label: "Главная", to: "/" },
     ...(activeCategory
@@ -528,10 +531,10 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
   );
 
   return (
-    <div className={`${embedded ? "" : "min-h-screen"} bg-background font-sans`}>
+    <div className={`${embedded ? "" : "min-h-screen"} w-full min-w-0 max-w-full overflow-x-clip bg-background font-sans`}>
       {!embedded && <Seo
-        title={activeCategory ? `${activeCategory.title}: цены и проекты | Много места` : "Проекты модульных домов: цены и планировки | Много места"}
-        description={catalogDescription}
+        title={catalogSeo.title}
+        description={catalogSeo.description}
         canonicalPath={canonicalPath}
         noIndex={shouldNoIndex}
         noFollow={false}

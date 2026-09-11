@@ -14,7 +14,7 @@ import { navigateWithTransition } from "@/lib/viewTransition";
 import SwipeableGallery from "@/components/SwipeableGallery";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { getProjectPath } from "@/lib/siteRoutes";
-import { projectThumbs } from "@/data/projectThumbs";
+import { projectMobileThumbs, projectThumbs } from "@/data/projectThumbs";
 import { isVerifiedMaker } from "@/lib/verifiedMakers";
 import VerifiedBadge from "@/components/VerifiedBadge";
 import {
@@ -57,6 +57,9 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
     ? [projectThumbs[project.id] ?? firstImage, ...allImages.slice(1)]
     : [];
   const images = singleImage ? cardImages.slice(0, 1) : cardImages;
+  const mobileImages = firstImage
+    ? [projectMobileThumbs[project.id], ...allImages.slice(1).map(() => undefined)]
+    : [];
   const liked = isFavorite(project.id);
   const isBathProject = project.productType === "bath";
   const likesCount = project.likes + (liked ? 1 : 0);
@@ -98,6 +101,7 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
       >
         <SwipeableGallery
           images={images}
+          mobileImages={singleImage ? mobileImages.slice(0, 1) : mobileImages}
           fits={projectFits[project.id]}
           objectPositions={projectObjectPositions[project.id]}
           alt={project.name}

@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import SiteBreadcrumbs, { siteBreadcrumbPageContainerClassName } from "@/components/SiteBreadcrumbs";
 import Seo from "@/components/Seo";
 import { homeArticles } from "@/data/articles";
+import { staticPageSeo } from "@/lib/pageSeo";
 
 const materialPlural = (count: number) => {
   const mod10 = count % 10;
@@ -16,8 +17,8 @@ const materialPlural = (count: number) => {
 const Articles = () => (
   <div className="min-h-screen bg-secondary font-sans">
     <Seo
-      title="Журнал о модульных домах — многоместа.рф"
-      description="Практические материалы о выборе модульного дома, расчёте стоимости и работе с производителями."
+      title={staticPageSeo.articles.title}
+      description={staticPageSeo.articles.description}
       canonicalPath="/articles/"
     />
     <main className="bg-background">

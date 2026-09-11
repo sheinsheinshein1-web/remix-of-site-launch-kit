@@ -17,9 +17,18 @@ import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import { buildAssetUrl, buildSiteUrl, SITE_URL } from "@/lib/seo";
 import { homeFaq } from "@/data/homeFaq";
-import { CATALOG_PATH } from "@/lib/siteRoutes";
+import { CATALOG_PATH, getRegionPath } from "@/lib/siteRoutes";
 import { projects } from "@/data/projects";
 import HomeSectionTitle from "@/components/HomeSectionTitle";
+import { useCity } from "@/components/CitySelector";
+import {
+  getGeoSelectionPrepositional,
+  isAllRegionsGeo,
+  isProjectAvailableInGeo,
+} from "@/lib/geoSelection";
+import { buildHomeSeo } from "@/lib/pageSeo";
+
+const homeSeo = buildHomeSeo();
 
 const homeJsonLd = [
   {
@@ -69,11 +78,23 @@ const BentoCard = ({ children, className = "" }: { children: React.ReactNode; cl
 );
 
 const Index = () => {
+  const { city } = useCity();
+  const allRegionsSelected = isAllRegionsGeo(city);
+  const visibleProjectCount = allRegionsSelected
+    ? projects.length
+    : projects.filter((project) => (
+        isProjectAvailableInGeo(project.city, city, project.deliveryRegionSlugs)
+      )).length;
+  const projectsTitle = allRegionsSelected
+    ? "Все проекты"
+    : `Все проекты ${getGeoSelectionPrepositional(city)}`;
+  const projectsPath = allRegionsSelected ? CATALOG_PATH : getRegionPath(city);
+
   return (
     <div className="min-h-screen bg-secondary font-sans">
       <Seo
-        title="многоместа.рф — модульные дома с доставкой по России"
-        description="Каталог модульных домов: проекты с ценами, площадью и планировками от проверенных производителей. Доставка и сборка по всей России."
+        title={homeSeo.title}
+        description={homeSeo.description}
         canonicalPath="/"
         jsonLd={homeJsonLd}
       />
@@ -83,15 +104,15 @@ const Index = () => {
         <HeroSection />
         <div className="mx-auto w-full max-w-[1400px] px-4 pt-10 sm:px-8 sm:pt-16 lg:px-12">
           <div className="mb-4 sm:mb-5">
-            <HomeSectionTitle title="Все проекты" count={projects.length} to={CATALOG_PATH} />
+            <HomeSectionTitle title={projectsTitle} count={visibleProjectCount} to={projectsPath} />
           </div>
         </div>
         <div className="mx-auto w-full max-w-[1400px] px-4 pb-2 pt-0 sm:px-8 lg:px-12">
-          <FeaturedProjects />
+        <FeaturedProjects />
         </div>
         <HomeCategoryLinks />
-        <HomeRegionLinks />
         <HomeManufacturers />
+        <HomeRegionLinks />
         <ArticlesSection />
         <HomeFaq />
         <HomeClosingCta />

@@ -153,16 +153,17 @@ const HowToChooseModularHouse = () => {
 
 const ArticleDetail = () => {
   const { slug = "" } = useParams();
+  const article = getJournalArticle(slug);
 
-  if (slug === HOW_TO_CHOOSE_MODULAR_HOUSE_PATH.split("/").at(-1)) {
+  if (article?.path === HOW_TO_CHOOSE_MODULAR_HOUSE_PATH) {
     return <HowToChooseModularHouse />;
   }
 
-  if (slug === COST_BREAKDOWN_ARTICLE_PATH.split("/").at(-1)) {
+  if (article?.path === COST_BREAKDOWN_ARTICLE_PATH) {
     return <CostBreakdownArticle />;
   }
 
-  if (slug === FRAME_VS_MODULAR_ARTICLE_PATH.split("/").at(-1)) {
+  if (article?.path === FRAME_VS_MODULAR_ARTICLE_PATH) {
     return <FrameVsModularArticle />;
   }
 

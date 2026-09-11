@@ -11,19 +11,12 @@ export const resolveCatalogSeoState = (
     return categoryEntries.length > 0
       && categoryEntries.every(([key, value]) => searchParams.get(key) === value);
   });
-  const categoryEntries = activeCategory
-    ? Array.from(new URL(activeCategory.href, "https://многоместа.рф").searchParams.entries())
-    : [];
-  const isExactCuratedCategory = Boolean(
-    activeCategory
-    && currentEntries.length === categoryEntries.length
-    && categoryEntries.every(([key, value]) => searchParams.get(key) === value),
-  );
-
+  // The current static host serves one HTML document for every query-string
+  // variation. Until categories get clean, separately prerendered paths, filters
+  // must remain crawlable UI states but not separate indexable pages.
   return {
     activeCategory,
-    isExactCuratedCategory,
-    shouldNoIndex: currentEntries.length > 0 && !isExactCuratedCategory,
-    canonicalPath: activeCategory?.href ?? CATALOG_PATH,
+    shouldNoIndex: currentEntries.length > 0,
+    canonicalPath: CATALOG_PATH,
   };
 };

@@ -22,7 +22,6 @@ const mkdirP = promisify(mkdir);
 const DIST = resolve("dist");
 const SRC_PROJECTS = resolve("src/data/projects.ts");
 const SRC_REGIONAL = resolve("src/data/regionalBatchProjects.ts");
-const SRC_CATEGORIES = resolve("src/data/categoryLinks.ts");
 const SRC_PARTNER_SERVICES = resolve("src/data/partnerServices.ts");
 const SRC_VISIBILITY = resolve("src/data/catalogVisibility.ts");
 const PUBLIC_SITEMAP = resolve("public/sitemap.xml");
@@ -48,6 +47,15 @@ const normalizeSitePath = (path) => {
 
 const buildSiteUrl = (path) => `${SITE_URL}${normalizeSitePath(path)}`;
 const escapeXml = (value) => value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+const buildSitemapUrl = (path) => {
+  // URL serialisation converts the human-readable IDN to a real DNS hostname
+  // (xn--80afg0abehb3ak.xn--p1ai) while safely encoding only the path/query.
+  const url = new URL(buildSiteUrl(path));
+  if (url.hostname !== "xn--80afg0abehb3ak.xn--p1ai") {
+    throw new Error(`[prerender] Unexpected sitemap hostname: ${url.hostname}`);
+  }
+  return url.href;
+};
 
 const parseSource = (fileName, source) => ts.createSourceFile(
   fileName,
@@ -202,11 +210,6 @@ const makerIds = [...new Set([...primaryRoutes.makerIds, ...regionalRoutes.maker
 const SRC_REGIONS = resolve("src/data/regions.ts");
 const regionsSrc = existsSync(SRC_REGIONS) ? readSync(SRC_REGIONS, "utf8") : "";
 const regionSlugs = [...new Set([...regionsSrc.matchAll(/slug:\s*["']([^"']+)["']/g)].map((m) => m[1]))];
-const categoriesSrc = existsSync(SRC_CATEGORIES) ? readSync(SRC_CATEGORIES, "utf8") : "";
-const categoryRoutes = [...new Set(
-  [...categoriesSrc.matchAll(/href:\s*([`"'])(.*?)\1/g)]
-    .map((match) => match[2].replace("${CATALOG_PATH}", "/modulnye-doma/")),
-)];
 const partnerServicesSrc = existsSync(SRC_PARTNER_SERVICES) ? readSync(SRC_PARTNER_SERVICES, "utf8") : "";
 const partnerServiceRoutes = [...new Set([...partnerServicesSrc.matchAll(/path:\s*["']([^"']+)["']/g)].map((m) => m[1]))];
 
@@ -232,7 +235,9 @@ const partnerRoutes = makerIds.map((id) => `/proizvoditeli/${id}/`);
 const regionRoutes = regionSlugs.map((slug) => `/modulnye-doma/${slug}/`);
 
 const ROUTES = [...new Set([...staticRoutes, ...partnerServiceRoutes, ...projectRoutes, ...partnerRoutes, ...regionRoutes])];
-const SITEMAP_ROUTES = [...new Set([...ROUTES, ...categoryRoutes])];
+// Query-string filters are UI states, not independently prerendered landing pages.
+// Listing them here created non-canonical duplicates with identical server HTML.
+const SITEMAP_ROUTES = ROUTES;
 const RENDER_ROUTES = [...ROUTES, NOT_FOUND_RENDER_ROUTE];
 console.log(`[prerender] ${ROUTES.length} routes (${staticRoutes.length} static, ${partnerServiceRoutes.length} partner services, ${projectRoutes.length} projects, ${partnerRoutes.length} partners, ${regionRoutes.length} regions)`);
 
@@ -252,6 +257,7 @@ const MIME = {
   ".png": "image/png",
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
+  ".avif": "image/avif",
   ".webp": "image/webp",
   ".ico": "image/x-icon",
   ".woff": "font/woff",
@@ -363,6 +369,9 @@ addLegacyRedirect("/catalog", "/modulnye-doma/");
 addLegacyRedirect("/regions", "/regiony-dostavki/");
 addLegacyRedirect("/manufacturers", "/proizvoditeli/");
 addLegacyRedirect("/privacy", "/legal/privacy/");
+// The base Krasnodar landing already covers the whole Krasnodar Krai. Keeping a
+// second area URL produced duplicate H1/title/content and split ranking signals.
+addLegacyRedirect("/modulnye-doma/krasnodarskiy-kray", "/modulnye-doma/krasnodar/");
 
 for (const project of projectRecords) {
   addLegacyRedirect(`/project/${project.id}`, buildProjectPath(project));
@@ -383,9 +392,9 @@ const lastmod = new Date().toISOString().slice(0, 10);
 const sitemapEntries = SITEMAP_ROUTES.map((p) => {
   const isProject = p.includes("/proekty/");
   const isRegion = p.startsWith("/modulnye-doma/") && !isProject;
-  const priority = p === "/" ? "1.0" : p.startsWith("/modulnye-doma/?") ? "0.8" : isProject ? "0.8" : isRegion ? "0.8" : p.startsWith("/proizvoditeli/") ? "0.7" : "0.6";
+  const priority = p === "/" ? "1.0" : isProject ? "0.8" : isRegion ? "0.8" : p.startsWith("/proizvoditeli/") ? "0.7" : "0.6";
   const changefreq = p === "/" || p === "/modulnye-doma/" ? "weekly" : "monthly";
-  return `  <url>\n    <loc>${escapeXml(encodeURI(buildSiteUrl(p)))}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+  return `  <url>\n    <loc>${escapeXml(buildSitemapUrl(p))}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
 }).join("\n");
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries}\n</urlset>\n`;

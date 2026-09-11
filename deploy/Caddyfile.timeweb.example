@@ -19,6 +19,8 @@ www.многоместа.рф, www.xn--80afg0abehb3ak.xn--p1ai {
 	}
 
 	header /assets/* Cache-Control "public, max-age=31536000, immutable"
+	header /fonts/* Cache-Control "public, max-age=31536000, immutable"
+	header /hero/* Cache-Control "public, max-age=31536000, immutable"
 	header /icons/* Cache-Control "public, max-age=86400"
 	header /og/* Cache-Control "public, max-age=86400"
 	header /robots.txt Cache-Control "public, max-age=3600"
@@ -30,7 +32,7 @@ www.многоместа.рф, www.xn--80afg0abehb3ak.xn--p1ai {
 	# Permanent server-side redirects from legacy routes to canonical SEO URLs.
 	import /var/www/mnogomesta/dist/legacy-redirects.caddy
 
-	@static path /assets/* /icons/* /og/* /favicon.ico /robots.txt /sitemap.xml /manifest.webmanifest /placeholder.svg
+	@static path /assets/* /fonts/* /hero/* /icons/* /og/* /favicon.ico /robots.txt /sitemap.xml /manifest.webmanifest /placeholder.svg
 	handle @static {
 		file_server
 	}

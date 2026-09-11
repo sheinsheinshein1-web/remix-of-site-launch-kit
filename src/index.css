@@ -1,4 +1,30 @@
-/* Inter font is loaded via <link> in index.html for faster FCP */
+/* The same Inter variable font is self-hosted to keep text off third-party request chains. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/inter-cyrillic-ext-300-700-v20.woff2") format("woff2");
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/inter-cyrillic-300-700-v20.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+20BD, U+2116;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/inter-latin-300-700-v20.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 @tailwind base;
 @tailwind components;
@@ -95,7 +121,16 @@ html.dark {
 
 @media (max-width: 768px) {
   html,
+  body,
+  #root {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  html,
   body {
+    overflow-x: clip;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
@@ -125,6 +160,20 @@ html.dark :where([class*="border-[#dfe5f5]"], [class*="border-[#e4e4e2]"], [clas
   border-color: hsl(var(--border));
 }
 
+/* Shared state contract for heading-like tabs on manufacturer pages.
+   Keeping color here prevents Tailwind dark/hover utilities from competing. */
+.manufacturer-section-tab {
+  color: hsl(var(--muted-foreground));
+}
+
+.manufacturer-section-tab:is([aria-selected="true"], [aria-current="location"]) {
+  color: hsl(var(--foreground));
+}
+
+.manufacturer-section-tab:is(:hover, :focus-visible) {
+  color: hsl(var(--primary));
+}
+
 /* Scrollbar hide utility */
 .scrollbar-hide {
   -ms-overflow-style: none;
@@ -134,6 +183,25 @@ html.dark :where([class*="border-[#dfe5f5]"], [class*="border-[#e4e4e2]"], [clas
   display: none;
   width: 0;
   height: 0;
+}
+
+.reviews-scroll {
+  scrollbar-color: hsl(var(--muted-foreground) / 0.55) transparent;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+
+.reviews-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.reviews-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.reviews-scroll::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.55);
+  border-radius: 3px;
 }
 
 /* Primary CTA button */
@@ -163,3 +231,104 @@ html.dark :where([class*="border-[#dfe5f5]"], [class*="border-[#e4e4e2]"], [clas
 }
 
 /* View Transitions временно отключены — вернём в нативном приложении */
+
+.project-price-quiz {
+  inset: 0 !important;
+  max-width: none !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+.project-price-quiz-layout {
+  display: grid;
+  grid-template-rows: clamp(230px, 36dvh, 330px) minmax(0, 1fr);
+}
+
+.project-price-quiz[data-state="open"] .project-price-quiz-layout {
+  animation: project-price-quiz-enter 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes project-price-quiz-enter {
+  from {
+    opacity: 0.98;
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes project-price-confetti-fall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -4vh, 0) rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  86% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--confetti-drift), 105vh, 0) rotate(var(--confetti-rotation));
+  }
+}
+
+.project-price-confetti {
+  animation-name: project-price-confetti-fall;
+  animation-timing-function: cubic-bezier(0.18, 0.7, 0.3, 1);
+  animation-fill-mode: both;
+}
+
+/* Leaflet controls follow the same light/dark tokens as the rest of the quiz. */
+.project-location-map .leaflet-control-zoom {
+  overflow: hidden;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 1px 3px hsl(var(--foreground) / 0.12);
+}
+
+.project-location-map .leaflet-control-zoom a {
+  border-color: hsl(var(--border));
+  background: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+}
+
+.project-location-map .leaflet-control-zoom a:hover,
+.project-location-map .leaflet-control-zoom a:focus-visible {
+  background: hsl(var(--muted));
+  color: hsl(var(--primary));
+}
+
+.project-location-map .leaflet-control-attribution {
+  background: hsl(var(--card) / 0.9);
+  color: hsl(var(--muted-foreground));
+  backdrop-filter: blur(8px);
+}
+
+.project-location-map .leaflet-control-attribution a {
+  color: hsl(var(--primary));
+}
+
+html.dark .project-location-map .leaflet-tile-pane {
+  filter: brightness(0.76) saturate(0.82) contrast(1.04);
+}
+
+@media (min-width: 1024px) {
+  .project-price-quiz-layout {
+    grid-template-columns: minmax(0, 3fr) minmax(520px, 2fr);
+    grid-template-rows: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-price-quiz[data-state="open"] .project-price-quiz-layout {
+    animation: none;
+  }
+
+  .project-price-confetti {
+    display: none;
+  }
+}

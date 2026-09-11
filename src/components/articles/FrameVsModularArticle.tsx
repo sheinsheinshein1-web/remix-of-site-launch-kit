@@ -32,7 +32,7 @@ const toc: ArticleTocItem[] = [
 ];
 
 const FrameVsModularArticle = () => {
-  const article = getJournalArticle(FRAME_VS_MODULAR_ARTICLE_PATH.split("/").at(-1) ?? "");
+  const article = getJournalArticle("karkasnyy-ili-modulnyy-dom");
   if (!article) return null;
 
   return (

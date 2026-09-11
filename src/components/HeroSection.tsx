@@ -3,8 +3,12 @@ import { useMemo, useState } from "react";
 import { parseSearchFilters } from "@/components/SearchDropdown";
 import { CATALOG_PATH, getRegionPath } from "@/lib/siteRoutes";
 import { resolveGeoSelection, searchGeoSelections } from "@/lib/geoSelection";
-import mobileHeroImage from "@/assets/home-mobile-forest.jpg";
-import desktopHeroImage from "@/assets/home-desktop-village-sky.jpg";
+import { runAfterMobileViewportRelease } from "@/lib/mobileViewport";
+
+const MOBILE_HERO_AVIF = "/hero/home-mobile-768-v1.avif";
+const MOBILE_HERO_WEBP = "/hero/home-mobile-768-v1.webp";
+const DESKTOP_HERO_AVIF = "/hero/home-desktop-1672-v1.avif";
+const DESKTOP_HERO_WEBP = "/hero/home-desktop-1672-v1.webp";
 
 // Keep the mobile matte for text contrast; the old desktop diagonal can be restored independently.
 const HERO_BLUR_ENABLED = true;
@@ -15,6 +19,11 @@ const HeroSection = () => {
   const [query, setQuery] = useState("");
   const [searchFocused, setSearchFocused] = useState(false);
 
+  const navigateAfterSearchClose = (path: string) => {
+    setSearchFocused(false);
+    runAfterMobileViewportRelease(() => navigate(path));
+  };
+
   const regionSuggestions = useMemo(
     () => searchGeoSelections(query, 5),
     [query],
@@ -23,13 +32,13 @@ const HeroSection = () => {
   const runSearch = () => {
     const normalized = query.trim();
     if (!normalized) {
-      navigate(CATALOG_PATH);
+      navigateAfterSearchClose(CATALOG_PATH);
       return;
     }
 
     const exactRegion = resolveGeoSelection(normalized);
     if (exactRegion) {
-      navigate(getRegionPath(exactRegion.slug));
+      navigateAfterSearchClose(getRegionPath(exactRegion.slug));
       return;
     }
 
@@ -41,7 +50,7 @@ const HeroSection = () => {
     if (parsed.maxArea !== undefined) params.set("maxArea", String(parsed.maxArea));
     if (parsed.beds !== undefined) params.set("beds", String(parsed.beds));
     if (parsed.baths !== undefined) params.set("baths", String(parsed.baths));
-    navigate(`${CATALOG_PATH}?${params.toString()}`);
+    navigateAfterSearchClose(`${CATALOG_PATH}?${params.toString()}`);
   };
 
   const submitSearch = (event: React.FormEvent<HTMLFormElement>) => {
@@ -59,24 +68,22 @@ const HeroSection = () => {
   return (
     <section className="bg-[radial-gradient(circle_at_82%_20%,rgba(31,36,43,0.055)_0%,rgba(31,36,43,0.016)_30%,transparent_58%),linear-gradient(180deg,#ffffff_0%,#f3f4f6_100%)] pt-[50px] dark:bg-[radial-gradient(circle_at_82%_18%,rgba(255,255,255,0.045)_0%,rgba(255,255,255,0.012)_30%,transparent_58%),linear-gradient(180deg,#0f1115_0%,#181a1e_100%)] md:pt-[116px]">
       <div className="relative overflow-hidden border-b border-[#e4e4e2]">
-        <img
-          src={mobileHeroImage}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-[760px] w-full object-cover object-center sm:bottom-0 sm:h-full md:hidden"
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-        />
-        <img
-          src={desktopHeroImage}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 hidden h-full w-full object-cover object-center md:block"
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-        />
+        <picture className="absolute inset-0 block h-full w-full" aria-hidden="true">
+          <source media="(min-width: 768px)" srcSet={DESKTOP_HERO_AVIF} type="image/avif" />
+          <source media="(min-width: 768px)" srcSet={DESKTOP_HERO_WEBP} type="image/webp" />
+          <source srcSet={MOBILE_HERO_AVIF} type="image/avif" />
+          <source srcSet={MOBILE_HERO_WEBP} type="image/webp" />
+          <img
+            src={MOBILE_HERO_WEBP}
+            alt=""
+            width={768}
+            height={1365}
+            className="h-full w-full object-cover object-center"
+            loading="eager"
+            fetchPriority="high"
+            decoding="sync"
+          />
+        </picture>
         <div className="pointer-events-none absolute inset-0 hidden bg-[#07110a]/20 md:block" aria-hidden="true" />
         {HERO_BLUR_ENABLED && (
           <div
@@ -108,7 +115,7 @@ const HeroSection = () => {
               }}
             >
               <img
-                src={desktopHeroImage}
+                src={DESKTOP_HERO_WEBP}
                 alt=""
                 aria-hidden="true"
                 className="absolute inset-0 h-full w-full scale-[1.035] object-cover object-center blur-[22px] brightness-[0.64] saturate-[0.86]"
@@ -170,7 +177,7 @@ const HeroSection = () => {
                     type="button"
                     role="option"
                     onMouseDown={(event) => event.preventDefault()}
-                    onClick={() => navigate(getRegionPath(region.slug))}
+                    onClick={() => navigateAfterSearchClose(getRegionPath(region.slug))}
                     className="flex min-h-14 w-full items-center justify-between gap-4 px-4 py-3 text-left transition-colors hover:bg-secondary hover:text-primary focus-visible:bg-secondary focus-visible:text-primary focus-visible:outline-none md:px-6"
                   >
                     <span className="text-[14px] font-medium md:text-[16px]">{region.name}</span>
@@ -189,7 +196,8 @@ const HeroSection = () => {
                 <button
                   key={popularQuery.label}
                   type="button"
-                  onClick={() => navigate(popularQuery.href)}
+                  onClick={() => navigateAfterSearchClose(popularQuery.href)}
+                  data-mobile-navigation
                   className="border-b border-white/55 leading-snug transition-colors hover:border-white hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
                 >
                   {popularQuery.label}

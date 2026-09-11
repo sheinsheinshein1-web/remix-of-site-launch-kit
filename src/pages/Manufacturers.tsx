@@ -19,6 +19,7 @@ import {
 } from "@/lib/geoSelection";
 import { isVerifiedMaker } from "@/lib/verifiedMakers";
 import { MANUFACTURERS_PATH } from "@/lib/siteRoutes";
+import { staticPageSeo } from "@/lib/pageSeo";
 
 type SortValue = "rating" | "projects" | "name";
 const MOBILE_PAGE_SIZE = 10;
@@ -139,8 +140,8 @@ const Manufacturers = () => {
   return (
     <div className="min-h-screen bg-secondary font-sans">
       <Seo
-        title="Производители домов — многоместа.рф"
-        description="Производители модульных домов: отзывы, регионы работы и проекты компаний на многоместа.рф."
+        title={staticPageSeo.manufacturers.title}
+        description={staticPageSeo.manufacturers.description}
         canonicalPath={MANUFACTURERS_PATH}
       />
 

@@ -5,7 +5,7 @@ describe("региональные зоны доставки", () => {
   it("создаёт города доставки и отдельные страницы административных регионов", () => {
     expect(regions).toHaveLength(16);
     expect(regionGroups).toHaveLength(16);
-    expect(regionGroups.filter((group) => group.cities.some((region) => region.deliveryArea))).toHaveLength(13);
+    expect(regionGroups.filter((group) => group.cities.some((region) => region.deliveryArea))).toHaveLength(12);
     expect(regionGroups.every((group) => group.cities.length === 5 || group.cities.length === 6)).toBe(true);
     expect(allRegions).toHaveLength(93);
   });
@@ -31,5 +31,10 @@ describe("региональные зоны доставки", () => {
   it("создаёт канонические страницы Московской и Свердловской областей", () => {
     expect(regionsBySlug["moskovskaya-oblast"]?.name).toBe("Московская область");
     expect(regionsBySlug["sverdlovskaya-oblast"]?.name).toBe("Свердловская область");
+  });
+
+  it("не дублирует страницу Краснодарского края вторым URL", () => {
+    expect(regionsBySlug["krasnodarskiy-kray"]).toBeUndefined();
+    expect(regionsBySlug.armavir?.name).toBe("Армавир");
   });
 });

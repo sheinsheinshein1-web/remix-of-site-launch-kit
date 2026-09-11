@@ -7,7 +7,11 @@ import { getManufacturerRatingSummary } from "@/data/manufacturerRatings";
 import { makersById, projects, projectsCountByMakerId } from "@/data/projects";
 import { compareWithProjectPriority } from "@/lib/projectPriority";
 import { getCityDisplayName } from "@/lib/cityDisplay";
-import { isProjectAvailableInGeo } from "@/lib/geoSelection";
+import {
+  getGeoSelectionPrepositional,
+  isAllRegionsGeo,
+  isProjectAvailableInGeo,
+} from "@/lib/geoSelection";
 import { MANUFACTURERS_PATH, getManufacturerPath } from "@/lib/siteRoutes";
 import HomeSectionTitle from "@/components/HomeSectionTitle";
 
@@ -16,20 +20,20 @@ const MOBILE_VISIBLE_MAKERS = 6;
 
 const HomeManufacturers = () => {
   const { city } = useCity();
+  const allRegionsSelected = isAllRegionsGeo(city);
+  const availableMakerIds = useMemo(() => new Set(
+    projects
+      .filter((project) => isProjectAvailableInGeo(project.city, city, project.deliveryRegionSlugs))
+      .map((project) => project.maker.id),
+  ), [city]);
   const makers = useMemo(() => Object.values(makersById)
+      .filter((maker) => allRegionsSelected || availableMakerIds.has(maker.id))
       .map((maker) => ({
         ...maker,
         projectsCount: projectsCountByMakerId[maker.id] ?? 0,
         reviewSummary: getManufacturerRatingSummary(maker.id),
-        availableInSelectedRegion: projects.some((project) => (
-          project.maker.id === maker.id
-          && isProjectAvailableInGeo(project.city, city, project.deliveryRegionSlugs)
-        )),
       }))
       .sort((a, b) => {
-        const regionPriority = Number(b.availableInSelectedRegion) - Number(a.availableInSelectedRegion);
-        if (regionPriority !== 0) return regionPriority;
-
         if (a.reviewSummary.hasReviews !== b.reviewSummary.hasReviews) {
           return Number(b.reviewSummary.hasReviews) - Number(a.reviewSummary.hasReviews);
         }
@@ -47,13 +51,23 @@ const HomeManufacturers = () => {
             second.projectsCount - first.projectsCount || first.name.localeCompare(second.name, "ru"),
         );
       })
-      .slice(0, DESKTOP_VISIBLE_MAKERS), [city]);
+      .slice(0, DESKTOP_VISIBLE_MAKERS), [allRegionsSelected, availableMakerIds]);
+
+  const manufacturersTitle = allRegionsSelected
+    ? "Все производители"
+    : `Все производители ${getGeoSelectionPrepositional(city)}`;
+  const manufacturersPath = allRegionsSelected
+    ? MANUFACTURERS_PATH
+    : `${MANUFACTURERS_PATH}?region=${encodeURIComponent(city)}`;
+  const manufacturersCount = allRegionsSelected
+    ? Object.keys(makersById).length
+    : availableMakerIds.size;
 
   return (
     <section id="manufacturers" className="scroll-mt-24">
       <div className="mx-auto w-full max-w-[1400px] px-4 pb-6 pt-12 sm:px-8 sm:pt-16 lg:px-12">
         <div className="mb-5 sm:mb-6">
-          <HomeSectionTitle title="Все производители" count={Object.keys(makersById).length} to={MANUFACTURERS_PATH} />
+          <HomeSectionTitle title={manufacturersTitle} count={manufacturersCount} to={manufacturersPath} />
         </div>
 
         <div className="grid sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3 lg:gap-x-10">

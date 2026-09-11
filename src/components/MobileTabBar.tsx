@@ -1,5 +1,6 @@
 import { Home, Heart, MessageCircle, User, LayoutGrid } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { runAfterMobileViewportRelease } from "@/lib/mobileViewport";
 
 const tabs = [
   { icon: Home, path: "/" },
@@ -11,10 +12,12 @@ const tabs = [
 const MobileTabBar = ({ ctaLabel, onCtaClick }: { ctaLabel?: string; onCtaClick?: () => void }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const isStandalone = "standalone" in window.navigator
+    && Boolean((window.navigator as Navigator & { standalone?: boolean }).standalone);
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden"
-         style={{ backgroundColor: '#fff', paddingBottom: (window.navigator as any).standalone ? 'calc(env(safe-area-inset-bottom, 0px) + 16px)' : '0px' }}>
+         style={{ backgroundColor: '#fff', paddingBottom: isStandalone ? 'calc(env(safe-area-inset-bottom, 0px) + 16px)' : '0px' }}>
       <nav className="bg-white border-t border-border/50 w-full">
         {ctaLabel && (
           <div className="px-4 pt-2 pb-1">
@@ -33,12 +36,13 @@ const MobileTabBar = ({ ctaLabel, onCtaClick }: { ctaLabel?: string; onCtaClick?
                 window.scrollTo({ top: 0, left: 0 });
                 return;
               }
-              navigate(tab.path);
+              runAfterMobileViewportRelease(() => navigate(tab.path));
             };
             return (
               <button
                 key={tab.path}
                 onClick={handleClick}
+                data-mobile-navigation
                 className="flex-1 flex items-center justify-center py-2.5 px-4"
               >
                 <tab.icon

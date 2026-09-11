@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Mail, Send } from "lucide-react";
-import logoColor from "@/assets/logo-mnogo-mesta.png";
+import logoColor from "@/assets/logo-mnogo-mesta-430.webp";
 import { FRAME_VS_MODULAR_ARTICLE_PATH } from "@/data/articles";
 import { regions } from "@/data/regions";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -87,7 +87,7 @@ const Footer = () => (
       <div className="grid grid-cols-2 gap-x-6 gap-y-12 sm:gap-x-10 lg:grid-cols-[1.25fr_1fr_1fr_1fr_1fr] lg:gap-x-10 lg:gap-y-0 xl:gap-x-14">
         <section className="col-span-2 max-w-[420px] lg:col-span-1 lg:max-w-[340px]">
           <Link to="/" className="inline-flex rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
-            <img src={logoColor} alt="Много места" className="h-[22px] w-auto dark:brightness-0 dark:invert md:h-[23px]" loading="lazy" decoding="async" />
+            <img src={logoColor} alt="Много места" width={430} height={62} className="h-[22px] w-auto dark:brightness-0 dark:invert md:h-[23px]" loading="lazy" decoding="async" />
           </Link>
           <p className="mt-5 text-[14px] leading-relaxed text-foreground/65 md:text-[15px]">
             Платформа для выбора модульных домов с доставкой по России.

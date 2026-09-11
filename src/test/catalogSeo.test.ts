@@ -10,25 +10,25 @@ describe("resolveCatalogSeoState", () => {
     expect(state.activeCategory).toBeUndefined();
   });
 
-  it("keeps an exact curated category indexable", () => {
+  it("noindexes a curated query filter until it has a standalone static path", () => {
     const state = resolveCatalogSeoState(new URLSearchParams("minArea=50&maxArea=80"), allCategoryLinks);
-    expect(state.shouldNoIndex).toBe(false);
+    expect(state.shouldNoIndex).toBe(true);
     expect(state.activeCategory?.title).toBe("Дома 50–80 м²");
-    expect(state.canonicalPath).toBe("/modulnye-doma/?minArea=50&maxArea=80");
+    expect(state.canonicalPath).toBe("/modulnye-doma/");
   });
 
-  it("keeps the modular baths catalog indexable", () => {
+  it("noindexes the modular baths query filter", () => {
     const state = resolveCatalogSeoState(new URLSearchParams("type=bath"), allCategoryLinks);
-    expect(state.shouldNoIndex).toBe(false);
+    expect(state.shouldNoIndex).toBe(true);
     expect(state.activeCategory?.title).toBe("Модульные бани");
-    expect(state.canonicalPath).toBe("/modulnye-doma/?type=bath");
+    expect(state.canonicalPath).toBe("/modulnye-doma/");
   });
 
-  it("noindexes extra filters and canonicals them to the matching category", () => {
+  it("noindexes extra filters and canonicals them to the main catalog", () => {
     const state = resolveCatalogSeoState(new URLSearchParams("q=терраса&beds=2"), allCategoryLinks);
     expect(state.shouldNoIndex).toBe(true);
     expect(state.activeCategory?.title).toBe("Дома с террасой");
-    expect(state.canonicalPath).toBe("/modulnye-doma/?q=терраса");
+    expect(state.canonicalPath).toBe("/modulnye-doma/");
   });
 
   it("noindexes arbitrary searches and canonicals them to the main catalog", () => {

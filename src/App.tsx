@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -8,6 +8,7 @@ import { ThemeProvider } from "next-themes";
 import { FavoritesProvider } from "@/contexts/FavoritesContext";
 import Index from "./pages/Index.tsx";
 import ScrollRestoration from "./components/ScrollToTop.tsx";
+import MobileViewportGuard from "./components/MobileViewportGuard.tsx";
 import CookieConsentBanner from "./components/CookieConsentBanner.tsx";
 import { CATALOG_PATH, MANUFACTURERS_PATH, REGIONS_PATH } from "@/lib/siteRoutes";
 
@@ -48,103 +49,7 @@ const Platforma = lazy(() => import("./pages/Platforma.tsx"));
 const PlatformaTemplatePreview = lazy(() => import("./pages/PlatformaTemplatePreview.tsx"));
 const TrafficArchitecture = lazy(() => import("./pages/TrafficArchitecture.tsx"));
 
-import avatar3d from "@/assets/avatar-3d.webp";
-import heart3d from "@/assets/heart-3d.webp";
-import supportIcon from "@/assets/support-icon.webp";
-import partnerIcon from "@/assets/partner-icon.webp";
-import catHouses from "@/assets/cat-houses.webp";
-import catBaths from "@/assets/cat-baths.webp";
-import catGlamping from "@/assets/cat-glamping.webp";
-import catGuest from "@/assets/cat-guest.webp";
-import catCommercial from "@/assets/cat-commercial.webp";
-import catDacha from "@/assets/cat-dacha.webp";
-import catShed from "@/assets/cat-shed.webp";
-import catOffice from "@/assets/cat-office.webp";
-import catWorkshop from "@/assets/cat-workshop.webp";
-import catBarrelBath from "@/assets/cat-barrel-bath.webp";
-import catHotTub from "@/assets/cat-hot-tub.webp";
-import catGazebo from "@/assets/cat-gazebo.webp";
-import catTerrace from "@/assets/cat-terrace.webp";
-import catBbq from "@/assets/cat-bbq.webp";
-import catHotel from "@/assets/cat-hotel.webp";
-import catCafe from "@/assets/cat-cafe.webp";
-import catGarage from "@/assets/cat-garage.webp";
-import catCanopy from "@/assets/cat-canopy.webp";
-import catFence from "@/assets/cat-fence.webp";
-import catSeptic from "@/assets/cat-septic.webp";
-import catWell from "@/assets/cat-well.webp";
-import catCalculator from "@/assets/cat-calculator.webp";
-import catPartner from "@/assets/partner-icon.webp";
-import catCompare from "@/assets/cat-compare.webp";
-import catSearchImg from "@/assets/cat-search.webp";
-import catRoi from "@/assets/cat-roi.webp";
-import catMortgage from "@/assets/cat-mortgage.webp";
-import catGuide from "@/assets/cat-guide.webp";
-import catLaw from "@/assets/cat-law.webp";
-import catStories from "@/assets/cat-stories.webp";
-import catGlampingBiz from "@/assets/cat-glamping-biz.webp";
-import catSeasonal from "@/assets/cat-seasonal.webp";
-import catStudio from "@/assets/cat-studio.webp";
-import catTwostory from "@/assets/cat-twostory.webp";
-
-const preloadedAssets = [
-  avatar3d,
-  heart3d,
-  supportIcon,
-  partnerIcon,
-  catHouses,
-  catBaths,
-  catGlamping,
-  catGuest,
-  catCommercial,
-  catDacha,
-  catShed,
-  catOffice,
-  catWorkshop,
-  catBarrelBath,
-  catHotTub,
-  catGazebo,
-  catTerrace,
-  catBbq,
-  catHotel,
-  catCafe,
-  catGarage,
-  catCanopy,
-  catFence,
-  catSeptic,
-  catWell,
-  catCalculator,
-  catPartner,
-  catCompare,
-  catSearchImg,
-  catRoi,
-  catMortgage,
-  catGuide,
-  catLaw,
-  catStories,
-  catGlampingBiz,
-  catSeasonal,
-  catStudio,
-  catTwostory,
-];
-
 const queryClient = new QueryClient();
-
-const AssetPreloader = () => {
-  const { pathname } = useLocation();
-  const shouldPreload = pathname === "/" || pathname === "/categories/" || pathname === CATALOG_PATH || pathname.includes("/proekty/");
-
-  useEffect(() => {
-    if (!shouldPreload) return;
-
-    preloadedAssets.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, [shouldPreload]);
-
-  return null;
-};
 
 // Forces ProjectDetail to remount on :id change so internal state and scroll reset cleanly.
 const ProjectDetailRoute = () => {
@@ -159,8 +64,8 @@ const RedirectWithLocation = ({ to }: { to: string }) => {
 
 const AppRoutes = () => (
   <>
+    <MobileViewportGuard />
     <ScrollRestoration />
-    <AssetPreloader />
     <Suspense fallback={<div className="min-h-screen bg-secondary" />}>
       <Routes>
         <Route path="/" element={<Index />} />

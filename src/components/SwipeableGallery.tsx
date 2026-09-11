@@ -3,6 +3,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 interface SwipeableGalleryProps {
   images: string[];
+  /** Optional lighter first-image variants selected by the browser below 768 px. */
+  mobileImages?: (string | undefined)[];
   alt: string;
   height?: string;
   /** Загружать активный слайд с высоким приоритетом. Для карточек по умолчанию false. */
@@ -18,7 +20,7 @@ interface SwipeableGalleryProps {
 const SWIPE_THRESHOLD_RATIO = 0.18; // 18% ширины — чтобы засчитать смену слайда
 const SWIPE_VELOCITY = 0.45; // px/ms — быстрый флик тоже листает
 
-const SwipeableGallery = ({ images, alt, height = "h-[200px]", priority = false, fits, objectPositions, children }: SwipeableGalleryProps) => {
+const SwipeableGallery = ({ images, mobileImages, alt, height = "h-[200px]", priority = false, fits, objectPositions, children }: SwipeableGalleryProps) => {
   const [current, setCurrent] = useState(0);
   const [loadedSlides, setLoadedSlides] = useState<Set<number>>(() => new Set([0]));
   const [dragX, setDragX] = useState(0);
@@ -31,7 +33,6 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", priority = false,
   const isMobile = useIsMobile();
   const count = images.length;
 
-  const width = containerRef.current?.clientWidth ?? 1;
   const imagesKey = images.join("|");
 
   const loadSlide = useCallback((index: number) => {
@@ -134,7 +135,7 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", priority = false,
       el.removeEventListener("touchend", handleEnd);
       el.removeEventListener("touchcancel", handleEnd);
     };
-  }, [isMobile, current, count, settle]);
+  }, [isMobile, current, count, loadSlide, settle]);
 
   const onMouseMove = (e: React.MouseEvent) => {
     if (isMobile || count <= 1) return;
@@ -185,15 +186,18 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", priority = false,
                 style={{ width: `${100 / count}%` }}
               >
                 {shouldLoad ? (
-                  <img
-                    src={src}
-                    alt={`${alt} ${i + 1}`}
-                    className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} pointer-events-none`}
-                    style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
-                    loading={priority && i === current ? "eager" : "lazy"}
-                    decoding={priority && i === current ? "sync" : "async"}
-                    draggable={false}
-                  />
+                  <picture className="block h-full w-full">
+                    {mobileImages?.[i] && <source media="(max-width: 767px)" srcSet={mobileImages[i]} type="image/avif" />}
+                    <img
+                      src={src}
+                      alt={`${alt} ${i + 1}`}
+                      className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"} pointer-events-none`}
+                      style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
+                      loading={priority && i === current ? "eager" : "lazy"}
+                      decoding={priority && i === current ? "sync" : "async"}
+                      draggable={false}
+                    />
+                  </picture>
                 ) : (
                   <div className="relative w-full h-full bg-secondary" aria-hidden="true" />
                 )}
@@ -213,15 +217,18 @@ const SwipeableGallery = ({ images, alt, height = "h-[200px]", priority = false,
               style={{ zIndex: isActive ? 2 : 1, opacity: isActive ? 1 : 0 }}
             >
               {shouldLoad ? (
-                <img
-                  src={src}
-                  alt={`${alt} ${i + 1}`}
-                  className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
-                  style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
-                  loading={priority && isActive ? "eager" : "lazy"}
-                  decoding={priority && isActive ? "sync" : "async"}
-                  draggable={false}
-                />
+                <picture className="block h-full w-full">
+                  {mobileImages?.[i] && <source media="(max-width: 767px)" srcSet={mobileImages[i]} type="image/avif" />}
+                  <img
+                    src={src}
+                    alt={`${alt} ${i + 1}`}
+                    className={`relative w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
+                    style={objectPositions?.[i] ? { objectPosition: objectPositions[i] } : undefined}
+                    loading={priority && isActive ? "eager" : "lazy"}
+                    decoding={priority && isActive ? "sync" : "async"}
+                    draggable={false}
+                  />
+                </picture>
               ) : (
                 <div className="relative w-full h-full bg-secondary" aria-hidden="true" />
               )}

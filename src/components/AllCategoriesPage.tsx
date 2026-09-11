@@ -7,12 +7,13 @@ import SiteBreadcrumbs, { siteBreadcrumbPageContainerClassName } from "@/compone
 import { allCategoryLinks, businessCategoryLinks } from "@/data/categoryLinks";
 import { buildSiteUrl } from "@/lib/seo";
 import { CATALOG_PATH } from "@/lib/siteRoutes";
+import { staticPageSeo } from "@/lib/pageSeo";
 
 const AllCategoriesPage = () => (
   <div className="min-h-screen bg-white font-sans text-[#342d27] dark:bg-background dark:text-foreground">
     <Seo
-      title="Категории проектов домов | многоместа.рф"
-      description="Категории проектов модульных домов: барнхаусы, мини-дома, дома для ПМЖ, дачи и проекты с террасой."
+      title={staticPageSeo.categories.title}
+      description={staticPageSeo.categories.description}
       canonicalPath="/categories/"
       jsonLd={[
         {

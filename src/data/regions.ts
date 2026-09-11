@@ -620,17 +620,12 @@ const deliveryRegionSeeds: DeliveryRegionSeed[] = [
   {
     baseRegionSlug: "krasnodar",
     label: "Краснодар и ближайшие города края",
-    area: {
-      slug: "krasnodarskiy-kray",
-      name: "Краснодарский край",
-      namePrepositional: "в Краснодарском крае",
-      searchAliases: ["Краснодарского края", "Краснодарском крае"],
-    },
     cities: [
       { slug: "goryachiy-klyuch", name: "Горячий Ключ", namePrepositional: "в Горячем Ключе" },
       { slug: "korenovsk", name: "Кореновск", namePrepositional: "в Кореновске" },
       { slug: "ust-labinsk", name: "Усть-Лабинск", namePrepositional: "в Усть-Лабинске" },
       { slug: "timashevsk", name: "Тимашевск", namePrepositional: "в Тимашевске" },
+      { slug: "armavir", name: "Армавир", namePrepositional: "в Армавире" },
     ],
   },
   {

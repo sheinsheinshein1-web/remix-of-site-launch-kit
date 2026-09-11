@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import { createPortal, flushSync } from "react-dom";
 import { Link } from "react-router-dom";
 import { ChevronDown, ChevronRight, X } from "lucide-react";
-import logoColor from "@/assets/logo-mnogo-mesta.png";
+import logoColor from "@/assets/logo-mnogo-mesta-430.webp";
 import { siteNavigation } from "@/data/siteNavigation";
 
 interface MobileMenuProps {
@@ -53,7 +53,26 @@ const MobileMenu = ({ open, onOpenChange, onPartnerCta, hidePartnerCta = false }
   const [mounted, setMounted] = useState(false);
   const [openNavigationSection, setOpenNavigationSection] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
-  const closeMenu = () => onOpenChange(false);
+  const previousBodyOverflowRef = useRef("");
+  const bodyScrollLockedRef = useRef(false);
+
+  const restoreBodyScroll = () => {
+    if (!bodyScrollLockedRef.current) return;
+    if (previousBodyOverflowRef.current) {
+      document.body.style.overflow = previousBodyOverflowRef.current;
+    } else {
+      document.body.style.removeProperty("overflow");
+    }
+    bodyScrollLockedRef.current = false;
+    previousBodyOverflowRef.current = "";
+  };
+
+  const closeMenu = () => {
+    const activeElement = document.activeElement;
+    if (activeElement instanceof HTMLElement) activeElement.blur();
+    restoreBodyScroll();
+    flushSync(() => onOpenChange(false));
+  };
   const handlePartnerCta = () => {
     closeMenu();
     onPartnerCta?.();
@@ -66,7 +85,8 @@ const MobileMenu = ({ open, onOpenChange, onPartnerCta, hidePartnerCta = false }
   useEffect(() => {
     if (!open) return;
 
-    const previousOverflow = document.body.style.overflow;
+    previousBodyOverflowRef.current = document.body.style.overflow;
+    bodyScrollLockedRef.current = true;
     document.body.style.overflow = "hidden";
     menuRef.current?.focus();
 
@@ -78,7 +98,7 @@ const MobileMenu = ({ open, onOpenChange, onPartnerCta, hidePartnerCta = false }
 
     window.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.body.style.overflow = previousOverflow;
+      restoreBodyScroll();
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [open, onOpenChange]);
@@ -104,6 +124,8 @@ const MobileMenu = ({ open, onOpenChange, onPartnerCta, hidePartnerCta = false }
           <img
             src={logoColor}
             alt="Много места"
+            width={430}
+            height={62}
             className="h-[18px] w-auto dark:brightness-0 dark:invert md:h-[23px]"
             loading="eager"
             decoding="async"

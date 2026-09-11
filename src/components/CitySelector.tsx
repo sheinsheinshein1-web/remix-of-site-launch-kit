@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect, useRef, useCallback } from "react";
+import { flushSync } from "react-dom";
 import { ChevronDown, Search, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
@@ -15,6 +16,7 @@ import {
   resolveGeoSelection,
 } from "@/lib/geoSelection";
 import { pluralizeRu } from "@/lib/utils";
+import { runAfterMobileViewportRelease } from "@/lib/mobileViewport";
 
 const CITY_STORAGE_KEY = "selected_city";
 const CITY_AUTO_DETECTED_KEY = "city_auto_detected";
@@ -237,8 +239,10 @@ const CitySelector = ({
   };
 
   const handleSelect = (slug: string) => {
-    onSelect(slug);
-    onOpenChange(false);
+    // Close the mobile drawer before a selection can navigate. Vaul otherwise
+    // may leave Safari on the fixed/keyboard-sized viewport during the next route.
+    flushSync(() => onOpenChange(false));
+    runAfterMobileViewportRelease(() => onSelect(slug));
   };
 
   const allRegionsOption = showAllRegionsOption ? (

@@ -1,4 +1,5 @@
 import type { NavigateFunction } from "react-router-dom";
+import { runAfterMobileViewportRelease } from "@/lib/mobileViewport";
 
 // View Transitions временно отключены — давали лаг и мигание на мобиле
 // при тяжёлом DOM. Вернём в нативном приложении (shared element transition).
@@ -12,5 +13,5 @@ export function navigateWithTransition(
     return;
   }
   e.preventDefault();
-  navigate(path);
+  runAfterMobileViewportRelease(() => navigate(path));
 }

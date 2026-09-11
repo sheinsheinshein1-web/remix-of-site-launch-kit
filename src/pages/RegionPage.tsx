@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import { ChevronRight, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { Link, Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
 import Header from "@/components/Header";
 import ManufacturerName from "@/components/ManufacturerName";
+import TrailingChevronLabel from "@/components/TrailingChevronLabel";
 import SiteBreadcrumbs, { siteBreadcrumbPageContainerClassName } from "@/components/SiteBreadcrumbs";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
@@ -20,6 +21,7 @@ import { buildSiteUrl } from "@/lib/seo";
 import { getManufacturerRatingSummary } from "@/data/manufacturerRatings";
 import { getCityDisplayName } from "@/lib/cityDisplay";
 import { isProjectAvailableInGeo } from "@/lib/geoSelection";
+import { buildRegionSeo } from "@/lib/pageSeo";
 import {
   CATALOG_PATH,
   MANUFACTURERS_PATH,
@@ -121,12 +123,19 @@ const RegionPage = () => {
       name: project.name,
     })),
   };
+  const regionSeo = buildRegionSeo({
+    h1: region.h1,
+    namePrepositional: region.namePrepositional,
+    fallbackDescription: region.description,
+    projectCount: regionProjects.length,
+    manufacturerCount: makerIds.length,
+  });
 
   return (
     <div className="min-h-screen bg-secondary font-sans">
       <Seo
-        title={region.title}
-        description={region.description}
+        title={regionSeo.title}
+        description={regionSeo.description}
         canonicalPath={canonicalPath}
         jsonLd={[breadcrumbLd, faqLd, itemListLd]}
       />
@@ -169,10 +178,9 @@ const RegionPage = () => {
               <h2 id="region-makers-heading" className="text-[26px] font-semibold tracking-[-0.025em] md:text-[32px]">
                 <Link
                   to={manufacturersHref}
-                  className="group inline-flex min-h-11 items-center gap-2 text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground"
+                  className="group inline min-h-11 text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground"
                 >
-                  <span>Все производители {region.namePrepositional}</span>
-                  <ChevronRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none md:h-6 md:w-6" strokeWidth={1.8} aria-hidden />
+                  <TrailingChevronLabel text={`Все производители ${region.namePrepositional}`} />
                 </Link>
               </h2>
               <div className="mt-6 grid sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3 lg:gap-x-10">
