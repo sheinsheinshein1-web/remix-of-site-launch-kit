@@ -28,6 +28,8 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 import { toast } from "sonner";
 import ManufacturerReportDialog from "@/components/ManufacturerReportDialog";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
+
+const violationMailto = "mailto:inadvert@yandex.ru";
 import {
   projects as allProjects,
   projectsCountByMakerId,
@@ -314,7 +316,7 @@ const Partner = () => {
 
   // Проекты этой компании — берём из единого источника правды.
   const makerProjects = useMemo(
-    () => allProjects.filter((p) => p.maker.id === makerId).sort(compareProjectTechnologyPriority),
+    () => allProjects.filter((p) => p.manufacturerId === makerId).sort(compareProjectTechnologyPriority),
     [makerId]
   );
   const heroImage = makerProjects[0]?.gallery[0]?.image ?? "";

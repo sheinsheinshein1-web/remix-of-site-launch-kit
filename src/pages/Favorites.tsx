@@ -9,6 +9,7 @@ import Seo from "@/components/Seo";
 import SiteBreadcrumbs, { siteBreadcrumbPageContainerClassName } from "@/components/SiteBreadcrumbs";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { makersById, projects } from "@/data/projects";
+import { manufacturerRegistry } from "@/data/manufacturers";
 import { CATALOG_PATH } from "@/lib/siteRoutes";
 
 type SortValue = "saved" | "popular" | "price-asc" | "price-desc" | "area";
@@ -43,7 +44,7 @@ const Favorites = () => {
 
       return [
         project.name,
-        project.maker.name,
+        manufacturerRegistry[project.manufacturerId]?.name ?? "",
         project.city,
         project.badge,
         project.area,

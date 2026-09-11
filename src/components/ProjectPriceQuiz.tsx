@@ -9,6 +9,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { projects as catalogProjects, type Project } from "@/data/projects";
+import { manufacturerRegistry } from "@/data/manufacturers";
 import { sendSupportMessage } from "@/lib/supportChat";
 import type { ProjectMapPoint } from "@/components/ProjectLocationMap";
 import {
@@ -92,6 +93,9 @@ const pluralizeCalculations = (count: number) => {
   return "расчётов";
 };
 
+const getProjectManufacturerName = (project: Project) =>
+  manufacturerRegistry[project.manufacturerId]?.name ?? "Производитель";
+
 const ProjectPriceQuiz = ({ open, onOpenChange, project, deliveryRegion }: ProjectPriceQuizProps) => {
   const [step, setStep] = useState<QuizStep>("plot");
   const [locationDetails, setLocationDetails] = useState("");
@@ -109,8 +113,8 @@ const ProjectPriceQuiz = ({ open, onOpenChange, project, deliveryRegion }: Proje
   const [initialQuotePayload, setInitialQuotePayload] = useState<ProjectQuoteApplicationPayload | null>(null);
   const [previewProjectId, setPreviewProjectId] = useState<number | null>(null);
   const [previewImageIndex, setPreviewImageIndex] = useState(0);
-  const [submitState, setSubmitState] = useState<"idle" | "submitting" | "recommendations" | "additional-submitting" | "success">("idle");
-  const initialRequestPromiseRef = useRef<Promise<boolean> | null>(null);
+  const [submitState, setSubmitState] = useState<"idle" | "submitting" | "recommendations" | "success">("idle");
+  const initialSheetRequestPromiseRef = useRef<Promise<void> | null>(null);
 
   const steps = useMemo<QuizStep[]>(() => [
     "plot",
@@ -122,6 +126,7 @@ const ProjectPriceQuiz = ({ open, onOpenChange, project, deliveryRegion }: Proje
   ], [payment, plotStatus]);
 
   const stepIndex = Math.max(steps.indexOf(step), 0);
+  const manufacturerName = getProjectManufacturerName(project);
   const firstImage = project.gallery[0]?.image ?? "";
   const recommendations = useMemo(
     () => getSimilarManufacturerProjects(project, catalogProjects, deliveryRegion),
@@ -154,7 +159,7 @@ const ProjectPriceQuiz = ({ open, onOpenChange, project, deliveryRegion }: Proje
   const telegramRegion = selectedRegionGroup?.cities.find((region) => region.deliveryArea)?.namePrepositional
     ?? selectedGeo?.namePrepositional
     ?? "в вашем регионе";
-  const isRecommendationStep = submitState === "recommendations" || submitState === "additional-submitting";
+  const isRecommendationStep = submitState === "recommendations";
 
   const resolveLocationAnswer = async () => {
     if (plotStatus === "Участка пока нет") return "Не указано: участка пока нет";
@@ -183,7 +188,7 @@ const ProjectPriceQuiz = ({ open, onOpenChange, project, deliveryRegion }: Proje
     setSelectedRecommendationIds([]);
     setAdditionalSent(false);
     setInitialQuotePayload(null);
-    initialRequestPromiseRef.current = null;
+    initialSheetRequestPromiseRef.current = null;
     setPreviewProjectId(null);
     setPreviewImageIndex(0);
     setError("");
@@ -234,15 +239,17 @@ const ProjectPriceQuiz = ({ open, onOpenChange, project, deliveryRegion }: Proje
   };
 
   const sendInitialRequest = (message: string, quotePayload: ProjectQuoteApplicationPayload) => {
+    const supportSubmission = sendSupportMessage(message);
+    const sheetSubmission = submitProjectQuoteApplication(quotePayload);
+    initialSheetRequestPromiseRef.current = sheetSubmission;
     const submission = Promise.allSettled([
-      sendSupportMessage(message),
-      submitProjectQuoteApplication(quotePayload),
+      supportSubmission,
+      sheetSubmission,
     ]).then((results) => {
       const delivered = results.some((result) => result.status === "fulfilled");
       return delivered;
     });
 
-    initialRequestPromiseRef.current = submission;
     return submission;
   };
 
@@ -264,7 +271,7 @@ const ProjectPriceQuiz = ({ open, onOpenChange, project, deliveryRegion }: Proje
       "Заявка на расчёт цены дома с доставкой",
       `Проект: ${project.name}`,
       `ID проекта: ${project.id}`,
-      `Производитель: ${project.maker.name}`,
+      `Производитель: ${manufacturerName}`,
       `Местоположение участка: ${locationAnswer}`,
       `Статус участка: ${plotStatus}`,
       `Способ оплаты: ${payment}`,
@@ -280,7 +287,7 @@ const ProjectPriceQuiz = ({ open, onOpenChange, project, deliveryRegion }: Proje
       leadId: createProjectQuoteLeadId(),
       projectName: project.name,
       projectId: String(project.id),
-      manufacturerName: project.maker.name,
+      manufacturerName,
       area: project.area,
       price: project.price,
       deliveryRegion,
@@ -343,7 +350,7 @@ const ProjectPriceQuiz = ({ open, onOpenChange, project, deliveryRegion }: Proje
     ));
   };
 
-  const handleAdditionalSubmit = async () => {
+  const handleAdditionalSubmit = () => {
     if (!selectedRecommendationIds.length) return;
     if (!initialQuotePayload) {
       setError("Не найдены данные основной заявки");
@@ -355,42 +362,37 @@ const ProjectPriceQuiz = ({ open, onOpenChange, project, deliveryRegion }: Proje
 
     const message = [
       "Запрос на дополнительные расчёты",
-      `Исходный проект: ${project.name} от ${project.maker.name}`,
+      `Исходный проект: ${project.name} от ${manufacturerName}`,
       `Местоположение участка: ${locationAnswer}`,
       ...selectedProjects.map((item, index) => (
-        `${index + 1}. ${item.name} от ${item.maker.name}, ID ${item.id}, ${item.area}, ${item.price}`
+        `${index + 1}. ${item.name} от ${getProjectManufacturerName(item)}, ID ${item.id}, ${item.area}, ${item.price}`
       )),
       `Имя: ${name.trim()}`,
       `Телефон: ${phone.trim()}`,
       `Страница: ${window.location.href}`,
     ].join("\n");
 
-    setSubmitState("additional-submitting");
     setError("");
-    try {
-      // Keep the sheet update ordered after the original lead, but never block
-      // additional projects merely because one delivery channel reported an error.
-      if (initialRequestPromiseRef.current) await initialRequestPromiseRef.current;
-      const alternativeProjects = selectedProjects.map((item) => (
-        `${item.name} — ${item.maker.name}, ID ${item.id}, ${item.area}, ${item.price}`
-      )).join("\n");
+    const alternativeProjects = selectedProjects.map((item) => (
+      `${item.name} — ${getProjectManufacturerName(item)}, ID ${item.id}, ${item.area}, ${item.price}`
+    )).join("\n");
 
-      const deliveryResults = await Promise.allSettled([
-        sendSupportMessage(message),
-        submitProjectQuoteApplication({
-          ...initialQuotePayload,
-          alternativeProjects,
-        }),
-      ]);
-      if (!deliveryResults.some((result) => result.status === "fulfilled")) {
-        throw new Error("Не удалось отправить дополнительные расчёты");
-      }
-      setAdditionalSent(true);
-      setSubmitState("success");
-    } catch {
-      setSubmitState("recommendations");
-      setError("Дополнительные запросы пока не отправились. Пожалуйста, проверьте соединение и попробуйте ещё раз");
-    }
+    // The original lead is already being delivered when this screen opens.
+    // Start the independent support notification immediately, and serialize only
+    // the sheet update so the original row cannot overwrite the alternatives.
+    // Confirmation from either external service must not keep the user on a
+    // loading screen: form submission itself is synchronous, acknowledgements are not.
+    const supportSubmission = sendSupportMessage(message);
+    const sheetSubmission = (initialSheetRequestPromiseRef.current ?? Promise.resolve())
+      .catch(() => undefined)
+      .then(() => submitProjectQuoteApplication({
+        ...initialQuotePayload,
+        alternativeProjects,
+      }));
+
+    void Promise.allSettled([supportSubmission, sheetSubmission]);
+    setAdditionalSent(true);
+    setSubmitState("success");
   };
 
   const handleKeepOriginal = () => {
@@ -480,14 +482,14 @@ const ProjectPriceQuiz = ({ open, onOpenChange, project, deliveryRegion }: Proje
             {firstImage && (
               <img
                 src={firstImage}
-                alt={`${project.name} от ${project.maker.name}`}
+                alt={`${project.name} от ${manufacturerName}`}
                 className="absolute inset-0 h-full w-full object-cover"
               />
             )}
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(18,24,21,0.10)_0%,rgba(18,24,21,0.32)_45%,rgba(18,24,21,0.88)_100%)] md:bg-[linear-gradient(180deg,rgba(18,24,21,0.12)_0%,rgba(18,24,21,0.78)_100%)]" />
             <div className="relative flex h-full min-h-0 flex-col justify-end p-5 pr-16 sm:p-8 lg:p-12 xl:p-16">
               <p className="mb-2 text-[13px] font-medium text-white/75">
-                {isRecommendationStep ? "Выбранный проект" : project.maker.name}
+                {isRecommendationStep ? "Выбранный проект" : manufacturerName}
               </p>
               <h2 className="text-[30px] font-semibold leading-none tracking-[-0.04em] sm:text-[38px] lg:text-[54px]">{project.name}</h2>
               <div className="mt-3 flex items-center gap-3 text-[13px] text-white/85 sm:text-[14px] lg:mt-6 lg:text-[16px]">
@@ -549,7 +551,7 @@ const ProjectPriceQuiz = ({ open, onOpenChange, project, deliveryRegion }: Proje
                           </span>
                         </span>
                         <span className="pointer-events-none flex min-w-0 flex-col py-0.5">
-                          <span className={`block truncate text-[12px] font-medium ${selected ? "text-primary-foreground/70" : "text-muted-foreground"}`}>{item.maker.name}</span>
+                          <span className={`block truncate text-[12px] font-medium ${selected ? "text-primary-foreground/70" : "text-muted-foreground"}`}>{getProjectManufacturerName(item)}</span>
                           <span className="mt-1 block truncate text-[16px] font-semibold leading-tight sm:text-[18px]">{item.name}</span>
                           <span className={`mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-[12px] ${selected ? "text-primary-foreground/75" : "text-muted-foreground"}`}>
                             <span>{item.area}</span>
@@ -588,19 +590,16 @@ const ProjectPriceQuiz = ({ open, onOpenChange, project, deliveryRegion }: Proje
                 <button
                   type="button"
                   onClick={handleAdditionalSubmit}
-                  disabled={!selectedRecommendationIds.length || submitState === "additional-submitting"}
+                  disabled={!selectedRecommendationIds.length}
                   className="min-h-12 w-full rounded-[var(--radius)] bg-primary px-5 text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-primary/90 active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 disabled:cursor-not-allowed disabled:opacity-30 disabled:active:translate-y-0"
                 >
-                  {submitState === "additional-submitting"
-                    ? "Отправляем..."
-                    : selectedRecommendationIds.length
-                      ? `Получить ещё ${selectedRecommendationIds.length} ${pluralizeCalculations(selectedRecommendationIds.length)}`
-                      : "Выберите проекты"}
+                  {selectedRecommendationIds.length
+                    ? `Получить ещё ${selectedRecommendationIds.length} ${pluralizeCalculations(selectedRecommendationIds.length)}`
+                    : "Выберите проекты"}
                 </button>
                 <button
                   type="button"
                   onClick={handleKeepOriginal}
-                  disabled={submitState === "additional-submitting"}
                   className="mt-2 min-h-11 w-full rounded-[var(--radius)] px-5 text-[14px] font-semibold text-muted-foreground transition-colors hover:text-primary active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 disabled:cursor-wait disabled:opacity-50"
                 >
                   Оставить только {project.name}
@@ -861,7 +860,7 @@ const ProjectPriceQuiz = ({ open, onOpenChange, project, deliveryRegion }: Proje
               </div>
 
               <div className="flex min-h-0 flex-col overflow-y-auto px-5 pb-5 pt-6 sm:px-8 sm:pb-8 lg:px-9 lg:py-9">
-                <p className="pr-10 text-[13px] font-medium text-muted-foreground">{previewProject.maker.name}</p>
+                <p className="pr-10 text-[13px] font-medium text-muted-foreground">{getProjectManufacturerName(previewProject)}</p>
                 <h2 className="mt-2 pr-10 text-[30px] font-semibold leading-none tracking-[-0.04em] sm:text-[36px]">
                   {previewProject.name}
                 </h2>

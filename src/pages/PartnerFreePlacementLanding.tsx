@@ -10,7 +10,7 @@ import { makersById, projects } from "@/data/projects";
 
 const showcaseMaker = makersById.platforma ?? Object.values(makersById)[0];
 const makerProjects = showcaseMaker
-  ? projects.filter((project) => project.maker.id === showcaseMaker.id).slice(0, 3)
+  ? projects.filter((project) => project.manufacturerId === showcaseMaker.id).slice(0, 3)
   : [];
 const showcaseProjects = makerProjects.length >= 2 ? makerProjects : projects.slice(0, 3);
 

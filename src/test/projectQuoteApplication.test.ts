@@ -32,7 +32,7 @@ afterEach(() => {
 
 describe("submitProjectQuoteApplication", () => {
   it("отправляет все данные покупателя в обработчик Google Таблицы", async () => {
-    vi.spyOn(HTMLFormElement.prototype, "submit").mockImplementation(function () {
+    vi.spyOn(HTMLFormElement.prototype, "submit").mockImplementation(function (this: HTMLFormElement) {
       const iframe = document.querySelector<HTMLIFrameElement>(`iframe[name="${this.target}"]`);
       const requestId = this.querySelector<HTMLInputElement>('input[name="requestId"]')?.value;
 
@@ -62,7 +62,7 @@ describe("submitProjectQuoteApplication", () => {
   });
 
   it("передаёт ошибку записи в интерфейс", async () => {
-    vi.spyOn(HTMLFormElement.prototype, "submit").mockImplementation(function () {
+    vi.spyOn(HTMLFormElement.prototype, "submit").mockImplementation(function (this: HTMLFormElement) {
       const iframe = document.querySelector<HTMLIFrameElement>(`iframe[name="${this.target}"]`);
       const requestId = this.querySelector<HTMLInputElement>('input[name="requestId"]')?.value;
 

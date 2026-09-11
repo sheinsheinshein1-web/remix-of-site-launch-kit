@@ -27,7 +27,7 @@ import { geoLocationCount } from "@/data/regions";
 import { buildCanonicalUrl } from "@/lib/seo";
 
 const showcaseMaker = makersById.platforma ?? Object.values(makersById)[0];
-const showcaseProjects = projects.filter((project) => project.maker.id === showcaseMaker?.id).slice(0, 3);
+const showcaseProjects = projects.filter((project) => project.manufacturerId === showcaseMaker?.id).slice(0, 3);
 const marketplaceProjects = showcaseProjects.length >= 2 ? showcaseProjects : projects.slice(0, 3);
 const businessProjects = projects
   .filter((project) => project.suitableFor.some((value) => ["Аренда", "Бизнес", "Гостевой дом"].includes(value)))

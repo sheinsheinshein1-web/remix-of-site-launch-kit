@@ -102,7 +102,7 @@ const PartnerReviews = () => {
   const maker = makersById[makerId];
   const canonicalPath = getManufacturerReviewsPath(makerId);
   const makerProjects = useMemo(
-    () => projects.filter((project) => project.maker.id === makerId),
+    () => projects.filter((project) => project.manufacturerId === makerId),
     [makerId],
   );
   const reviewTemplates = useMemo(() => getPartnerReviews(makerId), [makerId]);

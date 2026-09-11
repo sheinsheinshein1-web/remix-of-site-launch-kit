@@ -13,6 +13,7 @@ import catGlampingBusiness from "@/assets/cat-glamping-biz.webp";
 import catGuestBusiness from "@/assets/cat-guest-prefab.webp";
 import catHotel from "@/assets/cat-hotel.webp";
 import catOffice from "@/assets/cat-office.webp";
+import { getCatalogCategoryBySlug } from "@/data/catalogCategories";
 import { CATALOG_PATH } from "@/lib/siteRoutes";
 
 export type CategoryLink = {
@@ -22,60 +23,68 @@ export type CategoryLink = {
   image: string;
 };
 
+const categoryPath = (slug: string) => getCatalogCategoryBySlug(slug)?.path ?? CATALOG_PATH;
+
 /** Единый список категорий для главной, /categories и поиска. */
 export const categoryLinks: CategoryLink[] = [
   {
     title: "Модульные дома",
     caption: "Готовые проекты заводской сборки",
-    href: `${CATALOG_PATH}?tech=Модульный дом`,
+    href: CATALOG_PATH,
     image: catHousesModular,
   },
   {
     title: "Модульные бани",
     caption: "Готовые бани заводской сборки",
-    href: `${CATALOG_PATH}?type=bath`,
+    href: categoryPath("modulnye-bani"),
     image: catBaths,
+  },
+  {
+    title: "Дома под ключ",
+    caption: "С отделкой и готовой комплектацией",
+    href: categoryPath("pod-klyuch"),
+    image: catHousesModular,
   },
   {
     title: "Барнхаусы",
     caption: "Современная архитектура с террасами",
-    href: `${CATALOG_PATH}?q=барнхаус`,
+    href: categoryPath("barnhausy"),
     image: catHousesPrefab,
   },
   {
     title: "Дома до 3 млн",
     caption: "Компактные решения с понятным бюджетом",
-    href: `${CATALOG_PATH}?maxPrice=3000000`,
+    href: categoryPath("do-3-mln"),
     image: catStudioModular,
   },
   {
     title: "Дома 50–80 м²",
     caption: "Популярный размер для семьи",
-    href: `${CATALOG_PATH}?minArea=50&maxArea=80`,
+    href: categoryPath("50-80-m2"),
     image: catGuestModular,
   },
   {
     title: "Дома для ПМЖ",
     caption: "Круглогодичное проживание",
-    href: `${CATALOG_PATH}?q=пмж`,
+    href: categoryPath("dlya-postoyannogo-prozhivaniya"),
     image: catTwostory,
   },
   {
     title: "Дома с террасой",
     caption: "Проекты для отдыха за городом",
-    href: `${CATALOG_PATH}?q=терраса`,
+    href: categoryPath("s-terrasoy"),
     image: catTerrace,
   },
   {
     title: "Мини-дома",
     caption: "Небольшие дома и студии",
-    href: `${CATALOG_PATH}?maxArea=50`,
+    href: categoryPath("mini-doma"),
     image: catDachaModular,
   },
   {
     title: "Дачные дома",
     caption: "Сезонные и компактные проекты",
-    href: `${CATALOG_PATH}?q=дача`,
+    href: categoryPath("dachnye"),
     image: catDacha,
   },
 ];

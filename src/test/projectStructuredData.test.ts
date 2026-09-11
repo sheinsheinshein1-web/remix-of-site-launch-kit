@@ -8,7 +8,7 @@ const project = {
   price: "по запросу",
   description: "Описание проекта",
   descriptionLong: "Подробное описание проекта",
-  maker: { name: "Freedom Naturi", initials: "FN" },
+  manufacturerId: "freedom-naturi",
 } as Project;
 
 describe("project structured data", () => {

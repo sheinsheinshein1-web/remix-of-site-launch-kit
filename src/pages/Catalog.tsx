@@ -15,7 +15,10 @@ import { CATALOG_PATH, getProjectPath } from "@/lib/siteRoutes";
 import { compareWithProjectPriority } from "@/lib/projectPriority";
 import { getCityDisplayName } from "@/lib/cityDisplay";
 import { regions } from "@/data/regions";
-import { allCategoryLinks } from "@/data/categoryLinks";
+import {
+  getCatalogCategoryBySlug,
+  matchesCatalogCategory,
+} from "@/data/catalogCategories";
 import { resolveCatalogSeoState } from "@/lib/catalogSeo";
 import { buildCatalogSeo } from "@/lib/pageSeo";
 import {
@@ -85,6 +88,7 @@ const sidebarFilters = [
 ];
 
 const catalogMakers = Array.from(new Set(catalogItems.map((item) => item.maker))).sort((a, b) => a.localeCompare(b, "ru"));
+const projectsById = new Map(projects.map((project) => [project.id, project]));
 const PUBLIC_TECHNOLOGY_OPTIONS = ["Модульный дом"] as const;
 
 const ListIcon = ({ active }: { active: boolean }) => (
@@ -110,22 +114,27 @@ type CatalogProps = {
   lockedRegionLabel?: string;
   lockedRegionPrepositional?: string;
   lockedTechnology?: string;
+  categorySlug?: string;
 };
 
-const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegionPrepositional, lockedTechnology }: CatalogProps = {}) => {
+const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegionPrepositional, lockedTechnology, categorySlug }: CatalogProps = {}) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [catalogSearch, setCatalogSearch] = useState(searchParams.get("q") || "");
-  const { activeCategory, shouldNoIndex, canonicalPath } = resolveCatalogSeoState(searchParams, allCategoryLinks);
+  const [visibleLimit, setVisibleLimit] = useState(48);
+  const routeCategory = getCatalogCategoryBySlug(categorySlug);
+  const { activeCategory, shouldNoIndex, canonicalPath } = resolveCatalogSeoState(searchParams, routeCategory);
   const typeFilter = searchParams.get("type") ?? "";
   const techFilter = lockedTechnology ?? searchParams.get("tech") ?? "";
-  const effectiveObjectType = typeFilter || (activeCategory?.title === "Модульные дома" ? "house" : "");
+  const effectiveObjectType = typeFilter || routeCategory?.filter.objectType || "";
   const selectedObjectType = effectiveObjectType === "bath" ? "bath" : effectiveObjectType === "house" ? "house" : "all";
-  const catalogTitle = activeCategory?.title ?? "Проекты модульных домов";
-  const catalogSeo = buildCatalogSeo({
-    categoryTitle: activeCategory?.title,
-    categoryCaption: activeCategory?.caption,
-  });
-  const catalogDescription = catalogSeo.description;
+  const catalogTitle = routeCategory?.h1 ?? activeCategory?.title ?? "Проекты модульных домов";
+  const catalogSeo = routeCategory
+    ? { title: `${routeCategory.metaTitle} | многоместа.рф`, description: routeCategory.metaDescription }
+    : buildCatalogSeo({
+      categoryTitle: activeCategory?.title,
+      categoryCaption: activeCategory?.caption,
+    });
+  const catalogDescription = routeCategory?.caption ?? catalogSeo.description;
   const breadcrumbItems = [
     { label: "Главная", to: "/" },
     ...(activeCategory
@@ -136,7 +145,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
     { "@type": "ListItem", position: 1, name: "Главная", item: buildSiteUrl("/") },
     { "@type": "ListItem", position: 2, name: "Проекты", item: buildSiteUrl(CATALOG_PATH) },
     ...(activeCategory
-      ? [{ "@type": "ListItem", position: 3, name: activeCategory.title, item: buildSiteUrl(activeCategory.href) }]
+      ? [{ "@type": "ListItem", position: 3, name: activeCategory.title, item: buildSiteUrl(activeCategory.path) }]
       : []),
   ];
 
@@ -173,6 +182,11 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
   };
 
   const setObjectTypeFilter = (value: "all" | "house" | "bath") => {
+    if (routeCategory) {
+      if (value === "bath") navigate("/modulnye-bani/");
+      else navigate(CATALOG_PATH);
+      return;
+    }
     const next = new URLSearchParams(searchParams);
     next.delete("type");
     next.delete("tech");
@@ -338,7 +352,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
     }
   };
 
-  const hasActiveFilters = filterPriceMinVal !== 500000 || filterPriceMaxVal !== 15000000 || filterAreaMin !== "" || filterAreaMax !== "" || filterBedrooms.size > 0 || filterBathrooms.size > 0 || filterSuitableFor.size > 0 || filterMoveIn.size > 0 || filterFloors.size > 0 || filterKit.size > 0 || filterInsulation.size > 0 || filterFeatures.size > 0 || filterStyle.size > 0 || filterLandType.size > 0 || filterExtras.size > 0 || filterMaker !== "" || effectiveObjectType !== "";
+  const hasActiveFilters = filterPriceMinVal !== 500000 || filterPriceMaxVal !== 15000000 || filterAreaMin !== "" || filterAreaMax !== "" || filterBedrooms.size > 0 || filterBathrooms.size > 0 || filterSuitableFor.size > 0 || filterMoveIn.size > 0 || filterFloors.size > 0 || filterKit.size > 0 || filterInsulation.size > 0 || filterFeatures.size > 0 || filterStyle.size > 0 || filterLandType.size > 0 || filterExtras.size > 0 || filterMaker !== "" || typeFilter !== "" || techFilter !== "";
 
   const priceNum = (s: string) => parseInt(s.replace(/\D/g, ""), 10);
   const areaNum = (s: string) => parseFloat(s.replace(/[^\d.]/g, ""));
@@ -408,6 +422,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
     )),
   );
   const filteredItems = catalogItems.filter(item => {
+    if (!matchesCatalogCategory(item, routeCategory)) return false;
     // Без запроса сохраняем регион из шапки. Текстовый поиск работает по всему
     // каталогу, иначе производителя или модель из другого региона невозможно найти.
     if (
@@ -529,6 +544,19 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
       }
     })
   );
+  const visibleItems = sortedItems.slice(0, visibleLimit);
+  const hasMoreItems = visibleItems.length < sortedItems.length;
+
+  const itemListElements = visibleItems.flatMap((item, index) => {
+    const project = projectsById.get(item.id);
+    if (!project) return [];
+    return [{
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: buildSiteUrl(getProjectPath(project)),
+    }];
+  });
 
   return (
     <div className={`${embedded ? "" : "min-h-screen"} w-full min-w-0 max-w-full overflow-x-clip bg-background font-sans`}>
@@ -538,11 +566,20 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
         canonicalPath={canonicalPath}
         noIndex={shouldNoIndex}
         noFollow={false}
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: breadcrumbJsonLdItems,
-        }}
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: breadcrumbJsonLdItems,
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: catalogTitle,
+            numberOfItems: itemListElements.length,
+            itemListElement: itemListElements,
+          },
+        ]}
       />}
       {!embedded && <Header variant="home" />}
 
@@ -933,7 +970,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
             </div>
           ) : viewMode === "grid" ? (
             <div className="grid grid-cols-2 gap-x-4 gap-y-8">
-              {sortedItems.map((item) => (
+              {visibleItems.map((item) => (
                 <ProjectCard
                   key={item.id}
                   projectId={item.id}
@@ -947,7 +984,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-y-10">
-              {sortedItems.map((item) => (
+              {visibleItems.map((item) => (
                 <ProjectCard
                   key={item.id}
                   projectId={item.id}
@@ -959,6 +996,15 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
                 />
               ))}
             </div>
+          )}
+          {hasMoreItems && (
+            <button
+              type="button"
+              onClick={() => setVisibleLimit((limit) => limit + 48)}
+              className="mt-10 min-h-11 w-full rounded-[var(--radius)] border border-border px-5 text-[14px] font-medium text-foreground transition-colors hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20"
+            >
+              Показать ещё проекты
+            </button>
           )}
         </main>
       </div>
@@ -992,7 +1038,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
             </div>
           ) : (
             <div className={viewMode === "list" ? "grid grid-cols-1 gap-y-[6px]" : "grid grid-cols-2 gap-x-[2px] gap-y-[6px]"}>
-              {sortedItems.map((item) => (
+              {visibleItems.map((item) => (
                 <ProjectCard
                   key={item.id}
                   projectId={item.id}
@@ -1005,8 +1051,38 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               ))}
             </div>
           )}
+          {hasMoreItems && (
+            <button
+              type="button"
+              onClick={() => setVisibleLimit((limit) => limit + 48)}
+              className="mx-4 mt-8 min-h-11 w-[calc(100%-2rem)] rounded-[var(--radius)] border border-border px-5 text-[14px] font-medium text-foreground transition-colors hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20"
+            >
+              Показать ещё проекты
+            </button>
+          )}
         </div>
       </div>
+
+      {!embedded && routeCategory && (
+        <section
+          className="px-4 py-16 sm:px-8 md:py-24 lg:px-10 xl:px-12"
+          aria-labelledby="catalog-category-description"
+        >
+          <div className="max-w-[850px]">
+            <h2
+              id="catalog-category-description"
+              className="text-[28px] font-semibold leading-[1.12] tracking-[-0.03em] text-foreground md:text-[36px]"
+            >
+              {routeCategory.contentHeading}
+            </h2>
+            <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-muted-foreground md:mt-6 md:text-[17px]">
+              {routeCategory.contentParagraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Mobile Filter Sheet */}
       <Drawer open={filtersOpen} onOpenChange={setFiltersOpen}>

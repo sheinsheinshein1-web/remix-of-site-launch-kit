@@ -3,6 +3,7 @@ import { ArrowUpRight, Mail, Send } from "lucide-react";
 import logoColor from "@/assets/logo-mnogo-mesta-430.webp";
 import { FRAME_VS_MODULAR_ARTICLE_PATH } from "@/data/articles";
 import { regions } from "@/data/regions";
+import { getCatalogCategoryBySlug } from "@/data/catalogCategories";
 import ThemeToggle from "@/components/ThemeToggle";
 import { sortGeoItems } from "@/lib/geoOrder";
 import { openCookieSettings } from "@/lib/cookieConsent";
@@ -14,15 +15,15 @@ type FooterGroup = { title: string; links: FooterItem[] };
 const catalogLinks: FooterItem[] = [
   { label: "Все проекты домов", path: CATALOG_PATH },
   { label: "Все категории", path: "/categories/" },
-  { label: "Модульные дома", path: `${CATALOG_PATH}?tech=Модульный дом` },
+  { label: "Модульные дома", path: CATALOG_PATH },
   { label: "Дома до 2 млн ₽", path: `${CATALOG_PATH}?maxPrice=2000000` },
-  { label: "Дома до 3 млн ₽", path: `${CATALOG_PATH}?maxPrice=3000000` },
-  { label: "Дома под ключ", path: `${CATALOG_PATH}?q=под ключ` },
-  { label: "Барнхаусы", path: `${CATALOG_PATH}?q=барнхаус` },
+  { label: "Дома до 3 млн ₽", path: getCatalogCategoryBySlug("do-3-mln")?.path ?? CATALOG_PATH },
+  { label: "Дома под ключ", path: getCatalogCategoryBySlug("pod-klyuch")?.path ?? CATALOG_PATH },
+  { label: "Барнхаусы", path: getCatalogCategoryBySlug("barnhausy")?.path ?? CATALOG_PATH },
   { label: "A-frame", path: `${CATALOG_PATH}?q=а-фрейм` },
   { label: "Одноэтажные дома", path: `${CATALOG_PATH}?floors=1` },
-  { label: "Дома с террасой", path: `${CATALOG_PATH}?q=терраса` },
-  { label: "Дома для дачи", path: `${CATALOG_PATH}?q=дача` },
+  { label: "Дома с террасой", path: getCatalogCategoryBySlug("s-terrasoy")?.path ?? CATALOG_PATH },
+  { label: "Дома для дачи", path: getCatalogCategoryBySlug("dachnye")?.path ?? CATALOG_PATH },
 ];
 
 const regionLinks: FooterItem[] = sortGeoItems(

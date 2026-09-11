@@ -1,4 +1,7 @@
 import { CATALOG_PATH, MANUFACTURERS_PATH, REGIONS_PATH, getRegionPath } from "@/lib/siteRoutes";
+import { getCatalogCategoryBySlug } from "@/data/catalogCategories";
+
+const categoryPath = (slug: string) => getCatalogCategoryBySlug(slug)?.path ?? CATALOG_PATH;
 
 export type SiteNavigationItem = {
   label: string;
@@ -32,14 +35,17 @@ export const siteNavigation: SiteNavigationEntry[] = [
     columnsClassName: "grid-cols-2",
     items: [
       { label: "Все проекты", path: CATALOG_PATH },
-      { label: "Модульные дома", path: `${CATALOG_PATH}?tech=Модульный%20дом` },
+      { label: "Модульные дома", path: CATALOG_PATH },
+      { label: "Модульные бани", path: categoryPath("modulnye-bani") },
+      { label: "Дома под ключ", path: categoryPath("pod-klyuch") },
       { label: "Префаб-дома", path: `${CATALOG_PATH}?tech=Префаб` },
-      { label: "Барнхаусы", path: `${CATALOG_PATH}?q=барнхаус` },
+      { label: "Барнхаусы", path: categoryPath("barnhausy") },
       { label: "Дома до 2 млн ₽", path: `${CATALOG_PATH}?maxPrice=2000000` },
-      { label: "Дома до 3 млн ₽", path: `${CATALOG_PATH}?maxPrice=3000000` },
-      { label: "Дома 50–80 м²", path: `${CATALOG_PATH}?minArea=50&maxArea=80` },
-      { label: "Дома для ПМЖ", path: `${CATALOG_PATH}?q=пмж` },
-      { label: "Дачные дома", path: `${CATALOG_PATH}?q=дача` },
+      { label: "Дома до 3 млн ₽", path: categoryPath("do-3-mln") },
+      { label: "Дома 50–80 м²", path: categoryPath("50-80-m2") },
+      { label: "Дома для ПМЖ", path: categoryPath("dlya-postoyannogo-prozhivaniya") },
+      { label: "Дома с террасой", path: categoryPath("s-terrasoy") },
+      { label: "Дачные дома", path: categoryPath("dachnye") },
     ],
   },
   {

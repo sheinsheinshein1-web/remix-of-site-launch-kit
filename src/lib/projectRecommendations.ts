@@ -50,7 +50,7 @@ export const getSimilarManufacturerProjects = (
 
   const candidates = allProjects
     .filter((candidate) => candidate.id !== source.id)
-    .filter((candidate) => candidate.maker.id && candidate.maker.id !== source.maker.id)
+    .filter((candidate) => candidate.manufacturerId && candidate.manufacturerId !== source.manufacturerId)
     .filter((candidate) => getProductGroup(candidate) === sourceGroup)
     .filter((candidate) => isProjectAvailableInGeo(candidate.city, matchingRegion, candidate.deliveryRegionSlugs))
     .map((candidate) => ({ project: candidate, score: getScore(source, candidate) }))
@@ -60,7 +60,7 @@ export const getSimilarManufacturerProjects = (
 
   return candidates
     .filter(({ project }) => {
-      const makerId = project.maker.id;
+      const makerId = project.manufacturerId;
       if (!makerId || seenMakers.has(makerId)) return false;
       seenMakers.add(makerId);
       return true;

@@ -1,8 +1,6 @@
 import type { Project } from "@/data/projects";
 
-type ProjectRouteInput = Pick<Project, "id" | "name" | "area" | "area_m2" | "technology"> & {
-  maker: Pick<Project["maker"], "id" | "name">;
-};
+type ProjectRouteInput = Pick<Project, "id" | "name" | "area" | "area_m2" | "technology" | "manufacturerId">;
 
 export const CATALOG_PATH = "/modulnye-doma/";
 export const MANUFACTURERS_PATH = "/proizvoditeli/";
@@ -39,7 +37,7 @@ const getProjectAreaSlug = (project: Pick<Project, "area" | "area_m2">) => {
 export const getProjectSlug = (
   project: Omit<ProjectRouteInput, "technology">,
 ) => [
-  transliterateSlug(project.maker.id || project.maker.name),
+  transliterateSlug(project.manufacturerId),
   transliterateSlug(project.name),
   getProjectAreaSlug(project),
   String(project.id),

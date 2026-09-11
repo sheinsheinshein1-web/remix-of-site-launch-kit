@@ -1,4 +1,5 @@
 import type { Project } from "@/data/projects";
+import { manufacturerRegistry } from "@/data/manufacturers";
 import { buildAssetUrl, buildSiteUrl } from "@/lib/seo";
 
 export const getProjectPriceAmount = (price: string): number | null => {
@@ -27,6 +28,8 @@ export const buildProjectProductJsonLd = ({
 }: ProjectProductJsonLdOptions): Record<string, unknown> | null => {
   const price = getProjectPriceAmount(project.price);
   if (price === null) return null;
+  const manufacturer = manufacturerRegistry[project.manufacturerId];
+  if (!manufacturer) return null;
 
   return {
     "@context": "https://schema.org",
@@ -34,7 +37,7 @@ export const buildProjectProductJsonLd = ({
     name: project.name,
     description: project.descriptionLong || project.description,
     sku: `project-${project.id}`,
-    brand: { "@type": "Brand", name: project.maker.name },
+    brand: { "@type": "Brand", name: manufacturer.name },
     image: image ? buildAssetUrl(image) : undefined,
     offers: {
       "@type": "Offer",
@@ -43,7 +46,7 @@ export const buildProjectProductJsonLd = ({
       url: buildSiteUrl(canonicalPath),
       seller: {
         "@type": "Organization",
-        name: project.maker.name,
+        name: manufacturer.name,
       },
     },
   };

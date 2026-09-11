@@ -60,13 +60,13 @@ const RegionPage = () => {
     ))
     .sort(compareProjectTechnologyPriority);
 
-  const makerIds = Array.from(new Set(regionProjects.map((project) => project.maker.id).filter(Boolean) as string[]));
+  const makerIds = Array.from(new Set(regionProjects.map((project) => project.manufacturerId).filter(Boolean) as string[]));
   const regionMakers = makerIds
     .map((id) => makersById[id])
     .filter(Boolean)
     .map((maker) => ({
       ...maker,
-      projectsCount: regionProjects.filter((project) => project.maker.id === maker.id).length,
+      projectsCount: regionProjects.filter((project) => project.manufacturerId === maker.id).length,
       reviewSummary: getManufacturerRatingSummary(maker.id),
     }))
     .sort((a, b) => {

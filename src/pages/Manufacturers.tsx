@@ -58,7 +58,7 @@ const Manufacturers = () => {
 
   const makers = useMemo(() => {
     const technologiesByMaker = projects.reduce((acc, project) => {
-      const makerId = project.maker.id;
+      const makerId = project.manufacturerId;
       if (!makerId || !project.technology) return acc;
       const makerTechnologies = acc.get(makerId) ?? new Set<string>();
       makerTechnologies.add(project.technology);
@@ -85,7 +85,7 @@ const Manufacturers = () => {
       const matchesQuery = !normalizedQuery
         || `${maker.name} ${maker.city} ${maker.technologies.join(" ")}`.toLocaleLowerCase("ru").includes(normalizedQuery);
       const matchesRegion = isAllRegionsGeo(region) || projects.some((project) => (
-        project.maker.id === maker.id
+        project.manufacturerId === maker.id
         && isProjectAvailableInGeo(project.city, region, project.deliveryRegionSlugs)
       ));
       const matchesTechnology = technology === "all" || maker.technologies.includes(technology);

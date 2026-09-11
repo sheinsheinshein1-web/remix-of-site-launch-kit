@@ -47,7 +47,9 @@ import {
   normalizeGeoSelection,
 } from "@/lib/geoSelection";
 import { projects, projectsCountByMakerId } from "@/data/projects";
-import { getPartnerReviewSummary } from "@/data/partnerReviews";
+import { manufacturerRegistry } from "@/data/manufacturers";
+import { getCatalogCategoryBySlug } from "@/data/catalogCategories";
+import { getManufacturerRatingSummary } from "@/data/manufacturerRatings";
 import { isVerifiedMaker } from "@/lib/verifiedMakers";
 import {
   CATALOG_PATH,
@@ -173,16 +175,18 @@ const ProjectDetail = () => {
 
   if (!project) return <NotFound />;
 
-  const makerId = project.maker.id ?? "";
+  const makerId = project.manufacturerId;
+  const manufacturer = manufacturerRegistry[makerId];
+  if (!manufacturer) return <NotFound />;
   const isPlatformaProject = makerId === "platforma";
   const canonicalPath = getProjectPath(project);
   const makerHref = getManufacturerPath(makerId);
   const verified = isVerifiedMaker(makerId);
-  const reviewSummary = getPartnerReviewSummary(makerId);
+  const reviewSummary = getManufacturerRatingSummary(makerId);
   const liked = isFavorite(project.id);
   const firstImage = project.gallery[0]?.image ?? "";
   const isBathProject = project.productType === "bath";
-  const bathCatalogHref = `${CATALOG_PATH}?type=bath`;
+  const bathCatalogHref = getCatalogCategoryBySlug("modulnye-bani")?.path ?? `${CATALOG_PATH}?type=bath`;
   const priceLabel = /^(?:от(?:\s|$)|по запросу(?:\s|$))/i.test(project.price.trim())
     ? project.price
     : `от ${project.price}`;
@@ -199,7 +203,7 @@ const ProjectDetail = () => {
   const favoriteItem = {
     id: project.id,
     badge: project.badge,
-    maker: project.maker.name,
+    maker: manufacturer.name,
     name: project.name,
     price: project.price,
     area: project.area,
@@ -268,7 +272,7 @@ const ProjectDetail = () => {
     </button>
   ) : deliveryAvailable ? (
     <a
-      href={project.maker.siteUrl}
+      href={project.sourceUrl ?? manufacturer.siteUrl}
       target="_blank"
       rel="noopener noreferrer nofollow sponsored"
       className={className}
@@ -431,15 +435,15 @@ const ProjectDetail = () => {
       className="group flex min-h-12 w-full items-center gap-3 rounded-[var(--radius)] bg-[#f1f4ff] px-3 py-2.5 text-left transition-colors hover:bg-[#e9efff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:bg-primary/10 dark:hover:bg-primary/15"
     >
       <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[var(--radius)] bg-white text-[11px] font-bold shadow-[0_0_0_1px_rgba(59,70,96,0.08)] dark:bg-card">
-        {project.maker.logo ? (
-          <img src={project.maker.logo} alt="" className="h-full w-full object-cover" loading="lazy" />
+        {manufacturer.logo ? (
+          <img src={manufacturer.logo} alt="" className="h-full w-full object-cover" loading="lazy" />
         ) : (
-          project.maker.initials
+          manufacturer.initials
         )}
       </span>
       <span className="min-w-0 flex-1">
           <span className="flex items-center gap-2">
-            <span className="truncate text-[14px] font-semibold text-[#342d27] dark:text-foreground">{project.maker.name}</span>
+            <span className="truncate text-[14px] font-semibold text-[#342d27] dark:text-foreground">{manufacturer.name}</span>
           {verified && <VerifiedBadge />}
         </span>
         <span className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] leading-tight text-[#717b8e]">
@@ -512,7 +516,7 @@ const ProjectDetail = () => {
           <ProjectReportDialog
             projectId={project.id}
             projectName={project.name}
-            manufacturerName={project.maker.name}
+            manufacturerName={manufacturer.name}
           >
             <button
               type="button"
@@ -590,7 +594,7 @@ const ProjectDetail = () => {
                   <ProjectReportDialog
                     projectId={project.id}
                     projectName={project.name}
-                    manufacturerName={project.maker.name}
+                    manufacturerName={manufacturer.name}
                   >
                     <button
                       type="button"

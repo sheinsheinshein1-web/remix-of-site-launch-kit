@@ -160,7 +160,7 @@ const Partner = () => {
 
   // Проекты этой компании — берём из единого источника правды.
   const makerProjects = useMemo(
-    () => allProjects.filter((p) => p.maker.id === makerId).sort(compareProjectTechnologyPriority),
+    () => allProjects.filter((p) => p.manufacturerId === makerId).sort(compareProjectTechnologyPriority),
     [makerId]
   );
   const heroImage = makerProjects[0]?.gallery[0]?.image ?? "";

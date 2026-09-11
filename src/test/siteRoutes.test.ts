@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { projects } from "@/data/projects";
 import { allRegions } from "@/data/regions";
+import { catalogCategories } from "@/data/catalogCategories";
 import {
   CATALOG_PATH,
   MANUFACTURERS_PATH,
@@ -41,8 +42,11 @@ describe("публичные SEO-адреса", () => {
   it("не создаёт коллизий между проектами и регионами", () => {
     const projectPaths = projects.map(getProjectPath);
     const regionPaths = allRegions.map((region) => getRegionPath(region.slug));
+    const categoryPaths = catalogCategories.map((category) => category.path);
 
     expect(new Set(projectPaths).size).toBe(projectPaths.length);
     expect(new Set(regionPaths).size).toBe(regionPaths.length);
+    expect(new Set(categoryPaths).size).toBe(categoryPaths.length);
+    expect(categoryPaths.some((path) => regionPaths.includes(path))).toBe(false);
   });
 });

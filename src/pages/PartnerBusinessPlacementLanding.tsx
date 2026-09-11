@@ -12,10 +12,10 @@ const matchingProjects = projects.filter((project) =>
   project.suitableFor.some((value) => ["Аренда", "Бизнес", "Гостевой дом"].includes(value)),
 );
 const businessMaker = matchingProjects[0]
-  ? makersById[matchingProjects[0].maker.id]
+  ? makersById[matchingProjects[0].manufacturerId]
   : Object.values(makersById)[0];
 const makerBusinessProjects = businessMaker
-  ? matchingProjects.filter((project) => project.maker.id === businessMaker.id).slice(0, 3)
+  ? matchingProjects.filter((project) => project.manufacturerId === businessMaker.id).slice(0, 3)
   : [];
 const businessProjects = makerBusinessProjects.length > 0 ? makerBusinessProjects : matchingProjects.slice(0, 3);
 

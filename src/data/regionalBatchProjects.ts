@@ -1,4 +1,5 @@
-import type { Maker, Project } from "@/data/projects";
+import type { Maker } from "@/data/manufacturers";
+import type { Project } from "@/data/projects";
 
 const images = import.meta.glob<string>(
   [
@@ -134,7 +135,8 @@ const project = (input: ProjectInput): Project => ({
   rooms: roomLabel(input.beds),
   purpose: "ИЖС / СНТ",
   city: input.city,
-  maker: { ...input.maker, siteUrl: input.url },
+  manufacturerId: input.maker.id,
+  sourceUrl: input.url,
   description: input.description,
   descriptionLong: `Проект «${input.name}» от компании «${input.maker.name}»: дом площадью ${areaLabel(input.area)} м² и габаритами ${input.dimensions}. ${input.description}`,
   gallery: gallery(input.assetFolder, input.planFiles),

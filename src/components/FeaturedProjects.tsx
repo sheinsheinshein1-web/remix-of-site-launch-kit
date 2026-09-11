@@ -6,6 +6,7 @@ import { navigateWithTransition } from "@/lib/viewTransition";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { usePullToRefresh } from "@/hooks/usePullToRefresh";
 import { projects } from "@/data/projects";
+import { manufacturerRegistry } from "@/data/manufacturers";
 import { buildSiteUrl } from "@/lib/seo";
 import { getProjectPath } from "@/lib/siteRoutes";
 import { isVerifiedMaker } from "@/lib/verifiedMakers";
@@ -19,9 +20,9 @@ import { useCity } from "@/components/CitySelector";
 // читает все остальные поля сама из projects.ts по id (см. ProjectCard).
 const baseProjects = projects.map((p) => ({
   id: p.id,
-  maker: p.maker.name,
-  makerId: p.maker.id,
-  verified: isVerifiedMaker(p.maker.id),
+  maker: manufacturerRegistry[p.manufacturerId].name,
+  makerId: p.manufacturerId,
+  verified: isVerifiedMaker(p.manufacturerId),
   city: p.city,
   name: p.name,
   price: p.price,

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { allProjects, projects } from "@/data/projects";
+import { manufacturerRegistry } from "@/data/manufacturers";
 
 const expectedMakerIds = [
   "azbuka-doma",
@@ -23,13 +24,13 @@ describe("regional partner batch", () => {
   });
 
   it.each(expectedMakerIds)("%s has five complete projects", (makerId) => {
-    const makerProjects = batch.filter((project) => project.maker.id === makerId);
+    const makerProjects = batch.filter((project) => project.manufacturerId === makerId);
 
     expect(makerProjects).toHaveLength(5);
     makerProjects.forEach((project) => {
       expect(project.gallery.length).toBeGreaterThanOrEqual(2);
       expect(project.gallery.every((item) => item.image)).toBe(true);
-      expect(project.maker.siteUrl).toMatch(/^https:\/\//);
+      expect(manufacturerRegistry[project.manufacturerId].siteUrl).toMatch(/^https:\/\//);
       expect(project.city).toBeTruthy();
       expect(project.floors).toBeGreaterThan(0);
     });

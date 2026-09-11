@@ -24,7 +24,7 @@ const HomeManufacturers = () => {
   const availableMakerIds = useMemo(() => new Set(
     projects
       .filter((project) => isProjectAvailableInGeo(project.city, city, project.deliveryRegionSlugs))
-      .map((project) => project.maker.id),
+      .map((project) => project.manufacturerId),
   ), [city]);
   const makers = useMemo(() => Object.values(makersById)
       .filter((maker) => allRegionsSelected || availableMakerIds.has(maker.id))

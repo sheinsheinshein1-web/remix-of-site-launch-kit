@@ -15,112 +15,28 @@ import TrailingChevronLabel from "@/components/TrailingChevronLabel";
 import NotFound from "@/pages/NotFound";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { makersById, projects, projectsCountByMakerId } from "@/data/projects";
-import { getManufacturerRatingSummary } from "@/data/manufacturerRatings";
+import type {
+  ManufacturerBuiltObject,
+  ManufacturerLegal,
+  ManufacturerSocial,
+} from "@/data/manufacturers";
+import { getExternalManufacturerRating, getManufacturerRatingSummary } from "@/data/manufacturerRatings";
 import { getPartnerReviews, getPartnerReviewSummary } from "@/data/partnerReviews";
 import { compareProjectTechnologyPriority } from "@/lib/projectPriority";
 import { getCityDisplayName, getCityPrepositionalName, isSameCityRegion } from "@/lib/cityDisplay";
 import { getManufacturerMapUrls } from "@/lib/manufacturerMap";
 import { buildManufacturerSeo } from "@/lib/pageSeo";
-import { buildCanonicalUrl } from "@/lib/seo";
+import { buildAssetUrl, buildCanonicalUrl } from "@/lib/seo";
 import { isVerifiedMaker } from "@/lib/verifiedMakers";
 import {
   CATALOG_PATH,
   MANUFACTURERS_PATH,
   getManufacturerPath,
   getManufacturerReviewsPath,
+  getProjectPath,
 } from "@/lib/siteRoutes";
 
 const LEGACY_PARTNER_IDS: Record<string, string> = { "1": "platforma" };
-const PLATFORMA_YANDEX_REVIEWS_URL = "https://yandex.ru/maps-reviews-widget/91516424053?comments";
-const PLATFORMA_REVIEW_COUNT = 5;
-const PLATFORMA_LEGAL_DETAILS = {
-  legalName: "ООО «Платформа. Модульное производство»",
-  status: "Действует",
-  registeredAt: "15 марта 2024",
-  inn: "6678135856",
-  kpp: "667801001",
-  ogrn: "1246600012581",
-  legalAddress: "620027, Свердловская область, г. Екатеринбург, ул. Азина, стр. 22/5",
-  director: "Тореев Михаил Вячеславович",
-  mainActivity: "Строительство жилых и нежилых зданий",
-  shareCapital: "10 000 ₽",
-  revenue: "54,3 млн ₽",
-  netProfit: "622 тыс. ₽",
-  reportingYear: "2025",
-  arbitrationCases: "Не найдено",
-  enforcementProceedings: "Не найдено",
-  unfairSuppliersRegistry: "Не числится",
-  checkedAt: "9 сентября 2026",
-} as const;
-const PLATFORMA_YOUTUBE_VIDEOS = [
-  {
-    id: "Fn4egeR53y0",
-    title: "Модульные дома и бани с доставкой по Свердловской области",
-    publishedLabel: "1 сентября 2026",
-    thumbnail: "https://i3.ytimg.com/vi/Fn4egeR53y0/hqdefault.jpg",
-  },
-  {
-    id: "Z31Y_icFwlY",
-    title: "Модульные дома и бани с доставкой по Свердловской области",
-    publishedLabel: "27 августа 2026",
-    thumbnail: "https://i3.ytimg.com/vi/Z31Y_icFwlY/hqdefault.jpg",
-  },
-  {
-    id: "0ieKu8aZ5HE",
-    title: "Строительство модульных домов",
-    publishedLabel: "25 августа 2026",
-    thumbnail: "https://i1.ytimg.com/vi/0ieKu8aZ5HE/hqdefault.jpg",
-  },
-  {
-    id: "VHd30kYPzWo",
-    title: "Утепление модульного дома",
-    publishedLabel: "15 июня 2026",
-    thumbnail: "https://i.ytimg.com/vi/VHd30kYPzWo/hqdefault.jpg",
-  },
-  {
-    id: "4F9vveTBe6o",
-    title: "Модульные дома и бани с доставкой по Свердловской области",
-    publishedLabel: "11 июня 2026",
-    thumbnail: "https://i.ytimg.com/vi/4F9vveTBe6o/hqdefault.jpg",
-  },
-  {
-    id: "lfCYqqVPseA",
-    title: "Доставка модульных домов и бань по Свердловской области",
-    publishedLabel: "8 июня 2026",
-    thumbnail: "https://i.ytimg.com/vi/lfCYqqVPseA/hqdefault.jpg",
-  },
-] as const;
-const PLATFORMA_TELEGRAM_POSTS = [328, 327, 326] as const;
-const PLATFORMA_BUILT_OBJECTS = [
-  "https://static.tildacdn.com/tild6166-3162-4838-a431-356364366566/1-1-2.jpg",
-  "https://static.tildacdn.com/tild3138-6132-4432-b135-613932376132/2.jpg",
-  "https://static.tildacdn.com/tild3737-3530-4232-b165-333361393133/_WhatsApp_2025-08-25.jpg",
-  "https://static.tildacdn.com/tild3831-6530-4436-b735-383638373361/IMG_36156.png",
-  "https://static.tildacdn.com/tild3536-6631-4763-b331-313533316432/IMG_36891.png",
-  "https://static.tildacdn.com/tild6532-3666-4530-b163-613231626261/IMG_36771.png",
-  "https://static.tildacdn.com/tild6233-3936-4936-a139-366463633436/1.jpg",
-  "https://static.tildacdn.com/tild3037-3063-4261-b231-383361623861/2.jpg",
-  "https://static.tildacdn.com/tild6537-6338-4238-b964-303639393561/IMG-20250830-WA00231.jpg",
-  "https://static.tildacdn.com/tild3934-3165-4938-a538-386665393836/6.jpg",
-  "https://static.tildacdn.com/tild3461-3734-4238-a661-666331393539/7.jpg",
-] as const;
-const MAP_COORDINATES_BY_MAKER_ID: Record<string, { lat: number; lon: number }> = {
-  bygge: { lat: 56.7923281, lon: 60.7321339 },
-  elmaco: { lat: 59.995471, lon: 30.249177 },
-  modom: { lat: 60.11911, lon: 30.349878 },
-  platforma: { lat: 56.89275, lon: 60.783923 },
-};
-
-const ABOUT_BY_MAKER_ID: Record<string, string> = {
-  platforma:
-    "Производитель модульных домов из Екатеринбурга. Компания проектирует и собирает компактные одноэтажные дома для круглогодичного проживания и загородного отдыха.",
-  bygge:
-    "Bygge — производитель модульных домов из Екатеринбурга. В каталоге представлены дома полной заводской готовности под ключ: с инженерными системами, оборудованным санузлом и решениями для круглогодичного проживания.",
-  elmaco:
-    "Elmaco Homes — производитель модульных домов из Санкт-Петербурга. В каталоге представлены серии Ivor, Lukas, Jung, Tor и Oscar: от компактных загородных домов до просторных семейных решений.",
-  modom:
-    "Modom — производитель модульных домов из Санкт-Петербурга и Ленинградской области. Компания выпускает готовые модульные решения UNO и серию О2 для дачи и круглогодичного проживания.",
-};
 
 const wordForm = (count: number, forms: [string, string, string]) => {
   const lastTwo = Math.abs(count) % 100;
@@ -152,29 +68,48 @@ const getReviewExcerpt = (body: string, maxLength = 190) => {
   return `${candidate.slice(0, wordEnd > 0 ? wordEnd : maxLength).trim()}…`;
 };
 
-const PlatformaYandexReviews = () => {
+const ExternalIframe = ({ src, title, className }: { src: string; title: string; className: string }) => {
+  return (
+    <iframe
+      src={src}
+      title={title}
+      className={className}
+    />
+  );
+};
+
+const ManufacturerYandexReviews = ({
+  makerId,
+  makerName,
+  makerNamePrepositional,
+}: {
+  makerId: string;
+  makerName: string;
+  makerNamePrepositional: string;
+}) => {
+  const yandexRating = getExternalManufacturerRating(makerId);
+  if (!yandexRating) return null;
+
   return (
     <div className="mt-5 w-full">
       <div
-        id="platforma-external-reviews-panel"
+        id="manufacturer-external-reviews-panel"
         className="reviews-scroll h-[500px] overflow-y-scroll overscroll-contain rounded-[var(--radius)] border border-[#dfe5f5] bg-[#f3f1ed] dark:border-border"
         role="region"
-        aria-label="Отзывы о Платформе на Яндекс Картах. Прокручиваемая область"
+        aria-label={`Отзывы о ${makerNamePrepositional} на Яндекс Картах. Прокручиваемая область`}
         tabIndex={0}
       >
-        <iframe
-          src={PLATFORMA_YANDEX_REVIEWS_URL}
-          title="Официальный виджет отзывов о Платформе на Яндекс Картах"
+        <ExternalIframe
+          src={yandexRating.embedUrl}
+          title={`Официальный виджет отзывов о ${makerNamePrepositional} на Яндекс Картах`}
           className="mx-auto block h-[1280px] w-full min-w-[300px] max-w-[760px] border-0"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
         />
       </div>
     </div>
   );
 };
 
-const TelegramPostEmbed = ({ postId, enabled, dark }: { postId: number; enabled: boolean; dark: boolean }) => {
+const TelegramPostEmbed = ({ channel, postId, enabled, dark }: { channel: string; postId: number; enabled: boolean; dark: boolean }) => {
   const embedRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -185,19 +120,19 @@ const TelegramPostEmbed = ({ postId, enabled, dark }: { postId: number; enabled:
     const script = document.createElement("script");
     script.async = true;
     script.src = "https://telegram.org/js/telegram-widget.js?22";
-    script.dataset.telegramPost = `PlatformaModul/${postId}`;
+    script.dataset.telegramPost = `${channel}/${postId}`;
     script.dataset.width = "100%";
     script.dataset.color = "3C71EC";
     if (dark) script.dataset.dark = "1";
     container.appendChild(script);
 
     return () => container.replaceChildren();
-  }, [dark, enabled, postId]);
+  }, [channel, dark, enabled, postId]);
 
   return <div ref={embedRef} className="min-h-[180px] w-full [&>iframe]:!max-w-none" />;
 };
 
-const PlatformaTelegramPosts = () => {
+const ManufacturerTelegramPosts = ({ manufacturerName, social }: { manufacturerName: string; social: ManufacturerSocial }) => {
   const { resolvedTheme } = useTheme();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
@@ -229,14 +164,15 @@ const PlatformaTelegramPosts = () => {
       <div
         className="reviews-scroll h-[640px] overflow-y-auto overscroll-contain rounded-[var(--radius)] border border-border bg-secondary/40 px-2 py-4 sm:px-4"
         role="region"
-        aria-label="Публикации Платформы в Telegram. Прокручиваемая область"
+        aria-label={`Публикации ${manufacturerName} в Telegram. Прокручиваемая область`}
         tabIndex={0}
       >
         <div className="mx-auto w-full max-w-[500px] space-y-4">
           {shouldLoad ? (
-            PLATFORMA_TELEGRAM_POSTS.map((postId) => (
+            social.telegramPosts.map((postId) => (
               <TelegramPostEmbed
                 key={postId}
+                channel={social.telegramChannel}
                 postId={postId}
                 enabled={shouldLoad}
                 dark={resolvedTheme === "dark"}
@@ -244,7 +180,7 @@ const PlatformaTelegramPosts = () => {
             ))
           ) : (
             <div className="space-y-4" aria-label="Загрузка публикаций">
-              {PLATFORMA_TELEGRAM_POSTS.map((postId) => (
+              {social.telegramPosts.map((postId) => (
                 <div key={postId} className="h-[420px] animate-pulse rounded-[var(--radius)] bg-muted motion-reduce:animate-none" />
               ))}
             </div>
@@ -255,12 +191,12 @@ const PlatformaTelegramPosts = () => {
   );
 };
 
-const PlatformaYouTubePosts = () => {
+const ManufacturerYouTubePosts = ({ manufacturerName, social }: { manufacturerName: string; social: ManufacturerSocial }) => {
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
 
   return (
     <div className="mt-5 flex w-full min-w-0 max-w-full snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 md:gap-4 md:overflow-visible md:pb-0">
-      {PLATFORMA_YOUTUBE_VIDEOS.map((video) => {
+      {social.youtubeVideos.map((video) => {
         const isPlaying = activeVideoId === video.id;
         return (
           <article
@@ -286,7 +222,7 @@ const PlatformaYouTubePosts = () => {
                 >
                   <img
                     src={video.thumbnail}
-                    alt=""
+                    alt={`Превью видео «${video.title}» компании «${manufacturerName}»`}
                     width={480}
                     height={360}
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.015] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
@@ -310,7 +246,7 @@ const PlatformaYouTubePosts = () => {
   );
 };
 
-const PlatformaSocialMedia = () => {
+const ManufacturerSocialMedia = ({ manufacturerName, social }: { manufacturerName: string; social: ManufacturerSocial }) => {
   const [source, setSource] = useState<"youtube" | "telegram">("youtube");
 
   return (
@@ -318,7 +254,7 @@ const PlatformaSocialMedia = () => {
       <div
         className="flex min-w-0 max-w-full touch-pan-x items-center gap-5 overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         role="tablist"
-        aria-label="Социальные сети Платформы"
+        aria-label={`Социальные сети ${manufacturerName}`}
       >
         {([
           ["youtube", "YouTube"],
@@ -328,11 +264,11 @@ const PlatformaSocialMedia = () => {
           return (
             <button
               key={itemSource}
-              id={`platforma-social-${itemSource}-tab`}
+              id={`manufacturer-social-${itemSource}-tab`}
               type="button"
               role="tab"
               aria-selected={isActive}
-              aria-controls={`platforma-social-${itemSource}-panel`}
+              aria-controls={`manufacturer-social-${itemSource}-panel`}
               onClick={() => setSource(itemSource)}
               className="manufacturer-section-tab min-h-11 shrink-0 text-[20px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-4"
             >
@@ -344,35 +280,35 @@ const PlatformaSocialMedia = () => {
 
       {source === "youtube" ? (
         <div
-          id="platforma-social-youtube-panel"
+          id="manufacturer-social-youtube-panel"
           role="tabpanel"
-          aria-labelledby="platforma-social-youtube-tab"
+          aria-labelledby="manufacturer-social-youtube-tab"
         >
-          <PlatformaYouTubePosts />
+          <ManufacturerYouTubePosts manufacturerName={manufacturerName} social={social} />
         </div>
       ) : (
         <div
-          id="platforma-social-telegram-panel"
+          id="manufacturer-social-telegram-panel"
           role="tabpanel"
-          aria-labelledby="platforma-social-telegram-tab"
+          aria-labelledby="manufacturer-social-telegram-tab"
         >
-          <PlatformaTelegramPosts />
+          <ManufacturerTelegramPosts manufacturerName={manufacturerName} social={social} />
         </div>
       )}
     </div>
   );
 };
 
-const PlatformaLegalOverview = ({ compact = false }: { compact?: boolean }) => {
+const ManufacturerLegalOverview = ({ legal, compact = false }: { legal: ManufacturerLegal; compact?: boolean }) => {
   const [expanded, setExpanded] = useState(!compact);
   const financialMetrics = [
-    ["Выручка", PLATFORMA_LEGAL_DETAILS.revenue],
-    ["Чистая прибыль", PLATFORMA_LEGAL_DETAILS.netProfit],
+    ["Выручка", legal.revenue],
+    ["Чистая прибыль", legal.netProfit],
   ] as const;
   const registryChecks = [
-    ["Арбитражные дела", PLATFORMA_LEGAL_DETAILS.arbitrationCases],
-    ["Исполнительные производства", PLATFORMA_LEGAL_DETAILS.enforcementProceedings],
-    ["Реестр недобросовестных поставщиков", PLATFORMA_LEGAL_DETAILS.unfairSuppliersRegistry],
+    ["Арбитражные дела", legal.arbitrationCases],
+    ["Исполнительные производства", legal.enforcementProceedings],
+    ["Реестр недобросовестных поставщиков", legal.unfairSuppliersRegistry],
   ] as const;
 
   return (
@@ -388,20 +324,20 @@ const PlatformaLegalOverview = ({ compact = false }: { compact?: boolean }) => {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
           <div className="min-w-0">
             <p className="text-[18px] font-semibold leading-snug text-[#342d27] md:text-[20px] dark:text-foreground">
-              {PLATFORMA_LEGAL_DETAILS.legalName}
+              {legal.legalName}
             </p>
             <p className="mt-2 max-w-[680px] text-[14px] leading-relaxed text-[#717b8e]">
-              {PLATFORMA_LEGAL_DETAILS.legalAddress}
+              {legal.legalAddress}
             </p>
           </div>
           <span className="inline-flex min-h-8 w-fit shrink-0 items-center rounded-[var(--radius)] bg-primary/10 px-3 text-[13px] font-semibold text-primary">
-            {PLATFORMA_LEGAL_DETAILS.status}
+            {legal.status}
           </span>
         </div>
 
         <div className="mt-6 grid gap-7 border-t border-border pt-6 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:gap-10">
           <div>
-            <p className="text-[13px] text-[#717b8e]">Финансовые показатели за {PLATFORMA_LEGAL_DETAILS.reportingYear} год</p>
+            <p className="text-[13px] text-[#717b8e]">Финансовые показатели за {legal.reportingYear} год</p>
             <dl className="mt-4 grid grid-cols-2 gap-x-5 gap-y-5">
               {financialMetrics.map(([label, value]) => (
                 <div key={label}>
@@ -417,19 +353,19 @@ const PlatformaLegalOverview = ({ compact = false }: { compact?: boolean }) => {
           <dl className={expanded ? "grid grid-cols-2 gap-x-5 gap-y-5" : "hidden"}>
             <div>
               <dt className="text-[13px] text-[#717b8e]">Дата регистрации</dt>
-              <dd className="mt-1.5 text-[15px] font-semibold text-[#342d27] dark:text-foreground">{PLATFORMA_LEGAL_DETAILS.registeredAt}</dd>
+              <dd className="mt-1.5 text-[15px] font-semibold text-[#342d27] dark:text-foreground">{legal.registeredAt}</dd>
             </div>
             <div>
               <dt className="text-[13px] text-[#717b8e]">Уставный капитал</dt>
-              <dd className="mt-1.5 text-[15px] font-semibold tabular-nums text-[#342d27] dark:text-foreground">{PLATFORMA_LEGAL_DETAILS.shareCapital}</dd>
+              <dd className="mt-1.5 text-[15px] font-semibold tabular-nums text-[#342d27] dark:text-foreground">{legal.shareCapital}</dd>
             </div>
             <div className="col-span-2">
               <dt className="text-[13px] text-[#717b8e]">Руководитель</dt>
-              <dd className="mt-1.5 text-[15px] font-semibold text-[#342d27] dark:text-foreground">{PLATFORMA_LEGAL_DETAILS.director}</dd>
+              <dd className="mt-1.5 text-[15px] font-semibold text-[#342d27] dark:text-foreground">{legal.director}</dd>
             </div>
             <div className="col-span-2">
               <dt className="text-[13px] text-[#717b8e]">Основной вид деятельности</dt>
-              <dd className="mt-1.5 text-[15px] font-semibold leading-snug text-[#342d27] dark:text-foreground">{PLATFORMA_LEGAL_DETAILS.mainActivity}</dd>
+              <dd className="mt-1.5 text-[15px] font-semibold leading-snug text-[#342d27] dark:text-foreground">{legal.mainActivity}</dd>
             </div>
           </dl>
         </div>
@@ -446,15 +382,15 @@ const PlatformaLegalOverview = ({ compact = false }: { compact?: boolean }) => {
         <dl className={expanded ? "mt-6 grid gap-x-7 gap-y-4 border-t border-border pt-6 sm:grid-cols-2 lg:grid-cols-3" : "hidden"}>
           <div>
             <dt className="text-[13px] text-[#717b8e]">ИНН</dt>
-            <dd className="mt-1.5 text-[14px] font-medium tabular-nums text-[#342d27] dark:text-foreground">{PLATFORMA_LEGAL_DETAILS.inn}</dd>
+            <dd className="mt-1.5 text-[14px] font-medium tabular-nums text-[#342d27] dark:text-foreground">{legal.inn}</dd>
           </div>
           <div>
             <dt className="text-[13px] text-[#717b8e]">КПП</dt>
-            <dd className="mt-1.5 text-[14px] font-medium tabular-nums text-[#342d27] dark:text-foreground">{PLATFORMA_LEGAL_DETAILS.kpp}</dd>
+            <dd className="mt-1.5 text-[14px] font-medium tabular-nums text-[#342d27] dark:text-foreground">{legal.kpp}</dd>
           </div>
           <div>
             <dt className="text-[13px] text-[#717b8e]">ОГРН</dt>
-            <dd className="mt-1.5 text-[14px] font-medium tabular-nums text-[#342d27] dark:text-foreground">{PLATFORMA_LEGAL_DETAILS.ogrn}</dd>
+            <dd className="mt-1.5 text-[14px] font-medium tabular-nums text-[#342d27] dark:text-foreground">{legal.ogrn}</dd>
           </div>
         </dl>
 
@@ -474,21 +410,33 @@ const PlatformaLegalOverview = ({ compact = false }: { compact?: boolean }) => {
           </button>
         )}
 
-        <p className="mt-5 text-[12px] leading-relaxed text-[#717b8e]">
-          Сведения из открытых государственных реестров. Последняя ручная проверка: {PLATFORMA_LEGAL_DETAILS.checkedAt}.
+        <p className="mt-5 max-w-[850px] text-[12px] leading-relaxed text-[#717b8e]">
+          Сведения проверены {legal.checkedAt} по открытым государственным источникам: {legal.sources.map((source, index) => (
+            <span key={source.href}>
+              {index > 0 && ", "}
+              <a
+                href={source.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-current/30 underline-offset-2 transition-colors hover:text-primary"
+              >
+                {source.label}
+              </a>
+            </span>
+          ))}.
         </p>
       </div>
     </section>
   );
 };
 
-const PlatformaBuiltObjectsGallery = ({ compact = false }: { compact?: boolean }) => {
+const ManufacturerBuiltObjectsGallery = ({ manufacturerName, objects, compact = false }: { manufacturerName: string; objects: ManufacturerBuiltObject[]; compact?: boolean }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(!compact);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const touchStartX = useRef<number | null>(null);
   const isOpen = activeIndex !== null;
-  const imageCount = PLATFORMA_BUILT_OBJECTS.length;
+  const imageCount = objects.length;
 
   const showPrevious = useCallback(() => {
     setActiveIndex((current) => current === null ? 0 : (current - 1 + imageCount) % imageCount);
@@ -531,16 +479,16 @@ const PlatformaBuiltObjectsGallery = ({ compact = false }: { compact?: boolean }
       (activeIndex + 1) % imageCount,
     ].forEach((index) => {
       const image = new Image();
-      image.src = PLATFORMA_BUILT_OBJECTS[index];
+      image.src = objects[index].src;
     });
-  }, [activeIndex, imageCount]);
+  }, [activeIndex, imageCount, objects]);
 
   return (
     <>
       <div className="grid grid-cols-2 gap-x-[2px] gap-y-6 md:gap-x-4 md:gap-y-8">
-        {PLATFORMA_BUILT_OBJECTS.slice(0, showAll ? imageCount : 6).map((image, index) => (
+        {objects.slice(0, showAll ? imageCount : 6).map((image, index) => (
           <button
-            key={image}
+            key={image.src}
             type="button"
             onClick={() => setActiveIndex(index)}
             className="group aspect-[4/3] min-w-0 cursor-zoom-in overflow-hidden rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 md:aspect-[5/4]"
@@ -548,8 +496,10 @@ const PlatformaBuiltObjectsGallery = ({ compact = false }: { compact?: boolean }
             aria-haspopup="dialog"
           >
             <img
-              src={image}
-              alt={`Выполненный объект компании «Платформа», фото ${index + 1}`}
+              src={image.src}
+              alt={`Выполненный объект компании «${manufacturerName}», фото ${index + 1}`}
+              width={image.width}
+              height={image.height}
               className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.015] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
               loading="lazy"
               decoding="async"
@@ -605,8 +555,10 @@ const PlatformaBuiltObjectsGallery = ({ compact = false }: { compact?: boolean }
           </button>
 
           <img
-            src={PLATFORMA_BUILT_OBJECTS[activeIndex]}
-            alt={`Выполненный объект компании «Платформа», фото ${activeIndex + 1}`}
+            src={objects[activeIndex].src}
+            alt={`Выполненный объект компании «${manufacturerName}», фото ${activeIndex + 1}`}
+            width={objects[activeIndex].width}
+            height={objects[activeIndex].height}
             className="max-h-[calc(100dvh-24px)] max-w-full select-none object-contain md:max-h-[calc(100dvh-80px)]"
             onClick={(event) => event.stopPropagation()}
             draggable={false}
@@ -708,7 +660,7 @@ const ManufacturerSectionNav = ({
       <ul className={vertical
         ? "grid gap-0.5"
         : embedded
-          ? "flex h-full max-w-full touch-pan-x items-center gap-7 overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          ? "flex h-full max-w-full touch-pan-x items-center gap-5 overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           : "flex max-w-full flex-wrap items-center gap-x-5 gap-y-0 md:gap-x-6"}
       >
         {items.map((item) => {
@@ -749,32 +701,34 @@ const ManufacturerProfile = () => {
   const { id } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const [platformaProjectType, setPlatformaProjectType] = useState<"houses" | "baths" | "business">("houses");
-  const [platformaReviewSource, setPlatformaReviewSource] = useState<"yandex" | "mnogomesta">("yandex");
+  const [manufacturerProjectType, setManufacturerProjectType] = useState<"houses" | "baths" | "business">("houses");
+  const [manufacturerReviewSource, setManufacturerReviewSource] = useState<"yandex" | "mnogomesta">("yandex");
   const [aboutExpanded, setAboutExpanded] = useState(false);
   const makerId = id ? LEGACY_PARTNER_IDS[id] ?? id : "platforma";
   const maker = makersById[makerId];
+  const profile = maker?.profile;
+  const groupedProjects = Boolean(profile?.groupedProjects);
   const canonicalPath = getManufacturerPath(makerId);
   const { isMakerFavorite, toggleMakerFavorite } = useFavorites();
   const makerIsFavorite = isMakerFavorite(makerId);
 
   const makerProjects = useMemo(
-    () => projects.filter((project) => project.maker.id === makerId).sort(compareProjectTechnologyPriority),
+    () => projects.filter((project) => project.manufacturerId === makerId).sort(compareProjectTechnologyPriority),
     [makerId],
   );
-  const platformaBathProjects = makerProjects.filter((project) =>
+  const bathProjects = makerProjects.filter((project) =>
     project.productType === "bath" || project.productType === "house-bath",
   );
-  const platformaHouseProjects = makerProjects.filter((project) => project.productType !== "bath");
-  // Платформа предлагает те же модели с адаптацией под коммерческий сценарий;
+  const houseProjects = makerProjects.filter((project) => project.productType !== "bath");
+  // Производитель предлагает те же модели с адаптацией под коммерческий сценарий;
   // отдельные карточки B2B-объектов появятся только вместе с отдельными исходными данными.
-  const platformaBusinessProjects = platformaHouseProjects;
-  const visibleMakerProjects = makerId === "platforma"
-    ? platformaProjectType === "baths"
-      ? platformaBathProjects
-      : platformaProjectType === "business"
-        ? platformaBusinessProjects
-        : platformaHouseProjects
+  const businessProjects = houseProjects;
+  const visibleMakerProjects = groupedProjects
+    ? manufacturerProjectType === "baths"
+      ? bathProjects
+      : manufacturerProjectType === "business"
+        ? businessProjects
+        : houseProjects
     : makerProjects;
 
   useEffect(() => {
@@ -789,9 +743,7 @@ const ManufacturerProfile = () => {
   if (!maker || makerProjects.length === 0) return <NotFound />;
 
   const reviewSummary = getPartnerReviewSummary(makerId);
-  const profileReviewSummary = makerId === "platforma"
-    ? { hasReviews: true, rating: 4.3, reviewsLabel: `${PLATFORMA_REVIEW_COUNT} отзывов` }
-    : reviewSummary;
+  const profileReviewSummary = getManufacturerRatingSummary(makerId);
   const reviewPreviews = getPartnerReviews(makerId).slice(0, 4);
   const cityLabel = getCityDisplayName(maker.city);
   const cityPrepositionalName = getCityPrepositionalName(maker.city);
@@ -810,38 +762,47 @@ const ManufacturerProfile = () => {
   const prices = makerProjects.map((project) => parsePrice(project.price)).filter((value) => value > 0);
   const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
   const minPriceLabel = minPrice > 0 ? `${minPrice.toLocaleString("ru-RU")} ₽` : "По запросу";
-  const mapCoordinates = MAP_COORDINATES_BY_MAKER_ID[makerId];
+  const legal = profile?.legal;
+  const builtObjects = profile?.builtObjects ?? [];
+  const social = profile?.social;
+  const mapCoordinates = profile?.coordinates
+    && typeof profile.coordinates.lat === "number"
+    && typeof profile.coordinates.lon === "number"
+    ? { lat: profile.coordinates.lat, lon: profile.coordinates.lon }
+    : undefined;
   const { embedUrl: mapEmbedUrl, externalUrl: yandexMapLink } = getManufacturerMapUrls({
     address: maker.productionAddress,
     city: cityLabel,
     coordinates: mapCoordinates,
   });
-  const about = ABOUT_BY_MAKER_ID[makerId]
-    ?? `${maker.name} — производитель домов из ${cityLabel}. На странице собраны проекты компании, доступные в каталоге многоместа.рф.`;
-  const profileIntro = makerId === "platforma"
-    ? "Модульные дома и бани для круглогодичного проживания, отдыха и бизнеса."
-    : about;
-  const aboutParagraphs = makerId === "platforma"
-    ? [
-        "«Платформа» — производитель модульных домов и бань из Екатеринбурга. Компания создаёт решения для круглогодичного проживания, загородного отдыха и бизнеса, совмещая заводскую сборку модулей с адаптацией архитектуры под участок и задачи будущего владельца.",
-        `В каталоге «Много места» представлено ${makerProjects.length.toLocaleString("ru-RU")} ${wordForm(makerProjects.length, ["проект", "проекта", "проектов"])} площадью ${areaRange} с ценами от ${minPriceLabel}. Среди них — компактные и семейные модульные дома, барнхаусы, готовые бани и решения для коммерческого размещения. Планировку, фасад, комплектацию и дополнительные опции производитель может уточнить под конкретный сценарий использования.`,
-        "Модули собирают в двух тёплых производственных цехах в Березовском. После выбора проекта и согласования комплектации компания производит конструкции, организует доставку на участок, монтаж на фундаменте и подключение предусмотренных инженерных систем.",
-        "На странице производителя собраны проекты с ценами и характеристиками, фотографии выполненных объектов, расположение производства и отзывы покупателей с Яндекс Карт. Это позволяет сравнить модели «Платформы» и проверить основную информацию о компании до перехода на её официальный сайт.",
-      ]
-    : [about];
+  const fallbackAbout = `${maker.name} — производитель домов из ${cityLabel}. На странице собраны проекты компании, доступные в каталоге многоместа.рф.`;
+  const storedAboutParagraphs = profile?.about ?? [fallbackAbout];
+  const catalogSummary = `В каталоге «Много места» представлено ${makerProjects.length.toLocaleString("ru-RU")} ${wordForm(makerProjects.length, ["проект", "проекта", "проектов"])} площадью ${areaRange} с ценами от ${minPriceLabel}. Среди них — компактные и семейные модульные дома, барнхаусы, готовые бани и решения для коммерческого размещения. Планировку, фасад, комплектацию и дополнительные опции производитель может уточнить под конкретный сценарий использования.`;
+  const aboutParagraphs = profile?.useCatalogSummary && storedAboutParagraphs.length > 1
+    ? [storedAboutParagraphs[0], catalogSummary, ...storedAboutParagraphs.slice(2)]
+    : storedAboutParagraphs;
+  const profileIntro = profile?.intro ?? aboutParagraphs[0];
   const heroImage = makerProjects[0]?.gallery[0]?.image;
-  const manufacturerSeo = buildManufacturerSeo({
-    name: maker.name,
-    city: cityLabel,
-    projectCount: makerProjects.length,
-    hasReviews: reviewSummary.hasReviews,
-  });
-  const requestedPlatformaView = new URLSearchParams(location.search).get("view");
-  const isPlatformaVisualView = makerId === "platforma"
-    && requestedPlatformaView !== "classic"
-    && requestedPlatformaView !== "analytic";
-  const isPlatformaLegacyAnalyticalView = makerId === "platforma" && requestedPlatformaView === "analytic";
-  const isPlatformaAnalyticalView = isPlatformaVisualView || isPlatformaLegacyAnalyticalView;
+  const manufacturerSeo = profile?.seo
+    ? {
+        title: profile.seo.title,
+        description: profile.seo.descriptionTemplate.replace(
+          "{projectCount}",
+          makerProjects.length.toLocaleString("ru-RU"),
+        ),
+      }
+    : buildManufacturerSeo({
+        name: maker.name,
+        city: cityLabel,
+        projectCount: makerProjects.length,
+        hasReviews: profileReviewSummary.hasReviews,
+      });
+  const requestedProfileView = new URLSearchParams(location.search).get("view");
+  const isFeaturedVisualView = Boolean(profile?.featuredLayout)
+    && requestedProfileView !== "classic"
+    && requestedProfileView !== "analytic";
+  const isLegacyAnalyticalView = Boolean(profile?.featuredLayout) && requestedProfileView === "analytic";
+  const isAnalyticalView = isFeaturedVisualView || isLegacyAnalyticalView;
 
   const otherRegionMakers = Object.values(makersById)
     .filter((candidate) => candidate.id !== makerId && isSameCityRegion(candidate.city, maker.city))
@@ -864,7 +825,7 @@ const ManufacturerProfile = () => {
       return b.projectCount - a.projectCount || a.name.localeCompare(b.name, "ru");
     });
   const otherRegionProjects = projects
-    .filter((project) => project.maker.id !== makerId && isSameCityRegion(project.city, maker.city))
+    .filter((project) => project.manufacturerId !== makerId && isSameCityRegion(project.city, maker.city))
     .sort((a, b) => compareProjectTechnologyPriority(a, b) || b.likes - a.likes);
   const otherRegionMakersPreview = otherRegionMakers.slice(0, 8);
   const regionProjectsHref = `${CATALOG_PATH}?region=${encodeURIComponent(cityLabel)}`;
@@ -887,17 +848,76 @@ const ManufacturerProfile = () => {
 
   const handleToggleMakerFavorite = () => toggleMakerFavorite(makerId);
 
+  const canonicalUrl = buildCanonicalUrl(canonicalPath);
+  const organizationId = `${canonicalUrl}#organization`;
+  const pageId = `${canonicalUrl}#webpage`;
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": organizationId,
     name: maker.name,
+    description: aboutParagraphs.join(" "),
     url: maker.siteUrl,
-    address: maker.productionAddress,
+    logo: profile?.schemaLogoUrl
+      ? profile.schemaLogoUrl
+      : maker.logo && !maker.logo.startsWith("data:")
+        ? buildAssetUrl(maker.logo)
+        : undefined,
+    image: buildAssetUrl(heroImage),
     areaServed: cityLabel,
-    ...(makerId === "platforma" ? {
-      legalName: PLATFORMA_LEGAL_DETAILS.legalName,
-      taxID: PLATFORMA_LEGAL_DETAILS.inn,
-    } : {}),
+    ...(legal ? {
+      legalName: legal.legalName,
+      taxID: legal.inn,
+      foundingDate: legal.foundingDate,
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "RU",
+        streetAddress: legal.legalAddress,
+      },
+      location: {
+        "@type": "Place",
+        name: `Производство компании «${maker.name}»`,
+        address: maker.productionAddress,
+      },
+      identifier: [
+        { "@type": "PropertyValue", propertyID: "ИНН", value: legal.inn },
+        { "@type": "PropertyValue", propertyID: "ОГРН", value: legal.ogrn },
+      ],
+      sameAs: social ? [`https://t.me/${social.telegramChannel}`] : undefined,
+    } : {
+      address: maker.productionAddress,
+    }),
+  };
+  const webPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": pageId,
+    url: canonicalUrl,
+    name: manufacturerSeo.title,
+    description: manufacturerSeo.description,
+    dateModified: legal?.checkedAtIso,
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      contentUrl: buildAssetUrl(heroImage),
+    },
+    mainEntity: { "@id": organizationId },
+    isPartOf: {
+      "@type": "WebSite",
+      name: "многоместа.рф",
+      url: buildCanonicalUrl("/"),
+    },
+  };
+  const projectListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `Проекты компании «${maker.name}»`,
+    numberOfItems: makerProjects.length,
+    itemListElement: makerProjects.map((project, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: project.name,
+      url: buildCanonicalUrl(getProjectPath(project)),
+    })),
   };
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -916,7 +936,7 @@ const ManufacturerProfile = () => {
         description={manufacturerSeo.description}
         canonicalPath={canonicalPath}
         image={heroImage}
-        jsonLd={[organizationJsonLd, breadcrumbJsonLd]}
+        jsonLd={[organizationJsonLd, webPageJsonLd, projectListJsonLd, breadcrumbJsonLd]}
       />
 
       <main className="bg-white dark:bg-background">
@@ -930,31 +950,33 @@ const ManufacturerProfile = () => {
             ]}
           />
 
-          {isPlatformaAnalyticalView && (
+          {isAnalyticalView && (
             <section
-              className={isPlatformaVisualView
+              className={isFeaturedVisualView
                 ? "mb-7 pb-8 md:mb-0 md:pb-10"
                 : "mb-10 border-y border-border py-7 md:mb-14 md:py-10"}
-              aria-labelledby="platforma-profile-title"
+              aria-labelledby="manufacturer-profile-title"
             >
               <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-end lg:gap-12">
                 <div className="min-w-0">
                   <div className="flex items-start gap-4 md:gap-6">
                     <div className={`flex h-[76px] w-[76px] shrink-0 items-center justify-center overflow-hidden rounded-[var(--radius)] border border-border text-[16px] font-semibold text-[#342d27] md:h-24 md:w-24 ${usesDarkLogoBackground(makerId) ? "bg-[#342d27]" : "bg-white"}`}>
                       {maker.logo ? (
-                        <img src={maker.logo} alt="" className="h-full w-full object-contain p-2.5" loading="eager" decoding="async" />
+                        <img src={maker.logo} alt="" width={96} height={96} className="h-full w-full object-contain p-2.5" loading="eager" decoding="async" />
                       ) : (
                         maker.initials
                       )}
                     </div>
                     <div className="min-w-0 pt-0.5">
                       <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-2">
-                        <h1 id="platforma-profile-title" className="min-w-0 text-[34px] font-semibold leading-[0.96] tracking-[-0.045em] text-[#342d27] md:text-[52px] dark:text-foreground">
-                          {maker.name}
+                        <h1 id="manufacturer-profile-title" className="min-w-0 text-[34px] font-semibold leading-[0.96] tracking-[-0.045em] text-[#342d27] md:text-[52px] dark:text-foreground">
+                          <span className="block">{maker.name}</span>{" "}
+                          <span className="mt-2 block max-w-[620px] text-[14px] font-medium leading-[1.35] tracking-normal text-[#717b8e] md:text-[18px]">
+                            {profile?.headlineSuffix}
+                          </span>
                         </h1>
                         {verified && <VerifiedBadge />}
                       </div>
-                      <p className="mt-2 text-[14px] text-[#717b8e]">Модульное производство · {cityLabel}</p>
                     </div>
                   </div>
 
@@ -1013,13 +1035,13 @@ const ManufacturerProfile = () => {
                 </div>
               </div>
 
-              {!isPlatformaVisualView && (
+              {!isFeaturedVisualView && (
                 <dl className="mt-8 grid grid-cols-2 gap-x-5 gap-y-6 border-t border-border pt-7 sm:grid-cols-3 lg:grid-cols-6 lg:gap-x-7">
                   {([
                     ["Проекты", makerProjects.length.toLocaleString("ru-RU")],
                     ["Цена от", minPriceLabel],
                     ["Площадь", areaRange],
-                    ["Выполнено", PLATFORMA_BUILT_OBJECTS.length.toLocaleString("ru-RU")],
+                    ["Выполнено", builtObjects.length.toLocaleString("ru-RU")],
                     ["Срок производства", "до 60 дней"],
                     ["Доставка", "до 150 км"],
                   ] as const).map(([label, value]) => (
@@ -1033,28 +1055,28 @@ const ManufacturerProfile = () => {
             </section>
           )}
 
-          {isPlatformaVisualView && (
-            <div className="sticky top-[51px] z-40 -mx-4 mb-10 bg-background px-4 sm:-mx-6 sm:px-6 md:top-[61px] md:mb-12">
+          {isFeaturedVisualView && (
+            <div className="sticky top-[51px] z-40 -mx-4 mb-10 bg-background px-4 sm:-mx-8 sm:px-8 md:top-[61px] md:mb-12 lg:-mx-12 lg:px-12">
               <ManufacturerSectionNav
-                showBuiltObjects
-                showLegal
+                showBuiltObjects={builtObjects.length > 0}
+                showLegal={Boolean(legal)}
                 showProduction={Boolean(mapEmbedUrl)}
-                showSocialMedia
+                showSocialMedia={Boolean(social)}
                 projectsBeforeLegal
                 embedded
               />
             </div>
           )}
 
-          <div className={`grid items-start ${isPlatformaVisualView ? "gap-y-5" : "gap-y-10 lg:gap-y-12"} ${isPlatformaLegacyAnalyticalView ? "lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-x-12 xl:grid-cols-[240px_minmax(0,1fr)] xl:gap-x-16" : isPlatformaVisualView ? "grid-cols-1" : "lg:grid-cols-[300px_minmax(0,1fr)] lg:gap-x-14 xl:grid-cols-[330px_minmax(0,1fr)] xl:gap-x-20"}`}>
-            {isPlatformaLegacyAnalyticalView && (
+          <div className={`grid items-start ${isFeaturedVisualView ? "gap-y-5" : "gap-y-10 lg:gap-y-12"} ${isLegacyAnalyticalView ? "lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-x-12 xl:grid-cols-[240px_minmax(0,1fr)] xl:gap-x-16" : isFeaturedVisualView ? "grid-cols-1" : "lg:grid-cols-[300px_minmax(0,1fr)] lg:gap-x-14 xl:grid-cols-[330px_minmax(0,1fr)] xl:gap-x-20"}`}>
+            {isLegacyAnalyticalView && (
               <aside className="sticky top-24 hidden self-start lg:block" aria-label="Навигация и статус данных">
                 <p className="mb-3 text-[12px] font-medium text-[#717b8e]">Разделы</p>
                 <ManufacturerSectionNav
-                  showBuiltObjects
-                  showLegal
+                  showBuiltObjects={builtObjects.length > 0}
+                  showLegal={Boolean(legal)}
                   showProduction={Boolean(mapEmbedUrl)}
-                  showSocialMedia
+                  showSocialMedia={Boolean(social)}
                   vertical
                   projectsBeforeLegal
                 />
@@ -1071,7 +1093,7 @@ const ManufacturerProfile = () => {
                     </div>
                     <div>
                       <dt className="text-[#717b8e]">Обновлено</dt>
-                      <dd className="mt-1 font-semibold text-[#342d27] dark:text-foreground">{PLATFORMA_LEGAL_DETAILS.checkedAt}</dd>
+                      <dd className="mt-1 font-semibold text-[#342d27] dark:text-foreground">{legal?.checkedAt}</dd>
                     </div>
                   </dl>
                   <ManufacturerReportDialog manufacturerName={maker.name}>
@@ -1087,11 +1109,12 @@ const ManufacturerProfile = () => {
               </aside>
             )}
 
-            <aside className={isPlatformaAnalyticalView ? "hidden" : "self-start"} aria-label={`Профиль компании ${maker.name}`}>
+            {!isAnalyticalView && (
+            <aside className="self-start" aria-label={`Профиль компании ${maker.name}`}>
               <div className="flex items-start gap-4 lg:block">
                 <div className={`flex h-[76px] w-[76px] shrink-0 items-center justify-center overflow-hidden rounded-[var(--radius)] border border-[#dfe5f5] text-[16px] font-semibold text-[#342d27] lg:h-24 lg:w-24 ${usesDarkLogoBackground(makerId) ? "bg-[#342d27]" : "bg-white"}`}>
                   {maker.logo ? (
-                    <img src={maker.logo} alt="" className="h-full w-full object-contain p-2.5" loading="eager" decoding="async" />
+                    <img src={maker.logo} alt="" width={96} height={96} className="h-full w-full object-contain p-2.5" loading="eager" decoding="async" />
                   ) : (
                     maker.initials
                   )}
@@ -1100,13 +1123,20 @@ const ManufacturerProfile = () => {
                 <div className="min-w-0 flex-1 lg:mt-6">
                   <div className="flex min-w-0 flex-wrap items-center gap-x-2.5 gap-y-2">
                     <h1 className="min-w-0 text-[30px] font-semibold leading-none tracking-[-0.035em] text-[#342d27] lg:text-[40px] dark:text-foreground">
-                      {maker.name}
+                      <span className="block">{maker.name}</span>{" "}
+                      {profile?.headlineSuffix && (
+                        <span className="mt-2 block text-[13px] font-medium leading-[1.4] tracking-normal text-[#717b8e] lg:text-[15px]">
+                          {profile.headlineSuffix}
+                        </span>
+                      )}
                     </h1>
                     {verified && <VerifiedBadge />}
                   </div>
-                  <p className="mt-2 text-[14px] text-[#717b8e]">
-                    {makerId === "platforma" ? "Модульная технология" : technologies.join(" · ")} · {cityLabel}
-                  </p>
+                  {!profile?.headlineSuffix && (
+                    <p className="mt-2 text-[14px] text-[#717b8e]">
+                      {technologies.join(" · ")} · {cityLabel}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -1178,7 +1208,7 @@ const ManufacturerProfile = () => {
                 <div>
                   <dt className="text-[13px] text-[#717b8e]">Технология</dt>
                   <dd className="mt-1.5 text-[16px] font-semibold text-[#342d27] dark:text-foreground">
-                    {makerId === "platforma" ? "Модульная технология" : technologies.join(", ")}
+                    {profile?.technologyLabel ?? technologies.join(", ")}
                   </dd>
                 </div>
                 <div>
@@ -1208,28 +1238,29 @@ const ManufacturerProfile = () => {
               </div>
 
             </aside>
+            )}
 
-            <div className={isPlatformaVisualView ? "min-w-0" : "min-w-0 lg:col-start-2 lg:row-start-1"}>
-              {!isPlatformaVisualView && (
-                <div className={isPlatformaLegacyAnalyticalView ? "lg:hidden" : undefined}>
+            <div className={isFeaturedVisualView ? "min-w-0" : "min-w-0 lg:col-start-2 lg:row-start-1"}>
+              {!isFeaturedVisualView && (
+                <div className={isLegacyAnalyticalView ? "lg:hidden" : undefined}>
                   <ManufacturerSectionNav
-                    showBuiltObjects={makerId === "platforma"}
-                    showLegal={makerId === "platforma"}
+                    showBuiltObjects={builtObjects.length > 0}
+                    showLegal={Boolean(legal)}
                     showProduction={Boolean(mapEmbedUrl)}
-                    showSocialMedia={makerId === "platforma"}
-                    projectsBeforeLegal={isPlatformaAnalyticalView}
+                    showSocialMedia={Boolean(social)}
+                    projectsBeforeLegal={isAnalyticalView}
                   />
                 </div>
               )}
 
               <section id="about" className="scroll-mt-28" aria-labelledby="manufacturer-about-heading">
                 <h2 id="manufacturer-about-heading" className="text-[28px] font-semibold tracking-[-0.03em] text-[#342d27] md:text-[36px] dark:text-foreground">
-                  {isPlatformaAnalyticalView ? "О платформе" : `Компания «${maker.name}»`}
+                  {isAnalyticalView ? `О компании «${maker.name}»` : `Компания «${maker.name}»`}
                 </h2>
                 <div className="mt-5 max-w-[850px] text-[16px] leading-[1.72] text-[#595653] md:text-[17px] dark:text-muted-foreground">
                   <div id="manufacturer-about-details" className="space-y-4">
                     {aboutParagraphs.map((paragraph, index) => (
-                      <p key={paragraph} className={!aboutExpanded && index >= (isPlatformaVisualView ? 1 : 2) ? "hidden" : undefined}>
+                      <p key={paragraph} className={!aboutExpanded && index >= (isFeaturedVisualView ? 1 : 2) ? "hidden" : undefined}>
                         {paragraph}
                       </p>
                     ))}
@@ -1253,17 +1284,17 @@ const ManufacturerProfile = () => {
                 </div>
               </section>
 
-              {makerId === "platforma" && !isPlatformaAnalyticalView && <PlatformaLegalOverview />}
+              {legal && !isAnalyticalView && <ManufacturerLegalOverview legal={legal} />}
             </div>
 
-            <div className={isPlatformaVisualView ? "min-w-0" : "min-w-0 lg:col-start-2 lg:row-start-2"}>
+            <div className={isFeaturedVisualView ? "min-w-0" : "min-w-0 lg:col-start-2 lg:row-start-2"}>
               <section
                 id="projects"
                 className="scroll-mt-28"
                 aria-labelledby="manufacturer-projects-heading"
               >
                 <div className="mb-7">
-                  {makerId === "platforma" ? (
+                  {groupedProjects ? (
                     <>
                       <h2 id="manufacturer-projects-heading" className="text-[28px] font-semibold tracking-[-0.03em] text-[#342d27] md:text-[36px] dark:text-foreground">
                         Проекты
@@ -1271,14 +1302,14 @@ const ManufacturerProfile = () => {
                       <div
                         className="mt-4 flex min-w-0 max-w-full touch-pan-x items-center gap-3 overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:gap-5"
                         role="tablist"
-                        aria-label="Тип проектов Платформы"
+                        aria-label={`Тип проектов ${maker.name}`}
                       >
                         {([
-                          ["houses", "Дома", platformaHouseProjects.length],
-                          ["baths", "Бани", platformaBathProjects.length],
-                          ["business", "Для бизнеса", platformaBusinessProjects.length],
+                          ["houses", "Дома", houseProjects.length],
+                          ["baths", "Бани", bathProjects.length],
+                          ["business", "Для бизнеса", businessProjects.length],
                         ] as const).map(([type, label, count]) => {
-                          const isActive = platformaProjectType === type;
+                          const isActive = manufacturerProjectType === type;
                           return (
                             <button
                               key={type}
@@ -1287,7 +1318,7 @@ const ManufacturerProfile = () => {
                               role="tab"
                               aria-selected={isActive}
                               aria-controls="manufacturer-projects-panel"
-                              onClick={() => setPlatformaProjectType(type)}
+                              onClick={() => setManufacturerProjectType(type)}
                               className="manufacturer-section-tab group flex min-h-11 shrink-0 items-center gap-2 text-[20px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-4"
                             >
                               <span>{label}</span>
@@ -1317,16 +1348,17 @@ const ManufacturerProfile = () => {
 
                 <div
                   id="manufacturer-projects-panel"
-                  role={makerId === "platforma" ? "tabpanel" : undefined}
-                  aria-labelledby={makerId === "platforma" ? `manufacturer-projects-${platformaProjectType}-tab` : undefined}
+                  role={groupedProjects ? "tabpanel" : undefined}
+                  aria-labelledby={groupedProjects ? `manufacturer-projects-${manufacturerProjectType}-tab` : undefined}
                 >
-                  {isPlatformaVisualView ? (
+                  {isFeaturedVisualView ? (
                     <>
                       {visibleMakerProjects[0] && (
-                        <div className="[&_h2]:!text-[19px] md:[&_h2]:!text-[23px]">
+                        <div className="[&_h3]:!text-[19px] md:[&_h3]:!text-[23px]">
                           <ProjectCard
                             projectId={visibleMakerProjects[0].id}
                             height="aspect-[16/9] h-auto md:aspect-[21/9]"
+                            headingLevel="h3"
                           />
                         </div>
                       )}
@@ -1337,6 +1369,7 @@ const ManufacturerProfile = () => {
                             key={project.id}
                             projectId={project.id}
                             height="aspect-[4/3] h-auto md:aspect-[5/4]"
+                            headingLevel="h3"
                           />
                         ))}
                       </div>
@@ -1348,6 +1381,7 @@ const ManufacturerProfile = () => {
                         key={project.id}
                         projectId={project.id}
                         height="aspect-[4/3] h-auto md:aspect-[5/4]"
+                        headingLevel="h3"
                       />
                       ))}
                     </div>
@@ -1355,9 +1389,9 @@ const ManufacturerProfile = () => {
                 </div>
               </section>
 
-              {makerId === "platforma" && isPlatformaAnalyticalView && <PlatformaLegalOverview compact />}
+              {legal && isAnalyticalView && <ManufacturerLegalOverview legal={legal} compact />}
 
-              {makerId === "platforma" && (
+              {builtObjects.length > 0 && (
                 <section
                   id="built-objects"
                   className="mt-16 scroll-mt-28 md:mt-24"
@@ -1372,14 +1406,14 @@ const ManufacturerProfile = () => {
                       <span>объекты</span>
                       <span
                         className="tabular-nums text-[#746f6a] dark:text-foreground/65"
-                        aria-label={`Количество выполненных объектов: ${PLATFORMA_BUILT_OBJECTS.length}`}
+                        aria-label={`Количество выполненных объектов: ${builtObjects.length}`}
                       >
-                        {PLATFORMA_BUILT_OBJECTS.length.toLocaleString("ru-RU")}
+                        {builtObjects.length.toLocaleString("ru-RU")}
                       </span>
                     </span>
                   </h2>
 
-                  <PlatformaBuiltObjectsGallery compact={isPlatformaAnalyticalView} />
+                  <ManufacturerBuiltObjectsGallery manufacturerName={maker.name} objects={builtObjects} compact={isAnalyticalView} />
                 </section>
               )}
 
@@ -1394,30 +1428,28 @@ const ManufacturerProfile = () => {
                 </div>
 
                 <div className="relative mt-7 min-h-[320px] overflow-hidden rounded-[var(--radius)] md:min-h-[440px]">
-                  <iframe
+                  <ExternalIframe
                     src={mapEmbedUrl}
                     title={`Производство компании ${maker.name} на карте`}
                     className="absolute inset-0 h-full w-full border-0"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
                   />
                 </div>
               </section>}
 
               <section id="reviews" className="mt-16 scroll-mt-28 md:mt-24" aria-labelledby="manufacturer-reviews-heading">
-                <div className={`grid gap-6 ${reviewSummary.hasReviews ? "md:grid-cols-[minmax(0,1fr)_auto] md:items-center" : ""}`}>
+                <div className={`grid gap-6 ${profileReviewSummary.hasReviews ? "md:grid-cols-[minmax(0,1fr)_auto] md:items-center" : ""}`}>
                   <div>
                     <h2 id="manufacturer-reviews-heading" className="text-[28px] font-semibold leading-[1.05] tracking-[-0.03em] text-[#342d27] md:text-[36px] dark:text-foreground">
-                      {makerId === "platforma" ? (
+                      {profile?.namePrepositional ? (
                         <>
                           <span>Отзывы о </span>
                           <span className="inline-flex items-baseline gap-2 whitespace-nowrap align-baseline md:gap-3">
-                            <span>Платформе</span>
+                            <span>{profile.namePrepositional}</span>
                             <span
                               className="tabular-nums text-[#746f6a] dark:text-foreground/65"
-                              aria-label={`Количество отзывов: ${PLATFORMA_REVIEW_COUNT}`}
+                              aria-label={`Количество отзывов: ${profileReviewSummary.totalCount}`}
                             >
-                              {PLATFORMA_REVIEW_COUNT.toLocaleString("ru-RU")}
+                              {profileReviewSummary.totalCount.toLocaleString("ru-RU")}
                             </span>
                           </span>
                         </>
@@ -1426,44 +1458,44 @@ const ManufacturerProfile = () => {
                       )}
                     </h2>
                   </div>
-                  {reviewSummary.hasReviews && (
-                    <div className="min-w-0 md:min-w-[330px]" aria-label={`Средняя оценка производителя ${reviewSummary.rating.toFixed(1)} из 5, ${reviewSummary.reviewsLabel}`}>
+                  {profileReviewSummary.hasReviews && (
+                    <div className="min-w-0 md:min-w-[330px]" aria-label={`Средняя оценка производителя ${profileReviewSummary.rating.toFixed(1)} из 5, ${profileReviewSummary.reviewsLabel}`}>
                       <div className="flex flex-wrap items-center gap-x-4 gap-y-2 md:justify-end">
                         <div className="text-[38px] font-semibold leading-none tabular-nums text-[#342d27] md:text-[42px] dark:text-foreground">
-                          {reviewSummary.rating.toFixed(1).replace(".", ",")}
+                          {profileReviewSummary.rating.toFixed(1).replace(".", ",")}
                         </div>
                         <div className="flex items-center gap-1" aria-hidden>
                           {Array.from({ length: 5 }, (_, index) => (
-                            <Star key={index} className={`h-[19px] w-[19px] ${index < Math.round(reviewSummary.rating) ? "fill-primary text-primary" : "text-[#c5cbd8]"}`} strokeWidth={1.4} />
+                            <Star key={index} className={`h-[19px] w-[19px] ${index < Math.round(profileReviewSummary.rating) ? "fill-primary text-primary" : "text-[#c5cbd8]"}`} strokeWidth={1.4} />
                           ))}
                         </div>
-                        <p className="text-[14px] text-[#717b8e]">{reviewSummary.reviewsLabel}</p>
+                        <p className="text-[14px] text-[#717b8e]">{profileReviewSummary.reviewsLabel}</p>
                       </div>
                     </div>
                   )}
                 </div>
 
-                {makerId === "platforma" ? (
+                {maker.externalRating ? (
                   <div className="mt-7">
                     <div
                       className="flex min-w-0 max-w-full touch-pan-x items-center gap-5 overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                       role="tablist"
-                      aria-label="Источник отзывов о Платформе"
+                      aria-label={`Источник отзывов о ${profile?.namePrepositional ?? maker.name}`}
                     >
                       {([
                         ["yandex", "Яндекс"],
                         ["mnogomesta", "Много места"],
                       ] as const).map(([source, label]) => {
-                        const isActive = platformaReviewSource === source;
+                        const isActive = manufacturerReviewSource === source;
                         return (
                           <button
                             key={source}
-                            id={`platforma-reviews-${source}-tab`}
+                            id={`manufacturer-reviews-${source}-tab`}
                             type="button"
                             role="tab"
                             aria-selected={isActive}
-                            aria-controls={`platforma-reviews-${source}-panel`}
-                            onClick={() => setPlatformaReviewSource(source)}
+                            aria-controls={`manufacturer-reviews-${source}-panel`}
+                            onClick={() => setManufacturerReviewSource(source)}
                             className="manufacturer-section-tab min-h-11 shrink-0 text-[20px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-4"
                           >
                             {label}
@@ -1472,19 +1504,23 @@ const ManufacturerProfile = () => {
                       })}
                     </div>
 
-                    {platformaReviewSource === "yandex" ? (
+                    {manufacturerReviewSource === "yandex" ? (
                       <div
-                        id="platforma-reviews-yandex-panel"
+                        id="manufacturer-reviews-yandex-panel"
                         role="tabpanel"
-                        aria-labelledby="platforma-reviews-yandex-tab"
+                        aria-labelledby="manufacturer-reviews-yandex-tab"
                       >
-                        <PlatformaYandexReviews />
+                          <ManufacturerYandexReviews
+                            makerId={makerId}
+                            makerName={maker.name}
+                            makerNamePrepositional={profile?.namePrepositional ?? maker.name}
+                          />
                       </div>
                     ) : (
                       <div
-                        id="platforma-reviews-mnogomesta-panel"
+                        id="manufacturer-reviews-mnogomesta-panel"
                         role="tabpanel"
-                        aria-labelledby="platforma-reviews-mnogomesta-tab"
+                        aria-labelledby="manufacturer-reviews-mnogomesta-tab"
                         className="mt-5 flex min-h-[240px] flex-col items-center justify-center rounded-[var(--radius)] bg-secondary px-5 py-8 text-center"
                       >
                         <Star className="h-9 w-9 text-[#aab2c2]" strokeWidth={1.5} aria-hidden />
@@ -1535,7 +1571,7 @@ const ManufacturerProfile = () => {
                 )}
               </section>
 
-              {makerId === "platforma" && (
+              {social && (
                 <section
                   id="social-media"
                   className="mt-16 scroll-mt-28 md:mt-24"
@@ -1545,9 +1581,9 @@ const ManufacturerProfile = () => {
                     id="manufacturer-social-heading"
                     className="text-[28px] font-semibold leading-[1.05] tracking-[-0.03em] text-[#342d27] md:text-[36px] dark:text-foreground"
                   >
-                    Платформа в социальных сетях
+                    {maker.name} в социальных сетях
                   </h2>
-                  <PlatformaSocialMedia />
+                  <ManufacturerSocialMedia manufacturerName={maker.name} social={social} />
                 </section>
               )}
 
@@ -1579,6 +1615,7 @@ const ManufacturerProfile = () => {
                       key={project.id}
                       projectId={project.id}
                       height="aspect-[4/3] h-auto md:aspect-[5/4]"
+                      headingLevel="h3"
                     />
                   ))}
                 </div>

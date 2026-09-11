@@ -11,6 +11,7 @@ import ScrollRestoration from "./components/ScrollToTop.tsx";
 import MobileViewportGuard from "./components/MobileViewportGuard.tsx";
 import CookieConsentBanner from "./components/CookieConsentBanner.tsx";
 import { CATALOG_PATH, MANUFACTURERS_PATH, REGIONS_PATH } from "@/lib/siteRoutes";
+import { getCatalogCategoryBySlug } from "@/data/catalogCategories";
 
 // Lazy-loaded routes — each becomes its own chunk, kept out of the main bundle.
 const Catalog = lazy(() => import("./pages/Catalog.tsx"));
@@ -57,6 +58,14 @@ const ProjectDetailRoute = () => {
   return <ProjectDetail key={projectSlug ?? id} />;
 };
 
+const CatalogOrRegionRoute = () => {
+  const { slug = "" } = useParams();
+  const category = getCatalogCategoryBySlug(slug);
+  return category
+    ? <Catalog key={category.slug} categorySlug={category.slug} />
+    : <RegionPage key={slug} />;
+};
+
 const RedirectWithLocation = ({ to }: { to: string }) => {
   const location = useLocation();
   return <Navigate to={`${to}${location.search}${location.hash}`} replace />;
@@ -70,6 +79,7 @@ const AppRoutes = () => (
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path={CATALOG_PATH} element={<Catalog />} />
+        <Route path="/modulnye-bani/" element={<Catalog categorySlug="modulnye-bani" />} />
         <Route path="/catalog" element={<RedirectWithLocation to={CATALOG_PATH} />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/modulnye-doma/proekty/:projectSlug" element={<ProjectDetailRoute />} />
@@ -99,7 +109,7 @@ const AppRoutes = () => (
         <Route path="/legal" element={<Legal />} />
         <Route path="/legal/:slug" element={<LegalDocument />} />
         <Route path="/privacy" element={<Navigate to="/legal/privacy/" replace />} />
-        <Route path="/modulnye-doma/:slug" element={<RegionPage />} />
+        <Route path="/modulnye-doma/:slug" element={<CatalogOrRegionRoute />} />
         <Route path="/region/:slug" element={<RegionPage />} />
         <Route path={REGIONS_PATH} element={<Regions />} />
         <Route path="/regions" element={<RedirectWithLocation to={REGIONS_PATH} />} />

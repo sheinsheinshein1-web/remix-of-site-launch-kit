@@ -4,6 +4,7 @@ import { flushSync } from "react-dom";
 import { Search, X, Home, Factory, FileText, LayoutGrid, ArrowRight, ChevronRight, Clock, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { makersById, projects as dataProjects } from "@/data/projects";
+import { manufacturerRegistry } from "@/data/manufacturers";
 import { useCity } from "@/components/CitySelector";
 import { compareProjectTechnologyPriority } from "@/lib/projectPriority";
 import { allCategoryLinks } from "@/data/categoryLinks";
@@ -20,8 +21,8 @@ import {
 const projects = dataProjects.map((p) => ({
   id: p.id,
   name: p.name,
-  maker: p.maker.name,
-  makerId: p.maker.id,
+  maker: manufacturerRegistry[p.manufacturerId].name,
+  makerId: p.manufacturerId,
   city: p.city,
   price: p.price,
   area: p.area,

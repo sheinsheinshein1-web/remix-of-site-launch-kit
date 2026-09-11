@@ -36,7 +36,7 @@ const ReportDialog = ({
   const [reason, setReason] = useState("");
   const [comment, setComment] = useState("");
   const [sending, setSending] = useState(false);
-  const idPrefix = useId().replaceAll(":", "");
+  const idPrefix = useId().replace(/:/g, "");
 
   const handleOpenChange = (nextOpen: boolean) => {
     setOpen(nextOpen);

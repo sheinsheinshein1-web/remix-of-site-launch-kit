@@ -20,4 +20,16 @@ describe("manufacturer ratings", () => {
     expect(summary.rating).toBe(0);
     expect(summary.totalCount).toBe(0);
   });
+
+  it("uses the same Yandex rating for Platforma everywhere", () => {
+    const summary = getManufacturerRatingSummary("platforma");
+
+    expect(summary.hasReviews).toBe(true);
+    expect(summary.hasRating).toBe(true);
+    expect(summary.ratingSource).toBe("yandex");
+    expect(summary.sourceLabel).toBe("Яндекс");
+    expect(summary.rating).toBe(4.3);
+    expect(summary.totalCount).toBe(5);
+    expect(summary.reviewsLabel).toBe("5 отзывов");
+  });
 });

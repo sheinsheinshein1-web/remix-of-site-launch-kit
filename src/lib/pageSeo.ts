@@ -1,4 +1,5 @@
 import type { Project } from "@/data/projects";
+import { manufacturerRegistry } from "@/data/manufacturers";
 
 export type PageSeoMetadata = {
   title: string;
@@ -106,12 +107,12 @@ export const buildCatalogSeo = ({ categoryTitle, categoryCaption }: CatalogSeoIn
 };
 
 export const buildProjectSeo = (
-  project: Pick<Project, "name" | "area" | "price" | "rooms" | "completion" | "productType" | "technology" | "maker">,
+  project: Pick<Project, "name" | "area" | "price" | "rooms" | "completion" | "productType" | "technology" | "manufacturerId">,
 ): PageSeoMetadata => {
   const projectType = getProjectTypeLabel(project);
   const price = getProjectPriceLabel(project.price);
   const titlePrice = `цена ${price}`;
-  const makerName = project.maker.name;
+  const makerName = manufacturerRegistry[project.manufacturerId]?.name ?? "Производитель";
   const fullDescription = `${projectType} «${project.name}» от производителя «${makerName}»: ${project.area}, ${project.rooms.toLocaleLowerCase("ru")}, ${project.completion.toLocaleLowerCase("ru")}. Цена ${price}. Фото, характеристики и условия доставки.`;
   const compactDescription = `${projectType} «${project.name}» от производителя «${makerName}»: ${project.area}, ${project.completion.toLocaleLowerCase("ru")}. Цена ${price}. Фото, характеристики и условия доставки.`;
 

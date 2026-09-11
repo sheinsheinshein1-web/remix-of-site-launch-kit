@@ -307,7 +307,7 @@ export const PartnerBusinessPreview = ({
           <div key={project.id} className={index === 2 ? "hidden sm:block" : ""}>
             <img src={project.gallery[0]?.image} alt="" className="aspect-[4/3] w-full rounded-[var(--radius)] object-cover" loading="lazy" decoding="async" />
             <p className="mt-2 truncate text-[12px] font-medium text-white">{project.name}</p>
-            <p className="mt-1 text-[11px] text-white/50">{project.maker.name || maker.name}</p>
+            <p className="mt-1 text-[11px] text-white/50">{maker.name}</p>
           </div>
         ))}
       </div>

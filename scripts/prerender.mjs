@@ -21,8 +21,10 @@ const mkdirP = promisify(mkdir);
 
 const DIST = resolve("dist");
 const SRC_PROJECTS = resolve("src/data/projects.ts");
+const SRC_MANUFACTURERS = resolve("src/data/manufacturers.ts");
 const SRC_REGIONAL = resolve("src/data/regionalBatchProjects.ts");
 const SRC_PARTNER_SERVICES = resolve("src/data/partnerServices.ts");
+const SRC_CATALOG_CATEGORIES = resolve("src/data/catalogCategories.ts");
 const SRC_VISIBILITY = resolve("src/data/catalogVisibility.ts");
 const PUBLIC_SITEMAP = resolve("public/sitemap.xml");
 const LEGACY_REDIRECTS_FILE = join(DIST, "legacy-redirects.caddy");
@@ -89,6 +91,12 @@ const collectMakerIds = (sourceFile) => {
 };
 
 const makerIdFromProject = (project, makerIds) => {
+  const manufacturerIdProperty = getObjectProperty(project, "manufacturerId");
+  const explicitManufacturerId = manufacturerIdProperty
+    ? stringValue(manufacturerIdProperty.initializer)
+    : undefined;
+  if (explicitManufacturerId) return explicitManufacturerId;
+
   const makerProperty = getObjectProperty(project, "maker");
   if (!makerProperty) return undefined;
   const maker = makerProperty.initializer;
@@ -181,6 +189,7 @@ const collectPublicProjectRoutes = ({ sourceFile, arrayName, makerIds, hiddenTec
 
 // ---------- 1. Build URL list ----------
 const projectsSrc = readSync(SRC_PROJECTS, "utf8");
+const manufacturersSrc = existsSync(SRC_MANUFACTURERS) ? readSync(SRC_MANUFACTURERS, "utf8") : "";
 const regionalSrc = existsSync(SRC_REGIONAL) ? readSync(SRC_REGIONAL, "utf8") : "";
 const visibilitySrc = existsSync(SRC_VISIBILITY) ? readSync(SRC_VISIBILITY, "utf8") : "";
 const hiddenTechnologies = new Set(
@@ -188,11 +197,16 @@ const hiddenTechnologies = new Set(
     .flatMap((match) => [...match[1].matchAll(/["']([^"']+)["']/g)].map((value) => value[1])),
 );
 const projectsFile = parseSource(SRC_PROJECTS, projectsSrc);
+const manufacturersFile = parseSource(SRC_MANUFACTURERS, manufacturersSrc);
 const regionalFile = parseSource(SRC_REGIONAL, regionalSrc);
-const makerIdMap = new Map([...collectMakerIds(projectsFile), ...collectMakerIds(regionalFile)]);
+const makerIdMap = new Map([
+  ...collectMakerIds(manufacturersFile),
+  ...collectMakerIds(projectsFile),
+  ...collectMakerIds(regionalFile),
+]);
 const primaryRoutes = collectPublicProjectRoutes({
   sourceFile: projectsFile,
-  arrayName: "allProjects",
+  arrayName: "projectRecords",
   makerIds: makerIdMap,
   hiddenTechnologies,
 });
@@ -212,6 +226,8 @@ const regionsSrc = existsSync(SRC_REGIONS) ? readSync(SRC_REGIONS, "utf8") : "";
 const regionSlugs = [...new Set([...regionsSrc.matchAll(/slug:\s*["']([^"']+)["']/g)].map((m) => m[1]))];
 const partnerServicesSrc = existsSync(SRC_PARTNER_SERVICES) ? readSync(SRC_PARTNER_SERVICES, "utf8") : "";
 const partnerServiceRoutes = [...new Set([...partnerServicesSrc.matchAll(/path:\s*["']([^"']+)["']/g)].map((m) => m[1]))];
+const catalogCategoriesSrc = existsSync(SRC_CATALOG_CATEGORIES) ? readSync(SRC_CATALOG_CATEGORIES, "utf8") : "";
+const catalogCategoryRoutes = [...new Set([...catalogCategoriesSrc.matchAll(/path:\s*["']([^"']+)["']/g)].map((m) => m[1]))];
 
 const staticRoutes = [
   "/",
@@ -234,12 +250,12 @@ const projectRoutes = projectRecords.map(buildProjectPath);
 const partnerRoutes = makerIds.map((id) => `/proizvoditeli/${id}/`);
 const regionRoutes = regionSlugs.map((slug) => `/modulnye-doma/${slug}/`);
 
-const ROUTES = [...new Set([...staticRoutes, ...partnerServiceRoutes, ...projectRoutes, ...partnerRoutes, ...regionRoutes])];
+const ROUTES = [...new Set([...staticRoutes, ...catalogCategoryRoutes, ...partnerServiceRoutes, ...projectRoutes, ...partnerRoutes, ...regionRoutes])];
 // Query-string filters are UI states, not independently prerendered landing pages.
 // Listing them here created non-canonical duplicates with identical server HTML.
 const SITEMAP_ROUTES = ROUTES;
 const RENDER_ROUTES = [...ROUTES, NOT_FOUND_RENDER_ROUTE];
-console.log(`[prerender] ${ROUTES.length} routes (${staticRoutes.length} static, ${partnerServiceRoutes.length} partner services, ${projectRoutes.length} projects, ${partnerRoutes.length} partners, ${regionRoutes.length} regions)`);
+console.log(`[prerender] ${ROUTES.length} routes (${staticRoutes.length} static, ${catalogCategoryRoutes.length} catalog categories, ${partnerServiceRoutes.length} partner services, ${projectRoutes.length} projects, ${partnerRoutes.length} partners, ${regionRoutes.length} regions)`);
 
 if (process.env.PRERENDER_LIST_ONLY === "1") {
   console.log(JSON.stringify({ routes: ROUTES, sitemapRoutes: SITEMAP_ROUTES }));

@@ -32,7 +32,7 @@ const HomeRegionLinks = () => {
         const regionProjects = projects.filter((project) => (
           isProjectAvailableInGeo(project.city, region.slug, project.deliveryRegionSlugs)
         ));
-        const makersCount = new Set(regionProjects.map((project) => project.maker.id).filter(Boolean)).size;
+        const makersCount = new Set(regionProjects.map((project) => project.manufacturerId).filter(Boolean)).size;
 
         return {
           ...region,

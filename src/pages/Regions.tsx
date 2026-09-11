@@ -37,7 +37,7 @@ const Regions = () => {
           return {
             ...group,
             projectsCount: regionProjects.length,
-            makersCount: new Set(regionProjects.map((project) => project.maker.id).filter(Boolean)).size,
+            makersCount: new Set(regionProjects.map((project) => project.manufacturerId).filter(Boolean)).size,
           };
         })
         .filter((group) => group.projectsCount > 0),

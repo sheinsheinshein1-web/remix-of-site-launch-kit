@@ -15,6 +15,7 @@ import SwipeableGallery from "@/components/SwipeableGallery";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { getProjectPath } from "@/lib/siteRoutes";
 import { projectMobileThumbs, projectThumbs } from "@/data/projectThumbs";
+import { manufacturerRegistry } from "@/data/manufacturers";
 import { isVerifiedMaker } from "@/lib/verifiedMakers";
 import VerifiedBadge from "@/components/VerifiedBadge";
 import {
@@ -31,6 +32,8 @@ interface ProjectCardProps {
   onCardClick?: (e: React.MouseEvent<HTMLAnchorElement>, projectId: number) => void;
   /** Отключить листание галереи — показывать только первое фото без точек/свайпа. */
   singleImage?: boolean;
+  /** Семантический уровень названия карточки внутри текущего раздела. */
+  headingLevel?: "h2" | "h3";
 }
 
 const DEFAULT_HEIGHT = "aspect-[3/4] h-auto md:h-[240px] md:aspect-auto";
@@ -44,12 +47,20 @@ const wordForm = (count: number, forms: [string, string, string]) => {
   return forms[2];
 };
 
-const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleImage = false }: ProjectCardProps) => {
+const ProjectCard = ({
+  projectId,
+  height = DEFAULT_HEIGHT,
+  onCardClick,
+  singleImage = false,
+  headingLevel = "h2",
+}: ProjectCardProps) => {
   const navigate = useNavigate();
   const { isFavorite, toggleFavorite } = useFavorites();
 
   const project = allProjects.find((p) => p.id === projectId);
   if (!project) return null;
+  const manufacturer = manufacturerRegistry[project.manufacturerId];
+  if (!manufacturer) return null;
 
   const allImages = project.gallery.map((g) => g.image);
   const firstImage = allImages[0] ?? "";
@@ -78,7 +89,7 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
     toggleFavorite({
       id: project.id,
       badge: project.badge,
-      maker: project.maker.name,
+      maker: manufacturer.name,
       name: project.name,
       price: project.price,
       area: project.area,
@@ -90,6 +101,7 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
       city: project.city,
     });
   };
+  const Heading = headingLevel;
 
   return (
     <article className="overflow-hidden">
@@ -123,8 +135,8 @@ const ProjectCard = ({ projectId, height = DEFAULT_HEIGHT, onCardClick, singleIm
         </SwipeableGallery>
         <div className="px-1 pb-1.5 pt-2">
           <div className="flex min-w-0 items-center gap-2">
-            <h2 className="truncate text-[14px] font-medium leading-tight text-[#342d27] md:text-[15px]">{project.name}</h2>
-            {isVerifiedMaker(project.maker.id) && <VerifiedBadge className="ml-auto" />}
+            <Heading className="truncate text-[14px] font-medium leading-tight text-[#342d27] md:text-[15px]">{project.name}</Heading>
+            {isVerifiedMaker(project.manufacturerId) && <VerifiedBadge className="ml-auto" />}
           </div>
 
           <div className="mt-1 whitespace-nowrap text-[13px] font-medium leading-tight text-[#342d27] md:text-[14px]">
