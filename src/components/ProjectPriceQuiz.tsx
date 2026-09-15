@@ -127,6 +127,7 @@ const ProjectPriceQuiz = ({ open, onOpenChange, project, deliveryRegion }: Proje
 
   const stepIndex = Math.max(steps.indexOf(step), 0);
   const manufacturerName = getProjectManufacturerName(project);
+  const projectObjectGenitive = project.productType === "bath" ? "бани" : "дома";
   const firstImage = project.gallery[0]?.image ?? "";
   const recommendations = useMemo(
     () => getSimilarManufacturerProjects(project, catalogProjects, deliveryRegion),
@@ -268,7 +269,7 @@ const ProjectPriceQuiz = ({ open, onOpenChange, project, deliveryRegion }: Proje
     setSubmitState("submitting");
     const locationAnswer = await resolveLocationAnswer();
     const message = [
-      "Заявка на расчёт цены дома с доставкой",
+      `Заявка на расчёт стоимости ${projectObjectGenitive} с доставкой`,
       `Проект: ${project.name}`,
       `ID проекта: ${project.id}`,
       `Производитель: ${manufacturerName}`,
@@ -452,7 +453,7 @@ const ProjectPriceQuiz = ({ open, onOpenChange, project, deliveryRegion }: Proje
     : step === "location"
       ? plotStatus === "Подбираю участок"
         ? "Укажите предпочтительный населённый пункт или район — так мы предварительно рассчитаем стоимость доставки."
-        : "Укажите адрес как можно точнее — он нужен, чтобы рассчитать стоимость доставки дома до участка."
+        : `Укажите адрес как можно точнее — он нужен, чтобы рассчитать стоимость доставки ${projectObjectGenitive} до участка.`
       : step === "payment"
         ? "Выберите ближайший вариант — при необходимости его можно будет изменить."
         : step === "bank"

@@ -1,0 +1,123 @@
+{
+  "id": "zhar-parych",
+  "publicationStatus": "draft",
+  "identity": {
+    "name": {
+      "value": "Готовые модульные каркасные дома и бани ОТ ПРОИЗВОДИТЕЛЯ в Екатеринбурге",
+      "status": "derived",
+      "confidence": 0.75,
+      "sourceUrl": "https://www.dmbany.ru/",
+      "method": "visible-text",
+      "evidence": "Название взято из og:site_name, H1 или title и требует редакторской проверки."
+    },
+    "logo": {
+      "value": "https://thb.tildacdn.com/tild3066-6635-4636-b032-356161363837/-/resize/20x/Logotip.png",
+      "status": "derived",
+      "confidence": 0.72,
+      "sourceUrl": "https://www.dmbany.ru/",
+      "method": "media",
+      "evidence": "Изображение с явным признаком logo в имени файла."
+    }
+  },
+  "contacts": {
+    "siteUrl": "https://www.dmbany.ru/",
+    "phones": {
+      "value": [
+        "+7 (908) 923-75-95",
+        "+7 (908) 923-75-95",
+        "+7 (999) 560-49-73"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://www.dmbany.ru/",
+      "method": "visible-text",
+      "evidence": "Телефоны найдены на официальных страницах."
+    },
+    "emails": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://www.dmbany.ru/",
+      "method": "not-found",
+      "evidence": "Email не опубликованы."
+    },
+    "telegram": {
+      "value": "https://t.me/zharparych",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://www.dmbany.ru/",
+      "method": "link",
+      "evidence": "Ссылка Telegram опубликована на официальном сайте."
+    },
+    "youtube": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://www.dmbany.ru/",
+      "method": "not-found",
+      "evidence": "YouTube не найден на официальном сайте."
+    }
+  },
+  "catalog": {
+    "sourceUrl": "https://www.dmbany.ru/proekty-skandizhar",
+    "discoveredProjectCount": 0,
+    "expectedProjectCount": 6
+  },
+  "legal": {
+    "operator": {
+      "value": "ИП Дмитриевский Дмитрий ВладимировичИНН",
+      "status": "derived",
+      "confidence": 0.7,
+      "sourceUrl": "https://www.dmbany.ru/",
+      "method": "visible-text",
+      "evidence": "Оператор найден в официальном тексте; связь требует проверки по реквизитам."
+    },
+    "inn": {
+      "value": "6670058277",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://www.dmbany.ru/",
+      "method": "visible-text",
+      "evidence": "ИНН опубликован на официальном сайте."
+    },
+    "ogrn": {
+      "value": "3216658000785",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://www.dmbany.ru/",
+      "method": "visible-text",
+      "evidence": "ОГРН или ОГРНИП опубликован на официальном сайте."
+    }
+  },
+  "production": {
+    "address": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://www.dmbany.ru/",
+      "method": "not-found",
+      "evidence": "Отдельный адрес производства не найден."
+    }
+  },
+  "reviews": {
+    "externalProfile": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://www.dmbany.ru/",
+      "method": "not-found",
+      "evidence": "Независимый профиль отзывов не найден на официальном сайте."
+    }
+  },
+  "builtObjects": {
+    "sourcePage": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://www.dmbany.ru/",
+      "method": "not-found",
+      "evidence": "Страница выполненных объектов не найдена."
+    },
+    "media": []
+  }
+}

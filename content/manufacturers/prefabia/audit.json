@@ -1,0 +1,168 @@
+{
+  "generatedAt": "2026-09-12T20:28:01.418Z",
+  "status": "draft",
+  "platform": "html",
+  "candidateCount": 57,
+  "confirmedProjectCount": 18,
+  "rejected": [
+    {
+      "url": "https://prefabia.ru/project/doma/group--doma-s-2-spalnyami",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/group--doma-s-3-spalnyami",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://prefabia.ru/project/hozbloki/hozblok-skandi-10/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/hozbloki/hozblok-skandi-12/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/skandi-seriya-domov/dom-skandi-15/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/seriya-domov-platt/platt-15/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/uyutnyy-seriya-domov/uyutnyy-42/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/atmosfera-seriya-domov/atmosfera-18/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/atmosfera-seriya-domov/atmosfera-24/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/group--doma-s-1-spalney",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/atmosfera-seriya-domov/atmosfera-39/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/atmosfera-seriya-domov/atmosfera-34/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/seriya-domov-platt/dom-platt-29/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/skandi-seriya-domov/dom-skandi-29/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/mone/monet-49/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/uyutnyy-seriya-domov/uyutnyy-54/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/seriya-domov-platt/dplatt-54/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/mone/mone-60/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/seriya-domov-platt/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/skandi-seriya-domov/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/uyutnyy-seriya-domov/uyutnyy-72/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/skandi-seriya-domov/dom-skandi-63/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/group--doma-studii",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/atmosfera-seriya-domov/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/seriya-atomm/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/uyutnyy-seriya-domov/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/bani/b/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/mone/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/mone/mone-75/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/bani/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://prefabia.ru/project/bani/banya-skandi/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://prefabia.ru/project/garazhi-i-navesy/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/seriya-atomm/atomm-syut-arktik/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/besedki/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://prefabia.ru/project/hozbloki/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/seriya-domov-platt/d/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/seriya-domov-platt/platt-24/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://prefabia.ru/project/doma/seriya-domov-platt/dplatt-26/",
+      "reason": "404 Not Found"
+    }
+  ],
+  "conflicts": [],
+  "publicationBlocked": true,
+  "publicationReason": "Импорт создаёт черновик. Публикация разрешается отдельным release gate после проверки конфликтов и идентичности производителя."
+}

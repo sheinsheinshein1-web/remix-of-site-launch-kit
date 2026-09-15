@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-09-12T20:25:22.710Z",
+  "status": "draft",
+  "platform": "html",
+  "candidateCount": 4,
+  "confirmedProjectCount": 4,
+  "rejected": [],
+  "conflicts": [],
+  "publicationBlocked": true,
+  "publicationReason": "Импорт создаёт черновик. Публикация разрешается отдельным release gate после проверки конфликтов и идентичности производителя."
+}

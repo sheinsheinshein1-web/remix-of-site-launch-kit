@@ -1,12 +1,14 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { ChevronDown, ChevronLeft, ChevronRight, Flag, Forward, Heart, Play, Star, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import { toast } from "sonner";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import ManufacturerLogo from "@/components/ManufacturerLogo";
 import ManufacturerName from "@/components/ManufacturerName";
 import ManufacturerReportDialog from "@/components/ManufacturerReportDialog";
+import OtherProjectsFeed from "@/components/OtherProjectsFeed";
 import ProjectCard from "@/components/ProjectCard";
 import Seo from "@/components/Seo";
 import SiteBreadcrumbs, { siteBreadcrumbPageContainerClassName } from "@/components/SiteBreadcrumbs";
@@ -18,6 +20,7 @@ import { makersById, projects, projectsCountByMakerId } from "@/data/projects";
 import type {
   ManufacturerBuiltObject,
   ManufacturerLegal,
+  ManufacturerProjectTab,
   ManufacturerSocial,
 } from "@/data/manufacturers";
 import { getExternalManufacturerRating, getManufacturerRatingSummary } from "@/data/manufacturerRatings";
@@ -25,15 +28,24 @@ import { getPartnerReviews, getPartnerReviewSummary } from "@/data/partnerReview
 import { compareProjectTechnologyPriority } from "@/lib/projectPriority";
 import { getCityDisplayName, getCityPrepositionalName, isSameCityRegion } from "@/lib/cityDisplay";
 import { getManufacturerMapUrls } from "@/lib/manufacturerMap";
+import { normalizeGeoSelection } from "@/lib/geoSelection";
+import { formatManufacturerEnforcementProceedings, getPublicLegalSources } from "@/lib/manufacturerLegal";
+import {
+  getManufacturerSocialSources,
+  groupManufacturerProjects,
+  manufacturerProjectTabLabels,
+  manufacturerSectionLabels,
+} from "@/lib/manufacturerPresentation";
+import type { ManufacturerSocialSource } from "@/lib/manufacturerPresentation";
 import { buildManufacturerSeo } from "@/lib/pageSeo";
 import { buildAssetUrl, buildCanonicalUrl } from "@/lib/seo";
 import { isVerifiedMaker } from "@/lib/verifiedMakers";
 import {
-  CATALOG_PATH,
   MANUFACTURERS_PATH,
   getManufacturerPath,
   getManufacturerReviewsPath,
   getProjectPath,
+  getRegionPath,
 } from "@/lib/siteRoutes";
 
 const LEGACY_PARTNER_IDS: Record<string, string> = { "1": "platforma" };
@@ -46,8 +58,6 @@ const wordForm = (count: number, forms: [string, string, string]) => {
   if (lastOne >= 2 && lastOne <= 4) return forms[1];
   return forms[2];
 };
-
-const usesDarkLogoBackground = (makerId: string) => makerId === "blackmodule";
 
 const parseArea = (value: string, numericValue?: number) => {
   if (numericValue) return numericValue;
@@ -109,12 +119,12 @@ const ManufacturerYandexReviews = ({
   );
 };
 
-const TelegramPostEmbed = ({ channel, postId, enabled, dark }: { channel: string; postId: number; enabled: boolean; dark: boolean }) => {
+const TelegramPostEmbed = ({ channel, postId, dark }: { channel: string; postId: number; dark: boolean }) => {
   const embedRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = embedRef.current;
-    if (!container || !enabled) return;
+    if (!container) return;
 
     container.replaceChildren();
     const script = document.createElement("script");
@@ -127,40 +137,19 @@ const TelegramPostEmbed = ({ channel, postId, enabled, dark }: { channel: string
     container.appendChild(script);
 
     return () => container.replaceChildren();
-  }, [channel, dark, enabled, postId]);
+  }, [channel, dark, postId]);
 
   return <div ref={embedRef} className="min-h-[180px] w-full [&>iframe]:!max-w-none" />;
 };
 
 const ManufacturerTelegramPosts = ({ manufacturerName, social }: { manufacturerName: string; social: ManufacturerSocial }) => {
   const { resolvedTheme } = useTheme();
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [shouldLoad, setShouldLoad] = useState(false);
+  const channel = social.telegramChannel;
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    if (!("IntersectionObserver" in window)) {
-      setShouldLoad(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        setShouldLoad(true);
-        observer.disconnect();
-      },
-      { rootMargin: "600px 0px" },
-    );
-    observer.observe(section);
-
-    return () => observer.disconnect();
-  }, []);
+  if (!channel || social.telegramPosts.length === 0) return null;
 
   return (
-    <div ref={sectionRef} className="mt-5 w-full">
+    <div className="mt-5 w-full">
       <div
         className="reviews-scroll h-[640px] overflow-y-auto overscroll-contain rounded-[var(--radius)] border border-border bg-secondary/40 px-2 py-4 sm:px-4"
         role="region"
@@ -168,23 +157,14 @@ const ManufacturerTelegramPosts = ({ manufacturerName, social }: { manufacturerN
         tabIndex={0}
       >
         <div className="mx-auto w-full max-w-[500px] space-y-4">
-          {shouldLoad ? (
-            social.telegramPosts.map((postId) => (
-              <TelegramPostEmbed
-                key={postId}
-                channel={social.telegramChannel}
-                postId={postId}
-                enabled={shouldLoad}
-                dark={resolvedTheme === "dark"}
-              />
-            ))
-          ) : (
-            <div className="space-y-4" aria-label="Загрузка публикаций">
-              {social.telegramPosts.map((postId) => (
-                <div key={postId} className="h-[420px] animate-pulse rounded-[var(--radius)] bg-muted motion-reduce:animate-none" />
-              ))}
-            </div>
-          )}
+          {social.telegramPosts.map((postId) => (
+            <TelegramPostEmbed
+              key={postId}
+              channel={channel}
+              postId={postId}
+              dark={resolvedTheme === "dark"}
+            />
+          ))}
         </div>
       </div>
     </div>
@@ -246,8 +226,85 @@ const ManufacturerYouTubePosts = ({ manufacturerName, social }: { manufacturerNa
   );
 };
 
-const ManufacturerSocialMedia = ({ manufacturerName, social }: { manufacturerName: string; social: ManufacturerSocial }) => {
-  const [source, setSource] = useState<"youtube" | "telegram">("youtube");
+const ManufacturerEmptyState = ({ title, description, action }: {
+  title: string;
+  description: string;
+  action?: ReactNode;
+}) => (
+  <div className="mt-5 flex min-h-[220px] flex-col items-center justify-center rounded-[var(--radius)] bg-secondary px-5 py-8 text-center">
+    <h3 className="text-[20px] font-semibold text-[#342d27] dark:text-foreground">{title}</h3>
+    <p className="mt-2 max-w-[520px] text-[14px] leading-relaxed text-[#717b8e]">{description}</p>
+    {action}
+  </div>
+);
+
+const ManufacturerUnavailableSection = ({
+  id,
+  heading,
+  title,
+  description,
+  checkedAtIso,
+}: {
+  id: string;
+  heading: string;
+  title: string;
+  description: string;
+  checkedAtIso?: string;
+}) => (
+  <section id={id} className="mt-16 scroll-mt-28 md:mt-24" aria-labelledby={`manufacturer-${id}-heading`}>
+    <h2
+      id={`manufacturer-${id}-heading`}
+      className="text-[28px] font-semibold tracking-[-0.03em] text-[#342d27] md:text-[36px] dark:text-foreground"
+    >
+      {heading}
+    </h2>
+    <ManufacturerEmptyState title={title} description={description} />
+    {checkedAtIso && (
+      <p className="mt-3 text-[12px] text-[#717b8e]">
+        Проверено {new Intl.DateTimeFormat("ru-RU").format(new Date(`${checkedAtIso}T00:00:00`))}
+      </p>
+    )}
+  </section>
+);
+
+const ManufacturerSocialMedia = ({
+  manufacturerName,
+  social,
+  sourceAudit,
+  keepCanonicalSources = false,
+}: {
+  manufacturerName: string;
+  social?: ManufacturerSocial;
+  sourceAudit?: {
+    youtube?: { status?: "imported" | "not-found" | "unverified"; note?: string };
+    telegram?: { status?: "imported" | "not-found" | "unverified"; note?: string };
+  };
+  keepCanonicalSources?: boolean;
+}) => {
+  const normalizedSocial: ManufacturerSocial = social ?? { telegramPosts: [], youtubeVideos: [] };
+  const hasYouTube = normalizedSocial.youtubeVideos.length > 0;
+  const hasTelegram = Boolean(normalizedSocial.telegramChannel && normalizedSocial.telegramPosts.length > 0);
+  const availableSources = keepCanonicalSources
+    ? (["youtube", "telegram"] as const)
+    : getManufacturerSocialSources(normalizedSocial);
+  const [source, setSource] = useState<ManufacturerSocialSource>(availableSources[0] ?? "youtube");
+  const selectedAuditStatus = sourceAudit?.[source]?.status;
+  const emptySocialDescription = selectedAuditStatus === "not-found"
+    ? `Подтверждённый ${source === "youtube" ? "YouTube" : "Telegram"}-канал компании «${manufacturerName}» не найден.`
+    : selectedAuditStatus === "unverified"
+      ? `${source === "youtube" ? "YouTube" : "Telegram"}-канал компании «${manufacturerName}» пока не подтверждён.`
+      : `Публикаций компании «${manufacturerName}» из ${source === "youtube" ? "YouTube" : "Telegram"} пока нет.`;
+
+  useEffect(() => {
+    if (keepCanonicalSources) return;
+    const fallbackSource = hasYouTube ? "youtube" : hasTelegram ? "telegram" : null;
+    const sourceIsAvailable = source === "youtube" ? hasYouTube : hasTelegram;
+    if (!sourceIsAvailable && fallbackSource) {
+      setSource(fallbackSource);
+    }
+  }, [hasTelegram, hasYouTube, keepCanonicalSources, source]);
+
+  if (availableSources.length === 0) return null;
 
   return (
     <div className="mt-7">
@@ -256,10 +313,8 @@ const ManufacturerSocialMedia = ({ manufacturerName, social }: { manufacturerNam
         role="tablist"
         aria-label={`Социальные сети ${manufacturerName}`}
       >
-        {([
-          ["youtube", "YouTube"],
-          ["telegram", "Telegram"],
-        ] as const).map(([itemSource, label]) => {
+        {availableSources.map((itemSource) => {
+          const label = itemSource === "youtube" ? "YouTube" : "Telegram";
           const isActive = source === itemSource;
           return (
             <button
@@ -278,38 +333,337 @@ const ManufacturerSocialMedia = ({ manufacturerName, social }: { manufacturerNam
         })}
       </div>
 
-      {source === "youtube" ? (
+      {source === "youtube" && hasYouTube ? (
         <div
           id="manufacturer-social-youtube-panel"
           role="tabpanel"
           aria-labelledby="manufacturer-social-youtube-tab"
         >
-          <ManufacturerYouTubePosts manufacturerName={manufacturerName} social={social} />
+          <ManufacturerYouTubePosts manufacturerName={manufacturerName} social={normalizedSocial} />
         </div>
-      ) : (
+      ) : source === "telegram" && hasTelegram ? (
         <div
           id="manufacturer-social-telegram-panel"
           role="tabpanel"
           aria-labelledby="manufacturer-social-telegram-tab"
         >
-          <ManufacturerTelegramPosts manufacturerName={manufacturerName} social={social} />
+          <ManufacturerTelegramPosts manufacturerName={manufacturerName} social={normalizedSocial} />
+        </div>
+      ) : (
+        <ManufacturerEmptyState
+          title={`${source === "youtube" ? "YouTube" : "Telegram"}-канал ${sourceAudit?.[source]?.status === "not-found" ? "не найден" : sourceAudit?.[source]?.status === "unverified" ? "пока не подтверждён" : "пока не добавлен"}`}
+          description={emptySocialDescription}
+        />
+      )}
+    </div>
+  );
+};
+
+const ManufacturerReviewSources = ({
+  makerId,
+  makerName,
+  makerNamePrepositional,
+  source,
+  onSourceChange,
+  hasExternalRating,
+  auditStatus,
+  reviewSummary,
+  reviewPreviews,
+}: {
+  makerId: string;
+  makerName: string;
+  makerNamePrepositional: string;
+  source: "yandex" | "mnogomesta";
+  onSourceChange: (source: "yandex" | "mnogomesta") => void;
+  hasExternalRating: boolean;
+  auditStatus?: "imported" | "not-found" | "first-party-only";
+  reviewSummary: ReturnType<typeof getPartnerReviewSummary>;
+  reviewPreviews: ReturnType<typeof getPartnerReviews>;
+}) => {
+  const yandexEmptyDescription = auditStatus === "first-party-only"
+    ? "На сайте производителя есть собственные отзывы, но независимый источник на Яндекс Картах пока не подтверждён. Поэтому эти отзывы не включены в рейтинг."
+    : auditStatus === "not-found"
+      ? "При проверке независимые отзывы о компании на Яндекс Картах не найдены."
+      : "Подтверждённые отзывы о компании на Яндекс Картах пока не добавлены.";
+
+  return (
+    <div className="mt-7">
+      <div
+        className="flex min-w-0 max-w-full touch-pan-x items-center gap-5 overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        role="tablist"
+        aria-label={`Источник отзывов о ${makerNamePrepositional}`}
+      >
+        {([[
+          "yandex",
+          "Яндекс",
+        ], [
+          "mnogomesta",
+          "Много места",
+        ]] as const).map(([itemSource, label]) => (
+          <button
+            key={itemSource}
+            id={`manufacturer-reviews-${itemSource}-tab`}
+            type="button"
+            role="tab"
+            aria-selected={source === itemSource}
+            aria-controls={`manufacturer-reviews-${itemSource}-panel`}
+            onClick={() => onSourceChange(itemSource)}
+            className="manufacturer-section-tab min-h-11 shrink-0 text-[20px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-4"
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {source === "yandex" ? (
+        <div id="manufacturer-reviews-yandex-panel" role="tabpanel" aria-labelledby="manufacturer-reviews-yandex-tab">
+          {hasExternalRating ? (
+            <ManufacturerYandexReviews
+              makerId={makerId}
+              makerName={makerName}
+              makerNamePrepositional={makerNamePrepositional}
+            />
+          ) : (
+            <ManufacturerEmptyState
+              title="Отзывы на Яндексе пока не найдены"
+              description={yandexEmptyDescription}
+            />
+          )}
+        </div>
+      ) : (
+        <div id="manufacturer-reviews-mnogomesta-panel" role="tabpanel" aria-labelledby="manufacturer-reviews-mnogomesta-tab">
+          {reviewSummary.hasReviews ? (
+            <>
+              <div className="mt-12 grid gap-x-12 gap-y-12 sm:grid-cols-2">
+                {reviewPreviews.map((review) => (
+                  <article key={`${review.name}-${review.when}`} className="flex flex-col sm:min-h-[230px]">
+                    <div className="flex items-center gap-1" aria-label={`${review.stars} из 5`}>
+                      {Array.from({ length: 5 }, (_, index) => (
+                        <Star key={index} className={`h-3.5 w-3.5 ${index < review.stars ? "fill-primary text-primary" : "text-[#c5cbd8]"}`} strokeWidth={1.4} aria-hidden />
+                      ))}
+                    </div>
+                    <h3 className="mt-4 text-[17px] font-semibold leading-snug text-[#342d27] dark:text-foreground">{review.title}</h3>
+                    <p className="mt-3 text-[14px] leading-relaxed text-[#595653] dark:text-muted-foreground">
+                      {getReviewExcerpt(review.body)}
+                      {review.body.length > 190 && (
+                        <Link to={getManufacturerReviewsPath(makerId)} className="ml-1 whitespace-nowrap font-medium text-primary hover:underline focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
+                          Читать
+                        </Link>
+                      )}
+                    </p>
+                    <p className="mt-5 text-[12px] text-[#717b8e] sm:mt-auto sm:pt-5">{review.name} · {review.when}</p>
+                  </article>
+                ))}
+              </div>
+              <Link to={getManufacturerReviewsPath(makerId)} className="mt-10 inline-flex min-h-11 items-center gap-1 text-[15px] font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground">
+                Все {reviewSummary.reviewsLabel} <ChevronRight className="h-4 w-4" strokeWidth={1.8} aria-hidden />
+              </Link>
+            </>
+          ) : (
+            <ManufacturerEmptyState
+              title="Отзывов на «Много места» пока нет"
+              description="Станьте первым, кто поделится опытом работы с компанией. Отзыв появится после проверки."
+              action={(
+                <Link to="/messages/support" className="mt-5 inline-flex min-h-11 items-center justify-center rounded-[var(--radius)] bg-primary px-5 text-[14px] font-medium text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                  Оставить отзыв
+                </Link>
+              )}
+            />
+          )}
         </div>
       )}
     </div>
   );
 };
 
-const ManufacturerLegalOverview = ({ legal, compact = false }: { legal: ManufacturerLegal; compact?: boolean }) => {
+const ManufacturerLegalOverview = ({
+  legal,
+  compact = false,
+  manufacturerName,
+  builtObjectsCount = 0,
+  reviewsLabel = "Отзывов пока нет",
+}: {
+  legal: ManufacturerLegal;
+  compact?: boolean;
+  manufacturerName: string;
+  builtObjectsCount?: number;
+  reviewsLabel?: string;
+}) => {
+  const showVerificationSummary = true;
   const [expanded, setExpanded] = useState(!compact);
+  const verificationCardRef = useRef<HTMLDivElement>(null);
+  const isSoleProprietor = legal.legalName.startsWith("ИП ");
+  const hasPublishedFinancials = legal.revenue !== "Не публикуется" || legal.netProfit !== "Не публикуется";
   const financialMetrics = [
     ["Выручка", legal.revenue],
     ["Чистая прибыль", legal.netProfit],
   ] as const;
+  const enforcementProceedingsLabel = formatManufacturerEnforcementProceedings(legal.enforcementProceedings);
+  const publicLegalSources = getPublicLegalSources(legal.sources);
   const registryChecks = [
     ["Арбитражные дела", legal.arbitrationCases],
-    ["Исполнительные производства", legal.enforcementProceedings],
+    ...(legal.generalCourtCases ? [["Суды общей юрисдикции", legal.generalCourtCases] as const] : []),
+    ["Исполнительные производства", enforcementProceedingsLabel],
     ["Реестр недобросовестных поставщиков", legal.unfairSuppliersRegistry],
   ] as const;
+  const registrationLabel = isSoleProprietor ? "Предприниматель зарегистрирован" : "Компания зарегистрирована";
+  const legalAddressLabel = isSoleProprietor ? "Регион регистрации" : "Юридический адрес";
+  const builtObjectsLabel = `${builtObjectsCount.toLocaleString("ru-RU")} ${wordForm(builtObjectsCount, ["объект", "объекта", "объектов"])}`;
+
+  const handleVerificationToggle = () => {
+    if (!expanded) {
+      setExpanded(true);
+      return;
+    }
+
+    const section = document.getElementById("legal");
+    const sectionTop = section ? section.getBoundingClientRect().top + window.scrollY : null;
+    setExpanded(false);
+    window.requestAnimationFrame(() => {
+      if (sectionTop === null) return;
+      window.scrollTo({ top: Math.max(0, sectionTop - 112), behavior: "auto" });
+    });
+  };
+
+  if (showVerificationSummary) {
+    return (
+      <section id="legal" className="mt-16 scroll-mt-28 md:mt-24" aria-labelledby="manufacturer-legal-heading">
+        <h2
+          id="manufacturer-legal-heading"
+          className="text-[28px] font-semibold tracking-[-0.03em] text-[#342d27] md:text-[36px] dark:text-foreground"
+        >
+          Юридическая информация
+        </h2>
+
+        <div ref={verificationCardRef} className="mt-7 overflow-hidden rounded-[var(--radius)] border border-border bg-card">
+          <div className="px-5 py-6 md:px-7 md:py-7">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
+              <div className="min-w-0">
+                <p className="text-[18px] font-semibold leading-snug text-[#342d27] md:text-[20px] dark:text-foreground">
+                  {legal.legalName}
+                </p>
+                <p className="mt-2 text-[13px] leading-relaxed text-[#717b8e]">
+                  ИНН {legal.inn}
+                </p>
+              </div>
+              <span className="inline-flex min-h-8 w-fit shrink-0 items-center rounded-[var(--radius)] bg-secondary px-3 text-[13px] font-medium text-[#595653] dark:text-muted-foreground">
+                {legal.status}
+              </span>
+            </div>
+
+            <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-5 lg:grid-cols-4 lg:gap-x-8">
+              {([
+                ["Дата регистрации", legal.registeredAt],
+                ["Арбитражные дела", legal.arbitrationCases],
+                ...(legal.generalCourtCases ? [["Суды общей юрисдикции", legal.generalCourtCases] as const] : []),
+                ["Исполнительные производства", enforcementProceedingsLabel],
+                ["Реестр недобросовестных поставщиков", legal.unfairSuppliersRegistry],
+              ] as const).map(([label, value]) => (
+                <div key={label} className="min-w-0">
+                  <dt className="text-[12px] leading-snug text-[#717b8e]">{label}</dt>
+                  <dd className="mt-2 text-[15px] font-semibold leading-snug text-[#342d27] dark:text-foreground">{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          {expanded && (
+            <div id="manufacturer-legal-details" className="border-t border-border px-5 py-6 md:px-7 md:py-7">
+              <dl className="grid gap-x-8 gap-y-5 sm:grid-cols-2">
+                <div className="sm:col-span-2">
+                  <dt className="text-[12px] text-[#717b8e]">{legalAddressLabel}</dt>
+                  <dd className="mt-1.5 text-[14px] font-medium leading-relaxed text-[#342d27] dark:text-foreground">{legal.legalAddress}</dd>
+                </div>
+                <div>
+                  <dt className="text-[12px] text-[#717b8e]">{isSoleProprietor ? "Предприниматель" : "Руководитель"}</dt>
+                  <dd className="mt-1.5 text-[14px] font-medium text-[#342d27] dark:text-foreground">{legal.director}</dd>
+                </div>
+                {!isSoleProprietor && (
+                  <div>
+                    <dt className="text-[12px] text-[#717b8e]">Уставный капитал</dt>
+                    <dd className="mt-1.5 text-[14px] font-medium tabular-nums text-[#342d27] dark:text-foreground">{legal.shareCapital}</dd>
+                  </div>
+                )}
+                <div className="sm:col-span-2">
+                  <dt className="text-[12px] text-[#717b8e]">Основной вид деятельности</dt>
+                  <dd className="mt-1.5 text-[14px] font-medium leading-relaxed text-[#342d27] dark:text-foreground">{legal.mainActivity}</dd>
+                </div>
+                <div>
+                  <dt className="text-[12px] text-[#717b8e]">ИНН</dt>
+                  <dd className="mt-1.5 text-[14px] font-medium tabular-nums text-[#342d27] dark:text-foreground">{legal.inn}</dd>
+                </div>
+                {!isSoleProprietor && (
+                  <div>
+                    <dt className="text-[12px] text-[#717b8e]">КПП</dt>
+                    <dd className="mt-1.5 text-[14px] font-medium tabular-nums text-[#342d27] dark:text-foreground">{legal.kpp}</dd>
+                  </div>
+                )}
+                <div>
+                  <dt className="text-[12px] text-[#717b8e]">{isSoleProprietor ? "ОГРНИП" : "ОГРН"}</dt>
+                  <dd className="mt-1.5 text-[14px] font-medium tabular-nums text-[#342d27] dark:text-foreground">{legal.ogrn}</dd>
+                </div>
+              </dl>
+
+              {hasPublishedFinancials && (
+                <div className="mt-6 border-t border-border pt-5">
+                  <p className="text-[12px] text-[#717b8e]">Бухгалтерская отчётность за {legal.reportingYear} год</p>
+                  <dl className="mt-3 grid grid-cols-2 gap-x-8 gap-y-4">
+                    {financialMetrics.map(([label, value]) => (
+                      <div key={label}>
+                        <dt className="text-[12px] text-[#717b8e]">{label}</dt>
+                        <dd className="mt-1.5 text-[15px] font-medium tabular-nums text-[#342d27] dark:text-foreground">{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              )}
+
+              {publicLegalSources.length > 0 && (
+              <p className="mt-5 text-[12px] leading-relaxed text-[#717b8e]">
+                Источники: {publicLegalSources.map((source, index) => (
+                  <span key={source.href}>
+                    {index > 0 && " · "}
+                    <a
+                      href={source.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline decoration-current/30 underline-offset-2 transition-colors hover:text-primary"
+                    >
+                      {source.label}
+                    </a>
+                  </span>
+                ))}
+              </p>
+              )}
+              <p className="mt-3 text-[11px] leading-relaxed text-[#717b8e]">
+                Сведения носят информационный характер и не являются оценкой качества работ компании.
+              </p>
+            </div>
+          )}
+
+          <div className="flex flex-col gap-2 px-5 pb-3 pt-1 sm:flex-row sm:items-center sm:justify-between md:px-7">
+            <p className="text-[12px] text-[#717b8e]">Данные на {legal.checkedAt}</p>
+            {compact && (
+              <button
+                type="button"
+                onClick={handleVerificationToggle}
+                className="inline-flex min-h-11 items-center gap-1 self-start text-[14px] font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 sm:self-auto dark:text-foreground dark:hover:text-primary"
+                aria-expanded={expanded}
+                aria-controls="manufacturer-legal-details"
+              >
+                {expanded ? "Скрыть реквизиты" : "Показать реквизиты"}
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform duration-200 motion-reduce:transition-none ${expanded ? "rotate-180" : ""}`}
+                  strokeWidth={1.8}
+                  aria-hidden
+                />
+              </button>
+            )}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="legal" className="mt-16 scroll-mt-28 md:mt-24" aria-labelledby="manufacturer-legal-heading">
@@ -317,37 +671,132 @@ const ManufacturerLegalOverview = ({ legal, compact = false }: { legal: Manufact
         id="manufacturer-legal-heading"
         className="text-[28px] font-semibold tracking-[-0.03em] text-[#342d27] md:text-[36px] dark:text-foreground"
       >
-        Юридическая информация
+        {showVerificationSummary ? "Компания и документы" : "Юридическая информация"}
       </h2>
 
-      <div className="mt-7 rounded-[var(--radius)] border border-border bg-card px-5 py-6 md:px-7 md:py-7">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
-          <div className="min-w-0">
+      {showVerificationSummary && (
+        <div ref={verificationCardRef} className={`mt-7 overflow-hidden border border-border bg-card ${compact && expanded ? "rounded-t-[var(--radius)]" : "rounded-[var(--radius)]"}`}>
+          <div className="px-5 py-6 md:px-8 md:py-8">
+            <p className="text-[14px] font-medium text-primary">По открытым данным</p>
+            <p className="mt-3 max-w-[780px] text-[25px] font-semibold leading-[1.12] tracking-[-0.025em] text-[#342d27] md:text-[32px] dark:text-foreground">
+              Коротко о компании «{manufacturerName}»
+            </p>
+            <p className="mt-4 max-w-[850px] text-[15px] leading-[1.65] text-[#595653] md:text-[16px] dark:text-muted-foreground">
+              Собрали юридические сведения, финансовую отчётность и данные профиля {legal.legalName}. Они помогают проверить компанию перед договором, но не заменяют проверку его условий.
+            </p>
+
+            <dl className="mt-7 grid grid-cols-2 border-l border-t border-border lg:grid-cols-4">
+              <div className="border-b border-r border-border p-4 md:p-5">
+                <dt className="text-[12px] leading-snug text-[#717b8e]">{registrationLabel}</dt>
+                <dd className="mt-2 text-[17px] font-semibold leading-tight text-[#342d27] dark:text-foreground">{legal.registeredAt}</dd>
+                <p className="mt-1.5 text-[12px] text-[#717b8e]">Статус: {legal.status.toLocaleLowerCase("ru-RU")}</p>
+              </div>
+              <div className="border-b border-r border-border p-4 md:p-5">
+                <dt className="text-[12px] leading-snug text-[#717b8e]">Финансы за {legal.reportingYear} год</dt>
+                <dd className="mt-2 text-[17px] font-semibold leading-tight tabular-nums text-[#342d27] dark:text-foreground">{legal.revenue}</dd>
+                <p className="mt-1.5 text-[12px] text-[#717b8e]">Выручка · прибыль {legal.netProfit}</p>
+              </div>
+              <div className="border-b border-r border-border p-4 md:p-5">
+                <dt className="text-[12px] leading-snug text-[#717b8e]">Открытые реестры</dt>
+                <dd className="mt-2 space-y-1 text-[13px] font-medium leading-snug text-[#342d27] dark:text-foreground">
+                  <p>Арбитраж — {legal.arbitrationCases.toLocaleLowerCase("ru-RU")}</p>
+                  <p>ФССП — {enforcementProceedingsLabel.toLocaleLowerCase("ru-RU")}</p>
+                  <p>РНП — {legal.unfairSuppliersRegistry.toLocaleLowerCase("ru-RU")}</p>
+                </dd>
+              </div>
+              <div className="border-b border-r border-border p-4 md:p-5">
+                <dt className="text-[12px] leading-snug text-[#717b8e]">Профиль на «Много места»</dt>
+                <dd className="mt-2 text-[17px] font-semibold leading-tight text-[#342d27] dark:text-foreground">{builtObjectsLabel}</dd>
+                <p className="mt-1.5 text-[12px] text-[#717b8e]">{reviewsLabel}</p>
+              </div>
+            </dl>
+
+            <div className="mt-6 border-l-[3px] border-primary bg-primary/[0.06] px-4 py-4 md:px-5">
+              <p className="text-[14px] font-semibold text-[#342d27] dark:text-foreground">Перед заключением договора</p>
+              <p className="mt-2 max-w-[900px] text-[13px] leading-relaxed text-[#595653] md:text-[14px] dark:text-muted-foreground">
+                Проверьте, что в договоре указано {legal.legalName}, ИНН {legal.inn}. Зафиксируйте комплектацию, окончательную стоимость, сроки, гарантию и порядок оплаты.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-3 border-t border-border bg-secondary/30 px-5 py-3 md:px-8 sm:flex-row sm:items-center sm:justify-between">
+            <p className="min-w-0 text-[12px] leading-relaxed text-[#717b8e]">Сведения обновлены {legal.checkedAt}</p>
+            {compact && !expanded && (
+              <button
+                type="button"
+                onClick={handleVerificationToggle}
+                className="inline-flex min-h-11 shrink-0 items-center gap-1 self-start text-[14px] font-semibold text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 lg:self-auto dark:text-foreground dark:hover:text-primary"
+                aria-expanded={expanded}
+                aria-controls="manufacturer-legal-details"
+              >
+                Реквизиты и источники
+                <ChevronDown className="h-4 w-4" strokeWidth={1.8} aria-hidden />
+              </button>
+            )}
+          </div>
+
+          {(!compact || !expanded) && (
+            <p className="border-t border-border px-5 py-3 text-[11px] leading-relaxed text-[#717b8e] md:px-8">
+              Сведения носят информационный характер. Перед подписанием договора повторно проверьте реквизиты и условия сделки.
+            </p>
+          )}
+        </div>
+      )}
+
+      {(!showVerificationSummary || !compact || expanded) && (
+      <div
+        id="manufacturer-legal-details"
+        className={`${showVerificationSummary ? "rounded-b-[var(--radius)] border border-t-0" : "mt-7 rounded-[var(--radius)] border"} border-border bg-card px-5 py-6 md:px-7 md:py-7`}
+      >
+        {showVerificationSummary ? (
+          <div>
             <p className="text-[18px] font-semibold leading-snug text-[#342d27] md:text-[20px] dark:text-foreground">
-              {legal.legalName}
+              Реквизиты, финансы и источники
             </p>
             <p className="mt-2 max-w-[680px] text-[14px] leading-relaxed text-[#717b8e]">
-              {legal.legalAddress}
+              Юридический адрес: {legal.legalAddress}
             </p>
           </div>
-          <span className="inline-flex min-h-8 w-fit shrink-0 items-center rounded-[var(--radius)] bg-primary/10 px-3 text-[13px] font-semibold text-primary">
-            {legal.status}
-          </span>
-        </div>
+        ) : (
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
+            <div className="min-w-0">
+              <p className="text-[18px] font-semibold leading-snug text-[#342d27] md:text-[20px] dark:text-foreground">
+                {legal.legalName}
+              </p>
+              <p className="mt-2 max-w-[680px] text-[14px] leading-relaxed text-[#717b8e]">
+                {legal.legalAddress}
+              </p>
+            </div>
+            <span className="inline-flex min-h-8 w-fit shrink-0 items-center rounded-[var(--radius)] bg-primary/10 px-3 text-[13px] font-semibold text-primary">
+              {legal.status}
+            </span>
+          </div>
+        )}
 
         <div className="mt-6 grid gap-7 border-t border-border pt-6 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:gap-10">
           <div>
-            <p className="text-[13px] text-[#717b8e]">Финансовые показатели за {legal.reportingYear} год</p>
-            <dl className="mt-4 grid grid-cols-2 gap-x-5 gap-y-5">
-              {financialMetrics.map(([label, value]) => (
-                <div key={label}>
-                  <dt className="text-[13px] text-[#717b8e]">{label}</dt>
-                  <dd className="mt-1.5 text-[22px] font-semibold leading-none tabular-nums text-[#342d27] md:text-[26px] dark:text-foreground">
-                    {value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            {hasPublishedFinancials ? (
+              <>
+                <p className="text-[13px] text-[#717b8e]">Финансовые показатели за {legal.reportingYear} год</p>
+                <dl className="mt-4 grid grid-cols-2 gap-x-5 gap-y-5">
+                  {financialMetrics.map(([label, value]) => (
+                    <div key={label}>
+                      <dt className="text-[13px] text-[#717b8e]">{label}</dt>
+                      <dd className="mt-1.5 text-[22px] font-semibold leading-none tabular-nums text-[#342d27] md:text-[26px] dark:text-foreground">
+                        {value}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </>
+            ) : (
+              <>
+                <p className="text-[13px] text-[#717b8e]">Бухгалтерская отчётность</p>
+                <p className="mt-3 max-w-[440px] text-[15px] font-semibold leading-relaxed text-[#342d27] dark:text-foreground">
+                  Индивидуальные предприниматели не публикуют бухгалтерскую отчётность в ГИР БО.
+                </p>
+              </>
+            )}
           </div>
 
           <dl className={expanded ? "grid grid-cols-2 gap-x-5 gap-y-5" : "hidden"}>
@@ -355,12 +804,14 @@ const ManufacturerLegalOverview = ({ legal, compact = false }: { legal: Manufact
               <dt className="text-[13px] text-[#717b8e]">Дата регистрации</dt>
               <dd className="mt-1.5 text-[15px] font-semibold text-[#342d27] dark:text-foreground">{legal.registeredAt}</dd>
             </div>
-            <div>
-              <dt className="text-[13px] text-[#717b8e]">Уставный капитал</dt>
-              <dd className="mt-1.5 text-[15px] font-semibold tabular-nums text-[#342d27] dark:text-foreground">{legal.shareCapital}</dd>
-            </div>
+            {!isSoleProprietor && (
+              <div>
+                <dt className="text-[13px] text-[#717b8e]">Уставный капитал</dt>
+                <dd className="mt-1.5 text-[15px] font-semibold tabular-nums text-[#342d27] dark:text-foreground">{legal.shareCapital}</dd>
+              </div>
+            )}
             <div className="col-span-2">
-              <dt className="text-[13px] text-[#717b8e]">Руководитель</dt>
+              <dt className="text-[13px] text-[#717b8e]">{isSoleProprietor ? "Предприниматель" : "Руководитель"}</dt>
               <dd className="mt-1.5 text-[15px] font-semibold text-[#342d27] dark:text-foreground">{legal.director}</dd>
             </div>
             <div className="col-span-2">
@@ -370,38 +821,64 @@ const ManufacturerLegalOverview = ({ legal, compact = false }: { legal: Manufact
           </dl>
         </div>
 
-        <dl className="mt-6 grid gap-x-7 gap-y-4 border-t border-border pt-6 sm:grid-cols-3">
-          {registryChecks.map(([label, value]) => (
-            <div key={label} className="flex items-start justify-between gap-5 sm:block">
-              <dt className="max-w-[230px] text-[13px] leading-snug text-[#717b8e]">{label}</dt>
-              <dd className="shrink-0 text-[14px] font-semibold text-[#342d27] sm:mt-2 dark:text-foreground">{value}</dd>
-            </div>
-          ))}
-        </dl>
+        {!showVerificationSummary && (
+          <dl className="mt-6 grid gap-x-7 gap-y-4 border-t border-border pt-6 sm:grid-cols-3">
+            {registryChecks.map(([label, value]) => (
+              <div key={label} className="flex items-start justify-between gap-5 sm:block">
+                <dt className="max-w-[230px] text-[13px] leading-snug text-[#717b8e]">{label}</dt>
+                <dd className="shrink-0 text-[14px] font-semibold text-[#342d27] sm:mt-2 dark:text-foreground">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
 
         <dl className={expanded ? "mt-6 grid gap-x-7 gap-y-4 border-t border-border pt-6 sm:grid-cols-2 lg:grid-cols-3" : "hidden"}>
           <div>
             <dt className="text-[13px] text-[#717b8e]">ИНН</dt>
             <dd className="mt-1.5 text-[14px] font-medium tabular-nums text-[#342d27] dark:text-foreground">{legal.inn}</dd>
           </div>
+          {!isSoleProprietor && (
+            <div>
+              <dt className="text-[13px] text-[#717b8e]">КПП</dt>
+              <dd className="mt-1.5 text-[14px] font-medium tabular-nums text-[#342d27] dark:text-foreground">{legal.kpp}</dd>
+            </div>
+          )}
           <div>
-            <dt className="text-[13px] text-[#717b8e]">КПП</dt>
-            <dd className="mt-1.5 text-[14px] font-medium tabular-nums text-[#342d27] dark:text-foreground">{legal.kpp}</dd>
-          </div>
-          <div>
-            <dt className="text-[13px] text-[#717b8e]">ОГРН</dt>
+            <dt className="text-[13px] text-[#717b8e]">{isSoleProprietor ? "ОГРНИП" : "ОГРН"}</dt>
             <dd className="mt-1.5 text-[14px] font-medium tabular-nums text-[#342d27] dark:text-foreground">{legal.ogrn}</dd>
           </div>
         </dl>
 
-        {compact && (
+        {showVerificationSummary && publicLegalSources.length > 0 && (
+          <p className="mt-6 border-t border-border pt-5 text-[12px] leading-relaxed text-[#717b8e]">
+            Источники: {publicLegalSources.map((source, index) => (
+              <span key={source.href}>
+                {index > 0 && " · "}
+                <a
+                  href={source.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium underline decoration-current/30 underline-offset-2 transition-colors hover:text-primary"
+                >
+                  {source.label}
+                </a>
+              </span>
+            ))}
+          </p>
+        )}
+
+        {compact && !showVerificationSummary && (
           <button
             type="button"
             onClick={() => setExpanded((current) => !current)}
             className="mt-5 inline-flex min-h-11 items-center gap-1 text-[15px] font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 dark:text-foreground dark:hover:text-primary"
             aria-expanded={expanded}
           >
-            {expanded ? "Скрыть реквизиты" : "Все реквизиты"}
+            {expanded
+              ? showVerificationSummary
+                ? "Скрыть юридическую информацию"
+                : "Скрыть реквизиты"
+              : "Все реквизиты"}
             <ChevronDown
               className={`h-4 w-4 transition-transform duration-200 motion-reduce:transition-none ${expanded ? "rotate-180" : ""}`}
               strokeWidth={1.8}
@@ -410,22 +887,44 @@ const ManufacturerLegalOverview = ({ legal, compact = false }: { legal: Manufact
           </button>
         )}
 
-        <p className="mt-5 max-w-[850px] text-[12px] leading-relaxed text-[#717b8e]">
-          Сведения проверены {legal.checkedAt} по открытым государственным источникам: {legal.sources.map((source, index) => (
-            <span key={source.href}>
-              {index > 0 && ", "}
-              <a
-                href={source.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline decoration-current/30 underline-offset-2 transition-colors hover:text-primary"
+        {!showVerificationSummary && publicLegalSources.length > 0 && (
+          <p className="mt-5 max-w-[850px] text-[12px] leading-relaxed text-[#717b8e]">
+            Сведения проверены {legal.checkedAt} по открытым источникам: {publicLegalSources.map((source, index) => (
+              <span key={source.href}>
+                {index > 0 && ", "}
+                <a
+                  href={source.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-current/30 underline-offset-2 transition-colors hover:text-primary"
+                >
+                  {source.label}
+                </a>
+              </span>
+            ))}.
+          </p>
+        )}
+        {showVerificationSummary && (
+          <>
+            <p className="mt-6 border-t border-border pt-4 text-[11px] leading-relaxed text-[#717b8e]">
+              Сведения носят информационный характер. Перед подписанием договора повторно проверьте реквизиты и условия сделки.
+            </p>
+            {compact && (
+              <button
+                type="button"
+                onClick={handleVerificationToggle}
+                className="mt-4 inline-flex min-h-11 items-center gap-1 text-[14px] font-semibold text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 dark:text-foreground dark:hover:text-primary"
+                aria-expanded={expanded}
+                aria-controls="manufacturer-legal-details"
               >
-                {source.label}
-              </a>
-            </span>
-          ))}.
-        </p>
+                Скрыть реквизиты и источники
+                <ChevronDown className="h-4 w-4 rotate-180" strokeWidth={1.8} aria-hidden />
+              </button>
+            )}
+          </>
+        )}
       </div>
+      )}
     </section>
   );
 };
@@ -508,7 +1007,7 @@ const ManufacturerBuiltObjectsGallery = ({ manufacturerName, objects, compact = 
         ))}
       </div>
 
-      {compact && !showAll && (
+      {compact && imageCount > 6 && !showAll && (
         <button
           type="button"
           onClick={() => setShowAll(true)}
@@ -595,6 +1094,7 @@ const ManufacturerSectionNav = ({
   vertical = false,
   projectsBeforeLegal = false,
   embedded = false,
+  productionLabel = manufacturerSectionLabels.production,
 }: {
   showBuiltObjects: boolean;
   showLegal: boolean;
@@ -603,17 +1103,18 @@ const ManufacturerSectionNav = ({
   vertical?: boolean;
   projectsBeforeLegal?: boolean;
   embedded?: boolean;
+  productionLabel?: string;
 }) => {
   const items = useMemo(() => [
-    { id: "about", label: "О компании" },
-    ...(projectsBeforeLegal ? [{ id: "projects", label: "Проекты" }] : []),
-    ...(showLegal ? [{ id: "legal", label: "Юридическая информация" }] : []),
-    ...(!projectsBeforeLegal ? [{ id: "projects", label: "Проекты" }] : []),
-    ...(showBuiltObjects ? [{ id: "built-objects", label: "Объекты" }] : []),
-    ...(showProduction ? [{ id: "production", label: "Производство" }] : []),
-    { id: "reviews", label: "Отзывы" },
-    ...(showSocialMedia ? [{ id: "social-media", label: "Соцсети" }] : []),
-  ], [projectsBeforeLegal, showBuiltObjects, showLegal, showProduction, showSocialMedia]);
+    { id: "about", label: manufacturerSectionLabels.about },
+    ...(projectsBeforeLegal ? [{ id: "projects", label: manufacturerSectionLabels.projects }] : []),
+    ...(showLegal ? [{ id: "legal", label: manufacturerSectionLabels.legal }] : []),
+    ...(!projectsBeforeLegal ? [{ id: "projects", label: manufacturerSectionLabels.projects }] : []),
+    ...(showBuiltObjects ? [{ id: "built-objects", label: manufacturerSectionLabels.builtObjects }] : []),
+    ...(showProduction ? [{ id: "production", label: productionLabel }] : []),
+    { id: "reviews", label: manufacturerSectionLabels.reviews },
+    ...(showSocialMedia ? [{ id: "social-media", label: manufacturerSectionLabels.socialMedia }] : []),
+  ], [productionLabel, projectsBeforeLegal, showBuiltObjects, showLegal, showProduction, showSocialMedia]);
   const [activeSection, setActiveSection] = useState(items[0].id);
 
   useEffect(() => {
@@ -684,7 +1185,7 @@ const ManufacturerSectionNav = ({
                   });
                 }}
                 className={embedded
-                  ? `inline-flex h-11 shrink-0 items-center whitespace-nowrap text-[14px] font-medium tracking-normal transition-colors hover:text-primary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 ${isActive ? "text-primary" : "text-[#342d27]/90 dark:text-white/85"}`
+                  ? "manufacturer-section-tab inline-flex h-11 shrink-0 items-center whitespace-nowrap text-[14px] font-medium tracking-normal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
                   : `manufacturer-section-tab inline-flex min-h-11 shrink-0 items-center whitespace-nowrap text-[16px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 md:text-[17px] ${vertical ? "w-full" : ""}`}
               >
                 {item.label}
@@ -701,13 +1202,13 @@ const ManufacturerProfile = () => {
   const { id } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const [manufacturerProjectType, setManufacturerProjectType] = useState<"houses" | "baths" | "business">("houses");
+  const [manufacturerProjectType, setManufacturerProjectType] = useState<ManufacturerProjectTab>("houses");
   const [manufacturerReviewSource, setManufacturerReviewSource] = useState<"yandex" | "mnogomesta">("yandex");
   const [aboutExpanded, setAboutExpanded] = useState(false);
   const makerId = id ? LEGACY_PARTNER_IDS[id] ?? id : "platforma";
   const maker = makersById[makerId];
   const profile = maker?.profile;
-  const groupedProjects = Boolean(profile?.groupedProjects);
+  const hasCanonicalProfile = Boolean(profile?.sourceAudit);
   const canonicalPath = getManufacturerPath(makerId);
   const { isMakerFavorite, toggleMakerFavorite } = useFavorites();
   const makerIsFavorite = isMakerFavorite(makerId);
@@ -716,19 +1217,16 @@ const ManufacturerProfile = () => {
     () => projects.filter((project) => project.manufacturerId === makerId).sort(compareProjectTechnologyPriority),
     [makerId],
   );
-  const bathProjects = makerProjects.filter((project) =>
-    project.productType === "bath" || project.productType === "house-bath",
-  );
-  const houseProjects = makerProjects.filter((project) => project.productType !== "bath");
-  // Производитель предлагает те же модели с адаптацией под коммерческий сценарий;
-  // отдельные карточки B2B-объектов появятся только вместе с отдельными исходными данными.
-  const businessProjects = houseProjects;
+  const projectsByType = groupManufacturerProjects(makerProjects);
+  const configuredProjectTabs: ManufacturerProjectTab[] = profile?.projectTabs
+    ?? ["houses", "baths", "business"];
+  const manufacturerProjectTabs = configuredProjectTabs.filter((type) => projectsByType[type].length > 0);
+  const groupedProjects = Boolean(profile?.groupedProjects) && manufacturerProjectTabs.length > 1;
+  const activeManufacturerProjectType = manufacturerProjectTabs.includes(manufacturerProjectType)
+    ? manufacturerProjectType
+    : (manufacturerProjectTabs[0] ?? "houses");
   const visibleMakerProjects = groupedProjects
-    ? manufacturerProjectType === "baths"
-      ? bathProjects
-      : manufacturerProjectType === "business"
-        ? businessProjects
-        : houseProjects
+    ? projectsByType[activeManufacturerProjectType]
     : makerProjects;
 
   useEffect(() => {
@@ -762,14 +1260,35 @@ const ManufacturerProfile = () => {
   const prices = makerProjects.map((project) => parsePrice(project.price)).filter((value) => value > 0);
   const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
   const minPriceLabel = minPrice > 0 ? `${minPrice.toLocaleString("ru-RU")} ₽` : "По запросу";
+  const confirmedProjectTerms = uniqueValues(
+    makerProjects
+      .map((project) => project.term)
+      .filter((term) => term.toLocaleLowerCase("ru-RU") !== "по запросу"),
+  );
+  const productionTermLabel = confirmedProjectTerms.length === 0
+    ? "По запросу"
+    : confirmedProjectTerms.length === 1
+      ? confirmedProjectTerms[0]
+      : "Зависит от проекта";
   const legal = profile?.legal;
   const builtObjects = profile?.builtObjects ?? [];
   const social = profile?.social;
+  const hasSocialMedia = Boolean(
+    social && (
+      social.youtubeVideos.length > 0
+      || (social.telegramChannel && social.telegramPosts.length > 0)
+    ),
+  );
   const mapCoordinates = profile?.coordinates
     && typeof profile.coordinates.lat === "number"
     && typeof profile.coordinates.lon === "number"
     ? { lat: profile.coordinates.lat, lon: profile.coordinates.lon }
     : undefined;
+  const mapSectionLabel = profile?.mapKind === "office" ? "Офис" : manufacturerSectionLabels.production;
+  const mapHeading = profile?.mapKind === "office" ? "Офис на карте" : "Производство на карте";
+  const mapFrameTitle = profile?.mapKind === "office"
+    ? `Офис компании ${maker.name} на карте`
+    : `Производство компании ${maker.name} на карте`;
   const { embedUrl: mapEmbedUrl, externalUrl: yandexMapLink } = getManufacturerMapUrls({
     address: maker.productionAddress,
     city: cityLabel,
@@ -777,7 +1296,18 @@ const ManufacturerProfile = () => {
   });
   const fallbackAbout = `${maker.name} — производитель домов из ${cityLabel}. На странице собраны проекты компании, доступные в каталоге многоместа.рф.`;
   const storedAboutParagraphs = profile?.about ?? [fallbackAbout];
-  const catalogSummary = `В каталоге «Много места» представлено ${makerProjects.length.toLocaleString("ru-RU")} ${wordForm(makerProjects.length, ["проект", "проекта", "проектов"])} площадью ${areaRange} с ценами от ${minPriceLabel}. Среди них — компактные и семейные модульные дома, барнхаусы, готовые бани и решения для коммерческого размещения. Планировку, фасад, комплектацию и дополнительные опции производитель может уточнить под конкретный сценарий использования.`;
+  const catalogTypeSummary = projectsByType.houses.length > 0 && projectsByType.baths.length > 0
+    ? "Среди них есть жилые дома и готовые бани."
+    : projectsByType.baths.length > 0
+      ? "Все представленные проекты относятся к готовым баням."
+      : "Все представленные проекты относятся к жилым модульным домам.";
+  const businessSummary = projectsByType.business.length > 0
+    ? ` Для аренды, глэмпинга и других коммерческих сценариев отмечено ${projectsByType.business.length.toLocaleString("ru-RU")} ${wordForm(projectsByType.business.length, ["подходящее решение", "подходящих решения", "подходящих решений"])}.`
+    : "";
+  const projectPriceSummary = minPrice > 0
+    ? ` и стоимостью от ${minPriceLabel}`
+    : "; стоимость уточняется у производителя";
+  const catalogSummary = `На «Много места» представлено ${makerProjects.length.toLocaleString("ru-RU")} ${wordForm(makerProjects.length, ["проект", "проекта", "проектов"])} площадью ${areaRange}${projectPriceSummary}. ${catalogTypeSummary}${businessSummary} Планировку, фасад, комплектацию и дополнительные опции производитель уточняет под выбранный проект и участок.`;
   const aboutParagraphs = profile?.useCatalogSummary && storedAboutParagraphs.length > 1
     ? [storedAboutParagraphs[0], catalogSummary, ...storedAboutParagraphs.slice(2)]
     : storedAboutParagraphs;
@@ -797,12 +1327,11 @@ const ManufacturerProfile = () => {
         projectCount: makerProjects.length,
         hasReviews: profileReviewSummary.hasReviews,
       });
-  const requestedProfileView = new URLSearchParams(location.search).get("view");
-  const isFeaturedVisualView = Boolean(profile?.featuredLayout)
-    && requestedProfileView !== "classic"
-    && requestedProfileView !== "analytic";
-  const isLegacyAnalyticalView = Boolean(profile?.featuredLayout) && requestedProfileView === "analytic";
-  const isAnalyticalView = isFeaturedVisualView || isLegacyAnalyticalView;
+  // Every manufacturer route uses one production template. Query parameters no longer
+  // expose the removed classic/analytic variants.
+  const isFeaturedVisualView = true;
+  const isLegacyAnalyticalView = false;
+  const isAnalyticalView = true;
 
   const otherRegionMakers = Object.values(makersById)
     .filter((candidate) => candidate.id !== makerId && isSameCityRegion(candidate.city, maker.city))
@@ -824,12 +1353,13 @@ const ManufacturerProfile = () => {
       }
       return b.projectCount - a.projectCount || a.name.localeCompare(b.name, "ru");
     });
-  const otherRegionProjects = projects
+  const otherRegionProjectsCount = projects
     .filter((project) => project.manufacturerId !== makerId && isSameCityRegion(project.city, maker.city))
-    .sort((a, b) => compareProjectTechnologyPriority(a, b) || b.likes - a.likes);
+    .length;
   const otherRegionMakersPreview = otherRegionMakers.slice(0, 8);
-  const regionProjectsHref = `${CATALOG_PATH}?region=${encodeURIComponent(cityLabel)}`;
-  const regionManufacturersHref = `${MANUFACTURERS_PATH}?region=${encodeURIComponent(cityLabel)}`;
+  const regionSlug = normalizeGeoSelection(maker.city);
+  const regionProjectsHref = getRegionPath(regionSlug);
+  const regionManufacturersHref = `${MANUFACTURERS_PATH}?region=${encodeURIComponent(regionSlug)}`;
 
   const handleShare = async () => {
     const shareData = { title: `${maker.name} — Много места`, url: window.location.href };
@@ -876,14 +1406,21 @@ const ManufacturerProfile = () => {
       },
       location: {
         "@type": "Place",
-        name: `Производство компании «${maker.name}»`,
+        name: profile?.mapKind === "office"
+          ? `Офис компании «${maker.name}»`
+          : `Производство компании «${maker.name}»`,
         address: maker.productionAddress,
       },
       identifier: [
         { "@type": "PropertyValue", propertyID: "ИНН", value: legal.inn },
         { "@type": "PropertyValue", propertyID: "ОГРН", value: legal.ogrn },
       ],
-      sameAs: social ? [`https://t.me/${social.telegramChannel}`] : undefined,
+      sameAs: social
+        ? [
+            ...(social.telegramChannel ? [`https://t.me/${social.telegramChannel}`] : []),
+            ...(social.youtubeChannelUrl ? [social.youtubeChannelUrl] : []),
+          ]
+        : undefined,
     } : {
       address: maker.productionAddress,
     }),
@@ -960,23 +1497,23 @@ const ManufacturerProfile = () => {
               <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-end lg:gap-12">
                 <div className="min-w-0">
                   <div className="flex items-start gap-4 md:gap-6">
-                    <div className={`flex h-[76px] w-[76px] shrink-0 items-center justify-center overflow-hidden rounded-[var(--radius)] border border-border text-[16px] font-semibold text-[#342d27] md:h-24 md:w-24 ${usesDarkLogoBackground(makerId) ? "bg-[#342d27]" : "bg-white"}`}>
-                      {maker.logo ? (
-                        <img src={maker.logo} alt="" width={96} height={96} className="h-full w-full object-contain p-2.5" loading="eager" decoding="async" />
-                      ) : (
-                        maker.initials
-                      )}
-                    </div>
+                    <ManufacturerLogo
+                      manufacturer={maker}
+                      className="h-[76px] w-[76px] text-[16px] md:h-24 md:w-24"
+                      loading="eager"
+                    />
                     <div className="min-w-0 pt-0.5">
                       <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-2">
                         <h1 id="manufacturer-profile-title" className="min-w-0 text-[34px] font-semibold leading-[0.96] tracking-[-0.045em] text-[#342d27] md:text-[52px] dark:text-foreground">
-                          <span className="block">{maker.name}</span>{" "}
-                          <span className="mt-2 block max-w-[620px] text-[14px] font-medium leading-[1.35] tracking-normal text-[#717b8e] md:text-[18px]">
-                            {profile?.headlineSuffix}
-                          </span>
+                          {maker.name}
                         </h1>
                         {verified && <VerifiedBadge />}
                       </div>
+                      {profile?.headlineSuffix && (
+                        <p className="mt-2 max-w-[620px] text-[14px] font-medium leading-[1.35] text-[#717b8e] md:text-[18px]">
+                          {profile.headlineSuffix}
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -1042,8 +1579,8 @@ const ManufacturerProfile = () => {
                     ["Цена от", minPriceLabel],
                     ["Площадь", areaRange],
                     ["Выполнено", builtObjects.length.toLocaleString("ru-RU")],
-                    ["Срок производства", "до 60 дней"],
-                    ["Доставка", "до 150 км"],
+                    ["Срок производства", productionTermLabel],
+                    ["Доставка", "По запросу"],
                   ] as const).map(([label, value]) => (
                     <div key={label} className="min-w-0">
                       <dt className="text-[12px] text-[#717b8e]">{label}</dt>
@@ -1058,10 +1595,11 @@ const ManufacturerProfile = () => {
           {isFeaturedVisualView && (
             <div className="sticky top-[51px] z-40 -mx-4 mb-10 bg-background px-4 sm:-mx-8 sm:px-8 md:top-[61px] md:mb-12 lg:-mx-12 lg:px-12">
               <ManufacturerSectionNav
-                showBuiltObjects={builtObjects.length > 0}
-                showLegal={Boolean(legal)}
-                showProduction={Boolean(mapEmbedUrl)}
-                showSocialMedia={Boolean(social)}
+                showBuiltObjects={builtObjects.length > 0 || hasCanonicalProfile}
+                showLegal={Boolean(legal) || hasCanonicalProfile}
+                showProduction={Boolean(mapEmbedUrl) || hasCanonicalProfile}
+                showSocialMedia={hasSocialMedia || hasCanonicalProfile}
+                productionLabel={mapSectionLabel}
                 projectsBeforeLegal
                 embedded
               />
@@ -1073,10 +1611,11 @@ const ManufacturerProfile = () => {
               <aside className="sticky top-24 hidden self-start lg:block" aria-label="Навигация и статус данных">
                 <p className="mb-3 text-[12px] font-medium text-[#717b8e]">Разделы</p>
                 <ManufacturerSectionNav
-                  showBuiltObjects={builtObjects.length > 0}
-                  showLegal={Boolean(legal)}
-                  showProduction={Boolean(mapEmbedUrl)}
-                  showSocialMedia={Boolean(social)}
+                  showBuiltObjects={builtObjects.length > 0 || hasCanonicalProfile}
+                  showLegal={Boolean(legal) || hasCanonicalProfile}
+                  showProduction={Boolean(mapEmbedUrl) || hasCanonicalProfile}
+                  showSocialMedia={hasSocialMedia || hasCanonicalProfile}
+                  productionLabel={mapSectionLabel}
                   vertical
                   projectsBeforeLegal
                 />
@@ -1112,31 +1651,22 @@ const ManufacturerProfile = () => {
             {!isAnalyticalView && (
             <aside className="self-start" aria-label={`Профиль компании ${maker.name}`}>
               <div className="flex items-start gap-4 lg:block">
-                <div className={`flex h-[76px] w-[76px] shrink-0 items-center justify-center overflow-hidden rounded-[var(--radius)] border border-[#dfe5f5] text-[16px] font-semibold text-[#342d27] lg:h-24 lg:w-24 ${usesDarkLogoBackground(makerId) ? "bg-[#342d27]" : "bg-white"}`}>
-                  {maker.logo ? (
-                    <img src={maker.logo} alt="" width={96} height={96} className="h-full w-full object-contain p-2.5" loading="eager" decoding="async" />
-                  ) : (
-                    maker.initials
-                  )}
-                </div>
+                <ManufacturerLogo
+                  manufacturer={maker}
+                  className="h-[76px] w-[76px] text-[16px] lg:h-24 lg:w-24"
+                  loading="eager"
+                />
 
                 <div className="min-w-0 flex-1 lg:mt-6">
                   <div className="flex min-w-0 flex-wrap items-center gap-x-2.5 gap-y-2">
                     <h1 className="min-w-0 text-[30px] font-semibold leading-none tracking-[-0.035em] text-[#342d27] lg:text-[40px] dark:text-foreground">
-                      <span className="block">{maker.name}</span>{" "}
-                      {profile?.headlineSuffix && (
-                        <span className="mt-2 block text-[13px] font-medium leading-[1.4] tracking-normal text-[#717b8e] lg:text-[15px]">
-                          {profile.headlineSuffix}
-                        </span>
-                      )}
+                      {maker.name}
                     </h1>
                     {verified && <VerifiedBadge />}
                   </div>
-                  {!profile?.headlineSuffix && (
-                    <p className="mt-2 text-[14px] text-[#717b8e]">
-                      {technologies.join(" · ")} · {cityLabel}
-                    </p>
-                  )}
+                  <p className="mt-2 text-[14px] leading-[1.4] text-[#717b8e] lg:text-[15px]">
+                    {profile?.headlineSuffix ?? `${technologies.join(" · ")} · ${cityLabel}`}
+                  </p>
                 </div>
               </div>
 
@@ -1213,7 +1743,7 @@ const ManufacturerProfile = () => {
                 </div>
                 <div>
                   <dt className="text-[13px] leading-snug text-[#717b8e]">Срок производства</dt>
-                  <dd className="mt-1.5 text-[16px] font-semibold text-[#342d27] dark:text-foreground">До 60 дней</dd>
+                  <dd className="mt-1.5 text-[16px] font-semibold text-[#342d27] dark:text-foreground">{productionTermLabel}</dd>
                 </div>
                 <div>
                   <dt className="text-[13px] text-[#717b8e]">Площади</dt>
@@ -1244,10 +1774,11 @@ const ManufacturerProfile = () => {
               {!isFeaturedVisualView && (
                 <div className={isLegacyAnalyticalView ? "lg:hidden" : undefined}>
                   <ManufacturerSectionNav
-                    showBuiltObjects={builtObjects.length > 0}
-                    showLegal={Boolean(legal)}
-                    showProduction={Boolean(mapEmbedUrl)}
-                    showSocialMedia={Boolean(social)}
+                    showBuiltObjects={builtObjects.length > 0 || hasCanonicalProfile}
+                    showLegal={Boolean(legal) || hasCanonicalProfile}
+                    showProduction={Boolean(mapEmbedUrl) || hasCanonicalProfile}
+                    showSocialMedia={hasSocialMedia || hasCanonicalProfile}
+                    productionLabel={mapSectionLabel}
                     projectsBeforeLegal={isAnalyticalView}
                   />
                 </div>
@@ -1284,7 +1815,14 @@ const ManufacturerProfile = () => {
                 </div>
               </section>
 
-              {legal && !isAnalyticalView && <ManufacturerLegalOverview legal={legal} />}
+              {legal && !isAnalyticalView && (
+                <ManufacturerLegalOverview
+                  legal={legal}
+                  manufacturerName={maker.name}
+                  builtObjectsCount={builtObjects.length}
+                  reviewsLabel={profileReviewSummary.reviewsLabel}
+                />
+              )}
             </div>
 
             <div className={isFeaturedVisualView ? "min-w-0" : "min-w-0 lg:col-start-2 lg:row-start-2"}>
@@ -1304,12 +1842,10 @@ const ManufacturerProfile = () => {
                         role="tablist"
                         aria-label={`Тип проектов ${maker.name}`}
                       >
-                        {([
-                          ["houses", "Дома", houseProjects.length],
-                          ["baths", "Бани", bathProjects.length],
-                          ["business", "Для бизнеса", businessProjects.length],
-                        ] as const).map(([type, label, count]) => {
-                          const isActive = manufacturerProjectType === type;
+                        {manufacturerProjectTabs.map((type) => {
+                          const label = manufacturerProjectTabLabels[type];
+                          const count = projectsByType[type].length;
+                          const isActive = activeManufacturerProjectType === type;
                           return (
                             <button
                               key={type}
@@ -1349,7 +1885,7 @@ const ManufacturerProfile = () => {
                 <div
                   id="manufacturer-projects-panel"
                   role={groupedProjects ? "tabpanel" : undefined}
-                  aria-labelledby={groupedProjects ? `manufacturer-projects-${manufacturerProjectType}-tab` : undefined}
+                  aria-labelledby={groupedProjects ? `manufacturer-projects-${activeManufacturerProjectType}-tab` : undefined}
                 >
                   {isFeaturedVisualView ? (
                     <>
@@ -1389,9 +1925,27 @@ const ManufacturerProfile = () => {
                 </div>
               </section>
 
-              {legal && isAnalyticalView && <ManufacturerLegalOverview legal={legal} compact />}
+              {isAnalyticalView && (legal && profile?.sourceAudit?.legal.status === "imported" ? (
+                <ManufacturerLegalOverview
+                  legal={legal}
+                  compact
+                  manufacturerName={maker.name}
+                  builtObjectsCount={builtObjects.length}
+                  reviewsLabel={profileReviewSummary.reviewsLabel}
+                />
+              ) : hasCanonicalProfile ? (
+                <ManufacturerUnavailableSection
+                  id="legal"
+                  heading="Юридическая информация"
+                  title={profile?.sourceAudit?.legal.status === "not-found" ? "Реквизиты не найдены" : "Реквизиты уточняются"}
+                  description={profile?.sourceAudit?.legal.status === "not-found"
+                    ? "Подтверждённые юридические сведения о компании пока не опубликованы на «Много места»."
+                    : "Юридические сведения появятся после подтверждения связи бренда с ИП или ООО."}
+                  checkedAtIso={profile?.sourceAudit?.checkedAtIso}
+                />
+              ) : null)}
 
-              {builtObjects.length > 0 && (
+              {builtObjects.length > 0 ? (
                 <section
                   id="built-objects"
                   className="mt-16 scroll-mt-28 md:mt-24"
@@ -1415,11 +1969,19 @@ const ManufacturerProfile = () => {
 
                   <ManufacturerBuiltObjectsGallery manufacturerName={maker.name} objects={builtObjects} compact={isAnalyticalView} />
                 </section>
-              )}
+              ) : hasCanonicalProfile ? (
+                <ManufacturerUnavailableSection
+                  id="built-objects"
+                  heading="Выполненные объекты"
+                  title={profile?.sourceAudit?.builtObjects.status === "not-found" ? "Фотографии объектов не найдены" : "Галерея пока не опубликована"}
+                  description="Подтверждённые фотографии выполненных объектов пока не опубликованы на «Много места»."
+                  checkedAtIso={profile?.sourceAudit?.checkedAtIso}
+                />
+              ) : null}
 
-              {mapEmbedUrl && <section id="production" className="mt-16 scroll-mt-28 md:mt-24" aria-labelledby="manufacturer-production-heading">
+              {(mapEmbedUrl || hasCanonicalProfile) && <section id="production" className="mt-16 scroll-mt-28 md:mt-24" aria-labelledby="manufacturer-production-heading">
                 <div>
-                  <h2 id="manufacturer-production-heading" className="text-[28px] font-semibold tracking-[-0.03em] text-[#342d27] md:text-[36px] dark:text-foreground">Производство на карте</h2>
+                  <h2 id="manufacturer-production-heading" className="text-[28px] font-semibold tracking-[-0.03em] text-[#342d27] md:text-[36px] dark:text-foreground">{mapHeading}</h2>
                   {maker.productionAddress && (
                     <a href={yandexMapLink} target="_blank" rel="noopener noreferrer nofollow" className="mt-3 inline-flex min-h-11 items-center text-[14px] leading-relaxed text-[#595653] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:text-[15px] dark:text-muted-foreground">
                       <span>{maker.productionAddress}</span>
@@ -1427,13 +1989,20 @@ const ManufacturerProfile = () => {
                   )}
                 </div>
 
-                <div className="relative mt-7 min-h-[320px] overflow-hidden rounded-[var(--radius)] md:min-h-[440px]">
-                  <ExternalIframe
-                    src={mapEmbedUrl}
-                    title={`Производство компании ${maker.name} на карте`}
-                    className="absolute inset-0 h-full w-full border-0"
+                {mapEmbedUrl ? (
+                  <div className="relative mt-7 min-h-[320px] overflow-hidden rounded-[var(--radius)] md:min-h-[440px]">
+                    <ExternalIframe
+                      src={mapEmbedUrl}
+                      title={mapFrameTitle}
+                      className="absolute inset-0 h-full w-full border-0"
+                    />
+                  </div>
+                ) : (
+                  <ManufacturerEmptyState
+                    title={`${mapSectionLabel} пока не ${profile?.mapKind === "office" ? "указан" : "указано"} на карте`}
+                    description="Адрес или координаты пока не подтверждены."
                   />
-                </div>
+                )}
               </section>}
 
               <section id="reviews" className="mt-16 scroll-mt-28 md:mt-24" aria-labelledby="manufacturer-reviews-heading">
@@ -1475,7 +2044,19 @@ const ManufacturerProfile = () => {
                   )}
                 </div>
 
-                {maker.externalRating ? (
+                {hasCanonicalProfile ? (
+                  <ManufacturerReviewSources
+                    makerId={makerId}
+                    makerName={maker.name}
+                    makerNamePrepositional={profile?.namePrepositional ?? maker.name}
+                    source={manufacturerReviewSource}
+                    onSourceChange={setManufacturerReviewSource}
+                    hasExternalRating={Boolean(maker.externalRating)}
+                    auditStatus={profile?.sourceAudit?.reviews.status}
+                    reviewSummary={reviewSummary}
+                    reviewPreviews={reviewPreviews}
+                  />
+                ) : maker.externalRating ? (
                   <div className="mt-7">
                     <div
                       className="flex min-w-0 max-w-full touch-pan-x items-center gap-5 overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -1571,7 +2152,7 @@ const ManufacturerProfile = () => {
                 )}
               </section>
 
-              {social && (
+              {(hasSocialMedia || hasCanonicalProfile) && (
                 <section
                   id="social-media"
                   className="mt-16 scroll-mt-28 md:mt-24"
@@ -1583,7 +2164,12 @@ const ManufacturerProfile = () => {
                   >
                     {maker.name} в социальных сетях
                   </h2>
-                  <ManufacturerSocialMedia manufacturerName={maker.name} social={social} />
+                  <ManufacturerSocialMedia
+                    manufacturerName={maker.name}
+                    social={social}
+                    sourceAudit={profile?.sourceAudit?.social}
+                    keepCanonicalSources={hasCanonicalProfile}
+                  />
                 </section>
               )}
 
@@ -1599,7 +2185,7 @@ const ManufacturerProfile = () => {
           </div>
 
           <div className="min-w-0">
-            {otherRegionProjects.length > 0 && (
+            {otherRegionProjectsCount > 0 && (
               <section className="mt-12 md:mt-16" aria-labelledby="related-region-projects-heading">
                 <h2 id="related-region-projects-heading" className="text-[28px] font-semibold tracking-[-0.03em] text-[#342d27] md:text-[36px] dark:text-foreground">
                   <Link
@@ -1609,15 +2195,12 @@ const ManufacturerProfile = () => {
                     <TrailingChevronLabel text={`Другие проекты ${cityPrepositionalName}`} />
                   </Link>
                 </h2>
-                <div className="mt-7 grid grid-cols-2 gap-x-[2px] gap-y-7 md:gap-x-4 md:gap-y-9 lg:grid-cols-3">
-                  {otherRegionProjects.map((project) => (
-                    <ProjectCard
-                      key={project.id}
-                      projectId={project.id}
-                      height="aspect-[4/3] h-auto md:aspect-[5/4]"
-                      headingLevel="h3"
-                    />
-                  ))}
+                <div className="mt-7">
+                  <OtherProjectsFeed
+                    deliveryRegion={cityLabel}
+                    productType="all"
+                    excludeManufacturerId={makerId}
+                  />
                 </div>
               </section>
             )}
@@ -1642,13 +2225,7 @@ const ManufacturerProfile = () => {
                         aria-label={`${candidate.name}: ${candidate.reviewSummary.rating.toFixed(1)} из 5, ${candidate.reviewSummary.hasReviews ? candidate.reviewSummary.reviewsLabel : "отзывов пока нет"}`}
                         className="group -mx-3 flex min-h-[76px] items-center gap-3 rounded-[var(--radius)] px-3 py-3 transition-colors duration-200 hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:min-h-[80px]"
                       >
-                        <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[var(--radius)] border border-border bg-white text-[10px] font-semibold uppercase tracking-[0.08em] text-[#342d27]">
-                          {candidate.logo ? (
-                            <img src={candidate.logo} alt="" width={40} height={40} className="h-full w-full object-contain p-1.5" loading="lazy" decoding="async" />
-                          ) : (
-                            candidate.initials
-                          )}
-                        </span>
+                        <ManufacturerLogo manufacturer={candidate} className="h-11 w-11 text-[10px]" />
                         <span className="min-w-0 flex-1">
                           <ManufacturerName
                             makerId={candidate.id}

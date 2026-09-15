@@ -16,7 +16,7 @@ import {
   type PlatformaProject,
 } from "@/data/platformaSite";
 
-const PHONE = "+7 (343) 226-11-40";
+const PHONE = "+7 (906) 858-31-23";
 const PHONE_HREF = "tel:+73432261140";
 const money = (value: number) => `${new Intl.NumberFormat("ru-RU").format(value)} ₽`;
 

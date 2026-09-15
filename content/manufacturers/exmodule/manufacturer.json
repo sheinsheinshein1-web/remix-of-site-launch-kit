@@ -1,0 +1,125 @@
+{
+  "id": "exmodule",
+  "publicationStatus": "draft",
+  "identity": {
+    "name": {
+      "value": "ExModule",
+      "status": "derived",
+      "confidence": 0.9,
+      "sourceUrl": "https://exmodulhouse.ru/",
+      "method": "structured-data",
+      "evidence": "Название из Organization JSON-LD."
+    },
+    "logo": {
+      "value": "https://exmodulhouse.ru/images/tild6362-3662-4839-b237-646139323337__photo.webp",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/",
+      "method": "structured-data",
+      "evidence": "Логотип из Organization JSON-LD."
+    }
+  },
+  "contacts": {
+    "siteUrl": "https://exmodulhouse.ru/",
+    "phones": {
+      "value": [
+        "+7 932 480-86-86",
+        "+7 (932) 480-86-86"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://exmodulhouse.ru/",
+      "method": "visible-text",
+      "evidence": "Телефоны найдены на официальных страницах."
+    },
+    "emails": {
+      "value": [
+        "480-86-86exmodulhouse@yandex.ru",
+        "exmodulhouse@yandex.ru"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://exmodulhouse.ru/",
+      "method": "visible-text",
+      "evidence": "Email найдены на официальных страницах."
+    },
+    "telegram": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/",
+      "method": "not-found",
+      "evidence": "Telegram не найден на официальном сайте."
+    },
+    "youtube": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/",
+      "method": "not-found",
+      "evidence": "YouTube не найден на официальном сайте."
+    }
+  },
+  "catalog": {
+    "sourceUrl": "https://exmodulhouse.ru/",
+    "discoveredProjectCount": 18,
+    "expectedProjectCount": 14
+  },
+  "legal": {
+    "operator": {
+      "value": "ИП Самозанятый Бизнес",
+      "status": "derived",
+      "confidence": 0.7,
+      "sourceUrl": "https://exmodulhouse.ru/",
+      "method": "visible-text",
+      "evidence": "Оператор найден в официальном тексте; связь требует проверки по реквизитам."
+    },
+    "inn": {
+      "value": "8901031155",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://exmodulhouse.ru/",
+      "method": "visible-text",
+      "evidence": "ИНН опубликован на официальном сайте."
+    },
+    "ogrn": {
+      "value": "3197232000877",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://exmodulhouse.ru/",
+      "method": "visible-text",
+      "evidence": "ОГРН или ОГРНИП опубликован на официальном сайте."
+    }
+  },
+  "production": {
+    "address": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/",
+      "method": "not-found",
+      "evidence": "Отдельный адрес производства не найден."
+    }
+  },
+  "reviews": {
+    "externalProfile": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/",
+      "method": "not-found",
+      "evidence": "Независимый профиль отзывов не найден на официальном сайте."
+    }
+  },
+  "builtObjects": {
+    "sourcePage": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/",
+      "method": "not-found",
+      "evidence": "Страница выполненных объектов не найдена."
+    },
+    "media": []
+  }
+}

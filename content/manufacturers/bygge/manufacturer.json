@@ -1,0 +1,125 @@
+{
+  "id": "bygge",
+  "publicationStatus": "draft",
+  "identity": {
+    "name": {
+      "value": "Bygge",
+      "status": "derived",
+      "confidence": 0.9,
+      "sourceUrl": "https://bygge.ru/",
+      "method": "structured-data",
+      "evidence": "Название из Organization JSON-LD."
+    },
+    "logo": {
+      "value": "https://bygge.ru/assets/images/Logo-Bygge-Black.png",
+      "status": "derived",
+      "confidence": 0.72,
+      "sourceUrl": "https://bygge.ru/",
+      "method": "media",
+      "evidence": "Изображение с явным признаком logo в имени файла."
+    }
+  },
+  "contacts": {
+    "siteUrl": "https://bygge.ru/",
+    "phones": {
+      "value": [
+        "+7 982-693-70-39",
+        "+7 982-693-70-39"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://bygge.ru/",
+      "method": "visible-text",
+      "evidence": "Телефоны найдены на официальных страницах."
+    },
+    "emails": {
+      "value": [
+        "bygge_ural@mail.ru",
+        "msivashov@mail.ru"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://bygge.ru/",
+      "method": "visible-text",
+      "evidence": "Email найдены на официальных страницах."
+    },
+    "telegram": {
+      "value": "https://t.me/bygge_rus",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://bygge.ru/",
+      "method": "link",
+      "evidence": "Ссылка Telegram опубликована на официальном сайте."
+    },
+    "youtube": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bygge.ru/",
+      "method": "not-found",
+      "evidence": "YouTube не найден на официальном сайте."
+    }
+  },
+  "catalog": {
+    "sourceUrl": "https://bygge.ru/katalog/",
+    "discoveredProjectCount": 23,
+    "expectedProjectCount": 23
+  },
+  "legal": {
+    "operator": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bygge.ru/",
+      "method": "not-found",
+      "evidence": "Оператор сайта не найден."
+    },
+    "inn": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bygge.ru/",
+      "method": "not-found",
+      "evidence": "ИНН не опубликован."
+    },
+    "ogrn": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bygge.ru/",
+      "method": "not-found",
+      "evidence": "ОГРН или ОГРНИП не опубликован."
+    }
+  },
+  "production": {
+    "address": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bygge.ru/",
+      "method": "not-found",
+      "evidence": "Отдельный адрес производства не найден."
+    }
+  },
+  "reviews": {
+    "externalProfile": {
+      "value": "https://yandex.ru/maps/org/bygge/183856102596/",
+      "status": "derived",
+      "confidence": 0.75,
+      "sourceUrl": "https://bygge.ru/",
+      "method": "link",
+      "evidence": "Внешний профиль найден на официальном сайте; идентичность организации требует проверки."
+    }
+  },
+  "builtObjects": {
+    "sourcePage": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bygge.ru/",
+      "method": "not-found",
+      "evidence": "Страница выполненных объектов не найдена."
+    },
+    "media": []
+  }
+}

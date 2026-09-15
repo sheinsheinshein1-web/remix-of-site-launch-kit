@@ -16,13 +16,13 @@ describe("региональные зоны доставки", () => {
     expect(Object.keys(regionsBySlug)).toHaveLength(93);
   });
 
-  it("город наследует проекты и технологию базового региона", () => {
+  it("город наследует географию и только явное ограничение технологии", () => {
     for (const group of regionGroups) {
       for (const location of group.cities.slice(1)) {
         expect(location.baseRegionSlug).toBe(group.region.slug);
         expect(location.cityValue).toBe(group.region.cityValue);
         expect(location.cityValues).toEqual(group.region.cityValues);
-        expect(location.technologyValue).toBe(group.region.technologyValue ?? "Модульный дом");
+        expect(location.technologyValue).toBe(group.region.technologyValue);
         expect(Boolean(location.deliveryCity || location.deliveryArea)).toBe(true);
       }
     }

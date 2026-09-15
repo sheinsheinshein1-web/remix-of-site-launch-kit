@@ -49,6 +49,9 @@ const RusModul = lazy(() => import("./pages/RusModul.tsx"));
 const Platforma = lazy(() => import("./pages/Platforma.tsx"));
 const PlatformaTemplatePreview = lazy(() => import("./pages/PlatformaTemplatePreview.tsx"));
 const TrafficArchitecture = lazy(() => import("./pages/TrafficArchitecture.tsx"));
+const InterfaceCardsConcept = lazy(() => import("./pages/InterfaceCardsConcept.tsx"));
+const InterfaceProjectDetailConcept = lazy(() => import("./pages/InterfaceProjectDetailConcept.tsx"));
+const AgentOffice = lazy(() => import("./pages/AgentOffice.tsx"));
 
 const queryClient = new QueryClient();
 
@@ -71,7 +74,15 @@ const RedirectWithLocation = ({ to }: { to: string }) => {
   return <Navigate to={`${to}${location.search}${location.hash}`} replace />;
 };
 
-const AppRoutes = () => (
+const AppRoutes = () => {
+  const { pathname } = useLocation();
+  // Internal workspace has its own shell and does not enter the public route registry.
+  if (/^\/agent-office\/?$/.test(pathname)) {
+    return <Suspense fallback={<div className="min-h-screen bg-[#0c1017]" />}>
+      <Routes><Route path="/agent-office" element={<AgentOffice />} /></Routes>
+    </Suspense>;
+  }
+  return (
   <>
     <MobileViewportGuard />
     <ScrollRestoration />
@@ -122,13 +133,16 @@ const AppRoutes = () => (
         <Route path="/platforma/*" element={<Platforma />} />
         <Route path="/platforma-preview" element={<PlatformaTemplatePreview />} />
         <Route path="/traffic-map" element={<TrafficArchitecture />} />
+        <Route path="/lab/interface-cards" element={<InterfaceCardsConcept />} />
+        <Route path="/lab/interface-cards/project" element={<InterfaceProjectDetailConcept />} />
         <Route path="/lab" element={<Lab />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
     <CookieConsentBanner />
   </>
-);
+  );
+};
 
 const App = () => (
   <ThemeProvider attribute="class" defaultTheme="system" enableSystem storageKey="mnogo-mesta-theme" disableTransitionOnChange>

@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-09-12T20:24:27.440Z",
+  "status": "draft",
+  "platform": "tilda",
+  "candidateCount": 14,
+  "confirmedProjectCount": 11,
+  "rejected": [
+    {
+      "url": "https://platforma-modul.ru/catalog/modular-baths",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://platforma-modul.ru/catalog/modular-houses",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://platforma-modul.ru/catalog/glamping-houses",
+      "reason": "Страница не прошла признаки карточки проекта."
+    }
+  ],
+  "conflicts": [],
+  "publicationBlocked": true,
+  "publicationReason": "Импорт создаёт черновик. Публикация разрешается отдельным release gate после проверки конфликтов и идентичности производителя."
+}

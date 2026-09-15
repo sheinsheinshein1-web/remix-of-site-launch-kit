@@ -1,0 +1,21 @@
+{
+  "type": "object", "additionalProperties": false,
+  "required": ["candidates", "limitations"],
+  "properties": {
+    "limitations": { "type": "array", "items": { "type": "string" } },
+    "candidates": { "type": "array", "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "officialWebsite", "cityRegion", "products", "modularHouses", "modularBaths", "businessRole", "manufacturerStatus", "sourceUrl", "evidence", "confidence", "inclusionReason", "knownRegistryId"],
+      "properties": {
+        "name": { "type": "string" }, "officialWebsite": { "type": "string" }, "cityRegion": { "type": "string" },
+        "products": { "type": "array", "items": { "type": "string" } },
+        "modularHouses": { "type": "string", "enum": ["yes", "no", "unclear"] },
+        "modularBaths": { "type": "string", "enum": ["yes", "no", "unclear"] },
+        "businessRole": { "type": "string", "enum": ["manufacturer", "intermediary", "unclear"] },
+        "manufacturerStatus": { "type": "string", "enum": ["confirmed", "unclear"] },
+        "sourceUrl": { "type": "string" }, "evidence": { "type": "string" }, "confidence": { "type": "number" },
+        "inclusionReason": { "type": "string" }, "knownRegistryId": { "type": ["string", "null"] }
+      }
+    } }
+  }
+}

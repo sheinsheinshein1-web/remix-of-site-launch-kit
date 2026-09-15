@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useMemo, useState } from "react";
+import { X } from "lucide-react";
 import { parseSearchFilters } from "@/components/SearchDropdown";
 import { CATALOG_PATH, getRegionPath } from "@/lib/siteRoutes";
 import { resolveGeoSelection, searchGeoSelections } from "@/lib/geoSelection";
@@ -155,9 +156,20 @@ const HeroSection = () => {
                   runSearch();
                 }
               }}
-              className="min-h-14 w-full min-w-0 rounded-[var(--radius)] border border-[#d7d7d4] bg-white py-0 pl-4 pr-[122px] text-[16px] tracking-normal text-[#342d27] outline-none transition-colors placeholder:text-[#94918d] focus:border-primary md:min-h-16 md:pl-6 md:pr-[182px] md:text-[18px]"
+              className="min-h-14 w-full min-w-0 rounded-[var(--radius)] border border-[#d7d7d4] bg-white py-0 pl-4 pr-[164px] text-[16px] tracking-normal text-[#342d27] outline-none transition-colors placeholder:text-[#94918d] focus:border-primary [&::-webkit-search-cancel-button]:appearance-none md:min-h-16 md:pl-6 md:pr-[226px] md:text-[18px]"
               placeholder="Производитель, модель или регион"
             />
+            {query && (
+              <button
+                type="button"
+                onMouseDown={(event) => event.preventDefault()}
+                onClick={() => setQuery("")}
+                className="absolute right-[116px] top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-[var(--radius)] text-[#342d27]/50 transition-colors hover:bg-[#342d27]/[0.06] hover:text-[#342d27] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:right-[174px]"
+                aria-label="Очистить поиск"
+              >
+                <X className="h-4 w-4" strokeWidth={1.7} aria-hidden />
+              </button>
+            )}
             <button
               type="submit"
               className="absolute right-1.5 top-1/2 h-11 min-w-[108px] -translate-y-1/2 rounded-[var(--radius)] bg-primary px-6 text-[14px] font-medium tracking-normal text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:h-[52px] md:min-w-[160px] md:px-8 md:text-[17px]"

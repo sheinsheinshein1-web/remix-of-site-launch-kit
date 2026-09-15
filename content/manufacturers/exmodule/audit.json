@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-09-12T20:26:18.799Z",
+  "status": "draft",
+  "platform": "tilda",
+  "candidateCount": 19,
+  "confirmedProjectCount": 18,
+  "rejected": [
+    {
+      "url": "https://exmodulhouse.ru/katalog-modulnyh-domov",
+      "reason": "Страница не прошла признаки карточки проекта."
+    }
+  ],
+  "conflicts": [],
+  "publicationBlocked": true,
+  "publicationReason": "Импорт создаёт черновик. Публикация разрешается отдельным release gate после проверки конфликтов и идентичности производителя."
+}

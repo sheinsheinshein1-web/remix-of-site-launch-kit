@@ -1,4 +1,5 @@
 import type { Project } from "@/data/projects";
+export { getProjectTechnologyLabel } from "@/lib/projectTechnology";
 import { manufacturerRegistry } from "@/data/manufacturers";
 
 export type PageSeoMetadata = {
@@ -69,7 +70,11 @@ export const pluralizeRu = (count: number, forms: [string, string, string]) => {
 };
 
 export const getProjectTypeLabel = (project: Pick<Project, "productType" | "technology">) => {
-  if (project.productType === "bath") return "Модульная баня";
+  if (project.productType === "bath") {
+    return project.technology.toLocaleLowerCase("ru").includes("каркас")
+      ? "Каркасная баня"
+      : "Модульная баня";
+  }
   if (project.productType === "house-bath") return "Дом с баней";
   if (project.technology.toLocaleLowerCase("ru").includes("префаб")) return "Префаб-дом";
   return "Модульный дом";
@@ -78,6 +83,7 @@ export const getProjectTypeLabel = (project: Pick<Project, "productType" | "tech
 export const getProjectPriceLabel = (price: string) => {
   const normalized = normalizeWhitespace(price);
   if (/^по запросу$/iu.test(normalized)) return "по запросу";
+  if (/^уточнит/iu.test(normalized)) return "нужно уточнить у производителя";
   return /^(?:от\s)/iu.test(normalized) ? normalized : `от ${normalized}`;
 };
 
@@ -107,26 +113,28 @@ export const buildCatalogSeo = ({ categoryTitle, categoryCaption }: CatalogSeoIn
 };
 
 export const buildProjectSeo = (
-  project: Pick<Project, "name" | "area" | "price" | "rooms" | "completion" | "productType" | "technology" | "manufacturerId">,
+  project: Pick<Project, "name" | "area" | "price" | "rooms" | "productType" | "technology" | "manufacturerId">,
 ): PageSeoMetadata => {
   const projectType = getProjectTypeLabel(project);
   const price = getProjectPriceLabel(project.price);
+  const hasKnownArea = !/уточняется|по запросу/iu.test(project.area);
+  const areaFragment = hasKnownArea ? `, ${project.area}` : "";
   const titlePrice = `цена ${price}`;
   const makerName = manufacturerRegistry[project.manufacturerId]?.name ?? "Производитель";
-  const fullDescription = `${projectType} «${project.name}» от производителя «${makerName}»: ${project.area}, ${project.rooms.toLocaleLowerCase("ru")}, ${project.completion.toLocaleLowerCase("ru")}. Цена ${price}. Фото, характеристики и условия доставки.`;
-  const compactDescription = `${projectType} «${project.name}» от производителя «${makerName}»: ${project.area}, ${project.completion.toLocaleLowerCase("ru")}. Цена ${price}. Фото, характеристики и условия доставки.`;
+  const fullDescription = `${projectType} «${project.name}» от производителя «${makerName}»${hasKnownArea ? `: ${project.area}, ${project.rooms.toLocaleLowerCase("ru")}` : ""}. Цена ${price}. Фото, характеристики и условия доставки.`;
+  const compactDescription = `${projectType} «${project.name}» от производителя «${makerName}»${hasKnownArea ? `: ${project.area}` : ""}. Цена ${price}. Фото, характеристики и условия доставки.`;
 
   return {
     title: chooseTitle(
-      `${projectType} ${project.name}, ${project.area} — ${titlePrice} | ${makerName}`,
-      `${projectType} ${project.name}, ${project.area} — ${titlePrice}`,
-      `${project.name}, ${project.area} — ${titlePrice} | ${makerName}`,
-      `${projectType} ${project.name}, ${project.area} | ${makerName}`,
+      `${projectType} ${project.name}${areaFragment} — ${titlePrice} | ${makerName}`,
+      `${projectType} ${project.name}${areaFragment} — ${titlePrice}`,
+      `${project.name}${areaFragment} — ${titlePrice} | ${makerName}`,
+      `${projectType} ${project.name}${areaFragment} | ${makerName}`,
     ),
     description: chooseDescription(
       fullDescription,
       compactDescription,
-      `${projectType} «${project.name}», ${project.area}, от «${makerName}». Цена ${price}. Фото, характеристики и условия доставки.`,
+      `${projectType} «${project.name}»${areaFragment}, от «${makerName}». Цена ${price}. Фото, характеристики и условия доставки.`,
     ),
   };
 };

@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-09-12T20:27:03.006Z",
+  "status": "draft",
+  "platform": "html",
+  "candidateCount": 28,
+  "confirmedProjectCount": 25,
+  "rejected": [
+    {
+      "url": "https://da-home.ru/proekt/modulnyy-dom-40",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://da-home.ru/proekt/hozblok-5",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://da-home.ru/proekt/karkasnye-bani-modelnyy-ryad",
+      "reason": "Страница не прошла признаки карточки проекта."
+    }
+  ],
+  "conflicts": [],
+  "publicationBlocked": true,
+  "publicationReason": "Импорт создаёт черновик. Публикация разрешается отдельным release gate после проверки конфликтов и идентичности производителя."
+}

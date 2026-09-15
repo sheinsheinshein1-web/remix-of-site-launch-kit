@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-09-12T20:28:16.745Z",
+  "manufacturerId": "zhar-parych",
+  "ready": false,
+  "projectCount": 0,
+  "coverage": {
+    "requiredProjectFields": 0,
+    "requiredProjectFieldsPassed": 0,
+    "optionalProjectFields": 0,
+    "optionalProjectFieldsFound": 0
+  },
+  "blockers": [
+    {
+      "scope": "manufacturer",
+      "field": "catalog",
+      "reason": "Не найдено ни одного проекта."
+    },
+    {
+      "scope": "manufacturer",
+      "field": "catalog.discoveredProjectCount",
+      "reason": "Ожидалось 6 проектов, найдено 0. Изменение состава каталога требует проверки."
+    }
+  ],
+  "warnings": [
+    {
+      "scope": "manufacturer",
+      "field": "contacts.emails",
+      "reason": "На официальных страницах не найдено; поле остаётся пустым до подтверждения."
+    },
+    {
+      "scope": "manufacturer",
+      "field": "contacts.youtube",
+      "reason": "На официальных страницах не найдено; поле остаётся пустым до подтверждения."
+    },
+    {
+      "scope": "manufacturer",
+      "field": "production.address",
+      "reason": "На официальных страницах не найдено; поле остаётся пустым до подтверждения."
+    },
+    {
+      "scope": "manufacturer",
+      "field": "reviews.externalProfile",
+      "reason": "На официальных страницах не найдено; поле остаётся пустым до подтверждения."
+    },
+    {
+      "scope": "manufacturer",
+      "field": "builtObjects.sourcePage",
+      "reason": "На официальных страницах не найдено; поле остаётся пустым до подтверждения."
+    }
+  ]
+}

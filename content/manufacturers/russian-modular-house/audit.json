@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-09-12T20:26:35.216Z",
+  "status": "draft",
+  "platform": "tilda",
+  "candidateCount": 20,
+  "confirmedProjectCount": 19,
+  "rejected": [
+    {
+      "url": "https://pkrmd.ru/modulniy_dom_1531_rmd",
+      "reason": "Страница не прошла признаки карточки проекта."
+    }
+  ],
+  "conflicts": [],
+  "publicationBlocked": true,
+  "publicationReason": "Импорт создаёт черновик. Публикация разрешается отдельным release gate после проверки конфликтов и идентичности производителя."
+}

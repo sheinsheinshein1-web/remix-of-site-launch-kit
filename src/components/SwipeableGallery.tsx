@@ -258,6 +258,8 @@ const SwipeableGallery = ({ images, mobileImages, alt, height = "h-[200px]", pri
           <div
             className="absolute bottom-[6px] right-[6px] z-10 rounded-full bg-foreground/40 px-[5px] py-[3px] flex items-center"
             style={{ width: trackWidth + 10 /* px-[5px]*2 */ }}
+            data-testid="gallery-pagination"
+            aria-label={`Изображение ${current + 1} из ${count}`}
           >
             <div className="relative flex items-center overflow-hidden" style={{ width: trackWidth, height: DOT }}>
               <div

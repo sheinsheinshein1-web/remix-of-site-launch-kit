@@ -11,9 +11,9 @@ describe("ManufacturerName", () => {
   });
 
   it("does not invent a verified badge for an unverified manufacturer", () => {
-    const markup = renderToStaticMarkup(<ManufacturerName makerId="glavles" name="Главлес" />);
+    const markup = renderToStaticMarkup(<ManufacturerName makerId="glezman" name="Glezman Group" />);
 
-    expect(markup).toContain("Главлес");
+    expect(markup).toContain("Glezman Group");
     expect(markup).not.toContain("Проверено");
   });
 });

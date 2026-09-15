@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-09-12T20:27:42.418Z",
+  "status": "draft",
+  "platform": "html",
+  "candidateCount": 10,
+  "confirmedProjectCount": 0,
+  "rejected": [
+    {
+      "url": "https://www.emodule-stroy.ru/products/alyye-parusa",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://www.emodule-stroy.ru/products/dubrava",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://www.emodule-stroy.ru/products/khozblok",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://www.emodule-stroy.ru/products/alexandria",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://www.emodule-stroy.ru/products/lesnaya",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://www.emodule-stroy.ru/products/ulesye",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://www.emodule-stroy.ru/products/svetlaya",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://www.emodule-stroy.ru/products/snegiri",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://www.emodule-stroy.ru/products/ivolga",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://www.emodule-stroy.ru/products/zapovednik",
+      "reason": "Страница не прошла признаки карточки проекта."
+    }
+  ],
+  "conflicts": [],
+  "publicationBlocked": true,
+  "publicationReason": "Импорт создаёт черновик. Публикация разрешается отдельным release gate после проверки конфликтов и идентичности производителя."
+}

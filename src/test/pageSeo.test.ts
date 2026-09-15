@@ -6,6 +6,7 @@ import {
   buildManufacturerSeo,
   buildProjectSeo,
   buildRegionSeo,
+  getProjectTechnologyLabel,
 } from "@/lib/pageSeo";
 
 describe("SEO metadata templates", () => {
@@ -74,5 +75,13 @@ describe("SEO metadata templates", () => {
     expect(metadata.title).toContain("5 проектов");
     expect(metadata.title.length).toBeLessThanOrEqual(65);
     expect(metadata.description).toContain("5 проектов");
+  });
+
+  it("uses one customer-facing technology vocabulary", () => {
+    expect(getProjectTechnologyLabel("Модульный дом")).toBe("Модульная");
+    expect(getProjectTechnologyLabel("Модульная технология")).toBe("Модульная");
+    expect(getProjectTechnologyLabel("Каркасный")).toBe("Каркасная");
+    expect(getProjectTechnologyLabel("Каркасная технология")).toBe("Каркасная");
+    expect(getProjectTechnologyLabel("Каркасно-модульный")).toBe("Каркасно-модульная");
   });
 });

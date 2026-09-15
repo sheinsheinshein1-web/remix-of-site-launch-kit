@@ -1,0 +1,782 @@
+[
+  {
+    "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект «Барн 60К»",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "60 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "10 × 6 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": "2",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": "45 д.",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/",
+      "method": "visible-text",
+      "evidence": "Подписанный срок производства, изготовления или строительства."
+    },
+    "technology": {
+      "value": "Каркасный",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию каркасной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/06/barn-60k-karkas-1-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/06/plan-60k-2306-optimized.png",
+        "type": "plan",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/04/dom-72m2-obzor-vk-optimized.webp",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/04/banya-32m2-obzor-vk-optimized.webp",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/oleg-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/tatyana-optimized.jpg",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/aleksandr-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/irina-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/igor-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/barn-60k/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект «Антилья»",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "99 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "11 × 9 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": "2",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": "45 д.",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/",
+      "method": "visible-text",
+      "evidence": "Подписанный срок производства, изготовления или строительства."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/06/bm-dom-antilya-1-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/06/antilya-99-1-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/04/dom-72m2-obzor-vk-optimized.webp",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/04/banya-32m2-obzor-vk-optimized.webp",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/oleg-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/tatyana-optimized.jpg",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/aleksandr-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/irina-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/igor-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/antilja/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект «Барн 30»",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "30 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "6 × 5 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": "30 д.",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/",
+      "method": "visible-text",
+      "evidence": "Подписанный срок производства, изготовления или строительства."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/06/barn-30-photo-1-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/06/plan-30-new-1-2-optimized.png",
+        "type": "plan",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/04/dom-72m2-obzor-vk-optimized.webp",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/04/banya-32m2-obzor-vk-optimized.webp",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/oleg-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/tatyana-optimized.jpg",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/aleksandr-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/irina-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/igor-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-30/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект «Барн 86»",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "86 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "12 × 7,2 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": "2",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": "45 д.",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/",
+      "method": "visible-text",
+      "evidence": "Подписанный срок производства, изготовления или строительства."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/06/barn-86-1-1406-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/06/barn-plan-86-new-1406-optimized.png",
+        "type": "plan",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/04/dom-72m2-obzor-vk-optimized.webp",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/04/banya-32m2-obzor-vk-optimized.webp",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/oleg-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/tatyana-optimized.jpg",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/aleksandr-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/irina-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/igor-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-86/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект «Барн 137»",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "137 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "15 × 9 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": "3",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": "60 д.",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/",
+      "method": "visible-text",
+      "evidence": "Подписанный срок производства, изготовления или строительства."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/06/barn-137-photo-1-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/06/plan-137-new-optimized.png",
+        "type": "plan",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/04/dom-72m2-obzor-vk-optimized.webp",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2026/04/banya-32m2-obzor-vk-optimized.webp",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/oleg-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/tatyana-optimized.jpg",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/aleksandr-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/irina-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/"
+      },
+      {
+        "url": "https://bm-dom.ru/wp-content/uploads/2025/07/igor-optimized.png",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/barn-137/"
+      }
+    ],
+    "conflicts": []
+  }
+]

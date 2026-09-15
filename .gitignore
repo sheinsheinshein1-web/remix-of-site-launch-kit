@@ -13,6 +13,8 @@ dist-ssr
 *.local
 **/*__thumb_mobile.avif
 tmp/
+.mnogomesta-build.lock
+/runtime/
 
 # Editor directories and files
 .vscode/*

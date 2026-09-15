@@ -1,0 +1,2249 @@
+[
+  {
+    "sourceUrl": "https://modyl.info/smart-box-bathhouse",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульная баня «Смарт бокс»",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://modyl.info/smart-box-bathhouse",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://modyl.info/smart-box-bathhouse",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": "1 560 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://modyl.info/smart-box-bathhouse",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Подписанное значение площади не найдено."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://modyl.info/smart-box-bathhouse",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3563-3135-4532-a230-613661376637/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/smart-box-bathhouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6463-3364-4465-a135-356634366464/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/smart-box-bathhouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3333-3132-4837-b232-643863366438/2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/smart-box-bathhouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6261-3365-4330-b733-386365653430/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/smart-box-bathhouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3431-3337-4563-a330-663964313534/__.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/smart-box-bathhouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6661-3162-4461-b964-336430376436/__.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/smart-box-bathhouse"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://modyl.info/aqua-box-bathhouse",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульная баня «Аква бокс»",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://modyl.info/aqua-box-bathhouse",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://modyl.info/aqua-box-bathhouse",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": "1 300 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://modyl.info/aqua-box-bathhouse",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Подписанное значение площади не найдено."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://modyl.info/aqua-box-bathhouse",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-bathhouse",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6632-3433-4166-b161-323134373138/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-bathhouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-6233-4130-a334-316166356430/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-bathhouse"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://modyl.info/modular-flat-home",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом «Резиденция»",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://modyl.info/modular-flat-home",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://modyl.info/modular-flat-home",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "4 680 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://modyl.info/modular-flat-home",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "57,4 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://modyl.info/modular-flat-home",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/modular-flat-home",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/modular-flat-home",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/modular-flat-home",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/modular-flat-home",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/modular-flat-home",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/modular-flat-home",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://modyl.info/modular-flat-home",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/modular-flat-home",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/modular-flat-home",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6137-6565-4030-a431-656264386334/3505716.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3366-3235-4539-b232-353234363365/photo.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3534-3434-4463-b331-346366346533/_.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3134-3238-4366-a335-393562313836/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3762-3530-4732-b736-323663653261/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6131-3630-4665-a634-306165653662/photo.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3838-3333-4739-a633-623236656661/noroot.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6135-3339-4634-a336-633534636133/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3031-3562-4435-b639-633931376233/noroot.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6361-3238-4433-b130-643565373262/noroot.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6630-3335-4562-a633-636365336634/1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3934-6161-4365-a131-383163343537/2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3035-3630-4536-a132-643730623435/3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3935-3533-4661-b562-343763333435/_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6436-3264-4262-b538-373238353734/4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6564-6537-4434-a232-363737366337/__.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3333-3933-4535-b439-386531363738/_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3337-6535-4130-a133-383966383239/__.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6463-3830-4565-b232-396366363137/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3436-6437-4662-b261-373665393262/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6631-3230-4264-b236-333361313461/__.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6435-3831-4635-a262-306338393964/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6561-3962-4035-b933-333036346239/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3430-6237-4932-a639-333264373265/__.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6539-3236-4664-b036-643962346537/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6263-6131-4933-a238-323532313734/_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3237-3061-4636-a361-613534323231/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3830-3734-4766-b531-383832623136/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6463-3835-4736-a330-356339656165/photo.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3766-3732-4631-b466-383838333730/Gemini_Generated_Ima.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6531-3039-4339-b439-386261633061/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://thb.tildacdn.com/tild3366-3235-4539-b232-353234363365/-/resize/20x/photo.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://thb.tildacdn.com/tild3534-3434-4463-b331-346366346533/-/resize/20x/_.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://thb.tildacdn.com/tild6131-3630-4665-a634-306165653662/-/resize/20x/photo.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://thb.tildacdn.com/tild3830-3734-4766-b531-383832623136/-/resize/20x/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://thb.tildacdn.com/tild6463-3835-4736-a330-356339656165/-/resize/20x/photo.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      },
+      {
+        "url": "https://thb.tildacdn.com/tild3766-3732-4631-b466-383838333730/-/resize/20x/Gemini_Generated_Ima.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-flat-home"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://modyl.info/kristal-boks",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульная баня «Кристалл бокс»",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://modyl.info/kristal-boks",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://modyl.info/kristal-boks",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": "1 710 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://modyl.info/kristal-boks",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/kristal-boks",
+      "method": "not-found",
+      "evidence": "Подписанное значение площади не найдено."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/kristal-boks",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/kristal-boks",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/kristal-boks",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/kristal-boks",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/kristal-boks",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/kristal-boks",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://modyl.info/kristal-boks",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/kristal-boks",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/kristal-boks",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6137-6565-4030-a431-656264386334/3505716.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3030-3530-4863-a234-636131653363/__.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3534-3434-4463-b331-346366346533/_.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3262-6133-4533-b731-313539616166/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6165-6335-4038-b266-353263666139/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3564-3764-4864-b438-613836656632/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3135-6366-4564-b564-616562386338/__.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3638-6238-4535-b432-386666303636/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-3838-4865-b039-623736353835/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3033-6635-4661-a434-396164366466/noroot.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3133-6639-4330-b263-366533666336/noroot.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6630-3335-4562-a633-636365336634/1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3934-6161-4365-a131-383163343537/2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3035-3630-4536-a132-643730623435/3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3935-3533-4661-b562-343763333435/_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6436-3264-4262-b538-373238353734/4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6564-6537-4434-a232-363737366337/__.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3333-3933-4535-b439-386531363738/_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3337-6535-4130-a133-383966383239/__.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6463-3830-4565-b232-396366363137/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3436-6437-4662-b261-373665393262/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6631-3230-4264-b236-333361313461/__.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6435-3831-4635-a262-306338393964/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6561-3962-4035-b933-333036346239/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3430-6237-4932-a639-333264373265/__.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6539-3236-4664-b036-643962346537/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6263-6131-4933-a238-323532313734/_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3237-3061-4636-a361-613534323231/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3830-3734-4766-b531-383832623136/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3033-3932-4930-b230-343065353539/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://thb.tildacdn.com/tild3030-3530-4863-a234-636131653363/-/resize/20x/__.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://thb.tildacdn.com/tild3534-3434-4463-b331-346366346533/-/resize/20x/_.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://thb.tildacdn.com/tild3135-6366-4564-b564-616562386338/-/resize/20x/__.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      },
+      {
+        "url": "https://thb.tildacdn.com/tild3830-3734-4766-b531-383832623136/-/resize/20x/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/kristal-boks"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://modyl.info/panorama",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом «Панорама»",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://modyl.info/panorama",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://modyl.info/panorama",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "4 160 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://modyl.info/panorama",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/panorama",
+      "method": "not-found",
+      "evidence": "Подписанное значение площади не найдено."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/panorama",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/panorama",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/panorama",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/panorama",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/panorama",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/panorama",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://modyl.info/panorama",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/panorama",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/panorama",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3661-3932-4432-b164-643764643330/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/panorama"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3233-3136-4661-a662-373430653634/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/panorama"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3731-3865-4861-b163-663938383037/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/panorama"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3764-6338-4162-b637-313866323838/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/panorama"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6439-3865-4265-a565-633239636535/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/panorama"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://modyl.info/multi-boks",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом «Мульти бокс»",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://modyl.info/multi-boks",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://modyl.info/multi-boks",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "4 490 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://modyl.info/multi-boks",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "65 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://modyl.info/multi-boks",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/multi-boks",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/multi-boks",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/multi-boks",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/multi-boks",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/multi-boks",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": "1800 д.",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://modyl.info/multi-boks",
+      "method": "visible-text",
+      "evidence": "Подписанный срок производства, изготовления или строительства."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://modyl.info/multi-boks",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/multi-boks",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/multi-boks",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6137-6565-4030-a431-656264386334/3505716.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3065-6665-4937-a530-393536633963/5339368536708685002.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3734-6631-4938-a161-323365323632/generated_image_1_25.webp",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6432-3838-4766-b835-396239363963/generated_image_1_26.webp",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3237-3639-4530-a664-353565366531/nano-banana_20260623.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6664-3663-4136-a136-343631343636/5339368536708685163.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3534-3434-4463-b331-346366346533/_.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6461-6661-4137-b434-613732383632/-5319220669029489752.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6461-6261-4363-a663-303164353031/5339368536708685162.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3266-6638-4437-b938-316463376631/photo.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3132-6635-4530-b164-373165656439/5339368536708684997.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3231-6634-4361-b936-386265376166/noroot.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6434-3938-4338-b262-346139663564/1781785197152.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3030-3066-4635-a166-616336333566/1781785137817.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3439-3863-4631-b566-373564646139/1781785100643.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3965-4265-b739-663466646364/IMG_20260713_171107_.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3139-3630-4636-b030-303035366336/_7_________.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3761-6538-4036-a332-326466656438/_7_.avif",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6139-6530-4165-a632-336537396139/_7____.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3530-6439-4365-a432-616366376530/5267251526093184358.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3333-3933-4535-b439-386531363738/_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3932-6537-4233-b037-633066363962/_7_______.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3835-6138-4036-b739-346232633466/lexygpt_8.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3865-3136-4530-b230-393264663037/1775184391744.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3632-3532-4662-a635-653831636538/IMG_20260712_111508_.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6662-3032-4963-b037-623131613666/_8___.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6561-3962-4035-b933-333036346239/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3236-6636-4332-b934-313263333864/_8____.avif",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6339-6435-4635-b230-353335366432/5267251526093184375.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6263-6131-4933-a238-323532313734/_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3361-6335-4966-b437-396137633433/_8___.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3235-6432-4264-b062-656637323333/photo.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6233-3661-4562-a630-313137663433/5339368536708684997.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3039-3438-4464-a162-313565623136/___.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6665-6131-4634-a361-323837366139/_10____.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6638-3962-4638-a535-626134353933/_9____.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3733-3861-4165-a632-353962366134/___383.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3533-6466-4363-a531-306565646330/photo.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6164-3732-4664-b738-633539383436/_1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3464-6135-4065-b331-333931613037/_2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3939-6162-4465-b335-306661333438/_3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3963-6433-4330-b363-343161323263/_4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-boks"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://modyl.info/multi-box-guesthouse",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Гостевой дом «Мульти бокс»",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://modyl.info/multi-box-guesthouse",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://modyl.info/multi-box-guesthouse",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "1 560 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://modyl.info/multi-box-guesthouse",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/multi-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Подписанное значение площади не найдено."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/multi-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/multi-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/multi-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/multi-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/multi-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/multi-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://modyl.info/multi-box-guesthouse",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/multi-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/multi-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6637-3538-4131-a534-366335646561/IMG_3825.JPG",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3265-3566-4564-a363-656537613638/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3934-3866-4131-b062-336135643931/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3737-6132-4336-b835-323463393130/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/multi-box-guesthouse"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://modyl.info/modular-smart-home",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом «Шале»",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://modyl.info/modular-smart-home",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://modyl.info/modular-smart-home",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "1 930 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://modyl.info/modular-smart-home",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/modular-smart-home",
+      "method": "not-found",
+      "evidence": "Подписанное значение площади не найдено."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/modular-smart-home",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/modular-smart-home",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/modular-smart-home",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/modular-smart-home",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/modular-smart-home",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/modular-smart-home",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://modyl.info/modular-smart-home",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/modular-smart-home",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/modular-smart-home",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6334-6239-4538-a561-656664666566/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-smart-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3333-3836-4436-a462-393439376435/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-smart-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3265-3535-4238-a561-396632386164/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-smart-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3461-6565-4637-b833-646430356161/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-smart-home"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6636-3537-4261-a435-326430366435/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/modular-smart-home"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://modyl.info/smart-box-guesthouse",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Гостевой дом «Смарт бокс»",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://modyl.info/smart-box-guesthouse",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://modyl.info/smart-box-guesthouse",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "1 440 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://modyl.info/smart-box-guesthouse",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Подписанное значение площади не найдено."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://modyl.info/smart-box-guesthouse",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/smart-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3234-6539-4238-a533-633337346664/NanoBanana_uberi-bel.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/smart-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3937-3933-4332-b033-323432306661/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/smart-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3365-6363-4135-a437-636462663130/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/smart-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6563-3762-4366-b161-666438653363/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/smart-box-guesthouse"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://modyl.info/akvatoria-bathhouse",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульная баня «Акватория»",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://modyl.info/akvatoria-bathhouse",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://modyl.info/akvatoria-bathhouse",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": "1 050 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://modyl.info/akvatoria-bathhouse",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-bathhouse",
+      "method": "not-found",
+      "evidence": "Подписанное значение площади не найдено."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-bathhouse",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-bathhouse",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-bathhouse",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-bathhouse",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-bathhouse",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-bathhouse",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://modyl.info/akvatoria-bathhouse",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-bathhouse",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-bathhouse",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3763-3437-4662-b034-633932646230/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/akvatoria-bathhouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6161-6139-4337-a334-306337633733/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/akvatoria-bathhouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3465-3839-4834-a161-383165623237/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/akvatoria-bathhouse"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://modyl.info/akvatoria-guesthouse",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Гостевой дом «Акватория»",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://modyl.info/akvatoria-guesthouse",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://modyl.info/akvatoria-guesthouse",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "950 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://modyl.info/akvatoria-guesthouse",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-guesthouse",
+      "method": "not-found",
+      "evidence": "Подписанное значение площади не найдено."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-guesthouse",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-guesthouse",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-guesthouse",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-guesthouse",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-guesthouse",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-guesthouse",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://modyl.info/akvatoria-guesthouse",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-guesthouse",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/akvatoria-guesthouse",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3237-3033-4330-b337-643433373336/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/akvatoria-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3861-6432-4539-a632-323266623835/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/akvatoria-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-6239-4933-b730-333538363431/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/akvatoria-guesthouse"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://modyl.info/aqua-box-guesthouse",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Гостевой дом «Аква бокс»",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://modyl.info/aqua-box-guesthouse",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://modyl.info/aqua-box-guesthouse",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "1 200 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://modyl.info/aqua-box-guesthouse",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Подписанное значение площади не найдено."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://modyl.info/aqua-box-guesthouse",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/aqua-box-guesthouse",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6137-6565-4030-a431-656264386334/3505716.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6332-6562-4861-b133-663462643563/photo.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3534-3434-4463-b331-346366346533/_.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3436-3333-4130-b862-656633396164/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3639-4865-a562-656235616435/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6435-3737-4936-b763-323938393066/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3436-3965-4766-b833-313639333233/photo.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3638-6238-4535-b432-386666303636/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-3838-4865-b039-623736353835/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3033-6635-4661-a434-396164366466/noroot.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3133-6639-4330-b263-366533666336/noroot.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6630-3335-4562-a633-636365336634/1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3934-6161-4365-a131-383163343537/2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3035-3630-4536-a132-643730623435/3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3935-3533-4661-b562-343763333435/_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6436-3264-4262-b538-373238353734/4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6564-6537-4434-a232-363737366337/__.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3333-3933-4535-b439-386531363738/_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3337-6535-4130-a133-383966383239/__.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6463-3830-4565-b232-396366363137/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3436-6437-4662-b261-373665393262/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6631-3230-4264-b236-333361313461/__.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6435-3831-4635-a262-306338393964/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6561-3962-4035-b933-333036346239/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3430-6237-4932-a639-333264373265/__.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6539-3236-4664-b036-643962346537/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6263-6131-4933-a238-323532313734/_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3237-3061-4636-a361-613534323231/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3830-3734-4766-b531-383832623136/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6636-3031-4133-b934-363139373461/photo.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3437-3964-4937-b736-373064376166/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6132-3738-4164-b837-613065323635/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://thb.tildacdn.com/tild6332-6562-4861-b133-663462643563/-/resize/20x/photo.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://thb.tildacdn.com/tild3534-3434-4463-b331-346366346533/-/resize/20x/_.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://thb.tildacdn.com/tild3436-3965-4766-b833-313639333233/-/resize/20x/photo.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://thb.tildacdn.com/tild3830-3734-4766-b531-383832623136/-/resize/20x/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://thb.tildacdn.com/tild6636-3031-4133-b934-363139373461/-/resize/20x/photo.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      },
+      {
+        "url": "https://thb.tildacdn.com/tild3437-3964-4937-b736-373064376166/-/resize/20x/image.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/aqua-box-guesthouse"
+      }
+    ],
+    "conflicts": []
+  }
+]

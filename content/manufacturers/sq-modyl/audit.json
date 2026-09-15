@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-09-12T20:26:04.774Z",
+  "status": "draft",
+  "platform": "tilda",
+  "candidateCount": 12,
+  "confirmedProjectCount": 12,
+  "rejected": [],
+  "conflicts": [],
+  "publicationBlocked": true,
+  "publicationReason": "Импорт создаёт черновик. Публикация разрешается отдельным release gate после проверки конфликтов и идентичности производителя."
+}

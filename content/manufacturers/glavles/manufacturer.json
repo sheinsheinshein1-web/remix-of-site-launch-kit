@@ -1,0 +1,123 @@
+{
+  "id": "glavles",
+  "publicationStatus": "draft",
+  "identity": {
+    "name": {
+      "value": "Деревянные модульные дома и бани",
+      "status": "derived",
+      "confidence": 0.75,
+      "sourceUrl": "https://promo.glavles.com/",
+      "method": "visible-text",
+      "evidence": "Название взято из og:site_name, H1 или title и требует редакторской проверки."
+    },
+    "logo": {
+      "value": "https://static.tildacdn.com/tild3466-6133-4665-b438-616234326662/logo.svg",
+      "status": "derived",
+      "confidence": 0.72,
+      "sourceUrl": "https://promo.glavles.com/",
+      "method": "media",
+      "evidence": "Изображение с явным признаком logo в имени файла."
+    }
+  },
+  "contacts": {
+    "siteUrl": "https://promo.glavles.com/",
+    "phones": {
+      "value": [
+        "+7 (343) 206 50 88"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://promo.glavles.com/",
+      "method": "visible-text",
+      "evidence": "Телефоны найдены на официальных страницах."
+    },
+    "emails": {
+      "value": [
+        "info@glavles.com"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://promo.glavles.com/",
+      "method": "visible-text",
+      "evidence": "Email найдены на официальных страницах."
+    },
+    "telegram": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/",
+      "method": "not-found",
+      "evidence": "Telegram не найден на официальном сайте."
+    },
+    "youtube": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/",
+      "method": "not-found",
+      "evidence": "YouTube не найден на официальном сайте."
+    }
+  },
+  "catalog": {
+    "sourceUrl": "https://promo.glavles.com/",
+    "discoveredProjectCount": 13,
+    "expectedProjectCount": 13
+  },
+  "legal": {
+    "operator": {
+      "value": "ООО «Главлес»",
+      "status": "derived",
+      "confidence": 0.7,
+      "sourceUrl": "https://promo.glavles.com/",
+      "method": "visible-text",
+      "evidence": "Оператор найден в официальном тексте; связь требует проверки по реквизитам."
+    },
+    "inn": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/",
+      "method": "not-found",
+      "evidence": "ИНН не опубликован."
+    },
+    "ogrn": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/",
+      "method": "not-found",
+      "evidence": "ОГРН или ОГРНИП не опубликован."
+    }
+  },
+  "production": {
+    "address": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/",
+      "method": "not-found",
+      "evidence": "Отдельный адрес производства не найден."
+    }
+  },
+  "reviews": {
+    "externalProfile": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/",
+      "method": "not-found",
+      "evidence": "Независимый профиль отзывов не найден на официальном сайте."
+    }
+  },
+  "builtObjects": {
+    "sourcePage": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/",
+      "method": "not-found",
+      "evidence": "Страница выполненных объектов не найдена."
+    },
+    "media": []
+  }
+}

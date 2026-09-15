@@ -1,0 +1,196 @@
+{
+  "generatedAt": "2026-09-12T20:24:48.824Z",
+  "status": "draft",
+  "platform": "html",
+  "candidateCount": 81,
+  "confirmedProjectCount": 23,
+  "rejected": [
+    {
+      "url": "https://bygge.ru/katalog/katalog/modulnyij-dom-6x12-salton-v2/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/katalog/patio-v2/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/katalog/bygge-kub-45/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/katalog/grandis/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/katalog/millari/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/katalog/elen/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/katalog/patio/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/katalog/barn-salton/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/katalog/senat/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/modulnyie-doma-do-30-m2/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/modulnyie-doma-ot-40-m2/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/modulnyie-doma-ot-70m2/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/modulnyie-doma-ot-50-m2/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/modulnyie-doma-ot-60-m2/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/katalog/tundra/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/modulnyie-doma-ot-80-m2/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/modulnyie-doma-do-100-m2/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/modulnyie-doma-do-120-m2/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/gotovyie-proektyi/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/katalog/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/ipoteka/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/demo-dom/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/stati/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/smi-o-nas/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/barnxausyi/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/modulnye-doma-s-panoramnymi-oknami/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/oplata-i-dostavka/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/vopros-otvet/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/garantii/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/dvuhkomnatnye-modulnye-doma/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/trekhkomnatnye-modulnye-doma/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/chetyrekhkomnatnye-modulnye-doma/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/modulnye-doma-dlya-kruglogodichnogo-prozhivaniya/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/kontaktyi/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/modulnyie-bani/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/modulnye-doma-s-terrasoj/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/modulnyie-doma/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/katalog/modulnyij-dom-6x12-salton-v3/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/byistrovozvodimyie-doma/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bygge.ru/katalog/katalog/modulnyij-dom-bygge-kub-53/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/politika-konfidenczialnosti/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/modulnyij-dom-millari-mini/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/barn-laver/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/skoro-novyij-dom/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/forest-ship/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bygge.ru/katalog/katalog/?page=2",
+      "reason": "404 Not Found"
+    }
+  ],
+  "conflicts": [],
+  "publicationBlocked": true,
+  "publicationReason": "Импорт создаёт черновик. Публикация разрешается отдельным release gate после проверки конфликтов и идентичности производителя."
+}

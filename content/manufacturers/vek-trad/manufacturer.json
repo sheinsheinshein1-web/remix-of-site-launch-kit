@@ -1,0 +1,126 @@
+{
+  "id": "vek-trad",
+  "publicationStatus": "draft",
+  "identity": {
+    "name": {
+      "value": "Строительство загородных домов под ключ в Екатеринбурге и Свердловской области",
+      "status": "derived",
+      "confidence": 0.75,
+      "sourceUrl": "https://vek-trad.ru/",
+      "method": "visible-text",
+      "evidence": "Название взято из og:site_name, H1 или title и требует редакторской проверки."
+    },
+    "logo": {
+      "value": "https://vek-trad.ru/custom/custom_28_07_2021_10_57/img/logo.png",
+      "status": "derived",
+      "confidence": 0.72,
+      "sourceUrl": "https://vek-trad.ru/",
+      "method": "media",
+      "evidence": "Изображение с явным признаком logo в имени файла."
+    }
+  },
+  "contacts": {
+    "siteUrl": "https://vek-trad.ru/",
+    "phones": {
+      "value": [
+        "+7 (343) 271-51-92",
+        "+7 (343) 271 51 92",
+        "+7 (343) 383-58-00",
+        "+7 (912) 037-07-77"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://vek-trad.ru/",
+      "method": "visible-text",
+      "evidence": "Телефоны найдены на официальных страницах."
+    },
+    "emails": {
+      "value": [
+        "info@vek-trad.ru"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://vek-trad.ru/",
+      "method": "visible-text",
+      "evidence": "Email найдены на официальных страницах."
+    },
+    "telegram": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://vek-trad.ru/",
+      "method": "not-found",
+      "evidence": "Telegram не найден на официальном сайте."
+    },
+    "youtube": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://vek-trad.ru/",
+      "method": "not-found",
+      "evidence": "YouTube не найден на официальном сайте."
+    }
+  },
+  "catalog": {
+    "sourceUrl": "https://vek-trad.ru/katalog-proektov-domov/modulnye/",
+    "discoveredProjectCount": 4,
+    "expectedProjectCount": 4
+  },
+  "legal": {
+    "operator": {
+      "value": "ПАО БАНКА \"",
+      "status": "derived",
+      "confidence": 0.7,
+      "sourceUrl": "https://vek-trad.ru/",
+      "method": "visible-text",
+      "evidence": "Оператор найден в официальном тексте; связь требует проверки по реквизитам."
+    },
+    "inn": {
+      "value": "6659107937",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://vek-trad.ru/",
+      "method": "visible-text",
+      "evidence": "ИНН опубликован на официальном сайте."
+    },
+    "ogrn": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://vek-trad.ru/",
+      "method": "not-found",
+      "evidence": "ОГРН или ОГРНИП не опубликован."
+    }
+  },
+  "production": {
+    "address": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://vek-trad.ru/",
+      "method": "not-found",
+      "evidence": "Отдельный адрес производства не найден."
+    }
+  },
+  "reviews": {
+    "externalProfile": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://vek-trad.ru/",
+      "method": "not-found",
+      "evidence": "Независимый профиль отзывов не найден на официальном сайте."
+    }
+  },
+  "builtObjects": {
+    "sourcePage": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://vek-trad.ru/",
+      "method": "not-found",
+      "evidence": "Страница выполненных объектов не найдена."
+    },
+    "media": []
+  }
+}

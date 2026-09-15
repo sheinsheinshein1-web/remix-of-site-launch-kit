@@ -1,0 +1,3206 @@
+[
+  {
+    "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный Дом угловой УЮТНЫЙ с террасой КМ-33.6",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "33,6 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3661-6266-4466-b031-623931646562/______33_6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3135-3536-4637-b065-613933363834/______33_6_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3336-3439-4235-a138-353330623831/______33_6_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6439-3739-4766-a336-306635383937/______33_6_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3435-6666-4135-b162-613464343566/___.jpg",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_336_rmd"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный Дом УЮТНЫЙ КМ-16.8",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "16,8 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3363-3662-4030-b633-326266643536/__-168.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6161-3738-4465-a465-646264373430/__-168_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3630-6432-4161-a161-396461646636/__-168_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3563-3832-4465-a531-386335353633/__-168_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6265-3366-4130-a230-633933313238/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_168_rmd"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный Дом КОМФОРТНЫЙ барн-хаус с террасой КМ-28,8",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "28,8 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6164-3766-4263-b839-353364353663/_______288.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3637-6363-4964-a666-313866633736/_______288_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3732-3532-4264-b563-363534623336/_______288_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3664-6162-4532-b430-626437646135/_______288_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3039-6239-4962-b261-633938613837/-__.jpg",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_288_rmd"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный Дом ПРОСТОРНЫЙ КМ-58.95",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "58,95 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3264-6466-4932-a266-366266346331/__-5895.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6437-3563-4461-b139-663638633133/__-5895_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3939-3931-4265-b432-616536633566/__-5895_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3464-6664-4434-b738-363134623535/__-5895_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3932-3162-4464-b236-326235643534/Frame_13.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_5895_rmd"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульная Уютная Баня с террасой КМ-31.51",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Подписанное значение площади не найдено."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6436-6338-4962-a662-366661613565/____-3151.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3036-3165-4138-b734-626338623463/____-3151_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6331-6234-4262-b935-363764333662/____-3151_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6264-3465-4962-b063-663936623533/____-3151_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3466-3634-4330-a439-386564333831/__2025-12-03__161346.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3339-3233-4266-b230-363561313266/__2025-12-03__161314.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_3151_rmd"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульная Уютная угловая баня с палубой КМ-28.8",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "28,8 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6437-6361-4230-a264-383838656136/______28_8.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3634-3236-4730-a136-376461643332/______28_8_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3261-6134-4366-b565-356566383334/______28_8_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3234-3632-4561-b166-633339383530/______28_8_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6436-3039-4365-a631-386331343430/__2025-12-03__161505.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3734-6238-4763-a463-613239343139/__2025-12-03__161451.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_paluboy_288_rmd"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульная Уютная баня минибарн КМ-15.13",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "15,13 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3530-6338-4131-b933-626432316463/___-1513.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6135-3933-4363-a332-633962363564/___-1513_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6264-6230-4463-a131-383164313932/___-1513_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3134-3932-4232-a164-383037363162/___-1513_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6666-3863-4161-a339-363862633335/__2025-12-03__161201.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6435-3034-4637-b963-363838633035/__2025-12-03__161143.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_1513_rmd"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульная Уютная баня лофт КМ-27.06",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "27,06 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6438-3666-4661-b938-353532653936/___-2706.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3161-3936-4330-b564-373163636466/___-2706_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3334-6239-4466-b639-666636623461/___-2706_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3563-3830-4830-b931-363466326233/___-2706_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6463-3263-4238-a466-623464646664/__2025-12-03__161606.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6231-3238-4164-b633-366165656130/__2025-12-03__161556.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_2706_rmd"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульная Уютная Угловая баня с террасой КМ-33.6",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "33,6 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6432-6532-4164-b364-653339646538/______33_6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3435-3732-4061-b933-366535656533/______33_6_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6131-3735-4166-b631-626537363039/______33_6_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6263-3737-4230-b933-663063623332/______33_6_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6663-3932-4663-b434-386635393563/__2025-12-03__161809.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3361-3730-4434-a437-323465356530/__2025-12-03__161819.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_s_terrasoy_336_rmd"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульная Комфортная баня барн-хаус КМ-28.8",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "28,8 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3032-3332-4461-b135-653730623363/__-_-288.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6431-3761-4166-a265-616535613638/__-_-288_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3634-6536-4436-b137-323063643262/__-_-288_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3839-6265-4464-a466-336138653531/__-_-288_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6338-3430-4866-b133-373535636435/__2025-12-03__161957.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3235-3365-4632-b465-323732653766/__2025-12-03__161929.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульная Уютная баня КМ-14.4",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd",
+      "method": "not-found",
+      "evidence": "Подписанное значение площади не найдено."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3461-3664-4236-a365-383164663063/__-144.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3031-6438-4862-a136-326537376637/__-144_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3931-3732-4034-a535-353930383631/__-144_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3330-3839-4662-a561-396565356333/__-144_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3532-3862-4366-a430-333939666262/__2025-12-03__161718.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6432-3930-4962-b066-376534373233/__2025-12-03__161705.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_144_rmd"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульная Комфортная баня барн-хаус с террасой КМ-33.6",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "33,6 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3931-3631-4232-b538-356330306230/_______33_6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-6261-4537-b136-396139613532/_______33_6_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3434-3632-4238-b530-303766313337/_______33_6_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6364-6266-4331-b061-623132383934/_______33_6_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6230-3435-4033-a565-343536643339/__2025-12-03__162120.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3266-6238-4031-b833-633163393466/__2025-12-03__162101.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_terrasa_336_rmd"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульная Комфортная баня КМ-28.8",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "28,8 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3433-3138-4130-a130-666562323762/__-288.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3263-6538-4732-a535-366435613736/__-288_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3539-6534-4338-a163-393864626664/__-288_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3064-3134-4163-a237-616561636661/__-288_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6461-6633-4430-a262-313163626337/__2025-12-03__162220.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6337-3834-4464-b461-376532353162/__2025-12-03__162212.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_288_rmd_kupit"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульная Просторная баня КМ-51.62",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "51,62 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3737-3939-4566-b664-326139333434/__-_-5162.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6233-3830-4231-a262-346336653732/__-_-5162_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6530-6434-4537-b365-383439653638/__-_-5162_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3665-3435-4833-b734-333430633439/__-_-5162_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6133-3463-4262-b635-656533386439/__2025-12-03__162320.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6233-3763-4236-b364-636634316635/__2025-12-03__162310.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulnaya_banya_5162_rmd"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный Дом угловой УЮТНЫЙ с палубой КМ-28.8",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "28,8 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6435-6164-4861-b764-323136646434/______28_8.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6537-6564-4632-b336-623931336339/______28_8_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3334-6639-4035-b336-346332656362/______28_8_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3462-3536-4563-b465-633936306335/______28_8_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6535-6130-4130-b637-636365323836/___.jpg",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_paluboy_288_rmd"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный Дом УЮТНЫЙ Лофт КМ-31,51",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd",
+      "method": "not-found",
+      "evidence": "Подписанное значение площади не найдено."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6262-3366-4733-a439-333933616666/___-3151.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6530-3130-4639-b332-346439346132/___-3151_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6665-6532-4562-b161-646463636238/___-3151_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6465-6664-4433-a365-393839656164/___-3151_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6633-6137-4132-a633-353833346634/_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_3151_rmd"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный Дом КОМФОРТНЫЙ барн-хаус КМ-33.6",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "33,6 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3832-6464-4161-b335-396465633331/__-_-336.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3861-3437-4432-b437-323930346361/__-_-336_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3437-3961-4430-b265-306636336532/__-_-336_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3233-3634-4738-b337-303866373166/__-_-336_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6566-6534-4233-b838-306639363135/-.jpg",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_336_rmd"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный Дом УЮТНЫЙ с террасой КМ-31.51",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "31,51 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3362-3566-4536-b266-653136633565/____-3151.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3262-3331-4965-a361-343938623361/____-3151_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3534-3137-4637-a135-356435303337/____-3151_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3761-3030-4439-a262-373663376665/____-3151_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6333-3333-4361-a361-363764363230/__.jpg",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_s_terrasoy_3151_rmd"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный Дом КОМФОРТНЫЙ КМ-28.8",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "28,8 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6566-6435-4330-b830-353837313665/__-288.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3135-3335-4435-a331-323739643239/__-288_1.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3539-3166-4636-b039-636665316263/__-288_2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3762-3332-4234-b764-343064373833/__-288_3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6264-3666-4636-b234-306264303835/photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3438-3736-4534-a136-616165646239/2.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3536-3537-4335-b631-303938343630/3.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-6635-4739-b830-336331373463/4.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3264-4539-a461-633862383564/5.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6136-6138-4737-a136-663939616265/6.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-3136-4138-a333-383163346534/7.png",
+        "type": "photo",
+        "sourceUrl": "https://pkrmd.ru/modulniy_dom_288_rmd"
+      }
+    ],
+    "conflicts": []
+  }
+]

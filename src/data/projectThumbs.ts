@@ -398,6 +398,18 @@ import thumb435 from "@/assets/rusmodul-spb/double-lodge-50/01__thumb.webp";
 import thumb436 from "@/assets/rusmodul-spb/scandic-double-60/01__thumb.webp";
 import thumb437 from "@/assets/platforma-baths/bathhouse-01__thumb.webp";
 import thumb438 from "@/assets/platforma-baths/bathhouse-spa-01__thumb.webp";
+import thumb456 from "@/assets/fps-modul/bh-375/01__thumb.webp";
+import thumb457 from "@/assets/fps-modul/f-400/01__thumb.webp";
+import thumb459 from "@/assets/fps-modul/f-201/01__thumb.webp";
+import thumb460 from "@/assets/fps-modul/f-206/01__thumb.webp";
+import thumb461 from "@/assets/fps-modul/bh-505/01__thumb.webp";
+import thumb462 from "@/assets/fps-modul/f-402/01__thumb.webp";
+import thumb463 from "@/assets/fps-modul/f-203/01__thumb.webp";
+import thumb464 from "@/assets/fps-modul/f-405/01__thumb.webp";
+import thumb465 from "@/assets/fps-modul/f-403/01__thumb.webp";
+import thumb467 from "@/assets/fps-modul/bh-502/01__thumb.webp";
+import thumb468 from "@/assets/fps-modul/bh-405/01__thumb.webp";
+import thumb479 from "@/assets/budushiy-dom/catalog/dom-2__thumb.webp";
 import mobileThumb31 from "@/assets/wide-house-1__thumb_mobile.avif";
 import mobileThumb33 from "@/assets/cabin-31-1__thumb_mobile.avif";
 import mobileThumb34 from "@/assets/bear-1__thumb_mobile.avif";
@@ -795,6 +807,18 @@ import mobileThumb435 from "@/assets/rusmodul-spb/double-lodge-50/01__thumb_mobi
 import mobileThumb436 from "@/assets/rusmodul-spb/scandic-double-60/01__thumb_mobile.avif";
 import mobileThumb437 from "@/assets/platforma-baths/bathhouse-01__thumb_mobile.avif";
 import mobileThumb438 from "@/assets/platforma-baths/bathhouse-spa-01__thumb_mobile.avif";
+import mobileThumb456 from "@/assets/fps-modul/bh-375/01__thumb_mobile.avif";
+import mobileThumb457 from "@/assets/fps-modul/f-400/01__thumb_mobile.avif";
+import mobileThumb459 from "@/assets/fps-modul/f-201/01__thumb_mobile.avif";
+import mobileThumb460 from "@/assets/fps-modul/f-206/01__thumb_mobile.avif";
+import mobileThumb461 from "@/assets/fps-modul/bh-505/01__thumb_mobile.avif";
+import mobileThumb462 from "@/assets/fps-modul/f-402/01__thumb_mobile.avif";
+import mobileThumb463 from "@/assets/fps-modul/f-203/01__thumb_mobile.avif";
+import mobileThumb464 from "@/assets/fps-modul/f-405/01__thumb_mobile.avif";
+import mobileThumb465 from "@/assets/fps-modul/f-403/01__thumb_mobile.avif";
+import mobileThumb467 from "@/assets/fps-modul/bh-502/01__thumb_mobile.avif";
+import mobileThumb468 from "@/assets/fps-modul/bh-405/01__thumb_mobile.avif";
+import mobileThumb479 from "@/assets/budushiy-dom/catalog/dom-2__thumb_mobile.avif";
 
 export const projectThumbs: Record<number, string> = {
   31: thumb31,
@@ -1194,6 +1218,18 @@ export const projectThumbs: Record<number, string> = {
   436: thumb436,
   437: thumb437,
   438: thumb438,
+  456: thumb456,
+  457: thumb457,
+  459: thumb459,
+  460: thumb460,
+  461: thumb461,
+  462: thumb462,
+  463: thumb463,
+  464: thumb464,
+  465: thumb465,
+  467: thumb467,
+  468: thumb468,
+  479: thumb479,
 };
 
 export const projectMobileThumbs: Record<number, string> = {
@@ -1594,4 +1630,16 @@ export const projectMobileThumbs: Record<number, string> = {
   436: mobileThumb436,
   437: mobileThumb437,
   438: mobileThumb438,
+  456: mobileThumb456,
+  457: mobileThumb457,
+  459: mobileThumb459,
+  460: mobileThumb460,
+  461: mobileThumb461,
+  462: mobileThumb462,
+  463: mobileThumb463,
+  464: mobileThumb464,
+  465: mobileThumb465,
+  467: mobileThumb467,
+  468: mobileThumb468,
+  479: mobileThumb479,
 };

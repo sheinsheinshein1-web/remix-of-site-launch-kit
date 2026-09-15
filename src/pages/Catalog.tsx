@@ -21,6 +21,7 @@ import {
 } from "@/data/catalogCategories";
 import { resolveCatalogSeoState } from "@/lib/catalogSeo";
 import { buildCatalogSeo } from "@/lib/pageSeo";
+import { getProjectTechnologyLabel, matchesProjectTechnology, PROJECT_TECHNOLOGY } from "@/lib/projectTechnology";
 import {
   getGeoSelectionCityValue,
   getGeoSelectionLabel,
@@ -29,8 +30,20 @@ import {
   normalizeGeoSelection,
 } from "@/lib/geoSelection";
 
-import { catalogItems, projects } from "@/data/projects";
+import { catalogItems, projects, type ProjectUseCase } from "@/data/projects";
 import CitySelector, { useCity } from "@/components/CitySelector";
+import { BUSINESS_USE_CASE_OPTIONS, matchesProjectBusinessUseCases } from "@/lib/projectUseCases";
+import {
+  getProjectAreaAmount,
+  getProjectPriceAmount,
+  getProjectTermDays,
+  matchesProjectObjectType,
+} from "@/lib/projectDomain";
+import { matchesProjectFilters } from "@/lib/projectFilters";
+import { withCatalogObjectType, withoutLegacyCatalogRegion } from "@/lib/catalogQuery";
+import { useHistoryBatch } from "@/hooks/useHistoryBatch";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { getProjectDetailViewModel } from "@/lib/projectViewModel";
 
 function pluralizeProjects(count: number): string {
   const mod10 = count % 10;
@@ -87,9 +100,35 @@ const sidebarFilters = [
   },
 ];
 
-const catalogMakers = Array.from(new Set(catalogItems.map((item) => item.maker))).sort((a, b) => a.localeCompare(b, "ru"));
+const sourceAwareCatalogItems = catalogItems.map((item) => {
+  const viewModel = getProjectDetailViewModel(item.id);
+  if (!viewModel) return item;
+
+  return {
+    ...item,
+    price: viewModel.price.raw,
+    area: viewModel.area.raw,
+    beds: viewModel.rooms.beds,
+    baths: viewModel.rooms.baths,
+    floors: viewModel.rooms.floors,
+    term: viewModel.production.term,
+    technology: viewModel.specifications.technology,
+    completion: viewModel.specifications.completion,
+    insulation: viewModel.specifications.insulation,
+    style: viewModel.specifications.style ?? "",
+  };
+});
+const catalogMakers = Array.from(new Set(sourceAwareCatalogItems.map((item) => item.maker))).sort((a, b) => a.localeCompare(b, "ru"));
 const projectsById = new Map(projects.map((project) => [project.id, project]));
-const PUBLIC_TECHNOLOGY_OPTIONS = ["Модульный дом"] as const;
+const PUBLIC_TECHNOLOGY_OPTIONS = [
+  PROJECT_TECHNOLOGY.modular,
+  PROJECT_TECHNOLOGY.frameModular,
+  PROJECT_TECHNOLOGY.prefab,
+  PROJECT_TECHNOLOGY.houseKit,
+] as const;
+const COMPLETION_OPTIONS = ["Без отделки", "Только корпус", "Теплый контур", "Под ключ"] as const;
+const INITIAL_CATALOG_PROJECT_COUNT = 24;
+const CATALOG_PROJECT_BATCH_SIZE = 24;
 
 const ListIcon = ({ active }: { active: boolean }) => (
   <svg width="16" height="14" viewBox="0 0 16 14" fill="none">
@@ -118,9 +157,10 @@ type CatalogProps = {
 };
 
 const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegionPrepositional, lockedTechnology, categorySlug }: CatalogProps = {}) => {
+  const isMobile = useIsMobile();
   const [searchParams, setSearchParams] = useSearchParams();
   const [catalogSearch, setCatalogSearch] = useState(searchParams.get("q") || "");
-  const [visibleLimit, setVisibleLimit] = useState(48);
+  const catalogLoadMoreRef = useRef<HTMLDivElement>(null);
   const routeCategory = getCatalogCategoryBySlug(categorySlug);
   const { activeCategory, shouldNoIndex, canonicalPath } = resolveCatalogSeoState(searchParams, routeCategory);
   const typeFilter = searchParams.get("type") ?? "";
@@ -149,17 +189,19 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
       : []),
   ];
 
-  const resetAllFilters = () => {
+  const resetAllFilters = ({ preserveBusinessUseCases = false }: { preserveBusinessUseCases?: boolean } = {}) => {
     setFilterPriceMinVal(500000);
     setFilterPriceMaxVal(15000000);
     setFilterAreaMin("");
     setFilterAreaMax("");
     setFilterSuitableFor(new Set());
+    if (!preserveBusinessUseCases) setFilterBusinessUseCases(new Set());
     setFilterMoveIn(new Set());
     setFilterBedrooms(new Set());
     setFilterBathrooms(new Set());
     setFilterFloors(new Set());
-    setFilterKit(new Set());
+    setFilterTechnology(new Set());
+    setFilterCompletion(new Set());
     setFilterInsulation(new Set());
     setFilterFeatures(new Set());
     setFilterStyle(new Set());
@@ -187,12 +229,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
       else navigate(CATALOG_PATH);
       return;
     }
-    const next = new URLSearchParams(searchParams);
-    next.delete("type");
-    next.delete("tech");
-    if (value === "house") next.set("tech", "Модульный дом");
-    if (value === "bath") next.set("type", "bath");
-    setSearchParams(next);
+    setSearchParams(withCatalogObjectType(searchParams, value));
   };
 
   const sortOptions = [
@@ -229,6 +266,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
 
   // 1. Подходит для
   const [filterSuitableFor, setFilterSuitableFor] = useState<Set<string>>(new Set());
+  const [filterBusinessUseCases, setFilterBusinessUseCases] = useState<Set<ProjectUseCase>>(new Set());
   // 2. Цена
   const [filterPriceMinVal, setFilterPriceMinVal] = useState(500000);
   const [filterPriceMaxVal, setFilterPriceMaxVal] = useState(15000000);
@@ -242,8 +280,9 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
   const [filterBedrooms, setFilterBedrooms] = useState<Set<string>>(new Set());
   const [filterBathrooms, setFilterBathrooms] = useState<Set<string>>(new Set());
   const [filterFloors, setFilterFloors] = useState<Set<string>>(new Set());
-  // 5. Комплектация
-  const [filterKit, setFilterKit] = useState<Set<string>>(new Set());
+  // 5. Технология и комплектация — независимые измерения фильтра.
+  const [filterTechnology, setFilterTechnology] = useState<Set<string>>(new Set());
+  const [filterCompletion, setFilterCompletion] = useState<Set<string>>(new Set());
   // 6. Утепление
   const [filterInsulation, setFilterInsulation] = useState<Set<string>>(new Set());
   // 7. Особенности
@@ -268,7 +307,9 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
     const baths = searchParams.get("baths");
     const parsedQuery = parseSearchFilters(q);
 
-    resetAllFilters();
+    // Переключение URL-фильтров (например, «Дома / Бани») не должно сбрасывать
+    // выбранный сценарий «Для бизнеса»: эти признаки должны сочетаться.
+    resetAllFilters({ preserveBusinessUseCases: true });
     setCatalogSearch(q);
     setFilterPriceMinVal(minPrice ? parseInt(minPrice) : parsedQuery.minPrice ?? 500000);
     setFilterPriceMaxVal(maxPrice ? parseInt(maxPrice) : parsedQuery.maxPrice ?? 15000000);
@@ -290,32 +331,40 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
     });
   };
 
+  const toggleBusinessUseCase = (value: ProjectUseCase) => {
+    setFilterBusinessUseCases((current) => {
+      const next = new Set(current);
+      if (next.has(value)) next.delete(value);
+      else next.add(value);
+      return next;
+    });
+  };
+
   const applySuitablePreset = (preset: string) => {
     const isActive = filterSuitableFor.has(preset);
     if (isActive) {
-      // Deselect: remove from set, reset related filters
       setFilterSuitableFor(prev => { const n = new Set(prev); n.delete(preset); return n; });
       setFilterAreaMin("");
       setFilterAreaMax("");
       setFilterBedrooms(new Set());
       setFilterBathrooms(new Set());
       setFilterFloors(new Set());
-      setFilterKit(new Set());
+      setFilterTechnology(new Set());
+      setFilterCompletion(new Set());
       setFilterInsulation(new Set());
       setFilterExtras(new Set());
       setFilterPriceMinVal(500000);
       setFilterPriceMaxVal(15000000);
       return;
     }
-    // Activate preset
     setFilterSuitableFor(new Set([preset]));
-    // Reset all numeric/set filters first
     setFilterAreaMin("");
     setFilterAreaMax("");
     setFilterBedrooms(new Set());
     setFilterBathrooms(new Set());
     setFilterFloors(new Set());
-    setFilterKit(new Set());
+    setFilterTechnology(new Set());
+    setFilterCompletion(new Set());
     setFilterInsulation(new Set());
     setFilterExtras(new Set());
     setFilterPriceMinVal(500000);
@@ -335,14 +384,14 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
       case "Постоянное проживание":
         setFilterBedrooms(new Set(["2", "3+"]));
         setFilterInsulation(new Set(["до −30°C", "до −40°C"]));
-        setFilterKit(new Set(["Под ключ", "С отделкой"]));
+        setFilterCompletion(new Set(["Под ключ"]));
         break;
       case "Выходные / дача":
         setFilterPriceMaxVal(2000000);
         setFilterAreaMax("60");
         break;
       case "Сдача в аренду":
-        setFilterKit(new Set(["Под ключ"]));
+        setFilterCompletion(new Set(["Под ключ"]));
         setFilterExtras(new Set(["Рассрочка"]));
         break;
       case "Гостевой дом":
@@ -352,11 +401,18 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
     }
   };
 
-  const hasActiveFilters = filterPriceMinVal !== 500000 || filterPriceMaxVal !== 15000000 || filterAreaMin !== "" || filterAreaMax !== "" || filterBedrooms.size > 0 || filterBathrooms.size > 0 || filterSuitableFor.size > 0 || filterMoveIn.size > 0 || filterFloors.size > 0 || filterKit.size > 0 || filterInsulation.size > 0 || filterFeatures.size > 0 || filterStyle.size > 0 || filterLandType.size > 0 || filterExtras.size > 0 || filterMaker !== "" || typeFilter !== "" || techFilter !== "";
+  const hasActiveFilters = filterPriceMinVal !== 500000 || filterPriceMaxVal !== 15000000 || filterAreaMin !== "" || filterAreaMax !== "" || filterBedrooms.size > 0 || filterBathrooms.size > 0 || filterSuitableFor.size > 0 || filterBusinessUseCases.size > 0 || filterMoveIn.size > 0 || filterFloors.size > 0 || filterTechnology.size > 0 || filterCompletion.size > 0 || filterInsulation.size > 0 || filterFeatures.size > 0 || filterStyle.size > 0 || filterLandType.size > 0 || filterExtras.size > 0 || filterMaker !== "" || typeFilter !== "" || techFilter !== "";
+  const hasExplicitPriceFilter = searchParams.has("minPrice")
+    || searchParams.has("maxPrice")
+    || filterPriceMinVal !== 500000
+    || filterPriceMaxVal !== 15000000;
 
-  const priceNum = (s: string) => parseInt(s.replace(/\D/g, ""), 10);
-  const areaNum = (s: string) => parseFloat(s.replace(/[^\d.]/g, ""));
-  const termNum = (s: string) => parseInt(s.replace(/\D/g, ""), 10);
+  const compareOptionalNumbers = (left: number | null, right: number | null, direction: "asc" | "desc") => {
+    if (left === null && right === null) return 0;
+    if (left === null) return 1;
+    if (right === null) return -1;
+    return direction === "asc" ? left - right : right - left;
+  };
   const stemSearchTerm = (term: string) => {
     if (term.length <= 3) return term; // Don't stem short words like "дом", "баня" etc.
     return term.replace(/(иями|ями|ами|ого|ему|ому|ыми|ими|иях|ях|ах|ов|ев|ей|ой|ий|ый|ая|ое|ее|ые|ие|ья|ью|ия|ям|ам|ом|ем|ию|ю|у|а|я|ы|и|е|о)$/u, "");
@@ -409,20 +465,22 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
     setFiltersOpen(false);
     window.setTimeout(() => setCitySelectorOpen(true), 180);
   };
-  const matchesObjectType = (item: (typeof catalogItems)[number]) => {
-    if (effectiveObjectType === "bath") return item.productType === "bath" || item.productType === "house-bath";
-    if (effectiveObjectType === "house") return item.productType !== "bath";
-    return true;
+  const handleSelectCity = (city: string) => {
+    selectCity(city);
+    if (!searchParams.has("region")) return;
+    setSearchParams(withoutLegacyCatalogRegion(searchParams), { replace: true });
   };
+  const matchesObjectType = (item: (typeof sourceAwareCatalogItems)[number]) =>
+    matchesProjectObjectType(item, selectedObjectType);
   const availableCatalogMakers = catalogMakers.filter((maker) =>
-    catalogItems.some((item) => (
+    sourceAwareCatalogItems.some((item) => (
       item.maker === maker
       && matchesObjectType(item)
       && isProjectAvailableInGeo(item.city, effectiveCity, item.deliveryRegionSlugs)
     )),
   );
-  const filteredItems = catalogItems.filter(item => {
-    if (!matchesCatalogCategory(item, routeCategory)) return false;
+  const filteredItems = sourceAwareCatalogItems.filter(item => {
+    if (!matchesCatalogCategory(item, routeCategory ?? activeCategory)) return false;
     // Без запроса сохраняем регион из шапки. Текстовый поиск работает по всему
     // каталогу, иначе производителя или модель из другого региона невозможно найти.
     if (
@@ -430,9 +488,30 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
       && !isProjectAvailableInGeo(item.city, effectiveCity, item.deliveryRegionSlugs)
     ) return false;
     if (filterMaker && item.maker !== filterMaker) return false;
-    if (!matchesObjectType(item)) return false;
-    // Технология строительства из URL (?tech=Модульный дом / Каркасный / Префаб)
-    if (techFilter && item.technology !== techFilter) return false;
+    if (!matchesProjectBusinessUseCases(item.useCases, filterBusinessUseCases)) return false;
+    // Сохраняем совместимость со старыми URL, но сравниваем технологии через
+    // единый справочник пользовательских названий.
+    if (techFilter && !matchesProjectTechnology(item.technology, techFilter)) return false;
+    if (!matchesProjectFilters(item, {
+      objectType: selectedObjectType,
+      price: hasExplicitPriceFilter
+        ? {
+            min: filterPriceMinVal,
+            max: filterPriceMaxVal,
+            excludeUnknown: true,
+          }
+        : undefined,
+      area: {
+        min: filterAreaMin ? Number.parseFloat(filterAreaMin) : undefined,
+        max: filterAreaMax ? Number.parseFloat(filterAreaMax) : undefined,
+      },
+      bedrooms: filterBedrooms,
+      bathrooms: filterBathrooms,
+      floors: filterFloors,
+      moveIn: filterMoveIn,
+      technologies: filterTechnology,
+      completions: filterCompletion,
+    })) return false;
     if (catalogSearchTerms.length > 0) {
       const floorsLabel = item.floors === 1 ? "одноэтажный 1 этаж" : item.floors === 2 ? "двухэтажный 2 этажа" : `${item.floors} этаж`;
       const bedsLabel = item.beds === 0 ? "студия без спальни" : `${item.beds} спальня ${item.beds} спальни ${item.beds} спален`;
@@ -458,53 +537,9 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
 
       if (!catalogSearchTerms.every((term) => haystack.includes(term))) return false;
     }
-    // Цена
-    const price = priceNum(item.price);
-    if (price < filterPriceMinVal || price > filterPriceMaxVal) return false;
-    // Площадь
-    const area = areaNum(item.area);
-    if (filterAreaMin && area < parseFloat(filterAreaMin)) return false;
-    if (filterAreaMax && area > parseFloat(filterAreaMax)) return false;
-    // Спальни
-    if (filterBedrooms.size > 0) {
-      const beds = item.beds;
-      const match = Array.from(filterBedrooms).some(f => {
-        if (f === "Студия") return beds === 0;
-        if (f === "3+") return beds >= 3;
-        return beds === parseInt(f);
-      });
-      if (!match) return false;
-    }
-    // Санузлы
-    if (filterBathrooms.size > 0) {
-      const match = Array.from(filterBathrooms).some(f => {
-        if (f === "2+") return item.baths >= 2;
-        return item.baths === parseInt(f);
-      });
-      if (!match) return false;
-    }
     // Подходит для
     if (filterSuitableFor.size > 0) {
       if (!Array.from(filterSuitableFor).some(f => item.suitableFor.includes(f))) return false;
-    }
-    // Срок до заселения
-    if (filterMoveIn.size > 0) {
-      const days = termNum(item.term);
-      const match = Array.from(filterMoveIn).some(f => {
-        if (f === "до 2 недель") return days <= 14;
-        if (f === "2–4 недели") return days > 14 && days <= 30;
-        if (f === "1–2 месяца") return days > 30 && days <= 60;
-        return false;
-      });
-      if (!match) return false;
-    }
-    // Этажей
-    if (filterFloors.size > 0 && !filterFloors.has(String(item.floors))) return false;
-    // Технология + Комплектация (both use filterKit)
-    if (filterKit.size > 0) {
-      const techMatch = filterKit.has(item.technology);
-      const compMatch = filterKit.has(item.completion);
-      if (!techMatch && !compMatch) return false;
     }
     // Утепление
     if (filterInsulation.size > 0 && !filterInsulation.has(item.insulation)) return false;
@@ -533,19 +568,44 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
   const sortedItems = [...filteredItems].sort((a, b) =>
     compareWithProjectPriority(a, b, (a, b) => {
       switch (sortBy) {
-        case "cheap": return priceNum(a.price) - priceNum(b.price);
-        case "expensive": return priceNum(b.price) - priceNum(a.price);
-        case "area_asc": return areaNum(a.area) - areaNum(b.area);
-        case "area_desc": return areaNum(b.area) - areaNum(a.area);
-        case "fast": return termNum(a.term) - termNum(b.term);
+        case "cheap": return compareOptionalNumbers(getProjectPriceAmount(a.price), getProjectPriceAmount(b.price), "asc");
+        case "expensive": return compareOptionalNumbers(getProjectPriceAmount(a.price), getProjectPriceAmount(b.price), "desc");
+        case "area_asc": return compareOptionalNumbers(getProjectAreaAmount({ area: a.area }), getProjectAreaAmount({ area: b.area }), "asc");
+        case "area_desc": return compareOptionalNumbers(getProjectAreaAmount({ area: a.area }), getProjectAreaAmount({ area: b.area }), "desc");
+        case "fast": return compareOptionalNumbers(getProjectTermDays(a.term), getProjectTermDays(b.term), "asc");
         case "popular": return b.likes - a.likes;
         case "new": return b.id - a.id;
-        default: return 0;
+        default: return b.rating - a.rating;
       }
     })
   );
+  const { visibleCount: visibleLimit, loadNextBatch: loadNextCatalogBatch } = useHistoryBatch({
+    namespace: "catalog",
+    identity: `${categorySlug ?? "all"}:${lockedRegion ?? "all"}:${lockedTechnology ?? "all"}:${searchParams.toString()}:${sortBy}`,
+    itemCount: sortedItems.length,
+    initialCount: INITIAL_CATALOG_PROJECT_COUNT,
+    batchSize: CATALOG_PROJECT_BATCH_SIZE,
+  });
   const visibleItems = sortedItems.slice(0, visibleLimit);
   const hasMoreItems = visibleItems.length < sortedItems.length;
+
+  useEffect(() => {
+    const target = catalogLoadMoreRef.current;
+    if (!target || !hasMoreItems || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          observer.unobserve(entry.target);
+          loadNextCatalogBatch();
+        }
+      },
+      { rootMargin: "800px 0px" },
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [hasMoreItems, loadNextCatalogBatch, visibleLimit]);
 
   const itemListElements = visibleItems.flatMap((item, index) => {
     const project = projectsById.get(item.id);
@@ -596,8 +656,13 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
       </div>}
 
       {/* Mobile search, view and sorting */}
-      <div className="sticky top-[50px] z-40 bg-background md:hidden">
-        <div className={`${embedded ? "" : "px-0 py-3"}`} >
+      <div
+        className={`sticky top-[50px] z-40 bg-background/95 backdrop-blur-xl md:hidden ${
+          embedded ? "-mx-4 sm:-mx-8" : ""
+        }`}
+        aria-label="Управление каталогом"
+      >
+        <div className={`${embedded ? "px-4 sm:px-8" : "mx-auto w-full max-w-[1400px] px-4 sm:px-8"} py-2.5`}>
           <div className="flex min-w-0 items-center gap-2">
             <SearchDropdown
               className="min-w-0 flex-1"
@@ -641,8 +706,8 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
         </div>
       </div>
 
-      {/* Desktop catalog content */}
-      <div className={`${embedded ? "" : "px-4 sm:px-8 lg:px-10 xl:px-12 w-full pb-16"} hidden md:block`}>
+      {/* Desktop catalog content. Only the active responsive grid is mounted. */}
+      {!isMobile && <div className={`${embedded ? "" : "px-4 sm:px-8 lg:px-10 xl:px-12 w-full pb-16"} hidden md:block`}>
         <div className="mb-8 pb-7">
           <SearchDropdown
             className="w-full"
@@ -702,6 +767,25 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
                     aria-pressed={selectedObjectType === value}
                     className={`min-h-9 rounded-[var(--radius)] px-3 text-[12px] transition-colors ${
                       selectedObjectType === value ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="mb-5">
+              <div className="mb-3 text-[13px] font-semibold text-foreground">Для бизнеса</div>
+              <div className="flex flex-wrap gap-1.5">
+                {BUSINESS_USE_CASE_OPTIONS.map(({ value, label }) => (
+                  <button
+                    key={value}
+                    type="button"
+                    onClick={() => toggleBusinessUseCase(value)}
+                    aria-pressed={filterBusinessUseCases.has(value)}
+                    className={`rounded-[var(--radius)] px-3 py-[6px] text-[12px] transition-colors ${
+                      filterBusinessUseCases.has(value) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}
                   >
                     {label}
@@ -823,11 +907,11 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
             <div className="mb-5">
               <div className="mb-3 text-[13px] font-semibold text-foreground">Технология</div>
               <div className="flex flex-wrap gap-1.5">
-                {PUBLIC_TECHNOLOGY_OPTIONS.map(c => (
-                  <button key={c} onClick={() => toggleInSet(setFilterKit, c)} aria-pressed={techFilter === c || filterKit.has(c)}
+                {PUBLIC_TECHNOLOGY_OPTIONS.map(({ value, label }) => (
+                  <button key={value} onClick={() => toggleInSet(setFilterTechnology, value)} aria-pressed={Boolean(techFilter && matchesProjectTechnology(techFilter, value)) || filterTechnology.has(value)}
                     className={`text-[12px] rounded-[var(--radius)] px-3 py-[6px] transition-colors ${
-                      techFilter === c || filterKit.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
-                    }`}>{c}</button>
+                      Boolean(techFilter && matchesProjectTechnology(techFilter, value)) || filterTechnology.has(value) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
+                    }`}>{getProjectTechnologyLabel(label)}</button>
                 ))}
               </div>
             </div>
@@ -836,10 +920,10 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
             <div className="mb-5">
               <div className="mb-3 text-[13px] font-semibold text-foreground">Комплектация</div>
               <div className="flex flex-wrap gap-1.5">
-                {["Базовая", "С отделкой", "Под ключ"].map(c => (
-                  <button key={c} onClick={() => toggleInSet(setFilterKit, c)}
+                {COMPLETION_OPTIONS.map(c => (
+                  <button key={c} onClick={() => toggleInSet(setFilterCompletion, c)}
                     className={`text-[12px] rounded-[var(--radius)] px-3 py-[6px] transition-colors ${
-                      filterKit.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
+                      filterCompletion.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
               </div>
@@ -997,21 +1081,12 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               ))}
             </div>
           )}
-          {hasMoreItems && (
-            <button
-              type="button"
-              onClick={() => setVisibleLimit((limit) => limit + 48)}
-              className="mt-10 min-h-11 w-full rounded-[var(--radius)] border border-border px-5 text-[14px] font-medium text-foreground transition-colors hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20"
-            >
-              Показать ещё проекты
-            </button>
-          )}
         </main>
       </div>
-      </div>
+      </div>}
 
       {/* Mobile content */}
-      <div className={`${embedded ? "" : "px-0 lg:px-10 xl:px-12"} w-full pb-12 pt-5 md:hidden`}>
+      {isMobile && <div className={`${embedded ? "" : "px-0 lg:px-10 xl:px-12"} w-full pb-12 pt-5 md:hidden`}>
         <div>
           <div className="mb-4 flex items-center justify-between">
             <p className="text-[14px] text-muted-foreground">
@@ -1051,17 +1126,20 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               ))}
             </div>
           )}
-          {hasMoreItems && (
-            <button
-              type="button"
-              onClick={() => setVisibleLimit((limit) => limit + 48)}
-              className="mx-4 mt-8 min-h-11 w-[calc(100%-2rem)] rounded-[var(--radius)] border border-border px-5 text-[14px] font-medium text-foreground transition-colors hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20"
-            >
-              Показать ещё проекты
-            </button>
-          )}
         </div>
-      </div>
+      </div>}
+
+      {hasMoreItems && (
+        <div
+          ref={catalogLoadMoreRef}
+          className="h-px w-full"
+          aria-hidden="true"
+          data-testid="catalog-projects-load-more"
+        />
+      )}
+      <p className="sr-only" aria-live="polite">
+        Показано проектов: {visibleItems.length} из {sortedItems.length}
+      </p>
 
       {!embedded && routeCategory && (
         <section
@@ -1145,6 +1223,25 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               </div>
             </div>
 
+            <div className="border-b border-border/50 px-5 py-3.5">
+              <div className="mb-2.5 text-[13px] font-semibold text-foreground">Для бизнеса</div>
+              <div className="flex flex-wrap gap-2">
+                {BUSINESS_USE_CASE_OPTIONS.map(({ value, label }) => (
+                  <button
+                    key={value}
+                    type="button"
+                    onClick={() => toggleBusinessUseCase(value)}
+                    aria-pressed={filterBusinessUseCases.has(value)}
+                    className={`rounded-[var(--radius)] px-3.5 py-[7px] text-[13px] transition-colors ${
+                      filterBusinessUseCases.has(value) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* 2. Цена */}
             <div className="px-5 py-3.5 border-b border-border/50">
               <div className="mb-2.5 text-[13px] font-semibold text-foreground">Цена, ₽</div>
@@ -1178,16 +1275,6 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
               <div className="grid grid-cols-2 gap-2 mb-3">
                 <input value={filterAreaMin} onChange={e => setFilterAreaMin(e.target.value)} placeholder="от" className="rounded-[var(--radius)] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
                 <input value={filterAreaMax} onChange={e => setFilterAreaMax(e.target.value)} placeholder="до" className="rounded-[var(--radius)] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
-              </div>
-              <div className="mb-2.5 mt-1 text-[13px] font-semibold text-foreground">Размеры, м</div>
-              <div className="grid grid-cols-2 gap-2 mb-3">
-                <input placeholder="Длина" className="rounded-[var(--radius)] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
-                <input placeholder="Ширина" className="rounded-[var(--radius)] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
-              </div>
-              <div className="mb-2.5 text-[13px] font-semibold text-foreground">Высота потолков, м</div>
-              <div className="grid grid-cols-2 gap-2 mb-3">
-                <input placeholder="от" className="rounded-[var(--radius)] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
-                <input placeholder="до" className="rounded-[var(--radius)] border border-border bg-background px-3 py-2.5 text-[13px] text-foreground outline-none placeholder:text-muted-foreground focus:border-primary" />
               </div>
             </div>
 
@@ -1239,11 +1326,11 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
             <div className="px-5 py-3.5 border-b border-border/50">
               <div className="mb-2.5 text-[13px] font-semibold text-foreground">Технология</div>
               <div className="flex flex-wrap gap-2">
-                {PUBLIC_TECHNOLOGY_OPTIONS.map(c => (
-                  <button key={c} onClick={() => toggleInSet(setFilterKit, c)} aria-pressed={techFilter === c || filterKit.has(c)}
+                {PUBLIC_TECHNOLOGY_OPTIONS.map(({ value, label }) => (
+                  <button key={value} onClick={() => toggleInSet(setFilterTechnology, value)} aria-pressed={Boolean(techFilter && matchesProjectTechnology(techFilter, value)) || filterTechnology.has(value)}
                     className={`text-[13px] rounded-[var(--radius)] px-3.5 py-[7px] transition-colors ${
-                      techFilter === c || filterKit.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
-                    }`}>{c}</button>
+                      Boolean(techFilter && matchesProjectTechnology(techFilter, value)) || filterTechnology.has(value) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
+                    }`}>{getProjectTechnologyLabel(label)}</button>
                 ))}
               </div>
             </div>
@@ -1252,10 +1339,10 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
             <div className="px-5 py-3.5 border-b border-border/50">
               <div className="mb-2.5 text-[13px] font-semibold text-foreground">Комплектация</div>
               <div className="flex flex-wrap gap-2">
-                {["Базовая", "С отделкой", "Под ключ"].map(c => (
-                  <button key={c} onClick={() => toggleInSet(setFilterKit, c)}
+                {COMPLETION_OPTIONS.map(c => (
+                  <button key={c} onClick={() => toggleInSet(setFilterCompletion, c)}
                     className={`text-[13px] rounded-[var(--radius)] px-3.5 py-[7px] transition-colors ${
-                      filterKit.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
+                      filterCompletion.has(c) ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground/80"
                     }`}>{c}</button>
                 ))}
               </div>
@@ -1378,7 +1465,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
         open={citySelectorOpen}
         onOpenChange={setCitySelectorOpen}
         city={selectedCity}
-        onSelect={selectCity}
+        onSelect={handleSelectCity}
         hasExplicitSelection={hasExplicitSelection}
       />}
 

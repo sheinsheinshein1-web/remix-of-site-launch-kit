@@ -1,0 +1,2535 @@
+[
+  {
+    "sourceUrl": "https://exmodulhouse.ru/d1",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом «Чехов» — компактный дом 5×4 м для дачи, отдыха и первого участка",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/d1",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/d1",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "1 955 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/d1",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "20 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/d1",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "5 × 4 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/d1",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d1",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d1",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d1",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d1",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d1",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/d1",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d1",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d1",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/images/tild3830-3465-4534-b833-656332376465__chatgpt_image_23__20.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d1"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6633-6266-4364-b938-663865333664__converted_webp_1.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d1"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6139-6261-4962-b565-663130663762__---2026-07-31--16032.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d1"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6362-6134-4733-a535-653737356230__converted_webp_2.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d1"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://exmodulhouse.ru/d2",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом «Тургенев» — просторный дом 51 м² с террасой для семьи, дачи и жизни за городом",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/d2",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/d2",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "3 693 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/d2",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "51 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/d2",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "8,5 × 6 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/d2",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d2",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": "1",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/d2",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": "05",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://exmodulhouse.ru/d2",
+      "method": "visible-text",
+      "evidence": "Подписанное количество санузлов на странице проекта."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d2",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d2",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/d2",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d2",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d2",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/images/tild3735-3537-4331-b561-346236396138__chatgpt_image_23__20.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3536-3933-4365-a362-323137333237__16_turgenev_2.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6230-3035-4130-b031-643566303563__18_turgenev_interior.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3137-6231-4364-a361-333032376336__17_turgenev_3.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3739-6535-4434-a661-363636643565__19_turgenev_plan.webp",
+        "type": "plan",
+        "sourceUrl": "https://exmodulhouse.ru/d2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6463-6639-4432-a231-666463343637__15_turgenev_1.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d2"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://exmodulhouse.ru/g4",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Тургенев — просторный дом 51 м² для базы отдыха",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/g4",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/g4",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "10 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/g4",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "36 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/g4",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g4",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g4",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g4",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g4",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g4",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g4",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/g4",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g4",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g4",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/images/tild3262-3037-4639-a362-336365323135__converted_webp_5.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g4"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3238-3032-4635-a565-363332663364__converted_webp_5.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g4"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6231-6134-4864-b532-393262633565__converted_webp_4.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g4"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6431-6235-4539-a339-396537323838__converted_webp_3.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g4"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3534-3066-4439-b665-646331626232__converted_webp_2.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g4"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6631-3433-4231-a165-393337613135__converted_webp_1.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g4"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://exmodulhouse.ru/b1",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Родина — баня, которая становится точкой притяжения",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/b1",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/b1",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": "4 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/b1",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "27,3 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/b1",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/b1",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/b1",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/b1",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/b1",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/b1",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/b1",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/b1",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/b1",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/b1",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/images/tild6635-3030-4138-a334-373138633461__g5_03_front_exterior.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/b1"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3739-6635-4164-b333-343236323364__g5_05_forest_exterio.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/b1"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6563-3337-4431-a266-656132613966__g5_02_sauna.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/b1"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6330-3638-4166-b630-323839336438__g5_01_living_room.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/b1"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3663-6338-4536-b838-333538313064__g5_03_front_exterior.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/b1"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3335-3464-4263-b164-393330383438__g5_04_plan.webp",
+        "type": "plan",
+        "sourceUrl": "https://exmodulhouse.ru/b1"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://exmodulhouse.ru/b2",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Исток — баня 83 м² как центр притяжения базы отдыха",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/b2",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/b2",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/b2",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "51 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/b2",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/b2",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/b2",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/b2",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/b2",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/b2",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/b2",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/b2",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/b2",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/b2",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/images/tild6130-3530-4337-a462-316535326233__b2_04_winter_day_ext.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/b2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6531-3864-4832-b531-643231373639__b2_05_winter_evening.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/b2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3537-3132-4564-b934-396433333766__b2_04_winter_day_ext.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/b2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3230-3234-4161-a661-336633633137__b2_03_sauna.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/b2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3531-3339-4237-b263-636166363836__b2_02_entry_winter.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/b2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3237-3932-4239-b034-666233643964__b2_01_plan.webp",
+        "type": "plan",
+        "sourceUrl": "https://exmodulhouse.ru/b2"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://exmodulhouse.ru/chehov-banya",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Г-образный дом-баня «Чехов Баня» — баня, комната отдыха и терраса для участка",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/chehov-banya",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/chehov-banya",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": "2 980 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/chehov-banya",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "28 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/chehov-banya",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/chehov-banya",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/chehov-banya",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/chehov-banya",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/chehov-banya",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/chehov-banya",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/chehov-banya",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/chehov-banya",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/chehov-banya",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/chehov-banya",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/images/tild6365-6539-4164-a638-653030303161__chatgpt_image_23__20.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/chehov-banya"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6563-3934-4666-b465-656632636561__10_banya_1.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/chehov-banya"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3665-6431-4934-b531-623638323466__12_banya_interior.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/chehov-banya"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3566-6133-4466-b561-383065666635__13_banya_plan.webp",
+        "type": "plan",
+        "sourceUrl": "https://exmodulhouse.ru/chehov-banya"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6365-3166-4435-a439-363732306364__14_banya_sauna.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/chehov-banya"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6134-6638-4565-b266-613039643731__11_banya_2.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/chehov-banya"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://exmodulhouse.ru/esenin-max",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом «Есенин Макс» — 7×13,5 м с большой кухней-гостиной и 3 спальнями",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/esenin-max",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/esenin-max",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "6 517 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/esenin-max",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "94,5 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/esenin-max",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/esenin-max",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": "3",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/esenin-max",
+      "method": "visible-text",
+      "evidence": "Подписанное количество комнат."
+    },
+    "bedrooms": {
+      "value": "3",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/esenin-max",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/esenin-max",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/esenin-max",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/esenin-max",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/esenin-max",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/esenin-max",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/esenin-max",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/images/tild3631-6339-4466-b537-313366666263__esenin-max-seo-1200x.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/esenin-max"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6538-3338-4436-a634-633435646331__02_esenin_max_side.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/esenin-max"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6431-3732-4064-b832-666366656537__03_esenin_max_front.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/esenin-max"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6632-3937-4530-b466-343561613939__05_esenin_max_interi.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/esenin-max"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3463-6132-4936-b962-343661333338__04_esenin_max_plan.webp",
+        "type": "plan",
+        "sourceUrl": "https://exmodulhouse.ru/esenin-max"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://exmodulhouse.ru/tolstoy",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Толстой — дом + баня + терраса для жизни и отдыха",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/tolstoy",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/tolstoy",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": "6 700 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/tolstoy",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "81 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/tolstoy",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/tolstoy",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": "8",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/tolstoy",
+      "method": "visible-text",
+      "evidence": "Подписанное количество комнат."
+    },
+    "bedrooms": {
+      "value": "2",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/tolstoy",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": "42",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://exmodulhouse.ru/tolstoy",
+      "method": "visible-text",
+      "evidence": "Подписанное количество санузлов на странице проекта."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/tolstoy",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/tolstoy",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/tolstoy",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/tolstoy",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/tolstoy",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/images/tild3430-6532-4363-b934-663664653939__complex_10_terrace_b.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/tolstoy"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6632-3336-4239-b339-666264663131__complex_14_overall_e.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/tolstoy"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3133-3066-4461-b432-373735616563__complex_12_front_ext.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/tolstoy"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3639-3066-4530-b464-373639366463__complex_10_terrace_b.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/tolstoy"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3333-3766-4331-b061-656265396335__complex_03_sauna_ins.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/tolstoy"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3461-3532-4165-b961-363935616639__complex_07_main_room.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/tolstoy"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3035-3061-4031-a565-333931383262__complex_05_shower.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/tolstoy"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3432-6365-4935-a263-666533323637__complex_01_plan.webp",
+        "type": "plan",
+        "sourceUrl": "https://exmodulhouse.ru/tolstoy"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6232-3035-4661-a363-363036313337__complex_13_terrace_c.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/tolstoy"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Готовый дом 6×9 с участком в Новокаменском",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "5 300 000 ₽",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD, offers.price/lowPrice."
+    },
+    "area": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij",
+      "method": "not-found",
+      "evidence": "Подписанное значение площади не найдено."
+    },
+    "dimensions": {
+      "value": "6 × 9 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/assets/exmodule/ready-homes/h1-hero.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij"
+      },
+      {
+        "url": "https://exmodulhouse.ru/assets/exmodule/ready-homes/h1-side.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij"
+      },
+      {
+        "url": "https://exmodulhouse.ru/assets/exmodule/ready-homes/h1-interior.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij"
+      },
+      {
+        "url": "https://exmodulhouse.ru/assets/exmodule/ready-homes/h1-living.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij"
+      },
+      {
+        "url": "https://exmodulhouse.ru/assets/exmodule/ready-homes/h1-bath.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij"
+      },
+      {
+        "url": "https://exmodulhouse.ru/assets/exmodule/ready-homes/h1-plan.webp",
+        "type": "plan",
+        "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Дом 6×9 на финальной стадии в Новокаменском",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "5 350 000 ₽",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD, offers.price/lowPrice."
+    },
+    "area": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2",
+      "method": "not-found",
+      "evidence": "Подписанное значение площади не найдено."
+    },
+    "dimensions": {
+      "value": "6 × 9 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/assets/exmodule/ready-homes/h2-hero.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/assets/exmodule/ready-homes/h2-side.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/assets/exmodule/ready-homes/h2-interior.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/assets/exmodule/ready-homes/h2-bath.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/assets/exmodule/ready-homes/h2-plan.webp",
+        "type": "plan",
+        "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-6x9-novokamenskij-2"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Готовый дом 67,5 м² на производстве в Тюмени",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "3 450 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "67,5 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/assets/exmodule/ready-homes/h3-hero.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda"
+      },
+      {
+        "url": "https://exmodulhouse.ru/assets/exmodule/ready-homes/h3-interior.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda"
+      },
+      {
+        "url": "https://exmodulhouse.ru/assets/exmodule/ready-homes/h3-living.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda"
+      },
+      {
+        "url": "https://exmodulhouse.ru/assets/exmodule/ready-homes/h3-door.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda"
+      },
+      {
+        "url": "https://exmodulhouse.ru/assets/exmodule/ready-homes/h3-plan.webp",
+        "type": "plan",
+        "sourceUrl": "https://exmodulhouse.ru/gotovye-doma/dom-67-5m2-veteranov-truda"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Готовые дома с участками в Новокаменском",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "5 800 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "15 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": "1",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/images/tild6338-6361-4362-b366-666366643465__dom1_cover_1200x675.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6432-3335-4037-a633-666232326362__dom1_07_dva_doma_na_.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3666-6162-4330-a439-346637303235__dom1_08_obshiy_vid.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6630-6164-4433-b533-373131353666__dom1_01_fasad_s_terr.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6232-3163-4363-b065-633165643731__dom1_17_hero_fasad.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3338-6562-4664-a265-363336656337__dom1_05_fasad_kresla.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6161-3732-4639-b466-373630383437__dom1_09_kuhnya_gosti.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3461-3531-4366-b161-396237333237__dom1_16_sanuzel.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3062-3739-4332-b738-623539373238__dom1_14_spalnya.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6564-3961-4638-b465-356136613231__dom1_18_planirovka.webp",
+        "type": "plan",
+        "sourceUrl": "https://exmodulhouse.ru/dom-s-uchastkom"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://exmodulhouse.ru/d6",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом «Толстой»",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/d6",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/d6",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "7 440 000 ₽",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/d6",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD, offers.price/lowPrice."
+    },
+    "area": {
+      "value": "33,5 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/d6",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d6",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d6",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d6",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d6",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d6",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d6",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/d6",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d6",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d6",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/images/tild6364-3261-4761-b432-343632386361__0a794dba-bcc2-4a1c-b.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d6"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6137-3836-4536-a666-333662356136__4a26b1d9-6a6b-4af2-a.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d6"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3564-6638-4431-b137-336135356662__59d3fb06-52b8-4619-8.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d6"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3734-6531-4739-a338-333737356666__add5a6ce-2f12-44ff-9.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d6"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3037-3465-4962-b338-363162633066__b4ea4157-2f95-4eab-9.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d6"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3937-3266-4832-b065-383565643430____2026-03-19__123559.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d6"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://exmodulhouse.ru/g1",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Есенин — семейный дом 67 м² для базы отдыха",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/g1",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/g1",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "12 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/g1",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "15 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/g1",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g1",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g1",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": "2",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/g1",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g1",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g1",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g1",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/g1",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g1",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g1",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/images/tild3437-6632-4432-b635-306130653735__glamping_01_exterior.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g1"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6338-6165-4135-b365-323238393536__glamping_01_exterior.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g1"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3866-3566-4238-b034-343130306263__glamping_04_terrace_.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g1"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3464-3437-4266-a632-656635656432__glamping_02_family_i.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g1"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3634-3232-4462-b837-663433656166__glamping_03_bathroom.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g1"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3365-3730-4438-a330-376662323031__glamping_05_plan.webp",
+        "type": "plan",
+        "sourceUrl": "https://exmodulhouse.ru/g1"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://exmodulhouse.ru/d5",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом «Есенин» — 67 м² с двумя спальнями, большой террасой и готовой инженерией",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/d5",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/d5",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "4 686 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/d5",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "67 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/d5",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "9,6 × 7 × 3,2 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/d5",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d5",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": "2",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/d5",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": "05",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://exmodulhouse.ru/d5",
+      "method": "visible-text",
+      "evidence": "Подписанное количество санузлов на странице проекта."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d5",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d5",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/d5",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d5",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d5",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/images/tild3933-3163-4234-b739-303331376436__chatgpt_image_23__20.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d5"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3964-3934-4330-b263-336435666536__21_esenin2_2.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d5"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3065-3061-4633-a536-373262346334__22_esenin2_interior.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d5"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3864-3634-4463-b064-633834396632__23_esenin2_bathroom.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d5"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6661-3439-4264-b133-666539346463__24_esenin2_plan.webp",
+        "type": "plan",
+        "sourceUrl": "https://exmodulhouse.ru/d5"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3037-6130-4264-a534-393837643538__20_esenin2_1.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d5"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://exmodulhouse.ru/g2",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Набоков — атмосферный дом 48 м² для отдыха вдвоём",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/g2",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/g2",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "7 500 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/g2",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "12 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/g2",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g2",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g2",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g2",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g2",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g2",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g2",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/g2",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g2",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g2",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/images/tild6166-3631-4232-b965-353162633939__g2_05_terrace_forest.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3164-6438-4161-b864-613037383538__g2_03_lake_exterior.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3335-3064-4365-b233-386461663835__g2_05_terrace_forest.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6237-6530-4132-b662-313430373636__g2_04_interior_view.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3230-3164-4839-a132-613831633936__g2_02_bathroom_spa.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g2"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6263-6166-4130-b134-643537663737__g2_01_plan.webp",
+        "type": "plan",
+        "sourceUrl": "https://exmodulhouse.ru/g2"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://exmodulhouse.ru/g3",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Чехов — дом 20 м² для быстрых бронирований",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/g3",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/g3",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "100 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/g3",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "20 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/g3",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g3",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g3",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g3",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g3",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g3",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g3",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/g3",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g3",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/g3",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/images/tild3735-6633-4536-b666-396234616662__g3_05_exterior_terra.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g3"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6633-6266-4364-b938-663865333664__converted_webp_1.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g3"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6362-6134-4733-a535-653737356230__converted_webp_2.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g3"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6139-6261-4962-b565-663130663762__---2026-07-31--16032.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/g3"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://exmodulhouse.ru/d4",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом «Есенин» — 70 м² с тремя спальнями для семьи, дачи и жизни за городом",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://exmodulhouse.ru/d4",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://exmodulhouse.ru/d4",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "4 828 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/d4",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "70 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/d4",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "10,1 × 7 × 3,2 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/d4",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d4",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": "3",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://exmodulhouse.ru/d4",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": "05",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://exmodulhouse.ru/d4",
+      "method": "visible-text",
+      "evidence": "Подписанное количество санузлов на странице проекта."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d4",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d4",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://exmodulhouse.ru/d4",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d4",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://exmodulhouse.ru/d4",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://exmodulhouse.ru/images/tild6639-6136-4633-b637-653733343635__chatgpt_image_23__20.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d4"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6432-6534-4136-b138-626164376561__26_esenin3_2.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d4"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild6630-6563-4135-b162-303666636533__27_esenin3_bathroom.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d4"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3836-6466-4564-a130-376564393639__28_esenin3_plan.webp",
+        "type": "plan",
+        "sourceUrl": "https://exmodulhouse.ru/d4"
+      },
+      {
+        "url": "https://exmodulhouse.ru/images/tild3465-6636-4637-b035-326436336233__25_esenin3_1.webp",
+        "type": "photo",
+        "sourceUrl": "https://exmodulhouse.ru/d4"
+      }
+    ],
+    "conflicts": []
+  }
+]

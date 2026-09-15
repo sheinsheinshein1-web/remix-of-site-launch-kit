@@ -1,0 +1,32 @@
+{
+  "generatedAt": "2026-09-12T20:28:16.575Z",
+  "status": "draft",
+  "platform": "tilda",
+  "candidateCount": 5,
+  "confirmedProjectCount": 0,
+  "rejected": [
+    {
+      "url": "https://www.dmbany.ru/proekty-skandizhar",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://www.dmbany.ru/skandyzhar-mini",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://www.dmbany.ru/kupit-dom-s-banej-pod-klyuch",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://www.dmbany.ru/kupit-banyu-iz-brusa-pod-klyuch",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://www.dmbany.ru/kupit-banyu-pod-klyuch",
+      "reason": "Страница не прошла признаки карточки проекта."
+    }
+  ],
+  "conflicts": [],
+  "publicationBlocked": true,
+  "publicationReason": "Импорт создаёт черновик. Публикация разрешается отдельным release gate после проверки конфликтов и идентичности производителя."
+}

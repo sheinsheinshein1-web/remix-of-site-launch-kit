@@ -1,0 +1,197 @@
+{
+  "id": "moduldom-ural",
+  "publicationStatus": "draft",
+  "identity": {
+    "name": {
+      "value": "МОДУЛЬДОМ",
+      "status": "derived",
+      "confidence": 0.75,
+      "sourceUrl": "https://moduldom-ural.ru/",
+      "method": "visible-text",
+      "evidence": "Название взято из og:site_name, H1 или title и требует редакторской проверки."
+    },
+    "logo": {
+      "value": "https://moduldom-ural.ru/sites/default/files/logo.svg",
+      "status": "derived",
+      "confidence": 0.72,
+      "sourceUrl": "https://moduldom-ural.ru/",
+      "method": "media",
+      "evidence": "Изображение с явным признаком logo в имени файла."
+    }
+  },
+  "contacts": {
+    "siteUrl": "https://moduldom-ural.ru/",
+    "phones": {
+      "value": [
+        "+7 (343) 200-24-23",
+        "+7 (982) 704-00-02",
+        "+7 (343) 200-24-23",
+        "+7 (982) 704-00-02"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://moduldom-ural.ru/",
+      "method": "visible-text",
+      "evidence": "Телефоны найдены на официальных страницах."
+    },
+    "emails": {
+      "value": [
+        "moduldom@mail.ru"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://moduldom-ural.ru/",
+      "method": "visible-text",
+      "evidence": "Email найдены на официальных страницах."
+    },
+    "telegram": {
+      "value": "https://t.me/moduldomural96",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://moduldom-ural.ru/",
+      "method": "link",
+      "evidence": "Ссылка Telegram опубликована на официальном сайте."
+    },
+    "youtube": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://moduldom-ural.ru/",
+      "method": "not-found",
+      "evidence": "YouTube не найден на официальном сайте."
+    }
+  },
+  "catalog": {
+    "sourceUrl": "https://moduldom-ural.ru/modulnye-dachnye-doma.html",
+    "discoveredProjectCount": 0,
+    "expectedProjectCount": 22
+  },
+  "legal": {
+    "operator": {
+      "value": "ООО «ЯНДЕКС»",
+      "status": "derived",
+      "confidence": 0.7,
+      "sourceUrl": "https://moduldom-ural.ru/",
+      "method": "visible-text",
+      "evidence": "Оператор найден в официальном тексте; связь требует проверки по реквизитам."
+    },
+    "inn": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://moduldom-ural.ru/",
+      "method": "not-found",
+      "evidence": "ИНН не опубликован."
+    },
+    "ogrn": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://moduldom-ural.ru/",
+      "method": "not-found",
+      "evidence": "ОГРН или ОГРНИП не опубликован."
+    }
+  },
+  "production": {
+    "address": {
+      "value": "Свердловская область, г. Березовский, территория Южная промзона 24А Номер",
+      "status": "derived",
+      "confidence": 0.72,
+      "sourceUrl": "https://moduldom-ural.ru/",
+      "method": "visible-text",
+      "evidence": "Фрагмент рядом с указанием производства; адрес требует нормализации."
+    }
+  },
+  "reviews": {
+    "externalProfile": {
+      "value": "https://yandex.com/maps/org/moduldom_ural/52175958942/reviews/?ll=60.668010%2C56.873416&utm_content=more-reviews&utm_medium=reviews&utm_source=maps-reviews-widget&z=17",
+      "status": "derived",
+      "confidence": 0.75,
+      "sourceUrl": "https://moduldom-ural.ru/",
+      "method": "link",
+      "evidence": "Внешний профиль найден на официальном сайте; идентичность организации требует проверки."
+    }
+  },
+  "builtObjects": {
+    "sourcePage": {
+      "value": "https://moduldom-ural.ru/uslugi/dopolnitelnye-raboty-po-mestu",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://moduldom-ural.ru/uslugi/dopolnitelnye-raboty-po-mestu",
+      "method": "link",
+      "evidence": "Официальная страница портфолио или объектов."
+    },
+    "media": [
+      {
+        "url": "https://moduldom-ural.ru/sites/all/themes/vesta_theme/image/mmenu.svg",
+        "type": "photo",
+        "sourceUrl": "https://moduldom-ural.ru/uslugi/dopolnitelnye-raboty-po-mestu"
+      },
+      {
+        "url": "https://moduldom-ural.ru/sites/all/themes/vesta_theme/image/search.svg",
+        "type": "photo",
+        "sourceUrl": "https://moduldom-ural.ru/uslugi/dopolnitelnye-raboty-po-mestu"
+      },
+      {
+        "url": "https://moduldom-ural.ru/sites/default/files/2025-12/1657191354058_0.jpg",
+        "type": "photo",
+        "sourceUrl": "https://moduldom-ural.ru/uslugi/dopolnitelnye-raboty-po-mestu"
+      },
+      {
+        "url": "https://moduldom-ural.ru/sites/default/files/2025-12/1742807760412_0.jpg",
+        "type": "photo",
+        "sourceUrl": "https://moduldom-ural.ru/uslugi/dopolnitelnye-raboty-po-mestu"
+      },
+      {
+        "url": "https://moduldom-ural.ru/sites/default/files/2025-12/1742808768282_0.jpg",
+        "type": "photo",
+        "sourceUrl": "https://moduldom-ural.ru/uslugi/dopolnitelnye-raboty-po-mestu"
+      },
+      {
+        "url": "https://moduldom-ural.ru/sites/default/files/2025-12/1742808768965_0.jpg",
+        "type": "photo",
+        "sourceUrl": "https://moduldom-ural.ru/uslugi/dopolnitelnye-raboty-po-mestu"
+      },
+      {
+        "url": "https://moduldom-ural.ru/sites/default/files/2025-12/1742809348063-min_0.jpg",
+        "type": "photo",
+        "sourceUrl": "https://moduldom-ural.ru/uslugi/dopolnitelnye-raboty-po-mestu"
+      },
+      {
+        "url": "https://moduldom-ural.ru/sites/default/files/2025-12/1742809348091-min_0.jpg",
+        "type": "photo",
+        "sourceUrl": "https://moduldom-ural.ru/uslugi/dopolnitelnye-raboty-po-mestu"
+      },
+      {
+        "url": "https://moduldom-ural.ru/sites/default/files/2025-12/DSC01864-min_0.JPG",
+        "type": "photo",
+        "sourceUrl": "https://moduldom-ural.ru/uslugi/dopolnitelnye-raboty-po-mestu"
+      },
+      {
+        "url": "https://moduldom-ural.ru/sites/default/files/2025-12/IMG-20250418-WA0016_0.jpg",
+        "type": "photo",
+        "sourceUrl": "https://moduldom-ural.ru/uslugi/dopolnitelnye-raboty-po-mestu"
+      },
+      {
+        "url": "https://moduldom-ural.ru/sites/default/files/2025-12/P_20170814_151958-min_0.jpg",
+        "type": "photo",
+        "sourceUrl": "https://moduldom-ural.ru/uslugi/dopolnitelnye-raboty-po-mestu"
+      },
+      {
+        "url": "https://moduldom-ural.ru/sites/default/files/2025-12/WhatsApp%20Image%202023-09-22%20at%2015.31.37_0.jpeg",
+        "type": "photo",
+        "sourceUrl": "https://moduldom-ural.ru/uslugi/dopolnitelnye-raboty-po-mestu"
+      },
+      {
+        "url": "https://moduldom-ural.ru/sites/default/files/2025-12/WhatsApp%20Image%202023-11-24%20at%2012.45.20%20%282%29_0.jpeg",
+        "type": "photo",
+        "sourceUrl": "https://moduldom-ural.ru/uslugi/dopolnitelnye-raboty-po-mestu"
+      },
+      {
+        "url": "https://moduldom-ural.ru/sites/all/themes/vesta_theme/image/up.svg",
+        "type": "photo",
+        "sourceUrl": "https://moduldom-ural.ru/uslugi/dopolnitelnye-raboty-po-mestu"
+      }
+    ]
+  }
+}

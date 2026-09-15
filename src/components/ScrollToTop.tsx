@@ -11,6 +11,7 @@ const ScrollRestoration = () => {
   const activeKeyRef = useRef(key);
   const activePathRef = useRef(pathname);
   const lastPositionRef = useRef(typeof window === "undefined" ? 0 : window.scrollY);
+  const restoringRef = useRef(false);
 
   useLayoutEffect(() => {
     const previousRestoration = window.history.scrollRestoration;
@@ -18,8 +19,10 @@ const ScrollRestoration = () => {
 
     let scrollFrame = 0;
     const rememberCurrentPosition = () => {
+      if (restoringRef.current) return;
       window.cancelAnimationFrame(scrollFrame);
       scrollFrame = window.requestAnimationFrame(() => {
+        if (restoringRef.current) return;
         lastPositionRef.current = window.scrollY;
         saveScrollPosition(activeKeyRef.current, lastPositionRef.current);
       });
@@ -57,16 +60,12 @@ const ScrollRestoration = () => {
     let cancelled = false;
     let userInterruptedRestore = false;
     let frame = 0;
-    let spacerTimer = 0;
-    const previousBodyMinHeight = document.body.style.minHeight;
-
-    const clearTemporaryHeight = () => {
-      window.clearTimeout(spacerTimer);
-      document.body.style.minHeight = previousBodyMinHeight;
-    };
 
     const interruptRestore = () => {
       userInterruptedRestore = true;
+      restoringRef.current = false;
+      lastPositionRef.current = window.scrollY;
+      saveScrollPosition(key, lastPositionRef.current);
     };
 
     const removeRestoreInterruptListeners = () => {
@@ -96,24 +95,28 @@ const ScrollRestoration = () => {
     const restorePosition = (targetPosition: number) => {
       const requiredHeight = targetPosition + window.innerHeight + 2;
       const startedAt = performance.now();
+      restoringRef.current = true;
       window.addEventListener("wheel", interruptRestore, { passive: true });
       window.addEventListener("touchstart", interruptRestore, { passive: true });
       window.addEventListener("keydown", interruptRestore);
       document.addEventListener("pointerdown", interruptRestore);
-      document.body.style.minHeight = `${Math.max(document.body.scrollHeight, requiredHeight)}px`;
-      window.scrollTo({ top: targetPosition, left: 0, behavior: "auto" });
 
       const finishWhenReady = () => {
-        if (cancelled) return;
+        if (cancelled || userInterruptedRestore) return;
         const contentHeight = document.getElementById("root")?.scrollHeight ?? 0;
         const contentIsReady = contentHeight >= requiredHeight - 2;
         const timedOut = performance.now() - startedAt >= RESTORE_TIMEOUT;
+        const currentMaxPosition = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+
+        // Никогда не прокручиваем ниже реального контента: именно искусственная
+        // высота раньше показывала белой экран перед прыжком к футеру.
+        window.scrollTo({ top: Math.min(targetPosition, currentMaxPosition), left: 0, behavior: "auto" });
 
         if (contentIsReady || timedOut) {
-          clearTemporaryHeight();
           const settleStartedAt = performance.now();
           const keepPositionStable = () => {
             if (cancelled || userInterruptedRestore) {
+              restoringRef.current = false;
               removeRestoreInterruptListeners();
               return;
             }
@@ -121,23 +124,21 @@ const ScrollRestoration = () => {
             const restoredPosition = Math.min(targetPosition, maxPosition);
             window.scrollTo({ top: restoredPosition, left: 0, behavior: "auto" });
             lastPositionRef.current = restoredPosition;
-            saveScrollPosition(key, restoredPosition);
             if (performance.now() - settleStartedAt < RESTORE_SETTLE_TIME) {
               frame = window.requestAnimationFrame(keepPositionStable);
             } else {
+              restoringRef.current = false;
+              saveScrollPosition(key, restoredPosition);
               removeRestoreInterruptListeners();
             }
           };
           frame = window.requestAnimationFrame(keepPositionStable);
           return;
         }
-
-        window.scrollTo({ top: targetPosition, left: 0, behavior: "auto" });
         frame = window.requestAnimationFrame(finishWhenReady);
       };
 
       frame = window.requestAnimationFrame(finishWhenReady);
-      spacerTimer = window.setTimeout(clearTemporaryHeight, RESTORE_TIMEOUT + 200);
     };
 
     if (navigationType === "POP") {
@@ -159,9 +160,9 @@ const ScrollRestoration = () => {
 
     return () => {
       cancelled = true;
+      restoringRef.current = false;
       window.cancelAnimationFrame(frame);
       removeRestoreInterruptListeners();
-      clearTemporaryHeight();
     };
   }, [key, pathname, hash, navigationType]);
 

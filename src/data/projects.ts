@@ -19,22 +19,37 @@
 //      в gallery (имя содержит plan/floor/_<номер> или превью почти белое).
 //    • edgeBleed: true — ТОЛЬКО для рендеров на белом/прозрачном фоне (Bygge).
 //      Для реальных фото с небом/травой и для планов — НЕ ставь.
-// 5. technology — используй ТОЧНО одно из значений каталожного фильтра:
+// 5. Разделы профиля производителя не задаются вручную:
+//    • productType: "bath" — только готовая баня; дом и комплекс дом+баня
+//      остаются в разделе «Дома»;
+//    • useCases — только подтверждённые коммерческие сценарии. Они добавляют
+//      карточку в «Для бизнеса», не меняя её фактический тип.
+// 6. technology — используй ТОЧНО одно из значений каталожного фильтра:
 //      "Модульный дом" | "Каркасный" | "Домокомплект" | "СИП-Префаб"
 //    (см. src/pages/Catalog.tsx — иначе проект не попадёт в фильтры).
-// 6. city — должен совпадать с cityValue базового региона в src/data/regions.ts.
+// 7. city — должен совпадать с cityValue базового региона в src/data/regions.ts.
 //
 // Всё остальное (профиль, главная, регионы, рейтинг, поиск, sitemap,
 // пререндер, счётчики и карточки) должно читать этот реестр и проекты.
 // ============================================================================
 
 import { isPublicProject } from "@/data/catalogVisibility";
+import { generatedCatalogRegistry } from "@/data/generatedCatalogRegistry";
 import {
   type Manufacturer,
   manufacturerRegistry,
 } from "@/data/manufacturers";
 
 export type { Maker } from "@/data/manufacturers";
+
+export type ProjectUseCase =
+  | "rental"
+  | "glamping"
+  | "recreation-center"
+  | "hotel"
+  | "office"
+  | "cafe"
+  | "retail";
 
 
 
@@ -63,10 +78,12 @@ import bear86Plan3d from "@/assets/bear86-plan-3d.webp";
 import bear86Plan from "@/assets/bear86-plan.webp";
 import bear134_1 from "@/assets/bear134-1.webp";
 import bear134_2 from "@/assets/bear134-2.webp";
+import bear134_3 from "@/assets/bear134-3.webp";
 import bear134Plan3d from "@/assets/bear134-plan-3d.webp";
 import bear134Plan from "@/assets/bear134-plan.webp";
 import vast140_1 from "@/assets/vast140-1.webp";
 import vast140_2 from "@/assets/vast140-2.webp";
+import vast140_3 from "@/assets/vast140-3.webp";
 import vast140Plan3d from "@/assets/vast140-plan-3d.webp";
 import vast140Plan from "@/assets/vast140-plan.webp";
 import bear168_1 from "@/assets/bear168-1.webp";
@@ -1440,7 +1457,24 @@ import rusmodulScandicDouble60_2 from "@/assets/rusmodul-spb/scandic-double-60/0
 import rusmodulScandicDouble60_3 from "@/assets/rusmodul-spb/scandic-double-60/03.webp";
 import rusmodulScandicDouble60Plan from "@/assets/rusmodul-spb/scandic-double-60/plan.webp";
 import rusmodulScandicDouble60Plan2 from "@/assets/rusmodul-spb/scandic-double-60/plan-2.webp";
+import {
+  bmDomCatalogProjects,
+  budushiyDomAdditionalProjects,
+  byggeAdditionalProjects,
+  daHomeCatalogProjects,
+  eModuleStroyCatalogProjects,
+  exModuleCatalogProjects,
+  fpsAdditionalProjects,
+  glavlesAdditionalProjects,
+  lesprom96CatalogProjects,
+  moduldomUralCatalogProjects,
+  prefabiaCatalogProjects,
+  russianModularHouseCatalogProjects,
+  sqModylCatalogProjects,
+  zharParychCatalogProjects,
+} from "@/data/manufacturerCatalogProjects";
 import { regionalBatchProjects } from "@/data/regionalBatchProjects";
+import { generatedProjectMedia } from "@/data/generatedProjectMedia";
 
 // ============================================================================
 // ТИПЫ
@@ -1462,6 +1496,8 @@ export type Project = {
   price: string; // "5 480 000 ₽" или "по запросу"
   area: string;
   area_m2?: number;
+  /** Зафиксированная площадь в старом SEO-slug; нужна только при уточнении площади без смены URL. */
+  routeArea_m2?: number;
   beds: number;
   kitchens?: number;
   baths: number;
@@ -1475,8 +1511,19 @@ export type Project = {
   deliveryRegionSlugs?: string[];
   /** Ссылка на конкретный проект у производителя; сайт компании хранится только в реестре производителей. */
   sourceUrl?: string;
-  /** Тип объекта для разделения домов, бань и комбинированных проектов. */
+  /** Поля, значение которых подтверждено на странице конкретного проекта. */
+  sourceVerifiedFields?: Array<
+    | "technology"
+    | "insulation"
+    | "completion"
+    | "bedrooms"
+    | "bathrooms"
+    | "floors"
+  >;
+  /** Фактический тип объекта. Комбинированный дом с баней относится к жилым проектам в профиле производителя. */
   productType?: "house" | "bath" | "house-bath";
+  /** Подтверждённые коммерческие сценарии. Не меняют фактический тип объекта. */
+  useCases?: ProjectUseCase[];
   dimensions?: string;
   steamRoomArea?: string;
   steamRoomFinish?: string;
@@ -1504,18 +1551,20 @@ export type Project = {
 // ============================================================================
 
 /** Полный набор исходных данных, включая временно скрытые продукты. */
-const projectRecords: Project[] = [
+export const projectRecords: Project[] = [
   // ── Платформа · Екатеринбург ────────────────────────────────────────────
   {
     id: 31, name: "Twin House", badge: "Дом и баня", price: "3 102 000 ₽",
     area: "75 м²", beds: 1, baths: 1, floors: 1, term: "60 д.",
-    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma", productType: "house-bath",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma", sourceUrl: "https://platforma-modul.ru/twin-house", productType: "house-bath",
+    useCases: ["rental", "glamping", "recreation-center"],
     description: "Комплекс из жилого дома, модульной бани и большой общей террасы. Кухня-гостиная, спальня, санузел, парная и зона отдыха.",
     descriptionLong: "Twin House объединяет жилой модуль и баню общей террасой площадью 31,55 м². В доме предусмотрены кухня-гостиная, спальня и санузел; в бане — отдельная парная и зона отдыха. Жилая площадь — 26,85 м², высота потолка — 2,7 м.",
     gallery: [
       { image: "https://optim.tildacdn.com/stor6130-3934-4462-a637-643936306363/-/resize/1600x1200/-/format/webp/34561865.jpg.webp", type: "photo" },
       { image: "https://optim.tildacdn.com/tild6235-6339-4532-b938-366338323235/-/format/webp/23878263jpg.webp", type: "photo" },
-      { image: "https://optim.tildacdn.com/tild3961-3064-4835-b364-303536373336/-/format/webp/96045897jpg.webp", type: "photo" },
+      { image: "https://optim.tildacdn.com/tild3961-3064-4835-b364-303536373336/-/format/webp/96045897jpg.webp", type: "plan", fit: "contain" },
+      { image: "https://static.tildacdn.com/tild3838-3736-4236-a137-363764633034/35_c__.webp", type: "plan", fit: "contain" },
     ],
     likes: 0, rating: 0,
     suitableFor: ["Постоянное проживание", "Для одного / пары", "Выходные / дача", "Гостевой дом"],
@@ -1525,15 +1574,15 @@ const projectRecords: Project[] = [
   },
   {
     id: 32, name: "Wide House", badge: "Жилой дом", price: "5 480 000 ₽",
-    area: "46,4 м²", beds: 2, baths: 1, floors: 1, term: "30 д.",
-    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma",
-    description: "Одноэтажный дом 9,2 × 7,2 м с двускатной кровлей и террасой. Две спальни, санузел, кухня-гостиная.",
-    descriptionLong: "Wide House — компактный загородный дом площадью 46,4 м² с продуманной планировкой: две спальни (6,25 и 13,88 м²), санузел 4,44 м², кухня 7,94 м², гостиная 8,9 м², прихожая 2,57 м² и терраса 10,36 м². Деревянный каркас, металлическая фальцевая кровля, панорамное остекление гостиной.",
+    area: "56,8 м²", area_m2: 56.8, routeArea_m2: 46.4, beds: 2, baths: 1, floors: 1, term: "60 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma", sourceUrl: "https://platforma-modul.ru/wide-house",
+    description: "Одноэтажный дом общей площадью 56,8 м² с двускатной кровлей и террасой. Две спальни, санузел, кухня-гостиная.",
+    descriptionLong: "Wide House — компактный загородный дом общей площадью 56,8 м². Жилая площадь 46,4 м²: две спальни (6,25 и 13,88 м²), санузел 4,44 м², кухня 7,94 м², гостиная 8,9 м² и прихожая 2,57 м². Площадь террасы — 10,36 м². Деревянный каркас, металлическая фальцевая кровля, панорамное остекление гостиной.",
     gallery: [
       { image: wideHouse1, type: "photo" },
       { image: wideHouse2, type: "photo" },
-      { image: wideHousePlan3d, type: "photo", fit: "contain" },
-      { image: wideHousePlan, type: "photo", fit: "contain" },
+      { image: wideHousePlan3d, type: "plan", fit: "contain" },
+      { image: wideHousePlan, type: "plan", fit: "contain" },
     ],
     likes: 83, rating: 4.8,
     suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"],
@@ -1543,15 +1592,16 @@ const projectRecords: Project[] = [
   },
   {
     id: 33, name: "Barn House", badge: "Жилой дом", price: "1 680 000 ₽",
-    area: "42,9 м²", beds: 1, baths: 1, floors: 1, term: "30 д.",
-    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma",
+    area: "42,9 м²", beds: 1, baths: 1, floors: 1, term: "60 д.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma", sourceUrl: "https://platforma-modul.ru/barn-house",
+    useCases: ["rental", "glamping"],
     description: "Одноэтажный модульный дом 9,8 × 5,2 м с двускатной кровлей и террасой 22,9 м². Спальня-гостиная, санузел с ванной, кухня.",
     descriptionLong: "Barn House — компактный загородный дом площадью 42,9 м² с продуманной планировкой: гостиная 14,07 м², санузел 4,06 м², прихожая 1,92 м² и просторная терраса 22,89 м². Деревянный каркас, фальцевая металлическая кровля, панорамное остекление по торцу с выходом на террасу.",
     gallery: [
       { image: cabin31_1, type: "photo" },
       { image: cabin31_2, type: "photo" },
-      { image: cabin31Plan3d, type: "photo", fit: "contain" },
-      { image: cabin31Plan, type: "photo", fit: "contain" },
+      { image: cabin31Plan3d, type: "plan", fit: "contain" },
+      { image: cabin31Plan, type: "plan", fit: "contain" },
     ],
     likes: 62, rating: 4.8,
     suitableFor: ["Постоянное проживание", "Для одного / пары", "Выходные / дача"],
@@ -1561,16 +1611,17 @@ const projectRecords: Project[] = [
   },
   {
     id: 34, name: "Bear House 45", badge: "Жилой дом", price: "2 207 000 ₽",
-    area: "41 м²", beds: 1, baths: 1, floors: 1, term: "30 д.",
-    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma",
+    area: "41 м²", beds: 1, baths: 1, floors: 1, term: "60 д.",
+    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma", sourceUrl: "https://platforma-modul.ru/bear-house-45",
+    useCases: ["rental", "glamping"],
     description: "Одноэтажный модульный дом 9,0 × 5,3 м с двускатной кровлей и крытой террасой 12,3 м². Спальня, санузел, кухня-гостиная с панорамным остеклением.",
     descriptionLong: "Bear House 45 — компактный загородный дом площадью 41 м² с продуманной планировкой: кухня-гостиная 18,22 м², спальня 5,29 м², санузел 5,09 м² и крытая терраса 12,34 м². Деревянный каркас, фальцевая металлическая кровля, панорамное остекление с выходом на террасу.",
     gallery: [
       { image: bear1, type: "photo" },
       { image: bear2, type: "photo" },
       { image: bear3, type: "photo" },
-      { image: bearPlan3d, type: "photo", fit: "contain" },
-      { image: bearPlan, type: "photo", fit: "contain" },
+      { image: bearPlan3d, type: "plan", fit: "contain" },
+      { image: bearPlan, type: "plan", fit: "contain" },
     ],
     likes: 51, rating: 4.8,
     suitableFor: ["Постоянное проживание", "Для одного / пары", "Выходные / дача"],
@@ -1580,15 +1631,15 @@ const projectRecords: Project[] = [
   },
   {
     id: 35, name: "Bear House 77", badge: "Жилой дом", price: "3 894 700 ₽",
-    area: "61,32 м²", beds: 2, baths: 1, floors: 1, term: "45 д.",
-    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma",
+    area: "61,32 м²", beds: 2, baths: 1, floors: 1, term: "60 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma", sourceUrl: "https://platforma-modul.ru/bear-house-77",
     description: "Одноэтажный модульный дом 11,1 × 6,06 м с плоской кровлей и террасой 15,92 м². Две спальни, кухня-гостиная, санузел.",
     descriptionLong: "Bear House 77 — загородный дом площадью 61,32 м² с продуманной планировкой: гостиная 17,08 м², кухня 4,88 м², две спальни по 8,21 м², санузел 3,76 м², прихожая 3,26 м² и просторная терраса 15,92 м². Деревянный каркас, плоская кровля, панорамное остекление гостиной с выходом на террасу.",
     gallery: [
       { image: bear77_1, type: "photo" },
       { image: bear77_2, type: "photo" },
-      { image: bear77Plan3d, type: "photo", fit: "contain" },
-      { image: bear77Plan, type: "photo", fit: "contain" },
+      { image: bear77Plan3d, type: "plan", fit: "contain" },
+      { image: bear77Plan, type: "plan", fit: "contain" },
     ],
     likes: 68, rating: 4.8,
     suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"],
@@ -1598,16 +1649,16 @@ const projectRecords: Project[] = [
   },
   {
     id: 36, name: "Bear House 86", badge: "Жилой дом", price: "4 349 000 ₽",
-    area: "68,7 м²", beds: 2, baths: 2, floors: 1, term: "50 д.",
-    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma",
+    area: "68,7 м²", beds: 2, baths: 2, floors: 1, term: "60 д.",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma", sourceUrl: "https://platforma-modul.ru/bear-house-86",
     description: "Одноэтажный модульный дом 13,7 × 6,17 м с двускатной кровлей и террасой 9,24 м². Две спальни, два санузла, кухня и гостиная.",
     descriptionLong: "Bear House 86 — загородный дом площадью 68,7 м² с продуманной планировкой: кухня 15,06 м², гостиная 12,01 м², две спальни (9,24 и 13,60 м²), два санузла (4,44 и 2,60 м²), коридор 2,51 м² и крытая терраса 9,24 м². Деревянный каркас, фальцевая металлическая кровля, панорамное остекление гостиной с выходом на террасу.",
     gallery: [
       { image: bear86_1, type: "photo" },
       { image: bear86_2, type: "photo" },
       { image: bear86_3, type: "photo" },
-      { image: bear86Plan3d, type: "photo", fit: "contain" },
-      { image: bear86Plan, type: "photo", fit: "contain" },
+      { image: bear86Plan3d, type: "plan", fit: "contain" },
+      { image: bear86Plan, type: "plan", fit: "contain" },
     ],
     likes: 75, rating: 4.8,
     suitableFor: ["Постоянное проживание", "Для семьи"],
@@ -1618,12 +1669,13 @@ const projectRecords: Project[] = [
   {
     id: 37, name: "Bear House 134", badge: "Жилой дом", price: "8 762 000 ₽",
     area: "110 м²", beds: 2, baths: 2, floors: 1, term: "60 д.",
-    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma",
+    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma", sourceUrl: "https://platforma-modul.ru/bear-house-134",
     description: "Семейный модульный дом с мастер-спальней, двумя санузлами, светлой кухней-гостиной и двумя террасами.",
     descriptionLong: "Bear House 134 — семейный дом площадью 110 м². Планировка включает две спальни, два санузла, гардеробную, кухню 9,53 м², гостиную 20,20 м² и две террасы площадью 13,5 и 8 м². Панорамное остекление объединяет общие помещения с участком, высота потолка — 2,8 м.",
     gallery: [
       { image: bear134_1, type: "photo" },
       { image: bear134_2, type: "photo" },
+      { image: bear134_3, type: "photo" },
       { image: bear134Plan3d, type: "plan", fit: "contain" },
       { image: bear134Plan, type: "plan", fit: "contain" },
     ],
@@ -1636,12 +1688,13 @@ const projectRecords: Project[] = [
   {
     id: 38, name: "Vast House 140", badge: "Жилой дом", price: "8 077 600 ₽",
     area: "114,9 м²", beds: 5, baths: 2, floors: 1, term: "60 д.",
-    rooms: "5 спален", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma",
+    rooms: "5 спален", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma", sourceUrl: "https://platforma-modul.ru/vast-house",
     description: "Просторный модульный дом для большой семьи с пятью спальнями, двумя санузлами и большой кухней-гостиной.",
     descriptionLong: "Vast House 140 — семейный дом площадью 114,9 м². В нём предусмотрены пять спален, два санузла, кухня 18,10 м² и просторная гостиная 23,76 м². Проект допускает дальнейшее расширение дополнительными модулями; высота потолка — 2,7 м.",
     gallery: [
       { image: vast140_1, type: "photo" },
       { image: vast140_2, type: "photo" },
+      { image: vast140_3, type: "photo" },
       { image: vast140Plan3d, type: "plan", fit: "contain" },
       { image: vast140Plan, type: "plan", fit: "contain" },
     ],
@@ -1654,7 +1707,7 @@ const projectRecords: Project[] = [
   {
     id: 39, name: "Bear House 168", badge: "Жилой дом", price: "12 110 400 ₽",
     area: "146,4 м²", beds: 3, baths: 3, floors: 1, term: "60 д.",
-    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma",
+    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург", manufacturerId: "platforma", sourceUrl: "https://platforma-modul.ru/bear-house-168",
     description: "Большой семейный дом с тремя спальнями, тремя санузлами, гардеробной, кладовой и кухней-гостиной с камином.",
     descriptionLong: "Bear House 168 — модульный дом площадью 146,4 м². Три изолированные спальни, три санузла, гардеробная, кладовая и большая кухня-гостиная с камином распределены по отдельным функциональным зонам. Жилая площадь — 113,4 м², две террасы — 11,1 и 10,56 м², высота потолка — 2,8 м.",
     gallery: [
@@ -1712,12 +1765,12 @@ const projectRecords: Project[] = [
   },
   // ── Bygge · Екатеринбург ────────────────────────────────────────────────
   {
-    id: 40, name: "ПАТИО", badge: "Жилой дом", price: "2 598 000 ₽",
-    area: "45 м²", beds: 3, baths: 1, floors: 1, term: "60 д.",
-    rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    id: 40, name: "ПАТИО", badge: "Модульный дом", price: "2 445 000 ₽",
+    area: "45 м²", beds: 2, baths: 1, floors: 1, term: "19 д.",
+    rooms: "3 комнаты, 2 спальни, 1 санузел", purpose: "Жилой дом", city: "Екатеринбург",
     manufacturerId: "bygge", sourceUrl: "https://bygge.ru/katalog/patio/",
-    description: "Модульный дом 7,3 × 6,1 м под ключ. Высота потолка 2,5 м, тёплые полы, оборудованный санузел, вытяжная вентиляция с выходом на крышу.",
-    descriptionLong: "ПАТИО — модульный дом площадью 45 м² с продуманной планировкой и полной заводской готовностью. Высота потолка 2,5 м. Утепление пол / стена / потолок — 200 / 150 / 150 мм. Полностью оборудованный санузел, вытяжная вентиляция с выходом на крышу, кабельные тёплые полы. В подарок — защитная сетка от грызунов.",
+    description: "Модульный дом 7,3 × 6,1 м под ключ с двумя спальнями, кухней-гостиной и оборудованным санузлом.",
+    descriptionLong: "ПАТИО: одноэтажный модульный дом площадью 45 м² и габаритами 7,3 × 6,1 м. На плане предусмотрены две спальни, кухня-гостиная и один санузел. Высота потолка 2,5 м. Утепление пола, стен и потолка: 150 мм. В максимальную комплектацию входят внутренняя отделка, инженерные коммуникации, сантехника, вытяжная и приточная вентиляция, кабельный тёплый пол в санузле и крытая терраса.",
     gallery: [
       { image: patio5, type: "photo", fit: "contain", blur: true, edgeBleed: true },
       { image: patio2, type: "photo", fit: "contain", blur: true, edgeBleed: true },
@@ -1727,22 +1780,23 @@ const projectRecords: Project[] = [
       { image: patio6, type: "photo", fit: "contain", blur: true, edgeBleed: true },
       { image: patio7, type: "photo", fit: "contain", blur: true, edgeBleed: true },
       { image: patio8, type: "photo", fit: "contain", blur: true, edgeBleed: true },
-      { image: patioPlan1, type: "photo", fit: "contain" },
-      { image: patioPlan2, type: "photo", fit: "contain" },
+      { image: patioPlan1, type: "plan", fit: "contain" },
+      { image: patioPlan2, type: "plan", fit: "contain" },
     ],
     likes: 35, rating: 4.7,
-    suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"],
-    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
-    features: ["Тёплые полы", "Вытяжная вентиляция"], style: "Современный", landSize: "3–6 соток",
-    hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
+    suitableFor: [],
+    technology: "Каркасно-модульный", completion: "Под ключ", insulation: "150 мм",
+    features: ["Тёплые полы", "Вытяжная вентиляция"], style: "Не указан", landSize: "по проекту",
+    hasRealPhotos: true, hasShowroom: true, hasInstallment: false,
   },
   {
-    id: 41, name: "ТУНДРА", badge: "Жилой дом", price: "5 990 000 ₽",
-    area: "96 м²", beds: 4, baths: 1, floors: 1, term: "60 д.",
-    rooms: "4 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    id: 41, name: "ТУНДРА", badge: "Жилой дом", price: "4 283 000 ₽",
+    area: "96 м²", beds: 4, baths: 1, floors: 1, term: "35 д.",
+    rooms: "4 комнаты", purpose: "ИЖС / СНТ", city: "Екатеринбург",
     manufacturerId: "bygge", sourceUrl: "https://bygge.ru/katalog/tundra/",
+    dimensions: "8 × 12 м",
     description: "Барнхаус 8 × 12 м для круглогодичного проживания. Высота потолка 3 м, оборудованный санузел, вытяжная вентиляция с выходом на крышу.",
-    descriptionLong: "ТУНДРА — барнхаус площадью 96 м² для круглогодичного проживания. Высота потолка 3 м. Утепление пол / стена / потолок — 200 / 150 / 150 мм. Полностью оборудованный санузел, вытяжная вентиляция с выходом на крышу. В подарок — конвекторы отопления.",
+    descriptionLong: "ТУНДРА: модульный дом площадью 96 м² и габаритами 8 × 12 м. В характеристиках производителя указаны четыре комнаты и высота потолка 3 м. Утепление пола: 200 мм, стен: 150 мм, потолка: 150 мм. Стартовая стоимость относится к комплектации «Тёплый контур».",
     gallery: [
       { image: tundra1, type: "photo", fit: "contain", blur: true, edgeBleed: true },
       { image: tundra2, type: "photo", fit: "contain", blur: true, edgeBleed: true },
@@ -1751,23 +1805,24 @@ const projectRecords: Project[] = [
       { image: tundra5, type: "photo", fit: "contain", blur: true, edgeBleed: true },
       { image: tundra6, type: "photo", fit: "contain", blur: true, edgeBleed: true },
       { image: tundra7, type: "photo", fit: "contain", blur: true, edgeBleed: true },
-      { image: tundraPlan1, type: "photo", fit: "contain" },
-      { image: tundraPlan2, type: "photo", fit: "contain" },
-      { image: tundraPlan3, type: "photo", fit: "contain" },
+      { image: tundraPlan1, type: "plan", fit: "contain" },
+      { image: tundraPlan2, type: "plan", fit: "contain" },
+      { image: tundraPlan3, type: "plan", fit: "contain" },
     ],
     likes: 44, rating: 4.8,
     suitableFor: ["Постоянное проживание", "Для семьи"],
-    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    technology: "Каркасно-модульный", completion: "Тёплый контур", insulation: "Пол 200 мм, стены 150 мм, потолок 150 мм",
     features: ["Тёплые полы", "Вытяжная вентиляция", "Барнхаус"], style: "Барнхаус", landSize: "6–10 соток",
     hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
   },
   {
-    id: 42, name: "ШЕРВУД", badge: "Жилой дом", price: "5 635 000 ₽",
-    area: "87 м²", beds: 4, baths: 1, floors: 1, term: "60 д.",
-    rooms: "4 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
+    id: 42, name: "ШЕРВУД", badge: "Жилой дом", price: "4 035 000 ₽",
+    area: "87 м²", beds: 4, baths: 1, floors: 1, term: "35 д.",
+    rooms: "4 комнаты", purpose: "ИЖС / СНТ", city: "Екатеринбург",
     manufacturerId: "bygge", sourceUrl: "https://bygge.ru/katalog/sherwood/",
+    dimensions: "7,3 × 12 м",
     description: "Модульный дом 7,3 × 12 м для круглогодичного проживания. Высота потолка 2,95 м, оборудованный санузел, вытяжная вентиляция с выходом на крышу.",
-    descriptionLong: "ШЕРВУД — модульный дом площадью 87 м² для круглогодичного проживания. Высота потолка 2,95 м. Утепление пол / стена / потолок — 200 / 150 / 150 мм. Полностью оборудованный санузел, вытяжная вентиляция с выходом на крышу. В подарок — конвекторы отопления.",
+    descriptionLong: "ШЕРВУД: модульный дом площадью 87 м² и габаритами 7,3 × 12 м. В характеристиках производителя указаны четыре комнаты и высота потолка 2,95 м. Утепление пола: 200 мм, стен: 150 мм, потолка: 150 мм. Стартовая стоимость относится к комплектации «Тёплый контур».",
     gallery: [
       { image: sherwood1, type: "photo", fit: "contain", blur: true, edgeBleed: true },
       { image: sherwood2, type: "photo", fit: "contain", blur: true, edgeBleed: true },
@@ -1778,21 +1833,21 @@ const projectRecords: Project[] = [
       { image: sherwood7, type: "photo", fit: "contain", blur: true, edgeBleed: true },
       { image: sherwood8, type: "photo", fit: "contain", blur: true, edgeBleed: true },
       { image: sherwood9, type: "photo", fit: "contain", blur: true, edgeBleed: true },
-      { image: sherwoodPlan1, type: "photo", fit: "contain" },
+      { image: sherwoodPlan1, type: "plan", fit: "contain" },
     ],
     likes: 38, rating: 4.8,
     suitableFor: ["Постоянное проживание", "Для семьи"],
-    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    technology: "Каркасно-модульный", completion: "Тёплый контур", insulation: "Пол 200 мм, стены 150 мм, потолок 150 мм",
     features: ["Тёплые полы", "Вытяжная вентиляция"], style: "Современный", landSize: "6–10 соток",
     hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
   },
   {
-    id: 43, name: "СЕНАТ", badge: "Жилой дом", price: "6 545 000 ₽",
-    area: "96 м²", beds: 4, baths: 1, floors: 1, term: "60 д.",
+    id: 43, name: "СЕНАТ", badge: "Жилой дом", price: "4 636 000 ₽",
+    area: "96 м²", beds: 3, baths: 1, floors: 1, term: "35 д.",
     rooms: "4 комнаты", purpose: "ИЖС / СНТ", city: "Екатеринбург",
     manufacturerId: "bygge", sourceUrl: "https://bygge.ru/katalog/senat/",
     description: "Барнхаус 96 м² для круглогодичного проживания. Три спальни, кухня-гостиная, оборудованный санузел, тёплые полы и просторная терраса.",
-    descriptionLong: "СЕНАТ — барнхаус площадью 96 м² для круглогодичного проживания. Планировка: кухня-гостиная 30,2 м², три спальни (10,2; 10; 7 м²), санузел 4,6 м², прихожая 7,5 м², терраса 11,8 м² и крыльцо 3 м². Утепление пол / стена / потолок — 200 / 150 / 150 мм, полностью оборудованный санузел, вытяжная вентиляция с выходом на крышу, кабельные тёплые полы.",
+    descriptionLong: "СЕНАТ: модульный дом площадью 96 м². Планировка включает кухню-гостиную, три спальни, санузел, прихожую, террасу и крыльцо. Утепление пола: 200 мм, стен: 150 мм, потолка: 200 мм. Стартовая стоимость относится к комплектации «Тёплый контур». Корректные габариты на странице производителя не опубликованы.",
     gallery: [
       { image: senat3, type: "photo", fit: "contain", blur: true },
       { image: senat4, type: "photo", fit: "contain", blur: true },
@@ -1803,40 +1858,43 @@ const projectRecords: Project[] = [
       { image: senat7, type: "photo", fit: "contain", blur: true },
       { image: senat8, type: "photo", fit: "contain", blur: true },
       { image: senat9, type: "photo", fit: "contain", blur: true },
-      { image: senatPlan1, type: "photo", fit: "contain" },
+      { image: senatPlan1, type: "plan", fit: "contain" },
     ],
     likes: 40, rating: 4.8,
     suitableFor: ["Постоянное проживание", "Для семьи"],
-    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    technology: "Каркасно-модульный", completion: "Тёплый контур", insulation: "Пол 200 мм, стены 150 мм, потолок 200 мм",
     features: ["Тёплые полы", "Вытяжная вентиляция", "Барнхаус"], style: "Барнхаус", landSize: "6–10 соток",
     hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
   },
   {
-    id: 44, name: "ФАМИЛЬНЫЙ", badge: "Жилой дом", price: "4 050 000 ₽",
-    area: "72 м²", beds: 1, baths: 1, floors: 1, term: "60 д.",
+    id: 44, name: "ФАМИЛЬНЫЙ", badge: "Жилой дом", price: "3 707 000 ₽",
+    area: "72 м²", beds: 1, baths: 1, floors: 1, term: "35 д.",
     rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Екатеринбург",
     manufacturerId: "bygge", sourceUrl: "https://bygge.ru/katalog/family-suite/",
+    dimensions: "8 × 9 м",
     description: "Модульный дом 8 × 9 м для круглогодичного проживания. Кухня-гостиная 29 м², спальня 7,2 м², санузел 4,6 м² и просторная терраса.",
-    descriptionLong: "ФАМИЛЬНЫЙ (Family Suite) — модульный дом площадью 72 м² для круглогодичного проживания. Высота потолка 3 м. Утепление пол / стена / потолок — 200 / 150 / 150 мм. Просторная кухня-гостиная 29 м², отдельная спальня 7,2 м², полностью оборудованный санузел 4,6 м², большая терраса. Вытяжная вентиляция с выходом на крышу, кабельные тёплые полы. В подарок — конвекторы отопления.",
+    descriptionLong: "ФАМИЛЬНЫЙ (Family Suite): модульный дом площадью 72 м² и габаритами 8 × 9 м. В характеристиках производителя указаны две комнаты и высота потолка 3 м. Утепление пола: 200 мм, стен: 150 мм, потолка: 150 мм. Стартовая стоимость относится к комплектации «Макс».",
     gallery: [
       { image: familySuite1, type: "photo", fit: "contain", blur: true },
       { image: familySuite2, type: "photo", fit: "contain", blur: true },
       { image: familySuite3, type: "photo", fit: "contain", blur: true },
-      { image: familySuitePlan1, type: "photo", fit: "contain" },
+      { image: familySuitePlan1, type: "plan", fit: "contain" },
     ],
     likes: 34, rating: 4.7,
     suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"],
-    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    technology: "Каркасно-модульный", completion: "Комплектация «Макс»", insulation: "Пол 200 мм, стены 150 мм, потолок 150 мм",
     features: ["Тёплые полы", "Вытяжная вентиляция", "Терраса"], style: "Современный", landSize: "3–6 соток",
     hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
   },
   {
-    id: 45, name: "ГАЛАНТ", badge: "Жилой дом", price: "3 346 000 ₽",
-    area: "59 м²", beds: 2, baths: 1, floors: 1, term: "35 д.",
+    id: 45, name: "ГАЛАНТ", badge: "Жилой дом", price: "3 135 000 ₽",
+    area: "59 м²", beds: 2, baths: 1, floors: 1, term: "19 д.",
     rooms: "3 комнаты", purpose: "ИЖС / СНТ", city: "Екатеринбург",
     manufacturerId: "bygge", sourceUrl: "https://bygge.ru/katalog/gallant/",
+    dimensions: "7,3 × 8,1 м",
+    useCases: ["rental", "hotel"],
     description: "Модульный дом 7,3 × 8,1 м, 3 комнаты. Полностью оборудованный санузел, кабельные тёплые полы, вытяжная вентиляция.",
-    descriptionLong: "ГАЛАНТ — модульный дом площадью 59 м², размеры 7,3 × 8,1 м, 3 комнаты. Высота потолка 2,5 м. Утепление пол / стена / потолок — 200 / 150 / 150 мм. Полностью оборудованный санузел, вытяжная вентиляция с выходом на крышу, кабельные тёплые полы. В подарок — защитная сетка от грызунов.",
+    descriptionLong: "ГАЛАНТ: модульный дом площадью 59 м² и габаритами 7,3 × 8,1 м. В характеристиках производителя указаны три комнаты и высота потолка 2,5 м. Утепление пола: 200 мм, стен: 150 мм, потолка: 150 мм. Стартовая стоимость относится к комплектации «Макс».",
     gallery: [
       { image: gallant1, type: "photo", fit: "contain", blur: true },
       { image: gallant2, type: "photo", fit: "contain", blur: true },
@@ -1845,21 +1903,22 @@ const projectRecords: Project[] = [
       { image: gallant5, type: "photo", fit: "contain", blur: true },
       { image: gallant6, type: "photo", fit: "contain", blur: true },
       { image: gallant7, type: "photo", fit: "contain", blur: true },
-      { image: gallantPlan1, type: "photo", fit: "contain" },
+      { image: gallantPlan1, type: "plan", fit: "contain" },
     ],
     likes: 31, rating: 4.7,
     suitableFor: ["Постоянное проживание", "Для семьи", "Выходные / дача"],
-    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    technology: "Каркасно-модульный", completion: "Комплектация «Макс»", insulation: "Пол 200 мм, стены 150 мм, потолок 150 мм",
     features: ["Тёплые полы", "Вытяжная вентиляция", "Терраса"], style: "Современный", landSize: "3–6 соток",
     hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
   },
   {
-    id: 46, name: "ГРАНДИС", badge: "Барнхаус", price: "1 585 000 ₽",
-    area: "30 м²", beds: 1, baths: 1, floors: 1, term: "30 д.",
+    id: 46, name: "ГРАНДИС", badge: "Барнхаус", price: "1 439 000 ₽",
+    area: "30 м²", beds: 1, baths: 1, floors: 1, term: "15 д.",
     rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Екатеринбург",
     manufacturerId: "bygge", sourceUrl: "https://bygge.ru/katalog/grandis/",
-    description: "Барнхаус 6 × 5 м, 2 комнаты. Полностью оборудованный санузел, кабельные тёплые полы, вытяжная вентиляция.",
-    descriptionLong: "ГРАНДИС — барнхаус площадью 30 м², размеры 6 × 5 м, 2 комнаты. Высота потолка 2,5 м. Утепление пол / стена / потолок — 200 / 150 / 150 мм. Полностью оборудованный санузел, вытяжная вентиляция с выходом на крышу, кабельные тёплые полы. В подарок — защитная сетка от грызунов.",
+    dimensions: "4,9 × 6 м",
+    description: "Барнхаус 4,9 × 6 м, 2 комнаты. Полностью оборудованный санузел, кабельные тёплые полы, вытяжная вентиляция.",
+    descriptionLong: "ГРАНДИС: барнхаус площадью 30 м² и габаритами 4,9 × 6 м. В характеристиках производителя указаны две комнаты и высота потолка 2,5 м. Утепление пола, стен и потолка: 150 мм. Стартовая стоимость относится к комплектации «Макс».",
     gallery: [
       { image: grandis1, type: "photo", fit: "contain", blur: true },
       { image: grandis2, type: "photo", fit: "contain", blur: true },
@@ -1868,14 +1927,15 @@ const projectRecords: Project[] = [
       { image: grandis5, type: "photo", fit: "contain", blur: true },
       { image: grandis6, type: "photo", fit: "contain", blur: true },
       { image: grandis7, type: "photo", fit: "contain", blur: true },
-      { image: grandisPlan1, type: "photo", fit: "contain" },
+      { image: grandisPlan1, type: "plan", fit: "contain" },
     ],
     likes: 25, rating: 4.7,
     suitableFor: ["Для одного / пары", "Выходные / дача"],
-    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
+    technology: "Каркасно-модульный", completion: "Комплектация «Макс»", insulation: "Пол, стены и потолок: 150 мм",
     features: ["Тёплые полы", "Вытяжная вентиляция", "Терраса"], style: "Барнхаус", landSize: "3–6 соток",
     hasRealPhotos: true, hasShowroom: true, hasInstallment: true,
   },
+  ...byggeAdditionalProjects,
 
   // ── Glezman Group · Пермский край ───────────────────────────────────────────────
   {
@@ -5091,6 +5151,7 @@ const projectRecords: Project[] = [
     area: "35 м²", area_m2: 35, beds: 1, baths: 1, floors: 1, term: "от 2 нед.",
     rooms: "Свободная планировка", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
     manufacturerId: "glavles", sourceUrl: "https://promo.glavles.com/project/8-35-m",
+    useCases: ["rental", "glamping", "recreation-center", "hotel"],
     description: "Модульный дом 5,8 × 5,9 м с плоской кровлей и теплой площадью 35 м².",
     descriptionLong: "Проект 8-35-м от «Главлес» — компактный модульный дом с теплой площадью 35 м². Производитель предлагает свободную планировку, круглогодичную комплектацию и варианты с террасой или банным модулем.",
     gallery: [
@@ -5112,8 +5173,9 @@ const projectRecords: Project[] = [
     area: "27 м²", area_m2: 27, beds: 1, baths: 1, floors: 1, term: "от 2 нед.",
     rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
     manufacturerId: "glavles", sourceUrl: "https://promo.glavles.com/project/8-27-m",
+    useCases: ["rental", "glamping", "recreation-center", "hotel"],
     description: "Просторный модульный дом 5,7 × 6,4 м с отдельной спальней и санузлом.",
-    descriptionLong: "Проект 8-27-м от «Главлес» рассчитан на комфортное проживание до четырех человек. Варианты планировок включают отдельную спальню, большой санузел и исполнение с увеличенной террасой.",
+    descriptionLong: "Проект 8-27-м от «Главлес» рассчитан на комфортное проживание до четырех человек. Варианты планировок включают отдельную спальню, большой санузел и исполнение с увеличенной террасой. Габариты проекта: 5,7 × 6,4 м.",
     gallery: [
       { image: gl827_1, type: "photo", fit: "contain", blur: true },
       { image: gl827_2, type: "photo", fit: "contain", blur: true },
@@ -5133,6 +5195,7 @@ const projectRecords: Project[] = [
     area: "25 м²", area_m2: 25, beds: 1, baths: 1, floors: 1, term: "от 2 нед.",
     rooms: "1 комната", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
     manufacturerId: "glavles", sourceUrl: "https://promo.glavles.com/project/8-25",
+    useCases: ["rental", "glamping", "recreation-center", "hotel"],
     description: "Модульный дом 4,15 × 6,4 м с теплой площадью 25 м² и вариантами планировки.",
     descriptionLong: "Проект 8-25-м от «Главлес» — модуль увеличенной площади, который можно адаптировать под проживание или баню. В карточке производителя есть варианты свободной планировки, стандартной планировки и решения с террасой.",
     gallery: [
@@ -5154,6 +5217,7 @@ const projectRecords: Project[] = [
     area: "68 м²", area_m2: 68, beds: 2, baths: 1, floors: 1, term: "от 2 нед.",
     rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
     manufacturerId: "glavles", sourceUrl: "https://promo.glavles.com/8-68-m",
+    useCases: ["rental", "glamping", "recreation-center", "hotel"],
     description: "Просторный одноэтажный модульный дом 11,86 × 7,96 м с двумя спальнями.",
     descriptionLong: "Проект 8-68-м от «Главлес» — светлый модульный дом площадью 68 м² с двумя спальнями. Производитель указывает сезонную и круглогодичную комплектации, стандартную планировку и опцию открытой террасы.",
     gallery: [
@@ -5175,6 +5239,7 @@ const projectRecords: Project[] = [
     area: "87 м²", area_m2: 87, beds: 3, baths: 1, floors: 2, term: "от 2 нед.",
     rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
     manufacturerId: "glavles", sourceUrl: "https://promo.glavles.com/8-87-m",
+    useCases: ["rental", "glamping", "recreation-center", "hotel"],
     description: "Двухэтажный модульный дом 11,86 × 7,96 м с тремя спальнями.",
     descriptionLong: "Проект 8-87-м от «Главлес» — двухэтажный модульный дом с теплой площадью 87 м² и тремя спальнями. На странице производителя указаны сезонная и круглогодичная комплектации, а также планировки первого и второго этажа.",
     gallery: [
@@ -5191,19 +5256,20 @@ const projectRecords: Project[] = [
     features: ["Два этажа", "Три спальни"], style: "Современный", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
+  ...glavlesAdditionalProjects,
 
   // ── ФПС Модуль · Екатеринбург ──────────────────────────────────────────
   {
     id: 260, name: "АртХаус AH 281", badge: "Модульный дом", price: "2 160 000 ₽",
-    area: "54 м²", area_m2: 54, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    area: "54 м²", area_m2: 54, beds: 1, baths: 1, floors: 1, term: "по запросу", dimensions: "2,9 × 6 × 9 м",
     rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Екатеринбург",
-    manufacturerId: "fps-modul", sourceUrl: "https://fps-modul.ru/modulnyj-dom-ah281",
+    manufacturerId: "fps-modul", sourceUrl: "https://fps-modul.ru/art-haus/modulnyj-dom-ah281",
     description: "Модульный дом АртХаус 54 м², габариты 6 × 9 м, жилая площадь 45,2 м².",
     descriptionLong: "АртХаус AH 281 от «ФПС Модуль» — одноэтажный модульный дом площадью 54 м². На сайте производителя указаны жилая площадь 45,2 м², габариты 6 × 9 м и базовая стоимость без учета террасы, фундамента и доставки.",
     gallery: [
       { image: fpsAh281_1, type: "photo", fit: "contain", blur: true },
-      { image: fpsAh281Plan1, type: "photo", fit: "contain" },
-      { image: fpsAh281Plan2, type: "photo", fit: "contain" },
+      { image: fpsAh281Plan1, type: "plan", fit: "contain" },
+      { image: fpsAh281Plan2, type: "plan", fit: "contain" },
     ],
     likes: 48, rating: 4.8,
     suitableFor: ["Постоянное проживание", "Для одного / пары"],
@@ -5213,15 +5279,15 @@ const projectRecords: Project[] = [
   },
   {
     id: 261, name: "АртХаус AH 313", badge: "Модульный дом", price: "1 800 000 ₽",
-    area: "45 м²", area_m2: 45, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    area: "45 м²", area_m2: 45, beds: 1, baths: 1, floors: 1, term: "по запросу", dimensions: "2,9 × 7,5 × 6 м",
     rooms: "2 комнаты", purpose: "ИЖС / СНТ", city: "Екатеринбург",
-    manufacturerId: "fps-modul", sourceUrl: "https://fps-modul.ru/modulnyj-dom-ah313",
+    manufacturerId: "fps-modul", sourceUrl: "https://fps-modul.ru/art-haus/modulnyj-dom-ah313",
+    useCases: ["rental", "glamping"],
     description: "Модульный дом АртХаус 45 м², габариты 7,5 × 6 м, жилая площадь 36,2 м².",
     descriptionLong: "АртХаус AH 313 от «ФПС Модуль» — компактный одноэтажный дом площадью 45 м². Производитель указывает жилую площадь 36,2 м², внутреннюю высоту потолков 2,4 м и несколько вариантов планировок.",
     gallery: [
       { image: fpsAh313_1, type: "photo", fit: "contain", blur: true },
-      { image: fpsAh313_2, type: "photo", fit: "contain", blur: true },
-      { image: fpsAh313Plan, type: "photo", fit: "contain" },
+      { image: fpsAh313Plan, type: "plan", fit: "contain" },
     ],
     likes: 46, rating: 4.7,
     suitableFor: ["Выходные / дача", "Для одного / пары"],
@@ -5231,15 +5297,23 @@ const projectRecords: Project[] = [
   },
   {
     id: 262, name: "Барнхаус Викинг BH 411", badge: "Модульный дом", price: "1 500 000 ₽",
-    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 2, term: "от 1 мес.",
+    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 2, term: "по запросу", dimensions: "5,6 × 5 × 6 м",
     rooms: "2 комнаты", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
-    manufacturerId: "fps-modul", sourceUrl: "https://fps-modul.ru/barnhaus-viking-bh-411",
+    manufacturerId: "fps-modul", sourceUrl: "https://fps-modul.ru/viking/barnhaus-viking-bh-411",
+    useCases: ["rental", "glamping"],
     description: "Барнхаус Викинг 30 м² с высокой кровлей и вторым уровнем.",
     descriptionLong: "Барнхаус Викинг BH 411 от «ФПС Модуль» — компактный модульный дом с внешними размерами 5 × 6 м и высокой кровлей. Производитель указывает варианты жилой площади 33,7–36,25 м² за счет второго уровня.",
     gallery: [
       { image: fpsBh411_1, type: "photo", fit: "contain", blur: true },
-      { image: fpsBh411Plan1, type: "photo", fit: "contain" },
-      { image: fpsBh411Plan2, type: "photo", fit: "contain" },
+      { image: fpsBh411Plan1, type: "plan", fit: "contain" },
+      { image: fpsBh411Plan2, type: "plan", fit: "contain" },
+      { image: "https://fps-modul.ru/data/uploads/catalog/bh411/plan-3.webp", type: "plan", fit: "contain" },
+      { image: "https://fps-modul.ru/data/uploads/catalog/bh411/plan-4.webp", type: "plan", fit: "contain" },
+      { image: "https://fps-modul.ru/data/uploads/catalog/bh411/plan-5.webp", type: "plan", fit: "contain" },
+      { image: "https://fps-modul.ru/data/uploads/catalog/bh411/plan-6.webp", type: "plan", fit: "contain" },
+      { image: "https://fps-modul.ru/data/uploads/catalog/bh411/plan-7.webp", type: "plan", fit: "contain" },
+      { image: "https://fps-modul.ru/data/uploads/catalog/bh411/plan-8.webp", type: "plan", fit: "contain" },
+      { image: "https://fps-modul.ru/data/uploads/catalog/bh411/x.webp", type: "plan", fit: "contain" },
     ],
     likes: 49, rating: 4.8,
     suitableFor: ["Выходные / дача", "Для одного / пары"],
@@ -5249,15 +5323,25 @@ const projectRecords: Project[] = [
   },
   {
     id: 263, name: "Барнхаус Викинг BH 412", badge: "Модульный дом", price: "2 100 000 ₽",
-    area: "49 м²", area_m2: 49, beds: 2, baths: 1, floors: 2, term: "от 1 мес.",
+    area: "49 м²", area_m2: 49, beds: 2, baths: 1, floors: 2, term: "по запросу", dimensions: "5,6 × 6 × 7 м",
     rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
-    manufacturerId: "fps-modul", sourceUrl: "https://fps-modul.ru/barnhaus-viking-bh-412",
+    manufacturerId: "fps-modul", sourceUrl: "https://fps-modul.ru/viking/barnhaus-viking-bh-412",
     description: "Модульный барнхаус с габаритами 6 × 7 м и вторым уровнем.",
     descriptionLong: "Барнхаус Викинг BH 412 от «ФПС Модуль» — увеличенная версия линейки Викинг. На сайте производителя указана площадь до 49 м², внешние размеры 6 × 7 м и варианты планировок для постоянного или дачного проживания.",
     gallery: [
       { image: fpsBh412_1, type: "photo", fit: "contain", blur: true },
-      { image: fpsBh412Plan1, type: "photo", fit: "contain" },
-      { image: fpsBh412Plan2, type: "photo", fit: "contain" },
+      { image: fpsBh412Plan1, type: "plan", fit: "contain" },
+      { image: fpsBh412Plan2, type: "plan", fit: "contain" },
+      { image: "https://fps-modul.ru/data/uploads/catalog/bh412/plan-10.webp", type: "plan", fit: "contain" },
+      { image: "https://fps-modul.ru/data/uploads/catalog/bh412/plan-11.webp", type: "plan", fit: "contain" },
+      { image: "https://fps-modul.ru/data/uploads/catalog/bh412/plan-3.webp", type: "plan", fit: "contain" },
+      { image: "https://fps-modul.ru/data/uploads/catalog/bh412/plan-4.webp", type: "plan", fit: "contain" },
+      { image: "https://fps-modul.ru/data/uploads/catalog/bh412/plan-5.webp", type: "plan", fit: "contain" },
+      { image: "https://fps-modul.ru/data/uploads/catalog/bh412/plan-6.webp", type: "plan", fit: "contain" },
+      { image: "https://fps-modul.ru/data/uploads/catalog/bh412/plan-7.webp", type: "plan", fit: "contain" },
+      { image: "https://fps-modul.ru/data/uploads/catalog/bh412/plan-8.webp", type: "plan", fit: "contain" },
+      { image: "https://fps-modul.ru/data/uploads/catalog/bh412/plan-9.webp", type: "plan", fit: "contain" },
+      { image: "https://fps-modul.ru/data/uploads/catalog/bh412/x.webp", type: "plan", fit: "contain" },
     ],
     likes: 52, rating: 4.8,
     suitableFor: ["Постоянное проживание", "Для семьи"],
@@ -5267,15 +5351,16 @@ const projectRecords: Project[] = [
   },
   {
     id: 264, name: "Барнхаус BH 403", badge: "Модульный дом", price: "1 200 000 ₽",
-    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 1, term: "от 1 мес.",
+    area: "30 м²", area_m2: 30, beds: 1, baths: 1, floors: 1, term: "по запросу", dimensions: "2,9 × 5 × 6 м",
     rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
-    manufacturerId: "fps-modul", sourceUrl: "https://fps-modul.ru/barnhaus-bh-403",
+    manufacturerId: "fps-modul", sourceUrl: "https://fps-modul.ru/barnhaus/barnhaus-bh-403",
+    useCases: ["rental", "glamping"],
     description: "Компактный барнхаус 30 м², габариты 5 × 6 м, базовая комплектация под ключ.",
     descriptionLong: "Барнхаус BH 403 от «ФПС Модуль» — одноэтажный модульный дом площадью 30 м². В комплектацию входят деревянный каркас, утепление, наружная и внутренняя отделка, окна, двери, электрика и вентиляция.",
     gallery: [
       { image: fpsBh403_1, type: "photo", fit: "contain", blur: true },
-      { image: fpsBh403Plan1, type: "photo", fit: "contain" },
-      { image: fpsBh403Plan2, type: "photo", fit: "contain" },
+      { image: fpsBh403Plan1, type: "plan", fit: "contain" },
+      { image: fpsBh403Plan2, type: "plan", fit: "contain" },
     ],
     likes: 44, rating: 4.7,
     suitableFor: ["Выходные / дача", "Для одного / пары"],
@@ -5283,6 +5368,7 @@ const projectRecords: Project[] = [
     features: ["Барнхаус", "Готовый санузел"], style: "Барнхаус", landSize: "3–6 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
   },
+  ...fpsAdditionalProjects,
 
   // ── Вековые Традиции · Екатеринбург ────────────────────────────────────
   {
@@ -5373,6 +5459,7 @@ const projectRecords: Project[] = [
     ],
     likes: 51, rating: 4.8,
     suitableFor: ["Постоянное проживание", "Для одного / пары"],
+    useCases: ["rental"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
     features: ["Готовый санузел", "Хай-тек"], style: "Хай-тек", landSize: "3–6 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
@@ -5391,6 +5478,7 @@ const projectRecords: Project[] = [
     ],
     likes: 48, rating: 4.7,
     suitableFor: ["Выходные / дача", "Для одного / пары"],
+    useCases: ["rental"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
     features: ["Готовый санузел", "Хай-тек"], style: "Хай-тек", landSize: "3–6 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
@@ -5409,6 +5497,7 @@ const projectRecords: Project[] = [
     ],
     likes: 56, rating: 4.8,
     suitableFor: ["Постоянное проживание", "Для семьи"],
+    useCases: ["rental"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
     features: ["Барнхаус", "Три спальни"], style: "Барнхаус", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
@@ -5427,6 +5516,7 @@ const projectRecords: Project[] = [
     ],
     likes: 47, rating: 4.7,
     suitableFor: ["Выходные / дача", "Для семьи"],
+    useCases: ["rental"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
     features: ["Две спальни", "Готовый санузел"], style: "Современный", landSize: "3–6 соток",
     hasRealPhotos: true, hasShowroom: false, hasInstallment: true,
@@ -5445,10 +5535,12 @@ const projectRecords: Project[] = [
     ],
     likes: 57, rating: 4.8,
     suitableFor: ["Постоянное проживание", "Для семьи"],
+    useCases: ["rental"],
     technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
     features: ["Терраса", "Две спальни"], style: "Современный", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
   },
+  ...budushiyDomAdditionalProjects,
 
   // ── Qubdom · Санкт-Петербург и ЛО ────────────────────────────────────────
   {
@@ -8300,7 +8392,18 @@ const projectRecords: Project[] = [
     features: ["2 спальни", "Террасы", "Планировка"], style: "Скандинавский", landSize: "6–10 соток",
     hasRealPhotos: false, hasShowroom: false, hasInstallment: false,
   },
+  ...bmDomCatalogProjects,
+  ...sqModylCatalogProjects,
+  ...exModuleCatalogProjects,
+  ...russianModularHouseCatalogProjects,
+  ...daHomeCatalogProjects,
+  ...moduldomUralCatalogProjects,
+  ...lesprom96CatalogProjects,
+  ...eModuleStroyCatalogProjects,
+  ...prefabiaCatalogProjects,
+  ...zharParychCatalogProjects,
   ...regionalBatchProjects,
+  ...(generatedCatalogRegistry.projects as unknown as Project[]),
 ];
 
 export const allProjects: Project[] = projectRecords.map((project) => {
@@ -8308,7 +8411,14 @@ export const allProjects: Project[] = projectRecords.map((project) => {
     throw new Error(`Unknown manufacturer ${project.manufacturerId} in project ${project.id}`);
   }
 
-  return project;
+  const generatedGallery = generatedProjectMedia[project.id];
+  const canonicalGalleryDirectory = project.gallery[0]?.image.match(/^(https?:\/\/[^/]+\/images\/gallery\/[^/]+\/)/u)?.[1];
+  const scopedGeneratedGallery = canonicalGalleryDirectory
+    ? generatedGallery?.filter((item) => item.image.startsWith(canonicalGalleryDirectory))
+    : generatedGallery;
+  return scopedGeneratedGallery?.length
+    ? { ...project, gallery: scopedGeneratedGallery.map((item) => ({ ...item })) }
+    : project;
 });
 
 /** Публичный каталог. Исходные записи при фильтрации не изменяются. */
@@ -8339,6 +8449,7 @@ export const catalogItems = projects.map((p) => ({
   deliveryRegionSlugs: p.deliveryRegionSlugs,
   floors: p.floors,
   suitableFor: p.suitableFor,
+  useCases: p.useCases,
   technology: p.technology,
   completion: p.completion,
   insulation: p.insulation,

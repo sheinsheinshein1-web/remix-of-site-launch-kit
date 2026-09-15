@@ -1,0 +1,76 @@
+{
+  "generatedAt": "2026-09-12T20:25:47.934Z",
+  "status": "draft",
+  "platform": "wordpress",
+  "candidateCount": 21,
+  "confirmedProjectCount": 5,
+  "rejected": [
+    {
+      "url": "https://bm-dom.ru/proekty/karkasnyj-modulnyj-dom-72m2/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bm-dom.ru/proekty/mobilnaja-banja-15m2/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bm-dom.ru/proekty/proekty-modulnyh-domov/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bm-dom.ru/proekty/proekty-modulnyh-ban/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bm-dom.ru/proekty/blokhaus-30m2/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bm-dom.ru/proekty/proekty-modulnyh-kompleksov/",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bm-dom.ru/proekty/proekty-modulnyh-ban",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bm-dom.ru/proekty/proekty-modulnyh-domov",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bm-dom.ru/proekty/blokhaus-15m2/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bm-dom.ru/proekty/blokhaus-22m2/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bm-dom.ru/proekty/proekty-karkasnyh-domov",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://bm-dom.ru/proekty/blokhaus-45m2/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bm-dom.ru/proekty/blokhaus-90m2/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bm-dom.ru/proekty/proekty-modulnyh-ban/nord-32/",
+      "reason": "404 Not Found"
+    },
+    {
+      "url": "https://bm-dom.ru/proekty/karkasnyj-modulnyj-dom-54m2/",
+      "reason": "404 Not Found"
+    }
+  ],
+  "conflicts": [],
+  "publicationBlocked": true,
+  "publicationReason": "Импорт создаёт черновик. Публикация разрешается отдельным release gate после проверки конфликтов и идентичности производителя."
+}

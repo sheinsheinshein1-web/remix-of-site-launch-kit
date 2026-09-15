@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
 import { useCity } from "@/components/CitySelector";
 import ManufacturerName from "@/components/ManufacturerName";
+import ManufacturerLogo from "@/components/ManufacturerLogo";
 import { getManufacturerRatingSummary } from "@/data/manufacturerRatings";
 import { makersById, projects, projectsCountByMakerId } from "@/data/projects";
 import { compareWithProjectPriority } from "@/lib/projectPriority";
@@ -78,21 +79,7 @@ const HomeManufacturers = () => {
               aria-label={`${maker.name}: ${maker.reviewSummary.rating.toFixed(1)} из 5, ${maker.reviewSummary.hasReviews ? maker.reviewSummary.reviewsLabel : "отзывов пока нет"}; ${getCityDisplayName(maker.city)}`}
               className={`group -mx-3 min-h-[76px] items-center gap-3 rounded-[var(--radius)] px-3 py-3 transition-colors duration-200 hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:min-h-[80px] ${index >= MOBILE_VISIBLE_MAKERS ? "hidden sm:flex" : "flex"}`}
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[var(--radius)] border border-border bg-white text-[10px] font-semibold uppercase tracking-[0.08em] text-[#342d27]">
-                {maker.logo ? (
-                  <img
-                    src={maker.logo}
-                    alt=""
-                    width={40}
-                    height={40}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-contain p-1.5"
-                  />
-                ) : (
-                  maker.initials
-                )}
-              </span>
+              <ManufacturerLogo manufacturer={maker} className="h-11 w-11 text-[10px]" />
 
               <span className="min-w-0 flex-1">
                 <ManufacturerName

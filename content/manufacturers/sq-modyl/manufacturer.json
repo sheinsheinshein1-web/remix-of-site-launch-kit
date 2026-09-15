@@ -1,0 +1,220 @@
+{
+  "id": "sq-modyl",
+  "publicationStatus": "draft",
+  "identity": {
+    "name": {
+      "value": "SQ-MODYL",
+      "status": "derived",
+      "confidence": 0.9,
+      "sourceUrl": "https://modyl.info/",
+      "method": "structured-data",
+      "evidence": "Название из Organization JSON-LD."
+    },
+    "logo": {
+      "value": "https://static.tildacdn.com/tild6632-6230-4736-b962-373036373162/sq-modyl_logo_horizo.svg",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://modyl.info/",
+      "method": "structured-data",
+      "evidence": "Логотип из Organization JSON-LD."
+    }
+  },
+  "contacts": {
+    "siteUrl": "https://modyl.info/",
+    "phones": {
+      "value": [
+        "+7 900 201 06 05",
+        "+7 (900) 201-06-05"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://modyl.info/",
+      "method": "visible-text",
+      "evidence": "Телефоны найдены на официальных страницах."
+    },
+    "emails": {
+      "value": [
+        "modyl.info@gmail.com"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://modyl.info/",
+      "method": "visible-text",
+      "evidence": "Email найдены на официальных страницах."
+    },
+    "telegram": {
+      "value": "https://t.me/modyl_gr",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://modyl.info/",
+      "method": "link",
+      "evidence": "Ссылка Telegram опубликована на официальном сайте."
+    },
+    "youtube": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/",
+      "method": "not-found",
+      "evidence": "YouTube не найден на официальном сайте."
+    }
+  },
+  "catalog": {
+    "sourceUrl": "https://modyl.info/modular_house_projects",
+    "discoveredProjectCount": 12,
+    "expectedProjectCount": 12
+  },
+  "legal": {
+    "operator": {
+      "value": "ООО «Модуль-групп Компани»",
+      "status": "derived",
+      "confidence": 0.7,
+      "sourceUrl": "https://modyl.info/",
+      "method": "visible-text",
+      "evidence": "Оператор найден в официальном тексте; связь требует проверки по реквизитам."
+    },
+    "inn": {
+      "value": "6679148463",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://modyl.info/",
+      "method": "visible-text",
+      "evidence": "ИНН опубликован на официальном сайте."
+    },
+    "ogrn": {
+      "value": "1226600002683",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://modyl.info/",
+      "method": "visible-text",
+      "evidence": "ОГРН или ОГРНИП опубликован на официальном сайте."
+    }
+  },
+  "production": {
+    "address": {
+      "value": "624030, Свердловская область, Белоярский район, пос",
+      "status": "derived",
+      "confidence": 0.72,
+      "sourceUrl": "https://modyl.info/",
+      "method": "visible-text",
+      "evidence": "Фрагмент рядом с указанием производства; адрес требует нормализации."
+    }
+  },
+  "reviews": {
+    "externalProfile": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://modyl.info/",
+      "method": "not-found",
+      "evidence": "Независимый профиль отзывов не найден на официальном сайте."
+    }
+  },
+  "builtObjects": {
+    "sourcePage": {
+      "value": "https://modyl.info/gallery_of_modular_houses",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://modyl.info/gallery_of_modular_houses",
+      "method": "link",
+      "evidence": "Официальная страница портфолио или объектов."
+    },
+    "media": [
+      {
+        "url": "https://mc.yandex.ru/watch/81119896",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3230-3837-4330-b034-326437353930/photo.svg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6137-6565-4030-a431-656264386334/3505716.png",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3933-3738-4765-b162-356438373831/IMG_7314.jpeg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6236-6166-4735-b663-343239613835/IMG_7189.jpeg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6366-3538-4630-b636-663435326662/2026-02-08_22-48-26.JPG",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3231-3835-4536-b663-613961383034/69292BA0-67B3-44E5-9.jpeg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6232-3637-4565-b139-326361373535/IMG_7295.JPG",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3733-3465-4530-b732-343465313030/IMG_7308.jpeg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3236-3561-4135-b734-366662643666/IMG_7316.jpeg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3537-6331-4434-b262-316339343065/IMG_7315.jpeg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6631-3736-4437-b939-663637383531/IMG_7318.jpeg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6330-6136-4162-b437-373166616537/IMG_7320.jpeg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3936-3065-4164-a163-333338666463/IMG_7322.jpeg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3765-3038-4763-b262-323430336638/IMG_7362.JPG",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3462-6262-4530-a265-313137633134/IMG_7371.jpeg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6236-6331-4261-a530-396433303731/IMG_7386.jpeg",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3766-3234-4339-a430-663039343465/IMG_7393.JPG",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      },
+      {
+        "url": "https://mc.yandex.ru/watch/99130870",
+        "type": "photo",
+        "sourceUrl": "https://modyl.info/gallery_of_modular_houses"
+      }
+    ]
+  }
+}

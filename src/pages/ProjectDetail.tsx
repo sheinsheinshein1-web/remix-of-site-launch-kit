@@ -26,6 +26,7 @@ import OtherProjectsFeed from "@/components/OtherProjectsFeed";
 import ProjectReportDialog from "@/components/ProjectReportDialog";
 import ProjectPriceQuiz from "@/components/ProjectPriceQuiz";
 import ProjectRooms from "@/components/ProjectRooms";
+import ProductionTermInfo from "@/components/ProductionTermInfo";
 import Seo from "@/components/Seo";
 import SiteBreadcrumbs, { siteBreadcrumbPageContainerClassName } from "@/components/SiteBreadcrumbs";
 import VerifiedBadge from "@/components/VerifiedBadge";
@@ -35,8 +36,14 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { buildSiteUrl } from "@/lib/seo";
 import { buildProjectProductJsonLd } from "@/lib/projectStructuredData";
-import { buildProjectSeo } from "@/lib/pageSeo";
-import { getCityDisplayName } from "@/lib/cityDisplay";
+import { getProjectDetailViewModel } from "@/lib/projectViewModel";
+import { buildProjectSeo, getProjectTechnologyLabel, getProjectTypeLabel } from "@/lib/pageSeo";
+import {
+  buildProjectEditorialContent,
+  buildProjectHeading,
+  buildProjectSeoDescription,
+  hasEnhancedProjectEditorialContent,
+} from "@/lib/projectEditorialContent";
 import {
   getGeoSelectionAccusative,
   getGeoSelectionLabel,
@@ -46,8 +53,7 @@ import {
   isProjectAvailableInGeo,
   normalizeGeoSelection,
 } from "@/lib/geoSelection";
-import { projects, projectsCountByMakerId } from "@/data/projects";
-import { manufacturerRegistry } from "@/data/manufacturers";
+import { projectsCountByMakerId } from "@/data/projects";
 import { getCatalogCategoryBySlug } from "@/data/catalogCategories";
 import { getManufacturerRatingSummary } from "@/data/manufacturerRatings";
 import { isVerifiedMaker } from "@/lib/verifiedMakers";
@@ -55,7 +61,6 @@ import {
   CATALOG_PATH,
   getManufacturerPath,
   getProjectIdFromRouteParam,
-  getProjectPath,
   getRegionPath,
 } from "@/lib/siteRoutes";
 
@@ -76,7 +81,9 @@ const ProjectDetail = () => {
   const { toggleFavorite, isFavorite } = useFavorites();
   const { city: deliveryRegionSlug, selectCity: selectDeliveryRegion } = useCity();
   const routeProjectId = getProjectIdFromRouteParam(projectSlug ?? id);
-  const project = projects.find((item) => item.id === routeProjectId);
+  const projectViewModel = getProjectDetailViewModel(routeProjectId);
+  const project = projectViewModel?.project;
+  const canonicalProjectPath = projectViewModel?.canonicalPath;
   const projectDeliveryRegions = getProjectDeliveryRegions(project?.city, project?.deliveryRegionSlugs);
 
   const [activeImage, setActiveImage] = useState(0);
@@ -84,7 +91,9 @@ const ProjectDetail = () => {
   const [deliveryCityOpen, setDeliveryCityOpen] = useState(false);
   const [priceQuizOpen, setPriceQuizOpen] = useState(false);
   const [detailsExpanded, setDetailsExpanded] = useState(false);
+  const [editorialExpanded, setEditorialExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const aboutProjectRef = useRef<HTMLElement>(null);
   const galleryWrapRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
@@ -113,6 +122,7 @@ const ProjectDetail = () => {
 
   useEffect(() => {
     setDetailsExpanded(false);
+    setEditorialExpanded(false);
   }, [routeProjectId]);
 
   useEffect(() => {
@@ -167,30 +177,60 @@ const ProjectDetail = () => {
   }, [routeProjectId]);
 
   useEffect(() => {
-    if (!project) return;
-    const canonicalProjectPath = getProjectPath(project);
+    if (!canonicalProjectPath) return;
     if (location.pathname === canonicalProjectPath) return;
     navigate(`${canonicalProjectPath}${location.search}${location.hash}`, { replace: true });
-  }, [location.hash, location.pathname, location.search, navigate, project]);
+  }, [canonicalProjectPath, location.hash, location.pathname, location.search, navigate]);
 
-  if (!project) return <NotFound />;
+  if (!projectViewModel) return <NotFound />;
 
+  const {
+    manufacturer,
+    price,
+    area,
+    canonicalPath,
+    isBath: isBathProject,
+    production,
+    rooms,
+    specifications,
+    editorialFacts,
+  } = projectViewModel;
+  const projectForDisplay = {
+    ...project,
+    area: area.raw,
+    price: price.raw,
+    term: production.term,
+    beds: rooms.beds,
+    baths: rooms.baths,
+    floors: rooms.floors,
+  };
   const makerId = project.manufacturerId;
-  const manufacturer = manufacturerRegistry[makerId];
-  if (!manufacturer) return <NotFound />;
-  const isPlatformaProject = makerId === "platforma";
-  const canonicalPath = getProjectPath(project);
   const makerHref = getManufacturerPath(makerId);
   const verified = isVerifiedMaker(makerId);
   const reviewSummary = getManufacturerRatingSummary(makerId);
   const liked = isFavorite(project.id);
   const firstImage = project.gallery[0]?.image ?? "";
-  const isBathProject = project.productType === "bath";
   const bathCatalogHref = getCatalogCategoryBySlug("modulnye-bani")?.path ?? `${CATALOG_PATH}?type=bath`;
-  const priceLabel = /^(?:от(?:\s|$)|по запросу(?:\s|$))/i.test(project.price.trim())
-    ? project.price
-    : `от ${project.price}`;
-  const projectSeo = buildProjectSeo(project);
+  const priceLabel = price.label;
+  const projectSeo = buildProjectSeo(projectForDisplay);
+  const editorialProductionAddress =
+    manufacturer.profile?.sourceAudit?.production.status === "imported"
+      ? editorialFacts.productionAddress ?? undefined
+      : undefined;
+  const projectEditorialContent = buildProjectEditorialContent(
+    projectForDisplay,
+    manufacturer.name,
+    editorialProductionAddress,
+    editorialFacts,
+  );
+  const hasEnhancedEditorialContent = hasEnhancedProjectEditorialContent(project);
+  const projectHeading = buildProjectHeading(projectForDisplay);
+  const projectStructuredDescription = buildProjectSeoDescription(
+    projectForDisplay,
+    manufacturer.name,
+    editorialProductionAddress,
+    editorialFacts,
+  );
   const deliveryCityLabel = getGeoSelectionLabel(deliveryRegionSlug);
   const deliveryRegionAccusative = getGeoSelectionAccusative(deliveryRegionSlug);
   const deliveryRegionPrepositional = getGeoSelectionPrepositional(deliveryRegionSlug);
@@ -205,11 +245,11 @@ const ProjectDetail = () => {
     badge: project.badge,
     maker: manufacturer.name,
     name: project.name,
-    price: project.price,
-    area: project.area,
-    beds: project.beds,
-    baths: project.baths,
-    term: project.term,
+    price: projectForDisplay.price,
+    area: projectForDisplay.area,
+    beds: rooms.beds,
+    baths: rooms.baths,
+    term: projectForDisplay.term,
     image: firstImage,
     likes: project.likes,
     city: project.city,
@@ -266,19 +306,10 @@ const ProjectDetail = () => {
     </p>
   );
 
-  const renderProjectAction = (className: string) => isPlatformaProject ? (
+  const renderProjectAction = (className: string) => deliveryAvailable ? (
     <button type="button" onClick={() => setPriceQuizOpen(true)} className={className}>
-      Рассчитать цену с доставкой
+      Рассчитать стоимость с доставкой
     </button>
-  ) : deliveryAvailable ? (
-    <a
-      href={project.sourceUrl ?? manufacturer.siteUrl}
-      target="_blank"
-      rel="noopener noreferrer nofollow sponsored"
-      className={className}
-    >
-      Перейти на сайт
-    </a>
   ) : (
     <button type="button" onClick={() => navigate(deliveryRegionHref)} className={className}>
       Смотреть проекты {deliveryRegionPrepositional}
@@ -286,9 +317,10 @@ const ProjectDetail = () => {
   );
 
   const productJsonLd = buildProjectProductJsonLd({
-    project,
+    project: projectForDisplay,
     canonicalPath,
     image: firstImage,
+    description: projectStructuredDescription,
   });
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -305,41 +337,50 @@ const ProjectDetail = () => {
     ],
   };
 
-  const specItems = isBathProject
+  const areaValue = /уточняется|по запросу/iu.test(projectForDisplay.area)
+    ? "По запросу"
+    : projectForDisplay.area;
+  const hasSteamRoomFact = Boolean(
+    project.steamRoomArea
+    || project.rooms.toLocaleLowerCase("ru").includes("парн")
+    || project.features.some((feature) => feature.toLocaleLowerCase("ru").includes("парн")),
+  );
+  const specItems = (isBathProject
     ? [
-        { icon: Maximize, value: project.area, label: "Площадь" },
-        { icon: Ruler, value: project.dimensions ?? "По запросу", label: "Габариты" },
-        { icon: Bath, value: project.steamRoomArea ?? "Есть", label: "Парная" },
-        { icon: Layers, value: String(project.floors), label: wordForm(project.floors, ["Этаж", "Этажа", "Этажей"]) },
+        { icon: Maximize, value: areaValue, label: "Площадь" },
+        { icon: Ruler, value: specifications.dimensions, label: "Габариты" },
+        hasSteamRoomFact ? { icon: Bath, value: project.steamRoomArea ?? "Предусмотрена", label: "Парная" } : null,
+        rooms.floors > 0 ? { icon: Layers, value: String(rooms.floors), label: wordForm(rooms.floors, ["Этаж", "Этажа", "Этажей"]) } : null,
       ]
-    : [
-        { icon: Maximize, value: project.area, label: "Площадь" },
-        { icon: BedDouble, value: String(project.beds), label: wordForm(project.beds, ["Спальня", "Спальни", "Спален"]) },
-        { icon: Bath, value: String(project.baths), label: wordForm(project.baths, ["Санузел", "Санузла", "Санузлов"]) },
-        { icon: Layers, value: String(project.floors), label: wordForm(project.floors, ["Этаж", "Этажа", "Этажей"]) },
-      ];
-  const rawProjectDescription = project.descriptionLong || project.description;
-  const descriptionPrefix = `${project.name} — `;
-  const unprefixedProjectDescription = rawProjectDescription.startsWith(descriptionPrefix)
-    ? rawProjectDescription.slice(descriptionPrefix.length)
-    : rawProjectDescription;
-  const projectDescription = unprefixedProjectDescription.charAt(0).toUpperCase() + unprefixedProjectDescription.slice(1);
-
+      : [
+        { icon: Maximize, value: areaValue, label: "Площадь" },
+        rooms.beds > 0
+          ? { icon: BedDouble, value: String(rooms.beds), label: wordForm(rooms.beds, ["Спальня", "Спальни", "Спален"]) }
+          : rooms.count > 0
+            ? { icon: BedDouble, value: String(rooms.count), label: wordForm(rooms.count, ["Комната", "Комнаты", "Комнат"]) }
+            : null,
+        rooms.baths > 0 ? { icon: Bath, value: String(rooms.baths), label: wordForm(rooms.baths, ["Санузел", "Санузла", "Санузлов"]) } : null,
+        rooms.floors > 0 ? { icon: Layers, value: String(rooms.floors), label: wordForm(rooms.floors, ["Этаж", "Этажа", "Этажей"]) } : null,
+      ]).filter((item): item is Exclude<typeof item, null> => Boolean(item));
   const detailRows = isBathProject
     ? [
-        ["Тип объекта", "Модульная баня"],
-        ["Габариты", project.dimensions ?? "По запросу"],
+        ["Тип объекта", getProjectTypeLabel(project)],
+        ["Габариты", specifications.dimensions],
         ["Отделка парной", project.steamRoomFinish ?? "По запросу"],
         ["Пол", project.floorFinish ?? "По запросу"],
-        ["Регион производства", getCityDisplayName(project.city)],
+        production.term ? ["Срок производства", production.term] : null,
+        production.address ? ["Место производства", production.address] : null,
       ]
     : [
-        ["Технология", project.technology],
-        ["Утепление", project.insulation],
-        ["Срок строительства", "до 60 дней"],
-        ["Стиль", project.style],
-        ["Регион производства", getCityDisplayName(project.city)],
+        ["Технология", getProjectTechnologyLabel(specifications.technology)],
+        ["Утепление", specifications.insulation],
+        production.term ? ["Срок производства", production.term] : null,
+        specifications.style ? ["Стиль", specifications.style] : null,
+        production.address ? ["Место производства", production.address] : null,
       ];
+  const visibleDetailRows = detailRows.filter(
+    (row): row is [string, string] => Array.isArray(row),
+  );
 
   const renderGalleryImage = (index: number, mobile = false) => {
     const item = project.gallery[index];
@@ -442,8 +483,8 @@ const ProjectDetail = () => {
         )}
       </span>
       <span className="min-w-0 flex-1">
-          <span className="flex items-center gap-2">
-            <span className="truncate text-[14px] font-semibold text-[#342d27] dark:text-foreground">{manufacturer.name}</span>
+        <span className="flex items-center gap-2">
+          <span className="truncate text-[14px] font-semibold text-[#342d27] dark:text-foreground">{manufacturer.name}</span>
           {verified && <VerifiedBadge />}
         </span>
         <span className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] leading-tight text-[#717b8e]">
@@ -462,6 +503,39 @@ const ProjectDetail = () => {
     </button>
   );
 
+  const handleEditorialToggle = () => {
+    if (!editorialExpanded) {
+      setEditorialExpanded(true);
+      return;
+    }
+
+    setEditorialExpanded(false);
+    window.requestAnimationFrame(() => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      aboutProjectRef.current?.scrollIntoView({
+        behavior: reduceMotion ? "auto" : "smooth",
+        block: "start",
+      });
+    });
+  };
+
+  const renderEditorialToggle = () => (
+    <button
+      type="button"
+      onClick={handleEditorialToggle}
+      className="mt-3 inline-flex min-h-11 items-center gap-1 text-[15px] font-medium text-[#342d27] transition-colors duration-200 hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground"
+      aria-expanded={editorialExpanded}
+      aria-controls="project-editorial-details"
+    >
+      {editorialExpanded ? "Свернуть" : "Развернуть"}
+      <ChevronDown
+        className={`h-4 w-4 transition-transform duration-200 ${editorialExpanded ? "rotate-180" : ""}`}
+        strokeWidth={1.8}
+        aria-hidden
+      />
+    </button>
+  );
+
   const otherProjectsTitle = isBathProject
     ? "Все модульные бани"
     : allRegionsSelected
@@ -469,7 +543,7 @@ const ProjectDetail = () => {
       : `Все проекты ${deliveryRegionPrepositional}`;
 
   return (
-    <div className="min-h-screen bg-white text-[#342d27] dark:bg-background dark:text-foreground">
+    <div className="min-h-screen bg-white pb-[calc(76px+env(safe-area-inset-bottom))] text-[#342d27] md:pb-0 dark:bg-background dark:text-foreground">
       <Seo
         title={projectSeo.title}
         description={projectSeo.description}
@@ -572,7 +646,7 @@ const ProjectDetail = () => {
             <article className="min-w-0 px-4 py-7 md:px-0 md:py-8 lg:py-0">
               <div className="flex items-start gap-3">
                 <h1 className="min-w-0 flex-1 text-[30px] font-semibold leading-[1.08] tracking-[-0.035em] text-[#342d27] md:text-[42px] dark:text-foreground">
-                  {project.name}
+                  {projectHeading}
                 </h1>
                 <div className="hidden items-center gap-1.5 md:flex">
                   <button
@@ -624,37 +698,74 @@ const ProjectDetail = () => {
                   {priceLabel}
                 </p>
                 {renderDeliveryMessage()}
-                {renderProjectAction("mt-4 flex min-h-12 w-full items-center justify-center rounded-[var(--radius)] bg-primary px-5 text-[15px] font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2")}
+                <div className="mt-4">{renderMakerCard()}</div>
               </div>
 
-              <div className="mt-5 max-w-[620px] border-t border-[#e2e6ef] pt-5 lg:hidden dark:border-border">{renderMakerCard()}</div>
+              <div className="mt-5 hidden max-w-[620px] border-t border-[#e2e6ef] pt-5 md:block lg:hidden dark:border-border">{renderMakerCard()}</div>
 
-              <section className="mt-10 max-w-[800px] md:mt-12" aria-labelledby="about-project-heading">
+              <section ref={aboutProjectRef} className="mt-10 max-w-[800px] scroll-mt-[120px] md:mt-12 md:scroll-mt-[72px]" aria-labelledby="about-project-heading">
                 <h2 id="about-project-heading" className="text-[26px] font-semibold tracking-[-0.025em] text-[#342d27] md:text-[30px] dark:text-foreground">
                   О проекте
                 </h2>
-                <MobileExpandableText
-                  text={projectDescription}
-                  contentId="project-description-content"
-                  className="mt-5 max-w-[760px] text-[16px] leading-[1.72] text-[#595653] dark:text-muted-foreground"
-                />
+                {hasEnhancedEditorialContent ? (
+                  <p
+                    id="project-description-content"
+                    className="mt-5 max-w-[760px] text-[16px] leading-[1.72] text-[#595653] dark:text-muted-foreground"
+                  >
+                    {projectEditorialContent.lead}
+                  </p>
+                ) : (
+                  <MobileExpandableText
+                    text={projectEditorialContent.lead}
+                    contentId="project-description-content"
+                    className="mt-5 max-w-[760px] text-[16px] leading-[1.72] text-[#595653] dark:text-muted-foreground"
+                  />
+                )}
 
-                {!isBathProject && <ProjectRooms beds={project.beds} baths={project.baths} kitchens={project.kitchens} />}
+                {projectEditorialContent.sections.length > 0 && !editorialExpanded && renderEditorialToggle()}
+
+                {projectEditorialContent.sections.length > 0 && (
+                  <div
+                    id="project-editorial-details"
+                    className="mt-6 max-w-[760px] space-y-7"
+                    hidden={!editorialExpanded}
+                  >
+                    {projectEditorialContent.sections.map((section) => (
+                      <section key={section.heading} aria-labelledby={`project-editorial-${section.heading.toLocaleLowerCase("ru").replace(/[^а-яёa-z0-9]+/giu, "-")}`}>
+                        <h3
+                          id={`project-editorial-${section.heading.toLocaleLowerCase("ru").replace(/[^а-яёa-z0-9]+/giu, "-")}`}
+                          className="text-[19px] font-semibold leading-snug text-[#342d27] dark:text-foreground"
+                        >
+                          {section.heading}
+                        </h3>
+                        <p className="mt-3 text-[15px] leading-[1.7] text-[#595653] dark:text-muted-foreground">
+                          {section.text}
+                        </p>
+                      </section>
+                    ))}
+                  </div>
+                )}
+
+                {projectEditorialContent.sections.length > 0 && editorialExpanded && renderEditorialToggle()}
+
+                {!isBathProject && <ProjectRooms roomCount={rooms.count} beds={rooms.beds} baths={rooms.baths} kitchens={rooms.kitchens} />}
 
                 <section className="mt-10" aria-labelledby="project-characteristics-heading">
                   <h3 id="project-characteristics-heading" className="text-[20px] font-semibold text-[#342d27] dark:text-foreground">Характеристики</h3>
                   <dl id="project-characteristics-content" className="mt-5 grid gap-x-10 gap-y-4 sm:grid-cols-2">
-                    {detailRows.map(([label, value], index) => (
+                    {visibleDetailRows.map(([label, value], index) => (
                       <div
                         key={label}
                         className={`min-w-0 grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-baseline gap-4 text-[14px] sm:text-[15px] ${detailsExpanded || index < 4 ? "grid" : "hidden md:grid"}`}
                       >
-                        <dt className="text-[#717b8e]">{label}</dt>
+                        <dt className="text-[#717b8e]">
+                          {label === "Срок производства" ? <ProductionTermInfo /> : label}
+                        </dt>
                         <dd className="min-w-0 font-medium leading-snug text-[#342d27] dark:text-foreground">{value}</dd>
                       </div>
                     ))}
                   </dl>
-                  {detailRows.length > 4 && (
+                  {visibleDetailRows.length > 4 && (
                     <button
                       type="button"
                       onClick={() => setDetailsExpanded((current) => !current)}
@@ -704,6 +815,15 @@ const ProjectDetail = () => {
 
       <Footer />
 
+      <div
+        className="fixed inset-x-0 bottom-0 z-40 border-t border-[#e2e6ef] bg-white/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-xl md:hidden dark:border-border dark:bg-background/95"
+        aria-label="Расчёт проекта"
+      >
+        <div className="mx-auto w-full max-w-[640px]">
+          {renderProjectAction("flex min-h-12 w-full items-center justify-center rounded-[var(--radius)] bg-primary px-5 text-center text-[15px] font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2")}
+        </div>
+      </div>
+
       <CitySelector
         open={deliveryCityOpen}
         onOpenChange={setDeliveryCityOpen}
@@ -713,14 +833,12 @@ const ProjectDetail = () => {
         availableRegions={projectDeliveryRegions}
       />
 
-      {isPlatformaProject && (
-        <ProjectPriceQuiz
-          open={priceQuizOpen}
-          onOpenChange={setPriceQuizOpen}
-          project={project}
-          deliveryRegion={deliveryRegionSlug}
-        />
-      )}
+      <ProjectPriceQuiz
+        open={priceQuizOpen}
+        onOpenChange={setPriceQuizOpen}
+        project={project}
+        deliveryRegion={deliveryRegionSlug}
+      />
 
       {lightboxOpen && (
         <div

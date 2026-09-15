@@ -4,8 +4,8 @@
 // 3. Writes dist/<path>/index.html with the rendered HTML.
 // 4. Regenerates dist/sitemap.xml from the same URL list.
 //
-// Routes are derived from src/data/projects.ts (single source of truth) +
-// a small set of static routes from src/App.tsx.
+// Routes are derived from the normalized project registries + a small set of
+// static routes from src/App.tsx.
 
 import { chromium } from "@playwright/test";
 import ts from "typescript";
@@ -21,6 +21,7 @@ const mkdirP = promisify(mkdir);
 
 const DIST = resolve("dist");
 const SRC_PROJECTS = resolve("src/data/projects.ts");
+const SRC_MANUFACTURER_CATALOGS = resolve("src/data/manufacturerCatalogProjects.ts");
 const SRC_MANUFACTURERS = resolve("src/data/manufacturers.ts");
 const SRC_REGIONAL = resolve("src/data/regionalBatchProjects.ts");
 const SRC_PARTNER_SERVICES = resolve("src/data/partnerServices.ts");
@@ -187,8 +188,69 @@ const collectPublicProjectRoutes = ({ sourceFile, arrayName, makerIds, hiddenTec
   return { projects, makerIds: publicMakerIds };
 };
 
+const collectManufacturerCatalogRoutes = ({ sourceFile, hiddenTechnologies }) => {
+  const catalogDefaults = new Map();
+  const projects = [];
+  const publicMakerIds = [];
+
+  const visitDefaults = (node) => {
+    if (ts.isVariableDeclaration(node) && ts.isIdentifier(node.name) && ts.isObjectLiteralExpression(node.initializer)) {
+      const manufacturerIdProperty = getObjectProperty(node.initializer, "manufacturerId");
+      const technologyProperty = getObjectProperty(node.initializer, "technology");
+      const manufacturerId = manufacturerIdProperty ? stringValue(manufacturerIdProperty.initializer) : undefined;
+      const technology = technologyProperty ? stringValue(technologyProperty.initializer) : undefined;
+
+      if (manufacturerId && technology) {
+        catalogDefaults.set(node.name.text, { manufacturerId, technology });
+      }
+    }
+    ts.forEachChild(node, visitDefaults);
+  };
+
+  const visitCatalogs = (node) => {
+    if (
+      ts.isVariableDeclaration(node)
+      && ts.isCallExpression(node.initializer)
+      && ts.isIdentifier(node.initializer.expression)
+      && node.initializer.expression.text === "createManufacturerCatalogProjects"
+    ) {
+      const [defaultsArgument, rowsArgument] = node.initializer.arguments;
+      if (!ts.isIdentifier(defaultsArgument) || !ts.isArrayLiteralExpression(rowsArgument)) return;
+
+      const defaults = catalogDefaults.get(defaultsArgument.text);
+      if (!defaults || hiddenTechnologies.has(defaults.technology)) return;
+
+      for (const row of rowsArgument.elements) {
+        if (!ts.isObjectLiteralExpression(row)) continue;
+        const idProperty = getObjectProperty(row, "id");
+        const nameProperty = getObjectProperty(row, "name");
+        const areaProperty = getObjectProperty(row, "area");
+        const id = idProperty ? numberValue(idProperty.initializer) : undefined;
+        const name = nameProperty ? stringValue(nameProperty.initializer) : undefined;
+        const area = areaProperty ? sourceValue(areaProperty.initializer) : "";
+        if (!id || !name) continue;
+
+        projects.push({
+          id,
+          name,
+          technology: defaults.technology,
+          area,
+          makerId: defaults.manufacturerId,
+        });
+        publicMakerIds.push(defaults.manufacturerId);
+      }
+    }
+    ts.forEachChild(node, visitCatalogs);
+  };
+
+  visitDefaults(sourceFile);
+  visitCatalogs(sourceFile);
+  return { projects, makerIds: publicMakerIds };
+};
+
 // ---------- 1. Build URL list ----------
 const projectsSrc = readSync(SRC_PROJECTS, "utf8");
+const manufacturerCatalogsSrc = existsSync(SRC_MANUFACTURER_CATALOGS) ? readSync(SRC_MANUFACTURER_CATALOGS, "utf8") : "";
 const manufacturersSrc = existsSync(SRC_MANUFACTURERS) ? readSync(SRC_MANUFACTURERS, "utf8") : "";
 const regionalSrc = existsSync(SRC_REGIONAL) ? readSync(SRC_REGIONAL, "utf8") : "";
 const visibilitySrc = existsSync(SRC_VISIBILITY) ? readSync(SRC_VISIBILITY, "utf8") : "";
@@ -197,6 +259,7 @@ const hiddenTechnologies = new Set(
     .flatMap((match) => [...match[1].matchAll(/["']([^"']+)["']/g)].map((value) => value[1])),
 );
 const projectsFile = parseSource(SRC_PROJECTS, projectsSrc);
+const manufacturerCatalogsFile = parseSource(SRC_MANUFACTURER_CATALOGS, manufacturerCatalogsSrc);
 const manufacturersFile = parseSource(SRC_MANUFACTURERS, manufacturersSrc);
 const regionalFile = parseSource(SRC_REGIONAL, regionalSrc);
 const makerIdMap = new Map([
@@ -216,10 +279,14 @@ const regionalRoutes = collectPublicProjectRoutes({
   makerIds: makerIdMap,
   hiddenTechnologies,
 });
+const manufacturerCatalogRoutes = collectManufacturerCatalogRoutes({
+  sourceFile: manufacturerCatalogsFile,
+  hiddenTechnologies,
+});
 const projectRecords = [...new Map(
-  [...primaryRoutes.projects, ...regionalRoutes.projects].map((project) => [project.id, project]),
+  [...primaryRoutes.projects, ...regionalRoutes.projects, ...manufacturerCatalogRoutes.projects].map((project) => [project.id, project]),
 ).values()];
-const makerIds = [...new Set([...primaryRoutes.makerIds, ...regionalRoutes.makerIds])];
+const makerIds = [...new Set([...primaryRoutes.makerIds, ...regionalRoutes.makerIds, ...manufacturerCatalogRoutes.makerIds])];
 
 const SRC_REGIONS = resolve("src/data/regions.ts");
 const regionsSrc = existsSync(SRC_REGIONS) ? readSync(SRC_REGIONS, "utf8") : "";

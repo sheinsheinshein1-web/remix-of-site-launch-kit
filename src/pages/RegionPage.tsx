@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Star } from "lucide-react";
 import { Link, Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
 import Header from "@/components/Header";
+import ManufacturerLogo from "@/components/ManufacturerLogo";
 import ManufacturerName from "@/components/ManufacturerName";
 import TrailingChevronLabel from "@/components/TrailingChevronLabel";
 import SiteBreadcrumbs, { siteBreadcrumbPageContainerClassName } from "@/components/SiteBreadcrumbs";
@@ -22,6 +23,7 @@ import { getManufacturerRatingSummary } from "@/data/manufacturerRatings";
 import { getCityDisplayName } from "@/lib/cityDisplay";
 import { isProjectAvailableInGeo } from "@/lib/geoSelection";
 import { buildRegionSeo } from "@/lib/pageSeo";
+import { interpolateRegionContent } from "@/lib/regionContent";
 import {
   CATALOG_PATH,
   MANUFACTURERS_PATH,
@@ -83,12 +85,20 @@ const RegionPage = () => {
     });
 
   const previewMakers = regionMakers.slice(0, MAKERS_PREVIEW_LIMIT);
-  const manufacturerParams = new URLSearchParams({ region: region.cityValue });
+  const manufacturerParams = new URLSearchParams({ region: region.slug });
   if (region.technologyValue) manufacturerParams.set("tech", region.technologyValue);
   const manufacturersHref = `${MANUFACTURERS_PATH}?${manufacturerParams.toString()}`;
-  const introParagraphs = extractParagraphs(region.introHtml);
+  const regionContentStats = {
+    projectCount: regionProjects.length,
+    manufacturerCount: makerIds.length,
+  };
+  const introParagraphs = extractParagraphs(interpolateRegionContent(region.introHtml, regionContentStats));
   const shortIntroHtml = introParagraphs[0] ?? region.description;
   const seoTextHtml = introParagraphs.slice(1).join("");
+  const regionFaq = region.faq.map((item) => ({
+    question: interpolateRegionContent(item.question, regionContentStats),
+    answer: interpolateRegionContent(item.answer, regionContentStats),
+  }));
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
@@ -106,7 +116,7 @@ const RegionPage = () => {
   const faqLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: region.faq.map((item) => ({
+    mainEntity: regionFaq.map((item) => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: { "@type": "Answer", text: item.answer },
@@ -166,9 +176,9 @@ const RegionPage = () => {
           <section className="mt-10 md:mt-14" aria-label={`Каталог проектов ${region.namePrepositional}`}>
             <Catalog
               embedded
-              lockedRegion={region.cityValue}
-              lockedRegionLabel={region.catalogRegionLabel}
-              lockedRegionPrepositional={region.deliveryCity ? region.namePrepositional : undefined}
+              lockedRegion={region.slug}
+              lockedRegionLabel={region.catalogRegionLabel ?? region.name}
+              lockedRegionPrepositional={region.namePrepositional}
               lockedTechnology={region.technologyValue}
             />
           </section>
@@ -191,9 +201,7 @@ const RegionPage = () => {
                     className="group -mx-3 flex min-h-[76px] items-center gap-3 rounded-[var(--radius)] px-3 py-3 transition-colors duration-200 hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:min-h-[80px]"
                     aria-label={`${maker.name}: ${maker.reviewSummary.rating.toFixed(1)} из 5, ${maker.reviewSummary.hasReviews ? maker.reviewSummary.reviewsLabel : "отзывов пока нет"}`}
                   >
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[var(--radius)] border border-border bg-white text-[10px] font-semibold uppercase tracking-[0.08em] text-[#342d27]">
-                      {maker.logo ? <img src={maker.logo} alt="" width={40} height={40} className="h-full w-full object-contain p-1.5" loading="lazy" decoding="async" /> : maker.initials}
-                    </span>
+                    <ManufacturerLogo manufacturer={maker} className="h-11 w-11 text-[10px]" />
                     <span className="min-w-0 flex-1">
                       <ManufacturerName
                         makerId={maker.id}
@@ -223,7 +231,7 @@ const RegionPage = () => {
               Часто задаваемые вопросы
             </h2>
             <Accordion type="single" collapsible className="mt-6">
-              {region.faq.map((item, index) => (
+              {regionFaq.map((item, index) => (
                 <AccordionItem key={item.question} value={`faq-${index}`} className="border-b border-[#dfe5f5]">
                   <AccordionTrigger className="min-h-[68px] py-4 text-left text-[15px] font-medium text-[#342d27] transition-colors hover:text-primary hover:no-underline md:text-[16px] dark:text-foreground">
                     {item.question}

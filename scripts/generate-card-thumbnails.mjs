@@ -4,9 +4,11 @@ import sharp from "sharp";
 
 const root = process.cwd();
 const projectsPath = path.join(root, "src/data/projects.ts");
+const manufacturerCatalogPath = path.join(root, "src/data/manufacturerCatalogProjects.ts");
 const regionalPath = path.join(root, "src/data/regionalBatchProjects.ts");
 const outPath = path.join(root, "src/data/projectThumbs.ts");
 const projectsSource = fs.readFileSync(projectsPath, "utf8");
+const manufacturerCatalogSource = fs.readFileSync(manufacturerCatalogPath, "utf8");
 const regionalSource = fs.readFileSync(regionalPath, "utf8");
 
 // Карточка на главной занимает до трети широкого экрана, а на мобильном —
@@ -20,7 +22,7 @@ const MOBILE_CARD_THUMB_WIDTH = 640;
 const MOBILE_CARD_THUMB_QUALITY = 50;
 
 const importByVar = new Map();
-for (const match of projectsSource.matchAll(/^import\s+(\w+)\s+from\s+"@\/assets\/([^"]+)";/gm)) {
+for (const match of `${projectsSource}\n${manufacturerCatalogSource}`.matchAll(/^import\s+(\w+)\s+from\s+"@\/assets\/([^"]+)";/gm)) {
   importByVar.set(match[1], match[2]);
 }
 
@@ -30,6 +32,15 @@ for (const match of projectsSource.matchAll(mainProjectRe)) {
   const id = Number(match[1]);
   const variable = match[2];
   const assetRel = importByVar.get(variable);
+  if (assetRel) refs.push({ id, assetRel });
+}
+
+for (const line of manufacturerCatalogSource.split("\n")) {
+  const idMatch = line.match(/\bid:\s*(\d+)/);
+  const galleryMatch = line.match(/\bgallery:\s*(?:fpsGallery\(\s*|\[\s*\{\s*image:\s*)(\w+)/);
+  if (!idMatch || !galleryMatch) continue;
+  const id = Number(idMatch[1]);
+  const assetRel = importByVar.get(galleryMatch[1]);
   if (assetRel) refs.push({ id, assetRel });
 }
 

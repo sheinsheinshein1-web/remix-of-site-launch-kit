@@ -1,0 +1,2695 @@
+[
+  {
+    "sourceUrl": "https://promo.glavles.com/project/8-35-m",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект 8-35-м: Модульный дом 5,8×5,9",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-35-m",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://promo.glavles.com/project/8-35-m",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-35-m",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "35 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-35-m",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-35-m",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-35-m",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-35-m",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-35-m",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-35-m",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-35-m",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://promo.glavles.com/project/8-35-m",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-35-m",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-35-m",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3838-6438-4263-b732-396334383263/1_5_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3838-3564-4635-b235-643664333261/001_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3632-3037-4563-a538-633138313261/002_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6639-3866-4132-a431-313335373064/003_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3731-6330-4366-b836-383262613933/004_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6533-6238-4332-a134-356361363466/1_1_-_Photo_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6236-3937-4133-b833-653230383466/1_2_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6464-3632-4966-b439-323736353736/1_3_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3833-6663-4530-b037-383535613761/1_4_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3764-3231-4438-a463-363938626334/1_5_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6666-3334-4430-a663-633162396536/1_6_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3062-3262-4166-a536-323132653634/8-35-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6664-6330-4831-b166-306662356438/8-35-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6466-3865-4532-b232-363965636332/8-35-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6637-6632-4036-a666-316337616365/8-35-3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6663-3336-4331-b631-663735656438/8-35-4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3839-3364-4066-a432-333230633061/1_5_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3134-3864-4337-a162-653937386632/1_4_-_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3532-6130-4135-a166-666537316232/1_4_-_-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-6631-4061-b135-613663306138/1_4_-_-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-35-m"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://promo.glavles.com/project/8-27-m",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект 8-27-м: Модульный дом 5,7×6,4",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-27-m",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://promo.glavles.com/project/8-27-m",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "1 718 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-27-m",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "27,3 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-27-m",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-27-m",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-27-m",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-27-m",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-27-m",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-27-m",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-27-m",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://promo.glavles.com/project/8-27-m",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-27-m",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-27-m",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3763-3635-4235-a139-613462353234/8-27-m-001.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3864-3938-4034-b830-613532616163/8-27-m-001.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6230-6134-4664-b432-363437376233/8-27-m-002.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6561-3165-4665-b439-376635633731/8-27-m-003.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6666-3139-4535-a531-633331643165/8-27-m-004.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3561-3163-4135-b865-343730303238/8-27-m-005.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3162-3737-4062-b163-666465316462/8-27-m-006.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6661-6664-4630-b330-623030626166/8-27-m-007.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3731-3136-4833-a536-376537366465/8-27-m-008.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3938-3132-4362-a435-656635613430/09_3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3037-3935-4661-b463-326461353962/02_5_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6464-3566-4138-b165-626538633966/03_4_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6532-3264-4666-b739-316165633231/04_4_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6237-6136-4634-b831-633635383934/05_3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6534-6564-4466-b935-623665643938/06_3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6139-3764-4565-b130-303862366465/08_3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3338-3766-4530-b839-386438396630/09_3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6463-6465-4765-b231-343266373735/8-27-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3037-6362-4566-b364-623532633930/8-27-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6132-3037-4432-b966-363863663137/8-27-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3665-3731-4130-a230-653565656332/8-27-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6463-3633-4464-a335-363966363935/8-27-3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3134-3864-4337-a162-653937386632/1_4_-_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3532-6130-4135-a166-666537316232/1_4_-_-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-6631-4061-b135-613663306138/1_4_-_-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-27-m"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://promo.glavles.com/project/8-12-m",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект 8-12-м: Модульный дом 2,25×6,3",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-12-m",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://promo.glavles.com/project/8-12-m",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-12-m",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "12,6 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-12-m",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-12-m",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-12-m",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-12-m",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-12-m",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-12-m",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-12-m",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://promo.glavles.com/project/8-12-m",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-12-m",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-12-m",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6337-6636-4264-b865-386132336432/8-12-m-005.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3534-6262-4465-b739-386330343530/8-12-m-001.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6632-6436-4530-a466-306461393438/8-12-m-002.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3836-6239-4061-b037-396162323764/8-12-m-003.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6639-3264-4264-b937-366663303731/8-12-m-004.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6466-6264-4863-b266-663864393431/8-12-m-005.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6566-6161-4634-a161-666464346538/8-12-m-006.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6165-3366-4634-b139-323039333534/8-12-m-007.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6466-3832-4230-b832-396466633436/8-12-m-008.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3136-6538-4165-b136-353137653637/S_1_-_Photo.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3665-3363-4136-b838-623063396664/09_3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-3838-4732-b635-303939346237/08_3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3933-6538-4130-b966-306634356433/05_3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3436-6263-4665-b337-356661303838/8-12-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6661-6435-4431-b162-323365356531/8-12-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3366-6434-4434-a165-333661626539/8-12-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3335-3136-4462-b063-656566333633/8-12-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3333-3264-4233-b230-666662613834/8-12_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6533-3432-4564-a462-323262623663/8-12_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3337-3838-4264-b634-623262653863/718b08e4d90f55fc1d69.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3134-3864-4337-a162-653937386632/1_4_-_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3532-6130-4135-a166-666537316232/1_4_-_-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-6631-4061-b135-613663306138/1_4_-_-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-12-m"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://promo.glavles.com/project/8-28-34-m",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект 8-34м: Модульный дом 5,2×7,45",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-34-m",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-34-m",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "1 771 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-34-m",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "34 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-34-m",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-34-m",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-34-m",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-34-m",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-34-m",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-34-m",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-34-m",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-34-m",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-34-m",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-34-m",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3966-6432-4537-a233-313633646565/1_1_-_Photo_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6130-6532-4134-a134-373134363565/1_1_-_Photo_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3639-6465-4266-b233-353939623461/1_2_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6132-3833-4666-a533-626364316139/1_3_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3565-3361-4737-a236-666135666661/1_4_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3862-3436-4463-a638-626231363831/2_1_-_Photo_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6261-6531-4733-b635-333239663637/2_2_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3331-6439-4262-b931-626334666165/2_3_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3832-3036-4434-a231-323335623762/2_4_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3662-3661-4162-a162-373435646264/02_5_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6461-6462-4134-a231-363239333336/04_4_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3330-3533-4234-b036-313135336530/05_3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3833-6231-4164-a537-613236636337/8-36-1_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3435-6431-4338-b662-393735376533/8-36-1_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3766-6463-4261-a638-326134393732/8-36-2_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3937-6538-4239-a438-643235373630/001_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3263-3137-4335-a465-346661303938/1_1_-_Photo_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3134-3864-4337-a162-653937386632/1_4_-_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3532-6130-4135-a166-666537316232/1_4_-_-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-6631-4061-b135-613663306138/1_4_-_-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-34-m"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://promo.glavles.com/8-87-m",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект 8-87-м: Модульный дом 11,86×7,96",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/8-87-m",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://promo.glavles.com/8-87-m",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-87-m",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "17,3 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/8-87-m",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-87-m",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-87-m",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-87-m",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-87-m",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-87-m",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-87-m",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://promo.glavles.com/8-87-m",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-87-m",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-87-m",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3938-3961-4163-b038-326339333434/1_7_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-87-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3737-3165-4162-a637-373431306366/1_2_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-87-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3138-6534-4339-b133-333162656134/1_3_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-87-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3433-6130-4537-b030-663765666364/1_4_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-87-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6161-6234-4537-b361-356338643565/1_5_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-87-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6461-6533-4665-b864-356234616332/1_6_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-87-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6163-3236-4265-a637-623237333533/1_7_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-87-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6534-3737-4631-b434-323766393866/8-87-3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-87-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3338-6465-4438-b434-326266643338/8-87-3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-87-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3735-6562-4661-a436-636463393430/8-87-3-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-87-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3134-3864-4337-a162-653937386632/1_4_-_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-87-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3532-6130-4135-a166-666537316232/1_4_-_-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-87-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-6631-4061-b135-613663306138/1_4_-_-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-87-m"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://promo.glavles.com/project/8-25",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект 8-25-м: Модульный дом 4,15×6,4",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-25",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://promo.glavles.com/project/8-25",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "1 487 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-25",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "11 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-25",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-25",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-25",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-25",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-25",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-25",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-25",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://promo.glavles.com/project/8-25",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-25",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-25",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6239-3832-4233-a232-616362623038/XL_4_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6361-3134-4566-b364-336639656338/XL_1_-_Photo_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3862-3466-4264-b830-633336643761/XL_2_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6138-6464-4061-a533-643132376364/XL_3_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3537-3266-4865-b731-643966303430/XL_4_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3338-3266-4039-b764-333966393661/XL_5_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-6333-4037-b235-356562663264/XL_6_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6535-3937-4462-a434-313835616266/photo_2022-07-01_15-.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3233-3537-4234-b963-653563376239/photo_2022-07-01_15-.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3932-3362-4163-b836-656235393063/photo_2022-07-01_15-.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6132-3137-4438-b066-626430316234/8-25-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6533-6334-4261-b839-333239616335/8-25-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6339-3338-4465-b464-383532303636/8-25-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3731-3537-4431-b264-663530366433/8-25-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6164-6232-4462-b361-643136336433/8-25-3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3934-3432-4633-a136-323839626236/8-25-4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3134-3864-4337-a162-653937386632/1_4_-_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3532-6130-4135-a166-666537316232/1_4_-_-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-6631-4061-b135-613663306138/1_4_-_-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-25"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://promo.glavles.com/8-68-m",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект 8-68-м: Модульный дом 11,86×7,96",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/8-68-m",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://promo.glavles.com/8-68-m",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "135 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/8-68-m",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "68 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/8-68-m",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-68-m",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-68-m",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-68-m",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-68-m",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-68-m",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-68-m",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://promo.glavles.com/8-68-m",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-68-m",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-68-m",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3532-3934-4038-a334-376638333466/1_2_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-68-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3136-6236-4463-b136-333363356239/1_2_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-68-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3431-6636-4963-a366-393766353065/1_3_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-68-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3637-6437-4466-a236-356163356631/1_4_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-68-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6234-3039-4531-b463-613063363837/1_5_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-68-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3031-6438-4166-a539-396234366166/1_6_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-68-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6239-6232-4235-b562-636261333261/1_7_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-68-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3338-6566-4563-b664-313661336561/8-68-3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-68-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3334-3536-4262-b334-326166656534/8-68-3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-68-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6537-3833-4362-a337-656662376430/8-68-3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-68-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3632-6464-4264-b932-343834613039/8-68-3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-68-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3134-3864-4337-a162-653937386632/1_4_-_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-68-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3532-6130-4135-a166-666537316232/1_4_-_-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-68-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-6631-4061-b135-613663306138/1_4_-_-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-68-m"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://promo.glavles.com/project/8-17-m",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект 8-17-3-м: Модульный дом 4,75×6,3",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-m",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-m",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "1 214 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-m",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "17,0 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-m",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-m",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-m",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-m",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-m",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-m",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-m",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-m",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-m",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-m",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6137-3363-4936-a361-623335633766/8-12-m-001.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6662-3335-4138-a235-303239626530/8-12-m-001.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6563-3738-4534-b133-643532623033/8-12-m-004.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3533-3737-4939-b730-303233323136/8-12-m-002.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6263-6466-4766-b962-646333363839/8-12-m-003.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6362-6531-4737-a563-316161386139/8-12-m-008.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3832-6239-4733-b963-663261656639/8-12-m-009.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3139-3363-4239-b433-373130343565/8-12-m-005.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6362-6233-4737-a666-303838336664/8-12-m-006.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6462-3836-4632-b562-373332326635/8-12-m-0010.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6230-3661-4336-b764-653333616261/08_3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6233-3965-4663-b763-623335666634/09_3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3363-3933-4262-b364-616530376133/8-17-3-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3964-3934-4639-b336-313863396433/8-17-3-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3633-3838-4337-a661-383861643830/8-17-3-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3064-6331-4736-b036-376536343865/8-17-3-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3961-6433-4563-a166-306132343532/8-17-3-3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3434-3230-4566-b730-626437623566/8-17-3-4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6632-3866-4730-b566-613434633137/8-17-3-3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3632-3436-4265-b739-353133643937/8-17-3-32.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6633-6561-4630-b832-323134623738/718b08e4d90f55fc1d69.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3134-3864-4337-a162-653937386632/1_4_-_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3532-6130-4135-a166-666537316232/1_4_-_-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-6631-4061-b135-613663306138/1_4_-_-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-m"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://promo.glavles.com/project/8-28-m",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект 8-28-м: Модульный дом 5,2×5,65",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-m",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-m",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "1 258 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-m",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "10,7 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-m",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-m",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-m",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-m",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-m",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-m",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-m",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-m",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-m",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-28-m",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3635-3634-4163-b730-316662313932/8-28-m-002.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6138-3635-4330-a532-306661393964/8-28-m-001.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3063-3632-4531-a537-656635643766/8-28-m-002.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6232-6161-4737-b061-646433353461/8-28-m-003.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6436-3766-4764-a166-353663653864/8-28-m-004.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3937-6533-4463-a361-393133323763/8-28-m-005.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6237-3339-4737-b038-643466636334/8-28-m-006.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6134-6239-4139-b164-356264373662/8-28-m-007.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6430-3633-4762-b139-643933363838/8-28-m-008.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3662-3661-4162-a162-373435646264/02_5_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6461-6462-4134-a231-363239333336/04_4_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3330-3533-4234-b036-313135336530/05_3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3164-3430-4033-b838-663730313239/8-28-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3165-3561-4363-b336-393931663666/8-28-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3939-6634-4365-b134-356166643237/8-28-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3139-3238-4464-a166-336263376234/8-28-4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6230-3434-4637-b630-353738383737/2_1_-_Photo_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6462-3762-4433-b861-353631313837/1_3_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3432-3364-4333-b666-303037663534/1_1_-_Photo_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3838-3931-4138-b364-363862663161/1_3_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3134-3864-4337-a162-653937386632/1_4_-_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3532-6130-4135-a166-666537316232/1_4_-_-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-6631-4061-b135-613663306138/1_4_-_-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-28-m"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://promo.glavles.com/project/8-17-2-m",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект 8-17/2-м: Модульный дом 3,1×6",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-2-m",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-2-m",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "1 100 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-2-m",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "17 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-2-m",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "1400 × 2000",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-2-m",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-2-m",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-2-m",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-2-m",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-2-m",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-2-m",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-2-m",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-2-m",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/project/8-17-2-m",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3233-6536-4164-b137-623133393133/17_2_L_3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6239-6330-4436-b964-626132343665/17_2_L_1_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6137-6433-4434-b833-346530396465/17_2_L_2_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3139-3066-4930-b135-313562373161/17_2_L_3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3835-3831-4233-b034-336361376566/17_2_L_4_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6361-6363-4763-b663-653832303633/17_2_L_5_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3761-6330-4464-b163-346239626462/17_2_L_6_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3637-3233-4430-a563-643634663866/06_3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6637-6231-4333-b065-616537313838/07_3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3039-3366-4161-b331-393432303363/8-17-2-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3765-3762-4466-a239-356266643864/8-17-2-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3939-6235-4164-a637-326237613535/8-17-2-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6363-6334-4332-a631-343461393639/8-17-2-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3061-3962-4763-b233-643938636139/8-17-2-3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6366-6664-4631-b531-616134626434/8-17-2-4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6133-3661-4261-a566-303639333635/8-17-2-3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6133-6630-4131-b563-656630353836/8-17-2-3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6637-3731-4931-a666-383330343265/_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3134-3864-4337-a162-653937386632/1_4_-_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3532-6130-4135-a166-666537316232/1_4_-_-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-6631-4061-b135-613663306138/1_4_-_-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/project/8-17-2-m"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://promo.glavles.com/8-28m-48",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект 8-48м: Модульный дом 5,2×10,0",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/8-28m-48",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://promo.glavles.com/8-28m-48",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "2 330 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/8-28m-48",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "48 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/8-28m-48",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-28m-48",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-28m-48",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-28m-48",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-28m-48",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-28m-48",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-28m-48",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://promo.glavles.com/8-28m-48",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-28m-48",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-28m-48",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3966-6432-4537-a233-313633646565/1_1_-_Photo_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-28m-48"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6632-3266-4330-b366-653734353834/1_1_-_Photo_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-28m-48"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6361-3530-4237-a662-383064336435/1_2_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-28m-48"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6437-3832-4262-b535-653530623733/1_3_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-28m-48"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6433-6463-4638-b430-613939373838/1_4_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-28m-48"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3662-3661-4162-a162-373435646264/02_5_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-28m-48"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6461-6462-4134-a231-363239333336/04_4_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-28m-48"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3330-3533-4234-b036-313135336530/05_3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-28m-48"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6531-3734-4330-b163-373739626235/8-48-1_c.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-28m-48"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3439-6231-4564-b164-373733653664/8-48-1_c.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-28m-48"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6539-3261-4535-b338-333866353439/8-48-2_c.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-28m-48"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3433-6434-4339-a337-323138613730/8-48-3_c.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-28m-48"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3937-6538-4239-a438-643235373630/001_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-28m-48"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6364-6635-4263-a238-306463363439/1_3_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-28m-48"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3134-3864-4337-a162-653937386632/1_4_-_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-28m-48"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3532-6130-4135-a166-666537316232/1_4_-_-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-28m-48"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-6631-4061-b135-613663306138/1_4_-_-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-28m-48"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://promo.glavles.com/8-55m",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект 8-55м: Модульный дом 11,86×6,36",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/8-55m",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://promo.glavles.com/8-55m",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "2 471 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/8-55m",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "55 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/8-55m",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-55m",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-55m",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-55m",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-55m",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-55m",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-55m",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://promo.glavles.com/8-55m",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-55m",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-55m",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6338-6239-4935-b862-313463306664/2_1_-_Photo_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-55m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3535-6161-4661-a162-323866626564/1_3_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-55m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6439-3732-4762-b730-373536656231/2_1_-_Photo_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-55m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3361-3362-4165-a333-616136633236/2_2_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-55m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3030-6338-4065-b137-613265396431/2_3_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-55m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6439-3236-4134-b335-636161633463/2_4_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-55m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3066-6530-4664-b535-393731393465/2_5_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-55m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3961-3434-4835-b033-613864393064/2_6_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-55m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6137-3563-4335-b231-663962386236/2_7_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-55m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3866-6631-4437-a235-613635366232/8-55-2_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-55m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3331-6162-4464-b031-656466353564/8-55-2_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-55m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3461-6534-4735-a136-343963383263/8-55-3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-55m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3032-6465-4336-a264-616137326362/8-55-3_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-55m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3134-3864-4337-a162-653937386632/1_4_-_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-55m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3532-6130-4135-a166-666537316232/1_4_-_-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-55m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-6631-4061-b135-613663306138/1_4_-_-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-55m"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://promo.glavles.com/8-61m",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Проект 8-45м: Модульный дом 5,85×8,55",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/8-61m",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://promo.glavles.com/8-61m",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-61m",
+      "method": "not-found",
+      "evidence": "Актуальная цена не найдена универсальным адаптером."
+    },
+    "area": {
+      "value": "45 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://promo.glavles.com/8-61m",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-61m",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-61m",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-61m",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-61m",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-61m",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-61m",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://promo.glavles.com/8-61m",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-61m",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://promo.glavles.com/8-61m",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3939-6438-4131-b465-653564663335/1_1_-_Photo_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-61m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3461-3738-4032-b534-313966323730/1_1_-_Photo_com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-61m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3433-6239-4263-a562-396136326162/1_2_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-61m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6331-3034-4434-a339-663963373939/1_3_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-61m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3934-3932-4230-b564-646462663861/1_4_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-61m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3363-6635-4166-b063-306634323365/1_5_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-61m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3233-3636-4661-b635-363462343037/1_6_-__com.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-61m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6662-6466-4135-b633-323439663534/8-61.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-61m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3062-3062-4537-b061-646136313035/8-61-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-61m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3333-3437-4434-a164-386132396165/8-61-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-61m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3362-6430-4161-a137-353665313865/8-61-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-61m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3562-3934-4335-a364-373835393736/8-61-.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-61m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3134-3864-4337-a162-653937386632/1_4_-_.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-61m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3532-6130-4135-a166-666537316232/1_4_-_-1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-61m"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3264-6631-4061-b135-613663306138/1_4_-_-2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://promo.glavles.com/8-61m"
+      }
+    ],
+    "conflicts": []
+  }
+]

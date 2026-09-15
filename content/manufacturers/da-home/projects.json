@@ -1,0 +1,3897 @@
+[
+  {
+    "sourceUrl": "https://da-home.ru/proekt/barn-51/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Дом «Барн 51»",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/barn-51/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/barn-51/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "600 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/barn-51/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "51 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/barn-51/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "8,5 × 6 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/barn-51/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/barn-51/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/barn-51/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/barn-51/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/barn-51/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/barn-51/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/barn-51/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/barn-51/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/barn-51/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p04/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/barn-51/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p04/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/barn-51/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p04/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/barn-51/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p04/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/barn-51/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p04/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/barn-51/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p04/g6.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/barn-51/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/barn-51/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/barn-51/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/barn-51/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p06.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/barn-51/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом 30 м² с верандой",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "679 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "30 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "6 × 5 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p09/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p09/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p09/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p09/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p09/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p09/g6.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-08.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-s-verandoy/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом 6×6 (36 м²)",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "600 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "36 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "6 × 6 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": "1",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/",
+      "method": "visible-text",
+      "evidence": "Подписанная этажность."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p07/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p07/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p07/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p07/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p07/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p07/g6.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-06.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-6x6/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом 30 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "600 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "30 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "6 × 5 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p05/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p05/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p05/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p06.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-letniy/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом 15 м² с террасой",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "600 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "15 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "2,5 × 6 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p12/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p12/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p12/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p12/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p12/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p12/g6.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-11.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-15-s-terrasoy/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Дачный дом 15 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "450 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "15 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "6 × 2,5 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p03/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p03/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p03/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p03/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p03/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p03/g6.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p06.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dachnyy-dom-15/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом 30 м² под ключ",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "425 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "30 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "6 × 5 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p11/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p11/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p11/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-10.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-pod-klyuch/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Дом с двумя спальнями 25 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "600 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "25 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "6,0 × 4,4 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p15/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p15/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p15/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p15/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p15/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p15/g6.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-14.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-25/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом 57,6 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "600 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "57,6 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "6,4 × 9 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p13/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p13/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p13/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p13/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p13/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p13/g6.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-12.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-57/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом с террасой 40 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "600 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "40 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p17/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p17/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p17/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p17/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p17/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-16.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-s-terrasoy-40/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Дом с баней и террасой 46 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "515 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "46 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "8,5 × 5,5 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p16/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p16/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p16/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p16/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p16/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-15.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p22.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p26.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p27.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-s-baney-46/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Садовый дом 6×3 с террасой",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "425 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "18 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "6 × 3 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p08/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p08/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p08/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p08/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p08/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p08/g6.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-07.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/sadovyy-dom-6x3/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом 30 м² (под ключ)",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "1 050 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "30 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "6 × 5 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p18/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p18/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p18/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p18/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-17.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-chistovaya/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом 60 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "600 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "60 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "7,5 × 8 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p20/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p20/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p20/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p20/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p20/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-19.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-a/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом 48 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "600 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "48 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "6 × 8 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p19/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p19/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p19/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p19/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p19/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p19/g6.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-18.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-48/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом 54 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "600 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "54 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "6 × 9 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p21/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p21/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p21/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p21/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p21/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-20.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-54/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом 60 м² (каркас)",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "600 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "60 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "6 × 10 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p22/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p22/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p22/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-21.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-60-b/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульная баня с террасой 54 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": "1 690 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "54 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "6 × 9 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p23/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p23/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p23/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p23/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p23/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-22.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p15.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p26.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p27.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnaya-banya-s-terrasoy-54/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом 80 м² (каркас)",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "3 514 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "80 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "8 × 10 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p26/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p26/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p26/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p26/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-25.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-b/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом 80 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "600 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "80 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "7 × 10 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": "3",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p24/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p24/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p24/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p24/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p24/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-23.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-80-a/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом 127 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "600 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "127 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "14,5 × 9 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p25/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p25/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p25/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p25/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-24.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-127/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Каркасная баня 14,4 м² с печью",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": "515 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "14,4 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "6 × 2,4 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": "515",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/",
+      "method": "visible-text",
+      "evidence": "Подписанное количество комнат."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Каркасный",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию каркасной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p28/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p28/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p28/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p28/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p28/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-27.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p15.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p22.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p26.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-14/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Каркасная баня 12,5 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": "515 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "12,5 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "5 × 2,5 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Каркасный",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию каркасной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p27/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p27/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p27/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p27/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p27/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-26.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p15.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p22.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p27.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/karkasnaya-banya-12/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом 30 м² (круглогодичный)",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "600 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "30 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "6 × 5 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": "1",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/",
+      "method": "visible-text",
+      "evidence": "Подписанная этажность."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p06/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p06/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p06/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-30.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/modulnyy-dom-30-kruglogodichnyy/"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом с двумя спальнями (DA-54)",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/",
+      "method": "visible-text",
+      "evidence": "Первый H1 или title официальной страницы."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "600 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "54 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": "9,0 × 6,0 м",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/",
+      "method": "visible-text",
+      "evidence": "Подписанные габариты или размеры."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://da-home.ru/images/gallery/p30/g1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p30/g2.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p30/g3.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p30/g4.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p30/g5.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/gallery/p30/g6.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/pages/page-29.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p03.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p04.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/"
+      },
+      {
+        "url": "https://da-home.ru/images/projects/p05.jpg",
+        "type": "photo",
+        "sourceUrl": "https://da-home.ru/proekt/dom-2-spalni-premium-25/"
+      }
+    ],
+    "conflicts": []
+  }
+]

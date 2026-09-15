@@ -1,0 +1,247 @@
+{
+  "id": "prefabia",
+  "publicationStatus": "draft",
+  "identity": {
+    "name": {
+      "value": "Prefabia",
+      "status": "derived",
+      "confidence": 0.9,
+      "sourceUrl": "https://prefabia.ru/",
+      "method": "structured-data",
+      "evidence": "Название из Organization JSON-LD."
+    },
+    "logo": {
+      "value": "https://prefabia.rudesign/PREFAB/images/og-default.jpg",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://prefabia.ru/",
+      "method": "structured-data",
+      "evidence": "Логотип из Organization JSON-LD."
+    }
+  },
+  "contacts": {
+    "siteUrl": "https://prefabia.ru/",
+    "phones": {
+      "value": [
+        "+7 (982) 605-35-53",
+        "+7 982 605 35 53"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://prefabia.ru/",
+      "method": "visible-text",
+      "evidence": "Телефоны найдены на официальных страницах."
+    },
+    "emails": {
+      "value": [
+        "zakaz@prefabia.ru",
+        "53zakaz@prefabia.ru",
+        "privacy@prefabia.ru"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://prefabia.ru/",
+      "method": "visible-text",
+      "evidence": "Email найдены на официальных страницах."
+    },
+    "telegram": {
+      "value": "https://t.me/prefabia",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://prefabia.ru/",
+      "method": "link",
+      "evidence": "Ссылка Telegram опубликована на официальном сайте."
+    },
+    "youtube": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://prefabia.ru/",
+      "method": "not-found",
+      "evidence": "YouTube не найден на официальном сайте."
+    }
+  },
+  "catalog": {
+    "sourceUrl": "https://prefabia.ru/project/",
+    "discoveredProjectCount": 18,
+    "expectedProjectCount": 18
+  },
+  "legal": {
+    "operator": {
+      "value": "ООО «Prefabia»",
+      "status": "derived",
+      "confidence": 0.7,
+      "sourceUrl": "https://prefabia.ru/",
+      "method": "visible-text",
+      "evidence": "Оператор найден в официальном тексте; связь требует проверки по реквизитам."
+    },
+    "inn": {
+      "value": "6662036101",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://prefabia.ru/",
+      "method": "visible-text",
+      "evidence": "ИНН опубликован на официальном сайте."
+    },
+    "ogrn": {
+      "value": "3236658000159",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://prefabia.ru/",
+      "method": "visible-text",
+      "evidence": "ОГРН или ОГРНИП опубликован на официальном сайте."
+    }
+  },
+  "production": {
+    "address": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://prefabia.ru/",
+      "method": "not-found",
+      "evidence": "Отдельный адрес производства не найден."
+    }
+  },
+  "reviews": {
+    "externalProfile": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://prefabia.ru/",
+      "method": "not-found",
+      "evidence": "Независимый профиль отзывов не найден на официальном сайте."
+    }
+  },
+  "builtObjects": {
+    "sourcePage": {
+      "value": "https://prefabia.ru/portfolio/",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://prefabia.ru/portfolio/",
+      "method": "link",
+      "evidence": "Официальная страница портфолио или объектов."
+    },
+    "media": [
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/08/03/img_0967_800_500.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/08/03/img_0965_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/08/03/img_0966_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/08/03/img_0968_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/08/03/img_0969_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/08/03/img_0970_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/08/03/img_0971_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/08/03/img_0972_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/08/03/img_0973_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/08/03/img_0974_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/08/03/img_0975_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/08/03/img_0976_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/08/03/img_0977_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/08/03/img_0978_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/08/03/img_0979_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/08/03/img_0980_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/07/10/img_0376_800_500.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/07/10/img_0375_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/07/10/img_0378_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/07/10/img_0377_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/07/10/img_0360-972_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/07/10/img_0362-987_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/07/10/img_0363-841_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      },
+      {
+        "url": "https://prefabia.ru/UPLOAD/2026/07/10/img_0364-357_200_120.webp",
+        "type": "photo",
+        "sourceUrl": "https://prefabia.ru/portfolio/"
+      }
+    ]
+  }
+}

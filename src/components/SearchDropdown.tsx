@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import { createPortal } from "react-dom";
 import { flushSync } from "react-dom";
-import { Search, X, Home, Factory, FileText, LayoutGrid, ArrowRight, ChevronRight, Clock, MapPin } from "lucide-react";
+import { Search, X, FileText, LayoutGrid, ChevronRight, Clock, MapPin, SlidersHorizontal } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { makersById, projects as dataProjects } from "@/data/projects";
 import { manufacturerRegistry } from "@/data/manufacturers";
@@ -10,6 +10,7 @@ import { compareProjectTechnologyPriority } from "@/lib/projectPriority";
 import { allCategoryLinks } from "@/data/categoryLinks";
 import { allRegions } from "@/data/regions";
 import { isProjectAvailableInGeo } from "@/lib/geoSelection";
+import ManufacturerLogo from "@/components/ManufacturerLogo";
 import {
   CATALOG_PATH,
   getManufacturerPath,
@@ -360,6 +361,8 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const mobileInputRef = useRef<HTMLInputElement>(null);
+  const mobileDialogRef = useRef<HTMLDivElement>(null);
+  const mobileTriggerRef = useRef<HTMLButtonElement>(null);
   const previousBodyOverflowRef = useRef<string>("");
   const previousHtmlOverflowRef = useRef<string>("");
   const bodyScrollLockedRef = useRef(false);
@@ -582,6 +585,8 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
     });
     if (afterClose) {
       openFrameRef.current = requestAnimationFrame(afterClose);
+    } else {
+      openFrameRef.current = requestAnimationFrame(() => mobileTriggerRef.current?.focus());
     }
   };
 
@@ -607,6 +612,43 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
     updateQuery("");
   };
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const handleDialogKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setFocused(false);
+        setMobileOpen(false);
+        setQuery("");
+        onQueryChange?.("");
+        requestAnimationFrame(() => mobileTriggerRef.current?.focus());
+        return;
+      }
+      if (event.key !== "Tab") return;
+
+      const focusable = Array.from(
+        mobileDialogRef.current?.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), input:not([disabled]), [href], [tabindex]:not([tabindex="-1"])',
+        ) ?? [],
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!first || !last) return;
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleDialogKeyDown);
+    return () => document.removeEventListener("keydown", handleDialogKeyDown);
+  }, [mobileOpen, onQueryChange]);
+
   // Get matching quick suggestion chips based on current query
   const chips = useMemo(() => {
     const nq = normalizeQuery(query);
@@ -620,100 +662,113 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
   const renderResults = () => (
     <>
       {results.suggestions.length > 0 && (
-        <div className="px-4 pt-3 pb-1">
-          <div className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide mb-2">Показать в каталоге</div>
-          {results.suggestions.map((s, i) => (
-            <button key={i} onClick={() => handleSelect(s.url)} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
-              <Search className="w-4 h-4 text-muted-foreground/50 shrink-0" />
-              <div className="flex-1 text-left min-w-0">
-                <div className="text-[14px] font-medium text-foreground">{s.label}</div>
-                <div className="text-[12px] text-primary">{s.sub}</div>
-              </div>
-              <ChevronRight className="w-4 h-4 text-muted-foreground/40 shrink-0" />
-            </button>
-          ))}
-        </div>
+        <section className="px-4 pt-5 md:px-5">
+          <h2 className="mb-2 text-[20px] font-semibold leading-tight text-foreground">В каталоге</h2>
+          <div className="space-y-1">
+            {results.suggestions.map((s, i) => (
+              <button key={i} onClick={() => handleSelect(s.url)} className="group flex min-h-14 w-full items-center gap-3 rounded-[3px] px-3 py-3 text-left transition-colors hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
+                <div className="min-w-0 flex-1">
+                  <div className="text-[16px] font-medium leading-snug text-foreground">{s.label}</div>
+                  <div className="mt-0.5 text-[13px] leading-snug text-muted-foreground">{s.sub}</div>
+                </div>
+                <ChevronRight className="h-[18px] w-[18px] shrink-0 text-muted-foreground transition-colors group-hover:text-primary group-focus-visible:text-primary" strokeWidth={1.7} aria-hidden />
+              </button>
+            ))}
+          </div>
+        </section>
       )}
 
       {results.regions.length > 0 && (
-        <div className="px-4 pb-1 pt-2">
-          <div className="mb-2 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">Регионы доставки</div>
-          {results.regions.map((region) => (
-            <button key={region.slug} onClick={() => handleSelect(getRegionPath(region.slug))} className="flex w-full items-center gap-3 border-b border-border/50 py-3 last:border-0">
-              <MapPin className="h-4 w-4 shrink-0 text-muted-foreground/50" strokeWidth={1.7} />
-              <div className="min-w-0 flex-1 text-left">
-                <div className="text-[14px] text-foreground">{region.name}</div>
-                <div className="text-[12px] text-muted-foreground">{region.type}</div>
-              </div>
-              <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground/40" />
-            </button>
-          ))}
-        </div>
+        <section className="px-4 pt-6 md:px-5">
+          <h2 className="mb-2 text-[20px] font-semibold leading-tight text-foreground">Регионы доставки</h2>
+          <div className="space-y-1">
+            {results.regions.map((region) => (
+              <button key={region.slug} onClick={() => handleSelect(getRegionPath(region.slug))} className="group flex min-h-14 w-full items-center gap-3 rounded-[3px] px-3 py-3 text-left transition-colors hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
+                <MapPin className="h-[18px] w-[18px] shrink-0 text-muted-foreground" strokeWidth={1.7} aria-hidden />
+                <div className="min-w-0 flex-1">
+                  <div className="text-[16px] leading-snug text-foreground">{region.name}</div>
+                  <div className="mt-0.5 text-[13px] leading-snug text-muted-foreground">{region.type}</div>
+                </div>
+                <ChevronRight className="h-[18px] w-[18px] shrink-0 text-muted-foreground transition-colors group-hover:text-primary group-focus-visible:text-primary" strokeWidth={1.7} aria-hidden />
+              </button>
+            ))}
+          </div>
+        </section>
       )}
 
       {results.projects.length > 0 && (
-        <div className="px-4 pt-2 pb-1">
-          <div className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide mb-2">Проекты</div>
-          {results.projects.map((p) => (
-            <button key={p.id} onClick={() => handleSelect(p.path)} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
-              <Search className="w-4 h-4 text-muted-foreground/50 shrink-0" />
-              <div className="flex-1 text-left min-w-0">
-                <div className="text-[14px] text-foreground">{p.name}</div>
-                <div className="text-[12px] text-muted-foreground">{p.maker} · {p.area} · {p.price}</div>
-              </div>
-              <ChevronRight className="w-4 h-4 text-muted-foreground/40 shrink-0" />
-            </button>
-          ))}
-        </div>
+        <section className="px-4 pt-6 md:px-5">
+          <h2 className="mb-2 text-[20px] font-semibold leading-tight text-foreground">Проекты</h2>
+          <div className="space-y-1">
+            {results.projects.map((p) => (
+              <button key={p.id} onClick={() => handleSelect(p.path)} className="group flex min-h-14 w-full items-center gap-3 rounded-[3px] px-3 py-3 text-left transition-colors hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
+                <div className="min-w-0 flex-1">
+                  <div className="text-[16px] leading-snug text-foreground">{p.name}</div>
+                  <div className="mt-0.5 text-[13px] leading-snug text-muted-foreground">{p.maker} · {p.area} · {p.price}</div>
+                </div>
+                <ChevronRight className="h-[18px] w-[18px] shrink-0 text-muted-foreground transition-colors group-hover:text-primary group-focus-visible:text-primary" strokeWidth={1.7} aria-hidden />
+              </button>
+            ))}
+          </div>
+        </section>
       )}
 
       {results.categories.length > 0 && (
-        <div className="px-4 pt-2 pb-1">
-          <div className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide mb-2">Категории</div>
-          {results.categories.map((cat) => (
-            <button key={cat.slug} onClick={() => handleSelect(cat.href)} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
-              <LayoutGrid className="w-4 h-4 text-muted-foreground/50 shrink-0" />
-              <span className="text-[14px] text-foreground flex-1 text-left">{cat.name}</span>
-              <ChevronRight className="w-4 h-4 text-muted-foreground/40 shrink-0" />
-            </button>
-          ))}
-        </div>
+        <section className="px-4 pt-6 md:px-5">
+          <h2 className="mb-2 text-[20px] font-semibold leading-tight text-foreground">Категории</h2>
+          <div className="space-y-1">
+            {results.categories.map((cat) => (
+              <button key={cat.slug} onClick={() => handleSelect(cat.href)} className="group flex min-h-14 w-full items-center gap-3 rounded-[3px] px-3 py-3 text-left transition-colors hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
+                <LayoutGrid className="h-[18px] w-[18px] shrink-0 text-muted-foreground" strokeWidth={1.7} aria-hidden />
+                <span className="min-w-0 flex-1 text-[16px] leading-snug text-foreground">{cat.name}</span>
+                <ChevronRight className="h-[18px] w-[18px] shrink-0 text-muted-foreground transition-colors group-hover:text-primary group-focus-visible:text-primary" strokeWidth={1.7} aria-hidden />
+              </button>
+            ))}
+          </div>
+        </section>
       )}
 
       {results.manufacturers.length > 0 && (
-        <div className="px-4 pt-2 pb-1">
-          <div className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide mb-2">Производители</div>
-          {results.manufacturers.map((m) => (
-            <button key={m.id} onClick={() => handleSelect(getManufacturerPath(m.id))} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
-              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-[12px] font-semibold text-primary">{m.name.slice(0, 2)}</div>
-              <div className="flex-1 text-left min-w-0">
-                <div className="text-[14px] text-foreground">{m.name}</div>
-                <div className="text-[12px] text-muted-foreground">{m.location}</div>
-              </div>
-              <ChevronRight className="w-4 h-4 text-muted-foreground/40 shrink-0" />
-            </button>
-          ))}
-        </div>
+        <section className="px-4 pt-6 md:px-5">
+          <h2 className="mb-2 text-[20px] font-semibold leading-tight text-foreground">Производители</h2>
+          <div className="space-y-1">
+            {results.manufacturers.map((m) => (
+              <button key={m.id} onClick={() => handleSelect(getManufacturerPath(m.id))} className="group flex min-h-[68px] w-full items-center gap-3 rounded-[3px] px-3 py-2.5 text-left transition-colors hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
+                <ManufacturerLogo manufacturer={manufacturerRegistry[m.id]} className="h-11 w-11 shrink-0 text-[9px]" />
+                <div className="min-w-0 flex-1">
+                  <div className="text-[16px] leading-snug text-foreground">{m.name}</div>
+                  <div className="mt-0.5 text-[13px] leading-snug text-muted-foreground">{m.location}</div>
+                </div>
+                <ChevronRight className="h-[18px] w-[18px] shrink-0 text-muted-foreground transition-colors group-hover:text-primary group-focus-visible:text-primary" strokeWidth={1.7} aria-hidden />
+              </button>
+            ))}
+          </div>
+        </section>
       )}
 
       {results.articles.length > 0 && (
-        <div className="px-4 pt-2 pb-3">
-          <div className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide mb-2">Журнал</div>
-          {results.articles.map((a) => (
-            <button key={a.title} onClick={() => handleSelect("/categories/")} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
-              <div className="w-8 h-8 rounded-[var(--radius)] bg-secondary flex items-center justify-center shrink-0"><FileText className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} /></div>
-              <div className="flex-1 text-left min-w-0">
-                <div className="text-[14px] text-foreground">{a.title}</div>
-                <div className="text-[12px] text-muted-foreground">{a.tag}</div>
-              </div>
-              <ChevronRight className="w-4 h-4 text-muted-foreground/40 shrink-0" />
-            </button>
-          ))}
-        </div>
+        <section className="px-4 pb-6 pt-6 md:px-5">
+          <h2 className="mb-2 text-[20px] font-semibold leading-tight text-foreground">Журнал</h2>
+          <div className="space-y-1">
+            {results.articles.map((a) => (
+              <button key={a.title} onClick={() => handleSelect("/categories/")} className="group flex min-h-14 w-full items-center gap-3 rounded-[3px] px-3 py-3 text-left transition-colors hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">
+                <FileText className="h-[18px] w-[18px] shrink-0 text-muted-foreground" strokeWidth={1.7} aria-hidden />
+                <div className="min-w-0 flex-1">
+                  <div className="text-[16px] leading-snug text-foreground">{a.title}</div>
+                  <div className="mt-0.5 text-[13px] leading-snug text-muted-foreground">{a.tag}</div>
+                </div>
+                <ChevronRight className="h-[18px] w-[18px] shrink-0 text-muted-foreground transition-colors group-hover:text-primary group-focus-visible:text-primary" strokeWidth={1.7} aria-hidden />
+              </button>
+            ))}
+          </div>
+        </section>
       )}
 
       {query.length > 0 && !hasResults && (
-        <div className="px-4 py-8 text-center text-[14px] text-muted-foreground">Ничего не найдено</div>
+        <div className="px-7 py-12 text-center">
+          <h2 className="text-[20px] font-semibold text-foreground">Ничего не нашли</h2>
+          <p className="mx-auto mt-2 max-w-[320px] text-[15px] leading-relaxed text-muted-foreground">Попробуйте изменить запрос или указать меньше параметров.</p>
+        </div>
       )}
     </>
   );
@@ -728,12 +783,11 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
         </div>
 
         {/* Render outside sticky/header stacking contexts so the search always covers the site header. */}
-        {createPortal(<div className="fixed inset-0 z-[200] bg-background flex flex-col h-[100dvh] max-h-[100dvh]">
-          {/* Top bar with search + cancel */}
-          <div className="shrink-0 px-3 pt-[max(env(safe-area-inset-top),10px)] pb-2 bg-background border-b border-border/30">
+        {createPortal(<div ref={mobileDialogRef} className="fixed inset-0 z-[200] flex h-[100dvh] max-h-[100dvh] flex-col bg-background text-foreground" role="dialog" aria-modal="true" aria-label="Поиск по сайту">
+          <div className="shrink-0 bg-background px-4 pb-3 pt-[max(env(safe-area-inset-top),12px)]">
             <div className="flex items-center gap-2">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground z-10" />
+                <Search className="pointer-events-none absolute left-4 top-1/2 z-10 h-[18px] w-[18px] -translate-y-1/2 text-muted-foreground" strokeWidth={1.7} aria-hidden />
                 <input
                   ref={mobileInputRef}
                   type="search"
@@ -748,64 +802,75 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
                   }}
                   placeholder="Поиск на многоместа.рф"
                   autoFocus
-                  className="w-full h-11 pl-9 pr-9 rounded-[var(--radius)] text-[16px] font-light text-foreground placeholder:text-muted-foreground focus:outline-none bg-secondary"
+                  aria-label="Поиск по сайту"
+                  className="h-12 w-full rounded-[3px] border border-border bg-background pl-11 pr-12 text-[16px] font-normal text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/10 [&::-webkit-search-cancel-button]:appearance-none"
                 />
                 {query && (
                   <button
+                    type="button"
                     onClick={() => updateQuery("")}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-muted-foreground/20 flex items-center justify-center z-10"
+                    className="absolute right-0.5 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-[3px] text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+                    aria-label="Очистить поиск"
                   >
-                    <X className="w-3 h-3 text-muted-foreground" />
+                    <X className="h-4 w-4" strokeWidth={1.7} aria-hidden />
                   </button>
                 )}
               </div>
               <button
+                type="button"
                 onClick={handleMobileClose}
-                className="text-[14px] text-primary font-medium shrink-0 px-1"
+                className="min-h-11 shrink-0 rounded-[3px] px-2 text-[14px] font-medium text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+                aria-label="Закрыть поиск"
               >
                 Отменить
               </button>
             </div>
-
           </div>
 
           {/* Results area */}
           <div className="flex-1 overflow-y-auto">
             {/* Empty state: popular searches */}
             {!query.trim() && (
-              <div className="px-4 pt-4">
+              <div className="px-4 pb-8 pt-5">
                 {searchHistory.length > 0 && (
-                  <>
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide">Недавние запросы</div>
-                      <button onClick={clearHistory} className="text-[12px] text-primary">Очистить</button>
+                  <section>
+                    <div className="mb-2 flex items-center justify-between gap-4 px-3">
+                      <h2 className="text-[20px] font-semibold leading-tight text-foreground">Недавние запросы</h2>
+                      <button type="button" onClick={clearHistory} className="min-h-11 shrink-0 rounded-[3px] px-2 text-[14px] font-medium text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30">Очистить</button>
                     </div>
-                    {searchHistory.map((s) => (
-                      <button
-                        key={s}
-                        onClick={() => updateQuery(s)}
-                        className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0"
-                      >
-                        <Clock className="w-4 h-4 text-muted-foreground/50 shrink-0" />
-                        <span className="text-[14px] text-foreground flex-1 text-left">{s}</span>
-                        <ChevronRight className="w-4 h-4 text-muted-foreground/40 shrink-0" />
-                      </button>
-                    ))}
-                  </>
+                    <div className="space-y-1">
+                      {searchHistory.map((s) => (
+                        <button
+                          key={s}
+                          type="button"
+                          onClick={() => updateQuery(s)}
+                          className="group flex min-h-14 w-full items-center gap-3 rounded-[3px] px-3 py-3 text-left transition-colors hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+                        >
+                          <Clock className="h-[18px] w-[18px] shrink-0 text-muted-foreground" strokeWidth={1.7} aria-hidden />
+                          <span className="min-w-0 flex-1 text-[16px] leading-snug text-foreground">{s}</span>
+                          <ChevronRight className="h-[18px] w-[18px] shrink-0 text-muted-foreground transition-colors group-hover:text-primary group-focus-visible:text-primary" strokeWidth={1.7} aria-hidden />
+                        </button>
+                      ))}
+                    </div>
+                  </section>
                 )}
 
-                <div className={`text-[11px] font-medium text-muted-foreground uppercase tracking-wide mb-3 ${searchHistory.length > 0 ? 'mt-4' : ''}`}>Популярные запросы</div>
-                {popularSearches.map((s) => (
-                  <button
-                    key={s}
-                    onClick={() => updateQuery(s)}
-                    className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0"
-                  >
-                    <Search className="w-4 h-4 text-muted-foreground/50 shrink-0" />
-                    <span className="text-[14px] text-foreground flex-1 text-left">{s}</span>
-                    <ChevronRight className="w-4 h-4 text-muted-foreground/40 shrink-0" />
-                  </button>
-                ))}
+                <section className={searchHistory.length > 0 ? "mt-7" : ""}>
+                  <h2 className="mb-2 px-3 text-[20px] font-semibold leading-tight text-foreground">Популярные запросы</h2>
+                  <div className="space-y-1">
+                    {popularSearches.map((s) => (
+                      <button
+                        key={s}
+                        type="button"
+                        onClick={() => updateQuery(s)}
+                        className="group flex min-h-14 w-full items-center rounded-[3px] px-3 py-3 text-left transition-colors hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+                      >
+                        <span className="min-w-0 flex-1 text-[16px] leading-snug text-foreground">{s}</span>
+                        <ChevronRight className="h-[18px] w-[18px] shrink-0 text-muted-foreground transition-colors group-hover:text-primary group-focus-visible:text-primary" strokeWidth={1.7} aria-hidden />
+                      </button>
+                    ))}
+                  </div>
+                </section>
               </div>
             )}
 
@@ -819,90 +884,27 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
   // ==================== DEFAULT (INLINE) ====================
   if (iconOnly) {
     return (
-      <>
-        <button
-          className="md:hidden w-9 h-9 rounded-[var(--radius)] bg-secondary flex items-center justify-center"
-          onClick={() => setMobileOpen(true)}
-        >
-          <Search className="w-[18px] h-[18px] text-muted-foreground" />
-        </button>
-        {mobileOpen && (
-          <div className="fixed inset-0 z-[200] bg-background flex flex-col h-[100dvh] max-h-[100dvh]">
-            <div className="shrink-0 px-3 pt-[max(env(safe-area-inset-top),10px)] pb-2 bg-background border-b border-border/30">
-              <div className="flex items-center gap-2">
-                <div className="relative flex-1">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground z-10" />
-                  <input
-                    ref={mobileInputRef}
-                    type="search"
-                    enterKeyHint="search"
-                    inputMode="search"
-                    value={query}
-                    onChange={(e) => updateQuery(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" && query.trim()) {
-                        handleSelect(buildCatalogUrl({ q: query.trim() }));
-                      }
-                    }}
-                    placeholder="Поиск на многоместа.рф"
-                    autoFocus
-                    className="w-full h-11 pl-9 pr-9 rounded-[var(--radius)] text-[16px] font-light text-foreground placeholder:text-muted-foreground focus:outline-none bg-secondary"
-                  />
-                  {query && (
-                    <button
-                      onClick={() => updateQuery("")}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-muted-foreground/20 flex items-center justify-center z-10"
-                    >
-                      <X className="w-3 h-3 text-muted-foreground" />
-                    </button>
-                  )}
-                </div>
-                <button onClick={handleMobileClose} className="text-[14px] text-primary font-medium shrink-0 px-1">Отменить</button>
-              </div>
-            </div>
-            <div className="flex-1 overflow-y-auto">
-              {!query.trim() && (
-                <div className="px-4 pt-4">
-                  {searchHistory.length > 0 && (
-                    <>
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide">Недавние запросы</div>
-                        <button onClick={clearHistory} className="text-[12px] text-primary">Очистить</button>
-                      </div>
-                      {searchHistory.map((s) => (
-                        <button key={s} onClick={() => updateQuery(s)} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
-                          <Clock className="w-4 h-4 text-muted-foreground/50 shrink-0" />
-                          <span className="text-[14px] text-foreground flex-1 text-left">{s}</span>
-                          <ChevronRight className="w-4 h-4 text-muted-foreground/40 shrink-0" />
-                        </button>
-                      ))}
-                    </>
-                  )}
-                  <div className={`text-[11px] font-medium text-muted-foreground uppercase tracking-wide mb-3 ${searchHistory.length > 0 ? 'mt-4' : ''}`}>Популярные запросы</div>
-                  {popularSearches.map((s) => (
-                    <button key={s} onClick={() => updateQuery(s)} className="flex items-center gap-3 w-full py-3 border-b border-border/50 last:border-0">
-                      <Search className="w-4 h-4 text-muted-foreground/50 shrink-0" />
-                      <span className="text-[14px] text-foreground flex-1 text-left">{s}</span>
-                      <ChevronRight className="w-4 h-4 text-muted-foreground/40 shrink-0" />
-                    </button>
-                  ))}
-                </div>
-              )}
-              {query.trim() && renderResults()}
-            </div>
-          </div>
-        )}
-      </>
+      <button
+        ref={mobileTriggerRef}
+        type="button"
+        className="flex h-11 w-11 items-center justify-center rounded-[3px] text-muted-foreground transition-colors hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:hidden"
+        onClick={() => setMobileOpen(true)}
+        aria-label="Открыть поиск"
+      >
+        <Search className="h-[18px] w-[18px]" strokeWidth={1.7} aria-hidden />
+      </button>
     );
   }
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>
-      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground z-10" />
+      <Search className="absolute left-3 top-1/2 z-10 h-4 w-4 -translate-y-1/2 text-muted-foreground" strokeWidth={1.7} aria-hidden />
 
       {/* Mobile: tap opens fullscreen */}
       <button
-        className={`md:hidden w-full h-12 pl-9 ${showFilterButton ? "pr-12" : "pr-9"} rounded-[var(--radius)] text-[16px] font-light text-left focus:outline-none truncate ${query ? "text-foreground" : "text-muted-foreground"} ${inputClassName}`}
+        ref={mobileTriggerRef}
+        type="button"
+        className={`h-12 w-full truncate rounded-[3px] pl-9 text-left text-[16px] font-normal focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:hidden ${showFilterButton ? "pr-12" : "pr-9"} ${query ? "text-foreground" : "text-muted-foreground"} ${inputClassName}`}
         onClick={() => setMobileOpen(true)}
         aria-label="Открыть поиск"
       >
@@ -910,17 +912,12 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
       </button>
       {showFilterButton && (
         <button
+          type="button"
           onClick={(e) => { e.stopPropagation(); onFilterClick?.(); }}
-          className="md:hidden absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center z-10"
+          className="absolute right-0.5 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-[3px] text-muted-foreground transition-colors hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:hidden"
           aria-label="Открыть фильтры"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={hasActiveFilters ? "text-primary" : "text-muted-foreground"}>
-            <line x1="3" y1="8" x2="21" y2="8" /><circle cx="9" cy="8" r="2.5" fill="hsl(var(--background))" />
-            <line x1="3" y1="16" x2="21" y2="16" /><circle cx="16" cy="16" r="2.5" fill="hsl(var(--background))" />
-          </svg>
-          {hasActiveFilters && (
-            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-primary rounded-full border-2 border-background" />
-          )}
+          <SlidersHorizontal className={`h-[18px] w-[18px] ${hasActiveFilters ? "text-primary" : "text-muted-foreground"}`} strokeWidth={1.7} aria-hidden />
         </button>
       )}
 
@@ -931,6 +928,7 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
           type="search"
           inputMode="search"
           enterKeyHint="search"
+          aria-label="Поиск по сайту"
           value={query}
           onChange={(e) => updateQuery(e.target.value)}
           onFocus={() => setFocused(true)}
@@ -940,18 +938,20 @@ const SearchDropdown = ({ className = "", inputClassName = "", onFocusChange, in
             }
           }}
           placeholder="Поиск на многоместа.рф"
-          className={`w-full h-12 pl-9 pr-24 rounded-[var(--radius)] text-[16px] font-light text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/30 ${inputClassName}`}
+          className={`h-12 w-full rounded-[3px] pl-9 pr-24 text-[16px] font-normal text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:ring-2 focus:ring-primary/20 [&::-webkit-search-cancel-button]:appearance-none ${inputClassName}`}
         />
         {query && (
           <button
+            type="button"
             onClick={() => { updateQuery(""); }}
             className="absolute right-[96px] top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-[var(--radius)] bg-transparent text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
             aria-label="Очистить поиск"
           >
-            <X className="h-4 w-4" strokeWidth={1.7} />
+            <X className="h-4 w-4" strokeWidth={1.7} aria-hidden />
           </button>
         )}
         <button
+          type="button"
           onClick={() => {
             if (query.trim()) {
               handleSelect(buildCatalogUrl({ q: query.trim() }));

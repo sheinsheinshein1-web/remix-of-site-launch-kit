@@ -13,6 +13,7 @@ import { compareWithProjectPriority } from "@/lib/projectPriority";
 import {
   ALL_REGIONS_GEO_SLUG,
   getGeoSelectionLabel,
+  getGeoSelectionPrepositional,
   isAllRegionsGeo,
   isProjectAvailableInGeo,
   normalizeGeoSelection,
@@ -126,6 +127,9 @@ const Manufacturers = () => {
 
   const filtersChanged = query.length > 0 || region !== "all" || technology !== "all" || verifiedOnly;
   const regionLabel = isAllRegionsGeo(region) ? "Все регионы" : getGeoSelectionLabel(region);
+  const pageTitle = isAllRegionsGeo(region)
+    ? "Производители"
+    : `Производители ${getGeoSelectionPrepositional(region)}`;
   const handleRegionSelect = (nextRegion: string) => {
     const normalizedRegion = normalizeGeoSelection(nextRegion);
     selectCity(normalizedRegion);
@@ -151,7 +155,7 @@ const Manufacturers = () => {
           <SiteBreadcrumbs items={[{ label: "Главная", to: "/" }, { label: "Производители" }]} />
           <div className="max-w-[720px]">
             <h1 className="text-[30px] font-semibold leading-[1.08] tracking-[-0.025em] text-[#342d27] md:text-[46px]">
-              Производители
+              {pageTitle}
             </h1>
             <p className="mt-4 text-[15px] leading-relaxed text-[#342d27]/65 md:max-w-[680px] md:text-[17px]">
               Сравнивайте компании по реальным отзывам, регионам доставки и количеству опубликованных проектов.

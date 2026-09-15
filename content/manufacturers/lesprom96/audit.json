@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-09-12T20:27:27.958Z",
+  "status": "draft",
+  "platform": "tilda",
+  "candidateCount": 2,
+  "confirmedProjectCount": 0,
+  "rejected": [
+    {
+      "url": "https://lesprom96.ru/#doma",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://lesprom96.ru/#bania",
+      "reason": "Страница не прошла признаки карточки проекта."
+    }
+  ],
+  "conflicts": [],
+  "publicationBlocked": true,
+  "publicationReason": "Импорт создаёт черновик. Публикация разрешается отдельным release gate после проверки конфликтов и идентичности производителя."
+}

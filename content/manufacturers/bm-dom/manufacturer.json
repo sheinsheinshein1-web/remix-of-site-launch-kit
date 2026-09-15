@@ -1,0 +1,130 @@
+{
+  "id": "bm-dom",
+  "publicationStatus": "draft",
+  "identity": {
+    "name": {
+      "value": "БМ-Дом",
+      "status": "derived",
+      "confidence": 0.9,
+      "sourceUrl": "https://bm-dom.ru/",
+      "method": "structured-data",
+      "evidence": "Название из Organization JSON-LD."
+    },
+    "logo": {
+      "value": "https://bm-dom.ru/wp-content/uploads/2025/07/logo-bm-dom-new.png",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://bm-dom.ru/",
+      "method": "structured-data",
+      "evidence": "Логотип из Organization JSON-LD."
+    }
+  },
+  "contacts": {
+    "siteUrl": "https://bm-dom.ru/",
+    "phones": {
+      "value": [
+        "+7 (343) 221 78 02",
+        "+7 (902) 797 92 93"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://bm-dom.ru/",
+      "method": "visible-text",
+      "evidence": "Телефоны найдены на официальных страницах."
+    },
+    "emails": {
+      "value": [
+        "info@bm-dom.ru"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://bm-dom.ru/",
+      "method": "visible-text",
+      "evidence": "Email найдены на официальных страницах."
+    },
+    "telegram": {
+      "value": "https://t.me/BM_DOM",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://bm-dom.ru/",
+      "method": "link",
+      "evidence": "Ссылка Telegram опубликована на официальном сайте."
+    },
+    "youtube": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/",
+      "method": "not-found",
+      "evidence": "YouTube не найден на официальном сайте."
+    }
+  },
+  "catalog": {
+    "sourceUrl": "https://bm-dom.ru/proekty/",
+    "discoveredProjectCount": 5,
+    "expectedProjectCount": 5
+  },
+  "legal": {
+    "operator": {
+      "value": "ООО «БМ-ДОМ»",
+      "status": "derived",
+      "confidence": 0.7,
+      "sourceUrl": "https://bm-dom.ru/",
+      "method": "visible-text",
+      "evidence": "Оператор найден в официальном тексте; связь требует проверки по реквизитам."
+    },
+    "inn": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/",
+      "method": "not-found",
+      "evidence": "ИНН не опубликован."
+    },
+    "ogrn": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/",
+      "method": "not-found",
+      "evidence": "ОГРН или ОГРНИП не опубликован."
+    }
+  },
+  "production": {
+    "address": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/",
+      "method": "not-found",
+      "evidence": "Отдельный адрес производства не найден."
+    }
+  },
+  "reviews": {
+    "externalProfile": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://bm-dom.ru/",
+      "method": "not-found",
+      "evidence": "Независимый профиль отзывов не найден на официальном сайте."
+    }
+  },
+  "builtObjects": {
+    "sourcePage": {
+      "value": "https://bm-dom.ru/nashi-raboty/",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://bm-dom.ru/nashi-raboty/",
+      "method": "link",
+      "evidence": "Официальная страница портфолио или объектов."
+    },
+    "media": [
+      {
+        "url": "https://mc.yandex.ru/watch/103323120",
+        "type": "photo",
+        "sourceUrl": "https://bm-dom.ru/nashi-raboty/"
+      }
+    ]
+  }
+}

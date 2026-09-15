@@ -1,0 +1,1458 @@
+[
+  {
+    "sourceUrl": "https://platforma-modul.ru/twin-house",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом TWIN HOUSE",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://platforma-modul.ru/twin-house",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://platforma-modul.ru/twin-house",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "3 102 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/twin-house",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "26,85 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/twin-house",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/twin-house",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": "2",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/twin-house",
+      "method": "visible-text",
+      "evidence": "Подписанное количество комнат."
+    },
+    "bedrooms": {
+      "value": "3",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/twin-house",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/twin-house",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/twin-house",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/twin-house",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://platforma-modul.ru/twin-house",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/twin-house",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/twin-house",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6139-6234-4863-b062-323565333935/34561865jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/twin-house"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3961-3064-4835-b364-303536373336/96045897jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/twin-house"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3838-3736-4236-a137-363764633034/35_c__.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/twin-house"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6539-3334-4166-a233-636436653162/23878263jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/twin-house"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://platforma-modul.ru/wide-house",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом WIDE HOUSE",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://platforma-modul.ru/wide-house",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://platforma-modul.ru/wide-house",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "5 480 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/wide-house",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "46,4 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/wide-house",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/wide-house",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": "2",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/wide-house",
+      "method": "visible-text",
+      "evidence": "Подписанное количество комнат."
+    },
+    "bedrooms": {
+      "value": "5",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/wide-house",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/wide-house",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/wide-house",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/wide-house",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://platforma-modul.ru/wide-house",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/wide-house",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/wide-house",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3739-3634-4336-a133-613732643336/Wide-House1.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/wide-house"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3639-3662-4639-b162-616230626365/61085466png_1.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/wide-house"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3262-3662-4361-a164-646266613835/wide_.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/wide-house"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6264-6461-4464-b266-353931633463/45220074jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/wide-house"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://platforma-modul.ru/bathhouse",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульная баня BATHHOUSE",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://platforma-modul.ru/bathhouse",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://platforma-modul.ru/bathhouse",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": "1 000 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bathhouse",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "18 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bathhouse",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bathhouse",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bathhouse",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bathhouse",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bathhouse",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bathhouse",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bathhouse",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://platforma-modul.ru/bathhouse",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bathhouse",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bathhouse",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3738-6638-4332-a633-646564373131/38104565jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bathhouse"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6563-3334-4030-b930-333538616630/47312414png_1.png",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bathhouse"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://platforma-modul.ru/bear-house-168",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом BEAR HOUSE 168 м²",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-168",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-168",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "12 110 400 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-168",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "113,4 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-168",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-168",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": "2",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-168",
+      "method": "visible-text",
+      "evidence": "Подписанное количество комнат."
+    },
+    "bedrooms": {
+      "value": "12",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-168",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-168",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-168",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-168",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-168",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-168",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-168",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3734-6439-4437-a366-653666613038/80752308jpg.jpg",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-168"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3338-3838-4762-b563-643966333331/168jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-168"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3135-3136-4837-b165-333663643763/77763932jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-168"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3831-6331-4531-b839-663864313362/77347538jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-168"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://platforma-modul.ru/bathhousespa",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульная баня BATHHOUSE SPA",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://platforma-modul.ru/bathhousespa",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "bath",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://platforma-modul.ru/bathhousespa",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы бани."
+    },
+    "price": {
+      "value": "1 000 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bathhousespa",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "14,1 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bathhousespa",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bathhousespa",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bathhousespa",
+      "method": "not-found",
+      "evidence": "Количество комнат не найдено универсальным адаптером."
+    },
+    "bedrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bathhousespa",
+      "method": "not-found",
+      "evidence": "Количество спален не найдено универсальным адаптером."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bathhousespa",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bathhousespa",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bathhousespa",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://platforma-modul.ru/bathhousespa",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bathhousespa",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bathhousespa",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3563-6232-4038-b837-376438396637/99804418png.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bathhousespa"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3538-6436-4336-a433-613436643835/67193541png.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bathhousespa"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6363-3366-4136-a435-323735656163/79146608png.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bathhousespa"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3139-3836-4239-b032-373938656535/27268093png.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bathhousespa"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3231-3638-4737-a638-613033306438/59324343jpg_1.png",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bathhousespa"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://platforma-modul.ru/bear-house-134",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом BEAR HOUSE 134 м²",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-134",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-134",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "8 762 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-134",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "86,4 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-134",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-134",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": "2",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-134",
+      "method": "visible-text",
+      "evidence": "Подписанное количество комнат."
+    },
+    "bedrooms": {
+      "value": "8",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-134",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-134",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-134",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-134",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-134",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-134",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-134",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild6631-3838-4262-b436-373065646637/28476035jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-134"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3235-6134-4762-b534-323838613666/134_.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-134"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3132-3232-4061-a565-333166636433/76502385jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-134"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6534-3938-4237-b866-393761613433/34286430jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-134"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3937-3538-4634-a434-356335356239/64087768jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-134"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://platforma-modul.ru/vast-house",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом VAST HOUSE 140 м²",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://platforma-modul.ru/vast-house",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://platforma-modul.ru/vast-house",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "8 077 600 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/vast-house",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "114,9 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/vast-house",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/vast-house",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": "2",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/vast-house",
+      "method": "visible-text",
+      "evidence": "Подписанное количество комнат."
+    },
+    "bedrooms": {
+      "value": "8",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/vast-house",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/vast-house",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/vast-house",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/vast-house",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://platforma-modul.ru/vast-house",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/vast-house",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/vast-house",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3363-3030-4231-b638-626132656565/84409270jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/vast-house"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3139-3363-4735-a637-316164396334/24024296.png",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/vast-house"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3731-3136-4030-b735-356433396438/140_.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/vast-house"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3462-3639-4162-a161-646137653362/95453311jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/vast-house"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6562-3935-4761-a537-623130393062/43469207jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/vast-house"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://platforma-modul.ru/bear-house-86",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом BEAR HOUSE 86 м²",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-86",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-86",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "4 349 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-86",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "59,5 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-86",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-86",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": "2",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-86",
+      "method": "visible-text",
+      "evidence": "Подписанное количество комнат."
+    },
+    "bedrooms": {
+      "value": "4",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-86",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-86",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-86",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-86",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-86",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-86",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-86",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3436-6464-4166-a561-353364343437/86_1.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-86"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6235-3936-4262-b232-616564326139/86_2.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-86"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6638-3539-4663-b331-343439616632/86_3.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-86"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6564-6636-4539-b930-353834363833/86_.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-86"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3833-3439-4962-b866-616361643734/47372013jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-86"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://platforma-modul.ru/bear-house-77",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом BEAR HOUSE 77 м²",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-77",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-77",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "3 894 700 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-77",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "45,4 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-77",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-77",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": "2",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-77",
+      "method": "visible-text",
+      "evidence": "Подписанное количество комнат."
+    },
+    "bedrooms": {
+      "value": "3",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-77",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-77",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-77",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-77",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-77",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-77",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-77",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3766-3834-4465-a130-326338623438/77___Post_1.jpg",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-77"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3338-6135-4338-b634-346536333666/56466534jpg_1-Photor.png",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-77"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6135-6666-4538-b066-333130336436/77_2_Post.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-77"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6233-3630-4062-b034-396434353661/77_1_1.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-77"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://platforma-modul.ru/bear-house-45",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом BEAR HOUSE 45 м²",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-45",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-45",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "2 207 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-45",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "28,6 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-45",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-45",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": "2",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-45",
+      "method": "visible-text",
+      "evidence": "Подписанное количество комнат."
+    },
+    "bedrooms": {
+      "value": "2",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-45",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-45",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-45",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-45",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-45",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-45",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/bear-house-45",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3630-3937-4637-a235-633766653834/45_1_Post.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-45"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3034-6236-4461-b539-313738303966/45_2_Post.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-45"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3339-3765-4761-a462-313938653666/45_3.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-45"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3330-3734-4264-a564-376265663732/45___Post.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-45"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3035-3131-4432-b266-626462373464/22669144jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/bear-house-45"
+      }
+    ],
+    "conflicts": []
+  },
+  {
+    "sourceUrl": "https://platforma-modul.ru/barn-house",
+    "publicationStatus": "draft",
+    "name": {
+      "value": "Модульный дом BARN HOUSE 31 м²",
+      "status": "verified",
+      "confidence": 0.98,
+      "sourceUrl": "https://platforma-modul.ru/barn-house",
+      "method": "structured-data",
+      "evidence": "Product JSON-LD."
+    },
+    "productType": {
+      "value": "house",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://platforma-modul.ru/barn-house",
+      "method": "visible-text",
+      "evidence": "Тип объекта определён по названию или рубрике официальной страницы дома."
+    },
+    "price": {
+      "value": "1 680 000 ₽",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/barn-house",
+      "method": "visible-text",
+      "evidence": "Подписанная цена в тексте страницы."
+    },
+    "area": {
+      "value": "20 м²",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/barn-house",
+      "method": "visible-text",
+      "evidence": "Подписанное значение площади в тексте страницы."
+    },
+    "dimensions": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/barn-house",
+      "method": "not-found",
+      "evidence": "Габариты не найдены универсальным адаптером."
+    },
+    "roomCount": {
+      "value": "2",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/barn-house",
+      "method": "visible-text",
+      "evidence": "Подписанное количество комнат."
+    },
+    "bedrooms": {
+      "value": "1",
+      "status": "verified",
+      "confidence": 0.92,
+      "sourceUrl": "https://platforma-modul.ru/barn-house",
+      "method": "visible-text",
+      "evidence": "Подписанное количество спален."
+    },
+    "bathrooms": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/barn-house",
+      "method": "not-found",
+      "evidence": "Количество санузлов не опубликовано отдельным полем."
+    },
+    "floors": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/barn-house",
+      "method": "not-found",
+      "evidence": "Этажность не найдена универсальным адаптером."
+    },
+    "productionTerm": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/barn-house",
+      "method": "not-found",
+      "evidence": "Срок не найден универсальным адаптером."
+    },
+    "technology": {
+      "value": "Модульный дом",
+      "status": "derived",
+      "confidence": 0.82,
+      "sourceUrl": "https://platforma-modul.ru/barn-house",
+      "method": "visible-text",
+      "evidence": "Технология определена по явному упоминанию модульной технологии."
+    },
+    "insulation": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/barn-house",
+      "method": "not-found",
+      "evidence": "Толщина утепления не опубликована отдельным полем."
+    },
+    "completion": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/barn-house",
+      "method": "not-found",
+      "evidence": "Комплектация не опубликована отдельным полем."
+    },
+    "media": [
+      {
+        "url": "https://static.tildacdn.com/tild3731-3330-4435-b563-646362346436/31_1.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/barn-house"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6137-6564-4230-a131-333232653837/31_2.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/barn-house"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild3263-6332-4930-b334-616236346137/31_.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/barn-house"
+      },
+      {
+        "url": "https://static.tildacdn.com/tild6461-3530-4437-a239-393639373230/49101405jpg.webp",
+        "type": "photo",
+        "sourceUrl": "https://platforma-modul.ru/barn-house"
+      }
+    ],
+    "conflicts": []
+  }
+]

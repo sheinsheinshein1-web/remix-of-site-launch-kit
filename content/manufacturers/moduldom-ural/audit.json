@@ -1,0 +1,100 @@
+{
+  "generatedAt": "2026-09-12T20:27:17.620Z",
+  "status": "draft",
+  "platform": "html",
+  "candidateCount": 22,
+  "confirmedProjectCount": 0,
+  "rejected": [
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-dachnye-doma/modulnyy-dachnyy-dom-30002400",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-dachnye-doma/modulnyy-dachnyy-dom-40002400",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-dachnye-doma/modulnyy-dachnyy-dom-60004800-1",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-dachnye-doma/modulnyy-dachnyy-dom-60004800-2",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-dachnye-doma/modulnyy-dachnyy-dom-60007200",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-dachnye-doma/modulnyy-dachnyy-dom-60007200-0",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-dachnye-doma/modulnyy-dachnyy-dom-60007200-1",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-dachnye-doma/modulnyy-dachnyy-dom-60007200-2",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-dachnye-doma/modulnyy-dachnyy-dom-60007200-3",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-dachnye-doma/modulnyy-dachnyy-dom-60003000",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-dachnye-doma/modulnyy-dachnyy-dom-60003000-0",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-bani/modulnaya-banya-40002400",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-bani/modulnaya-banya-bytovka-60002400",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-bani/modulnaya-banya-60002400",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-bani/modulnaya-banya-60003000",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-bani/modulnaya-banya-60004800",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-dachnye-doma/modulnyy-dachnyy-dom-60004800",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-dachnye-doma/modulnyy-dachnyy-dom-60002400-0",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-dachnye-doma/modulnyy-dachnyy-dom-60002400",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-dachnye-doma/modulnyy-dachnyy-dom-60002400-2",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-dachnye-doma/modulnyy-dachnyy-dom-60002400-1",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://moduldom-ural.ru/catalog/modulnye-dachnye-doma/modulnyy-dachnyy-dom-60004800-0",
+      "reason": "Страница не прошла признаки карточки проекта."
+    }
+  ],
+  "conflicts": [],
+  "publicationBlocked": true,
+  "publicationReason": "Импорт создаёт черновик. Публикация разрешается отдельным release gate после проверки конфликтов и идентичности производителя."
+}

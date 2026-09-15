@@ -1,0 +1,119 @@
+{
+  "id": "da-home",
+  "publicationStatus": "draft",
+  "identity": {
+    "name": {
+      "value": "Модульные дома и бани под ключ",
+      "status": "derived",
+      "confidence": 0.75,
+      "sourceUrl": "https://da-home.ru/",
+      "method": "visible-text",
+      "evidence": "Название взято из og:site_name, H1 или title и требует редакторской проверки."
+    },
+    "logo": {
+      "value": "https://da-home.ru/images/brand/logo.png",
+      "status": "derived",
+      "confidence": 0.72,
+      "sourceUrl": "https://da-home.ru/",
+      "method": "media",
+      "evidence": "Изображение с явным признаком logo в имени файла."
+    }
+  },
+  "contacts": {
+    "siteUrl": "https://da-home.ru/",
+    "phones": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/",
+      "method": "not-found",
+      "evidence": "Телефоны не опубликованы."
+    },
+    "emails": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/",
+      "method": "not-found",
+      "evidence": "Email не опубликованы."
+    },
+    "telegram": {
+      "value": "https://t.me/stroyka_ekt",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://da-home.ru/",
+      "method": "link",
+      "evidence": "Ссылка Telegram опубликована на официальном сайте."
+    },
+    "youtube": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/",
+      "method": "not-found",
+      "evidence": "YouTube не найден на официальном сайте."
+    }
+  },
+  "catalog": {
+    "sourceUrl": "https://da-home.ru/",
+    "discoveredProjectCount": 25,
+    "expectedProjectCount": 25
+  },
+  "legal": {
+    "operator": {
+      "value": "ИП и юридическими лицами. Гарантия Гарантия от 1 года",
+      "status": "derived",
+      "confidence": 0.7,
+      "sourceUrl": "https://da-home.ru/",
+      "method": "visible-text",
+      "evidence": "Оператор найден в официальном тексте; связь требует проверки по реквизитам."
+    },
+    "inn": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/",
+      "method": "not-found",
+      "evidence": "ИНН не опубликован."
+    },
+    "ogrn": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/",
+      "method": "not-found",
+      "evidence": "ОГРН или ОГРНИП не опубликован."
+    }
+  },
+  "production": {
+    "address": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/",
+      "method": "not-found",
+      "evidence": "Отдельный адрес производства не найден."
+    }
+  },
+  "reviews": {
+    "externalProfile": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/",
+      "method": "not-found",
+      "evidence": "Независимый профиль отзывов не найден на официальном сайте."
+    }
+  },
+  "builtObjects": {
+    "sourcePage": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://da-home.ru/",
+      "method": "not-found",
+      "evidence": "Страница выполненных объектов не найдена."
+    },
+    "media": []
+  }
+}

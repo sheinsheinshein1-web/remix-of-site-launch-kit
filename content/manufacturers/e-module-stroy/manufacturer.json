@@ -1,0 +1,127 @@
+{
+  "id": "e-module-stroy",
+  "publicationStatus": "draft",
+  "identity": {
+    "name": {
+      "value": "Модульные и каркасные дома и бани под ключ в екатеринбурге. Собственное производство",
+      "status": "derived",
+      "confidence": 0.75,
+      "sourceUrl": "https://www.emodule-stroy.ru/",
+      "method": "visible-text",
+      "evidence": "Название взято из og:site_name, H1 или title и требует редакторской проверки."
+    },
+    "logo": {
+      "value": "https://i.siteapi.org/mE3RCU0iSKC_z06LIUUpzay_8C8=/0x438:1024x588/fit-in/215x128/s2.siteapi.org/d0a16d50e53b421/logo/n5q11190l2s80k48o40g8c4k8wgoww",
+      "status": "derived",
+      "confidence": 0.72,
+      "sourceUrl": "https://www.emodule-stroy.ru/",
+      "method": "media",
+      "evidence": "Изображение с явным признаком logo в имени файла."
+    }
+  },
+  "contacts": {
+    "siteUrl": "https://www.emodule-stroy.ru/",
+    "phones": {
+      "value": [
+        "+7 904 981-88-07",
+        "+7 (904) 981-88-07",
+        "+79049818807",
+        "+79049818807",
+        "+7904981-88-07"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://www.emodule-stroy.ru/",
+      "method": "visible-text",
+      "evidence": "Телефоны найдены на официальных страницах."
+    },
+    "emails": {
+      "value": [
+        "E.Module-stroy@yandex.ru"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://www.emodule-stroy.ru/",
+      "method": "visible-text",
+      "evidence": "Email найдены на официальных страницах."
+    },
+    "telegram": {
+      "value": "https://t.me/+79049818807",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://www.emodule-stroy.ru/",
+      "method": "link",
+      "evidence": "Ссылка Telegram опубликована на официальном сайте."
+    },
+    "youtube": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://www.emodule-stroy.ru/",
+      "method": "not-found",
+      "evidence": "YouTube не найден на официальном сайте."
+    }
+  },
+  "catalog": {
+    "sourceUrl": "https://www.emodule-stroy.ru/",
+    "discoveredProjectCount": 0,
+    "expectedProjectCount": 9
+  },
+  "legal": {
+    "operator": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://www.emodule-stroy.ru/",
+      "method": "not-found",
+      "evidence": "Оператор сайта не найден."
+    },
+    "inn": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://www.emodule-stroy.ru/",
+      "method": "not-found",
+      "evidence": "ИНН не опубликован."
+    },
+    "ogrn": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://www.emodule-stroy.ru/",
+      "method": "not-found",
+      "evidence": "ОГРН или ОГРНИП не опубликован."
+    }
+  },
+  "production": {
+    "address": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://www.emodule-stroy.ru/",
+      "method": "not-found",
+      "evidence": "Отдельный адрес производства не найден."
+    }
+  },
+  "reviews": {
+    "externalProfile": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://www.emodule-stroy.ru/",
+      "method": "not-found",
+      "evidence": "Независимый профиль отзывов не найден на официальном сайте."
+    }
+  },
+  "builtObjects": {
+    "sourcePage": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://www.emodule-stroy.ru/",
+      "method": "not-found",
+      "evidence": "Страница выполненных объектов не найдена."
+    },
+    "media": []
+  }
+}

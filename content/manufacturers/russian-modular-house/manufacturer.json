@@ -1,0 +1,124 @@
+{
+  "id": "russian-modular-house",
+  "publicationStatus": "draft",
+  "identity": {
+    "name": {
+      "value": "Производитель Русский Модульный Дом",
+      "status": "derived",
+      "confidence": 0.75,
+      "sourceUrl": "https://pkrmd.ru/",
+      "method": "visible-text",
+      "evidence": "Название взято из og:site_name, H1 или title и требует редакторской проверки."
+    },
+    "logo": {
+      "value": "https://static.tildacdn.com/tild6262-3436-4864-a131-646164336161/Logo_RMD_B.png",
+      "status": "derived",
+      "confidence": 0.72,
+      "sourceUrl": "https://pkrmd.ru/",
+      "method": "media",
+      "evidence": "Изображение с явным признаком logo в имени файла."
+    }
+  },
+  "contacts": {
+    "siteUrl": "https://pkrmd.ru/",
+    "phones": {
+      "value": [
+        "+7 922 020 75 55"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://pkrmd.ru/",
+      "method": "visible-text",
+      "evidence": "Телефоны найдены на официальных страницах."
+    },
+    "emails": {
+      "value": [
+        "bodnar-p@list.ru",
+        "info@prkmd.ru"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://pkrmd.ru/",
+      "method": "visible-text",
+      "evidence": "Email найдены на официальных страницах."
+    },
+    "telegram": {
+      "value": "https://t.me/pkrmd_ekb",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://pkrmd.ru/",
+      "method": "link",
+      "evidence": "Ссылка Telegram опубликована на официальном сайте."
+    },
+    "youtube": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/",
+      "method": "not-found",
+      "evidence": "YouTube не найден на официальном сайте."
+    }
+  },
+  "catalog": {
+    "sourceUrl": "https://pkrmd.ru/catalogrmd",
+    "discoveredProjectCount": 19,
+    "expectedProjectCount": 20
+  },
+  "legal": {
+    "operator": {
+      "value": "ИП Бахирев Александр Андреевич ПК Русский Модульный Дом ОГРНИП",
+      "status": "derived",
+      "confidence": 0.7,
+      "sourceUrl": "https://pkrmd.ru/",
+      "method": "visible-text",
+      "evidence": "Оператор найден в официальном тексте; связь требует проверки по реквизитам."
+    },
+    "inn": {
+      "value": "5911146786",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://pkrmd.ru/",
+      "method": "visible-text",
+      "evidence": "ИНН опубликован на официальном сайте."
+    },
+    "ogrn": {
+      "value": "3236658000442",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://pkrmd.ru/",
+      "method": "visible-text",
+      "evidence": "ОГРН или ОГРНИП опубликован на официальном сайте."
+    }
+  },
+  "production": {
+    "address": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/",
+      "method": "not-found",
+      "evidence": "Отдельный адрес производства не найден."
+    }
+  },
+  "reviews": {
+    "externalProfile": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/",
+      "method": "not-found",
+      "evidence": "Независимый профиль отзывов не найден на официальном сайте."
+    }
+  },
+  "builtObjects": {
+    "sourcePage": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://pkrmd.ru/",
+      "method": "not-found",
+      "evidence": "Страница выполненных объектов не найдена."
+    },
+    "media": []
+  }
+}

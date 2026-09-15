@@ -1,4 +1,5 @@
 type ProjectRoomsProps = {
+  roomCount?: number;
   beds: number;
   baths: number;
   kitchens?: number;
@@ -19,7 +20,10 @@ const wordForm = (count: number, forms: [string, string, string]) => {
   return forms[2];
 };
 
-export const getProjectRoomRows = ({ beds, baths, kitchens }: Omit<ProjectRoomsProps, "className">): RoomRow[] => [
+export const getProjectRoomRows = ({ roomCount, beds, baths, kitchens }: Omit<ProjectRoomsProps, "className">): RoomRow[] => [
+  ...(beds <= 0 && typeof roomCount === "number" && roomCount > 0
+    ? [{ label: wordForm(roomCount, ["Комната", "Комнаты", "Комнат"]), value: roomCount }]
+    : []),
   ...(beds > 0
     ? [{ label: wordForm(beds, ["Спальня", "Спальни", "Спален"]), value: beds }]
     : []),
@@ -31,8 +35,8 @@ export const getProjectRoomRows = ({ beds, baths, kitchens }: Omit<ProjectRoomsP
     : []),
 ];
 
-const ProjectRooms = ({ beds, baths, kitchens, className = "" }: ProjectRoomsProps) => {
-  const rows = getProjectRoomRows({ beds, baths, kitchens });
+const ProjectRooms = ({ roomCount, beds, baths, kitchens, className = "" }: ProjectRoomsProps) => {
+  const rows = getProjectRoomRows({ roomCount, beds, baths, kitchens });
 
   if (rows.length === 0) return null;
 

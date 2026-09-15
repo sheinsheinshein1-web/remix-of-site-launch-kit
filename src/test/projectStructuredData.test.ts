@@ -25,10 +25,12 @@ describe("project structured data", () => {
     const jsonLd = buildProjectProductJsonLd({
       project: { ...project, price: "от 3 102 000 ₽" },
       canonicalPath: "/modulnye-doma/proekty/twin-house/",
+      description: "Проверенное расширенное описание проекта",
     });
 
     expect(jsonLd).toMatchObject({
       "@type": "Product",
+      description: "Проверенное расширенное описание проекта",
       offers: {
         "@type": "Offer",
         priceCurrency: "RUB",

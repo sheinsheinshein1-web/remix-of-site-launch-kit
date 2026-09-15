@@ -1,0 +1,127 @@
+{
+  "id": "platforma",
+  "publicationStatus": "draft",
+  "identity": {
+    "name": {
+      "value": "Платформа. Модульное производство",
+      "status": "derived",
+      "confidence": 0.9,
+      "sourceUrl": "https://platforma-modul.ru/",
+      "method": "structured-data",
+      "evidence": "Название из Organization JSON-LD."
+    },
+    "logo": {
+      "value": "https://static.tildacdn.com/tild3165-3530-4261-b832-353361626461/__.png",
+      "status": "derived",
+      "confidence": 0.85,
+      "sourceUrl": "https://platforma-modul.ru/",
+      "method": "structured-data",
+      "evidence": "Логотип из Organization JSON-LD."
+    }
+  },
+  "contacts": {
+    "siteUrl": "https://platforma-modul.ru/",
+    "phones": {
+      "value": [
+        "+7 (343) 226-11-40",
+        "+7 (906) 858-31-23",
+        "+7 (906) 858 31-23"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://platforma-modul.ru/",
+      "method": "visible-text",
+      "evidence": "Телефоны найдены на официальных страницах."
+    },
+    "emails": {
+      "value": [
+        "sales@platforma-modul.ru",
+        "5sales@platforma-modul.ru",
+        "modmanager@avln.ru"
+      ],
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://platforma-modul.ru/",
+      "method": "visible-text",
+      "evidence": "Email найдены на официальных страницах."
+    },
+    "telegram": {
+      "value": "https://t.me/PlatformaModul",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://platforma-modul.ru/",
+      "method": "link",
+      "evidence": "Ссылка Telegram опубликована на официальном сайте."
+    },
+    "youtube": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/",
+      "method": "not-found",
+      "evidence": "YouTube не найден на официальном сайте."
+    }
+  },
+  "catalog": {
+    "sourceUrl": "https://platforma-modul.ru/",
+    "discoveredProjectCount": 11,
+    "expectedProjectCount": 11
+  },
+  "legal": {
+    "operator": {
+      "value": "АО КЛИЕНТАХ После заселения мы продолжаем сопровождать вас",
+      "status": "derived",
+      "confidence": 0.7,
+      "sourceUrl": "https://platforma-modul.ru/",
+      "method": "visible-text",
+      "evidence": "Оператор найден в официальном тексте; связь требует проверки по реквизитам."
+    },
+    "inn": {
+      "value": "6678135856",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://platforma-modul.ru/",
+      "method": "visible-text",
+      "evidence": "ИНН опубликован на официальном сайте."
+    },
+    "ogrn": {
+      "value": "1246600012581",
+      "status": "verified",
+      "confidence": 0.95,
+      "sourceUrl": "https://platforma-modul.ru/",
+      "method": "visible-text",
+      "evidence": "ОГРН или ОГРНИП опубликован на официальном сайте."
+    }
+  },
+  "production": {
+    "address": {
+      "value": "ая промзона, д",
+      "status": "derived",
+      "confidence": 0.72,
+      "sourceUrl": "https://platforma-modul.ru/",
+      "method": "visible-text",
+      "evidence": "Фрагмент рядом с указанием производства; адрес требует нормализации."
+    }
+  },
+  "reviews": {
+    "externalProfile": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/",
+      "method": "not-found",
+      "evidence": "Независимый профиль отзывов не найден на официальном сайте."
+    }
+  },
+  "builtObjects": {
+    "sourcePage": {
+      "value": null,
+      "status": "not-published",
+      "confidence": 1,
+      "sourceUrl": "https://platforma-modul.ru/",
+      "method": "not-found",
+      "evidence": "Страница выполненных объектов не найдена."
+    },
+    "media": []
+  }
+}

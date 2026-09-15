@@ -1,5 +1,6 @@
 import { Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import ManufacturerLogo from "@/components/ManufacturerLogo";
 import ManufacturerName from "@/components/ManufacturerName";
 import { getManufacturerRatingSummary } from "@/data/manufacturerRatings";
 import { makersById, projectsCountByMakerId } from "@/data/projects";
@@ -29,11 +30,7 @@ const ManufacturerListItem = ({ makerId, className }: ManufacturerListItemProps)
         className,
       )}
     >
-      <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[var(--radius)] border border-border bg-white text-[11px] font-semibold uppercase tracking-[0.06em] text-[#342d27]">
-        {maker.logo ? (
-          <img src={maker.logo} alt="" width={44} height={44} loading="lazy" decoding="async" className="h-full w-full object-contain p-1" />
-        ) : maker.initials}
-      </span>
+      <ManufacturerLogo manufacturer={maker} className="h-11 w-11 text-[11px]" />
 
       <span className="min-w-0 flex-1">
         <ManufacturerName

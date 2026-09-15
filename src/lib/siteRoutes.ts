@@ -1,6 +1,6 @@
 import type { Project } from "@/data/projects";
 
-type ProjectRouteInput = Pick<Project, "id" | "name" | "area" | "area_m2" | "technology" | "manufacturerId">;
+type ProjectRouteInput = Pick<Project, "id" | "name" | "area" | "area_m2" | "routeArea_m2" | "technology" | "manufacturerId">;
 
 export const CATALOG_PATH = "/modulnye-doma/";
 export const MANUFACTURERS_PATH = "/proizvoditeli/";
@@ -29,8 +29,10 @@ export const transliterateSlug = (value: string) => value
 export const getProjectCategorySlug = (technology: string) =>
   technology.toLocaleLowerCase("ru").includes("префаб") ? "prefab-doma" : "modulnye-doma";
 
-const getProjectAreaSlug = (project: Pick<Project, "area" | "area_m2">) => {
-  const parsedArea = project.area_m2 ?? Number.parseFloat(project.area.replace(",", "."));
+const getProjectAreaSlug = (project: Pick<Project, "area" | "area_m2" | "routeArea_m2">) => {
+  const parsedArea = project.routeArea_m2
+    ?? project.area_m2
+    ?? Number.parseFloat(project.area.replace(",", "."));
   return Number.isFinite(parsedArea) ? `${Math.round(parsedArea)}-m2` : "";
 };
 

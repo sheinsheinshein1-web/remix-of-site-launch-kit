@@ -1,0 +1,108 @@
+{
+  "generatedAt": "2026-09-12T20:25:07.968Z",
+  "status": "draft",
+  "platform": "html",
+  "candidateCount": 24,
+  "confirmedProjectCount": 0,
+  "rejected": [
+    {
+      "url": "https://fps-modul.ru/viking/barnhaus-viking-bh-411",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/art-haus/modulnyj-dom-ah313",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/ford/modulnaya-banya-f201",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/modulnye-doma-barn-maks/barnhaus-bh-501",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/ford/modulnaya-banya-f206",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/modulnye-doma-barn-maks/barnhaus-bh-505",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/ford/modulnaya-banya-f402",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/ford/modulnaya-banya-f405",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/ford/modulnaya-banya-f403",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/ford/modulnaya-banya-f203",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/barnhaus/modulnyj-dom-barn-skaj",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/barnhaus/barnhaus-bh-405",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/projects/art-haus",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/projects/viking",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/projects/modulnye-doma-barn-maks",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/modulnye-doma-barn-maks/barnhaus-bh-502",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/projects/barnhaus",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/modulnye-doma-barn-maks/barnhaus-bh-504",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/barnhaus/barnhaus-bh-403",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/projects/ford",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/viking/barnhaus-viking-bh-412",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/ford/modulnaya-banya-f400",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/viking/barnhaus-bh375",
+      "reason": "Страница не прошла признаки карточки проекта."
+    },
+    {
+      "url": "https://fps-modul.ru/art-haus/modulnyj-dom-ah281",
+      "reason": "Страница не прошла признаки карточки проекта."
+    }
+  ],
+  "conflicts": [],
+  "publicationBlocked": true,
+  "publicationReason": "Импорт создаёт черновик. Публикация разрешается отдельным release gate после проверки конфликтов и идентичности производителя."
+}
