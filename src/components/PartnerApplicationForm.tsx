@@ -8,9 +8,19 @@ interface PartnerApplicationFormProps {
   onBack: () => void;
   variant?: "page" | "drawer";
   initialInterest?: string;
+  title?: string;
+  description?: string;
+  submitLabel?: string;
 }
 
-const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = "" }: PartnerApplicationFormProps) => {
+const PartnerApplicationForm = ({
+  onBack,
+  variant = "page",
+  initialInterest = "",
+  title = "Заявка для производителя",
+  description = "Заполните данные о компании",
+  submitLabel = "Отправить заявку",
+}: PartnerApplicationFormProps) => {
   const [form, setForm] = useState({
     companyName: "",
     inn: "",
@@ -104,8 +114,8 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
           </button>
         )}
         <div>
-          <h2 className="text-[24px] font-semibold leading-tight text-foreground md:text-[30px]">Заявка для производителя</h2>
-          <p className="text-[13px] text-muted-foreground">Заполните данные о компании</p>
+          <h2 className="text-[24px] font-semibold leading-tight text-foreground md:text-[30px]">{title}</h2>
+          <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">{description}</p>
         </div>
       </div>
 
@@ -242,7 +252,7 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
         disabled={submitState === "submitting"}
         className="mt-6 h-[52px] w-full rounded-[var(--radius)] bg-primary text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-wait disabled:opacity-70"
       >
-        {submitState === "submitting" ? "Отправляем…" : submitState === "error" ? "Повторить отправку" : "Отправить заявку"}
+        {submitState === "submitting" ? "Отправляем…" : submitState === "error" ? "Повторить отправку" : submitLabel}
       </button>
 
       {submitError && (
@@ -252,7 +262,7 @@ const PartnerApplicationForm = ({ onBack, variant = "page", initialInterest = ""
       )}
 
       <p className="text-[11px] text-muted-foreground text-center mt-3 leading-relaxed">
-        Нажимая «Отправить заявку», вы соглашаетесь с{" "}
+        Нажимая «{submitLabel}», вы соглашаетесь с{" "}
         <Link to="/legal/terms/" className="text-foreground transition-colors hover:text-primary">условиями использования сервиса</Link>
         {" "}и{" "}
         <Link to="/legal/privacy/" className="text-foreground transition-colors hover:text-primary">политикой обработки персональных данных</Link>

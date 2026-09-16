@@ -17,12 +17,14 @@ import { CATALOG_PATH, getRegionPath } from "@/lib/siteRoutes";
 type HeaderProps = {
   variant?: "default" | "home" | "partner";
   onPartnerCta?: () => void;
+  partnerCtaLabel?: string;
   marketplaceNavigationMode?: "reveal-on-scroll-up" | "top-only";
 };
 
 const Header = ({
   variant = "default",
   onPartnerCta,
+  partnerCtaLabel = "Разместиться бесплатно",
   marketplaceNavigationMode = "reveal-on-scroll-up",
 }: HeaderProps) => {
   const navigate = useNavigate();
@@ -172,7 +174,7 @@ const Header = ({
                   onClick={onPartnerCta}
                   className="inline-flex h-11 items-center whitespace-nowrap rounded-[var(--radius)] bg-primary px-6 text-[14px] font-semibold tracking-normal text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
-                  Разместиться бесплатно
+                  {partnerCtaLabel}
                 </button>
               ) : variant !== "partner" ? (
                 <Link
@@ -232,6 +234,7 @@ const Header = ({
           open={menuOpen}
           onOpenChange={setMenuOpen}
           onPartnerCta={onPartnerCta}
+          partnerCtaLabel={partnerCtaLabel}
           hidePartnerCta={variant === "partner" && !onPartnerCta}
         />
         <CitySelector

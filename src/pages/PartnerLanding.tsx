@@ -13,7 +13,6 @@ import {
   PartnerCrmPreview,
   PartnerMarketplacePreview,
   PartnerProfilePreview,
-  PartnerWebsitePreview,
 } from "@/components/partner/PartnerProductVisuals";
 import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
@@ -21,7 +20,6 @@ import {
   partnerFaq,
   partnerSteps,
 } from "@/data/partnerProgram";
-import { partnerServices } from "@/data/partnerServices";
 import { makersById, projects } from "@/data/projects";
 import { geoLocationCount } from "@/data/regions";
 import { buildCanonicalUrl } from "@/lib/seo";
@@ -64,7 +62,7 @@ const PartnerLanding = () => {
   const [initialInterest, setInitialInterest] = useState("");
 
   const openForm = () => {
-    setInitialInterest("Бесплатное размещение");
+    setInitialInterest("Квалифицированные лиды");
     setShowForm(true);
     window.scrollTo({ top: 0, behavior: "auto" });
   };
@@ -84,8 +82,8 @@ const PartnerLanding = () => {
     return (
       <div className="min-h-screen bg-background font-sans">
         <Seo
-          title="Заявка на бесплатное размещение — многоместа.рф"
-          description="Оставьте заявку на бесплатное размещение проектов модульных домов на многоместа.рф."
+          title="Заявка для производителя | многоместа.рф"
+          description="Оставьте заявку на привлечение покупателей или подготовку изображений домов и бань."
           canonicalPath="/partner/"
           noIndex
         />
@@ -98,6 +96,11 @@ const PartnerLanding = () => {
           ]}
           initialInterest={initialInterest}
           onBack={closeForm}
+          title={initialInterest === "Художественные рендеры" ? "Заявка на улучшение изображений" : "Заявка на получение лидов"}
+          description={initialInterest === "Художественные рендеры"
+            ? "Оставьте контакты компании. Обсудим исходные материалы и нужные изображения."
+            : "Оставьте контакты компании. Мы изучим ассортимент и обсудим подключение."}
+          submitLabel="Оставить заявку"
           visual={showcaseMaker && marketplaceProjects.length >= 2
             ? <PartnerMarketplacePreview projects={marketplaceProjects} maker={showcaseMaker} />
             : undefined}
@@ -110,35 +113,29 @@ const PartnerLanding = () => {
   return (
     <div className="min-h-screen bg-background font-sans">
       <Seo
-        title="Размещение проектов модульных домов для производителей | многоместа.рф"
-        description="Получайте трафик и обращения по проектам модульных домов без платы за размещение. Вознаграждение 5% начисляется только после состоявшейся сделки."
+        title="Покупатели домов и бань для производителей | многоместа.рф"
+        description="Помогаем продавать дома и бани: оформляем каталог и страницу компании, улучшаем изображения, передаём квалифицированные лиды от 2 900 ₽."
         canonicalPath="/partner/"
         jsonLd={[breadcrumbJsonLd, faqJsonLd]}
       />
-      <Header variant="partner" onPartnerCta={() => openFormWithInterest("Бесплатное размещение")} />
+      <Header variant="partner" partnerCtaLabel="Получать заявки" onPartnerCta={openForm} />
 
       <main>
         <PartnerHeroSection>
           <div className="max-w-[920px]">
             <h1 className="text-[40px] font-semibold leading-[1.01] tracking-[-0.045em] text-[#342d27] sm:text-[52px] md:text-[68px] dark:text-foreground">
-              Продавайте больше модульных домов
+              Продавайте больше домов и бань
             </h1>
             <p className="mt-6 max-w-[760px] text-[17px] leading-relaxed text-[#595653] md:text-[20px] dark:text-muted-foreground">
-              На платформе размещаем ваши проекты без платы за публикацию и оформляем страницу компании. Дополнительно вы получаете собственный сайт, трафик без ограничений и платите вознаграждение 5% только после состоявшейся сделки.
+              Привлекаем покупателей на многоместа.рф. Оформляем ваш ассортимент и страницу компании, улучшаем изображения и передаём квалифицированные заявки.
             </p>
-            <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-              <Button type="button" size="lg" onClick={() => openFormWithInterest("Бесплатное размещение")} className={ctaClassName}>
-                Разместить проекты
+            <div className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
+              <Button type="button" size="lg" onClick={openForm} className={ctaClassName}>
+                Получать заявки
               </Button>
-              <Button
-                type="button"
-                size="lg"
-                variant="secondary"
-                onClick={() => openFormWithInterest("Демонстрация платформы")}
-                className={`${ctaClassName} border-0 bg-secondary text-foreground hover:bg-secondary hover:text-primary`}
-              >
-                Запросить демонстрацию
-              </Button>
+              <p className="max-w-[410px] text-[13px] leading-relaxed text-muted-foreground md:text-[14px]">
+                Размещение без абонентской платы. Квалифицированный лид от 2 900 ₽.
+              </p>
             </div>
           </div>
 
@@ -150,7 +147,7 @@ const PartnerLanding = () => {
 
           <div className="mt-10 grid gap-6 md:mt-14 lg:grid-cols-[minmax(240px,0.9fr)_minmax(0,2.1fr)] lg:items-end lg:gap-14">
             <p className="max-w-[330px] text-[18px] font-medium leading-snug tracking-[-0.015em] text-[#342d27] md:text-[20px] dark:text-foreground">
-              Проекты и производители модульных домов по всей России
+              Покупатели выбирают проекты на платформе по всей России
             </p>
             <dl className="grid grid-cols-3 gap-4 md:gap-10">
               <div>
@@ -171,49 +168,36 @@ const PartnerLanding = () => {
 
         {showcaseMaker && showcaseProjects.length > 0 && (
           <PartnerFeatureSection
-            title="Проекты на платформе и страница компании"
+            title="Ваш ассортимент и компания в одном месте"
             visual={<PartnerProfilePreview projects={showcaseProjects} maker={showcaseMaker} />}
-            actionHref={partnerServices.freePlacement.path}
-            actionLabel="Подробнее о размещении"
+            onApply={openForm}
+            actionLabel="Оставить заявку"
           >
-            <p>Публикуем ассортимент на платформе: фотографии, планировки, площадь, цена, комплектация, срок изготовления и города доставки. Покупатель сравнивает вашу модель с другими и оставляет заявку по конкретному дому.</p>
-            <p>Все дома собраны на странице компании с контактами и отзывами. Если цена изменилась, сообщите один раз, и мы обновим все страницы.</p>
-          </PartnerFeatureSection>
-        )}
-
-        {showcaseMaker && showcaseProjects.length > 0 && (
-          <PartnerFeatureSection
-            title="Получайте больше клиентов с собственным сайтом"
-            visual={<PartnerWebsitePreview projects={showcaseProjects} maker={showcaseMaker} />}
-            actionHref={partnerServices.manufacturerWebsite.path}
-            actionLabel="Подробнее о сайте"
-            reverse
-          >
-            <p>Вместе с размещением вы дополнительно получаете полноценный сайт компании, который представляет проекты, помогает покупателям находить вас в интернете и превращает интерес к дому в заявку.</p>
-            <p>Вам не нужно платить разработчикам и маркетинговым агентствам. Мы запускаем сайт и постоянно обновляем проекты, цены и географию доставки, а вы получаете ещё один источник клиентов.</p>
+            <p>Создаём карточки домов и бань с фотографиями, планировками, ценами и комплектациями. На странице компании собираем ассортимент, сведения о производстве, выполненные объекты и отзывы.</p>
+            <p>Покупатель видит, что вы предлагаете и кому доверяет заказ. При изменении цены или комплектации обновляем информацию на связанных страницах.</p>
           </PartnerFeatureSection>
         )}
 
         <PartnerFeatureSection
-          title="Получайте трафик без ограничений и платите только за результат"
+          title="Обращения, с которыми удобно работать"
           visual={<PartnerCrmPreview />}
-          actionHref={partnerServices.salesCommission.path}
-          actionLabel="Подробнее о работе за результат"
+          onApply={openForm}
+          actionLabel="Получать заявки"
+          reverse
         >
-          <p>Размещаем проекты бесплатно и показываем их покупателям во всех согласованных регионах доставки. Вы не платите за публикацию, просмотры или обращения.</p>
-          <p>Вознаграждение 5% возникает только после того, как покупатель заключил с вами договор и внёс оплату. Каждую заявку передаём в вашу CRM вместе с выбранным проектом, регионом и источником обращения.</p>
+          <p>Передаём контакт покупателя, выбранный дом или баню, регион доставки и источник обращения. Менеджер видит запрос клиента и может начать с обсуждения комплектации и расчёта стоимости.</p>
+          <p>До подключения согласуем географию и критерии квалифицированного лида. Дальнейшие переговоры и продажу ведёт ваша команда.</p>
         </PartnerFeatureSection>
 
         {showcaseMaker && businessProjects.length > 0 && (
           <PartnerFeatureSection
-            title="Продавайте больше проектов для бизнеса"
+            title="Дома и бани для бизнес-заказчиков"
             visual={<PartnerBusinessPreview projects={businessProjects} maker={showcaseMaker} />}
-            actionHref={partnerServices.businessPlacement.path}
-            actionLabel="Подробнее о разделе «Бизнес»"
-            reverse
+            onApply={() => openFormWithInterest("Размещение в разделе «Бизнес»")}
+            actionLabel="Получать лиды для бизнеса"
           >
-            <p>Выходите на предпринимателей и инвесторов, которые выбирают дома для глэмпингов, баз отдыха, гостиниц и аренды. Отдельная витрина помогает представить проект как готовое решение для запуска бизнеса: с понятной вместимостью, комплектацией, сроком изготовления и условиями поставки.</p>
-            <p>Вы получаете обращения по более крупным заказам, в которых покупателю может потребоваться сразу несколько домов. Каждый проект остаётся связан с вашей компанией, а заявка приходит в CRM с выбранной моделью и параметрами объекта.</p>
+            <p>Представляем ваши дома и бани предпринимателям, которые развивают глэмпинги, базы отдыха, банные комплексы и арендный бизнес.</p>
+            <p>Помогаем показать предложение под их задачи: вместимость, комплектацию, сроки производства и возможность поставки нескольких объектов.</p>
           </PartnerFeatureSection>
         )}
 
@@ -230,17 +214,18 @@ const PartnerLanding = () => {
               <p className="mt-3 text-[12px] leading-relaxed text-muted-foreground">Реальный пример преобразования фотографии построенного дома в художественный рендер.</p>
             </div>
           )}
-          actionHref={partnerServices.renderings.path}
-          actionLabel="Подробнее о рендерах"
+          onApply={() => openFormWithInterest("Художественные рендеры")}
+          actionLabel="Улучшить изображения"
+          reverse
         >
-          <p>Покупателю проще решиться на обращение, когда он может представить готовый дом на своём участке. Хорошая визуализация показывает архитектуру, материалы, остекление и террасу так, чтобы проект был понятен без дополнительных объяснений менеджера.</p>
-          <p>Вы получаете готовый комплект изображений для карточек, сайта, презентаций и рекламы. Ваши проекты выглядят убедительно во всех каналах, помогают покупателю выбрать конкретную модель и перейти к предметному разговору о покупке.</p>
+          <p>Улучшаем подачу ваших фотографий и рендеров: свет, окружение и ракурсы. Помогаем показать дом или баню так, чтобы покупатель мог рассмотреть архитектуру, отделку и представить объект на своём участке.</p>
+          <p>Готовим изображения для карточек, презентаций и рекламы в едином стиле. Сравните исходную фотографию и художественную визуализацию одного дома.</p>
         </PartnerFeatureSection>
 
         <section>
           <div className="mx-auto w-full max-w-[1400px] px-4 py-12 sm:px-8 md:py-16 lg:px-12 lg:py-20">
             <h2 className="max-w-[760px] text-[30px] font-semibold leading-[1.08] tracking-[-0.03em] text-[#342d27] sm:text-[36px] md:text-[44px] dark:text-foreground">
-              От заявки до первых обращений
+              Как начать получать заявки
             </h2>
             <ol className="mt-10 grid gap-9 md:mt-14 md:grid-cols-3 md:gap-12">
               {partnerSteps.map((step) => (
@@ -252,7 +237,7 @@ const PartnerLanding = () => {
               ))}
             </ol>
             <Button type="button" size="lg" onClick={openForm} className={`${ctaClassName} mt-10`}>
-              Начать размещение
+              Оставить заявку
             </Button>
           </div>
         </section>
@@ -269,13 +254,13 @@ const PartnerLanding = () => {
         <section>
           <div className="mx-auto flex w-full max-w-[980px] flex-col items-center px-4 py-14 text-center sm:px-8 md:py-20">
             <h2 className="max-w-[780px] text-[32px] font-semibold leading-[1.06] tracking-[-0.035em] text-[#342d27] sm:text-[40px] md:text-[52px] dark:text-foreground">
-              Разместим первые проекты и подготовим страницы
+              Найдём покупателей для ваших домов и бань
             </h2>
             <p className="mt-5 max-w-[620px] text-[15px] leading-relaxed text-[#595653] md:text-[17px] dark:text-muted-foreground">
-              Оставьте контакты компании. Посмотрим ассортимент, уточним города доставки и покажем страницы до публикации.
+              Оставьте контакты компании. Мы изучим ассортимент, уточним географию доставки и обсудим подключение.
             </p>
             <Button type="button" size="lg" onClick={openForm} className={`${ctaClassName} mt-8`}>
-              Разместить проекты
+              Оставить заявку
             </Button>
           </div>
         </section>

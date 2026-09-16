@@ -9,6 +9,7 @@ interface MobileMenuProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onPartnerCta?: () => void;
+  partnerCtaLabel?: string;
   hidePartnerCta?: boolean;
 }
 
@@ -49,7 +50,13 @@ const LinkSection = ({ items, onNavigate }: LinkSectionProps) => (
   </section>
 );
 
-const MobileMenu = ({ open, onOpenChange, onPartnerCta, hidePartnerCta = false }: MobileMenuProps) => {
+const MobileMenu = ({
+  open,
+  onOpenChange,
+  onPartnerCta,
+  partnerCtaLabel = "Разместиться бесплатно",
+  hidePartnerCta = false,
+}: MobileMenuProps) => {
   const [mounted, setMounted] = useState(false);
   const [openNavigationSection, setOpenNavigationSection] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -212,7 +219,7 @@ const MobileMenu = ({ open, onOpenChange, onPartnerCta, hidePartnerCta = false }
                 onClick={handlePartnerCta}
                 className="flex min-h-12 w-full items-center justify-center rounded-[var(--radius)] bg-primary px-3 text-center text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                Разместиться бесплатно
+                {partnerCtaLabel}
               </button>
             ) : (
               <Link

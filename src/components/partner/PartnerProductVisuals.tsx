@@ -197,25 +197,25 @@ export const PartnerDealHistoryPreview = () => (
 export const PartnerCommissionPreview = () => (
   <div className={`rounded-[var(--radius)] bg-[#eef0f4] p-3 sm:p-5 md:p-7 dark:bg-secondary ${largeVisualClassName}`}>
     <div className="w-full rounded-[var(--radius)] bg-white p-5 sm:p-7 dark:bg-card">
-      <p className="text-[18px] font-semibold text-[#342d27] md:text-[22px] dark:text-foreground">Расчёт по состоявшейся сделке</p>
-      <p className="mt-1 text-[12px] text-muted-foreground md:text-[13px]">Условия зафиксированы в договоре до запуска</p>
+      <p className="text-[18px] font-semibold text-[#342d27] md:text-[22px] dark:text-foreground">Квалифицированный лид</p>
+      <p className="mt-1 text-[12px] text-muted-foreground md:text-[13px]">Критерии согласованы до запуска</p>
       <dl className="mt-8 space-y-5">
         <div className="flex items-baseline justify-between gap-5">
-          <dt className="text-[13px] text-muted-foreground">Стоимость договора покупателя</dt>
-          <dd className="text-[15px] font-semibold tabular-nums text-[#342d27] dark:text-foreground">4 800 000 ₽</dd>
+          <dt className="text-[13px] text-muted-foreground">Выбранный проект</dt>
+          <dd className="text-[15px] font-semibold text-[#342d27] dark:text-foreground">Дом 65 м²</dd>
         </div>
         <div className="flex items-baseline justify-between gap-5">
-          <dt className="text-[13px] text-muted-foreground">Согласованное вознаграждение</dt>
-          <dd className="text-[15px] font-semibold tabular-nums text-[#342d27] dark:text-foreground">5%</dd>
+          <dt className="text-[13px] text-muted-foreground">Регион покупателя</dt>
+          <dd className="text-[15px] font-semibold text-[#342d27] dark:text-foreground">Екатеринбург</dd>
         </div>
         <div className="border-t border-border pt-5">
           <div className="flex items-baseline justify-between gap-5">
-            <dt className="text-[14px] font-medium text-[#342d27] dark:text-foreground">Вознаграждение после сделки</dt>
-            <dd className="text-[24px] font-semibold tabular-nums tracking-[-0.025em] text-[#342d27] md:text-[28px] dark:text-foreground">240 000 ₽</dd>
+            <dt className="text-[14px] font-medium text-[#342d27] dark:text-foreground">Стоимость лида</dt>
+            <dd className="text-[24px] font-semibold tabular-nums tracking-[-0.025em] text-[#342d27] md:text-[28px] dark:text-foreground">от 2 900 ₽</dd>
           </div>
         </div>
       </dl>
-      <p className="mt-8 rounded-[var(--radius)] bg-[#f4f5f7] p-4 text-[12px] leading-relaxed text-muted-foreground dark:bg-secondary">Демонстрационный расчёт при вознаграждении 5%. В договоре фиксируется порядок подтверждения состоявшейся сделки.</p>
+      <p className="mt-8 rounded-[var(--radius)] bg-[#f4f5f7] p-4 text-[12px] leading-relaxed text-muted-foreground dark:bg-secondary">Точная цена зависит от согласованных критериев квалификации и фиксируется до запуска.</p>
     </div>
   </div>
 );

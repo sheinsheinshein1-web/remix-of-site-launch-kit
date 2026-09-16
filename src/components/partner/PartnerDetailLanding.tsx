@@ -15,6 +15,8 @@ type PartnerDetailSection = {
   content: ReactNode;
   visual: ReactNode;
   reverse?: boolean;
+  actionLabel?: string;
+  interest?: string;
 };
 
 type PartnerDetailLandingProps = {
@@ -113,7 +115,7 @@ const PartnerDetailLanding = ({
         canonicalPath={service.path}
         jsonLd={[breadcrumbJsonLd, faqJsonLd]}
       />
-      <Header variant="partner" onPartnerCta={() => openForm()} />
+      <Header variant="partner" partnerCtaLabel={ctaLabel} onPartnerCta={() => openForm()} />
 
       <main>
         <PartnerHeroSection>
@@ -139,6 +141,8 @@ const PartnerDetailLanding = ({
             title={section.title}
             visual={section.visual}
             reverse={section.reverse ?? index % 2 === 1}
+            actionLabel={section.actionLabel}
+            onApply={section.actionLabel ? () => openForm(section.interest) : undefined}
           >
             {section.content}
           </PartnerFeatureSection>

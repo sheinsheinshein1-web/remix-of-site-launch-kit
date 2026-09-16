@@ -30,7 +30,6 @@ const SRC_VISIBILITY = resolve("src/data/catalogVisibility.ts");
 const PUBLIC_SITEMAP = resolve("public/sitemap.xml");
 const LEGACY_REDIRECTS_FILE = join(DIST, "legacy-redirects.caddy");
 const SITE_URL = "https://многоместа.рф";
-const PORT = 4173;
 const NOT_FOUND_RENDER_ROUTE = "/__not-found__";
 
 const normalizeSitePath = (path) => {
@@ -373,7 +372,12 @@ const server = createServer(async (req, res) => {
   }
 });
 
-await new Promise((r) => server.listen(PORT, r));
+// Bind an available loopback port so another local preview cannot supply HTML.
+await new Promise((resolve, reject) => {
+  server.once("error", reject);
+  server.listen(0, "127.0.0.1", resolve);
+});
+const PORT = server.address().port;
 console.log(`[prerender] server up on http://127.0.0.1:${PORT}`);
 
 // ---------- 3. Render with Playwright ----------
@@ -389,7 +393,13 @@ for (const route of RENDER_ROUTES) {
   try {
     // В карточках производителей есть внешняя карта. Её фоновые запросы не
     // должны блокировать генерацию уже готового HTML страницы.
-    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30_000 });
+    const response = await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30_000 });
+    if (!response?.ok()) throw new Error(`Unexpected HTTP status: ${response?.status()}`);
+    await page.waitForFunction(
+      () => !!document.querySelector("#root")?.children.length,
+      null,
+      { timeout: 10_000 },
+    );
     // Wait until Helmet has injected JSON-LD — a real signal that meta tags are flushed.
     await page.waitForFunction(
       () => !!document.querySelector('script[type="application/ld+json"]'),

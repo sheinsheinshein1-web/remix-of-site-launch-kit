@@ -102,7 +102,7 @@ const PartnerContent = ({ onClose, onStartChat }: { onClose: () => void; onStart
     <div className="bg-background rounded-2xl p-4">
       <p className="text-[11px] font-bold tracking-wider uppercase text-primary mb-1.5">Форматы участия</p>
       <h2 className="text-[20px] font-extrabold text-foreground leading-tight mb-4 tracking-tight">
-        Бесплатное размещение или работа за результат
+        Бесплатное размещение и квалифицированные лиды
       </h2>
       <div className="flex flex-col gap-2.5">
         {plans.map((p) => {
