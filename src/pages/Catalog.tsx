@@ -9,7 +9,7 @@ import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import ProjectCard from "@/components/ProjectCard";
 import { navigateWithTransition } from "@/lib/viewTransition";
 import Seo from "@/components/Seo";
-import SiteBreadcrumbs, { siteBreadcrumbPageContainerClassName } from "@/components/SiteBreadcrumbs";
+import SiteBreadcrumbs, { siteBreadcrumbPageContainerClassName, sitePageContainerClassName } from "@/components/SiteBreadcrumbs";
 import { buildSiteUrl } from "@/lib/seo";
 import { CATALOG_PATH, getProjectPath } from "@/lib/siteRoutes";
 import { compareWithProjectPriority } from "@/lib/projectPriority";
@@ -662,7 +662,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
         }`}
         aria-label="Управление каталогом"
       >
-        <div className={`${embedded ? "px-4 sm:px-8" : "mx-auto w-full max-w-[1400px] px-4 sm:px-8"} py-2.5`}>
+        <div className={`${embedded ? "px-4 sm:px-8" : sitePageContainerClassName} py-2.5`}>
           <div className="flex min-w-0 items-center gap-2">
             <SearchDropdown
               className="min-w-0 flex-1"
@@ -707,7 +707,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
       </div>
 
       {/* Desktop catalog content. Only the active responsive grid is mounted. */}
-      {!isMobile && <div className={`${embedded ? "" : "px-4 sm:px-8 lg:px-10 xl:px-12 w-full pb-16"} hidden md:block`}>
+      {!isMobile && <div className={`${embedded ? "" : `${sitePageContainerClassName} pb-16`} hidden md:block`}>
         <div className="mb-8 pb-7">
           <SearchDropdown
             className="w-full"
@@ -1086,7 +1086,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
       </div>}
 
       {/* Mobile content */}
-      {isMobile && <div className={`${embedded ? "" : "px-0 lg:px-10 xl:px-12"} w-full pb-12 pt-5 md:hidden`}>
+      {isMobile && <div className={`${embedded ? "w-full" : sitePageContainerClassName} pb-12 pt-5 md:hidden`}>
         <div>
           <div className="mb-4 flex items-center justify-between">
             <p className="text-[14px] text-muted-foreground">
@@ -1143,7 +1143,7 @@ const Catalog = ({ embedded = false, lockedRegion, lockedRegionLabel, lockedRegi
 
       {!embedded && routeCategory && (
         <section
-          className="px-4 py-16 sm:px-8 md:py-24 lg:px-10 xl:px-12"
+          className={`${sitePageContainerClassName} py-16 md:py-24`}
           aria-labelledby="catalog-category-description"
         >
           <div className="max-w-[850px]">

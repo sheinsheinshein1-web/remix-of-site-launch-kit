@@ -13,8 +13,11 @@ type SiteBreadcrumbsProps = {
   spacing?: "page" | "none";
 };
 
+export const sitePageContainerClassName =
+  "mx-auto w-full max-w-[1400px] px-4 sm:px-8 lg:px-12";
+
 export const siteBreadcrumbPageContainerClassName =
-  "mx-auto w-full max-w-[1400px] px-4 pt-[82px] sm:px-8 md:pt-[144px] lg:px-12";
+  `${sitePageContainerClassName} pt-[82px] md:pt-[144px]`;
 
 const SiteBreadcrumbs = ({ items, className = "", spacing = "page" }: SiteBreadcrumbsProps) => (
   <nav

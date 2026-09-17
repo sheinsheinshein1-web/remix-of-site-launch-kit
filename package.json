@@ -15,7 +15,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test e2e/manufacturer-profile.spec.ts e2e/yekaterinburg-service.spec.ts",
+    "test:e2e": "playwright test e2e/manufacturer-profile.spec.ts e2e/yekaterinburg-service.spec.ts e2e/catalog-layout.spec.ts",
     "test:e2e:external": "playwright test e2e/manufacturer-widgets.spec.ts",
     "check:manufacturer-prerender": "node scripts/check-manufacturer-prerender.mjs",
     "manufacturer:audit": "node scripts/manufacturer-source-audit.mjs --write",
