@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { manufacturerRegistry } from "@/data/manufacturers";
 import { generatedProjectMedia, generatedProjectMediaMeta } from "@/data/generatedProjectMedia";
-import { projects } from "@/data/projects";
+import { makersById, projects } from "@/data/projects";
 
 const suspiciousMediaPattern = /(?:logo|favicon|icon|(?:^|[\/_-])icn|avatar|promocode|promo[_-]|empty|captcha|qr[_-]|social|youtube|rutube|looo|\.(?:js|css|mjs|map|svg|gif|mp4|webm)$)/iu;
 
@@ -9,8 +9,8 @@ describe("project media quality gate", () => {
   const auditedProjects = projects.filter((project) => manufacturerRegistry[project.manufacturerId]?.profile?.sourceAudit);
 
   it("covers the full Yekaterinburg source-audited slice", () => {
-    expect(Object.values(manufacturerRegistry).filter((maker) => maker.profile?.sourceAudit)).toHaveLength(16);
-    expect(auditedProjects).toHaveLength(238);
+    expect(Object.values(makersById).filter((maker) => maker.profile?.sourceAudit)).toHaveLength(15);
+    expect(auditedProjects).toHaveLength(233);
     expect(generatedProjectMediaMeta.projectCount).toBe(Object.keys(generatedProjectMedia).length);
   });
 

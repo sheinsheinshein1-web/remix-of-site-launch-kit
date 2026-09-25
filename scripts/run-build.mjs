@@ -53,6 +53,7 @@ const lock = await acquireLock();
 await lock.writeFile(String(process.pid));
 
 try {
+  await runNode("scripts/localize-catalog-media.mjs", "--check");
   if (mode !== "--prerender-only") {
     await runNode("scripts/generate-card-thumbnails.mjs");
     await runNode("scripts/build-og-image.mjs");

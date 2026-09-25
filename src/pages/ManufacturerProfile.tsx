@@ -498,13 +498,15 @@ const ManufacturerLegalOverview = ({
     ["Выручка", legal.revenue],
     ["Чистая прибыль", legal.netProfit],
   ] as const;
-  const enforcementProceedingsLabel = formatManufacturerEnforcementProceedings(legal.enforcementProceedings);
+  const enforcementProceedingsLabel = legal.enforcementProceedings
+    ? formatManufacturerEnforcementProceedings(legal.enforcementProceedings)
+    : undefined;
   const publicLegalSources = getPublicLegalSources(legal.sources);
   const registryChecks = [
-    ["Арбитражные дела", legal.arbitrationCases],
+    ...(legal.arbitrationCases ? [["Арбитражные дела", legal.arbitrationCases] as const] : []),
     ...(legal.generalCourtCases ? [["Суды общей юрисдикции", legal.generalCourtCases] as const] : []),
-    ["Исполнительные производства", enforcementProceedingsLabel],
-    ["Реестр недобросовестных поставщиков", legal.unfairSuppliersRegistry],
+    ...(enforcementProceedingsLabel ? [["Исполнительные производства", enforcementProceedingsLabel] as const] : []),
+    ...(legal.unfairSuppliersRegistry ? [["Реестр недобросовестных поставщиков", legal.unfairSuppliersRegistry] as const] : []),
   ] as const;
   const registrationLabel = isSoleProprietor ? "Предприниматель зарегистрирован" : "Компания зарегистрирована";
   const legalAddressLabel = isSoleProprietor ? "Регион регистрации" : "Юридический адрес";
@@ -553,11 +555,8 @@ const ManufacturerLegalOverview = ({
 
             <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-5 lg:grid-cols-4 lg:gap-x-8">
               {([
-                ["Дата регистрации", legal.registeredAt],
-                ["Арбитражные дела", legal.arbitrationCases],
-                ...(legal.generalCourtCases ? [["Суды общей юрисдикции", legal.generalCourtCases] as const] : []),
-                ["Исполнительные производства", enforcementProceedingsLabel],
-                ["Реестр недобросовестных поставщиков", legal.unfairSuppliersRegistry],
+                ["Дата регистрации", legal.registeredAt] as const,
+                ...registryChecks,
               ] as const).map(([label, value]) => (
                 <div key={label} className="min-w-0">
                   <dt className="text-[12px] leading-snug text-[#717b8e]">{label}</dt>
@@ -699,9 +698,9 @@ const ManufacturerLegalOverview = ({
               <div className="border-b border-r border-border p-4 md:p-5">
                 <dt className="text-[12px] leading-snug text-[#717b8e]">Открытые реестры</dt>
                 <dd className="mt-2 space-y-1 text-[13px] font-medium leading-snug text-[#342d27] dark:text-foreground">
-                  <p>Арбитраж — {legal.arbitrationCases.toLocaleLowerCase("ru-RU")}</p>
-                  <p>ФССП — {enforcementProceedingsLabel.toLocaleLowerCase("ru-RU")}</p>
-                  <p>РНП — {legal.unfairSuppliersRegistry.toLocaleLowerCase("ru-RU")}</p>
+                  {legal.arbitrationCases && <p>Арбитраж — {legal.arbitrationCases.toLocaleLowerCase("ru-RU")}</p>}
+                  {enforcementProceedingsLabel && <p>ФССП — {enforcementProceedingsLabel.toLocaleLowerCase("ru-RU")}</p>}
+                  {legal.unfairSuppliersRegistry && <p>РНП — {legal.unfairSuppliersRegistry.toLocaleLowerCase("ru-RU")}</p>}
                 </dd>
               </div>
               <div className="border-b border-r border-border p-4 md:p-5">

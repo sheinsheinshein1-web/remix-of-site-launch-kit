@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
+import { localMedia } from "@/lib/localMedia";
 import { manufacturerRegistry, manufacturerSchema, manufacturers } from "@/data/manufacturers";
 import {
   allProjects,
+  sourceProjects,
   getManufacturerById,
   getManufacturerProjectCount,
   getProjectsByManufacturerId,
@@ -121,9 +123,9 @@ describe("manufacturer registry", () => {
     ];
 
     for (const manufacturerId of enrichedIds) {
-      const manufacturer = getManufacturerById(manufacturerId);
+      const manufacturer = manufacturerRegistry[manufacturerId];
       const audit = manufacturer?.profile?.sourceAudit;
-      const projects = getProjectsByManufacturerId(manufacturerId);
+      const projects = allProjects.filter((project) => project.manufacturerId === manufacturerId);
 
       expect(audit, `${manufacturerId}: source audit is missing`).toBeDefined();
       expect(projects, `${manufacturerId}: official catalog is incomplete`).toHaveLength(audit!.catalog.expectedProjectCount);
@@ -158,9 +160,9 @@ describe("manufacturer registry", () => {
     expect(manufacturerIds).toHaveLength(16);
 
     for (const manufacturerId of manufacturerIds) {
-      const manufacturer = getManufacturerById(manufacturerId);
+      const manufacturer = manufacturerRegistry[manufacturerId];
       const profile = manufacturer?.profile;
-      const projects = getProjectsByManufacturerId(manufacturerId);
+      const projects = allProjects.filter((project) => project.manufacturerId === manufacturerId);
 
       expect(profile?.sourceAudit, `${manufacturerId}: source audit is missing`).toBeDefined();
       expect(profile?.intro, `${manufacturerId}: profile intro is missing`).toBeTruthy();
@@ -185,9 +187,38 @@ describe("manufacturer registry", () => {
     for (const manufacturer of Object.values(manufacturerRegistry)) {
       const legal = manufacturer.profile?.legal;
       if (!legal) continue;
-      expect(legal.arbitrationCases, `${manufacturer.id}: arbitration placeholder`).not.toMatch(/не проверено/iu);
-      expect(legal.unfairSuppliersRegistry, `${manufacturer.id}: supplier-registry placeholder`).not.toMatch(/не проверено/iu);
+      if (legal.arbitrationCases) {
+        expect(legal.arbitrationCases, `${manufacturer.id}: arbitration placeholder`).not.toMatch(/не проверено/iu);
+      }
+      if (legal.unfairSuppliersRegistry) {
+        expect(legal.unfairSuppliersRegistry, `${manufacturer.id}: supplier-registry placeholder`).not.toMatch(/не проверено/iu);
+      }
     }
+  });
+
+  it("publishes source-matched legal identities for the newly verified Yekaterinburg manufacturers", () => {
+    expect(getManufacturerById("exmodule")?.profile?.legal).toMatchObject({
+      legalName: "ИП Кривцов Олег Игоревич",
+      inn: "890103115563",
+      ogrn: "319723200087742",
+    });
+    expect(getManufacturerById("russian-modular-house")?.profile?.legal).toMatchObject({
+      legalName: "ИП Бахирев Александр Андреевич",
+      inn: "591114678642",
+      ogrn: "323665800044254",
+      arbitrationCases: "1 дело в качестве ответчика",
+    });
+    expect(manufacturerRegistry.lesprom96?.profile?.legal).toMatchObject({
+      legalName: "ООО «ЛЕСПРОМ96»",
+      inn: "6679128770",
+      kpp: "667901001",
+      ogrn: "1196658071686",
+    });
+    expect(getManufacturerById("zhar-parych")?.profile?.legal).toMatchObject({
+      legalName: "ИП Дмитриевский Дмитрий Владимирович",
+      inn: "667005827708",
+      ogrn: "321665800078513",
+    });
   });
 
   it("keeps all ten September manufacturer imports complete and correctly grouped", () => {
@@ -205,8 +236,8 @@ describe("manufacturer registry", () => {
     } as const;
 
     for (const [manufacturerId, expectedCount] of Object.entries(expectedCounts)) {
-      const manufacturer = getManufacturerById(manufacturerId);
-      const projects = getProjectsByManufacturerId(manufacturerId);
+      const manufacturer = manufacturerRegistry[manufacturerId];
+      const projects = allProjects.filter((project) => project.manufacturerId === manufacturerId);
 
       expect(manufacturer?.profile?.sourceAudit?.catalog.expectedProjectCount).toBe(expectedCount);
       expect(projects, manufacturerId).toHaveLength(expectedCount);
@@ -235,7 +266,7 @@ describe("manufacturer registry", () => {
   });
 
   it("keeps every PREFABIA project tied to its own official photo and plan", () => {
-    const projects = getProjectsByManufacturerId("prefabia");
+    const projects = sourceProjects.filter(project => project.manufacturerId === "prefabia");
     const primaryImages = projects.map((project) => project.gallery[0]?.image);
 
     expect(projects).toHaveLength(18);
@@ -315,7 +346,7 @@ describe("manufacturer registry", () => {
     const glavlesProjects = getProjectsByManufacturerId("glavles");
 
     expect(glavles?.verified).toBe(true);
-    expect(glavles?.logo).toContain("glavles.com/img/favicon/");
+    expect(glavles?.logo).toBe(localMedia("https://glavles.com/img/favicon/apple-touch-icon-180x180.png"));
     expect(glavles?.profile?.projectTabs).toEqual(["houses", "baths", "business"]);
     expect(glavles?.profile?.legal?.inn).toBe("6651004503");
     expect(glavles?.profile?.coordinates).toEqual({ lat: 57.6342516, lon: 64.3762247 });

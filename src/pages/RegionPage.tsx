@@ -9,7 +9,7 @@ import SiteBreadcrumbs, { siteBreadcrumbPageContainerClassName } from "@/compone
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import Catalog from "@/pages/Catalog";
-import { regionsBySlug } from "@/data/regions";
+import { regionGroups, regionsBySlug } from "@/data/regions";
 import { projects, makersById } from "@/data/projects";
 import { compareProjectTechnologyPriority } from "@/lib/projectPriority";
 import {
@@ -32,8 +32,6 @@ import {
   getProjectPath,
   getRegionPath,
 } from "@/lib/siteRoutes";
-
-const MAKERS_PREVIEW_LIMIT = 6;
 
 const extractParagraphs = (html: string) => html.match(/<p>[\s\S]*?<\/p>/g) ?? [];
 
@@ -84,7 +82,14 @@ const RegionPage = () => {
       return b.projectsCount - a.projectsCount || a.name.localeCompare(b.name, "ru");
     });
 
-  const previewMakers = regionMakers.slice(0, MAKERS_PREVIEW_LIMIT);
+  const regionGroup = regionGroups.find((group) => group.slug === (region.baseRegionSlug ?? region.slug));
+  const relatedRegions = regionGroup
+    ? regionGroup.cities.filter((candidate) => {
+        if (candidate.slug === region.slug) return false;
+        if (!region.baseRegionSlug) return candidate.deliveryArea;
+        return !candidate.baseRegionSlug || candidate.deliveryArea;
+      })
+    : [];
   const manufacturerParams = new URLSearchParams({ region: region.slug });
   if (region.technologyValue) manufacturerParams.set("tech", region.technologyValue);
   const manufacturersHref = `${MANUFACTURERS_PATH}?${manufacturerParams.toString()}`;
@@ -133,6 +138,18 @@ const RegionPage = () => {
       name: project.name,
     })),
   };
+  const manufacturerListLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `Производители модульных домов ${region.namePrepositional}`,
+    numberOfItems: regionMakers.length,
+    itemListElement: regionMakers.map((maker, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: buildSiteUrl(getManufacturerPath(maker.id)),
+      name: maker.name,
+    })),
+  };
   const regionSeo = buildRegionSeo({
     h1: region.h1,
     namePrepositional: region.namePrepositional,
@@ -147,7 +164,7 @@ const RegionPage = () => {
         title={regionSeo.title}
         description={regionSeo.description}
         canonicalPath={canonicalPath}
-        jsonLd={[breadcrumbLd, faqLd, itemListLd]}
+        jsonLd={[breadcrumbLd, faqLd, itemListLd, manufacturerListLd]}
       />
 
       <main className="bg-background">
@@ -171,6 +188,22 @@ const RegionPage = () => {
               className="mt-5 text-[15px] leading-[1.72] text-[#595653] md:mt-6 md:text-[17px] dark:text-muted-foreground [&_p]:m-0"
               dangerouslySetInnerHTML={{ __html: shortIntroHtml }}
             />
+            {relatedRegions.length > 0 && (
+              <nav aria-label="Связанные регионы" className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-[14px] leading-relaxed text-muted-foreground md:text-[15px]">
+                <span>Смотреть также:</span>
+                {relatedRegions.map((relatedRegion, index) => (
+                  <span key={relatedRegion.slug}>
+                    <Link
+                      to={getRegionPath(relatedRegion.slug)}
+                      className="inline-flex min-h-11 items-center font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground"
+                    >
+                      Модульные дома {relatedRegion.namePrepositional}
+                    </Link>
+                    {index < relatedRegions.length - 1 ? "," : ""}
+                  </span>
+                ))}
+              </nav>
+            )}
           </section>
 
           <section className="mt-10 md:mt-14" aria-label={`Каталог проектов ${region.namePrepositional}`}>
@@ -185,16 +218,19 @@ const RegionPage = () => {
 
           {regionMakers.length > 0 && (
             <section className="mt-4 md:mt-8" aria-labelledby="region-makers-heading">
-              <h2 id="region-makers-heading" className="text-[26px] font-semibold tracking-[-0.025em] md:text-[32px]">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                <h2 id="region-makers-heading" className="text-[26px] font-semibold tracking-[-0.025em] text-[#342d27] md:text-[32px] dark:text-foreground">
+                  Производители модульных домов {region.namePrepositional}
+                </h2>
                 <Link
                   to={manufacturersHref}
-                  className="group inline min-h-11 text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 dark:text-foreground"
+                  className="group inline-flex min-h-11 shrink-0 items-center text-[14px] font-medium text-[#342d27] transition-colors hover:text-primary focus-visible:rounded-[var(--radius)] focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 md:text-[15px] dark:text-foreground"
                 >
-                  <TrailingChevronLabel text={`Все производители ${region.namePrepositional}`} />
+                  <TrailingChevronLabel text="Все производители" />
                 </Link>
-              </h2>
+              </div>
               <div className="mt-6 grid sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3 lg:gap-x-10">
-                {previewMakers.map((maker) => (
+                {regionMakers.map((maker) => (
                   <Link
                     key={maker.id}
                     to={getManufacturerPath(maker.id)}

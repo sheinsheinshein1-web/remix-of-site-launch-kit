@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { manufacturerRegistry } from "@/data/manufacturers";
-import { projects } from "@/data/projects";
+import { makersById, projects } from "@/data/projects";
 import { regionsBySlug } from "@/data/regions";
 import {
   getGeoSelectionLabel,
@@ -12,14 +12,14 @@ import { UNKNOWN_REQUIRED_PROJECT_FACT, getProjectSourceFacts } from "@/data/pro
 import { getRegionPath } from "@/lib/siteRoutes";
 
 describe("Yekaterinburg service contract", () => {
-  const manufacturerIds = Object.values(manufacturerRegistry)
+  const manufacturerIds = Object.values(makersById)
     .filter((manufacturer) => manufacturer.profile?.sourceAudit)
     .map((manufacturer) => manufacturer.id);
   const regionalProjects = projects.filter((project) => manufacturerIds.includes(project.manufacturerId));
 
   it("keeps the complete audited city slice connected", () => {
-    expect(manufacturerIds).toHaveLength(16);
-    expect(regionalProjects).toHaveLength(238);
+    expect(manufacturerIds).toHaveLength(15);
+    expect(regionalProjects).toHaveLength(233);
 
     for (const project of regionalProjects) {
       expect(isProjectAvailableInGeo(project.city, "ekaterinburg", project.deliveryRegionSlugs)).toBe(true);
@@ -66,8 +66,11 @@ describe("Yekaterinburg service contract", () => {
       manufacturerCount: manufacturerIds.length,
     });
 
-    expect(rendered).toContain("238 проектов");
-    expect(rendered).toContain("16 производителей");
+    expect(region.h1).toBe("Модульные дома в Екатеринбурге");
+    expect(rendered).toContain("233 проекта");
+    expect(rendered).toContain("15 производителей");
+    expect(rendered).toContain("доставки в Екатеринбург");
+    expect(rendered).not.toContain("доступные в Екатеринбурге и Свердловской области");
     expect(rendered).not.toMatch(/\{(?:project|manufacturer)Count/u);
     expect(rendered).not.toMatch(/46 готовых проектов|Теплодина|Karkas\.haus|Урал-Хаус/u);
     expect(rendered).not.toMatch(/доставка по области обычно входит|каркас 200 мм минимум/u);

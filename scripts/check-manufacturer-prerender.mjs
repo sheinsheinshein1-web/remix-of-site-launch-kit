@@ -2,20 +2,19 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 const representativeProfiles = [
-  { slug: "platforma", name: "Платформа", hasLegalSection: true },
-  { slug: "bygge", name: "Bygge", hasLegalSection: true },
-  { slug: "glavles", name: "Главлес", hasLegalSection: true },
-  { slug: "budushiy-dom", name: "Будущий Дом", hasLegalSection: true },
-  { slug: "bm-dom", name: "БМ-ДОМ", hasLegalSection: false },
-  { slug: "sq-modyl", name: "SQ-MODYL", hasLegalSection: true },
-  { slug: "exmodule", name: "ExModule", hasLegalSection: false },
-  { slug: "russian-modular-house", name: "Русский Модульный Дом", hasLegalSection: false },
-  { slug: "da-home", name: "DA-HOME", hasLegalSection: false },
-  { slug: "moduldom-ural", name: "МОДУЛЬДОМ-УРАЛ", hasLegalSection: false },
-  { slug: "lesprom96", name: "ЛЕСПРОМ96", hasLegalSection: false },
-  { slug: "e-module-stroy", name: "E.Module-stroy", hasLegalSection: false },
-  { slug: "prefabia", name: "PREFABIA", hasLegalSection: false },
-  { slug: "zhar-parych", name: "Жар Парыч", hasLegalSection: false },
+  { slug: "platforma", name: "Платформа", legalState: "data" },
+  { slug: "bygge", name: "Bygge", legalState: "data" },
+  { slug: "glavles", name: "Главлес", legalState: "data" },
+  { slug: "budushiy-dom", name: "Будущий Дом", legalState: "data" },
+  { slug: "bm-dom", name: "БМ-ДОМ", legalState: "unavailable" },
+  { slug: "sq-modyl", name: "SQ-MODYL", legalState: "data" },
+  { slug: "exmodule", name: "ExModule", legalState: "data" },
+  { slug: "russian-modular-house", name: "Русский Модульный Дом", legalState: "data" },
+  { slug: "da-home", name: "DA-HOME", legalState: "unavailable" },
+  { slug: "moduldom-ural", name: "МОДУЛЬДОМ-УРАЛ", legalState: "unavailable" },
+  { slug: "e-module-stroy", name: "E.Module-stroy", legalState: "unavailable" },
+  { slug: "prefabia", name: "PREFABIA", legalState: "data" },
+  { slug: "zhar-parych", name: "Жар Парыч", legalState: "data" },
 ];
 
 const failures = [];
@@ -48,11 +47,15 @@ for (const profile of representativeProfiles) {
   const h1Text = h1Html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 
   if (!h1Text.includes(profile.name)) failures.push(`${route}: manufacturer name is missing from H1`);
-  if (profile.hasLegalSection && !html.includes('id="manufacturer-legal-heading"')) {
+  if (!html.includes('id="manufacturer-legal-heading"')) {
     failures.push(`${route}: legal section is missing from prerendered HTML`);
   }
-  if (!profile.hasLegalSection && html.includes('id="manufacturer-legal-heading"')) {
-    failures.push(`${route}: empty legal section must not be rendered`);
+  const hasUnavailableLegalCopy = html.includes("Реквизиты не найдены") || html.includes("Реквизиты уточняются");
+  if (profile.legalState === "data" && hasUnavailableLegalCopy) {
+    failures.push(`${route}: verified legal data was replaced by an unavailable state`);
+  }
+  if (profile.legalState === "unavailable" && !hasUnavailableLegalCopy) {
+    failures.push(`${route}: unavailable legal data is not identified as such`);
   }
 }
 

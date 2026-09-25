@@ -13,7 +13,6 @@ const profiles = [
   { id: "russian-modular-house", name: "Русский Модульный Дом", production: "Производство" },
   { id: "da-home", name: "DA-HOME", production: "Производство" },
   { id: "moduldom-ural", name: "МОДУЛЬДОМ-УРАЛ", production: "Производство" },
-  { id: "lesprom96", name: "ЛЕСПРОМ96", production: "Производство" },
   { id: "e-module-stroy", name: "E.Module-stroy", production: "Производство" },
   { id: "prefabia", name: "PREFABIA", production: "Производство" },
   { id: "zhar-parych", name: "Жар Парыч", production: "Производство" },
@@ -93,7 +92,7 @@ test("Будущий Дом: absent external sources stay visible as explicit st
   await expect(page.getByText("Отзывы на Яндексе пока не найдены", { exact: true })).toBeVisible();
 
   await page.getByRole("tab", { name: "Telegram", exact: true }).click();
-  await expect(page.getByText("Telegram-канал пока не подтверждён", { exact: true })).toBeVisible();
+  await expect(page.getByText("Telegram-канал не найден", { exact: true })).toBeVisible();
 });
 
 test("Bygge: legal identity and completed objects are published", async ({ page }) => {

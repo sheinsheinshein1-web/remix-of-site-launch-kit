@@ -257,6 +257,10 @@ const hiddenTechnologies = new Set(
   [...visibilitySrc.matchAll(/HIDDEN_PUBLIC_TECHNOLOGIES\s*=\s*\[([^\]]*)\]/gs)]
     .flatMap((match) => [...match[1].matchAll(/["']([^"']+)["']/g)].map((value) => value[1])),
 );
+const hiddenManufacturerIds = new Set(
+  [...visibilitySrc.matchAll(/HIDDEN_PUBLIC_MANUFACTURER_IDS\s*=\s*\[([^\]]*)\]/gs)]
+    .flatMap((match) => [...match[1].matchAll(/["']([^"']+)["']/g)].map((value) => value[1])),
+);
 const projectsFile = parseSource(SRC_PROJECTS, projectsSrc);
 const manufacturerCatalogsFile = parseSource(SRC_MANUFACTURER_CATALOGS, manufacturerCatalogsSrc);
 const manufacturersFile = parseSource(SRC_MANUFACTURERS, manufacturersSrc);
@@ -284,8 +288,8 @@ const manufacturerCatalogRoutes = collectManufacturerCatalogRoutes({
 });
 const projectRecords = [...new Map(
   [...primaryRoutes.projects, ...regionalRoutes.projects, ...manufacturerCatalogRoutes.projects].map((project) => [project.id, project]),
-).values()];
-const makerIds = [...new Set([...primaryRoutes.makerIds, ...regionalRoutes.makerIds, ...manufacturerCatalogRoutes.makerIds])];
+).values()].filter((project) => !hiddenManufacturerIds.has(project.makerId));
+const makerIds = [...new Set(projectRecords.map((project) => project.makerId))];
 
 const SRC_REGIONS = resolve("src/data/regions.ts");
 const regionsSrc = existsSync(SRC_REGIONS) ? readSync(SRC_REGIONS, "utf8") : "";

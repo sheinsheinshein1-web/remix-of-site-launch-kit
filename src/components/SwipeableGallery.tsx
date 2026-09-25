@@ -160,10 +160,11 @@ const SwipeableGallery = ({ images, mobileImages, alt, height = "h-[200px]", pri
     ? `calc(${-current * 100}% / ${count} + ${dragX}px)`
     : `${-current * 100}%`;
 
+  // Keep slide/overlay layers inside this gallery, including during scroll repaints.
   return (
     <div
       ref={containerRef}
-      className={`relative ${height} overflow-hidden select-none touch-pan-y rounded-[var(--radius)] bg-secondary`}
+      className={`relative isolate [contain:paint] ${height} overflow-hidden select-none touch-pan-y rounded-[var(--radius)] bg-secondary`}
       onMouseMove={!isMobile ? onMouseMove : undefined}
       onMouseLeave={!isMobile ? onMouseLeave : undefined}
     >

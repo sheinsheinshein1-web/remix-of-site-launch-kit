@@ -24,5 +24,7 @@ describe("ProjectCard", () => {
 
     expect(link).toHaveAttribute("href", getProjectPath(project));
     expect(favorite.closest("a")).toBeNull();
+    expect(screen.getByRole("article")).toHaveClass("isolate", "min-w-0");
+    expect(link.querySelector(".touch-pan-y")).toHaveClass("isolate", "[contain:paint]");
   });
 });

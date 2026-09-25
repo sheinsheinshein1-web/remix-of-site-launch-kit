@@ -34,6 +34,7 @@
 // ============================================================================
 
 import { isPublicProject } from "@/data/catalogVisibility";
+import { localMedia } from "@/lib/localMedia";
 import { generatedCatalogRegistry } from "@/data/generatedCatalogRegistry";
 import {
   type Manufacturer,
@@ -8406,7 +8407,7 @@ export const projectRecords: Project[] = [
   ...(generatedCatalogRegistry.projects as unknown as Project[]),
 ];
 
-export const allProjects: Project[] = projectRecords.map((project) => {
+export const sourceProjects: Project[] = projectRecords.map((project) => {
   if (!manufacturerRegistry[project.manufacturerId]) {
     throw new Error(`Unknown manufacturer ${project.manufacturerId} in project ${project.id}`);
   }
@@ -8420,6 +8421,11 @@ export const allProjects: Project[] = projectRecords.map((project) => {
     ? { ...project, gallery: scopedGeneratedGallery.map((item) => ({ ...item })) }
     : project;
 });
+
+export const allProjects: Project[] = sourceProjects.map(project => ({
+  ...project,
+  gallery: project.gallery.map(item => ({ ...item, image: localMedia(item.image) })),
+}));
 
 /** Публичный каталог. Исходные записи при фильтрации не изменяются. */
 export const projects: Project[] = allProjects.filter(isPublicProject);

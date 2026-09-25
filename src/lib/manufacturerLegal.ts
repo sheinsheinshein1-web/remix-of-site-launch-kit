@@ -42,6 +42,7 @@ export const getPublicLegalSources = (
 export const formatEnforcementProceedings = (
   value: Partial<EnforcementProceedingsSummary> | undefined,
 ) => {
+  if (!value) return "Нет данных";
   const open = value?.open ?? 0;
   const completed = value?.completed ?? 0;
   if (open === 0 && completed === 0) return "Не обнаружено";
@@ -56,5 +57,5 @@ export const formatEnforcementProceedings = (
 
 /** Compatibility name used by presentation tests and future view-model code. */
 export const formatManufacturerEnforcementProceedings = (
-  value: EnforcementProceedingsValue,
+  value: EnforcementProceedingsValue | undefined,
 ) => formatEnforcementProceedings(value);

@@ -36,6 +36,7 @@ import ipModulLogo from "@/assets/ip-modul/logo.webp";
 import rusmodulLogo from "@/assets/rusmodul-spb/logo.svg";
 
 import { z } from "zod";
+import { localizeManufacturerMedia } from "@/lib/localMedia";
 import { regionalMakers } from "@/data/regionalBatchProjects";
 import { generatedCatalogRegistry } from "@/data/generatedCatalogRegistry";
 
@@ -62,13 +63,13 @@ const manufacturerLegalSchema = z.object({
   revenue: z.string().min(1),
   netProfit: z.string().min(1),
   reportingYear: z.string().min(1),
-  arbitrationCases: z.string().min(1),
+  arbitrationCases: z.string().min(1).optional(),
   generalCourtCases: z.string().min(1).optional(),
   enforcementProceedings: z.object({
     open: z.number().int().nonnegative(),
     completed: z.number().int().nonnegative(),
-  }),
-  unfairSuppliersRegistry: z.string().min(1),
+  }).optional(),
+  unfairSuppliersRegistry: z.string().min(1).optional(),
   checkedAt: z.string().min(1),
   checkedAtIso: z.string().min(1),
   sources: z.array(z.object({ label: z.string().min(1), href: z.string().url() })),
@@ -144,7 +145,7 @@ const manufacturerProfileSchema = z.object({
       id: z.string().min(1),
       title: z.string().min(1),
       publishedLabel: z.string().min(1),
-      thumbnail: z.string().url(),
+      thumbnail: z.union([z.string().url(), z.string().regex(/^\/media\/catalog\/[a-f0-9]{64}\.webp$/)]),
     })),
   }).optional(),
 }).superRefine((profile, context) => {
@@ -1435,8 +1436,8 @@ export const EXMODULE: Maker = {
     intro: "Модульные дома с готовой отделкой, доставкой и монтажом, а также серийные решения для глэмпингов и баз отдыха.",
     namePrepositional: "ExModule", coordinates: { lat: 56.9697821, lon: 60.5986233 }, mapKind: "office",
     sourceAudit: {
-      checkedAtIso: "2026-09-12", catalog: { sourceUrl: "https://exmodulhouse.ru/", expectedProjectCount: 14 },
-      legal: { status: "unverified", sourceUrl: "https://exmodulhouse.ru/politika", note: "Оператор сайта ИП Кривцов Олег Игоревич и реквизиты подтверждены; полный реестровый профиль пока не собран." },
+      checkedAtIso: "2026-09-15", catalog: { sourceUrl: "https://exmodulhouse.ru/", expectedProjectCount: 14 },
+      legal: { status: "imported", sourceUrl: "https://exmodulhouse.ru/politika", note: "Оператор официального сайта ИП Кривцов Олег Игоревич сопоставлен с действующей записью ЕГРИП по ИНН и ОГРНИП." },
       reviews: { status: "not-found", note: "Независимый профиль с однозначным совпадением сайта, телефона и адреса не найден." },
       builtObjects: { status: "imported", sourceUrl: "https://exmodulhouse.ru/#exmodule-gallery", note: "Фотографии готовых домов перенесены из официального блока «Живые фото объектов»." },
       production: { status: "not-found", sourceUrl: "https://exmodulhouse.ru/", note: "На официальном сайте опубликован адрес офиса продаж; отдельный адрес производства не указан." },
@@ -1447,6 +1448,27 @@ export const EXMODULE: Maker = {
       "В официальном каталоге есть типовые дома, линейка домиков для глэмпинга, банные комплексы и проекты, объединяющие дом, баню и террасу.",
       "Производитель указывает срок изготовления 30–45 дней, монтаж за 1–3 дня и гарантию пять лет. Итоговая стоимость зависит от участка, фундамента, инженерии, доставки и выбранной комплектации.",
     ],
+    legal: {
+      legalName: "ИП Кривцов Олег Игоревич",
+      status: "Действующий ИП",
+      registeredAt: "5 декабря 2019 года",
+      foundingDate: "2019-12-05",
+      inn: "890103115563",
+      kpp: "Не применяется",
+      ogrn: "319723200087742",
+      legalAddress: "Тюменская область",
+      director: "Кривцов Олег Игоревич",
+      mainActivity: "Деятельность рекламных агентств (ОКВЭД 73.11)",
+      shareCapital: "Не применяется",
+      revenue: "Не публикуется",
+      netProfit: "Не публикуется",
+      reportingYear: "—",
+      checkedAt: "15 сентября 2026 года",
+      checkedAtIso: "2026-09-15",
+      sources: [
+        { label: "ЕГРИП ФНС", href: "https://egrul.nalog.ru/" },
+      ],
+    },
     builtObjects: [
       { src: "https://exmodulhouse.ru/images/tild6564-6230-4365-a265-366465623736__exmodule-gallery-01.webp", width: 1536, height: 1024 },
       { src: "https://exmodulhouse.ru/images/tild3062-6631-4731-b564-353131393230__exmodule-gallery-02.webp", width: 1536, height: 1024 },
@@ -1471,8 +1493,8 @@ export const RUSSIAN_MODULAR_HOUSE: Maker = {
     intro: "Серийные дома и бани из одного, двух и нескольких модулей с производством в посёлке Большой Исток.",
     namePrepositional: "«Русском Модульном Доме»", coordinates: { lat: 56.7220713, lon: 60.752884 },
     sourceAudit: {
-      checkedAtIso: "2026-09-12", catalog: { sourceUrl: "https://pkrmd.ru/catalogrmd", expectedProjectCount: 20 },
-      legal: { status: "unverified", sourceUrl: "https://pkrmd.ru/contacti", note: "ИП Бахирев Александр Андреевич указан оператором сайта; полный юридический профиль требует отдельной проверки реестров." },
+      checkedAtIso: "2026-09-15", catalog: { sourceUrl: "https://pkrmd.ru/catalogrmd", expectedProjectCount: 20 },
+      legal: { status: "imported", sourceUrl: "https://pkrmd.ru/contacti", note: "Оператор официального сайта ИП Бахирев Александр Андреевич сопоставлен с действующей записью ЕГРИП по ИНН и ОГРНИП." },
       reviews: { status: "not-found", sourceUrl: "https://pkrmd.ru/", note: "Отзывы на сайте производителя найдены, но независимый профиль с достаточным совпадением не подключён." },
       builtObjects: { status: "imported", sourceUrl: "https://pkrmd.ru/", note: "Фотографии перенесены из официальной галереи производителя." },
       production: { status: "imported", sourceUrl: "https://pkrmd.ru/contacti", note: "Адрес производства опубликован в официальных контактах и нанесён на карту." },
@@ -1483,6 +1505,29 @@ export const RUSSIAN_MODULAR_HOUSE: Maker = {
       "Каталог построен вокруг серий «Уютный», «Комфортный» и «Просторный»: от компактных одномодульных решений до семейных домов и бань с террасами.",
       "Производитель заявляет строительство под ключ за срок до 60 дней. Цена и состав работ зависят от количества модулей, террасы, инженерии и комплектации.",
     ],
+    legal: {
+      legalName: "ИП Бахирев Александр Андреевич",
+      status: "Действующий ИП",
+      registeredAt: "3 марта 2023 года",
+      foundingDate: "2023-03-03",
+      inn: "591114678642",
+      kpp: "Не применяется",
+      ogrn: "323665800044254",
+      legalAddress: "Свердловская область",
+      director: "Бахирев Александр Андреевич",
+      mainActivity: "Производство деревянных строительных конструкций и столярных изделий (ОКВЭД 16.23.1)",
+      shareCapital: "Не применяется",
+      revenue: "Не публикуется",
+      netProfit: "Не публикуется",
+      reportingYear: "—",
+      arbitrationCases: "1 дело в качестве ответчика",
+      checkedAt: "15 сентября 2026 года",
+      checkedAtIso: "2026-09-15",
+      sources: [
+        { label: "ЕГРИП ФНС", href: "https://egrul.nalog.ru/" },
+        { label: "Арбитражные дела", href: "https://kad.arbitr.ru/" },
+      ],
+    },
     builtObjects: [
       { src: "https://static.tildacdn.com/tild6337-3438-4630-b063-306464343162/photo_2026-07-07_123.jpeg", width: 960, height: 1280 },
       { src: "https://static.tildacdn.com/tild3836-3066-4639-a333-376139303335/photo_2026-07-07_130.jpeg", width: 960, height: 1280 },
@@ -1564,8 +1609,8 @@ export const LESPROM96: Maker = {
     intro: "Модульные дома и бани из кедра, липы и сосны с производством пиломатериалов в Сысертском районе.",
     namePrepositional: "ЛЕСПРОМ96", coordinates: { lat: 56.5980144, lon: 61.1004524 },
     sourceAudit: {
-      checkedAtIso: "2026-09-12", catalog: { sourceUrl: "https://lesprom96.ru/", expectedProjectCount: 5, sourceMode: "shared-catalog-page" },
-      legal: { status: "unverified", sourceUrl: "https://lesprom96.ru/", note: "На сайте указаны ООО «ЛЕСПРОМ96» и ИНН 6679128770; полный юридический профиль требует реестровой проверки." },
+      checkedAtIso: "2026-09-15", catalog: { sourceUrl: "https://lesprom96.ru/", expectedProjectCount: 5, sourceMode: "shared-catalog-page" },
+      legal: { status: "imported", sourceUrl: "https://lesprom96.ru/", note: "ООО «ЛЕСПРОМ96» на официальном сайте сопоставлено с действующей записью ЕГРЮЛ по ИНН и наименованию." },
       reviews: { status: "not-found", note: "Независимый профиль, однозначно связанный с производством домов в Двуреченске, не найден." },
       builtObjects: { status: "not-found", sourceUrl: "https://lesprom96.ru/", note: "Фотографии относятся к товарным сериям; отдельный раздел выполненных объектов не опубликован." },
       production: { status: "imported", sourceUrl: "https://lesprom96.ru/", note: "Адрес производства опубликован на официальной странице и нанесён на карту." },
@@ -1576,6 +1621,28 @@ export const LESPROM96: Maker = {
       "На официальной странице представлены два жилых дома, две бани и комбинированный дом-баня. Детские игровые домики не включены в каталог жилых проектов.",
       "Производитель указывает доставку по УрФО и установку готового проекта за один-два дня; срок изготовления и комплектацию необходимо уточнять индивидуально.",
     ],
+    legal: {
+      legalName: "ООО «ЛЕСПРОМ96»",
+      status: "Действующая организация",
+      registeredAt: "21 октября 2019 года",
+      foundingDate: "2019-10-21",
+      inn: "6679128770",
+      kpp: "667901001",
+      ogrn: "1196658071686",
+      legalAddress: "620130, Свердловская область, г. Екатеринбург, ул. Чайковского, д. 79, кв. 69",
+      director: "Куликов Михаил Борисович",
+      mainActivity: "Распиловка и строгание древесины (ОКВЭД 16.10)",
+      shareCapital: "10 000 ₽",
+      revenue: "5,6 млн ₽",
+      netProfit: "116 тыс. ₽",
+      reportingYear: "2024",
+      checkedAt: "15 сентября 2026 года",
+      checkedAtIso: "2026-09-15",
+      sources: [
+        { label: "ЕГРЮЛ ФНС", href: "https://egrul.nalog.ru/" },
+        { label: "ГИР БО ФНС", href: "https://bo.nalog.ru/" },
+      ],
+    },
   },
 };
 
@@ -1691,8 +1758,8 @@ export const ZHAR_PARYCH: Maker = {
     intro: "Готовые каркасные бани заводской сборки и комплексы дом с баней с доставкой в собранном виде и установкой на участке.",
     namePrepositional: "«Жар Парыч»", coordinates: { lat: 56.5126578, lon: 60.8384581 },
     sourceAudit: {
-      checkedAtIso: "2026-09-12", catalog: { sourceUrl: "https://www.dmbany.ru/proekty-skandizhar", expectedProjectCount: 6, sourceMode: "shared-catalog-page" },
-      legal: { status: "unverified", sourceUrl: "https://www.dmbany.ru/privacy_policy", note: "На сайте опубликованы реквизиты ИП Дмитриевского Дмитрия Владимировича; полный юридический профиль требует актуальной реестровой проверки." },
+      checkedAtIso: "2026-09-15", catalog: { sourceUrl: "https://www.dmbany.ru/proekty-skandizhar", expectedProjectCount: 6, sourceMode: "shared-catalog-page" },
+      legal: { status: "imported", sourceUrl: "https://www.dmbany.ru/privacy_policy", note: "Оператор официального сайта ИП Дмитриевский Дмитрий Владимирович сопоставлен с действующей записью ЕГРИП по ИНН и ОГРНИП." },
       reviews: { status: "first-party-only", sourceUrl: "https://www.dmbany.ru/", note: "Отзывы опубликованы на сайте производителя; совпавший независимый профиль не найден." },
       builtObjects: { status: "not-found", sourceUrl: "https://www.dmbany.ru/gotovye-doma-i-bani-v-nalichii", note: "Разовые объекты в наличии не считаются подтверждённым портфолио выполненных заказов." },
       production: { status: "imported", sourceUrl: "https://www.dmbany.ru/about_us", note: "Адрес производства опубликован на официальном сайте и нанесён на карту." },
@@ -1703,6 +1770,27 @@ export const ZHAR_PARYCH: Maker = {
       "На сайте выделены продуктовые серии СкандиЖар, СкандиЖар Мини, Финляндия, БарниЖар и Классика. Отдельных постоянных URL для каждой планировки внутри серий нет, поэтому в каталоге они представлены как линейки.",
       "Производитель заявляет установку за один день и доставку по России. Фундамент, подключение коммуникаций и доставка зависят от выбранного проекта и участка.",
     ],
+    legal: {
+      legalName: "ИП Дмитриевский Дмитрий Владимирович",
+      status: "Действующий ИП",
+      registeredAt: "4 мая 2021 года",
+      foundingDate: "2021-05-04",
+      inn: "667005827708",
+      kpp: "Не применяется",
+      ogrn: "321665800078513",
+      legalAddress: "Свердловская область",
+      director: "Дмитриевский Дмитрий Владимирович",
+      mainActivity: "Производство прочих деревянных строительных конструкций и столярных изделий (ОКВЭД 16.23)",
+      shareCapital: "Не применяется",
+      revenue: "Не публикуется",
+      netProfit: "Не публикуется",
+      reportingYear: "—",
+      checkedAt: "15 сентября 2026 года",
+      checkedAtIso: "2026-09-15",
+      sources: [
+        { label: "ЕГРИП ФНС", href: "https://egrul.nalog.ru/" },
+      ],
+    },
   },
 };
 
@@ -1716,7 +1804,8 @@ const manufacturerRecords = [
   ...generatedManufacturerRecords,
 ] as const;
 
-const validatedManufacturers = manufacturerRecords.map((manufacturer) => manufacturerSchema.parse(manufacturer));
+export const sourceManufacturers = manufacturerRecords.map((manufacturer) => manufacturerSchema.parse(manufacturer));
+const validatedManufacturers = sourceManufacturers.map(manufacturer => localizeManufacturerMedia(manufacturer));
 
 const duplicateManufacturerIds = validatedManufacturers
   .map((manufacturer) => manufacturer.id)

@@ -60,7 +60,7 @@ const ProjectCard = ({
   const Heading = headingLevel;
 
   return (
-    <article className="relative overflow-hidden">
+    <article className="relative isolate min-w-0 overflow-hidden">
       <a
         href={viewModel.href}
         onClick={handleClick}

@@ -26,6 +26,7 @@ describe("manufacturer presentation rules", () => {
   });
 
   it("distinguishes current and completed enforcement proceedings", () => {
+    expect(formatEnforcementProceedings(undefined)).toBe("Нет данных");
     expect(formatEnforcementProceedings({ open: 0, completed: 0 })).toBe("Не обнаружено");
     expect(formatEnforcementProceedings({ open: 0, completed: 1 })).toBe("Нет открытых · 1 завершено");
     expect(formatEnforcementProceedings({ open: 2, completed: 3 })).toBe("Открыто: 2 · завершено: 3");

@@ -6,15 +6,14 @@ import {
   resolveRequiredProjectFact,
   UNKNOWN_REQUIRED_PROJECT_FACT,
 } from "@/data/projectSourceFacts";
-import { manufacturerRegistry } from "@/data/manufacturers";
-import { projects } from "@/data/projects";
+import { makersById, projects } from "@/data/projects";
 
 describe("sourced project facts", () => {
   const normalizeSourceUrl = (value: string) => value.replace(/\/+$/u, "");
   const platformaProjects = projects.filter((project) => project.manufacturerId === "platforma");
   const byggeProjects = projects.filter((project) => project.manufacturerId === "bygge");
   const yekaterinburgManufacturerIds = new Set(
-    Object.values(manufacturerRegistry)
+    Object.values(makersById)
       .filter((manufacturer) => manufacturer.profile?.sourceAudit)
       .map((manufacturer) => manufacturer.id),
   );
@@ -22,9 +21,9 @@ describe("sourced project facts", () => {
     yekaterinburgManufacturerIds.has(project.manufacturerId)
   ));
 
-  it("covers every project from all sixteen Yekaterinburg manufacturers", () => {
-    expect(yekaterinburgManufacturerIds.size).toBe(16);
-    expect(yekaterinburgProjects).toHaveLength(238);
+  it("covers every project from all published Yekaterinburg manufacturers", () => {
+    expect(yekaterinburgManufacturerIds.size).toBe(15);
+    expect(yekaterinburgProjects).toHaveLength(233);
 
     for (const project of yekaterinburgProjects) {
       const facts = getProjectSourceFacts(project.id);

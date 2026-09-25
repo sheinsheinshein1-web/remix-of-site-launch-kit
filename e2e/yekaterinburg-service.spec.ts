@@ -8,19 +8,26 @@ test("Yekaterinburg hub uses current data and mounts one catalog batch", async (
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/modulnye-doma/ekaterinburg/");
 
-  await expect(page.locator("h1")).toHaveText("Модульные дома в Екатеринбурге и Свердловской области");
+  await expect(page.locator("h1")).toHaveText("Модульные дома в Екатеринбурге");
   await expect(page.locator("link[rel='canonical']")).toHaveAttribute(
     "href",
     "https://многоместа.рф/modulnye-doma/ekaterinburg/",
   );
-  await expect(page.getByText(/238 проектов от 16 производителей/).first()).toBeVisible();
-  await expect(page.getByText(/Найдено:\s*238 проектов в Екатеринбурге/).first()).toBeVisible();
+  await expect(page.getByText(/233 проекта от 15 производителей/).first()).toBeVisible();
+  await expect(page.getByText(/Найдено:\s*233 проекта в Екатеринбурге/).first()).toBeVisible();
   await expect(page.locator("article")).toHaveCount(24);
   await expect(page.getByTestId("catalog-projects-load-more")).toBeAttached();
-  await expect(page.locator("#region-makers-heading a")).toHaveAttribute(
+  await expect(page.locator("section[aria-labelledby='region-makers-heading'] a[href^='/proizvoditeli/?']")).toHaveAttribute(
     "href",
     "/proizvoditeli/?region=ekaterinburg",
   );
+  await expect(page.getByRole("navigation", { name: "Связанные регионы" }).getByRole("link")).toHaveAttribute(
+    "href",
+    "/modulnye-doma/sverdlovskaya-oblast/",
+  );
+  await expect(
+    page.locator("section[aria-labelledby='region-makers-heading'] a[href^='/proizvoditeli/']"),
+  ).toHaveCount(16);
 });
 
 test("mobile catalog does not mount a hidden duplicate project grid", async ({ page }) => {
@@ -28,7 +35,7 @@ test("mobile catalog does not mount a hidden duplicate project grid", async ({ p
   await page.goto("/modulnye-doma/ekaterinburg/");
 
   await expect(page.locator("article")).toHaveCount(24);
-  await expect(page.getByText(/Найдено:\s*238 проектов в Екатеринбурге/).first()).toBeVisible();
+  await expect(page.getByText(/Найдено:\s*233 проекта в Екатеринбурге/).first()).toBeVisible();
 });
 
 test("Sverdlovsk region keeps its own canonical and filter identity", async ({ page }) => {
@@ -40,8 +47,8 @@ test("Sverdlovsk region keeps its own canonical and filter identity", async ({ p
     "href",
     "https://многоместа.рф/modulnye-doma/sverdlovskaya-oblast/",
   );
-  await expect(page.getByText(/Найдено:\s*238 проектов в Свердловской области/).first()).toBeVisible();
-  await expect(page.locator("#region-makers-heading a")).toHaveAttribute(
+  await expect(page.getByText(/Найдено:\s*233 проекта в Свердловской области/).first()).toBeVisible();
+  await expect(page.locator("section[aria-labelledby='region-makers-heading'] a[href^='/proizvoditeli/?']")).toHaveAttribute(
     "href",
     /region=sverdlovskaya-oblast/,
   );
