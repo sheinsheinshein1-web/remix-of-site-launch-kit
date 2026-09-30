@@ -27,10 +27,21 @@ www.многоместа.рф, www.xn--80afg0abehb3ak.xn--p1ai {
 	header /sitemap.xml Cache-Control "public, max-age=3600"
 	header /manifest.webmanifest Cache-Control "public, max-age=86400"
 
-	respond /health 200
+	@health path /health /health/
+	handle @health {
+		respond "ok" 200
+	}
 
 	# Permanent server-side redirects from legacy routes to canonical SEO URLs.
 	import /var/www/mnogomesta/dist/legacy-redirects.caddy
+
+	# Match the container policy before rewrites, without hiding clean SEO
+	# landing pages, project details or media from search engines.
+	@catalog_query {
+		path_regexp catalog_query ^/(modulnye-doma(/[^/]+)?|modulnye-bani)/?$
+		expression {query} != ""
+	}
+	header @catalog_query X-Robots-Tag "noindex, follow"
 
 	@static path /assets/* /fonts/* /hero/* /icons/* /og/* /favicon.ico /robots.txt /sitemap.xml /manifest.webmanifest /placeholder.svg
 	handle @static {
@@ -41,6 +52,7 @@ www.многоместа.рф, www.xn--80afg0abehb3ak.xn--p1ai {
 	@app_routes path /favorites* /messages* /profile* /requests* /operator* /lab*
 	handle @app_routes {
 		header Cache-Control "no-cache"
+		header X-Robots-Tag "noindex, nofollow"
 		try_files {path} {path}/ /index.html
 		file_server
 	}

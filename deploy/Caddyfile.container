@@ -33,6 +33,15 @@
 	# Permanent server-side redirects from legacy routes to canonical SEO URLs.
 	import /srv/legacy-redirects.caddy
 
+	# Faceted catalog states are not standalone search landing pages. Apply
+	# this before rewrites: their prerendered HTML belongs to the clean URL.
+	# Keep project detail URLs and media outside this matcher.
+	@catalog_query {
+		path_regexp catalog_query ^/(modulnye-doma(/[^/]+)?|modulnye-bani)/?$
+		expression {query} != ""
+	}
+	header @catalog_query X-Robots-Tag "noindex, follow"
+
 	@static path /assets/* /media/* /fonts/* /hero/* /icons/* /og/* /favicon.ico /robots.txt /sitemap.xml /manifest.webmanifest /placeholder.svg
 	handle @static {
 		file_server
@@ -42,6 +51,7 @@
 	@app_routes path /favorites* /messages* /profile* /requests* /operator* /lab*
 	handle @app_routes {
 		header Cache-Control "no-cache"
+		header X-Robots-Tag "noindex, nofollow"
 		try_files {path} {path}/ /index.html
 		file_server
 	}

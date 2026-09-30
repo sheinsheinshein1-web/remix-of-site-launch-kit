@@ -23,6 +23,7 @@ import { getManufacturerRatingSummary } from "@/data/manufacturerRatings";
 import { getCityDisplayName } from "@/lib/cityDisplay";
 import { isProjectAvailableInGeo } from "@/lib/geoSelection";
 import { buildRegionSeo } from "@/lib/pageSeo";
+import { resolveCatalogSeoState } from "@/lib/catalogSeo";
 import { interpolateRegionContent } from "@/lib/regionContent";
 import {
   CATALOG_PATH,
@@ -164,6 +165,8 @@ const RegionPage = () => {
         title={regionSeo.title}
         description={regionSeo.description}
         canonicalPath={canonicalPath}
+        noIndex={resolveCatalogSeoState(new URLSearchParams(location.search)).shouldNoIndex}
+        noFollow={false}
         jsonLd={[breadcrumbLd, faqLd, itemListLd, manufacturerListLd]}
       />
 

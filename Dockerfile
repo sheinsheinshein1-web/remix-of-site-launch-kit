@@ -30,6 +30,7 @@ COPY --from=caddy-runtime /usr/bin/caddy /usr/bin/caddy
 
 COPY deploy/Caddyfile.container /etc/caddy/Caddyfile
 COPY deploy/start-container.sh /usr/local/bin/start-container
+COPY deploy/check-seo-headers.sh /usr/local/bin/check-seo-headers
 COPY --from=build /app/dist /srv
 
 RUN chmod +x /usr/local/bin/start-container
@@ -41,6 +42,7 @@ EXPOSE 8080
 RUN caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile \
     && caddy start --config /etc/caddy/Caddyfile --adapter caddyfile \
     && wget -q -O - http://127.0.0.1:8080/health | grep -qx ok \
+    && sh /usr/local/bin/check-seo-headers \
     && caddy stop
 
 # Runtime health is checked by Timeweb App Platform using the /health path

@@ -111,38 +111,20 @@ const makerIdFromProject = (project, makerIds) => {
     : undefined;
 };
 
-const transliterationMap = {
-  а: "a", б: "b", в: "v", г: "g", д: "d", е: "e", ё: "e", ж: "zh", з: "z",
-  и: "i", й: "y", к: "k", л: "l", м: "m", н: "n", о: "o", п: "p", р: "r",
-  с: "s", т: "t", у: "u", ф: "f", х: "h", ц: "ts", ч: "ch", ш: "sh", щ: "sch",
-  ъ: "", ы: "y", ь: "", э: "e", ю: "yu", я: "ya",
-};
-
-const transliterateSlug = (value) => value
-  .trim()
-  .toLocaleLowerCase("ru")
-  .split("")
-  .map((character) => transliterationMap[character] ?? character)
-  .join("")
-  .normalize("NFKD")
-  .replace(/[\u0300-\u036f]/g, "")
-  .replace(/[^a-z0-9]+/g, "-")
-  .replace(/^-+|-+$/g, "")
-  .replace(/-{2,}/g, "-");
+// Reuse the browser's pure URL builder. Transpilation keeps this compatible
+// with Node 20 in Docker, without introducing a second routing implementation.
+const routeModule = ts.transpileModule(readSync(resolve("src/lib/siteRoutes.ts"), "utf8"), {
+  compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2020 },
+}).outputText;
+const { getProjectPath } = await import(`data:text/javascript;base64,${Buffer.from(routeModule).toString("base64")}`);
 
 const sourceValue = (expression) => stringValue(expression) ?? numberValue(expression);
 
-const buildProjectPath = ({ id, name, area, makerId, technology }) => {
-  const category = technology.toLocaleLowerCase("ru").includes("префаб")
-    ? "prefab-doma"
-    : "modulnye-doma";
-  const parsedArea = Number.parseFloat(String(area).replace(",", "."));
-  const areaSlug = Number.isFinite(parsedArea) ? `${Math.round(parsedArea)}-m2` : "";
-  const slug = [transliterateSlug(makerId), transliterateSlug(name), areaSlug, String(id)]
-    .filter(Boolean)
-    .join("-");
-  return `/${category}/proekty/${slug}/`;
-};
+const buildProjectPath = ({ makerId, area, ...project }) => getProjectPath({
+  ...project,
+  area: String(area ?? ""),
+  manufacturerId: makerId,
+});
 
 const collectPublicProjectRoutes = ({ sourceFile, arrayName, makerIds, hiddenTechnologies }) => {
   const projects = [];
@@ -166,6 +148,7 @@ const collectPublicProjectRoutes = ({ sourceFile, arrayName, makerIds, hiddenTec
       const nameProperty = getObjectProperty(project, "name");
       const technologyProperty = getObjectProperty(project, "technology");
       const areaM2Property = getObjectProperty(project, "area_m2");
+      const routeAreaProperty = getObjectProperty(project, "routeArea_m2");
       const areaProperty = getObjectProperty(project, "area");
       const id = idProperty ? numberValue(idProperty.initializer) : undefined;
       const name = nameProperty ? stringValue(nameProperty.initializer) : undefined;
@@ -178,7 +161,10 @@ const collectPublicProjectRoutes = ({ sourceFile, arrayName, makerIds, hiddenTec
       const makerId = makerIdFromProject(project, makerIds);
       if (!id || !name || !technology || !makerId || hiddenTechnologies.has(technology)) continue;
 
-      projects.push({ id, name, technology, area: area ?? "", makerId });
+      projects.push({
+        id, name, technology, area: area ?? "", makerId,
+        routeArea_m2: routeAreaProperty ? numberValue(routeAreaProperty.initializer) : undefined,
+      });
       publicMakerIds.push(makerId);
     }
   };
@@ -414,6 +400,12 @@ for (const route of RENDER_ROUTES) {
     await page.waitForTimeout(150);
 
     const html = await page.content();
+    if (route !== NOT_FOUND_RENDER_ROUTE) {
+      const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
+      if (!canonical || new URL(canonical).href !== new URL(buildSiteUrl(route)).href) {
+        throw new Error(`Canonical mismatch: ${canonical} for ${route}`);
+      }
+    }
 
     // Resolve target file path
     const cleanRoute = route === "/" ? "/index" : route;
@@ -472,6 +464,12 @@ addLegacyRedirect("/modulnye-doma/krasnodarskiy-kray", "/modulnye-doma/krasnodar
 
 for (const project of projectRecords) {
   addLegacyRedirect(`/project/${project.id}`, buildProjectPath(project));
+  // A corrected display area must not strand the previous generated URL.
+  if (project.routeArea_m2 !== undefined) {
+    const naturalPath = buildProjectPath({ ...project, routeArea_m2: undefined });
+    const canonicalPath = buildProjectPath(project);
+    if (naturalPath !== canonicalPath) addLegacyRedirect(naturalPath, canonicalPath);
+  }
 }
 for (const slug of regionSlugs) {
   addLegacyRedirect(`/region/${slug}`, `/modulnye-doma/${slug}/`);
