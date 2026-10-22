@@ -1,17 +1,18 @@
-FROM node:20-bookworm-slim AS build
+# Match @playwright/test in pnpm-lock.yaml. Browsers and their OS libraries
+# are already installed, avoiding Timeweb's build timeout during apt downloads.
+FROM mcr.microsoft.com/playwright:v1.62.1-noble AS build
 
 WORKDIR /app
 
 ENV CI=1 \
     PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
 
-RUN corepack enable \
-    && corepack prepare pnpm@10.15.0 --activate
+RUN npm install --global pnpm@10.15.0
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
 RUN pnpm install --frozen-lockfile \
-    && pnpm exec playwright install --with-deps chromium
+    && pnpm exec node --input-type=module -e "import { chromium } from '@playwright/test'; const browser = await chromium.launch(); await browser.close();"
 
 COPY . .
 
