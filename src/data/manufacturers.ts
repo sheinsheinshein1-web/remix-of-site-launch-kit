@@ -1045,8 +1045,18 @@ export const PSLCOMP: Maker = {
   verified: true,
   logo: pslcompLogo,
   siteUrl: "https://www.pslcomp.ru/katalog-proektov-derevyannyh-domov/modulnye-doma",
-  productionAddress: "Санкт-Петербург и Москва",
+  // Office and contacts checked on 2026-10-22: https://www.pslcomp.ru/kontakty
+  productionAddress: "Санкт-Петербург, ул. Грибалевой, 12",
   phone: "+7 (812) 596-39-01",
+  additionalPhones: ["+7 (800) 775-83-84"],
+  email: "house@pslcomp.spb.ru",
+  telegram: "https://t.me/pslcomp",
+  profile: {
+    mapKind: "office",
+    // Building coordinates, not a factory location:
+    // https://yandex.com/maps/2/saint-petersburg/house/ulitsa_gribalyovoy_12/Z0kYdQJiTU0EQFtjfXV5cn5nYw==/
+    coordinates: { lat: 59.983247, lon: 30.352483 },
+  },
 };
 export const DOMNASM: Maker = {
   name: "Домнас Модуль",
