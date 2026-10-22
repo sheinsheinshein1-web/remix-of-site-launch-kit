@@ -5,7 +5,6 @@ const profiles = [
   { id: "bygge", name: "Bygge", production: "Офис" },
   { id: "fps-modul", name: "ФПС Модуль", production: "Производство" },
   { id: "glavles", name: "Главлес", production: "Производство" },
-  { id: "budushiy-dom", name: "Будущий Дом", production: "Офис" },
   { id: "vek-trad", name: "Вековые Традиции", production: "Офис" },
   { id: "bm-dom", name: "БМ-ДОМ", production: "Производство" },
   { id: "sq-modyl", name: "SQ-MODYL", production: "Производство" },
@@ -85,14 +84,14 @@ for (const profile of profiles) {
   });
 }
 
-test("Будущий Дом: absent external sources stay visible as explicit states", async ({ page }) => {
-  await page.goto("/proizvoditeli/budushiy-dom/");
-
-  await expect(page.getByRole("tab", { name: "Яндекс", exact: true })).toBeVisible();
-  await expect(page.getByText("Отзывы на Яндексе пока не найдены", { exact: true })).toBeVisible();
-
-  await page.getByRole("tab", { name: "Telegram", exact: true }).click();
-  await expect(page.getByText("Telegram-канал не найден", { exact: true })).toBeVisible();
+test("removed manufacturer and project URLs show the not-found page", async ({ page }) => {
+  for (const path of [
+    "/proizvoditeli/budushiy-dom/",
+    "/modulnye-doma/proekty/budushiy-dom-haytek-45-45-m2-269/",
+  ]) {
+    await page.goto(path);
+    await expect(page.getByRole("heading", { level: 1, name: "Страница не найдена" })).toBeVisible();
+  }
 });
 
 test("Bygge: legal identity and completed objects are published", async ({ page }) => {

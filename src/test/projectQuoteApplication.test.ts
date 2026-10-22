@@ -20,7 +20,7 @@ const payload: ProjectQuoteApplicationPayload = {
   timing: "Через 3–6 месяцев",
   contactName: "Иван",
   phone: "+7 999 123-45-67",
-  alternativeProjects: "Модуал 75 — Будущий Дом",
+  alternativeProjects: "Дом 55 — Платформа",
   sourceUrl: "https://многоместа.рф/modulnye-doma/proekty/twin-house/",
   fax: "",
 };

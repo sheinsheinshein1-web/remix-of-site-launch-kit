@@ -5,7 +5,6 @@ const representativeProfiles = [
   { slug: "platforma", name: "Платформа", legalState: "data" },
   { slug: "bygge", name: "Bygge", legalState: "data" },
   { slug: "glavles", name: "Главлес", legalState: "data" },
-  { slug: "budushiy-dom", name: "Будущий Дом", legalState: "data" },
   { slug: "bm-dom", name: "БМ-ДОМ", legalState: "unavailable" },
   { slug: "sq-modyl", name: "SQ-MODYL", legalState: "data" },
   { slug: "exmodule", name: "ExModule", legalState: "data" },

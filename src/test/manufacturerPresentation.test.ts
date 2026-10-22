@@ -51,7 +51,6 @@ describe("manufacturer presentation rules", () => {
     ["bygge", { houses: 21, baths: 2, business: 4 }],
     ["glavles", { houses: 13, baths: 0, business: 13 }],
     ["fps-modul", { houses: 12, baths: 7, business: 7 }],
-    ["budushiy-dom", { houses: 29, baths: 3, business: 29 }],
   ])("separates %s object types and keeps business as an overlapping use case", (manufacturerId, expectedCounts) => {
     const projects = getProjectsByManufacturerId(manufacturerId);
     const groups = groupManufacturerProjects(projects);

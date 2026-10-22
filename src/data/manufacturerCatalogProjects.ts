@@ -42,33 +42,6 @@ import fpsBh502Plan3 from "@/assets/fps-modul/bh-502/plan-3.webp";
 import fpsBh405 from "@/assets/fps-modul/bh-405/01.webp";
 import fpsBh405Plan1 from "@/assets/fps-modul/bh-405/plan-1.webp";
 import fpsBh405Plan2 from "@/assets/fps-modul/bh-405/plan-2.webp";
-import budushiyBarn45 from "@/assets/budushiy-dom/catalog/barn-45.webp";
-import budushiyBarn72f from "@/assets/budushiy-dom/catalog/barn-72f.webp";
-import budushiyDom2 from "@/assets/budushiy-dom/catalog/dom-2.webp";
-import budushiyDom3 from "@/assets/budushiy-dom/catalog/dom-3.webp";
-import budushiyDom4 from "@/assets/budushiy-dom/catalog/dom-4.webp";
-import budushiyDom5 from "@/assets/budushiy-dom/catalog/dom-5.webp";
-import budushiyDom6 from "@/assets/budushiy-dom/catalog/dom-6.webp";
-import budushiyDom7 from "@/assets/budushiy-dom/catalog/dom-7.webp";
-import budushiyHitech50 from "@/assets/budushiy-dom/catalog/hitech-50.webp";
-import budushiyHitech50Terrace from "@/assets/budushiy-dom/catalog/hitech-50-terrace.webp";
-import budushiyHitech60Terrace from "@/assets/budushiy-dom/catalog/hitech-60-terrace.webp";
-import budushiyHitech60f from "@/assets/budushiy-dom/catalog/hitech-60f.webp";
-import budushiyHitech70 from "@/assets/budushiy-dom/catalog/hitech-70.webp";
-import budushiyHitech72f from "@/assets/budushiy-dom/catalog/hitech-72f.webp";
-import budushiyHitech80Terrace from "@/assets/budushiy-dom/catalog/hitech-80-terrace.webp";
-import budushiyModual50 from "@/assets/budushiy-dom/catalog/modual-50.webp";
-import budushiyModual52 from "@/assets/budushiy-dom/catalog/modual-52.webp";
-import budushiyModual86 from "@/assets/budushiy-dom/catalog/modual-86.webp";
-import budushiyBath from "@/assets/budushiy-dom/catalog/bath.webp";
-import budushiyBath1 from "@/assets/budushiy-dom/catalog/bath-1.webp";
-import budushiyBath2 from "@/assets/budushiy-dom/catalog/bath-2.webp";
-import budushiyBarn60 from "@/assets/budushiy-dom/catalog/barn-60.webp";
-import budushiyBarn36 from "@/assets/budushiy-dom/catalog/barn-36.webp";
-import budushiyDom1 from "@/assets/budushiy-dom/catalog/dom-1.webp";
-import budushiyHitech60 from "@/assets/budushiy-dom/catalog/hitech-60.webp";
-import budushiyMono50 from "@/assets/budushiy-dom/catalog/mono-50.webp";
-import budushiyHitech75 from "@/assets/budushiy-dom/catalog/hitech-75.webp";
 
 export type CatalogProjectRow = {
   id: number;
@@ -347,49 +320,6 @@ export const fpsAdditionalProjects = createManufacturerCatalogProjects(fpsCatalo
   { id: 466, name: "Барнхаус Barn Sky", badge: "Модульный дом", price: "1 620 000 ₽", area: 36, dimensions: "3,4 × 6 × 6 м", sourceSlug: "barnhaus/modulnyj-dom-barn-skaj", gallery: [...fpsGallery(fpsBarnSky, fpsBarnSkyPlan1, fpsBarnSkyPlan2, fpsBarnSkyPlan3), { image: "https://fps-modul.ru/data/uploads/catalog/sky/plan-4.webp", type: "plan", fit: "contain" }], beds: 1, rooms: "Кухня-гостиная и спальня", style: "Барнхаус", features: ["Жилая площадь 29 м²", "Панорамное остекление"], useCases: ["rental", "glamping"] },
   { id: 467, name: "Барнхаус BH 502", badge: "Модульный дом", price: "2 240 000 ₽", area: 56, dimensions: "2,9 × 7 × 8 м", sourceSlug: "modulnye-doma-barn-maks/barnhaus-bh-502", gallery: [{ image: fpsBh502_1, type: "photo", fit: "contain", blur: true }, { image: fpsBh502_2, type: "photo", fit: "contain", blur: true }, { image: fpsBh502_3, type: "photo", fit: "contain", blur: true }, { image: fpsBh502Plan1, type: "plan", fit: "contain" }, { image: fpsBh502Plan2, type: "plan", fit: "contain" }, { image: fpsBh502Plan3, type: "plan", fit: "contain" }, { image: "https://fps-modul.ru/data/uploads/catalog/bh502/x.webp", type: "plan", fit: "contain" }], beds: 2, rooms: "Кухня-гостиная и две спальни", style: "Барнхаус", features: ["Жилая площадь до 46,5 м²", "Семейная планировка"] },
   { id: 468, name: "Барнхаус BH 405", badge: "Модульный дом", price: "1 200 000 ₽", area: 30, dimensions: "2,9 × 5 × 6 м", sourceSlug: "barnhaus/barnhaus-bh-405", gallery: fpsGallery(fpsBh405, fpsBh405Plan1, fpsBh405Plan2), rooms: "Кухня-гостиная и спальня", style: "Барнхаус", features: ["Жилая площадь 23,6 м²", "Компактная планировка"], useCases: ["rental", "glamping"] },
-]);
-
-const budushiyDomCatalogDefaults: CatalogDefaults = {
-  manufacturerName: "Будущий Дом",
-  manufacturerId: "budushiy-dom",
-  city: "Екатеринбург",
-  purpose: "ИЖС / СНТ / Дача",
-  technology: "Модульный дом",
-  completion: "Под ключ",
-  insulation: "Круглогодичный",
-  term: "от 10 д.",
-  sourceBaseUrl: "https://budushiy-dom.ru/product/",
-};
-
-/** Остальные позиции официального каталога «Будущего Дома». Пять подробных карточек остаются в projects.ts. */
-export const budushiyDomAdditionalProjects = createManufacturerCatalogProjects(budushiyDomCatalogDefaults, [
-  { id: 477, name: "Барн 45", badge: "Модульный дом", price: "2 730 000 ₽", area: 45, sourceSlug: "barn-45", image: budushiyBarn45, beds: 1, rooms: "Кухня-гостиная и спальня", style: "Барнхаус", useCases: ["rental"] },
-  { id: 478, name: "Барн 72F", badge: "Модульный дом", price: "4 370 000 ₽", area: 72, sourceSlug: "barn-72f", image: budushiyBarn72f, beds: 1, rooms: "Кухня-гостиная и спальня", style: "Барнхаус", useCases: ["rental"] },
-  { id: 479, name: "Дом №2", badge: "Модульный дом", price: "2 659 960 ₽", area: 57.7, sourceSlug: "dom-2", gallery: [{ image: budushiyDom2, type: "plan", fit: "contain" }], rooms: "Планировка на сайте производителя", useCases: ["rental"] },
-  { id: 480, name: "Дом №3", badge: "Модульный дом", price: "1 168 860 ₽", area: 25.41, sourceSlug: "dom-3", image: budushiyDom3, beds: 1, rooms: "Кухня-гостиная и спальня", useCases: ["rental"] },
-  { id: 481, name: "Дом №4", badge: "Модульный дом", price: "1 629 320 ₽", area: 35.42, sourceSlug: "dom-4", image: budushiyDom4, beds: 2, rooms: "Кухня-гостиная и две спальни", useCases: ["rental"] },
-  { id: 482, name: "Дом №5", badge: "Дом с баней", price: "4 800 000 ₽", sourceSlug: "dom-5", image: budushiyDom5, beds: 3, rooms: "Три спальни, баня и терраса", productType: "house-bath", features: ["Баня", "Терраса"], useCases: ["rental"] },
-  { id: 483, name: "Дом №6", badge: "Дом с баней", price: "1 829 880 ₽", area: 39.7, sourceSlug: "dom-6", image: budushiyDom6, beds: 3, rooms: "Жилые комнаты, баня и терраса", productType: "house-bath", features: ["Баня", "Терраса", "Тёплый пол"], useCases: ["rental"] },
-  { id: 484, name: "Дом №7", badge: "Модульный дом", price: "2 087 020 ₽", area: 45.3, sourceSlug: "dom-7", image: budushiyDom7, beds: 3, rooms: "Кухня-гостиная и три спальни", useCases: ["rental"] },
-  { id: 485, name: "Хайтек 50-1", badge: "Модульный дом", price: "3 030 000 ₽", area: 50, sourceSlug: "hajtek-50-1", image: budushiyHitech50, beds: 2, rooms: "Кухня-гостиная и две спальни", style: "Хай-тек", useCases: ["rental"] },
-  { id: 486, name: "Хайтек 50 с террасой", badge: "Модульный дом", price: "2 848 000 ₽", area: 50, sourceSlug: "hajtek-50-m2-s-terrasoj", image: budushiyHitech50Terrace, beds: 1, rooms: "Кухня-гостиная и спальня", style: "Хай-тек", features: ["Терраса"], useCases: ["rental"] },
-  { id: 487, name: "Хайтек 60 с террасой", badge: "Модульный дом", price: "3 224 000 ₽", area: 60, sourceSlug: "hajtek-60-m2-s-terrasoj", image: budushiyHitech60Terrace, beds: 1, rooms: "Кухня-гостиная и спальня", style: "Хай-тек", features: ["Терраса"], useCases: ["rental"] },
-  { id: 488, name: "Хайтек 60F-1", badge: "Модульный дом", price: "3 640 000 ₽", area: 60, sourceSlug: "hajtek-60f-1", image: budushiyHitech60f, beds: 3, rooms: "Кухня-гостиная и три спальни", style: "Хай-тек", useCases: ["rental"] },
-  { id: 489, name: "Хайтек 70", badge: "Модульный дом", price: "3 871 000 ₽", area: 70, sourceSlug: "hajtek-70-m2", image: budushiyHitech70, beds: 1, baths: 2, rooms: "Кухня-гостиная, спальня и два санузла", style: "Хай-тек", useCases: ["rental"] },
-  { id: 490, name: "Хайтек 72F", badge: "Модульный дом", price: "4 370 000 ₽", area: 72, sourceSlug: "hajtek-72f", image: budushiyHitech72f, beds: 1, rooms: "Кухня-гостиная и спальня", style: "Хай-тек", useCases: ["rental"] },
-  { id: 491, name: "Хайтек 80 с террасой", badge: "Модульный дом", price: "3 082 000 ₽", area: 80, sourceSlug: "hajtek-80-m2-s-terrasoj", image: budushiyHitech80Terrace, beds: 1, rooms: "Кухня-гостиная и спальня", style: "Хай-тек", features: ["Терраса"], useCases: ["rental"] },
-  { id: 492, name: "Модуал 50 с террасой", badge: "Модульный дом", price: "3 043 000 ₽", area: 50, sourceSlug: "modual-50-m2-s-terrasoj", image: budushiyModual50, beds: 1, rooms: "Кухня-гостиная и спальня", features: ["Терраса"], useCases: ["rental"] },
-  { id: 493, name: "Модуал 52 с террасой", badge: "Модульный дом", price: "2 590 000 ₽", area: 52, sourceSlug: "modual-52-m2-s-terrasoj", image: budushiyModual52, beds: 1, rooms: "Кухня-гостиная и спальня", features: ["Терраса"], useCases: ["rental"] },
-  { id: 494, name: "Модуал 86", badge: "Модульный дом", price: "3 979 000 ₽", area: 86, sourceSlug: "modual-86-m2", image: budushiyModual86, beds: 3, rooms: "Кухня-гостиная и три спальни", useCases: ["rental"] },
-  { id: 495, name: "Баня", badge: "Модульная баня", price: "1 829 880 ₽", sourceSlug: "banya", image: budushiyBath, productType: "bath", rooms: "Парная и зона отдыха", features: ["Печь-каменка", "Каменная вата", "Готовая отделка"] },
-  { id: 496, name: "Модульная баня №1", badge: "Модульная баня", price: "4 890 000 ₽", sourceSlug: "modulnaya-banya", image: budushiyBath1, productType: "bath", rooms: "Парная и зона отдыха", features: ["Тёплый пол", "Отделка липой", "Печь Ферингер"] },
-  { id: 497, name: "Модульная баня №2", badge: "Модульная баня", price: "2 990 000 ₽", sourceSlug: "modulnaya-banya-2", image: budushiyBath2, productType: "bath", rooms: "Парная и зона отдыха" },
-  { id: 498, name: "Барн 60", badge: "Модульный дом", price: "3 640 000 ₽", area: 60, sourceSlug: "modulnyj-dom-barn-60", image: budushiyBarn60, beds: 2, rooms: "Кухня-гостиная и две спальни", style: "Барнхаус", useCases: ["rental"] },
-  { id: 499, name: "Барнхаус 36", badge: "Модульный дом", price: "2 120 000 ₽", area: 36, sourceSlug: "modulnyj-dom-barnhaus-36-m2", image: budushiyBarn36, beds: 1, rooms: "Кухня-гостиная и спальня", style: "Барнхаус", useCases: ["rental"] },
-  { id: 500, name: "Дом №1", badge: "Модульный дом", price: "3 812 000 ₽", area: 82.8, sourceSlug: "modulnyj-dom-barnhaus-68-kv-m-13", image: budushiyDom1, beds: 3, rooms: "Кухня-гостиная и три спальни", style: "Барнхаус", useCases: ["rental"] },
-  { id: 501, name: "Хайтек 60", badge: "Модульный дом", price: "3 640 000 ₽", area: 60, sourceSlug: "modulnyj-dom-hajtek-60", image: budushiyHitech60, beds: 2, rooms: "Кухня-гостиная и две спальни", style: "Хай-тек", useCases: ["rental"] },
-  { id: 502, name: "Моно-модуль 50", badge: "Модульный дом", price: "3 030 000 ₽", area: 50, sourceSlug: "mono-modul-50", image: budushiyMono50, beds: 2, rooms: "Кухня-гостиная и две спальни", useCases: ["rental"] },
-  { id: 503, name: "Хайтек 75", badge: "Модульный дом", price: "4 550 000 ₽", area: 75, sourceSlug: "proekt-hajtek-75", image: budushiyHitech75, beds: 3, rooms: "Кухня-гостиная и три спальни", style: "Хай-тек", useCases: ["rental"] },
 ]);
 
 const bmDomDefaults: CatalogDefaults = {

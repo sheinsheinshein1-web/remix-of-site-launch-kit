@@ -9,8 +9,8 @@ describe("project media quality gate", () => {
   const auditedProjects = projects.filter((project) => manufacturerRegistry[project.manufacturerId]?.profile?.sourceAudit);
 
   it("covers the full Yekaterinburg source-audited slice", () => {
-    expect(Object.values(makersById).filter((maker) => maker.profile?.sourceAudit)).toHaveLength(15);
-    expect(auditedProjects).toHaveLength(233);
+    expect(Object.values(makersById).filter((maker) => maker.profile?.sourceAudit)).toHaveLength(14);
+    expect(auditedProjects).toHaveLength(201);
     expect(generatedProjectMediaMeta.projectCount).toBe(Object.keys(generatedProjectMedia).length);
   });
 

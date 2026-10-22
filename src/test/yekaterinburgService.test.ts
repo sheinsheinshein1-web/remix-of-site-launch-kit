@@ -18,8 +18,8 @@ describe("Yekaterinburg service contract", () => {
   const regionalProjects = projects.filter((project) => manufacturerIds.includes(project.manufacturerId));
 
   it("keeps the complete audited city slice connected", () => {
-    expect(manufacturerIds).toHaveLength(15);
-    expect(regionalProjects).toHaveLength(233);
+    expect(manufacturerIds).toHaveLength(14);
+    expect(regionalProjects).toHaveLength(201);
 
     for (const project of regionalProjects) {
       expect(isProjectAvailableInGeo(project.city, "ekaterinburg", project.deliveryRegionSlugs)).toBe(true);
@@ -67,8 +67,8 @@ describe("Yekaterinburg service contract", () => {
     });
 
     expect(region.h1).toBe("Модульные дома в Екатеринбурге");
-    expect(rendered).toContain("233 проекта");
-    expect(rendered).toContain("15 производителей");
+    expect(rendered).toContain("201 проект");
+    expect(rendered).toContain("14 производителей");
     expect(rendered).toContain("доставки в Екатеринбург");
     expect(rendered).not.toContain("доступные в Екатеринбурге и Свердловской области");
     expect(rendered).not.toMatch(/\{(?:project|manufacturer)Count/u);

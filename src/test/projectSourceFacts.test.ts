@@ -22,8 +22,8 @@ describe("sourced project facts", () => {
   ));
 
   it("covers every project from all published Yekaterinburg manufacturers", () => {
-    expect(yekaterinburgManufacturerIds.size).toBe(15);
-    expect(yekaterinburgProjects).toHaveLength(233);
+    expect(yekaterinburgManufacturerIds.size).toBe(14);
+    expect(yekaterinburgProjects).toHaveLength(201);
 
     for (const project of yekaterinburgProjects) {
       const facts = getProjectSourceFacts(project.id);
@@ -48,7 +48,8 @@ describe("sourced project facts", () => {
   });
 
   it("does not label an office address as the project production site", () => {
-    const officeOnlyProject = getProjectSourceFacts(477)!;
+    const project = projects.find((item) => item.manufacturerId === "exmodule")!;
+    const officeOnlyProject = getProjectSourceFacts(project.id)!;
 
     expect(officeOnlyProject.productionAddress.status).toBe("not-published");
     expect(officeOnlyProject.productionAddress.value).toBeNull();

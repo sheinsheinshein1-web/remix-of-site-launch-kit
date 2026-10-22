@@ -76,7 +76,7 @@ describe("manufacturer registry", () => {
   });
 
   it("keeps positioning and SEO titles unique for the enriched Yekaterinburg profiles", () => {
-    const profileIds = ["platforma", "bygge", "glavles", "fps-modul", "budushiy-dom"] as const;
+    const profileIds = ["platforma", "bygge", "glavles", "fps-modul"] as const;
     const profiles = profileIds.map((id) => getManufacturerById(id)?.profile);
     const headlines = profiles.map((profile) => profile?.headlineSuffix);
     const intros = profiles.map((profile) => profile?.intro);
@@ -90,33 +90,18 @@ describe("manufacturer registry", () => {
     expect(new Set(seoTitles).size).toBe(profileIds.length);
   });
 
-  it("keeps the complete Budushiy Dom catalog and legal data in the shared template", () => {
-    const manufacturer = getManufacturerById("budushiy-dom");
-    const projects = getProjectsByManufacturerId("budushiy-dom");
-
-    expect(manufacturer?.verified).toBe(true);
-    expect(manufacturer?.logo).toBeTruthy();
-    expect(manufacturer?.profile?.mapKind).toBe("office");
-    expect(manufacturer?.profile?.projectTabs).toEqual(["houses", "baths", "business"]);
-    expect(manufacturer?.profile?.legal?.legalName).toBe("ООО «ЛЕСХИМЭКСПОРТ»");
-    expect(manufacturer?.profile?.legal?.enforcementProceedings).toEqual({ open: 0, completed: 5 });
-    expect(manufacturer?.profile?.legal?.unfairSuppliersRegistry).toBe("Не числится");
-    expect(manufacturer?.externalRating).toBeUndefined();
-    expect(manufacturer?.profile?.builtObjects).toHaveLength(5);
-    expect(projects).toHaveLength(32);
-    expect(projects.filter((project) => project.productType === "bath")).toHaveLength(3);
-    expect(projects.filter((project) => project.productType !== "bath").every((project) => project.useCases?.includes("rental"))).toBe(true);
-
-    const houseNumberTwo = projects.find((project) => project.id === 479);
-    expect(houseNumberTwo?.term).toBe("по запросу");
-    expect(houseNumberTwo?.gallery).toEqual([
-      expect.objectContaining({ type: "plan", fit: "contain" }),
-    ]);
+  it("excludes the removed manufacturer and all its projects", () => {
+    expect(getManufacturerById("budushiy-dom")).toBeUndefined();
+    expect(getProjectsByManufacturerId("budushiy-dom")).toEqual([]);
+    const removedIds = new Set([269, 270, 271, 272, 273,
+      ...Array.from({ length: 27 }, (_, index) => 477 + index)]);
+    expect(sourceProjects.some((project) => removedIds.has(project.id))).toBe(false);
+    expect(allProjects.some((project) => removedIds.has(project.id))).toBe(false);
   });
 
   it("blocks enriched manufacturers from being declared complete before every source is audited", () => {
     const enrichedIds = [
-      "platforma", "bygge", "glavles", "fps-modul", "budushiy-dom",
+      "platforma", "bygge", "glavles", "fps-modul",
       "vek-trad",
       "bm-dom", "sq-modyl", "exmodule", "russian-modular-house", "da-home",
       "moduldom-ural", "lesprom96", "e-module-stroy", "prefabia", "zhar-parych",
@@ -152,12 +137,12 @@ describe("manufacturer registry", () => {
     }
   });
 
-  it("keeps all sixteen Yekaterinburg manufacturers on the canonical profile contract", () => {
+  it("keeps all fifteen Yekaterinburg manufacturers on the canonical profile contract", () => {
     const manufacturerIds = Object.values(manufacturerRegistry)
       .filter((manufacturer) => manufacturer.profile?.sourceAudit)
       .map((manufacturer) => manufacturer.id);
 
-    expect(manufacturerIds).toHaveLength(16);
+    expect(manufacturerIds).toHaveLength(15);
 
     for (const manufacturerId of manufacturerIds) {
       const manufacturer = manufacturerRegistry[manufacturerId];

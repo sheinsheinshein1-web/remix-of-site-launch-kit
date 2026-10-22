@@ -13,8 +13,8 @@ test("Yekaterinburg hub uses current data and mounts one catalog batch", async (
     "href",
     "https://многоместа.рф/modulnye-doma/ekaterinburg/",
   );
-  await expect(page.getByText(/233 проекта от 15 производителей/).first()).toBeVisible();
-  await expect(page.getByText(/Найдено:\s*233 проекта в Екатеринбурге/).first()).toBeVisible();
+  await expect(page.getByText(/201 проект от 14 производителей/).first()).toBeVisible();
+  await expect(page.getByText(/Найдено:\s*201 проект в Екатеринбурге/).first()).toBeVisible();
   await expect(page.locator("article")).toHaveCount(24);
   await expect(page.getByTestId("catalog-projects-load-more")).toBeAttached();
   await expect(page.locator("section[aria-labelledby='region-makers-heading'] a[href^='/proizvoditeli/?']")).toHaveAttribute(
@@ -27,7 +27,7 @@ test("Yekaterinburg hub uses current data and mounts one catalog batch", async (
   );
   await expect(
     page.locator("section[aria-labelledby='region-makers-heading'] a[href^='/proizvoditeli/']"),
-  ).toHaveCount(16);
+  ).toHaveCount(15);
 });
 
 test("mobile catalog does not mount a hidden duplicate project grid", async ({ page }) => {
@@ -35,7 +35,7 @@ test("mobile catalog does not mount a hidden duplicate project grid", async ({ p
   await page.goto("/modulnye-doma/ekaterinburg/");
 
   await expect(page.locator("article")).toHaveCount(24);
-  await expect(page.getByText(/Найдено:\s*233 проекта в Екатеринбурге/).first()).toBeVisible();
+  await expect(page.getByText(/Найдено:\s*201 проект в Екатеринбурге/).first()).toBeVisible();
 });
 
 test("Sverdlovsk region keeps its own canonical and filter identity", async ({ page }) => {
@@ -47,7 +47,7 @@ test("Sverdlovsk region keeps its own canonical and filter identity", async ({ p
     "href",
     "https://многоместа.рф/modulnye-doma/sverdlovskaya-oblast/",
   );
-  await expect(page.getByText(/Найдено:\s*233 проекта в Свердловской области/).first()).toBeVisible();
+  await expect(page.getByText(/Найдено:\s*201 проект в Свердловской области/).first()).toBeVisible();
   await expect(page.locator("section[aria-labelledby='region-makers-heading'] a[href^='/proizvoditeli/?']")).toHaveAttribute(
     "href",
     /region=sverdlovskaya-oblast/,

@@ -11,7 +11,7 @@ const readinessFor = (manufacturerId: string) => auditManufacturerPublicationQua
 describe("manufacturer publication readiness", () => {
   it("evaluates every audited Yekaterinburg manufacturer with one contract", () => {
     const audited = Object.values(manufacturerRegistry).filter((manufacturer) => manufacturer.profile?.sourceAudit);
-    expect(audited).toHaveLength(16);
+    expect(audited).toHaveLength(15);
 
     for (const manufacturer of audited) {
       const readiness = readinessFor(manufacturer.id);

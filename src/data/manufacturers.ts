@@ -1,12 +1,6 @@
 import makerPlatformaLogo from "@/assets/maker-platforma-square.webp";
 import byggeLogo from "@/assets/bygge/logo.jpg";
 import fpsModulLogo from "@/assets/fps-modul/logo.png";
-import budushiyDomLogo from "@/assets/budushiy-dom/logo.png";
-import budushiyDomObject1 from "@/assets/budushiy-dom/objects/object-1.webp";
-import budushiyDomObject2 from "@/assets/budushiy-dom/objects/object-2.webp";
-import budushiyDomObject3 from "@/assets/budushiy-dom/objects/object-3.webp";
-import budushiyDomObject4 from "@/assets/budushiy-dom/objects/object-4.webp";
-import budushiyDomObject5 from "@/assets/budushiy-dom/objects/object-5.webp";
 import durovLogo from "@/assets/durov-house/logo.webp";
 import histhutLogo from "@/assets/histhut/logo.webp";
 import countryhouseLogo from "@/assets/countryhouse/logo.webp";
@@ -882,87 +876,6 @@ export const VEK_TRAD: Maker = {
     social: { telegramPosts: [], youtubeVideos: [] },
   },
 };
-export const BUDUSHIY_DOM: Maker = {
-  name: "Будущий Дом",
-  initials: "БД",
-  id: "budushiy-dom",
-  verified: true,
-  logo: budushiyDomLogo,
-  logoFit: "contain",
-  logoBackground: "light",
-  siteUrl: "https://budushiy-dom.ru/",
-  productionAddress: "г. Екатеринбург, ул. Малышева, 19, подъезд 1, этаж 2, офис 1212",
-  phone: "+7 (922) 124-42-52",
-  email: "budushiy.dom@yandex.ru",
-  telegram: "https://t.me/+79221244252",
-  profile: {
-    groupedProjects: true,
-    projectTabs: ["houses", "baths", "business"],
-    useCatalogSummary: true,
-    headlineSuffix: "— расширяемые модульные дома под ключ в Екатеринбурге",
-    technologyLabel: "Модульная технология",
-    seo: {
-      title: "Будущий Дом — модульные дома и бани в Екатеринбурге",
-      descriptionTemplate: "{projectCount} проектов компании «Будущий Дом»: расширяемые модульные дома под ключ в Екатеринбурге, цены, планировки, отделка, инженерия и доставка по России.",
-    },
-    intro: "Расширяемые модульные дома заводской сборки с готовой отделкой, инженерными системами и документами для регистрации — с доставкой по России.",
-    namePrepositional: "«Будущем Доме»",
-    coordinates: { lat: 56.8332279, lon: 60.5906211 },
-    mapKind: "office",
-    sourceAudit: {
-      checkedAtIso: "2026-09-12",
-      catalog: { sourceUrl: "https://budushiy-dom.ru/shop/", expectedProjectCount: 32 },
-      legal: { status: "imported", sourceUrl: "https://egrul.nalog.ru/", note: "Реквизиты и статус перенесены с проверкой по открытым реестрам." },
-      reviews: { status: "first-party-only", sourceUrl: "https://budushiy-dom.ru/reviews/", note: "Найдены отзывы на собственном сайте производителя; они не учитываются как независимый рейтинг." },
-      builtObjects: { status: "imported", sourceUrl: "https://budushiy-dom.ru/", note: "Пять фотографий из официального портфолио перенесены в профиль." },
-      production: { status: "not-found", sourceUrl: "https://budushiy-dom.ru/", note: "Официальный сайт публикует адрес офиса; отдельный адрес производства не найден." },
-      social: {
-        youtube: { status: "not-found", note: "Подтверждённый официальный YouTube-канал не найден." },
-        telegram: { status: "not-found", note: "На сайте указан прямой контакт, но публичный Telegram-канал не найден." },
-      },
-    },
-    about: [
-      "«Будущий Дом» — производитель модульных домов и бань под ключ из Екатеринбурга. Компания проектирует типовые и индивидуальные решения, собирает конструкции в заводских условиях, доставляет их по России и монтирует на участке.",
-      "В каталоге производителя есть компактные дома в стиле хай-тек, семейные барнхаусы и готовые модульные бани. Модульную конструкцию можно расширять, а планировку, цвет фасада, отделку и дополнительные опции — адаптировать под участок и сценарий владельца.",
-      "Для каркаса производитель указывает сухой строганый брус камерной сушки, утеплитель «Технониколь», тройные стеклопакеты и электрические конвекторы. В круглогодичную комплектацию входят наружная и внутренняя отделка; точный состав работ и инженерных систем зависит от выбранной модели.",
-      "На официальном сайте заявлены полный пакет документов для регистрации дома, доставка по России от 7 дней и сборка на участке от 10 дней. Офис компании находится в Екатеринбурге на улице Малышева; актуальные сроки, стоимость доставки и комплектацию следует уточнять для конкретного проекта.",
-    ],
-    legal: {
-      legalName: "ООО «ЛЕСХИМЭКСПОРТ»",
-      status: "Действует",
-      registeredAt: "7 апреля 2009",
-      foundingDate: "2009-04-07",
-      inn: "6674328575",
-      kpp: "667901001",
-      ogrn: "1096674006406",
-      legalAddress: "620130, Свердловская область, г. Екатеринбург, ул. Белинского, д. 222",
-      director: "Сафин Тимур Надирович",
-      mainActivity: "Торговля оптовая химическими продуктами",
-      shareCapital: "10 000 ₽",
-      revenue: "Не публикуется",
-      netProfit: "Не публикуется",
-      reportingYear: "—",
-      arbitrationCases: "11 дел в истории",
-      enforcementProceedings: { open: 0, completed: 5 },
-      unfairSuppliersRegistry: "Не числится",
-      checkedAt: "12 сентября 2026",
-      checkedAtIso: "2026-09-12",
-      sources: [
-        { label: "ЕГРЮЛ ФНС", href: "https://egrul.nalog.ru/" },
-        { label: "Арбитражные дела", href: "https://kad.arbitr.ru/" },
-        { label: "ФССП", href: "https://fssp.gov.ru/iss/ip" },
-        { label: "РНП ЕИС", href: "https://zakupki.gov.ru/epz/dishonestsupplier/search/results.html" },
-      ],
-    },
-    builtObjects: [
-      { src: budushiyDomObject1, width: 1200, height: 1524 },
-      { src: budushiyDomObject2, width: 1200, height: 676 },
-      { src: budushiyDomObject3, width: 1200, height: 900 },
-      { src: budushiyDomObject4, width: 1200, height: 900 },
-      { src: budushiyDomObject5, width: 1200, height: 675 },
-    ],
-  },
-};
 export const QUBDOM: Maker = {
   name: "Qubdom",
   initials: "QD",
@@ -1798,7 +1711,7 @@ const generatedManufacturerRecords = (generatedCatalogRegistry.manufacturers as 
   .map((manufacturer) => manufacturerSchema.parse(manufacturer));
 
 const manufacturerRecords = [
-  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, BUDUSHIY_DOM, QUBDOM, DUROV_HOUSE, HISTHUT, COUNTRYHOUSE, CUBADOM, IDOLHOUSE, WOODALP, BOXMATE, UVHOUSE, ASTERIUS, SMOLA, ULTRADOMSPB, FREEDOM_NATURI, CHEBWOOD, CAMPINGDOM, PSLCOMP, DOMNASM, BLACKMODULE, DOMM, MY_MODULE, FOUR_MODUL, CUBBER, SIMPLEHOUSE, PANORAMIC_HOME, AMBARN, MYFAMILYHOUSE, STROYGRAD, MODULCAMP, ELMACO, NOVATOR, BLAGOHOUSE, STILNYE_MODULI, IP_MODUL, RUSMODUL_SPB,
+  PLATFORMA, BYGGE, GLEZMAN, DIVODOM, GRADODOM, ZAGORODOM, APA, PRIME_MODUL, UTKINO, TEPLODINA, KARKAS_HAUS, URAL_HOUSE, HOCHU_DOM, BEREST_DOM, RIFT, IZBRUSA, SCANDI_ECODOM, KARKAS_POVOLZHYA, KAZANSTROY16, ASKHOME, DOMOTEKA, KARKAS_DOM_YUG, SIBIRYAK, SVOI_HOUSE, BAGROVSTROY, DOMAKARKAS, SK_GARMONIYA, DOMA_OT_MIHALYCHA, BARNSTUDIO, BELI_DOM, MASTERGRUPP_BARNAUL, PRAKTIKA_STROY, ECO_CITY, MODOM, HOUSEBOX, GLAVLES, FPS_MODUL, VEK_TRAD, QUBDOM, DUROV_HOUSE, HISTHUT, COUNTRYHOUSE, CUBADOM, IDOLHOUSE, WOODALP, BOXMATE, UVHOUSE, ASTERIUS, SMOLA, ULTRADOMSPB, FREEDOM_NATURI, CHEBWOOD, CAMPINGDOM, PSLCOMP, DOMNASM, BLACKMODULE, DOMM, MY_MODULE, FOUR_MODUL, CUBBER, SIMPLEHOUSE, PANORAMIC_HOME, AMBARN, MYFAMILYHOUSE, STROYGRAD, MODULCAMP, ELMACO, NOVATOR, BLAGOHOUSE, STILNYE_MODULI, IP_MODUL, RUSMODUL_SPB,
   BM_DOM, SQ_MODYL, EXMODULE, RUSSIAN_MODULAR_HOUSE, DA_HOME, MODULDOM_URAL, LESPROM96, E_MODULE_STROY, PREFABIA, ZHAR_PARYCH,
   ...regionalMakers,
   ...generatedManufacturerRecords,

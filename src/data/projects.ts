@@ -964,21 +964,6 @@ import vtM73_3 from "@/assets/vek-trad/m-73/03.webp";
 import vtM60_1 from "@/assets/vek-trad/m-60/01.webp";
 import vtM60_2 from "@/assets/vek-trad/m-60/02.webp";
 import vtM60_3 from "@/assets/vek-trad/m-60/03.webp";
-import bdHitech45_1 from "@/assets/budushiy-dom/hitech-45/01.webp";
-import bdHitech45_2 from "@/assets/budushiy-dom/hitech-45/02.webp";
-import bdHitech45_3 from "@/assets/budushiy-dom/hitech-45/03.webp";
-import bdHitech36_1 from "@/assets/budushiy-dom/hitech-36/01.webp";
-import bdHitech36_2 from "@/assets/budushiy-dom/hitech-36/02.webp";
-import bdHitech36_3 from "@/assets/budushiy-dom/hitech-36/03.webp";
-import bdBarn60f_1 from "@/assets/budushiy-dom/barn-60f/01.webp";
-import bdBarn60f_2 from "@/assets/budushiy-dom/barn-60f/02.webp";
-import bdBarn60f_3 from "@/assets/budushiy-dom/barn-60f/03.webp";
-import bdDom8_1 from "@/assets/budushiy-dom/dom-8/01.webp";
-import bdDom8_2 from "@/assets/budushiy-dom/dom-8/02.webp";
-import bdDom8_3 from "@/assets/budushiy-dom/dom-8/03.webp";
-import bdModual75_1 from "@/assets/budushiy-dom/modual-75/01.webp";
-import bdModual75_2 from "@/assets/budushiy-dom/modual-75/02.webp";
-import bdModual75_3 from "@/assets/budushiy-dom/modual-75/03.webp";
 import qubQ_1 from "@/assets/qubdom/q/01.webp";
 import qubQ_2 from "@/assets/qubdom/q/02.webp";
 import qubQ_3 from "@/assets/qubdom/q/03.webp";
@@ -1460,7 +1445,6 @@ import rusmodulScandicDouble60Plan from "@/assets/rusmodul-spb/scandic-double-60
 import rusmodulScandicDouble60Plan2 from "@/assets/rusmodul-spb/scandic-double-60/plan-2.webp";
 import {
   bmDomCatalogProjects,
-  budushiyDomAdditionalProjects,
   byggeAdditionalProjects,
   daHomeCatalogProjects,
   eModuleStroyCatalogProjects,
@@ -5444,104 +5428,6 @@ export const projectRecords: Project[] = [
     features: ["Терраса"], style: "Современный", landSize: "3–6 соток",
     hasRealPhotos: false, hasShowroom: true, hasInstallment: false,
   },
-
-  // ── Будущий Дом · Екатеринбург ─────────────────────────────────────────
-  {
-    id: 269, name: "Хайтек 45", badge: "Модульный дом", price: "2 730 000 ₽",
-    area: "45 м²", area_m2: 45, beds: 1, baths: 1, floors: 1, term: "от 10 д.",
-    rooms: "1 спальня", purpose: "ИЖС / СНТ", city: "Екатеринбург",
-    manufacturerId: "budushiy-dom", sourceUrl: "https://budushiy-dom.ru/product/modulnyj-dom-hajtek-45/",
-    description: "Модульный дом в стиле хай-тек 45 м² с одной спальней и санузлом.",
-    descriptionLong: "Хайтек 45 от СК «Будущий Дом» — модульный дом площадью 45 м². Производитель указывает внутреннюю и внешнюю отделку, разводку электрики, сантехники и воды; фундамент и терраса считаются отдельно.",
-    gallery: [
-      { image: bdHitech45_1, type: "photo", fit: "contain", blur: true },
-      { image: bdHitech45_2, type: "photo", fit: "contain", blur: true },
-      { image: bdHitech45_3, type: "photo", fit: "contain", blur: true },
-    ],
-    likes: 51, rating: 4.8,
-    suitableFor: ["Постоянное проживание", "Для одного / пары"],
-    useCases: ["rental"],
-    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
-    features: ["Готовый санузел", "Хай-тек"], style: "Хай-тек", landSize: "3–6 соток",
-    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
-  },
-  {
-    id: 270, name: "Хайтек 36", badge: "Модульный дом", price: "2 120 000 ₽",
-    area: "36 м²", area_m2: 36, beds: 1, baths: 1, floors: 1, term: "от 10 д.",
-    rooms: "1 спальня", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
-    manufacturerId: "budushiy-dom", sourceUrl: "https://budushiy-dom.ru/product/modulnyj-dom-hajtek-36-m-kv/",
-    description: "Компактный модульный дом хай-тек 36 м² с одной спальней и санузлом.",
-    descriptionLong: "Хайтек 36 от СК «Будущий Дом» — компактный модульный дом площадью 36 м². В описании проекта указаны стены 100 мм, потолок и пол 150 мм, внутренняя и внешняя отделка, разведенная электрика, сантехника и вода.",
-    gallery: [
-      { image: bdHitech36_1, type: "photo", fit: "contain", blur: true },
-      { image: bdHitech36_2, type: "photo", fit: "contain", blur: true },
-      { image: bdHitech36_3, type: "photo", fit: "contain", blur: true },
-    ],
-    likes: 48, rating: 4.7,
-    suitableFor: ["Выходные / дача", "Для одного / пары"],
-    useCases: ["rental"],
-    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
-    features: ["Готовый санузел", "Хай-тек"], style: "Хай-тек", landSize: "3–6 соток",
-    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
-  },
-  {
-    id: 271, name: "Барн 60F-1", badge: "Модульный дом", price: "3 640 000 ₽",
-    area: "60 м²", area_m2: 60, beds: 3, baths: 1, floors: 1, term: "от 10 д.",
-    rooms: "3 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
-    manufacturerId: "budushiy-dom", sourceUrl: "https://budushiy-dom.ru/product/modulnyj-dom-barn-60f-1/",
-    description: "Модульный дом в стиле барн 60 м² с тремя спальнями и санузлом.",
-    descriptionLong: "Барн 60F-1 от СК «Будущий Дом» — модульный дом площадью 60 м² с тремя спальнями. В базовом описании указаны внутренняя и внешняя отделка, электрика, сантехника и водоснабжение.",
-    gallery: [
-      { image: bdBarn60f_1, type: "photo", fit: "contain", blur: true },
-      { image: bdBarn60f_2, type: "photo", fit: "contain", blur: true },
-      { image: bdBarn60f_3, type: "photo", fit: "contain", blur: true },
-    ],
-    likes: 56, rating: 4.8,
-    suitableFor: ["Постоянное проживание", "Для семьи"],
-    useCases: ["rental"],
-    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
-    features: ["Барнхаус", "Три спальни"], style: "Барнхаус", landSize: "6–10 соток",
-    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
-  },
-  {
-    id: 272, name: "Дом №8", badge: "Модульный дом", price: "2 087 020 ₽",
-    area: "32,5 м²", area_m2: 32.5, beds: 2, baths: 1, floors: 1, term: "от 10 д.",
-    rooms: "2 спальни", purpose: "ИЖС / СНТ / Дача", city: "Екатеринбург",
-    manufacturerId: "budushiy-dom", sourceUrl: "https://budushiy-dom.ru/product/dom-8/",
-    description: "Компактный модульный дом 32,5 м² с двумя спальнями и санузлом.",
-    descriptionLong: "Дом №8 от СК «Будущий Дом» — модульный дом площадью 32,5 м². В карточке производителя указаны две спальни, один санузел, внутренняя и внешняя отделка, разведенная электрика, сантехника и вода.",
-    gallery: [
-      { image: bdDom8_1, type: "photo", fit: "contain", blur: true },
-      { image: bdDom8_2, type: "photo", fit: "contain", blur: true },
-      { image: bdDom8_3, type: "photo", fit: "contain", blur: true },
-    ],
-    likes: 47, rating: 4.7,
-    suitableFor: ["Выходные / дача", "Для семьи"],
-    useCases: ["rental"],
-    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
-    features: ["Две спальни", "Готовый санузел"], style: "Современный", landSize: "3–6 соток",
-    hasRealPhotos: true, hasShowroom: false, hasInstallment: true,
-  },
-  {
-    id: 273, name: "Модуал 75 с террасой", badge: "Модульный дом", price: "3 524 000 ₽",
-    area: "75 м²", area_m2: 75, beds: 2, baths: 1, floors: 1, term: "от 10 д.",
-    rooms: "2 спальни", purpose: "ИЖС / СНТ", city: "Екатеринбург",
-    manufacturerId: "budushiy-dom", sourceUrl: "https://budushiy-dom.ru/product/modual-75-m2-s-terrasoj/",
-    description: "Модульный дом 75 м² с двумя спальнями, санузлом и террасой.",
-    descriptionLong: "Модуал 75 с террасой от СК «Будущий Дом» — одноэтажный модульный дом площадью 75 м². Производитель указывает усиленный деревянный каркас, утепление, вентилируемый фасад, подготовку санузла и комплект окон и дверей.",
-    gallery: [
-      { image: bdModual75_1, type: "photo", fit: "contain", blur: true },
-      { image: bdModual75_2, type: "photo", fit: "contain", blur: true },
-      { image: bdModual75_3, type: "photo", fit: "contain", blur: true },
-    ],
-    likes: 57, rating: 4.8,
-    suitableFor: ["Постоянное проживание", "Для семьи"],
-    useCases: ["rental"],
-    technology: "Модульный дом", completion: "Под ключ", insulation: "до −30°C",
-    features: ["Терраса", "Две спальни"], style: "Современный", landSize: "6–10 соток",
-    hasRealPhotos: false, hasShowroom: false, hasInstallment: true,
-  },
-  ...budushiyDomAdditionalProjects,
 
   // ── Qubdom · Санкт-Петербург и ЛО ────────────────────────────────────────
   {
