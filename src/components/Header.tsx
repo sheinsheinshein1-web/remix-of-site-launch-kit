@@ -9,6 +9,9 @@ import MobileMenu from "./MobileMenu";
 import DesktopNavigation from "./DesktopNavigation";
 import SearchDropdown from "./SearchDropdown";
 import CitySelector, { useCity } from "./CitySelector";
+import RegionSuggestion from "./RegionSuggestion";
+import { useRegionSuggestion } from "@/hooks/useRegionSuggestion";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { getSavedScrollPosition } from "@/lib/scrollRestoration";
 import { getGeoSelectionLabel, isAllRegionsGeo, normalizeGeoSelection } from "@/lib/geoSelection";
 import { useFavorites } from "@/contexts/FavoritesContext";
@@ -51,6 +54,12 @@ const Header = ({
   const [enableTransitions, setEnableTransitions] = useState(!isReturningScrolled);
   const [cityOpen, setCityOpen] = useState(false);
   const { city, selectCity, hasExplicitSelection } = useCity();
+  const { suggestion, dismiss: dismissSuggestion } = useRegionSuggestion(hasExplicitSelection);
+  const isMobile = useIsMobile();
+  const openCitySelector = () => {
+    dismissSuggestion();
+    setCityOpen(true);
+  };
   const { favoriteCount } = useFavorites();
   const cityLabel = hasExplicitSelection ? getGeoSelectionLabel(city) : "Выберите регион";
   const favoritesAriaLabel = favoriteCount > 0
@@ -62,6 +71,7 @@ const Header = ({
   const handleCitySelect = (nextCity: string) => {
     const normalizedCity = normalizeGeoSelection(nextCity);
     selectCity(normalizedCity);
+    dismissSuggestion();
     const isRegionPage = location.pathname.startsWith("/region/")
       || (location.pathname.startsWith("/modulnye-doma/") && !location.pathname.includes("/proekty/"));
     if (isRegionPage) {
@@ -142,17 +152,20 @@ const Header = ({
               <img src={logoColor} alt="Много места" width={430} height={62} className="h-[18px] w-auto dark:brightness-0 dark:invert md:h-[23px]" loading="eager" decoding="async" />
             </Link>
 
-            <button
-              type="button"
-              onClick={() => setCityOpen(true)}
-              className="ml-2 inline-flex h-8 min-w-0 max-w-[136px] items-center gap-0.5 text-[12px] font-medium tracking-normal text-[#342d27]/90 transition-colors hover:text-primary md:ml-5 md:h-11 md:max-w-[210px] md:gap-1.5 md:text-[15px]"
-              aria-label={hasExplicitSelection
-                ? `Выбрать регион. Сейчас выбран: ${cityLabel}`
-                : "Выбрать регион"}
-            >
-              <span className="truncate">{cityLabel}</span>
-              <ChevronDown className="h-3 w-3 shrink-0 md:h-4 md:w-4" strokeWidth={1.6} aria-hidden />
-            </button>
+            <RegionSuggestion suggestion={!cityOpen && !menuOpen ? suggestion : null}
+              onConfirm={handleCitySelect} onChange={openCitySelector} onDismiss={dismissSuggestion}>
+              <button
+                type="button"
+                onClick={openCitySelector}
+                className="ml-2 inline-flex h-11 min-w-0 max-w-[136px] items-center gap-0.5 text-[12px] font-medium tracking-normal text-[#342d27]/90 transition-colors hover:text-primary md:ml-5 md:h-11 md:max-w-[210px] md:gap-1.5 md:text-[15px]"
+                aria-label={hasExplicitSelection
+                  ? `Выбрать регион. Сейчас выбран: ${cityLabel}`
+                  : "Выбрать регион"}
+              >
+                <span className="truncate">{cityLabel}</span>
+                <ChevronDown className="h-3 w-3 shrink-0 md:h-4 md:w-4" strokeWidth={1.6} aria-hidden />
+              </button>
+            </RegionSuggestion>
 
             <div className="ml-auto hidden items-center gap-3 lg:flex">
               <Link
@@ -264,10 +277,13 @@ const Header = ({
                 <img src={logoMark} alt="" className="h-[23px] w-[23px]" aria-hidden loading="lazy" decoding="async" />
                 Много места
               </Link>
-              <button onClick={() => setCityOpen(true)} className="flex items-center gap-1 text-[13px] font-medium text-primary bg-secondary rounded-xl h-9 px-3 max-w-[160px] min-w-0">
-                <span className="truncate">{cityLabel}</span>
-                <ChevronDown className="w-3.5 h-3.5 text-primary flex-shrink-0" strokeWidth={2} />
-              </button>
+              <RegionSuggestion suggestion={isMobile && !cityOpen && !menuOpen && !mobileScrolled ? suggestion : null}
+                onConfirm={handleCitySelect} onChange={openCitySelector} onDismiss={dismissSuggestion}>
+                <button onClick={openCitySelector} className="flex items-center gap-1 text-[13px] font-medium text-primary bg-secondary rounded-xl h-9 px-3 max-w-[160px] min-w-0">
+                  <span className="truncate">{cityLabel}</span>
+                  <ChevronDown className="w-3.5 h-3.5 text-primary flex-shrink-0" strokeWidth={2} />
+                </button>
+              </RegionSuggestion>
             </div>
           </div>
         </div>
@@ -293,11 +309,14 @@ const Header = ({
                     <img src={logoMarkWhite} alt="" className="h-[25px] w-[25px]" aria-hidden loading="lazy" decoding="async" />
                     Много места
                   </a>
-                  <button onClick={() => setCityOpen(true)} className="inline-flex items-center gap-1.5 text-primary-foreground/90 hover:text-primary-foreground transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <span className="text-sm font-medium">{cityLabel}</span>
-                    <ChevronDown className="w-4 h-4 opacity-70" />
-                  </button>
+                  <RegionSuggestion suggestion={!isMobile && !cityOpen && !menuOpen && !scrolled ? suggestion : null}
+                    onConfirm={handleCitySelect} onChange={openCitySelector} onDismiss={dismissSuggestion}>
+                    <button onClick={openCitySelector} className="inline-flex items-center gap-1.5 text-primary-foreground/90 hover:text-primary-foreground transition-colors">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                      <span className="text-sm font-medium">{cityLabel}</span>
+                      <ChevronDown className="w-4 h-4 opacity-70" />
+                    </button>
+                  </RegionSuggestion>
                 </div>
 
                 <div className="flex items-center gap-6">
